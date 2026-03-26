@@ -1,0 +1,200 @@
+/* ── Reset & base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+header {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+}
+
+header h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.subtitle {
+  margin-top: 0.4rem;
+  font-size: 1rem;
+  color: #a0b8d8;
+}
+
+/* ── Main ── */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem 2rem;
+  gap: 1.5rem;
+}
+
+/* ── Search ── */
+.search-section form {
+  display: flex;
+  gap: 0.6rem;
+  width: 100%;
+  max-width: 460px;
+}
+
+#city-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  transition: background 0.2s;
+}
+
+#city-input::placeholder {
+  color: #8090a8;
+}
+
+#city-input:focus {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+button[type='submit'] {
+  padding: 0.75rem 1.4rem;
+  border: none;
+  border-radius: 8px;
+  background: #e94560;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+button[type='submit']:hover {
+  background: #c73652;
+}
+
+button[type='submit']:active {
+  transform: scale(0.97);
+}
+
+/* ── Weather card ── */
+.weather-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.city-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.weather-icon {
+  font-size: 4.5rem;
+  margin: 0.6rem 0;
+}
+
+.temperature {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #f0c040;
+}
+
+.description {
+  font-size: 1.05rem;
+  color: #b0c8e8;
+  text-transform: capitalize;
+  margin-bottom: 1.2rem;
+}
+
+.details {
+  display: flex;
+  justify-content: space-around;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.detail-label {
+  font-size: 0.78rem;
+  color: #8090a8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.detail-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e0e0e0;
+}
+
+/* ── Error card ── */
+.error-card {
+  background: rgba(233, 69, 96, 0.15);
+  border: 1px solid rgba(233, 69, 96, 0.4);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+  color: #f08090;
+}
+
+/* ── API note ── */
+.api-note {
+  max-width: 460px;
+  text-align: center;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #708098;
+}
+
+.api-note a {
+  color: #a0c8f8;
+  text-decoration: none;
+}
+
+.api-note a:hover {
+  text-decoration: underline;
+}
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.82rem;
+  color: #506080;
+}
+
+/* ── Utility ── */
+[hidden] {
+  display: none !important;
+}
