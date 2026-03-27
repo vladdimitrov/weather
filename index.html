@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YT10DVQBCC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YT10DVQBCC');
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Forecast and Magnetic Storms - Home</title>
+<link rel="canonical" href="https://weatherpulse.eu/" />
+  <script>
+    (function() {
+      const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+      document.documentElement.lang = savedLanguage;
+
+      const savedBackground = localStorage.getItem('defaultBackground') || 'blue';
+      function applyBackgroundImmediately(background) {
+        let style = '';
+        // Remove any previously applied background classes
+        document.body.classList.remove("bg-default", "bg-blue", "bg-dark", "bg-green", "bg-purple", "bg-red");
+        
+        switch (background) {
+          case "default":
+            style = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
+            document.body.classList.add("bg-default");
+            break;
+          case "blue":
+            style = "linear-gradient(135deg, #00c6ff, #0072ff)";
+            document.body.classList.add("bg-blue");
+            break;
+          case "dark":
+            style = "linear-gradient(135deg, #232526, #414345)";
+            document.body.classList.add("bg-dark");
+            break;
+          case "green":
+            style = "linear-gradient(135deg, #11998e, #38ef7d)";
+            document.body.classList.add("bg-green");
+            break;
+          case "purple":
+            style = "linear-gradient(135deg, #834d9b, #d04ed6)";
+            document.body.classList.add("bg-purple");
+            break;
+          case "red":
+            style = "linear-gradient(135deg, #cb2d3e, #ef473a)";
+            document.body.classList.add("bg-red");
+            break;
+          default:
+            style = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
+            document.body.classList.add("bg-default");
+        }
+        document.body.style.background = style;
+      }
+      applyBackgroundImmediately(savedBackground);
+    })();
+  </script>
+  <link rel="icon" href="https://www.google.com/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/weather.css">
+  <link rel="stylesheet" href="css/modern-form.css">
+  <style>
+    @keyframes greenAura {
+      0% {
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.7), 0 0 40px rgba(0, 255, 0, 0.5), 0 0 60px rgba(0, 255, 0, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 30px rgba(0, 255, 0, 0.8), 0 0 60px rgba(0, 255, 0, 0.6), 0 0 90px rgba(0, 255, 0, 0.4);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.7), 0 0 40px rgba(0, 255, 0, 0.5), 0 0 60px rgba(0, 255, 0, 0.3);
+      }
+    }
+    @media (max-width: 768px) {
+      .nav-header.hidden {
+        transform: translateY(-100%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-arrow {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #8B6914;
+        color: #FFF;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1000;
+        animation: greenAura 2s ease-in-out infinite;
+      }
+
+      .header-arrow.show {
+        opacity: 1;
+        transition-delay: 2.3s;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-arrow {
+        opacity: 1;
+        transition-delay: 2.3s;
+      }
+    }
+    /* Mobile Menu Styles */
+    .hamburger-menu {
+      display: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 1000;
+    }
+
+    .hamburger-menu span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #FFD700;
+      margin: 5px 0;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      transition: left 0.3s ease;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .mobile-menu.active {
+      left: 0;
+    }
+
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .menu-overlay.active {
+      opacity: 1;
+      display: block;
+    }
+
+    .mobile-menu .nav-link {
+      display: block;
+      padding: 15px 0;
+      color: #FFD700;
+      text-decoration: none;
+      font-size: 1.1em;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    .mobile-menu .nav-link:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-menu .header-selectors {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 215, 0, 0.2);
+    }
+
+    @keyframes fade-in {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes orbit {
+      from { transform: rotate(0deg) translateX(175px) rotate(0deg); }
+      to { transform: rotate(360deg) translateX(175px) rotate(-360deg); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    
+    .hero-section {
+      text-align: center;
+      padding: 20px 15px;
+      margin: 10px auto;
+      max-width: 1000px;
+    }
+    
+    .hero-title {
+      font-size: 2em;
+      color: #FFD700;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      animation: fade-in 1s ease-out;
+    }
+    
+    .hero-subtitle {
+      font-size: 1em;
+      color: #ffffff;
+      margin-bottom: 25px;
+      line-height: 1.5;
+      animation: fade-in 1s ease-out 0.3s both;
+    }
+    
+    /* Circular Navigation System */
+    .circular-nav {
+      position: relative;
+      width: 350px;
+      height: 350px;
+      margin: 30px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .sun-center {
+      position: absolute;
+      width: 150px;
+      height: 110px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background-image: url('./images/center.webp');
+      background-size: cover;
+      background-position: center;
+      text-indent: -9999px; /* Hide the text content */
+    }
+    
+    .sun-center:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 40px rgba(255, 215, 0, 1), 0 0 80px rgba(255, 215, 0, 0.6);
+    }
+    
+    .sun-center::before {
+      content: '';
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      background: transparent;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      animation: rotate 20s linear infinite;
+    }
+    
+    .sun-center::after {
+      content: '☯';
+      font-size: 45px;
+      animation: rotate 10s linear infinite reverse;
+    }
+    
+    .orbit-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px dashed rgba(255, 215, 0, 0.2);
+    }
+    
+    .orbit-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: transparent; /* Make background transparent */
+      border: 2px solid transparent; /* Make border transparent */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #FFD700;
+      font-weight: 600;
+      font-size: 0em;
+      transition: all 0.3s ease;
+      box-shadow: none; /* Remove default shadow */
+      cursor: pointer;
+      transform-origin: 50% 50%;
+      margin-left: -32.5px;
+      margin-top: -32.5px;
+      animation: orbit 60s linear infinite;
+    }
+    
+    .orbit-button:hover {
+      background: rgba(255, 215, 0, 0.2);
+      border-color: #FFD700; /* Set border color on hover */
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+      animation-play-state: paused;
+    }
+    
+    /* Individual aura effects for each orbit button */
+    #weather-orbit-btn {
+      box-shadow: 0 0 25px rgba(0, 150, 255, 0.8), 0 0 50px rgba(0, 150, 255, 0.5), 0 0 75px rgba(0, 150, 255, 0.3);
+      animation: orbit 60s linear infinite, weatherAura 2s ease-in-out infinite;
+      animation-delay: 0s, 0s;
+    }
+    
+    #weather-orbit-btn:hover {
+      background: rgba(0, 150, 255, 0.2);
+      border-color: #0096FF;
+      box-shadow: 0 0 40px rgba(0, 150, 255, 1), 0 0 80px rgba(0, 150, 255, 0.6);
+      animation-play-state: paused;
+    }
+    
+    #holliday-calendar-btn {
+      box-shadow: 0 0 25px rgba(255, 100, 150, 0.8), 0 0 50px rgba(255, 100, 150, 0.5), 0 0 75px rgba(255, 100, 150, 0.3);
+      animation: orbit 60s linear infinite, calendarAura 2.2s ease-in-out infinite;
+      animation-delay: -12s, 0s;
+    }
+    
+    #holliday-calendar-btn:hover {
+      background: rgba(255, 100, 150, 0.2);
+      border-color: #FF6496;
+      box-shadow: 0 0 40px rgba(255, 100, 150, 1), 0 0 80px rgba(255, 100, 150, 0.6);
+      animation-play-state: paused;
+    }
+    
+    #contacts-orbit-btn {
+      box-shadow: 0 0 25px rgba(100, 255, 150, 0.8), 0 0 50px rgba(100, 255, 150, 0.5), 0 0 75px rgba(100, 255, 150, 0.3);
+      animation: orbit 60s linear infinite, contactsAura 2.5s ease-in-out infinite;
+      animation-delay: -36s, 0s;
+    }
+    
+    #contacts-orbit-btn:hover {
+      background: rgba(100, 255, 150, 0.2);
+      border-color: #64FF96;
+      box-shadow: 0 0 40px rgba(100, 255, 150, 1), 0 0 80px rgba(100, 255, 150, 0.6);
+      animation-play-state: paused;
+    }
+    
+    #maps-orbit-btn {
+      box-shadow: 0 0 25px rgba(255, 165, 0, 0.8), 0 0 50px rgba(255, 165, 0, 0.5), 0 0 75px rgba(255, 165, 0, 0.3);
+      animation: orbit 60s linear infinite, mapsAura 2.3s ease-in-out infinite;
+      animation-delay: -30s, 0s;
+    }
+    
+    #maps-orbit-btn:hover {
+      background: rgba(255, 165, 0, 0.2);
+      border-color: #FFA500;
+      box-shadow: 0 0 40px rgba(255, 165, 0, 1), 0 0 80px rgba(255, 165, 0, 0.6);
+      animation-play-state: paused;
+    }
+    
+    .orbit-button .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%; /* Ensure the span takes full width of the button */
+      height: 100%; /* Ensure the span takes full height of the button */
+    }
+    
+    .orbit-button .label {
+      font-size: 20px;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    #weather-orbit-label {
+      font-size: 15.21px; /* 9px + 30% + 30% */
+    }
+    #magnetic-orbit-label {
+      font-size: 15.21px; /* Same as weather-orbit-label */
+    }
+    #contacts-orbit-label {
+      font-size: 15.21px; /* Same as weather-orbit-label */
+    }
+    
+    /* Position buttons around the circle with different starting positions */
+    .orbit-button:nth-child(1) {
+      animation-delay: 0s;
+    }
+    
+    .orbit-button:nth-child(2) {
+      animation-delay: -12s;
+    }
+    
+    .orbit-button:nth-child(3) {
+      animation-delay: -24s;
+    }
+    
+    .orbit-button:nth-child(4) {
+      animation-delay: -36s;
+    }
+    
+    .orbit-button:nth-child(5) {
+      animation-delay: -48s;
+    }
+    
+    /* Features section - simplified */
+    .features-section {
+      text-align: center;
+      margin: 30px auto 60px;
+      max-width: 700px;
+      padding: 0 15px;
+    }
+    
+    .features-title {
+      color: #FFD700;
+      font-size: 1.6em;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    
+    .features-description {
+      color: #ffffff;
+      font-size: 1em;
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 15px 10px;
+        margin: 5px auto;
+      }
+      
+      .hero-title {
+        font-size: 1.6em;
+        margin-bottom: 10px;
+      }
+      
+      .hero-subtitle {
+        font-size: 0.9em;
+        margin-bottom: 20px;
+      }
+      
+      .circular-nav {
+        width: 280px;
+        height: 280px;
+        margin: 20px auto;
+      }
+      
+      .sun-center {
+        width: 70px;
+        height: 70px;
+      }
+      
+      .sun-center::before {
+        width: 85px;
+        height: 85px;
+      }
+      
+      .sun-center::after {
+        font-size: 35px;
+      }
+      
+      .orbit-button {
+        width: 50px;
+        height: 50px;
+        font-size: 0.7em;
+        margin-left: -25px;
+        margin-top: -25px;
+      }
+      
+      .orbit-button .icon {
+        font-size: 16px;
+        margin-bottom: 2px;
+      }
+      
+      .orbit-button .label {
+        font-size: 7px;
+      }
+      
+      .features-section {
+        margin: 20px auto 50px;
+        padding: 0 10px;
+      }
+      
+      .features-title {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+      }
+      
+      .features-description {
+        font-size: 0.9em;
+        margin-bottom: 20px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.4em;
+      }
+      
+      .hero-subtitle {
+        font-size: 0.85em;
+      }
+      
+      .circular-nav {
+        width: 240px;
+        height: 240px;
+        margin: 15px auto;
+      }
+      
+      .sun-center {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .sun-center::before {
+        width: 75px;
+        height: 75px;
+      }
+      
+      .sun-center::after {
+        font-size: 30px;
+      }
+      
+      .orbit-button {
+        width: 45px;
+        height: 45px;
+        margin-left: -22.5px;
+        margin-top: -22.5px;
+      }
+      
+      .orbit-button .icon {
+        font-size: 14px;
+      }
+      
+      .orbit-button .label {
+        font-size: 6px;
+      }
+      
+      .features-title {
+        font-size: 1.2em;
+      }
+      
+      .features-description {
+        font-size: 0.85em;
+      }
+    }
+
+    @keyframes hoverPulse {
+     0%, 100% {
+       transform: scale(1);
+       box-shadow: none;
+     }
+     50% {
+       transform: scale(1.1);
+       box-shadow: 0 0 40px rgba(255, 215, 0, 1), 0 0 80px rgba(255, 215, 0, 0.6);
+     }
+   }
+
+   .sun-center {
+     animation: hoverPulse 2s linear infinite;
+   }
+   
+   /* Aura animations for orbit buttons */
+   @keyframes weatherAura {
+     0% {
+       box-shadow: 0 0 20px rgba(0, 150, 255, 0.6), 0 0 40px rgba(0, 150, 255, 0.4), 0 0 60px rgba(0, 150, 255, 0.2);
+     }
+     50% {
+       box-shadow: 0 0 35px rgba(0, 150, 255, 1), 0 0 70px rgba(0, 150, 255, 0.7), 0 0 100px rgba(0, 150, 255, 0.4);
+     }
+     100% {
+       box-shadow: 0 0 20px rgba(0, 150, 255, 0.6), 0 0 40px rgba(0, 150, 255, 0.4), 0 0 60px rgba(0, 150, 255, 0.2);
+     }
+   }
+   
+   @keyframes calendarAura {
+     0% {
+       box-shadow: 0 0 20px rgba(255, 100, 150, 0.6), 0 0 40px rgba(255, 100, 150, 0.4), 0 0 60px rgba(255, 100, 150, 0.2);
+     }
+     50% {
+       box-shadow: 0 0 35px rgba(255, 100, 150, 1), 0 0 70px rgba(255, 100, 150, 0.7), 0 0 100px rgba(255, 100, 150, 0.4);
+     }
+     100% {
+       box-shadow: 0 0 20px rgba(255, 100, 150, 0.6), 0 0 40px rgba(255, 100, 150, 0.4), 0 0 60px rgba(255, 100, 150, 0.2);
+     }
+   }
+   
+   @keyframes contactsAura {
+     0% {
+       box-shadow: 0 0 20px rgba(100, 255, 150, 0.6), 0 0 40px rgba(100, 255, 150, 0.4), 0 0 60px rgba(100, 255, 150, 0.2);
+     }
+     50% {
+       box-shadow: 0 0 35px rgba(100, 255, 150, 1), 0 0 70px rgba(100, 255, 150, 0.7), 0 0 100px rgba(100, 255, 150, 0.4);
+     }
+     100% {
+       box-shadow: 0 0 20px rgba(100, 255, 150, 0.6), 0 0 40px rgba(100, 255, 150, 0.4), 0 0 60px rgba(100, 255, 150, 0.2);
+     }
+   }
+   
+   @keyframes mapsAura {
+     0% {
+       box-shadow: 0 0 20px rgba(255, 165, 0, 0.6), 0 0 40px rgba(255, 165, 0, 0.4), 0 0 60px rgba(255, 165, 0, 0.2);
+     }
+     50% {
+       box-shadow: 0 0 35px rgba(255, 165, 0, 1), 0 0 70px rgba(255, 165, 0, 0.7), 0 0 100px rgba(255, 165, 0, 0.4);
+     }
+     100% {
+       box-shadow: 0 0 20px rgba(255, 165, 0, 0.6), 0 0 40px rgba(255, 165, 0, 0.4), 0 0 60px rgba(255, 165, 0, 0.2);
+     }
+   }
+   
+   /* Mystical Logo Aura Effects */
+   .logo-img {
+     transition: all 0.3s ease;
+     border-radius: 50%;
+     animation: logoAura 3s ease-in-out infinite;
+   }
+   
+   .logo-img:hover {
+     transform: scale(1.1);
+     animation-play-state: paused;
+   }
+   
+   /* Default aura animation */
+   @keyframes logoAura {
+     0% {
+       box-shadow: 0 0 10px rgba(168, 192, 255, 0.6), 0 0 20px rgba(168, 192, 255, 0.4), 0 0 30px rgba(168, 192, 255, 0.2);
+     }
+     50% {
+       box-shadow: 0 0 20px rgba(168, 192, 255, 1), 0 0 40px rgba(168, 192, 255, 0.7), 0 0 60px rgba(168, 192, 255, 0.4);
+     }
+     100% {
+       box-shadow: 0 0 10px rgba(168, 192, 255, 0.6), 0 0 20px rgba(168, 192, 255, 0.4), 0 0 30px rgba(168, 192, 255, 0.2);
+     }
+   }
+   
+   /* Blue background aura */
+   .bg-blue .logo-img {
+     animation: logoAuraBlue 3s ease-in-out infinite;
+   }
+   
+   @keyframes logoAuraBlue {
+     0% {
+       box-shadow: 0 0 10px rgba(0, 198, 255, 0.6), 0 0 20px rgba(0, 198, 255, 0.4), 0 0 30px rgba(0, 198, 255, 0.2);
+     }
+     50% {
+       box-shadow: 0 0 20px rgba(0, 198, 255, 1), 0 0 40px rgba(0, 198, 255, 0.7), 0 0 60px rgba(0, 198, 255, 0.4);
+     }
+     100% {
+       box-shadow: 0 0 10px rgba(0, 198, 255, 0.6), 0 0 20px rgba(0, 198, 255, 0.4), 0 0 30px rgba(0, 198, 255, 0.2);
+     }
+   }
+   
+   /* Dark background aura */
+   .bg-dark .logo-img {
+     animation: logoAuraDark 3s ease-in-out infinite;
+   }
+   
+   @keyframes logoAuraDark {
+     0% {
+       box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.2);
+     }
+     50% {
+       box-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.7), 0 0 60px rgba(255, 255, 255, 0.4);
+     }
+     100% {
+       box-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.2);
+     }
+   }
+   
+   /* Green background aura */
+   .bg-green .logo-img {
+     animation: logoAuraGreen 3s ease-in-out infinite;
+   }
+   
+   @keyframes logoAuraGreen {
+     0% {
+       box-shadow: 0 0 10px rgba(17, 153, 142, 0.6), 0 0 20px rgba(17, 153, 142, 0.4), 0 0 30px rgba(17, 153, 142, 0.2);
+     }
+     50% {
+       box-shadow: 0 0 20px rgba(17, 153, 142, 1), 0 0 40px rgba(17, 153, 142, 0.7), 0 0 60px rgba(17, 153, 142, 0.4);
+     }
+     100% {
+       box-shadow: 0 0 10px rgba(17, 153, 142, 0.6), 0 0 20px rgba(17, 153, 142, 0.4), 0 0 30px rgba(17, 153, 142, 0.2);
+     }
+   }
+   
+   /* Purple background aura */
+   .bg-purple .logo-img {
+     animation: logoAuraPurple 3s ease-in-out infinite;
+   }
+   
+   @keyframes logoAuraPurple {
+     0% {
+       box-shadow: 0 0 10px rgba(131, 77, 155, 0.6), 0 0 20px rgba(131, 77, 155, 0.4), 0 0 30px rgba(131, 77, 155, 0.2);
+     }
+     50% {
+       box-shadow: 0 0 20px rgba(131, 77, 155, 1), 0 0 40px rgba(131, 77, 155, 0.7), 0 0 60px rgba(131, 77, 155, 0.4);
+     }
+     100% {
+       box-shadow: 0 0 10px rgba(131, 77, 155, 0.6), 0 0 20px rgba(131, 77, 155, 0.4), 0 0 30px rgba(131, 77, 155, 0.2);
+     }
+   }
+   
+   /* Red background aura */
+   .bg-red .logo-img {
+     animation: logoAuraRed 3s ease-in-out infinite;
+   }
+   
+   @keyframes logoAuraRed {
+     0% {
+       box-shadow: 0 0 10px rgba(203, 45, 62, 0.6), 0 0 20px rgba(203, 45, 62, 0.4), 0 0 30px rgba(203, 45, 62, 0.2);
+     }
+     50% {
+       box-shadow: 0 0 20px rgba(203, 45, 62, 1), 0 0 40px rgba(203, 45, 62, 0.7), 0 0 60px rgba(203, 45, 62, 0.4);
+     }
+     100% {
+       box-shadow: 0 0 10px rgba(203, 45, 62, 0.6), 0 0 20px rgba(203, 45, 62, 0.4), 0 0 30px rgba(203, 45, 62, 0.2);
+     }
+   }
+ </style>
+</head>
+<body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+  <div class="nav-header" tabindex="-1" id="header">
+    <div class="nav-links">
+      <a href="weather/index.html" class="nav-link" id="weather-forecast" data-translation-key="weatherForecast">Weather Forecast</a>
+      <a href="maps/index.html" class="nav-link" id="weather-maps" data-translation-key="weatherMaps">Weather Maps</a>
+      <a href="holliday_calendar/index.html" class="nav-link" id="holiday-calendar" data-translation-key="holidayCalendarLinkNav">Holiday Calendar</a>
+      <a href="contacts/index.html" class="nav-link" id="contacts-link">Data Sources</a>
+    </div>
+    <div class="header-selectors" id="selectors-container">
+      <!-- Background and language selectors will be inserted here by JS -->
+    </div>
+  </div>
+
+  <div class="header-arrow" onclick="toggleHeader()">&#9660;</div>
+  <div class="container" style="margin-top: calc(var(--header-height) + 20px);">
+    
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <h1 class="hero-title" id="hero-title" data-translation-key="heroTitle">Weather Forecast and Magnetic Storms</h1>
+      <p class="hero-subtitle" id="hero-subtitle" data-translation-key="heroSubtitle">
+        Track weather, moon phases, magnetic storms, and holidays in real time for any location worldwide. Plan your day with accuracy and confidence.
+      </p>
+    </div>
+
+    <!-- Circular Navigation -->
+    <div class="circular-nav">
+      <div class="sun-center" title="Home - Weather & Magnetic Storms"></div>
+      
+      <div class="orbit-container">
+        <a href="weather/index.html" class="orbit-button" id="weather-orbit-btn" title="Weather Forecast">
+          <span class="label" id="weather-orbit-label">WEATHER</span>
+        </a>
+        
+       <!-- <a href="weather/weather.html" class="orbit-button" id="magnetic-orbit-btn" title="Magnetic Storm Monitoring">
+          <span class="icon"><img src="./images/magnetic.png" alt="Magnetic" style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 50%;"></span>
+          <span class="label" id="magnetic-orbit-label">Geomagnetic Storms</span>
+        </a>
+		-->
+		<a href="holliday_calendar/index.html" class="orbit-button" id="holliday-calendar-btn" title="Holliday_calendar">
+          <span class="label" id="holiday-calendar-label">HOLIDAY</span>
+        </a>
+        <a href="maps/index.html" class="orbit-button" id="maps-orbit-btn" title="Weather Maps">
+          <span class="label" id="maps-orbit-label">MAPS</span>
+        </a>
+        
+        <a href="contacts/index.html" class="orbit-button" id="contacts-orbit-btn" title="Data Sources & Contacts">
+          <span class="label" id="contacts-orbit-label">SOURCES</span>
+        </a>
+        
+        
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="features-section">
+      <h2 class="features-title" id="features-title" data-translation-key="featuresTitle">Advanced Weather Intelligence</h2>
+      <p class="features-description" id="features-description" data-translation-key="featuresDescription">
+        Experience next-generation weather forecasting with our integrated platform, combining advanced meteorological data and real-time space weather monitoring. Use the interactive orbital interface above—each planet represents a unique component of our comprehensive weather intelligence system.
+      </p>
+    </div>
+
+  </div>
+
+  <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
+    <div class="logo" style="flex-shrink: 0;">
+        <a href="index.html"><img src="images/logo_ant.webp" alt="Лого" class="logo-img" style="height: 30px; width: auto;"></a>
+    </div>
+      
+    <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
+      © 2025 JAMAZON
+    </p>
+
+  </footer>
+
+<script>
+// Hide header on mobile after 2 seconds
+function hideHeaderOnMobile() {
+  if (window.innerWidth <= 768) {
+    setTimeout(function() {
+      document.querySelector('.nav-header').classList.add('hidden');
+    }, 2000);
+  }
+}
+
+window.addEventListener('load', hideHeaderOnMobile);
+window.addEventListener('resize', hideHeaderOnMobile);
+
+function toggleHeader() {
+  const header = document.querySelector('.nav-header');
+  header.classList.toggle('hidden');
+  
+  const arrow = document.querySelector('.header-arrow');
+  arrow.innerHTML = header.classList.contains('hidden') ? '&#9650;' : '&#9660;';
+
+  if (window.innerWidth <= 768) {
+    arrow.style.opacity = '1';
+  }
+}
+ // Homepage translations
+  const homepageTranslations = {
+    en: {
+      heroTitle: "Weather Forecast and Magnetic Storms",
+      heroSubtitle: "Track weather, moon phases, magnetic storms, and holidays in real time for any location worldwide. Plan your day with accuracy and confidence.",
+      featuresTitle: "Advanced Weather Intelligence",
+      featuresDescription: "Discover an advanced meteorological platform combining weather forecasts, geomagnetic activity, agro conditions, lunar calendar, and holidays. Navigate easily through the orbital interface – each planet leads to a separate feature.",
+      weatherOrbitLabel: "WEATHER",
+      magneticOrbitLabel: "GEOMAGNETIC STORMS",
+      mapsOrbitLabel: "MAPS",
+      contactsOrbitLabel: "SOURCES",
+      locationOrbitLabel: "LOCATION",
+	  contactsLink:       "Contacts",
+      holidayCalendarLinkNav: "HOLIDAY",
+	  holidayCalendarLabel: 	"HOLIDAY"
+    },
+    bg: {
+      heroTitle: "Прогноза за времето и магнитни бури",
+      heroSubtitle: "Следете времето, фазите на Луната, магнитните бури и празничните дни в реално време за всяка точка по света. Планирайте деня си с точност и увереност.",
+      featuresTitle: "Усъвършенствана метеорологична интелигентност",
+      featuresDescription:  	"Открийте усъвършенствана метеорологична платформа, която комбинира прогнози за времето, геомагнитна активност, агро условия, лунен календар и празнични дни. Навигирайте лесно през орбиталния интерфейс – всяка планета води към отделна функция.",
+      weatherOrbitLabel:  		"ВРЕМЕ",
+      mapsOrbitLabel:     		"КАРТИ",
+      contactsOrbitLabel: 		"ИЗТОЧНИЦИ",
+      locationOrbitLabel: 		"МЕСТОПОЛОЖЕНИЕ",
+      magneticOrbitLabel: 		"ГЕОМАГНИТНИ БУРИ",
+	  holidayCalendarLabel: 	"ПРАЗНИЦИ",
+      weatherForecast:      	"Прогноза за времето",
+      contactsLink:         	"Източници на данни",
+      holidayCalendarLink:  	"КАЛЕНДАР НА ПРАЗНИЦИТЕ",
+      holidayCalendarLinkNav:   "КАЛЕНДАР НА ПРАЗНИЦИТЕ"
+    },
+    de: {
+      heroTitle: 				"Wettervorhersage und Magnetstürme",
+      heroSubtitle: 			"Verfolgen Sie Wetter, Mondphasen, magnetische Stürme und Feiertage in Echtzeit für jeden Ort weltweit. Planen Sie Ihren Tag mit Genauigkeit und Zuversicht.",
+      featuresTitle: 			"Erweiterte Wetter-Intelligenz",
+      featuresDescription:  	"Entdecken Sie eine fortschrittliche meteorologische Plattform, die Wettervorhersagen, geomagnetische Aktivität, Agrarbedingungen, Mondkalender und Feiertage kombiniert. Navigieren Sie mühelos durch die orbitale Benutzeroberfläche – jeder Planet führt zu einer separaten Funktion.",
+      weatherOrbitLabel: 		"WETTER",
+      magneticOrbitLabel: 		"GEOMAGNETISCHE STÜRME",
+      mapsOrbitLabel: 			"KARTEN",
+      contactsOrbitLabel: 		"QUELLEN",
+      locationOrbitLabel: 		"STANDORT",
+      weatherForecast: 			"Wettervorhersage",
+      holidayCalendarLabel: 	"FEIERTAGSKALENDER",
+      contactsLink: 			"Datenquellen",
+      holidayCalendarLinkNav:   "FEIERTAGSKALENDER",
+      holidayCalendarLink: 		"FEIERTAGSKALENDER"
+    },
+    it: {
+      heroTitle: "Previsioni del Tempo e Tempeste Magnetiche",
+      heroSubtitle: "Monitora il tempo, le fasi lunari, le tempeste magnetiche e le festività in tempo reale per qualsiasi località nel mondo. Pianifica la tua giornata con precisione e fiducia.",
+      featuresTitle: "Intelligenza Meteorologica Avanzata",
+      featuresDescription: "Scopri una piattaforma meteorologica avanzata che combina previsioni del tempo, attività geomagnetica, condizioni agricole, calendario lunare e festività. Naviga facilmente attraverso l'interfaccia orbitale – ogni pianeta conduce a una funzione separata.",
+      weatherOrbitLabel: 		"TEMPO",
+      magneticOrbitLabel: 		"TEMPESTE GEOMAGNETICHE",
+      mapsOrbitLabel: 			"MAPPE",
+      contactsOrbitLabel: 		"FONTI",
+      locationOrbitLabel: 		"POSIZIONE",
+      weatherForecast: 			"Previsioni del tempo",
+      contactsLink: 			"Fonti di dati",
+      holidayCalendarLabel: 	"FESTIVITÀ",
+      holidayCalendarLinkNav: 	"FESTIVITÀ",
+      holidayCalendarLink: 	  	"FESTIVITÀ"
+    },
+    es: {
+      heroTitle: "Pronóstico del Tiempo y Tormentas Magnéticas",
+      heroSubtitle: "Rastrea el clima, fases lunares, tormentas magnéticas y días festivos en tiempo real para cualquier ubicación mundial. Planifica tu día con precisión y confianza.",
+      featuresTitle: "Inteligencia Meteorológica Avanzada",
+      featuresDescription: "Descubre una plataforma meteorológica avanzada que combina pronósticos del tiempo, actividad geomagnética, condiciones agrícolas, calendario lunar y días festivos. Navega fácilmente a través de la interfaz orbital – cada planeta conduce a una función separada.",
+      weatherOrbitLabel:  		"CLIMA",
+      magneticOrbitLabel: 		"TORMENTAS GEOMAGNÉTICAS",
+      mapsOrbitLabel: 	  		"MAPAS",
+      contactsOrbitLabel: 		"FUENTES",
+      locationOrbitLabel: 		"UBICACIÓN",
+      weatherForecast: 	  		"Pronóstico del tiempo",
+      holidayCalendarLabel: 	"FESTIVOS",
+      contactsLink: 			"Fuentes de datos",
+      holidayCalendarLinkNav: 	"FESTIVOS",
+      holidayCalendarLink: 		"FESTIVOS"
+    }
+  };
+  
+  // Function to update homepage content based on language
+  function updateHomepageContent(language) {
+    const elements = {
+      'hero-title': 'heroTitle',
+      'hero-subtitle': 'heroSubtitle',
+      'features-title': 'featuresTitle',
+      'features-description': 'featuresDescription',
+      'weather-orbit-label': 'weatherOrbitLabel',
+      'magnetic-orbit-label': 'magneticOrbitLabel',
+      'contacts-orbit-label': 'contactsOrbitLabel',
+      'location-orbit-label': 'locationOrbitLabel',
+      'maps-orbit-label': 'mapsOrbitLabel',
+      'weather-forecast': 'weatherForecast',
+      'contacts-link': 'contactsLink',
+      'holiday-calendar-label': 'holidayCalendarLabel'
+    };
+    
+    Object.entries(elements).forEach(([elementId, translationKey]) => {
+      const element = document.getElementById(elementId);
+      if (element && homepageTranslations[language] && homepageTranslations[language][translationKey]) {
+        element.textContent = homepageTranslations[language][translationKey];
+      }
+    });
+    
+    // Update page title
+    document.title = homepageTranslations[language].heroTitle + " - Home";
+  }
+  
+  // Header initialization for homepage
+  document.addEventListener('DOMContentLoaded', function() {
+    const navHeader = document.querySelector('.nav-header');
+    if (navHeader) {
+      // Focus on the header when the page loads
+      navHeader.focus();
+      
+      // Scroll to top to ensure header is visible
+      window.scrollTo(0, 0);
+    }
+    
+    // Apply saved settings from localStorage
+    applyStoredSettings();
+  });
+  
+  // Function to apply stored settings
+  function applyStoredSettings() {
+    // Get saved language from localStorage
+    const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    
+    // Get saved background from localStorage
+    const savedBackground = localStorage.getItem('defaultBackground') || 'blue';
+    
+    // Apply the language setting
+    if (savedLanguage) {
+      document.documentElement.lang = savedLanguage;
+      updateHomepageContent(savedLanguage);
+      console.log('Applied language setting:', savedLanguage);
+    }
+    
+    // Apply the background setting
+    if (savedBackground) {
+      applyStoredBackground(savedBackground);
+      console.log('Applied background setting:', savedBackground);
+    }
+  }
+  
+  // Function to apply stored background
+  function applyStoredBackground(background) {
+    // Remove any previously applied background classes
+    document.body.classList.remove("bg-default", "bg-blue", "bg-dark", "bg-green", "bg-purple", "bg-red");
+    
+    // Apply the selected background with animation
+    document.body.style.transition = "background 0.5s ease";
+    
+    // Apply the selected background and add corresponding CSS class for logo aura
+    switch (background) {
+      case "default":
+        document.body.style.background = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
+        document.body.classList.add("bg-default");
+        break;
+      case "blue":
+        document.body.style.background = "linear-gradient(135deg, #00c6ff, #0072ff)";
+        document.body.classList.add("bg-blue");
+        break;
+      case "dark":
+        document.body.style.background = "linear-gradient(135deg, #232526, #414345)";
+        document.body.classList.add("bg-dark");
+        break;
+      case "green":
+        document.body.style.background = "linear-gradient(135deg, #11998e, #38ef7d)";
+        document.body.classList.add("bg-green");
+        break;
+      case "purple":
+        document.body.style.background = "linear-gradient(135deg, #834d9b, #d04ed6)";
+        document.body.classList.add("bg-purple");
+        break;
+      case "red":
+        document.body.style.background = "linear-gradient(135deg, #cb2d3e, #ef473a)";
+        document.body.classList.add("bg-red");
+        break;
+      default:
+        document.body.style.background = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
+        document.body.classList.add("bg-default");
+    }
+  }
+</script>
+
+<script src="language-switcher.js"></script>
+<script src="background-selector.js"></script>
+
+<script>
+  // Listen for language changes from the language-switcher.js
+  document.addEventListener('DOMContentLoaded', function() {
+    // Wait for language selector to be created
+    setTimeout(function() {
+      const languageSelect = document.getElementById('language');
+      if (languageSelect) {
+        // Override the language change event to also update homepage content
+        languageSelect.addEventListener('change', function(event) {
+          const selectedLanguage = event.target.value;
+          // Store in localStorage (this is also done in language-switcher.js but ensuring it's set)
+          localStorage.setItem('selectedLanguage', selectedLanguage);
+          document.documentElement.lang = selectedLanguage;
+          updateHomepageContent(selectedLanguage);
+        });
+        
+        // Set initial value from localStorage
+        const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+        languageSelect.value = savedLanguage;
+      }
+      
+      const backgroundSelect = document.getElementById('background-color');
+      if (backgroundSelect) {
+        // Set initial value from localStorage
+        const savedBackground = localStorage.getItem('defaultBackground') || 'blue';
+        backgroundSelect.value = savedBackground;
+      }
+    }, 200);
+  });
+</script>
+
+</body>
+</html>

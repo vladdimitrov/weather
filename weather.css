@@ -1,0 +1,301 @@
+
+body {
+  background: linear-gradient(135deg, #a8c0ff, #3f2b96);
+  background-repeat: repeat;
+  background-size: auto;
+  color: #FFD700;
+  font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.suggestion {
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.suggestion:hover {
+  background-color: #eee;
+}
+header, footer {
+  background: #0b0f2a;
+  padding: 15px;
+  text-align: center;
+}
+nav a {
+  color: #f3f3f3;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+main {
+  padding: 40px 20px;
+  text-align: center;
+}
+table {
+  border: 2px solid #FFFF00;
+  box-shadow: 0 0 15px #FFFF00;
+  width: 100%;
+  max-width: 1000px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+th, td {
+  border: 1px solid #FFFF00;
+  box-shadow: 0 0 5px #FFFF00;
+  padding: 12px;
+  text-align: center;
+}
+th {
+  background-color: #162447;
+  color: #ffffff;
+}
+select, input, button {
+  transition: all 0.3s ease;
+  padding: 10px;
+  margin: 5px;
+  background-color: #1c2e4a;
+  color: #ffffff;
+  border: 1px solid mistyrose;
+  border-radius: 6px;
+  font-size: 14px;
+}
+button:hover {
+  transform: scale(1.05);
+  background-color: #FFD700;
+  color: #0b0f2a;
+  box-shadow: 0 0 10px #FFFF00;
+}
+
+#kp-summary a:hover .kp-icon {
+  text-shadow: 0 0 10px #FFD700;
+}
+
+/* Background watermark removed */
+
+/* Style for wind values */
+.wind-value {
+  display: inline-block;
+  font-weight: bold;
+  color: #FFD700;
+}
+
+/* Style for weather icons in hourly forecast */
+#hourlyTable svg {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+/* Ensure SVG icons are visible */
+#hourlyTable span[title] svg {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+/* Print styles for SVG icons */
+@media print {
+  #hourlyTable span[data-print-icon]::before {
+    content: attr(data-print-icon);
+    display: inline-block;
+    color: black !important;
+    font-weight: bold;
+  }
+  
+  #hourlyTable span[data-print-icon] svg {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Create a scrollable container for tables */
+  #hourlyTableBlock {
+    overflow-x: auto;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  /* Make the hourly forecast link more tappable on mobile */
+  div[onclick*="showHourlyForecast"] {
+    font-size: 16px !important;
+    padding: 8px !important;
+    background-color: rgba(255, 215, 0, 0.2);
+    border-radius: 4px;
+    margin: 8px auto !important;
+    display: block !important;
+    width: 80% !important;
+  }
+  
+  /* Ensure all table columns have proper width and don't wrap */
+  #hourlyTable th, #hourlyTable td {
+    min-width: 80px;
+    white-space: nowrap;
+  }
+  
+  /* Fix wind column display on mobile */
+  #weatherTable th:nth-child(6), #weatherTable td:nth-child(6),
+  #weatherTable th:nth-child(7), #weatherTable td:nth-child(7) {
+    min-width: 80px;
+    white-space: nowrap;
+  }
+  
+  /* Adjust precipitation probability bar for mobile */
+  .precip-prob-bar-container {
+    height: 8px;
+  }
+  
+  .precip-prob-bar {
+    height: 8px;
+  }
+  
+  /* Improve table display on mobile */
+  th, td {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  /* Make wind values more visible */
+  .wind-value {
+    padding: 3px 6px;
+    background-color: rgba(255, 215, 0, 0.1);
+    border-radius: 3px;
+  }
+}
+
+/* Precipitation probability bar styles */
+.precip-prob-bar-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  height: 10px;
+  width: 100%;
+  gap: 1px;
+}
+
+.precip-prob-bar {
+  flex: 1;
+  height: 10px;
+  border-radius: 1px;
+}
+
+.precip-prob-bar.filled {
+  background-color: #3498db;
+}
+
+.precip-prob-bar.empty {
+  background-color: rgba(52, 152, 219, 0.2);
+  border: 1px solid rgba(52, 152, 219, 0.3);
+}
+
+/* Print styles - make all text black for better visibility when printed */
+@media print {
+  /* Override all colors to black for printing */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  /* General table styles for print */
+  table, th, td {
+    border-color: black !important;
+    color: black !important;
+    background-color: white !important;
+    box-shadow: none !important;
+  }
+  
+  /* Specific hourly forecast styles for print */
+  #hourlyTableBlock, #hourlyTable {
+    color: black !important;
+    background-color: white !important;
+  }
+  
+  #hourlyTable th,
+  #hourlyTable td {
+    color: black !important;
+    border: 1px solid black !important;
+    background-color: white !important;
+    box-shadow: none !important;
+  }
+  
+  #hourlyTable .wind-value {
+    color: black !important;
+    background-color: white !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+  
+  #hourlyTableBlock h2 {
+    color: black !important;
+    text-shadow: none !important;
+  }
+  
+  /* Make sure all text in the hourly forecast is black */
+  #hourlyTable * {
+    color: black !important;
+  }
+  
+  /* Weather icons should be visible */
+  #hourlyTable span[title] {
+    color: black !important;
+    text-shadow: none !important;
+  }
+  
+  /* Make weather icons visible in print view */
+  #hourlyTable span[data-print-icon] {
+    font-size: 24px !important; /* Show the emoji */
+    color: black !important;
+  }
+  
+  /* Ensure proper table layout for printing */
+  @page {
+    size: landscape;
+  }
+  
+  #hourlyTable {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin: 20px 0 !important;
+    page-break-inside: avoid !important;
+  }
+  
+  #hourlyTable th,
+  #hourlyTable td {
+    border: 1px solid black !important;
+    padding: 8px !important;
+    text-align: center !important;
+  }
+  
+  /* Print styles for precipitation probability bar */
+  .precip-prob-bar-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    height: 10px;
+    width: 100%;
+    gap: 1px;
+  }
+  
+  .precip-prob-bar {
+    flex: 1;
+    height: 10px;
+    border-radius: 1px;
+  }
+  
+  .precip-prob-bar.filled {
+    background-color: #000 !important;
+    border: 1px solid #000 !important;
+  }
+  
+  .precip-prob-bar.empty {
+    background-color: #fff !important;
+    border: 1px solid #000 !important;
+  }
+}
+

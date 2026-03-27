@@ -1,0 +1,27 @@
+RewriteEngine On
+
+# 🔒 Пренасочване от HTTP към HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://weatherpulse.eu/$1 [R=301,L]
+
+# 🌐 Пренасочване от www към non-www
+RewriteCond %{HTTP_HOST} ^www\.weatherpulse\.eu [NC]
+RewriteRule ^(.*)$ https://weatherpulse.eu/$1 [R=301,L]
+
+# 📍 Пренасочване от стария домейн jamazon.eu към новия
+RewriteCond %{HTTP_HOST} ^(www\.)?jamazon\.eu$ [NC]
+RewriteRule ^(.*)$ https://weatherpulse.eu/$1 [R=301,L]
+
+# 📍 Пренасочване от joracle.eu към новия (ако е нужно)
+RewriteCond %{HTTP_HOST} ^(www\.)?joracle\.eu$ [NC]
+RewriteRule ^(.*)$ https://weatherpulse.eu/$1 [R=301,L]
+
+# ⚙️ PHP конфигурация
+AddHandler application/x-httpd-jamazone-php83 .php .php5 .phtml .php7 .php8
+
+# 📂 Наследяване на правила за поддиректории
+RewriteOptions inherit
+
+# ✅ Пренасочване само на /index.html към /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/index\.html\sHTTP
+RewriteRule ^index\.html$ / [R=301,L]

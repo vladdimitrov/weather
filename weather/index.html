@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YT10DVQBCC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YT10DVQBCC');
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather forecast and magnetic storms</title>
+<link rel="canonical" href="https://weatherpulse.eu/weather/" />
+  <script>
+    (function() {
+      const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+      document.documentElement.lang = savedLanguage;
+
+      const savedBackground = localStorage.getItem('defaultBackground') || 'blue';
+      function applyBackgroundImmediately(background) {
+        let style = '';
+        switch (background) {
+          case "default":
+            style = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
+            break;
+          case "blue":
+            style = "linear-gradient(135deg, #00c6ff, #0072ff)";
+            break;
+          case "dark":
+            style = "linear-gradient(135deg, #232526, #414345)";
+            break;
+          case "green":
+            style = "linear-gradient(135deg, #11998e, #38ef7d)";
+            break;
+          case "purple":
+            style = "linear-gradient(135deg, #834d9b, #d04ed6)";
+            break;
+          case "red":
+            style = "linear-gradient(135deg, #cb2d3e, #ef473a)";
+            break;
+          default:
+            style = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
+        }
+        document.body.style.background = style;
+      }
+      applyBackgroundImmediately(savedBackground);
+    })();
+  </script>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/weather.css">
+  <link rel="stylesheet" href="css/modern-form.css">
+  <style>
+    @keyframes fade-in {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    
+    #hourlyTableBlock {
+      transition: max-height 0.5s ease-out, opacity 0.5s ease;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    
+    @media (max-width: 768px) {
+      #hourlyTableBlock {
+        padding: 0 5px;
+      }
+      #hourlyTableBlock h2 {
+        font-size: 1.5em;
+      }
+    }
+    .spinner {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      border: 2px solid #FFD700;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: 6px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #kp-summary .kp-icon {
+      font-size: 2em; /* Increased font size to make the icon more prominent */
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+  <div class="nav-header" tabindex="-1" id="header">
+    <div class="nav-links">
+      <a href="../index.html" class="nav-link" id="home-link">Home</a>
+      <a href="../maps/index.html" class="nav-link" id="weather-maps-link">Weather Maps</a>
+      <a href="../holliday_calendar/index.html" class="nav-link" id="holiday-calendar-link">Holiday Calendar</a>
+      <a href="../contacts/index.html" class="nav-link" id="data-sources-link">Data Sources</a>
+     </div>
+    <div class="header-selectors" id="selectors-container">
+      <!-- Background and language selectors will be inserted here by JS -->
+    </div>
+  </div>
+
+  <div class="container" style="margin-top: calc(var(--header-height) + 20px);">
+    <h1 style="text-align: center;">Weather forecast and magnetic storms</h1>
+
+    <div class="form-container">
+      <div class="form-group city">
+        <label for="city">City / Resort:</label>
+        <input type="text" id="city" placeholder="e.g. Sofia">
+        <div id="citySuggestions" style="display: none;"></div>
+      </div>
+
+      <div class="form-group latitude">
+        <label for="latitude">Latitude:</label>
+        <input type="number" id="latitude" placeholder="e.g. 42.6977">
+      </div>
+
+      <div class="form-group longitude">
+        <label for="longitude">Longitude:</label>
+        <input type="number" id="longitude" placeholder="e.g. 23.3219">
+      </div>
+
+      <div class="form-group days">
+        <label for="days" id="daysLabel">Number of days:</label>
+        <input type="number" id="days" value="3" min="1" max="16" placeholder="e.g. 7">
+      </div>
+
+      <div class="form-group interval">
+        <label for="interval" id="intervalLabel">Detail Forecast Interval (min.):</label>
+        <select id="interval">
+          <option value="60">60</option>
+          <option value="30">30</option>
+          <option value="15">15</option>
+        </select>
+      </div>
+      
+      <div class="buttons-container">
+        <button id="useLocation" class="btn btn-location">📍 Use the current location</button>
+        <button id="loadData" class="btn btn-primary pulse">Load Forecast</button>
+      </div>
+    </div>
+    <div class="info-display" style="display: flex; justify-content: center; align-items: baseline; margin-top: 10px; flex-wrap: wrap; gap: 10px;">
+      <div id="selected-city" style="font-weight: bold; font-size: 1.1em; color: #FFD700;"></div>
+      <div id="local-time" style="display: inline-block;"></div>
+      <div id="kp-summary" style="display: inline-flex; align-items: center; font-size: 1em; color: #FFD700; vertical-align: baseline;">
+      <span id="kp-index-label">Kp Index</span>: <a href="https://www.swpc.noaa.gov/products/planetary-k-index" target="_blank" style="text-decoration: none; color: #FFD700;" title='Click on a source'><span class='kp-icon'>🧭</span></a>
+    </div>
+    </div>
+    <div class="table-container">
+      <table id="weatherTable">
+        <thead>
+          <tr>
+            <th>Date (Day)</th>
+            <th>Weather</th>
+            <th>Min Temp (°C)</th>
+            <th>Max Temp (°C)</th>
+            <th>Cloudiness (%)</th>
+            <th>Rainfall (mm)</th>
+            <th>Wind (km/h)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="container">
+    </div>
+    <div id="location" style="display: none;"></div>
+    <div id="time" style="display: none;"></div>
+    <div id="hourlyTableBlock">
+      <h2 style="text-align: center;">Hourly forecast</h2>
+      <div class="table-container">
+        <table id="hourlyTable">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Weather</th>
+              <th>Temp. (°C)</th>
+              <th>Cloudiness (%)</th>
+              <th>Rainfall (mm)</th>
+              <th>Precip. Prob. (%)</th>
+              <th>Wind (km/h)</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="container">
+    </div>
+
+    <div style="text-align: center; margin-top: 20px;">
+      <button onclick="window.print()" class="btn">🖨️ Print</button>
+    </div>
+
+  </div>
+
+
+<script>
+  let currentCoords = { latitude: null, longitude: null };
+  // Translations are now handled in language-switcher.js
+  function updateMap(lat, lon) {
+    currentCoords.latitude = lat;
+    currentCoords.longitude = lon;
+  }
+
+  // Header stays fixed - no scroll behavior needed
+  document.addEventListener('DOMContentLoaded', function() {
+    const navHeader = document.querySelector('.nav-header');
+    
+    // Focus on the header when the page loads
+    navHeader.focus();
+    
+    // Scroll to top to ensure header is visible
+    window.scrollTo(0, 0);
+    
+    // Allow keyboard navigation to continue normally after initial focus
+    navHeader.addEventListener('keydown', function(e) {
+      // If Tab key is pressed, let the default behavior happen
+      if (e.key === 'Tab') {
+        return true;
+      }
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const useLocationBtn = document.getElementById("useLocation");
+    if (useLocationBtn) {
+      useLocationBtn.addEventListener("click", () => {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            console.log("Latitude:", lat, "Longitude:", lon);
+            updateMap(lat, lon);
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+            .then(r => r.json())
+            .then(g => {
+              const address = g.address || {};
+              const name = address.city || address.town || address.village || address.municipality || "";
+              const country = address.country || "";
+              updateSelectedCity(name, country, lat, lon);
+              currentCoords.latitude = lat;
+              currentCoords.longitude = lon;
+              
+              // Save location to localStorage
+              if (typeof saveLocationToLocalStorage === 'function') {
+                saveLocationToLocalStorage(name, lat, lon, country);
+              }
+              
+              document.getElementById("loadData").click();
+              
+            })
+            .catch((err) => {
+              console.error("Reverse geocoding error:", err);
+              updateSelectedCity("", "", lat, lon);
+              document.getElementById("loadData").click();
+              
+            });
+
+            function updateSelectedCity(name, country, lat, lon) {
+              const selectedLanguage = document.documentElement.lang || 'en';
+              const selectedLocationText = _t('selectedLocation');
+              
+              if (name && country) {
+                document.getElementById("selected-city").textContent = `${selectedLocationText}: ${name}, ${country}`;
+              } else {
+                document.getElementById("selected-city").textContent = `${selectedLocationText}: coordinates (${lat.toFixed(4)}, ${lon.toFixed(4)})`;
+              }
+              document.getElementById("latitude").value = lat.toFixed(4);
+              document.getElementById("longitude").value = lon.toFixed(4);
+              
+              // Update days label using the translation function
+              document.getElementById("daysLabel").textContent = _t('daysLabel');
+
+              if (typeof updateHourlyForecast === 'function') {
+                updateHourlyForecast();
+              }
+            }
+          },
+          (error) => {
+            console.error("Error getting location:", error);
+            alert("Failed to get location");
+          }
+        );
+      });
+    }
+
+    if (navigator.geolocation) {
+      navigator.permissions.query({ name: 'geolocation' }).then(result => {
+        if (result.state === 'granted') {
+          console.log("Location services are granted.");
+        } else if (result.state === 'prompt') {
+          alert("Please enable location services to use this feature.");
+        } else if (result.state === 'denied') {
+          alert("Location services are blocked. Please enable them in your browser settings.");
+        }
+      });
+    } else {
+      alert("Your browser does not support geolocation");
+    }
+  });
+  //updateSelectedCity("", "", null, null);
+
+</script>
+
+<script>
+  // This event listener is now handled directly in map-autocomplete.js
+  // The click handler in map-autocomplete.js sets the latitude and longitude
+  // and triggers the loadData button click
+</script>
+
+<script src="map-autocomplete.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  async function updateKpSummary() {
+    const kpSummaryElement = document.getElementById("kp-summary");
+    if (!kpSummaryElement) return;
+    
+    const selectedLanguage = document.documentElement.lang || 'en';
+    
+    // Use the _t function to get translations
+    const kpIndexText = _t('kpIndex');
+    
+    // Show loading indicator
+    kpSummaryElement.innerHTML = `${kpIndexText} <span class="spinner"></span>`;
+    
+    try {
+      const res = await fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json");
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+      
+      const data = await res.json();
+      if (!data || !data.length) {
+        throw new Error("No data received from NOAA API");
+      }
+      
+      const last = data[data.length - 1];
+      const kp = parseFloat(last.kp_index);
+      const date = new Date(last.time_tag);
+      let formatted = new Date(date).toLocaleString(selectedLanguage, {
+        hour12: false,
+        timeZoneName: 'short'
+      });
+      
+      // Add these translations to our main translations object in language-switcher.js
+      if (!translations[selectedLanguage].strongStorm) {
+        translations.en.strongStorm = "(Strong storm)";
+        translations.bg.strongStorm = "(Силна буря)";
+        translations.de.strongStorm = "(Starker Sturm)";
+        translations.es.strongStorm = "(Tormenta fuerte)";
+        translations.it.strongStorm = "(Tempesta forte)";
+        
+        translations.en.moderateActivity = "(Moderate activity)";
+        translations.bg.moderateActivity = "(Умерена активност)";
+        translations.de.moderateActivity = "(Mäßige Aktivität)";
+        translations.es.moderateActivity = "(Actividad moderada)";
+        translations.it.moderateActivity = "(Attività moderata)";
+        
+        translations.en.calm = "(Calm)";
+        translations.bg.calm = "(Спокойно)";
+        translations.de.calm = "(Ruhig)";
+        translations.es.calm = "(Tranquilo)";
+        translations.it.calm = "(Calmo)";
+      }
+      
+      let statusTranslations = {
+        en: {
+          strongStorm: translations.en.strongStorm,
+          moderateActivity: translations.en.moderateActivity,
+          calm: translations.en.calm
+        },
+        bg: {
+          strongStorm: translations.bg.strongStorm,
+          moderateActivity: translations.bg.moderateActivity,
+          calm: translations.bg.calm
+        },
+        de: {
+          strongStorm: translations.de.strongStorm,
+          moderateActivity: translations.de.moderateActivity,
+          calm: translations.de.calm
+        },
+        es: {
+          strongStorm: translations.es.strongStorm,
+          moderateActivity: translations.es.moderateActivity,
+          calm: translations.es.calm
+        },
+        it: {
+          strongStorm: translations.it.strongStorm,
+          moderateActivity: translations.it.moderateActivity,
+          calm: translations.it.calm
+        }
+      };
+      
+      let status = kp >= 7 ? statusTranslations[selectedLanguage].strongStorm :
+                  kp >= 5 ? statusTranslations[selectedLanguage].moderateActivity :
+                  statusTranslations[selectedLanguage].calm;
+      
+      const icon = kp >= 7 ? '🛑' : kp >= 5 ? '⚠️' : '✅';
+      
+      // Add these translations to our main translations object in language-switcher.js
+      if (!translations[selectedLanguage].strongStormTooltip) {
+        translations.en.strongStormTooltip = "Strong geomagnetic storm (Kp ≥ 7). The Kp index measures the disturbance of Earth's magnetic field caused by solar activity. Data source: NOAA Space Weather Prediction Center.";
+        translations.bg.strongStormTooltip = "Силна геомагнитна буря (Kp ≥ 7). Kp индексът измерва смущенията в магнитното поле на Земята, причинени от слънчевата активност. Източник на данни: NOAA Space Weather Prediction Center.";
+        translations.de.strongStormTooltip = "Starker geomagnetischer Sturm (Kp ≥ 7). Der Kp-Index misst die Störung des Erdmagnetfelds durch Sonnenaktivität. Datenquelle: NOAA Space Weather Prediction Center.";
+        translations.es.strongStormTooltip = "Tormenta geomagnética fuerte (Kp ≥ 7). El índice Kp mide la perturbación del campo magnético terrestre causada por la actividad solar. Fuente de datos: NOAA Space Weather Prediction Center.";
+        translations.it.strongStormTooltip = "Tempesta geomagnetica forte (Kp ≥ 7). L'indice Kp misura il disturbo del campo magnetico terrestre causato dall'attività solare. Fonte dati: NOAA Space Weather Prediction Center.";
+        
+        translations.en.moderateActivityTooltip = "Moderate activity (Kp 5–6). The Kp index measures the disturbance of Earth's magnetic field caused by solar activity. Data source: NOAA Space Weather Prediction Center.";
+        translations.bg.moderateActivityTooltip = "Умерена активност (Kp 5–6). Kp индексът измерва смущенията в магнитното поле на Земята, причинени от слънчевата активност. Източник на данни: NOAA Space Weather Prediction Center.";
+        translations.de.moderateActivityTooltip = "Mäßige Aktivität (Kp 5–6). Der Kp-Index misst die Störung des Erdmagnetfelds durch Sonnenaktivität. Datenquelle: NOAA Space Weather Prediction Center.";
+        translations.es.moderateActivityTooltip = "Actividad moderada (Kp 5–6). El índice Kp mide la perturbación del campo magnético terrestre causada por la actividad solar. Fuente de datos: NOAA Space Weather Prediction Center.";
+        translations.it.moderateActivityTooltip = "Attività moderata (Kp 5–6). L'indice Kp misura il disturbo del campo magnetico terrestre causato dall'attività solare. Fonte dati: NOAA Space Weather Prediction Center.";
+        
+        translations.en.calmTooltip = "Calm activity (Kp < 5). The Kp index measures the disturbance of Earth's magnetic field caused by solar activity. Data source: NOAA Space Weather Prediction Center.";
+        translations.bg.calmTooltip = "Спокойна активност (Kp < 5). Kp индексът измерва смущенията в магнитното поле на Земята, причинени от слънчевата активност. Източник на данни: NOAA Space Weather Prediction Center.";
+        translations.de.calmTooltip = "Ruhige Aktivität (Kp < 5). Der Kp-Index misst die Störung des Erdmagnetfelds durch Sonnenaktivität. Datenquelle: NOAA Space Weather Prediction Center.";
+        translations.es.calmTooltip = "Actividad tranquila (Kp < 5). El índice Kp mide la perturbación del campo magnético terrestre causada por la actividad solar. Fuente de datos: NOAA Space Weather Prediction Center.";
+        translations.it.calmTooltip = "Attività calma (Kp < 5). L'indice Kp misura il disturbo del campo magnetico terrestre causato dall'attività solare. Fonte dati: NOAA Space Weather Prediction Center.";
+      }
+      
+      let tooltipTranslations = {
+        en: {
+          strongStorm: translations.en.strongStormTooltip,
+          moderateActivity: translations.en.moderateActivityTooltip,
+          calm: translations.en.calmTooltip
+        },
+        bg: {
+          strongStorm: translations.bg.strongStormTooltip,
+          moderateActivity: translations.bg.moderateActivityTooltip,
+          calm: translations.bg.calmTooltip
+        },
+        de: {
+          strongStorm: translations.de.strongStormTooltip,
+          moderateActivity: translations.de.moderateActivityTooltip,
+          calm: translations.de.calmTooltip
+        },
+        es: {
+          strongStorm: translations.es.strongStormTooltip,
+          moderateActivity: translations.es.moderateActivityTooltip,
+          calm: translations.es.calmTooltip
+        },
+        it: {
+          strongStorm: translations.it.strongStormTooltip,
+          moderateActivity: translations.it.moderateActivityTooltip,
+          calm: translations.it.calmTooltip
+        }
+      };
+      
+      const tooltip = kp >= 7 ? tooltipTranslations[selectedLanguage].strongStorm :
+                      kp >= 5 ? tooltipTranslations[selectedLanguage].moderateActivity :
+                      tooltipTranslations[selectedLanguage].calm;
+      
+      kpSummaryElement.innerHTML = `
+        <span class='kp-icon' title='${tooltip}'>${icon}</span>
+        ${_t('kpIndex')}
+        <a href="https://www.swpc.noaa.gov/products/planetary-k-index" target="_blank"
+           style="text-decoration: none; color: #FFD700;"
+           title='Data source: NOAA Space Weather Prediction Center (SWPC)'>
+          <span class='kp-icon'>🧭</span>
+        </a>: ${kp} ${status}
+        <br>
+        <span id="kp-updated" style='font-size: 0.8em;'>Last updated: ${formatted}</span>
+      `;
+    } catch (err) {
+      console.error("Error downloading Kp index:", err);
+      // Add these translations to our main translations object in language-switcher.js
+      if (!translations[selectedLanguage].errorLoadingKp) {
+        translations.en.errorLoadingKp = "Unable to load Kp index data";
+        translations.bg.errorLoadingKp = "Не може да се зареди Kp индекс";
+        translations.de.errorLoadingKp = "Kp-Index-Daten können nicht geladen werden";
+        translations.es.errorLoadingKp = "No se pueden cargar los datos del índice Kp";
+        translations.it.errorLoadingKp = "Impossibile caricare i dati dell'indice Kp";
+      }
+      
+      const errorTranslations = {
+        en: translations.en.errorLoadingKp,
+        bg: translations.bg.errorLoadingKp,
+        de: translations.de.errorLoadingKp,
+        es: translations.es.errorLoadingKp,
+        it: translations.it.errorLoadingKp
+      };
+      kpSummaryElement.innerHTML = `
+        ${_t('kpIndex')}:
+        <span style="color: #ff6b6b;">${errorTranslations[selectedLanguage] || 'Unable to load data'}</span>
+        <a href="https://www.swpc.noaa.gov/products/planetary-k-index" target="_blank"
+           style="text-decoration: none; color: #FFD700; margin-left: 5px;"
+           title='View on NOAA Space Weather Prediction Center'>
+          <span class='kp-icon'>🧭</span>
+        </a>
+      `;
+    }
+  }
+
+  // Initialize KP summary
+  updateKpSummary();
+  setInterval(updateKpSummary, 15 * 60 * 1000);
+});
+</script>
+
+<script src="weather-fixed.js"></script>
+<script src="weather-hourly.js"></script>
+<script src="map-autocomplete.js"></script>
+
+  <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
+    <div class="logo" style="flex-shrink: 0;">
+        <a href="index.html"><img src="images/logo_ant.webp" alt="Лого" class="logo-img" style="height: 30px; width: auto;"></a>
+    </div>
+      
+    <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
+      © 2025 JAMAZON
+    </p>
+
+  </footer>
+
+<script src="language-switcher.js"></script>
+<script src="background-selector.js"></script>
+</body>
+</html>
