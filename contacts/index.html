@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YT10DVQBCC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YT10DVQBCC');
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts - Weather Data Sources</title>
+  <link rel="canonical" href="https://weatherpulse.eu/contacts/" />
+  <script>
+    (function() {
+      const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+      document.documentElement.lang = savedLanguage;
+
+      const savedBackground = localStorage.getItem('defaultBackground') || 'blue';
+      function applyBackgroundImmediately(background) {
+        let style = '';
+        switch (background) {
+          case "default":
+            style = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
+            break;
+          case "blue":
+            style = "linear-gradient(135deg, #00c6ff, #0072ff)";
+            break;
+          case "dark":
+            style = "linear-gradient(135deg, #232526, #414345)";
+            break;
+          case "green":
+            style = "linear-gradient(135deg, #11998e, #38ef7d)";
+            break;
+          case "purple":
+            style = "linear-gradient(135deg, #834d9b, #d04ed6)";
+            break;
+          case "red":
+            style = "linear-gradient(135deg, #cb2d3e, #ef473a)";
+            break;
+          default:
+            style = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
+        }
+        document.body.style.background = style;
+      }
+      applyBackgroundImmediately(savedBackground);
+    })();
+  </script>
+  <link rel="icon" href="https://www.google.com/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/weather.css">
+  <link rel="stylesheet" href="css/modern-form.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    @keyframes fade-in {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    
+    #hourlyTableBlock {
+      transition: max-height 0.5s ease-out, opacity 0.5s ease;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+    
+    @media (max-width: 768px) {
+      #hourlyTableBlock {
+        padding: 0 5px;
+      }
+      #hourlyTableBlock h2 {
+        font-size: 1.5em;
+      }
+    }
+    .spinner {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      border: 2px solid #FFD700;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: 6px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #kp-summary .kp-icon {
+      font-size: 1.2em;
+      margin-right: 6px;
+    }
+    .contact-image {
+      width: 33.33vw;
+      height: 33.33vw;
+      background: var(--card-bg) url('images/contacts1.webp') no-repeat center center;
+      background-size: cover;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-glow);
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 1024px) {
+      .contact-image {
+        width: 80vw;
+        height: 80vw;
+        order: -1;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+  <div class="nav-header" tabindex="-1" id="header">
+    <div class="nav-links">
+      <a href="../index.html" class="nav-link" id="home-link">Home</a>
+   <a href="../weather/index.html" class="nav-link" id="weather-forecast" data-translation-key="weatherForecast">Weather Forecast</a>
+      <a href="../maps/index.html" class="nav-link" id="weather-maps" data-translation-key="weatherMaps">Weather Maps</a>
+   <a href="../holliday_calendar/index.html" class="nav-link" id="holiday-calendar" data-translation-key="holidayCalendarLinkNav">Holiday Calendar</a>
+    </div>
+    <div class="header-selectors" id="selectors-container">
+      <!-- Background and language selectors will be inserted here by JS -->
+    </div>
+  </div>
+
+  <div class="container" style="margin-top: calc(var(--header-height) + 20px);">
+ 
+    <h1 style="text-align: center;" id="contacts-title">Weather Data Sources</h1>
+    
+    <!-- Main content area with forms and image -->
+    <div class="contacts-main" style="display: flex; justify-content: space-between; align-items: flex-start; max-width: 1200px; margin: 20px auto; gap: 20px;">
+      
+      <!-- Left Information Sources Panel -->
+      <div class="info-panel">
+        <h2 id="info-sources-title">Information Sources</h2>
+        <p id="info-sources-content">
+        </p>
+      </div>
+
+      <!-- Center Image -->
+      <div class="contact-image">
+      </div>
+
+      <!-- Right Contact Us Panel -->
+      <div class="info-panel">
+        <h2 id="contact-us-title">Contacts</h2>
+        <p id="contact-us-content">
+        </p>
+      </div>
+    </div>
+    
+    <!-- Responsive layout for mobile -->
+    <style>
+      .contact-image {
+        flex-shrink: 0; /* Prevent image from shrinking */
+      }
+
+      .info-panel, .contact-panel {
+        flex: 1; /* Allow panels to grow and shrink */
+        background: var(--card-bg);
+        border-radius: 12px;
+        border: 1px solid var(--card-border);
+        box-shadow: var(--shadow-glow);
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        min-width: 250px; /* Minimum width for panels */
+        color: var(--text-color);
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1em;
+      }
+
+      .info-panel h2, .contact-panel h2 {
+        color: var(--primary-color);
+        margin-top: 0;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .info-panel ul, .contact-panel ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .info-panel li, .contact-panel li {
+        margin-bottom: 5px;
+      }
+
+      @media (max-width: 1024px) {
+        .contacts-main {
+          flex-direction: column;
+          gap: 20px;
+        }
+        .info-panel, .contact-panel {
+          width: 100%; /* Full width on smaller screens */
+        }
+      }
+    </style>
+  </div>
+
+  <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
+    <div class="logo" style="flex-shrink: 0;">
+        <a href="index.html"><img src="images/logo_ant.webp" alt="Лого" class="logo-img" style="height: 30px; width: auto;"></a>
+    </div>
+      
+    <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
+      © 2025 JAMAZON
+    </p>
+
+  </footer>
+
+<script>
+  // Contacts page translations
+  const contactsTranslations = {
+    en: {
+      contactsTitle: "Contact Us",
+      contactsDescription: "This is the contacts page.",
+      contactsLink: "Contacts",
+      infoSourcesTitle: "Information Sources",
+      infoSourcesContent: `
+        <ul>
+	<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+      Weather data provided by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">Open-Meteo.com</a>
+    </p>
+	<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+      Magnetic storms data provided by <a href="https://www.swpc.noaa.gov" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">https://www.swpc.noaa.gov/products/planetary-k-index</a>
+    </p>
+		<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+      Holiday data provided by <a href="https://calendarific.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">https://calendarific.com</a>
+    </p>
+     </ul>
+  `,
+      contactUsTitle: "Contacts",
+      contactUsContent: `
+        <ul>
+          <li>Email: woodwideweb@yahoo.com</li>
+        </ul>
+      `,
+      homeLink: "Home",
+      weather: "Weather",
+	  holidayCalendar: "Holiday calendar",
+	  weatherMaps: "Weather maps"
+    },
+    bg: {
+      contactsTitle: "Свържете се с нас",
+      contactsDescription: "Това е страницата за контакти.",
+      contactsLink: "Контакти",
+      infoSourcesTitle: "Източници на информация",
+      infoSourcesContent: `
+        <ul>
+    <p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+      Метеорологични данни от <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">Open-Meteo.com</a>
+    </p>
+	<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+      Данни за магнитни бури от <a href="https://www.swpc.noaa.gov/products/planetary-k-index" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">https://www.swpc.noaa.gov/products/planetary-k-index</a>
+    </p>
+	    </p>
+	<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+      Данни за празнични и почивни дни <a href="https://calendarific.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">https://calendarific.com</a>
+    </p>
+        </ul>
+      `,
+      contactUsTitle: "Контакти",
+      contactUsContent: `
+        <ul>
+	<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+      E-Mail: woodwideweb@yahoo.com
+    </p>		  
+        </ul>
+      `,
+      homeLink: "Начало",
+      weather: "Времето",
+	  holidayCalendar: "Календар на празниците",
+	  weatherMaps: "Карти за времето"
+    },
+    de: {
+      contactsTitle: "Kontaktieren Sie uns",
+      contactsDescription: "Dies ist die Kontaktseite.",
+      contactsLink: "Kontakte",
+      infoSourcesTitle: "Informationsquellen",
+      infoSourcesContent: `
+        <ul>
+	<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+      Wetterdaten von <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">Open-Meteo.com</a>
+    </p>
+
+	<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+      Magnetische Sturmdaten von <a href="https://www.swpc.noaa.gov/products/planetary-k-index" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">https://www.swpc.noaa.gov/products/planetary-k-index</a>
+    </p>
+	<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+      Feiertagskalender von <a href="https://calendarific.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">https://calendarific.com</a>
+    </p>
+		  
+        </ul>
+      `,
+      contactUsTitle: "Kontakte",
+      contactUsContent: `
+        <ul>
+	<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+      Wetterdaten von E-Mail: woodwideweb@yahoo.com
+    </p>
+		  
+        </ul>
+      `,
+      homeLink: "Startseite",
+      weather: "Wetter",
+	  holidayCalendar: "Feiertagskalender",
+	  weatherMaps: "Wetterkarten"
+	   },
+	   it:{
+      contactsTitle: "Contattaci",
+      contactsDescription: "C'è un link al contatto.",
+      contactsLink: "Contatti",
+      infoSourcesTitle: "Fonti di informazione",
+      infoSourcesContent: `
+        <ul>
+    <p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+      Informazioni meteorologiche da <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">Open-Meteo.com</a>
+    </p>
+	<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+      È possibile visitare il sito di sepoltura magnetica all'indirizzo <a href="https://www.swpc.noaa.gov/products/planetary-k-index" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">https://www.swpc.noaa.gov/products/planetary-k-index</a>
+    </p>
+	    </p>
+	<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+      Dani ha partecipato all'incontro e ha avuto l'opportunità di <a href="https://calendarific.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">https://calendarific.com</a>
+    </p>
+        </ul>
+      `,
+      contactUsTitle: "Contatti",
+      contactUsContent: `
+        <ul>
+	<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+      E-Mail: woodwideweb@yahoo.com
+    </p>		  
+        </ul>
+      `,
+      homeLink: "Home",
+      weather: "Meteo",
+	  holidayCalendar: "Calendario delle festività",
+	  weatherMaps: "Mappe Meteorologiche"
+    },
+	   es: {
+	     contactsTitle: "Contáctenos",
+	     contactsDescription: "Esta es la página de contactos.",
+	     contactsLink: "Contactos",
+	     infoSourcesTitle: "Fuentes de información",
+	     infoSourcesContent: `
+	       <ul>
+	   <p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+	     Datos meteorológicos proporcionados por <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">Open-Meteo.com</a>
+	   </p>
+
+	<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+	     Datos de tormentas magnéticas proporcionados por <a href="https://www.swpc.noaa.gov/products/planetary-k-index" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">https://www.swpc.noaa.gov/products/planetary-k-index</a>
+	   </p>
+	<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+	     Calendario de días festivos proporcionado por <a href="https://calendarific.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-color);">https://calendarific.com</a>
+	   </p>
+	   
+	       </ul>
+	     `,
+	     contactUsTitle: "Contactos",
+	     contactUsContent: `
+	       <ul>
+	<p style="font-size: 0.9em; color: #FFD700; margin-top: 5px;">
+	     Datos meteorológicos de E-Mail: woodwideweb@yahoo.com
+	   </p>
+	   
+	       </ul>
+	     `,
+	     homeLink: "Página de inicio",
+	     weather: "El tiempo",
+	  holidayCalendar: "Calendario de días festivos",
+	  weatherMaps: "Mapas del Tiempo"
+	   }
+	 };
+  
+  // Function to update contacts page content based on language
+  function updateContactsContent(language) {
+    const contactsTitle = document.getElementById('contacts-title');
+    const contactsDescription = document.getElementById('contacts-description');
+    const contactsNavLink = document.getElementById('contacts-link');
+    const infoSourcesTitle = document.getElementById('info-sources-title');
+    const infoSourcesContent = document.getElementById('info-sources-content');
+    const contactUsTitle = document.getElementById('contact-us-title');
+    const contactUsContent = document.getElementById('contact-us-content');
+    const homeLink = document.getElementById('home-link');
+    const weatherForecast = document.getElementById('weather-forecast');
+	const holidayCalendarLinkNav = document.getElementById('holiday-calendar');
+	const weatherMapsLink = document.getElementById('weather-maps');
+	    
+    if (contactsTitle) {
+      contactsTitle.textContent = contactsTranslations[language].contactsTitle;
+    }
+    
+    if (contactsDescription) {
+      contactsDescription.textContent = contactsTranslations[language].contactsDescription;
+    }
+    
+    if (contactsNavLink) {
+      contactsNavLink.textContent = contactsTranslations[language].contactsLink;
+    }
+
+    if (infoSourcesTitle) {
+      infoSourcesTitle.textContent = contactsTranslations[language].infoSourcesTitle;
+    }
+
+    if (infoSourcesContent) {
+      infoSourcesContent.innerHTML = contactsTranslations[language].infoSourcesContent;
+    }
+
+    if (contactUsTitle) {
+      contactUsTitle.textContent = contactsTranslations[language].contactUsTitle;
+    }
+
+    if (contactUsContent) {
+      contactUsContent.innerHTML = contactsTranslations[language].contactUsContent;
+    }
+    
+    if (homeLink) {
+      homeLink.textContent = contactsTranslations[language].homeLink;
+    }
+    
+    if (weatherForecast) {
+      weatherForecast.textContent = contactsTranslations[language].weather;
+	}  
+	if (holidayCalendarLinkNav) {
+      holidayCalendarLinkNav.textContent = contactsTranslations[language].holidayCalendar;
+    }
+	
+  if (weatherMapsLink) {
+    weatherMapsLink.textContent = contactsTranslations[language].weatherMaps;
+  }
+    
+    // Update page title
+    document.title = contactsTranslations[language].contactsTitle;
+  }
+  
+  // Header initialization for contacts page
+  document.addEventListener('DOMContentLoaded', function() {
+    const navHeader = document.querySelector('.nav-header');
+    if (navHeader) {
+      // Focus on the header when the page loads
+      navHeader.focus();
+      
+      // Scroll to top to ensure header is visible
+      window.scrollTo(0, 0);
+    }
+    
+    // Inherit language and background settings from localStorage
+    inheritSettingsFromParent();
+  });
+  
+  // Function to inherit settings from the calling page
+  function inheritSettingsFromParent() {
+    // Get saved language from localStorage (same as index.html)
+    const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    
+    // Get saved background from localStorage (same as index.html)
+    const savedBackground = localStorage.getItem('defaultBackground') || 'blue';
+    
+    // Apply the inherited language setting
+    if (savedLanguage) {
+      document.documentElement.lang = savedLanguage;
+      updateContactsContent(savedLanguage);
+      console.log('Inherited language setting:', savedLanguage);
+    }
+    
+    // Apply the inherited background setting immediately
+    if (savedBackground) {
+      applyInheritedBackground(savedBackground);
+      console.log('Inherited background setting:', savedBackground);
+    }
+  }
+  
+  // Function to apply inherited background (simplified version of applyBackground from background-selector.js)
+  function applyInheritedBackground(background) {
+    // Remove any previously applied background classes
+    document.body.classList.remove("bg-default", "bg-blue", "bg-dark", "bg-green", "bg-purple", "bg-red");
+    
+    // Apply the selected background with animation
+    document.body.style.transition = "background 0.5s ease";
+    
+    // Apply the selected background
+    switch (background) {
+      case "default":
+        document.body.style.background = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
+        break;
+      case "blue":
+        document.body.style.background = "linear-gradient(135deg, #00c6ff, #0072ff)";
+        break;
+      case "dark":
+        document.body.style.background = "linear-gradient(135deg, #232526, #414345)";
+        break;
+      case "green":
+        document.body.style.background = "linear-gradient(135deg, #11998e, #38ef7d)";
+        break;
+      case "purple":
+        document.body.style.background = "linear-gradient(135deg, #834d9b, #d04ed6)";
+        break;
+      case "red":
+        document.body.style.background = "linear-gradient(135deg, #cb2d3e, #ef473a)";
+        break;
+      default:
+        document.body.style.background = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
+    }
+  }
+</script>
+<script src="language-switcher.js"></script>
+<script src="background-selector.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  // Listen for language changes from the language-switcher.js
+  document.addEventListener('DOMContentLoaded', function() {
+    // Wait for language selector to be created
+    setTimeout(function() {
+      const languageSelect = document.getElementById('language');
+      if (languageSelect) {
+        // Override the language change event to also update contacts content
+        languageSelect.addEventListener('change', function(event) {
+          const selectedLanguage = event.target.value;
+          // Store in localStorage (this is also done in language-switcher.js but ensuring it's set)
+          localStorage.setItem('selectedLanguage', selectedLanguage);
+          document.documentElement.lang = selectedLanguage;
+          updateContactsContent(selectedLanguage);
+        });
+        
+        // Set initial value from localStorage
+        const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+        languageSelect.value = savedLanguage;
+      }
+      
+      const backgroundSelect = document.getElementById('background-color');
+      if (backgroundSelect) {
+        // Set initial value from localStorage
+        const savedBackground = localStorage.getItem('defaultBackground') || 'blue';
+        backgroundSelect.value = savedBackground;
+      }
+    }, 200);
+    
+    // Removed form submission handlers as forms are removed
+  });
+</script>
+</body>
+</html>
