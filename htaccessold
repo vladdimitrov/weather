@@ -1,0 +1,10 @@
+
+RewriteEngine on
+
+RewriteOptions inherit
+
+AddHandler ${application/x-httpd-jamazone-php83} .php .php5 .phtml .php7 .php8
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^\ https\:\/\/jamazon\.eu\/$ "https\:\/\/weatherpulse\.eu\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^joracle\.eu$ "https\:\/\/weatherpulse\.eu\/" [R=301,L]

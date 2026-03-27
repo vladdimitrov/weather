@@ -1,0 +1,160 @@
+body {
+    background: linear-gradient(to right, #0d0d0d, #1a1a1a); /* Преливане отляво надясно */
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+}
+header, .footer {
+    background: linear-gradient(90deg, #0d0d0d, #1f1f1f, #0d0d0d); /* Sci-fi черен фон с метален оттенък */
+    color: #00ffcc; /* Ярък неонов зелен текст */
+    text-shadow: 0px 0px 5px #00ffcc, 0px 0px 10px #00ffcc; /* Неонов ефект */
+}
+header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between; /* Равномерно разпределя бутоните и падащото меню */
+    align-items: center; /* Подравнява елементите по вертикала на един ред */
+    padding: 20px 40px;
+    background: linear-gradient(90deg, #0d0d0d, #1a1a1a, #0d0d0d); /* Sci-fi фон */
+    color: #00ffcc;
+    text-shadow: 0px 0px 5px #00ffcc, 0px 0px 10px #00ffcc;
+}
+
+header a {
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+    color: #00ffcc;
+    text-shadow: 0px 0px 5px #00ffcc, 0px 0px 10px #00ffcc;
+    transition: all 0.3s ease-in-out;
+}
+header a:hover {
+    text-shadow: 0px 0px 15px #00ffcc, 0px 0px 20px #00ffcc;
+    transform: scale(1.1); /* Увеличение при задържане */
+}
+.mystical-link {
+    font-family: 'Gloock', serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #00ffcc;
+    text-shadow: 0px 0px 5px #00ffcc, 0px 0px 10px #00ffcc;
+    transition: all 0.3s ease-in-out;
+}
+.mystical-link:hover {
+    transform: scale(1.1);
+}
+.contact-section, .main-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 60px 20px;
+}
+.contact-text, .main-section .text {
+    flex: 1;
+    max-width: 40%;
+}
+.contact-text h1, .main-section .text h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.contact-text p, .main-section .text p, .contact-text h3, .main-section .text h2, .main-section .text ul {
+    font-size: 18px;
+    color: #6e6e73;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+.contact-image, .main-section .image {
+    display: block;
+    margin: 0 auto;
+    flex: 2;
+    max-width: 60%;
+}
+.contact-image img, .main-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.footer {
+    display: flex;
+    justify-content: space-between; /* Разделя логото и текста за правата */
+    align-items: center;
+    padding: 40px 20px;
+    font-size: 14px;
+    border-top: 1px solid #d2d2d7;
+}
+.footer .rights {
+    margin-left: 20px; /* Отстояние от лявата страна */
+}
+.footer .logo {
+    margin-right: 20px;
+}
+.footer .logo-img {
+    height: 50px;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 2px #00ffcc, 0px 0px 20px 4px #00ffcc; /* Светещ ореол */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Плавен преход */
+}
+.footer .logo-img:hover {
+    transform: scale(1.1); /* Увеличение при задържане */
+    box-shadow: 0px 0px 15px 5px #00ffcc, 0px 0px 30px 10px #00ffcc; /* По-силен ореол при задържане */
+}
+.language-switcher {
+    margin-left: auto; /* Премества падащото меню вдясно */
+    display: flex;
+    align-items: center; /* Гарантира, че е на един ред с бутоните */
+}
+.language-switcher select {
+    font-size: 16px;
+    padding: 5px 10px;
+    background-color: #0d0d0d;
+    color: #00ffcc;
+    border: 1px solid #00ffcc;
+    border-radius: 5px;
+    text-shadow: 0px 0px 5px #00ffcc;
+    box-shadow: 0px 0px 10px 2px #00ffcc, 0px 0px 20px 4px #00ffcc;
+    transition: all 0.3s ease-in-out;
+}
+.language-switcher select:hover {
+    background-color: #1a1a1a;
+    box-shadow: 0px 0px 15px 5px #00ffcc, 0px 0px 30px 10px #00ffcc;
+    transform: scale(1.1);
+}
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    header, .footer {
+        padding: 10px 20px;
+    }
+    .main-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    .main-section .image, .main-section .text {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+    header, .footer {
+        padding: 5px 10px;
+    }
+    .main-section {
+        padding: 30px 10px;
+    }
+}
+
+
+
+
+

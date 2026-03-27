@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# ✅ Пренасочване на /weather/index.html към /weather/
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/index\.html\sHTTP
+RewriteRule ^index\.html$ /weather/ [R=301,L]

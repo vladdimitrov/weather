@@ -1,0 +1,363 @@
+:root {
+  --primary-color: #FFD700;
+  --secondary-color: #1c2e4a;
+  --accent-color: #00c6ff;
+  --text-light: #ffffff;
+  --card-bg: rgba(28, 46, 74, 0.8);
+  --card-border: rgba(255, 215, 0, 0.3);
+  --shadow-glow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+/* Calendar specific styles */
+.calendar-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  border-collapse: separate;
+  border-spacing: 2px;
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: var(--shadow-glow);
+}
+
+.calendar-table th {
+  background: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  border-radius: 5px;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+.calendar-cell {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-light);
+  padding: 15px;
+  text-align: center;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: default;
+}
+
+.calendar-cell.holiday {
+  background: rgba(255, 215, 0, 0.15);
+  color: var(--primary-color);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+.calendar-cell.holiday:hover {
+  background: rgba(255, 215, 0, 0.25);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  z-index: 1;
+}
+
+.calendar-cell.holiday.mystical-holiday {
+  box-shadow: 0 0 20px rgba(148, 0, 211, 0.7); /* Adjust color and intensity as desired */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.calendar-cell.holiday.mystical-holiday:hover {
+  box-shadow: 0 0 30px rgba(148, 0, 211, 0.9); /* Enhance hover effect */
+}
+
+.calendar-cell.weekend-aura {
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.7); /* Green aura effect */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.calendar-cell.weekend-aura:hover {
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.9); /* Enhanced green aura on hover */
+}
+
+#holidayDetails {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: var(--shadow-glow);
+  animation: fade-in 0.3s ease-out;
+}
+
+.calendar-cell.non-holiday-aura {
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7); /* Red aura effect */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.calendar-cell.non-holiday-aura:hover {
+  box-shadow: 0 0 25px rgba(255, 0, 0, 0.9); /* Enhanced red aura on hover */
+}
+
+#holidayDetails h3 {
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+#holidayDetails p {
+  color: var(--text-light);
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  
+  .calendar-table th,
+  .calendar-cell {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+  
+  #holidayDetails {
+    padding: 15px;
+    margin: 15px;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+header, .footer {
+    background: linear-gradient(90deg, #0d0d0d, #1f1f1f, #0d0d0d); /* Sci-fi черен фон с метален оттенък */
+    color: #00ffcc; /* Ярък неонов зелен текст */
+    text-shadow: 0px 0px 5px #00ffcc, 0px 0px 10px #00ffcc; /* Неонов ефект */
+}
+header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between; /* Равномерно разпределя бутоните и падащото меню */
+    align-items: center; /* Подравнява елементите по вертикала на един ред */
+    padding: 20px 40px;
+    background: linear-gradient(90deg, #0d0d0d, #1a1a1a, #0d0d0d); /* Sci-fi фон */
+    color: #00ffcc;
+    text-shadow: 0px 0px 5px #00ffcc, 0px 0px 10px #00ffcc;
+}
+
+header a {
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+    color: #00ffcc;
+    text-shadow: 0px 0px 5px #00ffcc, 0px 0px 10px #00ffcc;
+    transition: all 0.3s ease-in-out;
+}
+header a:hover {
+    text-shadow: 0px 0px 15px #00ffcc, 0px 0px 20px #00ffcc;
+    transform: scale(1.1); /* Увеличение при задържане */
+}
+.mystical-link {
+    font-family: 'Gloock', serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #00ffcc;
+    text-shadow: 0px 0px 5px #00ffcc, 0px 0px 10px #00ffcc;
+    transition: all 0.3s ease-in-out;
+}
+.mystical-link:hover {
+    transform: scale(1.1);
+}
+.contact-section, .main-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 60px 20px;
+}
+.contact-text, .main-section .text {
+    flex: 1;
+    max-width: 40%;
+}
+.contact-text h1, .main-section .text h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.contact-text p, .main-section .text p, .contact-text h3, .main-section .text h2, .main-section .text ul {
+    font-size: 18px;
+    color: #6e6e73;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+.contact-image, .main-section .image {
+    display: block;
+    margin: 0 auto;
+    flex: 2;
+    max-width: 60%;
+}
+.contact-image img, .main-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.footer {
+    display: flex;
+    justify-content: space-between; /* Разделя логото и текста за правата */
+    align-items: center;
+    padding: 40px 20px;
+    font-size: 14px;
+    border-top: 1px solid #d2d2d7;
+}
+.footer .rights {
+    margin-left: 20px; /* Отстояние от лявата страна */
+}
+.footer .logo {
+    margin-right: 20px;
+}
+.footer .logo-img {
+    height: 50px;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 2px #00ffcc, 0px 0px 20px 4px #00ffcc; /* Светещ ореол */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Плавен преход */
+}
+.footer .logo-img:hover {
+    transform: scale(1.1); /* Увеличение при задържане */
+    box-shadow: 0px 0px 15px 5px #00ffcc, 0px 0px 30px 10px #00ffcc; /* По-силен ореол при задържане */
+}
+.language-switcher {
+    margin-left: auto; /* Премества падащото меню вдясно */
+    display: flex;
+    align-items: center; /* Гарантира, че е на един ред с бутоните */
+}
+.language-switcher select {
+    font-size: 16px;
+    padding: 5px 10px;
+    background-color: #0d0d0d;
+    color: #00ffcc;
+    border: 1px solid #00ffcc;
+    border-radius: 5px;
+    text-shadow: 0px 0px 5px #00ffcc;
+    box-shadow: 0px 0px 10px 2px #00ffcc, 0px 0px 20px 4px #00ffcc;
+    transition: all 0.3s ease-in-out;
+}
+.language-switcher select:hover {
+    background-color: #1a1a1a;
+    box-shadow: 0px 0px 15px 5px #00ffcc, 0px 0px 30px 10px #00ffcc;
+    transform: scale(1.1);
+}
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    header, .footer {
+        padding: 10px 20px;
+    }
+    .main-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    .main-section .image, .main-section .text {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+    header, .footer {
+        padding: 5px 10px;
+    }
+    .main-section {
+        padding: 30px 10px;
+    }
+}
+
+.holiday-bold-red {
+  font-weight: bold;
+  color: red;
+}
+
+.calendar-cell.official-holiday-red {
+  color: red !important;
+  font-weight: bold;
+}
+
+.calendar-cell.working-day-grid {
+  background: rgba(255, 255, 0, 0.1); /* Light yellow background */
+  border: 1px solid rgba(255, 255, 0, 0.3); /* Yellow border for grid effect */
+  box-shadow: none; /* Remove aura effect */
+}
+
+.calendar-cell.working-day-grid:hover {
+  background: rgba(255, 255, 0, 0.2); /* Slightly darker yellow on hover */
+  transform: scale(1.02); /* Slight scale on hover */
+  box-shadow: 0 0 10px rgba(255, 255, 0, 0.5); /* Subtle yellow glow on hover */
+}
+
+@media print {
+  /* Override all colors to black for printing */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  /* General table styles for print */
+  table, th, td {
+    border-color: black !important;
+    color: black !important;
+    background-color: white !important;
+    box-shadow: none !important;
+  }
+  
+  /* Specific calendar styles for print */
+  .calendar-table, #holidayDetails {
+    color: black !important;
+    background-color: white !important;
+  }
+  
+  .calendar-table th,
+  .calendar-cell {
+    color: black !important;
+    border: 1px solid black !important;
+    background-color: white !important;
+    box-shadow: none !important;
+  }
+  
+  #holidayDetails h3,
+  #holidayDetails p {
+    color: black !important;
+    text-shadow: none !important;
+  }
+
+  /* Hide elements not relevant for print */
+  .nav-header, .form-container, .buttons-container, footer {
+    display: none !important;
+  }
+
+  /* Ensure proper table layout for printing */
+  @page {
+    size: landscape;
+  }
+  
+  .calendar-table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin: 20px 0 !important;
+    page-break-inside: avoid !important;
+  }
+  
+  .calendar-table th,
+  .calendar-cell {
+    border: 1px solid black !important;
+    padding: 8px !important;
+    text-align: center !important;
+  }
+}
