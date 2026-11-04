@@ -47,12 +47,19 @@
         }
         document.body.style.background = style;
       }
-      applyBackgroundImmediately(savedBackground);
+      // The script runs in <head>, before <body> exists - wait for it
+      if (document.body) {
+        applyBackgroundImmediately(savedBackground);
+      } else {
+        document.addEventListener('DOMContentLoaded', function () {
+          applyBackgroundImmediately(savedBackground);
+        });
+      }
     })();
   </script>
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/weather.css">
-  <link rel="stylesheet" href="css/modern-form.css">
+  <link rel="stylesheet" href="../css/modern-form.css">
   <style>
     @keyframes fade-in {
       0% { opacity: 0; transform: scale(0.95); }
@@ -95,7 +102,7 @@
     .contact-image {
       width: 33.33vw;
       height: 33.33vw;
-      background: var(--card-bg) url('images/contacts1.webp') no-repeat center center;
+      background: var(--card-bg) url('../images/center.webp') no-repeat center center;
       background-size: cover;
       border-radius: 12px;
       border: 1px solid var(--card-border);
@@ -208,7 +215,7 @@
 
   <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
     <div class="logo" style="flex-shrink: 0;">
-        <a href="index.html"><img src="images/logo_ant.webp" alt="Лого" class="logo-img" style="height: 30px; width: auto;"></a>
+        <a href="../index.html"><img src="../images/logo_ant.webp" alt="Лого" class="logo-img" style="height: 30px; width: auto;"></a>
     </div>
       
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
