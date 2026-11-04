@@ -238,6 +238,14 @@ function updateHourlyForecast(selectedDate) {
       });
      const filteredRows = rows.filter(row => row !== null);
      tbody.innerHTML = filteredRows.join("");
+
+     // Temperature chart for the same hours (see forecast-extras.js)
+     if (window.ForecastExtras) {
+       const chartPoints = allTimes
+         .map((time, i) => ({ date: time.substring(0, 10), time: time.substring(11, 16), temperature: allTemperatures[i], rainChance: allCloudcovers[i] === 0 ? 0 : (allPrecipitationProbabilities[i] || 0) }))
+         .filter(point => !selectedDate || point.date === selectedDate);
+       ForecastExtras.renderHourlyChart(chartPoints);
+     }
      
      // Update table title with day name and date
      if (allTimes.length > 0) {

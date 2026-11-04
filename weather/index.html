@@ -64,7 +64,7 @@
       margin-right: 6px;
     }
   </style>
-  <link rel="stylesheet" href="/css/theme.css?v=1">
+  <link rel="stylesheet" href="/css/theme.css?v=2">
   <link rel="stylesheet" href="/css/mobile.css?v=2">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -138,6 +138,7 @@
             <th>Cloudiness (%)</th>
             <th>Rainfall (mm)</th>
             <th>Wind (km/h)</th>
+            <th>Sun & Moon</th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -285,6 +286,7 @@
 <script src="/js/mobile-nav.js?v=2"></script>
 <script src="/js/language-selector.js?v=2"></script>
 <script src="/js/city-search.js?v=3"></script>
+<script src="forecast-extras.js?v=1"></script>
 <script src="map-autocomplete.js?v=4"></script>
 
 <script>
@@ -480,8 +482,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<script src="weather-fixed.js?v=3"></script>
-<script src="weather-hourly.js?v=2"></script>
+<script src="weather-fixed.js?v=4"></script>
+<script src="weather-hourly.js?v=3"></script>
 
   <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
     <div class="logo" style="flex-shrink: 0;">
@@ -494,7 +496,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   </footer>
 
-<script src="language-switcher.js?v=5"></script>
+<script src="language-switcher.js?v=6"></script>
 <script src="/js/background-selector.js?v=2"></script>
 </body>
 </html>
