@@ -10,6 +10,17 @@ class FavoritesManager {
   init() {
     this.bindEvents();
     this.renderFavorites();
+    // Favorites are shared with the other pages (js/city-search.js):
+    // reload when they change there or in another tab
+    document.addEventListener('favoriteschange', () => this.reload());
+    window.addEventListener('storage', event => {
+      if (event.key === this.storageKey) this.reload();
+    });
+  }
+
+  reload() {
+    this.favorites = this.loadFavorites();
+    this.renderFavorites();
   }
 
   bindEvents() {
@@ -51,6 +62,7 @@ class FavoritesManager {
   saveFavoritesToStorage() {
     try {
       localStorage.setItem(this.storageKey, JSON.stringify(this.favorites));
+      document.dispatchEvent(new CustomEvent('favoriteschange'));
     } catch (error) {
       console.error('Error saving favorites:', error);
       this.showMessage(this.t('errorSavingFavorites'), 'error');

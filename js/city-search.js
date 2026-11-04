@@ -174,25 +174,32 @@
       if (places[index]) pick(places[index]);
     }
 
-    // Recently picked places as one-tap buttons under the field
+    // Favorite (★) and recently picked places as one-tap buttons under the field
     const recent = document.createElement('div');
     recent.className = 'recent-places';
     input.insertAdjacentElement('afterend', recent);
 
+    function placeButton(place, favorite) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = favorite ? 'recent-place favorite-place' : 'recent-place';
+      button.textContent = favorite ? `★ ${place.name}` : place.name;
+      button.title = place.country ? `${place.name}, ${place.country}` : place.name;
+      button.addEventListener('click', () => pick(place));
+      return button;
+    }
+
     function renderRecent() {
       const current = `${input.value}`.trim();
-      const saved = recentPlaces().filter(place => place.name !== current);
-      recent.replaceChildren(...saved.map(place => {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'recent-place';
-        button.textContent = place.name;
-        button.title = place.country ? `${place.name}, ${place.country}` : place.name;
-        button.addEventListener('click', () => pick(place));
-        return button;
-      }));
-      recent.hidden = saved.length === 0;
+      const favorites = favoritePlaces();
+      const others = recentPlaces().filter(place => place.name !== current && !favorites.some(fav => samePlace(fav, place)));
+      recent.replaceChildren(...favorites.map(place => placeButton(place, true)), ...others.map(place => placeButton(place, false)));
+      recent.hidden = favorites.length + others.length === 0;
     }
+    document.addEventListener('favoriteschange', renderRecent);
+    window.addEventListener('storage', event => {
+      if (event.key === FAVORITES_KEY || event.key === RECENT_KEY) renderRecent();
+    });
     // After the page has filled in its start place
     setTimeout(renderRecent, 600);
 
@@ -333,6 +340,57 @@
     try { localStorage.setItem(RECENT_KEY, JSON.stringify(list)); } catch (e) { /* storage blocked */ }
   }
 
+  // ---- Favorite places, shared by all pages ----
+  // Same storage as the Maps favorites panel (maps/js/favorites-manager.js),
+  // so both show one list. Changes are announced with a "favoriteschange"
+  // event on document.
+  const FAVORITES_KEY = 'weatherMapsFavorites';
+  const FAVORITES_MAX = 10;
+
+  const samePlace = (a, b) => Math.abs(a.latitude - b.latitude) < 0.01 && Math.abs(a.longitude - b.longitude) < 0.01;
+
+  function favoritePlaces() {
+    try {
+      const list = JSON.parse(localStorage.getItem(FAVORITES_KEY));
+      return Array.isArray(list) ? list.filter(place => isFinite(place.latitude) && isFinite(place.longitude)) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveFavorites(list) {
+    try { localStorage.setItem(FAVORITES_KEY, JSON.stringify(list)); } catch (e) { /* storage blocked */ }
+    document.dispatchEvent(new CustomEvent('favoriteschange'));
+  }
+
+  function isFavorite(place) {
+    return !!place && favoritePlaces().some(other => samePlace(other, place));
+  }
+
+  // Adds the place, or removes it when it is already a favorite.
+  // Returns false when the list is full.
+  function toggleFavorite(place) {
+    const list = favoritePlaces();
+    if (list.some(other => samePlace(other, place))) {
+      saveFavorites(list.filter(other => !samePlace(other, place)));
+      return true;
+    }
+    if (list.length >= FAVORITES_MAX) return false;
+    const now = new Date().toISOString();
+    list.push({
+      id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
+      name: place.name || `${Number(place.latitude).toFixed(4)}, ${Number(place.longitude).toFixed(4)}`,
+      country: place.country || '',
+      countryCode: place.countryCode || '',
+      latitude: Number(place.latitude),
+      longitude: Number(place.longitude),
+      dateAdded: now,
+      lastUsed: now
+    });
+    saveFavorites(list);
+    return true;
+  }
+
   // ---- Links to a place: ?city=Пловдив, optionally with &lat=..&lon=.. ----
   // The page address follows the picked place, so it can be shared or bookmarked
   function setUrlPlace(place) {
@@ -399,6 +457,14 @@
     return { name, country, countryCode: 'BG', latitude: 42.6977, longitude: 23.3219 };
   }
 
+  const favoriteTexts = {
+    en: { off: '☆ Add to favorites', on: '★ Favorite', remove: 'Remove from favorites', full: 'You can keep up to 10 favorite places. Remove one first.', title: 'Favorite places' },
+    bg: { off: '☆ Добави в любими', on: '★ Любимо', remove: 'Премахни от любими', full: 'Може да имате до 10 любими места. Първо премахнете едно.', title: 'Любими места' },
+    de: { off: '☆ Zu Favoriten', on: '★ Favorit', remove: 'Aus Favoriten entfernen', full: 'Sie können bis zu 10 Lieblingsorte speichern. Entfernen Sie zuerst einen.', title: 'Lieblingsorte' },
+    it: { off: '☆ Aggiungi ai preferiti', on: '★ Preferito', remove: 'Rimuovi dai preferiti', full: 'Puoi salvare fino a 10 località preferite. Rimuovine prima una.', title: 'Località preferite' },
+    es: { off: '☆ Añadir a favoritos', on: '★ Favorito', remove: 'Quitar de favoritos', full: 'Puedes guardar hasta 10 lugares favoritos. Quita uno primero.', title: 'Lugares favoritos' }
+  };
+
   const shareTexts = {
     en: ['🔗 Share', '✓ Link copied'],
     bg: ['🔗 Сподели', '✓ Линкът е копиран'],
@@ -445,24 +511,7 @@
       }
       .coords-toggle:hover { opacity: 1; }
       .coords-toggle + .coords-toggle { margin-left: 14px; }
-      .recent-places {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-top: 8px;
-      }
-      .recent-places[hidden] { display: none; }
-      .recent-place {
-        padding: 4px 12px;
-        border: 1px solid rgba(255, 215, 0, 0.45);
-        border-radius: 14px;
-        background: rgba(22, 36, 71, 0.6);
-        color: #FFD700;
-        font-family: inherit;
-        font-size: 0.85em;
-        cursor: pointer;
-      }
-      .recent-place:hover { background: rgba(255, 215, 0, 0.2); }
+      .coords-toggle[hidden] { display: none; }
     `;
     document.head.appendChild(style);
 
@@ -510,10 +559,58 @@
       }
     });
 
+    // Add / remove the current place (city field + coordinates) as a favorite
+    const favorite = document.createElement('button');
+    favorite.type = 'button';
+    favorite.className = 'coords-toggle favorite-toggle';
+    cityGroup.appendChild(favorite);
+
+    function currentPlace() {
+      const lat = parseFloat(latitude.value);
+      const lon = parseFloat(document.getElementById('longitude').value);
+      if (!isFinite(lat) || !isFinite(lon)) return null;
+      const params = new URLSearchParams(location.search);
+      const sameAsUrl = Math.abs(parseFloat(params.get('lat')) - lat) < 0.001 && Math.abs(parseFloat(params.get('lon')) - lon) < 0.001;
+      return {
+        name: (document.getElementById('city').value || '').trim(),
+        countryCode: sameAsUrl ? (params.get('cc') || '') : '',
+        latitude: lat,
+        longitude: lon
+      };
+    }
+
+    let shownState = '';
+    function favoriteText(force) {
+      const place = currentPlace();
+      const active = isFavorite(place);
+      const state = `${currentLanguage()}|${active}|${place ? place.latitude + ',' + place.longitude : ''}`;
+      if (state === shownState && !force) return;
+      shownState = state;
+      const t = favoriteTexts[currentLanguage()] || favoriteTexts.en;
+      favorite.hidden = !place;
+      favorite.textContent = active ? t.on : t.off;
+      favorite.title = active ? t.remove : t.off.replace('☆ ', '');
+      favorite.setAttribute('aria-pressed', String(active));
+    }
+    favoriteText(true);
+    favorite.addEventListener('click', () => {
+      const place = currentPlace();
+      if (!place) return;
+      if (!toggleFavorite(place)) {
+        window.alert((favoriteTexts[currentLanguage()] || favoriteTexts.en).full);
+      }
+      favoriteText(true);
+    });
+    document.addEventListener('favoriteschange', () => favoriteText(true));
+    // The place changes from several page scripts (search, map, buttons):
+    // check it once a second instead of hooking each of them
+    setInterval(favoriteText, 1000);
+
     const languageSelect = document.getElementById('language');
     if (languageSelect) {
       languageSelect.addEventListener('change', updateText);
       languageSelect.addEventListener('change', shareText);
+      languageSelect.addEventListener('change', () => favoriteText(true));
     }
   }
 
@@ -523,5 +620,5 @@
     addCoordinatesToggle();
   }
 
-  window.CitySearch = { search, attach, isAt, startPlace, openingPlace, setUrlPlace };
+  window.CitySearch = { search, attach, isAt, startPlace, openingPlace, setUrlPlace, favoritePlaces, favoriteTitle: () => (favoriteTexts[currentLanguage()] || favoriteTexts.en).title };
 })();
