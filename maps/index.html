@@ -500,11 +500,9 @@
           }
         } else if (city) {
           // Geocode the city
-          fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&format=json`)
-          .then(response => response.json())
-          .then(data => {
-            if (data.results && data.results.length > 0) {
-              const result = data.results[0];
+          CitySearch.search(city, { count: 1 })
+          .then(([result]) => {
+            if (result) {
               document.getElementById("latitude").value = result.latitude;
               document.getElementById("longitude").value = result.longitude;
               showMap(result.latitude, result.longitude);
@@ -553,9 +551,10 @@
 <!-- Load JavaScript files -->
 <script src="/js/mobile-nav.js?v=1"></script>
 <script src="/js/language-selector.js?v=2"></script>
+<script src="/js/city-search.js?v=1"></script>
 <script src="js/language-switcher.js?v=3"></script>
 <script src="/js/background-selector.js?v=1"></script>
-<script src="js/map-autocomplete.js?v=2"></script>
+<script src="js/map-autocomplete.js?v=3"></script>
 <script src="js/favorites-manager.js?v=2"></script>
 
 </body>
