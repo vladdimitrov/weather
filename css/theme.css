@@ -601,8 +601,38 @@ h1,
     color: #000000 !important;
   }
 
+  /* min-height: 100vh (for the fixed footer on screen) is a whole extra
+     page on paper */
   body {
     padding-bottom: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  /* Long tables may continue on the next page (older rules kept each
+     table in one piece, so it always started on a new page) */
+  body #weatherTable,
+  body #hourlyTable {
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+  }
+
+  /* "body ..." outranks the !important phone rules in mobile.css, which
+     otherwise show the fixed header on every page, over the content */
+  body .nav-header {
+    display: none !important;
+  }
+
+  body .container {
+    margin-top: 0 !important;
+  }
+
+  /* scroll boxes can't split across pages: the table jumped to the next
+     page and got cut off */
+  .table-container,
+  #hourlyTableBlock {
+    overflow: visible !important;
+    max-height: none !important;
   }
 
   /* menus, forms, buttons, banners and collapsed sections stay on screen */
