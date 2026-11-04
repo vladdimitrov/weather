@@ -37,44 +37,6 @@
         box-shadow: 0 0 20px rgba(0, 255, 0, 0.7), 0 0 40px rgba(0, 255, 0, 0.5), 0 0 60px rgba(0, 255, 0, 0.3);
       }
     }
-    @media (max-width: 768px) {
-      .nav-header.hidden {
-        transform: translateY(-100%);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .header-arrow {
-        opacity: 0;
-        transition: opacity 0.3s ease-in-out;
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #8B6914;
-        color: #FFF;
-        width: 40px;
-        height: 40px;
-        text-align: center;
-        line-height: 40px;
-        border-radius: 50%;
-        font-size: 24px;
-        cursor: pointer;
-        z-index: 1000;
-        animation: greenAura 2s ease-in-out infinite;
-      }
-
-      .header-arrow.show {
-        opacity: 1;
-        transition-delay: 2.3s;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .header-arrow {
-        opacity: 1;
-        transition-delay: 2.3s;
-      }
-    }
     /* Mobile Menu Styles */
     .hamburger-menu {
       display: none;
@@ -158,8 +120,8 @@
     }
     
     @keyframes orbit {
-      from { transform: rotate(0deg) translateX(175px) rotate(0deg); }
-      to { transform: rotate(360deg) translateX(175px) rotate(-360deg); }
+      from { transform: rotate(0deg) translateX(var(--orbit-radius, 175px)) rotate(0deg); }
+      to { transform: rotate(360deg) translateX(var(--orbit-radius, 175px)) rotate(-360deg); }
     }
     
     @keyframes pulse {
@@ -421,6 +383,7 @@
         width: 280px;
         height: 280px;
         margin: 20px auto;
+        --orbit-radius: 135px;
       }
       
       .sun-center {
@@ -483,6 +446,7 @@
         width: 240px;
         height: 240px;
         margin: 15px auto;
+        --orbit-radius: 120px;
       }
       
       .sun-center {
@@ -697,6 +661,7 @@
      }
    }
  </style>
+  <link rel="stylesheet" href="/css/mobile.css?v=1">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
@@ -712,7 +677,6 @@
     </div>
   </div>
 
-  <div class="header-arrow" onclick="toggleHeader()">&#9660;</div>
   <div class="container" style="margin-top: calc(var(--header-height) + 20px);">
     
     <!-- Hero Section -->
@@ -774,29 +738,6 @@
   </footer>
 
 <script>
-// Hide header on mobile after 2 seconds
-function hideHeaderOnMobile() {
-  if (window.innerWidth <= 768) {
-    setTimeout(function() {
-      document.querySelector('.nav-header').classList.add('hidden');
-    }, 2000);
-  }
-}
-
-window.addEventListener('load', hideHeaderOnMobile);
-window.addEventListener('resize', hideHeaderOnMobile);
-
-function toggleHeader() {
-  const header = document.querySelector('.nav-header');
-  header.classList.toggle('hidden');
-  
-  const arrow = document.querySelector('.header-arrow');
-  arrow.innerHTML = header.classList.contains('hidden') ? '&#9650;' : '&#9660;';
-
-  if (window.innerWidth <= 768) {
-    arrow.style.opacity = '1';
-  }
-}
  // Homepage translations
   const homepageTranslations = {
     en: {
@@ -935,6 +876,7 @@ function toggleHeader() {
   }
 </script>
 
+<script src="/js/mobile-nav.js?v=1"></script>
 <script src="/js/language-selector.js?v=1"></script>
 <script src="language-switcher.js?v=3"></script>
 <script src="/js/background-selector.js?v=1"></script>
