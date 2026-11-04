@@ -1,31 +1,40 @@
 # Weather Pulse
 
-A lightweight weather web app hosted on **GitHub Pages**.
+Weather forecast, geomagnetic storms, weather maps and a public holiday calendar for any location.
+Static site hosted on **GitHub Pages**.
 
 ## Live site
 
-👉 [https://vladdimitrov.github.io/weather/](https://vladdimitrov.github.io/weather/)
+👉 [https://weatherpulse.eu/](https://weatherpulse.eu/)
 
-## Features
+## Pages
 
-- Search any city in the world
-- Displays current temperature, "feels like", humidity, wind speed and weather condition
-- Powered by the free [Open-Meteo](https://open-meteo.com/) weather API and [OpenStreetMap Nominatim](https://nominatim.openstreetmap.org/) geocoding — no API key required
+| Folder | Page |
+|--------|------|
+| `/` | Home |
+| `weather/` | Daily and hourly forecast with the Kp index |
+| `maps/` | Interactive weather maps with favourite locations |
+| `holliday_calendar/` | Public holiday calendar by country |
+| `contacts/` | Contacts and data sources |
 
-## Hosting on GitHub Pages
+Languages: English, Bulgarian, German, Italian, Spanish (switcher in the header, saved in the browser).
 
-This repository is configured to serve the static site directly from the root of the `main` branch via **GitHub Pages**.
+## Data sources
 
-To enable it in your own fork:
-1. Go to **Settings → Pages**
-2. Under *Source*, select **Deploy from a branch**
-3. Choose the `main` branch and `/ (root)` folder
-4. Click **Save** — the site will be live at `https://<your-username>.github.io/weather/`
+No API keys are needed. All services below are free and called directly from the browser.
 
-## Files
+- [Open-Meteo](https://open-meteo.com/): weather forecast and geocoding
+- [NOAA SWPC](https://www.swpc.noaa.gov/): geomagnetic Kp index
+- [OpenStreetMap Nominatim](https://nominatim.openstreetmap.org/): city search and country lookup
+- [Windy](https://www.windy.com/): embedded weather maps
+- [Nager.Date](https://date.nager.at/): public holidays
 
-| File | Purpose |
-|------|---------|
-| `index.html` | Main page markup |
-| `style.css` | Styling |
-| `app.js` | Weather API integration and UI logic |
+## Hosting
+
+GitHub Pages serves the `main` branch from the repository root. The custom domain is set in `CNAME`.
+
+- `404.html` is shown for missing pages.
+- `cookie-consent.js` shows the cookie banner and loads Google Analytics only after the visitor accepts.
+- `.htaccess` and PHP do not work on GitHub Pages, so redirects and server-side code are not used.
+
+When adding a page, also add it to `sitemap.xml`.
