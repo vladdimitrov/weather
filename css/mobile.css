@@ -70,7 +70,8 @@
     display: none !important;
   }
 
-  .nav-header.menu-open {
+  /* Opaque, so content scrolling underneath doesn't show through */
+  .nav-header {
     background: rgb(22, 36, 71) !important;
   }
 
@@ -115,7 +116,13 @@
     min-width: 0 !important;
     margin: 0 !important;
     padding: 10px !important;
-    font-size: 0.95rem !important;
+  }
+
+  /* Below 16px, iPhones zoom the whole page in when a field is tapped */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
   }
 
   .container {
@@ -135,6 +142,43 @@
   .btn {
     max-width: calc(100% - 10px);
   }
+
+  /* Maps page: the map was 100% wide plus side margins */
+  .map-container {
+    box-sizing: border-box;
+    width: auto !important;
+  }
+
+  #hourlyTableBlock {
+    box-sizing: border-box;
+  }
+
+  /* Wide tables scroll inside their own box, not the whole page */
+  .table-container {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  #weatherTable th,
+  #weatherTable td,
+  #hourlyTable th,
+  #hourlyTable td {
+    padding: 6px 3px !important;
+  }
+
+  /* Home page planets: labels were 6-7px (unreadable) next to 15px ones */
+  .circular-nav .orbit-button .label {
+    font-size: 10px !important;
+  }
+}
+
+/* The fixed footer must not cover the end of the page (print buttons,
+   map credits, last panel). Some page styles fix body at the screen height,
+   which leaves the padding behind the first screen, so let it grow. */
+body {
+  height: auto !important;
+  min-height: 100vh;
+  padding-bottom: calc(var(--footer-height, 40px) + 16px) !important;
 }
 
 @media print {
