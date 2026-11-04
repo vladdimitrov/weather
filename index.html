@@ -741,6 +741,16 @@
  // Homepage translations
   const homepageTranslations = {
     en: {
+
+      sunTitle: "Home - Weather & Magnetic Storms",
+
+      weatherOrbitTitle: "Weather Forecast",
+
+      holidayOrbitTitle: "Holiday Calendar",
+
+      mapsOrbitTitle: "Weather Maps",
+
+      contactsOrbitTitle: "Data Sources & Contacts",
       heroTitle: "Weather Forecast and Magnetic Storms",
       heroSubtitle: "Track weather, moon phases, magnetic storms, and holidays in real time for any location worldwide. Plan your day with accuracy and confidence.",
       featuresTitle: "Advanced Weather Intelligence",
@@ -755,6 +765,16 @@
 	  holidayCalendarLabel: 	"HOLIDAY"
     },
     bg: {
+
+      sunTitle: "Начало - времето и магнитните бури",
+
+      weatherOrbitTitle: "Прогноза за времето",
+
+      holidayOrbitTitle: "Календар на празниците",
+
+      mapsOrbitTitle: "Карти за времето",
+
+      contactsOrbitTitle: "Източници на данни и контакти",
       heroTitle: "Прогноза за времето и магнитни бури",
       heroSubtitle: "Следете времето, фазите на Луната, магнитните бури и празничните дни в реално време за всяка точка по света. Планирайте деня си с точност и увереност.",
       featuresTitle: "Усъвършенствана метеорологична интелигентност",
@@ -771,6 +791,16 @@
       holidayCalendarLinkNav:   "КАЛЕНДАР НА ПРАЗНИЦИТЕ"
     },
     de: {
+
+      sunTitle: "Startseite - Wetter und Magnetstürme",
+
+      weatherOrbitTitle: "Wettervorhersage",
+
+      holidayOrbitTitle: "Feiertagskalender",
+
+      mapsOrbitTitle: "Wetterkarten",
+
+      contactsOrbitTitle: "Datenquellen und Kontakt",
       heroTitle: 				"Wettervorhersage und Magnetstürme",
       heroSubtitle: 			"Verfolgen Sie Wetter, Mondphasen, magnetische Stürme und Feiertage in Echtzeit für jeden Ort weltweit. Planen Sie Ihren Tag mit Genauigkeit und Zuversicht.",
       featuresTitle: 			"Erweiterte Wetter-Intelligenz",
@@ -787,6 +817,16 @@
       holidayCalendarLink: 		"FEIERTAGSKALENDER"
     },
     it: {
+
+      sunTitle: "Home - Meteo e tempeste magnetiche",
+
+      weatherOrbitTitle: "Previsioni del tempo",
+
+      holidayOrbitTitle: "Calendario delle festività",
+
+      mapsOrbitTitle: "Mappe meteorologiche",
+
+      contactsOrbitTitle: "Fonti dei dati e contatti",
       heroTitle: "Previsioni del Tempo e Tempeste Magnetiche",
       heroSubtitle: "Monitora il tempo, le fasi lunari, le tempeste magnetiche e le festività in tempo reale per qualsiasi località nel mondo. Pianifica la tua giornata con precisione e fiducia.",
       featuresTitle: "Intelligenza Meteorologica Avanzata",
@@ -803,6 +843,16 @@
       holidayCalendarLink: 	  	"FESTIVITÀ"
     },
     es: {
+
+      sunTitle: "Inicio - Tiempo y tormentas magnéticas",
+
+      weatherOrbitTitle: "Pronóstico del tiempo",
+
+      holidayOrbitTitle: "Calendario de días festivos",
+
+      mapsOrbitTitle: "Mapas del tiempo",
+
+      contactsOrbitTitle: "Fuentes de datos y contacto",
       heroTitle: "Pronóstico del Tiempo y Tormentas Magnéticas",
       heroSubtitle: "Rastrea el clima, fases lunares, tormentas magnéticas y días festivos en tiempo real para cualquier ubicación mundial. Planifica tu día con precisión y confianza.",
       featuresTitle: "Inteligencia Meteorológica Avanzada",
@@ -844,6 +894,21 @@
       }
     });
     
+    // Planet tooltips
+    const titles = {
+      '.sun-center': 'sunTitle',
+      '#weather-orbit-btn': 'weatherOrbitTitle',
+      '#holliday-calendar-btn': 'holidayOrbitTitle',
+      '#maps-orbit-btn': 'mapsOrbitTitle',
+      '#contacts-orbit-btn': 'contactsOrbitTitle'
+    };
+    Object.entries(titles).forEach(([selector, translationKey]) => {
+      const element = document.querySelector(selector);
+      if (element && homepageTranslations[language] && homepageTranslations[language][translationKey]) {
+        element.title = homepageTranslations[language][translationKey];
+      }
+    });
+    
     // Update page title
     document.title = homepageTranslations[language].heroTitle + " | Weather Pulse";
   }
@@ -877,7 +942,7 @@
 </script>
 
 <script src="/js/mobile-nav.js?v=1"></script>
-<script src="/js/language-selector.js?v=1"></script>
+<script src="/js/language-selector.js?v=2"></script>
 <script src="language-switcher.js?v=3"></script>
 <script src="/js/background-selector.js?v=1"></script>
 

@@ -1,6 +1,22 @@
 // Define translations for all UI elements
 const translations = {
   en: {
+    latitudeLabel: "Latitude:",
+    longitudeLabel: "Longitude:",
+    cityPlaceholder: "e.g. Sofia",
+    latitudePlaceholder: "e.g. 42.6977",
+    longitudePlaceholder: "e.g. 23.3219",
+    daysPlaceholder: "e.g. 7",
+    lastUpdated: "Last updated",
+    hourlyForecastFor: "Hourly forecast for",
+    noaaSource: "Data source: NOAA Space Weather Prediction Center (SWPC)",
+    noaaView: "View on NOAA Space Weather Prediction Center",
+    iconSnow: "Snow",
+    iconRain: "Cloud with rain",
+    iconCloud: "Cloudy",
+    iconSunCloud: "Sun with clouds",
+    iconSun: "Sunny",
+    iconThunder: "Thunderstorm",
     title: "Weather forecast and magnetic storms",
     cityLabel: "City / Resort:",
     useLocation: "📍 Use the current location",
@@ -39,6 +55,22 @@ const translations = {
 	weatherMaps: "Weather maps"
   },
   bg: {
+    latitudeLabel: "Географска ширина:",
+    longitudeLabel: "Географска дължина:",
+    cityPlaceholder: "напр. София",
+    latitudePlaceholder: "напр. 42.6977",
+    longitudePlaceholder: "напр. 23.3219",
+    daysPlaceholder: "напр. 7",
+    lastUpdated: "Последно обновяване",
+    hourlyForecastFor: "Почасова прогноза за",
+    noaaSource: "Източник на данните: NOAA Space Weather Prediction Center (SWPC)",
+    noaaView: "Виж в NOAA Space Weather Prediction Center",
+    iconSnow: "Сняг",
+    iconRain: "Облак с дъжд",
+    iconCloud: "Облачно",
+    iconSunCloud: "Слънце и облаци",
+    iconSun: "Слънчево",
+    iconThunder: "Гръмотевична буря",
     title: "Прогноза за времето и магнитни бури",
     cityLabel: "Град / Курорт:",
     useLocation: "📍 Използвай текущото местоположение",
@@ -78,6 +110,22 @@ const translations = {
 	weatherMaps: "Карти за времето"
   },
   de: {
+    latitudeLabel: "Breitengrad:",
+    longitudeLabel: "Längengrad:",
+    cityPlaceholder: "z. B. Sofia",
+    latitudePlaceholder: "z. B. 42.6977",
+    longitudePlaceholder: "z. B. 23.3219",
+    daysPlaceholder: "z. B. 7",
+    lastUpdated: "Zuletzt aktualisiert",
+    hourlyForecastFor: "Stündliche Vorhersage für",
+    noaaSource: "Datenquelle: NOAA Space Weather Prediction Center (SWPC)",
+    noaaView: "Bei NOAA Space Weather Prediction Center ansehen",
+    iconSnow: "Schnee",
+    iconRain: "Wolke mit Regen",
+    iconCloud: "Bewölkt",
+    iconSunCloud: "Sonne mit Wolken",
+    iconSun: "Sonnig",
+    iconThunder: "Gewitter",
     title: "Wettervorhersage und Magnetstürme",
     cityLabel: "Stadt / Urlaubsort:",
     useLocation: "📍 Aktuellen Standort verwenden",
@@ -117,6 +165,22 @@ const translations = {
 	weatherMaps: "Wetterkarten"
   },
   es: {
+    latitudeLabel: "Latitud:",
+    longitudeLabel: "Longitud:",
+    cityPlaceholder: "p. ej. Sofía",
+    latitudePlaceholder: "p. ej. 42.6977",
+    longitudePlaceholder: "p. ej. 23.3219",
+    daysPlaceholder: "p. ej. 7",
+    lastUpdated: "Última actualización",
+    hourlyForecastFor: "Pronóstico por horas para",
+    noaaSource: "Fuente de datos: NOAA Space Weather Prediction Center (SWPC)",
+    noaaView: "Ver en NOAA Space Weather Prediction Center",
+    iconSnow: "Nieve",
+    iconRain: "Nube con lluvia",
+    iconCloud: "Nublado",
+    iconSunCloud: "Sol con nubes",
+    iconSun: "Soleado",
+    iconThunder: "Tormenta",
     title: "Pronóstico del tiempo y tormentas magnéticas",
     cityLabel: "Ciudad / Resort:",
     useLocation: "📍 Usar la ubicación actual",
@@ -155,6 +219,22 @@ const translations = {
 	weatherMaps: "Mapas del Tiempo"
   },
   it: {
+    latitudeLabel: "Latitudine:",
+    longitudeLabel: "Longitudine:",
+    cityPlaceholder: "es. Sofia",
+    latitudePlaceholder: "es. 42.6977",
+    longitudePlaceholder: "es. 23.3219",
+    daysPlaceholder: "es. 7",
+    lastUpdated: "Ultimo aggiornamento",
+    hourlyForecastFor: "Previsioni orarie per",
+    noaaSource: "Fonte dei dati: NOAA Space Weather Prediction Center (SWPC)",
+    noaaView: "Vedi su NOAA Space Weather Prediction Center",
+    iconSnow: "Neve",
+    iconRain: "Nuvola con pioggia",
+    iconCloud: "Nuvoloso",
+    iconSunCloud: "Sole con nuvole",
+    iconSun: "Soleggiato",
+    iconThunder: "Temporale",
     title: "Previsioni del tempo e tempeste magnetiche",
     cityLabel: "Città / Resort:",
     useLocation: "📍 Usa la posizione attuale",
@@ -226,6 +306,12 @@ function updateContent(language) {
   // Update all UI elements with translations
   document.querySelector("h1").textContent = translations[language].title;
   document.querySelector("label[for='city']").textContent = translations[language].cityLabel;
+  document.querySelector("label[for='latitude']").textContent = translations[language].latitudeLabel;
+  document.querySelector("label[for='longitude']").textContent = translations[language].longitudeLabel;
+  document.getElementById("city").placeholder = translations[language].cityPlaceholder;
+  document.getElementById("latitude").placeholder = translations[language].latitudePlaceholder;
+  document.getElementById("longitude").placeholder = translations[language].longitudePlaceholder;
+  document.getElementById("days").placeholder = translations[language].daysPlaceholder;
   document.getElementById("useLocation").textContent = translations[language].useLocation;
   document.getElementById("daysLabel").textContent = translations[language].daysLabel;
   

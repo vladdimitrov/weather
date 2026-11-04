@@ -262,7 +262,7 @@
           },
           (error) => {
             console.error("Error getting location:", error);
-            alert("Failed to get location");
+            alert(pickText({ en: "Failed to get location", bg: "Неуспешно определяне на местоположението", de: "Standort konnte nicht ermittelt werden", it: "Impossibile ottenere la posizione", es: "No se pudo obtener la ubicación" }));
           }
         );
       });
@@ -273,13 +273,13 @@
         if (result.state === 'granted') {
           console.log("Location services are granted.");
         } else if (result.state === 'prompt') {
-          alert("Please enable location services to use this feature.");
+          alert(pickText({ en: "Please enable location services to use this feature.", bg: "Моля, включете услугите за местоположение, за да използвате тази функция.", de: "Bitte aktivieren Sie die Standortdienste, um diese Funktion zu nutzen.", it: "Attiva i servizi di localizzazione per usare questa funzione.", es: "Activa los servicios de ubicación para usar esta función." }));
         } else if (result.state === 'denied') {
-          alert("Location services are blocked. Please enable them in your browser settings.");
+          alert(pickText({ en: "Location services are blocked. Please enable them in your browser settings.", bg: "Достъпът до местоположението е блокиран. Моля, разрешете го в настройките на браузъра.", de: "Standortdienste sind blockiert. Bitte aktivieren Sie sie in den Browsereinstellungen.", it: "I servizi di localizzazione sono bloccati. Attivali nelle impostazioni del browser.", es: "Los servicios de ubicación están bloqueados. Actívalos en la configuración del navegador." }));
         }
       });
     } else {
-      alert("Your browser does not support geolocation");
+      alert(pickText({ en: "Your browser does not support geolocation", bg: "Вашият браузър не поддържа геолокация", de: "Ihr Browser unterstützt keine Geolokalisierung", it: "Il tuo browser non supporta la geolocalizzazione", es: "Tu navegador no admite la geolocalización" }));
     }
   });
   //updateSelectedCity("", "", null, null);
@@ -293,8 +293,8 @@
 </script>
 
 <script src="/js/mobile-nav.js?v=1"></script>
-<script src="/js/language-selector.js?v=1"></script>
-<script src="map-autocomplete.js"></script>
+<script src="/js/language-selector.js?v=2"></script>
+<script src="map-autocomplete.js?v=2"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -442,11 +442,11 @@ document.addEventListener('DOMContentLoaded', function() {
         ${_t('kpIndex')}
         <a href="https://www.swpc.noaa.gov/products/planetary-k-index" target="_blank"
            style="text-decoration: none; color: #FFD700;"
-           title='Data source: NOAA Space Weather Prediction Center (SWPC)'>
+           title='${_t('noaaSource')}'>
           <span class='kp-icon'>🧭</span>
         </a>: ${kp} ${status}
         <br>
-        <span id="kp-updated" style='font-size: 0.8em;'>Last updated: ${formatted}</span>
+        <span id="kp-updated" style='font-size: 0.8em;'>${_t('lastUpdated')}: ${formatted}</span>
       `;
     } catch (err) {
       console.error("Error downloading Kp index:", err);
@@ -471,7 +471,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <span style="color: #ff6b6b;">${errorTranslations[selectedLanguage] || 'Unable to load data'}</span>
         <a href="https://www.swpc.noaa.gov/products/planetary-k-index" target="_blank"
            style="text-decoration: none; color: #FFD700; margin-left: 5px;"
-           title='View on NOAA Space Weather Prediction Center'>
+           title='${_t('noaaView')}'>
           <span class='kp-icon'>🧭</span>
         </a>
       `;
@@ -484,8 +484,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<script src="weather-fixed.js"></script>
-<script src="weather-hourly.js"></script>
+<script src="weather-fixed.js?v=2"></script>
+<script src="weather-hourly.js?v=2"></script>
 
   <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
     <div class="logo" style="flex-shrink: 0;">
@@ -498,7 +498,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   </footer>
 
-<script src="language-switcher.js?v=2"></script>
+<script src="language-switcher.js?v=3"></script>
 <script src="/js/background-selector.js?v=1"></script>
 </body>
 </html>

@@ -16,7 +16,7 @@ function updateForecast() {
         const weatherHeader = headerRow.querySelector("th:nth-child(2)");
         if (firstHeader) {
           console.log("DEBUG: weather-fixed.js is setting Date header");
-          firstHeader.textContent = "Date";
+          firstHeader.textContent = _t("date");
           headerSet = true;
         }
         if (weatherHeader) {
@@ -32,7 +32,7 @@ function updateForecast() {
   
   if ((!city && (!currentCoords.latitude || !currentCoords.longitude)) || isNaN(days)) {
     tbody.innerHTML = "<tr><td colspan='7'>Loading...</td></tr>";
-    tbody.innerHTML = "<tr><td colspan='7'>Please enter a city or enable location.</td></tr>";
+    tbody.innerHTML = `<tr><td colspan='7'>${pickText({ en: "Please enter a city or enable location.", bg: "Моля, въведете град или активирайте местоположението.", de: "Bitte geben Sie eine Stadt ein oder aktivieren Sie den Standort.", it: "Inserisci una città o attiva la posizione.", es: "Introduce una ciudad o activa la ubicación." })}</td></tr>`;
     return;
   }
 
@@ -48,11 +48,7 @@ function updateForecast() {
         const geoData = await geoRes.json();
         if (!geoData.results || geoData.results.length === 0) {
           // Use translations for error messages
-          const errorMessage = document.getElementById("language").value === "bg" ?
-            "Градът не е намерен." :
-            document.getElementById("language").value === "de" ?
-            "Stadt nicht gefunden." :
-            "City not found.";
+          const errorMessage = pickText({ en: "City not found.", bg: "Градът не е намерен.", de: "Stadt nicht gefunden.", it: "Città non trovata.", es: "Ciudad no encontrada." });
           tbody.innerHTML = `<tr><td colspan='7'>${errorMessage}</td></tr>`;
           return;
         }
@@ -91,11 +87,7 @@ function updateForecast() {
       if (!weatherData.daily || !weatherData.daily.time) {
         console.error("Invalid weather data format:", weatherData);
         // Use translations for error messages
-        const errorMessage = document.getElementById("language").value === "bg" ?
-          "Грешка при обработка на данните." :
-          document.getElementById("language").value === "de" ?
-          "Fehler bei der Datenverarbeitung." :
-          "Error processing data.";
+        const errorMessage = pickText({ en: "Error processing data.", bg: "Грешка при обработка на данните.", de: "Fehler bei der Datenverarbeitung.", it: "Errore nell'elaborazione dei dati.", es: "Error al procesar los datos." });
         tbody.innerHTML = `<tr><td colspan='7'>${errorMessage}</td></tr>`;
         return;
       }
@@ -115,17 +107,13 @@ function updateForecast() {
           <td>
              <div>${weatherIcons}</div>
              <div style="margin-top: 10px; font-size: 14px; cursor: pointer; color: #FFD700; padding: 5px; border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 4px;" onclick="showHourlyForecast('${date}')">
-               ${document.getElementById("language").value === "bg" ?
-                 "👉 Почасова прогноза" :
-                 document.getElementById("language").value === "de" ?
-                 "👉 Stündliche Vorhersage" :
-                 "👉 Hourly forecast"}
+               ${pickText({ en: "👉 Hourly forecast", bg: "👉 Почасова прогноза", de: "👉 Stündliche Vorhersage", it: "👉 Previsioni orarie", es: "👉 Pronóstico por horas" })}
              </div>
           </td>
           <td>${weatherData.daily.temperature_2m_min[i]}</td>
           <td>${weatherData.daily.temperature_2m_max[i]}</td>
           <td>${weatherData.daily.cloudcover_mean[i]}</td>
-          <td>${weatherData.daily.precipitation_sum[i]} ${isThunderstorm(weatherData.daily.weather_code[i]) ? '<span style="font-size: 24px; margin-left: 5px;" title="Thunderstorm">⚡</span>' : ''}</td>
+          <td>${weatherData.daily.precipitation_sum[i]} ${isThunderstorm(weatherData.daily.weather_code[i]) ? `<span style="font-size: 24px; margin-left: 5px;" title="${_t('iconThunder')}">⚡</span>` : ''}</td>
           <td><span class="wind-value">${weatherData.daily.windspeed_10m_max[i]}</span></td>
          </tr>
        `;
@@ -143,11 +131,7 @@ function updateForecast() {
     } catch (err) {
       console.error("Error:", err);
       // Use translations for error messages
-      const errorMessage = document.getElementById("language").value === "bg" ?
-        "Грешка при зареждане на данните." :
-        document.getElementById("language").value === "de" ?
-        "Fehler beim Laden der Daten." :
-        "Error loading data.";
+      const errorMessage = pickText({ en: "Error loading data.", bg: "Грешка при зареждане на данните.", de: "Fehler beim Laden der Daten.", it: "Errore nel caricamento dei dati.", es: "Error al cargar los datos." });
       tbody.innerHTML = `<tr><td colspan='7'>${errorMessage}</td></tr>`;
     }
   })();
@@ -173,26 +157,26 @@ function getDailyWeatherIcons(cloudcover, precipitation, temperature, weatherCod
   
   // Snow icon if there's precipitation and temperature is at or below 0°C
   if (precipitation > 0 && temperature <= 0) {
-    icons.push('<span style="font-size: 24px; margin: 0 3px;" title="Snow">❄️</span>');
+    icons.push(`<span style="font-size: 24px; margin: 0 3px;" title="${_t('iconSnow')}">❄️</span>`);
   }
   // Rain icon if there's precipitation and temperature is above 0°C
   else if (precipitation > 0 && temperature > 0) {
-    icons.push('<span style="font-size: 24px; margin: 0 3px;" title="Cloud with Rain">🌧️</span>');
+    icons.push(`<span style="font-size: 24px; margin: 0 3px;" title="${_t('iconRain')}">🌧️</span>`);
   }
   
   // Cloud icon if cloudiness is high
   if (cloudcover > 70) {
-    icons.push('<span style="font-size: 24px; margin: 0 3px;" title="Cloud">☁️</span>');
+    icons.push(`<span style="font-size: 24px; margin: 0 3px;" title="${_t('iconCloud')}">☁️</span>`);
   }
   
   // Partly cloudy icon if cloudiness is moderate
   if (cloudcover > 30 && cloudcover <= 70) {
-    icons.push('<span style="font-size: 24px; margin: 0 3px;" title="Sun with Cloud">⛅</span>');
+    icons.push(`<span style="font-size: 24px; margin: 0 3px;" title="${_t('iconSunCloud')}">⛅</span>`);
   }
   
   // Sun icon if cloudiness is low and no precipitation
   if (cloudcover <= 30 && precipitation === 0) {
-    icons.push('<span style="font-size: 24px; margin: 0 3px;" title="Sun">☀️</span>');
+    icons.push(`<span style="font-size: 24px; margin: 0 3px;" title="${_t('iconSun')}">☀️</span>`);
   }
   
   return icons.join(' ');
@@ -208,11 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       if ((!city || city.length === 0) && (!currentCoords.latitude || !currentCoords.longitude)) {
         // Use translations for alert messages
-        const alertMessage = document.getElementById("language").value === "bg" ?
-          "Моля, въведете град или географска ширина и дължина." :
-          document.getElementById("language").value === "de" ?
-          "Bitte geben Sie eine Stadt oder Breiten- und Längengrad ein." :
-          "Please enter a city or latitude and longitude.";
+        const alertMessage = pickText({ en: "Please enter a city or latitude and longitude.", bg: "Моля, въведете град или географска ширина и дължина.", de: "Bitte geben Sie eine Stadt oder Breiten- und Längengrad ein.", it: "Inserisci una città oppure latitudine e longitudine.", es: "Introduce una ciudad o la latitud y la longitud." });
         alert(alertMessage);
       }
       updateForecast();

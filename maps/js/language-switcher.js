@@ -1,6 +1,26 @@
 // Define translations for all UI elements
 const translations = {
   en: {
+    latitudeLabel: "Latitude:",
+    longitudeLabel: "Longitude:",
+    cityPlaceholder: "e.g. Sofia",
+    latitudePlaceholder: "e.g. 42.6977",
+    longitudePlaceholder: "e.g. 23.3219",
+    currentLayer: "Layer",
+    loadingMap: "Loading weather map...",
+    poweredBy: "Weather data visualization powered by",
+    clearAll: "🗑️ Clear All",
+    noFavoritesYet: "No favorite locations saved yet",
+    errorSavingFavorites: "Error saving favorites",
+    invalidCoordinates: "Please enter valid coordinates",
+    alreadyInFavorites: "Location already in favorites",
+    confirmDeleteFavorite: "Are you sure you want to delete this favorite location?",
+    confirmDeleteAll: "Are you sure you want to delete ALL favorite locations? This cannot be undone.",
+    allFavoritesCleared: "All favorites cleared",
+    noValidFavorites: "No valid favorites found in file",
+    loadLocationTitle: "Load location",
+    deleteFavoriteTitle: "Delete favorite",
+    locationName: "Location",
     title: "Weather forecast and magnetic storms",
     cityLabel: "City / Resort:",
     useLocation: "📍 Use the current location",
@@ -64,6 +84,26 @@ const translations = {
     airQualityLayer: "🏭 Air Quality"
   },
   bg: {
+    latitudeLabel: "Географска ширина:",
+    longitudeLabel: "Географска дължина:",
+    cityPlaceholder: "напр. София",
+    latitudePlaceholder: "напр. 42.6977",
+    longitudePlaceholder: "напр. 23.3219",
+    currentLayer: "Слой",
+    loadingMap: "Зареждане на картата...",
+    poweredBy: "Визуализацията на данните за времето е от",
+    clearAll: "🗑️ Изтрий всички",
+    noFavoritesYet: "Все още няма запазени любими места",
+    errorSavingFavorites: "Грешка при запазване на любимите",
+    invalidCoordinates: "Моля, въведете валидни координати",
+    alreadyInFavorites: "Мястото вече е в любими",
+    confirmDeleteFavorite: "Сигурни ли сте, че искате да изтриете това любимо място?",
+    confirmDeleteAll: "Сигурни ли сте, че искате да изтриете ВСИЧКИ любими места? Това не може да бъде отменено.",
+    allFavoritesCleared: "Всички любими места са изтрити",
+    noValidFavorites: "Във файла няма валидни любими места",
+    loadLocationTitle: "Зареди мястото",
+    deleteFavoriteTitle: "Изтрий от любими",
+    locationName: "Място",
     title: "Прогноза за времето и магнитни бури",
     cityLabel: "Град / Курорт:",
     useLocation: "📍 Използвай текущото местоположение",
@@ -127,6 +167,26 @@ const translations = {
     airQualityLayer: "🏭 Качество на въздуха"
   },
   de: {
+    latitudeLabel: "Breitengrad:",
+    longitudeLabel: "Längengrad:",
+    cityPlaceholder: "z. B. Sofia",
+    latitudePlaceholder: "z. B. 42.6977",
+    longitudePlaceholder: "z. B. 23.3219",
+    currentLayer: "Ebene",
+    loadingMap: "Wetterkarte wird geladen...",
+    poweredBy: "Wetterdaten-Visualisierung bereitgestellt von",
+    clearAll: "🗑️ Alle löschen",
+    noFavoritesYet: "Noch keine Lieblingsorte gespeichert",
+    errorSavingFavorites: "Fehler beim Speichern der Favoriten",
+    invalidCoordinates: "Bitte geben Sie gültige Koordinaten ein",
+    alreadyInFavorites: "Ort ist bereits in den Favoriten",
+    confirmDeleteFavorite: "Möchten Sie diesen Lieblingsort wirklich löschen?",
+    confirmDeleteAll: "Möchten Sie wirklich ALLE Lieblingsorte löschen? Dies kann nicht rückgängig gemacht werden.",
+    allFavoritesCleared: "Alle Favoriten gelöscht",
+    noValidFavorites: "Keine gültigen Favoriten in der Datei gefunden",
+    loadLocationTitle: "Ort laden",
+    deleteFavoriteTitle: "Favorit löschen",
+    locationName: "Ort",
     title: "Wettervorhersage und Magnetstürme",
     cityLabel: "Stadt / Urlaubsort:",
     useLocation: "📍 Aktuellen Standort verwenden",
@@ -190,6 +250,26 @@ const translations = {
     airQualityLayer: "🏭 Luftqualität"
   },
   es: {
+    latitudeLabel: "Latitud:",
+    longitudeLabel: "Longitud:",
+    cityPlaceholder: "p. ej. Sofía",
+    latitudePlaceholder: "p. ej. 42.6977",
+    longitudePlaceholder: "p. ej. 23.3219",
+    currentLayer: "Capa",
+    loadingMap: "Cargando el mapa del tiempo...",
+    poweredBy: "Visualización de datos meteorológicos proporcionada por",
+    clearAll: "🗑️ Borrar todos",
+    noFavoritesYet: "Aún no hay ubicaciones favoritas guardadas",
+    errorSavingFavorites: "Error al guardar los favoritos",
+    invalidCoordinates: "Introduce coordenadas válidas",
+    alreadyInFavorites: "La ubicación ya está en favoritos",
+    confirmDeleteFavorite: "¿Seguro que quieres eliminar esta ubicación favorita?",
+    confirmDeleteAll: "¿Seguro que quieres eliminar TODAS las ubicaciones favoritas? No se puede deshacer.",
+    allFavoritesCleared: "Todos los favoritos eliminados",
+    noValidFavorites: "No se encontraron favoritos válidos en el archivo",
+    loadLocationTitle: "Cargar ubicación",
+    deleteFavoriteTitle: "Eliminar favorito",
+    locationName: "Ubicación",
     title: "Pronóstico del tiempo y tormentas magnéticas",
     cityLabel: "Ciudad / Resort:",
     useLocation: "📍 Usar la ubicación actual",
@@ -254,6 +334,26 @@ const translations = {
     airQualityLayer: "🏭 Calidad del Aire"
   },
   it: {
+    latitudeLabel: "Latitudine:",
+    longitudeLabel: "Longitudine:",
+    cityPlaceholder: "es. Sofia",
+    latitudePlaceholder: "es. 42.6977",
+    longitudePlaceholder: "es. 23.3219",
+    currentLayer: "Livello",
+    loadingMap: "Caricamento della mappa meteo...",
+    poweredBy: "Visualizzazione dei dati meteo fornita da",
+    clearAll: "🗑️ Elimina tutti",
+    noFavoritesYet: "Nessuna località preferita salvata",
+    errorSavingFavorites: "Errore nel salvataggio dei preferiti",
+    invalidCoordinates: "Inserisci coordinate valide",
+    alreadyInFavorites: "La località è già tra i preferiti",
+    confirmDeleteFavorite: "Vuoi davvero eliminare questa località preferita?",
+    confirmDeleteAll: "Vuoi davvero eliminare TUTTE le località preferite? L'operazione non può essere annullata.",
+    allFavoritesCleared: "Tutti i preferiti eliminati",
+    noValidFavorites: "Nessun preferito valido trovato nel file",
+    loadLocationTitle: "Carica località",
+    deleteFavoriteTitle: "Elimina preferito",
+    locationName: "Località",
     title: "Previsioni del tempo e tempeste magnetiche",
     cityLabel: "Città / Resort:",
     useLocation: "📍 Usa la posizione attuale",
@@ -363,7 +463,36 @@ function updateContent(language) {
   if (cityLabel) {
     cityLabel.textContent = translations[language].cityLabel;
   }
-  
+
+  // Labels, examples in the fields and other fixed texts
+  const textById = {
+    latitudeLabel: 'latitudeLabel',
+    longitudeLabel: 'longitudeLabel',
+    loadingText: 'loadingMap',
+    poweredByText: 'poweredBy',
+    clearAllFavorites: 'clearAll'
+  };
+  Object.entries(textById).forEach(([id, key]) => {
+    const element = document.getElementById(id);
+    if (element) element.textContent = translations[language][key];
+  });
+  const placeholderById = { city: 'cityPlaceholder', latitude: 'latitudePlaceholder', longitude: 'longitudePlaceholder' };
+  Object.entries(placeholderById).forEach(([id, key]) => {
+    const input = document.getElementById(id);
+    if (input) input.placeholder = translations[language][key];
+  });
+  const currentLayer = document.getElementById("current-layer");
+  const layerSelect = document.getElementById("weatherLayer");
+  if (currentLayer && currentLayer.textContent && layerSelect) {
+    // Runs before the layer options are re-translated below, so read the key, not the text
+    const layerKeys = { rain: 'rainLayer', wind: 'windLayer', temp: 'tempLayer', pressure: 'pressureLayer', clouds: 'cloudsLayer', waves: 'wavesLayer', thunder: 'lightningLayer', pm2p5: 'airQualityLayer' };
+    const layerName = translations[language][layerKeys[layerSelect.value]] || layerSelect.options[layerSelect.selectedIndex].text;
+    currentLayer.textContent = `${translations[language].currentLayer}: ${layerName}`;
+  }
+  if (window.favoritesManager && typeof window.favoritesManager.renderFavorites === 'function') {
+    window.favoritesManager.renderFavorites();
+  }
+
   const useLocationBtn = document.getElementById("useLocation");
   if (useLocationBtn) {
     useLocationBtn.textContent = translations[language].useLocation;
