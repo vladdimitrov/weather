@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <script src="/cookie-consent.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>За сайта | Weather Pulse</title>
+  <link rel="canonical" href="https://weatherpulse.eu/za-saita/" />
+  <meta name="description" content="Weather Pulse е безплатен сайт за прогноза за времето, магнитни бури и официални празници. Откъде идват данните и как се правят прогнозите.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Weather Pulse">
+  <meta property="og:locale" content="bg_BG">
+  <meta property="og:title" content="За сайта">
+  <meta property="og:description" content="Weather Pulse е безплатен сайт за прогноза за времето, магнитни бури и официални празници. Откъде идват данните и как се правят прогнозите.">
+  <meta property="og:url" content="https://weatherpulse.eu/za-saita/">
+  <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
+  <script>
+    (function() {
+      const savedLanguage = localStorage.getItem('selectedLanguage') || 'bg';
+      document.documentElement.lang = savedLanguage;
+    })();
+  </script>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../css/weather.css">
+  <link rel="stylesheet" href="../css/modern-form.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#162447">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="/css/theme.css?v=9">
+  <link rel="stylesheet" href="/css/mobile.css?v=2">
+</head>
+<body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+  <div class="nav-header" tabindex="-1" id="header">
+    <div class="nav-links">
+      <a href="../index.html" class="nav-link" data-nav="home">Начало</a>
+      <a href="../weather/index.html" class="nav-link" data-nav="weather">Прогноза за времето</a>
+      <a href="../maps/index.html" class="nav-link" data-nav="maps">Карти за времето</a>
+      <a href="../holliday_calendar/index.html" class="nav-link" data-nav="holidays">Календар на празниците</a>
+      <a href="../contacts/index.html" class="nav-link" data-nav="sources">Източници на данни</a>
+      <a href="../magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
+    </div>
+    <div class="header-selectors" id="selectors-container">
+      <!-- Background and language selectors will be inserted here by JS -->
+    </div>
+  </div>
+
+  <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
+    <h1>За Weather Pulse</h1>
+    <section class="info-card">
+      <p>Weather Pulse е безплатен сайт за прогноза за времето, магнитни бури и официални празници, без регистрация и без платени функции. Можете да го инсталирате като приложение на телефона си от менюто на браузъра.</p>
+
+      <h2>Какво има в сайта</h2>
+      <ul>
+        <li><a href="../weather/index.html">Прогноза за времето</a> — за 16 дни и по часове, с диапазон на сигурност, сравнение на моделите, изгрев, залез и фаза на Луната;</li>
+        <li><a href="../magnitni-buri/">Магнитни бури</a> — Kp индекс в реално време, прогноза за 3 дни, слънчев вятър и известия при буря;</li>
+        <li><a href="../maps/index.html">Карти за времето</a> — вятър, валежи, облаци и температура;</li>
+        <li><a href="../holliday_calendar/index.html">Календар на празниците</a> — официалните празници в държавата на избраното място.</li>
+      </ul>
+
+      <h2>Откъде идват данните</h2>
+      <ul>
+        <li>Прогнозата за времето е от <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>, който използва моделите на ECMWF (Европа), ICON (Германия), GFS (САЩ) и други метеорологични служби.</li>
+        <li>Данните за магнитните бури и слънчевия вятър са от <a href="https://www.swpc.noaa.gov/" target="_blank" rel="noopener">NOAA Space Weather Prediction Center</a>.</li>
+        <li>Празниците са от <a href="https://date.nager.at/" target="_blank" rel="noopener">Nager.Date</a>.</li>
+        <li>Картите са от <a href="https://www.windy.com/" target="_blank" rel="noopener">Windy</a>.</li>
+      </ul>
+      <p>Повече подробности има на страница <a href="../contacts/index.html">Източници на данни</a>.</p>
+
+      <h2>Как се правят прогнозите</h2>
+      <p>Прогнозата за времето е изчислена от числени модели, които симулират атмосферата върху мрежа от точки. Освен основната прогноза показваме и диапазон от ансамблови прогнози: моделът се пуска много пъти с малко различни начални условия и колкото по-близки са резултатите, толкова по-сигурна е прогнозата. Обикновено прогнозата е точна за 3–5 дни, а след 7 дни е ориентировъчна.</p>
+      <p>Прогнозата за магнитните бури е на синоптиците на NOAA, които следят Слънцето със спътници. Повече за това е описано на страница <a href="../magnitni-buri/">Магнитни бури</a>.</p>
+
+      <h2>Поверителност</h2>
+      <p>Не изискваме регистрация и не събираме лични данни на свой сървър. Подробности има на страница <a href="../poveritelnost/">Поверителност</a>.</p>
+
+      <h2>Връзка с нас</h2>
+      <p>Предложения, грешки и въпроси: <a href="mailto:woodwideweb@yahoo.com">woodwideweb@yahoo.com</a>.</p>
+      <p>Weather Pulse се поддържа от VYZYA.</p>
+    </section>
+  </div>
+
+  <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
+    <div class="logo" style="flex-shrink: 0;">
+        <a href="../index.html"><img src="../images/logo-64.webp" alt="Лого" class="logo-img" width="30" height="30" style="height: 30px; width: auto;"></a>
+    </div>
+    <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
+      © <span class="current-year">2026</span> VYZYA
+      · <a href="/za-saita/" class="footer-link" data-nav="about">За сайта</a>
+      · <a href="/poveritelnost/" class="footer-link" data-nav="privacy">Поверителност</a>
+    </p>
+  </footer>
+
+<script src="/js/mobile-nav.js?v=5"></script>
+<script src="/js/language-selector.js?v=2"></script>
+<script src="/js/background-selector.js?v=2"></script>
+</body>
+</html>

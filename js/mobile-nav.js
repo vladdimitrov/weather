@@ -135,12 +135,11 @@
     initOfflineNotice();
     registerServiceWorker();
     translateNav();
-    // after the language selector exists (it loads after this script)
-    setTimeout(() => {
-      const languageSelect = document.getElementById('language');
-      if (languageSelect) languageSelect.addEventListener('change', translateNav);
-      translateNav();
-    }, 0);
+    // The language dropdown is created later by /js/language-selector.js; its
+    // own listener updates <html lang> before the change bubbles up to here
+    document.addEventListener('change', event => {
+      if (event.target && event.target.id === 'language') translateNav();
+    });
     checkStormAlerts();
   }
 

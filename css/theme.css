@@ -591,7 +591,8 @@ h1,
    The screen design is gold on dark blue; on white paper gold text and
    lines fade, and dark panels waste ink. */
 /* Magnetic storms page (/magnitni-buri/, js/storm-page.js) */
-.storm-page h1 {
+.storm-page h1,
+.info-page h1 {
   margin: 0 0 8px;
   color: var(--gold);
   font-size: 1.6rem;
@@ -634,7 +635,8 @@ h1,
 .storm-alerts p,
 .widget-embed p { line-height: 1.5; }
 
-.storm-faq {
+.storm-faq,
+.info-card {
   max-width: 760px;
   margin: 20px auto;
   padding: 4px 16px 12px;
@@ -645,13 +647,22 @@ h1,
   line-height: 1.6;
 }
 
-.storm-faq h2 {
+.storm-faq h2,
+.info-card h2 {
   margin: 18px 0 6px;
   color: var(--gold);
   font-size: 1.15rem;
 }
 
-.storm-faq a { color: var(--gold); }
+.storm-faq a,
+.info-card a { color: var(--gold); }
+
+.info-card li { margin: 4px 0; }
+.info-updated { font-size: 0.85rem; opacity: 0.75; }
+
+/* About and privacy links in the footer */
+.footer-link { color: inherit; white-space: nowrap; }
+.footer-link:hover { color: var(--gold); }
 
 .kp-table {
   width: 100%;
