@@ -24,12 +24,6 @@ class FavoritesManager {
   }
 
   bindEvents() {
-    // Save favorite button
-    const saveFavoriteBtn = document.getElementById('saveFavorite');
-    if (saveFavoriteBtn) {
-      saveFavoriteBtn.addEventListener('click', () => this.saveFavorite());
-    }
-
     // Export favorites button
     const exportBtn = document.getElementById('exportFavorites');
     if (exportBtn) {
@@ -67,47 +61,6 @@ class FavoritesManager {
       console.error('Error saving favorites:', error);
       this.showMessage(this.t('errorSavingFavorites'), 'error');
     }
-  }
-
-  saveFavorite() {
-    const city = document.getElementById('city').value.trim();
-    const lat = parseFloat(document.getElementById('latitude').value);
-    const lon = parseFloat(document.getElementById('longitude').value);
-
-    if (!lat || !lon) {
-      this.showMessage(this.t('invalidCoordinates'), 'error');
-      return;
-    }
-
-    if (this.favorites.length >= this.maxFavorites) {
-      this.showMessage(this.t('maxFavoritesReached'), 'error');
-      return;
-    }
-
-    // Check if location already exists
-    const exists = this.favorites.some(fav => 
-      Math.abs(fav.latitude - lat) < 0.001 && Math.abs(fav.longitude - lon) < 0.001
-    );
-
-    if (exists) {
-      this.showMessage(this.t('alreadyInFavorites'), 'error');
-      return;
-    }
-
-    const favorite = {
-      id: this.generateId(),
-      name: city || `${this.t('locationName')} (${lat.toFixed(4)}, ${lon.toFixed(4)})`,
-      latitude: lat,
-      longitude: lon,
-      country: '', // Could be enhanced with reverse geocoding
-      dateAdded: new Date().toISOString(),
-      lastUsed: new Date().toISOString()
-    };
-
-    this.favorites.push(favorite);
-    this.saveFavoritesToStorage();
-    this.renderFavorites();
-    this.showMessage(this.t('locationSaved'), 'success');
   }
 
   loadFavorite(id) {

@@ -586,3 +586,168 @@ h1,
   justify-content: center;
   gap: 6px;
 }
+
+/* ---- Print: black on white, thin gray lines, nothing interactive ----
+   The screen design is gold on dark blue; on white paper gold text and
+   lines fade, and dark panels waste ink. */
+@media print {
+  @page {
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  body {
+    padding-bottom: 0 !important;
+  }
+
+  /* menus, forms, buttons, banners and collapsed sections stay on screen */
+  .nav-header,
+  footer,
+  .form-container,
+  .btn,
+  .holiday-ics,
+  .cc-banner,
+  .cc-settings,
+  .offline-notice,
+  .recent-places,
+  #citySuggestions,
+  #weatherTable td div[onclick],
+  .table-container::after,
+  details:not([open]) {
+    display: none !important;
+  }
+
+  /* panels: white with a thin gray frame */
+  .info-display,
+  #selected-city,
+  .kp-forecast,
+  .space-weather,
+  .model-compare,
+  .hourly-chart,
+  .now-card,
+  #calendar,
+  #holidayDetails {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #999999 !important;
+    box-shadow: none !important;
+  }
+
+  /* gold text becomes black */
+  h1,
+  h2,
+  h3,
+  #selected-city,
+  #local-time,
+  #kp-summary,
+  #kp-summary a,
+  .kp-day-name,
+  .now-place,
+  .model-compare summary,
+  .kp-outlook summary,
+  .month-header,
+  .holiday-list .holiday-date,
+  #weatherTable td,
+  #weatherTable th,
+  #hourlyTable td,
+  #hourlyTable th {
+    color: #000000 !important;
+    text-shadow: none !important;
+  }
+
+  .temp-range,
+  .rain-chance,
+  .kp-day-status,
+  .aurora-chance,
+  .model-note,
+  .outlook-note,
+  .moon-phase {
+    color: #333333 !important;
+  }
+
+  /* tables: white cells, thin gray lines */
+  #weatherTable,
+  #hourlyTable,
+  .calendar-table,
+  .model-compare table {
+    background: #ffffff !important;
+    border-collapse: collapse !important;
+    box-shadow: none !important;
+  }
+
+  #weatherTable th,
+  #weatherTable td,
+  #hourlyTable th,
+  #hourlyTable td,
+  .calendar-table th,
+  .calendar-table td,
+  .model-compare th,
+  .model-compare td {
+    background: #ffffff !important;
+    border: 1px solid #999999 !important;
+    box-shadow: none !important;
+  }
+
+  #weatherTable th,
+  #hourlyTable th,
+  .calendar-table th,
+  .model-compare th {
+    background: #eeeeee !important;
+  }
+
+  .holiday-list li {
+    border-bottom-color: #cccccc !important;
+  }
+
+  .holiday-list li.official .holiday-name {
+    color: #b03a2e !important;
+  }
+
+  /* colors that carry meaning are kept, a bit darker for paper */
+  .kp-scale span,
+  .wx-warning,
+  .kp-g-scale,
+  .outlook-day,
+  .solar-wind-status,
+  .hourly-chart .chart-rain {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .kp-scale span:not(.on) {
+    background: #dddddd !important;
+  }
+
+  .reliability.rel-high { color: #1e8449 !important; }
+  .reliability.rel-medium { color: #9a7d0a !important; }
+  .reliability.rel-low { color: #b03a2e !important; }
+  .reliability.rel-rough { color: #555555 !important; }
+
+  .solar-wind-status {
+    border: 1px solid #999999;
+  }
+
+  .solar-wind-status.wind-calm { background: #e9f7ef !important; color: #1e8449 !important; }
+  .solar-wind-status.wind-watch { background: #fef9e7 !important; color: #9a7d0a !important; }
+
+  /* chart: dark line and labels */
+  .hourly-chart text { fill: #000000 !important; }
+  .hourly-chart .chart-grid { stroke: #cccccc !important; }
+  .hourly-chart .chart-line { stroke: #9a7d0a !important; }
+  .hourly-chart .chart-dot { fill: #9a7d0a !important; }
+  .chart-legend { color: #000000 !important; }
+  .legend-line { background: #9a7d0a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* don't split a row or the chart across pages */
+  tr,
+  .hourly-chart,
+  .kp-forecast,
+  .space-weather {
+    break-inside: avoid;
+  }
+}
