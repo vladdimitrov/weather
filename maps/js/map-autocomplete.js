@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("latitude").value = place.latitude;
         document.getElementById("longitude").value = place.longitude;
         saveLocationToLocalStorage(place.name, place.latitude, place.longitude, place.country, place.countryCode);
+        document.getElementById("loadMap").click();
       }
     });
 

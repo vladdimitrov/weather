@@ -93,8 +93,44 @@
     }
   }
 
+  // Favorite places (shared with the other pages) as links to their forecast
+  const favoritesBox = document.createElement('div');
+  favoritesBox.className = 'home-favorites';
+  favoritesBox.hidden = true;
+  card.insertAdjacentElement('afterend', favoritesBox);
+
+  function renderFavorites() {
+    const favorites = CitySearch.favoritePlaces();
+    favoritesBox.hidden = favorites.length === 0;
+    if (!favorites.length) return;
+    const title = document.createElement('div');
+    title.className = 'home-favorites-title';
+    title.textContent = `★ ${CitySearch.favoriteTitle()}`;
+    const links = favorites.map(place => {
+      const params = new URLSearchParams({ city: place.name, lat: Number(place.latitude).toFixed(4), lon: Number(place.longitude).toFixed(4) });
+      if (place.countryCode) params.set('cc', place.countryCode);
+      const link = document.createElement('a');
+      link.className = 'recent-place favorite-place';
+      link.href = `weather/?${params}`;
+      link.textContent = place.name;
+      if (place.country) link.title = `${place.name}, ${place.country}`;
+      return link;
+    });
+    const list = document.createElement('div');
+    list.className = 'home-favorites-list';
+    list.append(...links);
+    favoritesBox.replaceChildren(title, list);
+  }
+
   const languageSelect = document.getElementById('language');
-  if (languageSelect) languageSelect.addEventListener('change', render);
+  if (languageSelect) {
+    languageSelect.addEventListener('change', render);
+    languageSelect.addEventListener('change', renderFavorites);
+  }
+  window.addEventListener('storage', event => {
+    if (event.key === 'weatherMapsFavorites') renderFavorites();
+  });
 
   load();
+  renderFavorites();
 })();
