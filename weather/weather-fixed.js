@@ -120,7 +120,8 @@ function updateForecast() {
       });
 
       tbody.innerHTML = rows.join("");
-      
+      labelForecastCells();
+
       // Scroll to the weather table after loading data, unless the page
       // loaded it by itself on open (data-autoload on the button)
       const loadButton = document.getElementById("loadData");
@@ -205,3 +206,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Copy the column names onto the forecast cells, so the phone layout (cards,
+// see /css/theme.css) can show them. Also called when the language changes.
+function labelForecastCells() {
+  const headers = [...document.querySelectorAll("#weatherTable thead th")].map(th => th.textContent.trim());
+  document.querySelectorAll("#weatherTable tbody tr").forEach(row => {
+    [...row.children].forEach((cell, index) => {
+      cell.dataset.label = headers[index] || "";
+    });
+  });
+}

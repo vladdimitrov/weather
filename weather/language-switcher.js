@@ -400,6 +400,11 @@ function updateContent(language) {
   if (hourlyForecastHeading) {
     hourlyForecastHeading.textContent = translations[language].hourlyForecast;
   }
+
+  // Column names shown on the phone forecast cards
+  if (typeof labelForecastCells === "function") {
+    labelForecastCells();
+  }
   
   // Update navigation links in header
   const homeLink = document.getElementById('home-link');
