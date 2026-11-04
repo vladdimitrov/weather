@@ -31,8 +31,8 @@ function updateForecast() {
   const tbody = document.querySelector("#weatherTable tbody");
   
   if ((!city && (!currentCoords.latitude || !currentCoords.longitude)) || isNaN(days)) {
-    tbody.innerHTML = "<tr><td colspan='7'>Loading...</td></tr>";
-    tbody.innerHTML = `<tr><td colspan='7'>${pickText({ en: "Please enter a city or enable location.", bg: "Моля, въведете град или активирайте местоположението.", de: "Bitte geben Sie eine Stadt ein oder aktivieren Sie den Standort.", it: "Inserisci una città o attiva la posizione.", es: "Introduce una ciudad o activa la ubicación." })}</td></tr>`;
+    tbody.innerHTML = "<tr><td colspan='8'>Loading...</td></tr>";
+    tbody.innerHTML = `<tr><td colspan='8'>${pickText({ en: "Please enter a city or enable location.", bg: "Моля, въведете град или активирайте местоположението.", de: "Bitte geben Sie eine Stadt ein oder aktivieren Sie den Standort.", it: "Inserisci una città o attiva la posizione.", es: "Introduce una ciudad o activa la ubicación." })}</td></tr>`;
     return;
   }
 
@@ -49,7 +49,7 @@ function updateForecast() {
         if (!geoData.results || geoData.results.length === 0) {
           // Use translations for error messages
           const errorMessage = pickText({ en: "City not found.", bg: "Градът не е намерен.", de: "Stadt nicht gefunden.", it: "Città non trovata.", es: "Ciudad no encontrada." });
-          tbody.innerHTML = `<tr><td colspan='7'>${errorMessage}</td></tr>`;
+          tbody.innerHTML = `<tr><td colspan='8'>${errorMessage}</td></tr>`;
           return;
         }
         if (geoData.results.length > 1) {
@@ -80,7 +80,7 @@ function updateForecast() {
       const endDate = end.toISOString().split("T")[0];
 
       await delay(500); // Delay for 500 milliseconds
-      const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_min,temperature_2m_max,cloudcover_mean,precipitation_sum,windspeed_10m_max,temperature_2m_mean,weather_code&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${today}&end_date=${endDate}`;
+      const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_min,temperature_2m_max,cloudcover_mean,precipitation_sum,windspeed_10m_max,temperature_2m_mean,weather_code,sunrise,sunset&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${today}&end_date=${endDate}`;
       const weatherRes = await fetch(weatherURL);
       const weatherData = await weatherRes.json();
 
@@ -88,7 +88,7 @@ function updateForecast() {
         console.error("Invalid weather data format:", weatherData);
         // Use translations for error messages
         const errorMessage = pickText({ en: "Error processing data.", bg: "Грешка при обработка на данните.", de: "Fehler bei der Datenverarbeitung.", it: "Errore nell'elaborazione dei dati.", es: "Error al procesar los datos." });
-        tbody.innerHTML = `<tr><td colspan='7'>${errorMessage}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan='8'>${errorMessage}</td></tr>`;
         return;
       }
 
@@ -103,7 +103,7 @@ function updateForecast() {
         );
         return `
         <tr>
-          <td>${getDayName(date)}<br>${date}</td>
+          <td>${getDayName(date)}<br>${date}${dayWarningsHtml(weatherData.daily, i)}</td>
           <td>
              <div>${weatherIcons}</div>
              <div style="margin-top: 10px; font-size: 14px; cursor: pointer; color: #FFD700; padding: 5px; border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 4px;" onclick="showHourlyForecast('${date}')">
@@ -115,6 +115,7 @@ function updateForecast() {
           <td>${weatherData.daily.cloudcover_mean[i]}</td>
           <td>${weatherData.daily.precipitation_sum[i]} ${isThunderstorm(weatherData.daily.weather_code[i]) ? `<span style="font-size: 24px; margin-left: 5px;" title="${_t('iconThunder')}">⚡</span>` : ''}</td>
           <td><span class="wind-value">${weatherData.daily.windspeed_10m_max[i]}</span></td>
+          <td>${window.ForecastExtras ? ForecastExtras.sunMoonCell(date, weatherData.daily.sunrise[i], weatherData.daily.sunset[i]) : ""}</td>
          </tr>
        `;
       });
@@ -139,7 +140,7 @@ function updateForecast() {
       console.error("Error:", err);
       // Use translations for error messages
       const errorMessage = pickText({ en: "Error loading data.", bg: "Грешка при зареждане на данните.", de: "Fehler beim Laden der Daten.", it: "Errore nel caricamento dei dati.", es: "Error al cargar los datos." });
-      tbody.innerHTML = `<tr><td colspan='7'>${errorMessage}</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan='8'>${errorMessage}</td></tr>`;
     }
   })();
 }
@@ -216,4 +217,17 @@ function labelForecastCells() {
       cell.dataset.label = headers[index] || "";
     });
   });
+}
+
+// Warning badges for a forecast day (see forecast-extras.js)
+function dayWarningsHtml(daily, i) {
+  if (!window.ForecastExtras) return "";
+  const badges = ForecastExtras.dayWarnings({
+    weatherCode: daily.weather_code[i],
+    windMax: daily.windspeed_10m_max[i],
+    precipitation: daily.precipitation_sum[i],
+    tempMin: daily.temperature_2m_min[i],
+    tempMax: daily.temperature_2m_max[i]
+  });
+  return badges ? `<div class="wx-warnings">${badges}</div>` : "";
 }

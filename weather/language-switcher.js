@@ -1,6 +1,7 @@
 // Define translations for all UI elements
 const translations = {
   en: {
+    sunMoon: "Sun & Moon",
     latitudeLabel: "Latitude:",
     longitudeLabel: "Longitude:",
     cityPlaceholder: "e.g. Sofia",
@@ -54,6 +55,7 @@ const translations = {
 	weatherMaps: "Weather maps"
   },
   bg: {
+    sunMoon: "Слънце и Луна",
     latitudeLabel: "Географска ширина:",
     longitudeLabel: "Географска дължина:",
     cityPlaceholder: "напр. София",
@@ -108,6 +110,7 @@ const translations = {
 	weatherMaps: "Карти за времето"
   },
   de: {
+    sunMoon: "Sonne & Mond",
     latitudeLabel: "Breitengrad:",
     longitudeLabel: "Längengrad:",
     cityPlaceholder: "z. B. Sofia",
@@ -162,6 +165,7 @@ const translations = {
 	weatherMaps: "Wetterkarten"
   },
   es: {
+    sunMoon: "Sol y Luna",
     latitudeLabel: "Latitud:",
     longitudeLabel: "Longitud:",
     cityPlaceholder: "p. ej. Sofía",
@@ -215,6 +219,7 @@ const translations = {
 	weatherMaps: "Mapas del Tiempo"
   },
   it: {
+    sunMoon: "Sole e Luna",
     latitudeLabel: "Latitudine:",
     longitudeLabel: "Longitudine:",
     cityPlaceholder: "es. Sofia",
@@ -336,6 +341,7 @@ function updateContent(language) {
   document.querySelector("#weatherTable thead tr th:nth-child(5)").textContent = translations[language].cloudiness;
   document.querySelector("#weatherTable thead tr th:nth-child(6)").textContent = translations[language].rainfall;
   document.querySelector("#weatherTable thead tr th:nth-child(7)").textContent = translations[language].wind;
+  document.querySelector("#weatherTable thead tr th:nth-child(8)").textContent = translations[language].sunMoon;
   
   // Update hourly forecast elements if they exist
   const showHourlyElement = document.getElementById("showHourly");
