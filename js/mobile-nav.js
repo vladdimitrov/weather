@@ -1,6 +1,9 @@
-// Mobile navigation for all pages: adds the site name and a menu button to the
-// header. On narrow screens /css/mobile-nav.css hides the links and selectors
-// until the button opens them; on wide screens both added elements are hidden.
+// Site-wide script, loaded on every page:
+//  - mobile navigation: adds the site name and a menu button to the header.
+//    On narrow screens /css/mobile.css hides the links and selectors until the
+//    button opens them; on wide screens both added elements are hidden.
+//  - footer year, service worker (installable app, offline data) and an
+//    "offline" notice.
 (function () {
   const menuLabels = {
     en: { open: 'Open menu', close: 'Close menu' },
@@ -58,13 +61,47 @@
     });
   }
 
-  if (document.body) {
+  // Shown while there is no connection: the service worker then serves the
+  // last saved pages and data
+  const offlineText = {
+    en: 'No internet connection, showing the last saved data.',
+    bg: 'Няма връзка с интернет, показват се последните запазени данни.',
+    de: 'Keine Internetverbindung, die zuletzt gespeicherten Daten werden angezeigt.',
+    it: 'Nessuna connessione, vengono mostrati gli ultimi dati salvati.',
+    es: 'Sin conexión, se muestran los últimos datos guardados.'
+  };
+
+  function initOfflineNotice() {
+    const notice = document.createElement('div');
+    notice.className = 'offline-notice';
+    notice.setAttribute('role', 'status');
+    notice.hidden = true;
+    document.body.appendChild(notice);
+    const update = () => {
+      notice.textContent = offlineText[document.documentElement.lang] || offlineText.en;
+      notice.hidden = navigator.onLine;
+    };
+    window.addEventListener('online', update);
+    window.addEventListener('offline', update);
+    update();
+  }
+
+  function registerServiceWorker() {
+    if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+      navigator.serviceWorker.register('/sw.js').catch(err => console.error('Service worker registration failed:', err));
+    }
+  }
+
+  function initSite() {
     initMobileNav();
     updateYear();
+    initOfflineNotice();
+    registerServiceWorker();
+  }
+
+  if (document.body) {
+    initSite();
   } else {
-    document.addEventListener('DOMContentLoaded', () => {
-      initMobileNav();
-      updateYear();
-    });
+    document.addEventListener('DOMContentLoaded', initSite);
   }
 })();

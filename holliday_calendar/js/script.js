@@ -1,6 +1,7 @@
 // Translations for the holiday calendar (alerts, calendar and holiday details)
 const holidayTranslations = {
   en: {
+    addToCalendar: "Add to calendar",
     holidaysInPeriod: "Holidays in this period",
     noHolidaysInPeriod: "No public holidays in this period.",
     today: "Today",
@@ -24,6 +25,7 @@ const holidayTranslations = {
     geolocationNotSupported: "Geolocation is not supported by your browser."
   },
   bg: {
+    addToCalendar: "Добави в календара",
     holidaysInPeriod: "Празници в периода",
     noHolidaysInPeriod: "Няма официални празници в периода.",
     today: "Днес",
@@ -47,6 +49,7 @@ const holidayTranslations = {
     geolocationNotSupported: "Геолокацията не се поддържа от вашия браузър."
   },
   de: {
+    addToCalendar: "Zum Kalender hinzufügen",
     holidaysInPeriod: "Feiertage in diesem Zeitraum",
     noHolidaysInPeriod: "Keine Feiertage in diesem Zeitraum.",
     today: "Heute",
@@ -70,6 +73,7 @@ const holidayTranslations = {
     geolocationNotSupported: "Geolokalisierung wird von Ihrem Browser nicht unterstützt."
   },
   it: {
+    addToCalendar: "Aggiungi al calendario",
     holidaysInPeriod: "Festività nel periodo",
     noHolidaysInPeriod: "Nessuna festività nel periodo.",
     today: "Oggi",
@@ -93,6 +97,7 @@ const holidayTranslations = {
     geolocationNotSupported: "La geolocalizzazione non è supportata dal tuo browser."
   },
   es: {
+    addToCalendar: "Añadir al calendario",
     holidaysInPeriod: "Festivos en este período",
     noHolidaysInPeriod: "No hay festivos en este período.",
     today: "Hoy",
@@ -507,7 +512,46 @@ document.addEventListener('DOMContentLoaded', function() {
       list.appendChild(item);
     });
     section.appendChild(list);
+
+    const calendarButton = document.createElement('button');
+    calendarButton.type = 'button';
+    calendarButton.className = 'btn holiday-ics';
+    calendarButton.textContent = `📅 ${_t('addToCalendar')}`;
+    calendarButton.addEventListener('click', () => downloadCalendar(holidays));
+    section.appendChild(calendarButton);
     return section;
+  }
+
+  // .ics file with all-day events, for Google/Apple/Outlook calendars
+  function downloadCalendar(holidays) {
+    const escapeText = text => String(text).replace(/\\/g, '\\\\').replace(/[,;]/g, match => '\\' + match).replace(/\r?\n/g, '\\n');
+    const compact = iso => iso.replace(/-/g, '');
+    const nextDay = iso => {
+      const date = new Date(iso + 'T00:00:00Z');
+      date.setUTCDate(date.getUTCDate() + 1);
+      return date.toISOString().slice(0, 10);
+    };
+    const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+    const events = holidays.map(holiday => [
+      'BEGIN:VEVENT',
+      `UID:${compact(holiday.date.iso)}-${holiday.country.id}-${compact(holiday.name).replace(/[^A-Za-z0-9]/g, '')}@weatherpulse.eu`,
+      `DTSTAMP:${stamp}`,
+      `DTSTART;VALUE=DATE:${compact(holiday.date.iso)}`,
+      `DTEND;VALUE=DATE:${compact(nextDay(holiday.date.iso))}`,
+      `SUMMARY:${escapeText(holidayTitle(holiday))}`,
+      `DESCRIPTION:${escapeText(holidayTypeNames(holiday))}`,
+      'TRANSP:TRANSPARENT',
+      'END:VEVENT'
+    ].join('\r\n'));
+    const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Weather Pulse//Holidays//EN', 'CALSCALE:GREGORIAN', ...events, 'END:VCALENDAR', ''].join('\r\n');
+    const country = holidays[0] ? holidays[0].country.id : '';
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
+    link.download = `holidays-${country}-${fromDateInput.value}-${toDateInput.value}.ics`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(link.href), 1000);
   }
 
   // Nager.Date has only English and local-language names: show the local
@@ -542,10 +586,10 @@ document.addEventListener('DOMContentLoaded', function() {
   fromDateInput.value = new Date(Date.UTC(currentYear, currentMonth, 1)).toISOString().slice(0, 10);
   toDateInput.value = new Date(Date.UTC(currentYear, currentMonth + 1, 0)).toISOString().slice(0, 10);
 
-  // Open with the holidays of the last location, or Sofia on a first visit.
+  // Open with the holidays of the place in the address (?city=...), the last location, or Sofia.
   // A known country code skips the reverse lookup when loading.
-  setTimeout(() => {
-    const place = CitySearch.startPlace();
+  setTimeout(async () => {
+    const place = await CitySearch.openingPlace();
     selectedPlace = place.name ? place : null;
     cityInput.value = place.name;
     latitudeInput.value = place.latitude;

@@ -94,10 +94,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Clear location functionality removed as requested
     
-    // Open with the map of the last location, or Sofia on a first visit.
+    // Open with the map of the place in the address (?city=...), the last location, or Sofia.
     // The short delay lets the page script attach the "Load Map" handler first.
-    setTimeout(() => {
-      const place = CitySearch.startPlace();
+    setTimeout(async () => {
+      const place = await CitySearch.openingPlace();
       document.getElementById("city").value = place.name;
       document.getElementById("latitude").value = place.latitude;
       document.getElementById("longitude").value = place.longitude;
