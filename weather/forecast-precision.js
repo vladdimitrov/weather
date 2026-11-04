@@ -128,7 +128,8 @@ window.ForecastPrecision = (function () {
   }
 
   function rangeText([low, high]) {
-    return `${Math.round(low)}…${Math.round(high)}°`;
+    const [a, b] = [Math.round(low), Math.round(high)];
+    return a === b ? `≈${a}°` : `${a}…${b}°`; // all runs agree: one value
   }
 
   function render() {
