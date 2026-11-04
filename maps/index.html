@@ -289,12 +289,10 @@
       currentCoords.longitude = lon;
       currentLayer = layer;
       
-      // Use a fixed zoom level based on initial device width
-      // This prevents zoom changes when keyboard appears/disappears
-      const zoomLevel = window.outerWidth <= 480 ? 7 : 8;
-    
-      // Use outer width for mobile detection to avoid keyboard influence
-      const isMobile = window.outerWidth <= 768;
+      // innerWidth, not outerWidth: iPhone Safari reports outerWidth as 0.
+      // The on-screen keyboard changes the height, not the width.
+      const zoomLevel = window.innerWidth <= 480 ? 7 : 8;
+      const isMobile = window.innerWidth <= 768;
     
     const windyBaseURL = 'https://embed.windy.com/embed2.html';
     const mapURL = `${windyBaseURL}?lat=${lat}&lon=${lon}&detailLat=${lat}&detailLon=${lon}&width=100%&height=100%&zoom=${zoomLevel}&level=surface&overlay=${layer}&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1${isMobile ? '&mobile=true' : ''}`;
@@ -406,40 +404,10 @@
     document.getElementById('longitude').value = defaultLon;
     document.getElementById('city').value = 'Sofia';
 
-    const loadMapBtn = document.getElementById('loadMap');
-    if (loadMapBtn) {
-      loadMapBtn.addEventListener('click', function() {
-        const lat = parseFloat(document.getElementById('latitude').value);
-        const lon = parseFloat(document.getElementById('longitude').value);
-        const layer = document.getElementById('weatherLayer').value;
-        
-        // Show map container before loading
-        document.getElementById('mapContainer').style.display = 'block';
-        updateMap(lat, lon, layer);
-      });
-    }
-    
-    // Handle device orientation changes for responsive map
-    window.addEventListener('resize', function() {
-      const mapContainer = document.getElementById('mapContainer');
-      const iframe = document.getElementById('windyMap');
-      
-      // Only handle resize for actual orientation changes, not keyboard
-      const isOrientationChange = window.innerWidth !== window.outerWidth;
-      
-      // If map is loaded and it's an orientation change
-      if (iframe && iframe.style.display === 'block' &&
-          currentCoords.latitude && currentCoords.longitude &&
-          isOrientationChange) {
-        
-        // Small delay to let the browser finish resizing
-        setTimeout(function() {
-          // Reload the map with current coordinates to optimize for new orientation
-          updateMap(currentCoords.latitude, currentCoords.longitude, currentLayer);
-        }, 300);
-      }
-    });
-    
+    // The map is not reloaded on resize: the iframe is 100% wide and Windy
+    // adapts by itself. Phones fire resize whenever the address bar hides or
+    // shows while scrolling, which used to reload the map over and over.
+
     // Add scroll listener to handle header visibility
     window.addEventListener('scroll', function() {
       // No need for the fixed header behavior on mobile - let it scroll naturally
@@ -515,9 +483,15 @@
         const lat = parseFloat(document.getElementById("latitude").value);
         const lon = parseFloat(document.getElementById("longitude").value);
         const layer = document.getElementById("weatherLayer").value;
-        
+
+        // Show the map container before loading (updateMap skips a hidden map)
+        const showMap = (mapLat, mapLon) => {
+          document.getElementById('mapContainer').style.display = 'block';
+          updateMap(mapLat, mapLon, layer);
+        };
+
         if (lat && lon) {
-          updateMap(lat, lon, layer);
+          showMap(lat, lon);
           const selectedLocationText = _t ? _t('selectedLocation') : 'Selected location';
           if (city) {
             document.getElementById("selected-city").textContent = `${selectedLocationText}: ${city}`;
@@ -533,7 +507,7 @@
               const result = data.results[0];
               document.getElementById("latitude").value = result.latitude;
               document.getElementById("longitude").value = result.longitude;
-              updateMap(result.latitude, result.longitude, layer);
+              showMap(result.latitude, result.longitude);
               const selectedLocationText = _t ? _t('selectedLocation') : 'Selected location';
               document.getElementById("selected-city").textContent = `${selectedLocationText}: ${result.name}, ${result.country}`;
             } else {
