@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
   <script src="/cookie-consent.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -7,19 +7,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather Forecast and Kp Index | Weather Pulse</title>
+  <title>Прогноза за времето и магнитни бури | Weather Pulse</title>
 <link rel="canonical" href="https://weatherpulse.eu/weather/" />
-<meta name="description" content="Daily and hourly weather forecast for any city: temperature, cloud cover, rain and wind, plus the current geomagnetic Kp index from NOAA.">
+<meta name="description" content="Прогноза за времето по дни и часове за всеки град: температура, валежи, вятър, изгрев и залез, фаза на Луната и магнитни бури (Kp индекс от NOAA).">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Weather Pulse">
-<meta property="og:title" content="Weather Forecast and Kp Index | Weather Pulse">
-<meta property="og:description" content="Daily and hourly weather forecast for any city: temperature, cloud cover, rain and wind, plus the current geomagnetic Kp index from NOAA.">
+<meta property="og:locale" content="bg_BG">
+<meta property="og:title" content="Прогноза за времето и магнитни бури | Weather Pulse">
+<meta property="og:description" content="Прогноза за времето по дни и часове за всеки град: температура, валежи, вятър, изгрев и залез, фаза на Луната и магнитни бури (Kp индекс от NOAA).">
 <meta property="og:url" content="https://weatherpulse.eu/weather/">
 <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
 <meta name="twitter:card" content="summary">
   <script>
     (function() {
-      const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+      const savedLanguage = localStorage.getItem('selectedLanguage') || 'bg';
       document.documentElement.lang = savedLanguage;
     })();
   </script>
@@ -69,7 +70,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=7">
+  <link rel="stylesheet" href="/css/theme.css?v=8">
   <link rel="stylesheet" href="/css/mobile.css?v=2">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -80,6 +81,7 @@
       <a href="../maps/index.html" class="nav-link" id="weather-maps-link">Weather Maps</a>
       <a href="../holliday_calendar/index.html" class="nav-link" id="holiday-calendar-link">Holiday Calendar</a>
       <a href="../contacts/index.html" class="nav-link" id="data-sources-link">Data Sources</a>
+      <a href="../magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
      </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -288,7 +290,7 @@
   // and triggers the loadData button click
 </script>
 
-<script src="/js/mobile-nav.js?v=3"></script>
+<script src="/js/mobile-nav.js?v=4"></script>
 <script src="/js/language-selector.js?v=2"></script>
 <script src="/js/city-search.js?v=5"></script>
 <script src="forecast-extras.js?v=3"></script>
@@ -503,7 +505,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   </footer>
 
-<script src="language-switcher.js?v=7"></script>
+<script src="language-switcher.js?v=8"></script>
 <script src="/js/background-selector.js?v=2"></script>
 </body>
 </html>

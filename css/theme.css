@@ -590,6 +590,97 @@ h1,
 /* ---- Print: black on white, thin gray lines, nothing interactive ----
    The screen design is gold on dark blue; on white paper gold text and
    lines fade, and dark panels waste ink. */
+/* Magnetic storms page (/magnitni-buri/, js/storm-page.js) */
+.storm-page h1 {
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.storm-intro {
+  max-width: 760px;
+  margin: 0 auto 8px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.storm-now-value {
+  display: block;
+  margin: 4px 0;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.storm-now-value.kp-calm { color: #2ecc71; }
+.storm-now-value.kp-active { color: #f1c40f; }
+.storm-now-value.kp-storm { color: #e74c3c; }
+
+.storm-now-status {
+  margin: 8px 0 0;
+  font-size: 1.05rem;
+}
+
+.storm-updated,
+.storm-alerts-status {
+  margin: 8px 0 0;
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.storm-chart { margin-top: 12px; }
+
+.storm-alerts p,
+.widget-embed p { line-height: 1.5; }
+
+.storm-faq {
+  max-width: 760px;
+  margin: 20px auto;
+  padding: 4px 16px 12px;
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  background: var(--panel);
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.storm-faq h2 {
+  margin: 18px 0 6px;
+  color: var(--gold);
+  font-size: 1.15rem;
+}
+
+.storm-faq a { color: var(--gold); }
+
+.kp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.kp-table th,
+.kp-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: left;
+}
+
+.kp-table th { color: var(--gold); }
+
+.widget-embed textarea {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px;
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  font-family: Consolas, monospace;
+  font-size: 0.8rem;
+  resize: none;
+}
+
 @media print {
   @page {
     margin: 12mm;

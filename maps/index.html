@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
   <script src="/cookie-consent.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -7,20 +7,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Weather Maps | Weather Pulse</title>
+  <title>Интерактивни карти за времето | Weather Pulse</title>
 <link rel="canonical" href="https://weatherpulse.eu/maps/" />
-<meta name="description" content="Interactive weather maps for wind, rain, temperature and clouds anywhere in the world, with saved favourite locations.">
+<meta name="description" content="Интерактивни карти за дъжд, вятър, температура, облаци и гръмотевици за целия свят, с любими места.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Weather Pulse">
-<meta property="og:title" content="Interactive Weather Maps | Weather Pulse">
-<meta property="og:description" content="Interactive weather maps for wind, rain, temperature and clouds anywhere in the world, with saved favourite locations.">
+<meta property="og:locale" content="bg_BG">
+<meta property="og:title" content="Интерактивни карти за времето | Weather Pulse">
+<meta property="og:description" content="Интерактивни карти за дъжд, вятър, температура, облаци и гръмотевици за целия свят, с любими места.">
 <meta property="og:url" content="https://weatherpulse.eu/maps/">
 <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
 <meta name="twitter:card" content="summary">
 
   <script>
     (function() {
-      const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+      const savedLanguage = localStorage.getItem('selectedLanguage') || 'bg';
       document.documentElement.lang = savedLanguage;
     })();
   </script>
@@ -156,7 +157,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=7">
+  <link rel="stylesheet" href="/css/theme.css?v=8">
   <link rel="stylesheet" href="/css/mobile.css?v=2">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -167,6 +168,7 @@
       <a href="../weather/index.html" class="nav-link" id="weather-link">Weather</a>
       <a href="../holliday_calendar/index.html" class="nav-link" id="holiday-calendar-link">Holiday Calendar</a>
       <a href="../contacts/index.html" class="nav-link" id="data-sources-link">Data Sources</a>
+      <a href="../magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -556,10 +558,10 @@
 </script>
 
 <!-- Load JavaScript files -->
-<script src="/js/mobile-nav.js?v=3"></script>
+<script src="/js/mobile-nav.js?v=4"></script>
 <script src="/js/language-selector.js?v=2"></script>
 <script src="/js/city-search.js?v=5"></script>
-<script src="js/language-switcher.js?v=6"></script>
+<script src="js/language-switcher.js?v=7"></script>
 <script src="/js/background-selector.js?v=2"></script>
 <script src="js/map-autocomplete.js?v=6"></script>
 <script src="js/favorites-manager.js?v=4"></script>
