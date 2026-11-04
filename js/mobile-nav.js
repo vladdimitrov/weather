@@ -51,9 +51,20 @@
     });
   }
 
+  // Footer copyright year
+  function updateYear() {
+    document.querySelectorAll('.current-year').forEach(element => {
+      element.textContent = new Date().getFullYear();
+    });
+  }
+
   if (document.body) {
     initMobileNav();
+    updateYear();
   } else {
-    document.addEventListener('DOMContentLoaded', initMobileNav);
+    document.addEventListener('DOMContentLoaded', () => {
+      initMobileNav();
+      updateYear();
+    });
   }
 })();

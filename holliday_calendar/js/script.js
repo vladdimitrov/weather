@@ -1,6 +1,9 @@
 // Translations for the holiday calendar (alerts, calendar and holiday details)
 const holidayTranslations = {
   en: {
+    holidaysInPeriod: "Holidays in this period",
+    noHolidaysInPeriod: "No public holidays in this period.",
+    today: "Today",
     selectedLocation: "Selected location",
     monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     dayNames: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
@@ -21,6 +24,9 @@ const holidayTranslations = {
     geolocationNotSupported: "Geolocation is not supported by your browser."
   },
   bg: {
+    holidaysInPeriod: "Празници в периода",
+    noHolidaysInPeriod: "Няма официални празници в периода.",
+    today: "Днес",
     selectedLocation: "Избрана локация",
     monthNames: ["Януари", "Февруари", "Март", "Април", "Май", "Юни", "Юли", "Август", "Септември", "Октомври", "Ноември", "Декември"],
     dayNames: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"],
@@ -41,6 +47,9 @@ const holidayTranslations = {
     geolocationNotSupported: "Геолокацията не се поддържа от вашия браузър."
   },
   de: {
+    holidaysInPeriod: "Feiertage in diesem Zeitraum",
+    noHolidaysInPeriod: "Keine Feiertage in diesem Zeitraum.",
+    today: "Heute",
     selectedLocation: "Ausgewählter Standort",
     monthNames: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
     dayNames: ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
@@ -61,6 +70,9 @@ const holidayTranslations = {
     geolocationNotSupported: "Geolokalisierung wird von Ihrem Browser nicht unterstützt."
   },
   it: {
+    holidaysInPeriod: "Festività nel periodo",
+    noHolidaysInPeriod: "Nessuna festività nel periodo.",
+    today: "Oggi",
     selectedLocation: "Posizione selezionata",
     monthNames: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
     dayNames: ["Lu", "Ma", "Me", "Gi", "Ve", "Sa", "Do"],
@@ -81,6 +93,9 @@ const holidayTranslations = {
     geolocationNotSupported: "La geolocalizzazione non è supportata dal tuo browser."
   },
   es: {
+    holidaysInPeriod: "Festivos en este período",
+    noHolidaysInPeriod: "No hay festivos en este período.",
+    today: "Hoy",
     selectedLocation: "Ubicación seleccionada",
     monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
     dayNames: ["Lu", "Ma", "Mi", "Ju", "Vi", "Sá", "Do"],
@@ -121,42 +136,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const calendarDiv = document.getElementById('calendar');
   const holidayDetailsDiv = document.getElementById('holidayDetails');
 
-  // Function to save location to localStorage
-  function saveLocationToLocalStorage(city, latitude, longitude, country) {
+  // Function to save location to localStorage (read back by CitySearch.startPlace)
+  function saveLocationToLocalStorage(city, latitude, longitude, country, countryCode) {
     const locationData = {
       city: city,
       latitude: latitude,
       longitude: longitude,
-      country: country
+      country: country,
+      countryCode: countryCode || ''
     };
     localStorage.setItem('lastLocation', JSON.stringify(locationData));
-  }
-
-  // Function to load location from localStorage
-  function loadLocationFromLocalStorage() {
-    const locationData = localStorage.getItem('lastLocation');
-    if (locationData) {
-      try {
-        const location = JSON.parse(locationData);
-        if (location.city && location.latitude && location.longitude) {
-          cityInput.value = location.city;
-          latitudeInput.value = location.latitude;
-          longitudeInput.value = location.longitude;
-          
-          const label = location.country ?
-            `${location.city}, ${location.country}` :
-            `${location.city}`;
-          
-          console.log('DEBUG: About to call _t for selectedLocation in loadLocationFromLocalStorage');
-          document.getElementById("selected-city").textContent = `${_t('selectedLocation')}: ${label}`;
-          return true;
-        }
-      } catch (e) {
-        console.error("Error parsing saved location:", e);
-        console.log('DEBUG: Error occurred in loadLocationFromLocalStorage, current language:', document.documentElement.lang);
-      }
-    }
-    return false;
   }
 
   let selectedPlace = null; // last place picked from the suggestions
@@ -172,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById("selected-city").textContent = `${_t('selectedLocation')}: ${label}`;
       latitudeInput.value = place.latitude;
       longitudeInput.value = place.longitude;
-      saveLocationToLocalStorage(place.name, place.latitude, place.longitude, place.country);
+      saveLocationToLocalStorage(place.name, place.latitude, place.longitude, place.country, place.countryCode);
       loadDataButton.click();
     }
   });
@@ -201,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (city) {
               cityInput.value = city;
               document.getElementById("selected-city").textContent = `${_t('selectedLocation')}: ${city}, ${country}`;
-              saveLocationToLocalStorage(city, latitude, longitude, country);
+              saveLocationToLocalStorage(city, latitude, longitude, country, countryCode);
             } else {
               document.getElementById("selected-city").textContent = `${_t('selectedLocation')}: Coordinates (${latitude}, ${longitude})`;
               saveLocationToLocalStorage("", latitude, longitude, "");
@@ -368,6 +357,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const holidayDates = new Set(holidays.map(h => new Date(h.date.iso).toISOString().slice(0, 10)));
 
     let currentDate = new Date(startDate);
+    const now = new Date();
+    const todayISO = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate())).toISOString().slice(0, 10);
     const calendarTable = document.createElement('table');
     calendarTable.classList.add('calendar-table');
 
@@ -432,6 +423,10 @@ document.addEventListener('DOMContentLoaded', function() {
       calendarCell.textContent = currentDate.getUTCDate();
 
       const currentISODate = currentDate.toISOString().slice(0, 10);
+      if (currentISODate === todayISO) {
+        calendarCell.classList.add('today');
+        calendarCell.setAttribute('aria-label', `${_t('today')}, ${currentISODate}`);
+      }
       const isHoliday = holidayDates.has(currentISODate);
 
       // Check if the current date is a weekend (Saturday or Sunday)
@@ -477,6 +472,42 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     calendarDiv.appendChild(calendarTable);
+    calendarDiv.appendChild(createHolidayList(holidays));
+  }
+
+  // All holidays of the period at a glance (the calendar shows details on tap)
+  function createHolidayList(holidays) {
+    const section = document.createElement('div');
+    section.className = 'holiday-list';
+    const title = document.createElement('h3');
+    title.textContent = _t('holidaysInPeriod');
+    section.appendChild(title);
+
+    if (holidays.length === 0) {
+      const empty = document.createElement('p');
+      empty.textContent = _t('noHolidaysInPeriod');
+      section.appendChild(empty);
+      return section;
+    }
+
+    const locales = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES' };
+    const dateFormat = new Intl.DateTimeFormat(locales[document.documentElement.lang] || 'en-GB', { weekday: 'short', day: 'numeric', month: 'long', timeZone: 'UTC' });
+    const list = document.createElement('ul');
+    [...holidays].sort((a, b) => a.date.iso.localeCompare(b.date.iso)).forEach(holiday => {
+      const item = document.createElement('li');
+      if (holiday.primary_type === 'National holiday') item.classList.add('official');
+      const date = document.createElement('span');
+      date.className = 'holiday-date';
+      date.textContent = dateFormat.format(new Date(holiday.date.iso + 'T00:00:00Z'));
+      const name = document.createElement('span');
+      name.className = 'holiday-name';
+      name.textContent = holidayTitle(holiday);
+      item.append(date, name);
+      item.addEventListener('click', () => displayHolidayDetails(holiday));
+      list.appendChild(item);
+    });
+    section.appendChild(list);
+    return section;
   }
 
   // Nager.Date has only English and local-language names: show the local
@@ -511,21 +542,18 @@ document.addEventListener('DOMContentLoaded', function() {
   fromDateInput.value = new Date(Date.UTC(currentYear, currentMonth, 1)).toISOString().slice(0, 10);
   toDateInput.value = new Date(Date.UTC(currentYear, currentMonth + 1, 0)).toISOString().slice(0, 10);
 
-  // Load last location if available
+  // Open with the holidays of the last location, or Sofia on a first visit.
+  // A known country code skips the reverse lookup when loading.
   setTimeout(() => {
-    if (typeof _t === 'function') {
-      const locationLoaded = loadLocationFromLocalStorage();
-      if (locationLoaded) {
-        loadDataButton.click();
-      }
-    } else {
-      console.warn("Translation function not available yet, delaying location load");
-      setTimeout(() => {
-        const locationLoaded = loadLocationFromLocalStorage();
-        if (locationLoaded) {
-          loadDataButton.click();
-        }
-      }, 500);
+    const place = CitySearch.startPlace();
+    selectedPlace = place.name ? place : null;
+    cityInput.value = place.name;
+    latitudeInput.value = place.latitude;
+    longitudeInput.value = place.longitude;
+    if (place.name) {
+      document.getElementById("selected-city").textContent =
+        `${_t('selectedLocation')}: ${place.country ? `${place.name}, ${place.country}` : place.name}`;
     }
-  }, 500);
+    loadDataButton.click();
+  }, 300);
 });

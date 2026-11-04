@@ -1,39 +1,13 @@
-// Function to save location to localStorage
-function saveLocationToLocalStorage(city, latitude, longitude, country) {
+// Function to save location to localStorage (read back by CitySearch.startPlace)
+function saveLocationToLocalStorage(city, latitude, longitude, country, countryCode) {
   const locationData = {
     city: city,
     latitude: latitude,
     longitude: longitude,
-    country: country
+    country: country,
+    countryCode: countryCode || ''
   };
   localStorage.setItem('lastLocation', JSON.stringify(locationData));
-}
-
-// Function to load location from localStorage
-function loadLocationFromLocalStorage() {
-  const locationData = localStorage.getItem('lastLocation');
-  if (locationData) {
-    try {
-      const location = JSON.parse(locationData);
-      if (location.city && location.latitude && location.longitude) {
-        document.getElementById("city").value = location.city;
-        document.getElementById("latitude").value = location.latitude;
-        document.getElementById("longitude").value = location.longitude;
-        updateMap(location.latitude, location.longitude);
-        
-        const label = location.country ?
-          `${location.city}, ${location.country}` :
-          `${location.city}`;
-        
-        // We'll update the selected-city text after the language is loaded
-        // This will be handled when the loadData button is clicked
-        return true;
-      }
-    } catch (e) {
-      console.error("Error parsing saved location:", e);
-    }
-  }
-  return false;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -54,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("selected-city").textContent = `${_t('selectedLocation')}: ${label}`;
         document.getElementById("latitude").value = place.latitude;
         document.getElementById("longitude").value = place.longitude;
-        saveLocationToLocalStorage(place.name, place.latitude, place.longitude, place.country);
+        saveLocationToLocalStorage(place.name, place.latitude, place.longitude, place.country, place.countryCode);
         document.getElementById("loadData").click();
       }
     });
@@ -112,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById("selected-city").textContent = `${_t('selectedLocation')}: ${place.name}, ${place.country}`;
             
             // Save location to localStorage
-            saveLocationToLocalStorage(place.name, lat, lon, place.country);
+            saveLocationToLocalStorage(place.name, lat, lon, place.country, place.countryCode);
             
             //document.getElementById("loadData").click();
           }
@@ -126,25 +100,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Clear location functionality removed as requested
     
-    // Load last location if available - we'll do this after a delay to ensure language is loaded
+    // Show the forecast right away: the last location, or Sofia on a first visit.
+    // The short delay lets the other page scripts attach their handlers first.
     setTimeout(() => {
-      // Make sure language is loaded first
-      if (typeof _t === 'function') {
-        const locationLoaded = loadLocationFromLocalStorage();
-        if (locationLoaded) {
-          // Trigger the loadData button click to load the weather data
-          document.getElementById("loadData").click();
-        }
-      } else {
-        console.warn("Translation function not available yet, delaying location load");
-        // Try again after another delay
-        setTimeout(() => {
-          const locationLoaded = loadLocationFromLocalStorage();
-          if (locationLoaded) {
-            document.getElementById("loadData").click();
-          }
-        }, 500);
+      const place = CitySearch.startPlace();
+      selectedPlace = place.name ? place : null;
+      cityInput.value = place.name;
+      document.getElementById("latitude").value = place.latitude;
+      document.getElementById("longitude").value = place.longitude;
+      if (place.name) {
+        document.getElementById("selected-city").textContent =
+          `${_t('selectedLocation')}: ${place.country ? `${place.name}, ${place.country}` : place.name}`;
       }
-    }, 500); // Small delay to ensure all components are loaded
+      const loadButton = document.getElementById("loadData");
+      loadButton.dataset.autoload = "true"; // no scrolling to the table
+      loadButton.click();
+    }, 300);
   }
 });

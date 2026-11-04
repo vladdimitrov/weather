@@ -268,19 +268,8 @@
       });
     }
 
-    if (navigator.geolocation) {
-      navigator.permissions.query({ name: 'geolocation' }).then(result => {
-        if (result.state === 'granted') {
-          console.log("Location services are granted.");
-        } else if (result.state === 'prompt') {
-          alert(pickText({ en: "Please enable location services to use this feature.", bg: "Моля, включете услугите за местоположение, за да използвате тази функция.", de: "Bitte aktivieren Sie die Standortdienste, um diese Funktion zu nutzen.", it: "Attiva i servizi di localizzazione per usare questa funzione.", es: "Activa los servicios de ubicación para usar esta función." }));
-        } else if (result.state === 'denied') {
-          alert(pickText({ en: "Location services are blocked. Please enable them in your browser settings.", bg: "Достъпът до местоположението е блокиран. Моля, разрешете го в настройките на браузъра.", de: "Standortdienste sind blockiert. Bitte aktivieren Sie sie in den Browsereinstellungen.", it: "I servizi di localizzazione sono bloccati. Attivali nelle impostazioni del browser.", es: "Los servicios de ubicación están bloqueados. Actívalos en la configuración del navegador." }));
-        }
-      });
-    } else {
-      alert(pickText({ en: "Your browser does not support geolocation", bg: "Вашият браузър не поддържа геолокация", de: "Ihr Browser unterstützt keine Geolokalisierung", it: "Il tuo browser non supporta la geolocalizzazione", es: "Tu navegador no admite la geolocalización" }));
-    }
+    // No location check on page load: visitors are only asked when they press
+    // "Use the current location", which shows its own error if it fails.
   });
   //updateSelectedCity("", "", null, null);
 
@@ -292,10 +281,10 @@
   // and triggers the loadData button click
 </script>
 
-<script src="/js/mobile-nav.js?v=1"></script>
+<script src="/js/mobile-nav.js?v=2"></script>
 <script src="/js/language-selector.js?v=2"></script>
-<script src="/js/city-search.js?v=1"></script>
-<script src="map-autocomplete.js?v=3"></script>
+<script src="/js/city-search.js?v=2"></script>
+<script src="map-autocomplete.js?v=4"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -494,12 +483,12 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
       
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
-      © 2025 VYZYA
+      © <span class="current-year">2026</span> VYZYA
     </p>
 
   </footer>
 
-<script src="language-switcher.js?v=3"></script>
+<script src="language-switcher.js?v=4"></script>
 <script src="/js/background-selector.js?v=1"></script>
 </body>
 </html>

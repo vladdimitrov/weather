@@ -46,7 +46,6 @@ const translations = {
     solarCalendar: "☀️ Solar Calendar",
     lunarCalendar: "🌙 Lunar Calendar",
     sources: "📚 Sources",
-    translationDate: "Last updated: May 2025",
     home: "Home",
     holidayCalendar: "Holiday Calendar",
     dataSources: "Data Sources",
@@ -101,7 +100,6 @@ const translations = {
     solarCalendar: "☀️ Слънчев календар",
     lunarCalendar: "🌙 Лунен календар",
     sources: "📚 Източници",
-    translationDate: "Последно обновяване: Май 2025",
     home: "Начало",
     holidayCalendar: "Календар на празниците",
     dataSources: "Източници на данни",
@@ -156,7 +154,6 @@ const translations = {
     solarCalendar: "☀️ Sonnenkalender",
     lunarCalendar: "🌙 Mondkalender",
     sources: "📚 Quellen",
-    translationDate: "Zuletzt aktualisiert: Mai 2025",
     home: "Startseite",
     holidayCalendar: "Feiertagskalender",
     dataSources: "Datenquellen",
@@ -211,7 +208,6 @@ const translations = {
     solarCalendar: "☀️ Calendario solar",
     lunarCalendar: "🌙 Calendario lunar",
     sources: "📚 Fuentes",
-    translationDate: "Última actualización: Mayo 2025",
     home: "Inicio",
     holidayCalendar: "Calendario de fiestas",
     dataSources: "Fuentes de datos",
@@ -265,7 +261,6 @@ const translations = {
     solarCalendar: "☀️ Calendario solare",
     lunarCalendar: "🌙 Calendario lunare",
     sources: "📚 Fonti",
-    translationDate: "Ultimo aggiornamento: Maggio 2025",
     home: "Home",
     holidayCalendar: "Calendario delle festività",
     dataSources: "Fonti di dati",
@@ -462,8 +457,6 @@ function updateContent(language) {
   if (weatherMapsLink) {
     weatherMapsLink.textContent = translations[language].weatherMaps;
   }
-  // Update translation date
-  document.getElementById('translation-date').textContent = translations[language].translationDate;
 
   // Change the link to the appropriate language version
   document.documentElement.lang = language;
@@ -546,14 +539,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Create and insert the translation date element
-const translationDateElement = document.createElement('div');
-translationDateElement.id = 'translation-date';
-translationDateElement.style.fontSize = '0.8em';
-translationDateElement.style.textAlign = 'center';
-translationDateElement.style.marginTop = '10px';
-translationDateElement.style.color = 'rgba(255, 215, 0, 0.7)';
-document.body.appendChild(translationDateElement);
 
 // Theme toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
