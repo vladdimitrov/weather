@@ -58,7 +58,14 @@
         }
         document.body.style.background = style;
       }
-      applyBackgroundImmediately(savedBackground);
+      // The script runs in <head>, before <body> exists - wait for it
+      if (document.body) {
+        applyBackgroundImmediately(savedBackground);
+      } else {
+        document.addEventListener('DOMContentLoaded', function () {
+          applyBackgroundImmediately(savedBackground);
+        });
+      }
     })();
   </script>
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
