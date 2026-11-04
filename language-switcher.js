@@ -1,7 +1,6 @@
-console.log('DEBUG: Language switcher script loaded');
-
+// Translations for elements with data-translation-key (home and holiday pages).
+// The dropdown itself comes from /js/language-selector.js.
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DEBUG: DOMContentLoaded fired in language switcher script');
   // Define translations for all UI elements
   const translations = {
     en: {
@@ -452,84 +451,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
-  function _t(key) {
-    const language = document.documentElement.lang || 'en';
-    return translations[language][key] || key;
-  }
+  const bgLabelTranslations = {
+    en: "Background:",
+    bg: "Фон:",
+    de: "Hintergrund:",
+    it: "Sfondo:",
+    es: "Fondo:"
+  };
 
   function updateContent(language) {
+    const pageTranslations = translations[language] || translations.en;
     document.querySelectorAll('[data-translation-key]').forEach(element => {
-      const key = element.dataset.translationKey;
-      element.textContent = translations[language][key] || key;
-    });
-  }
-
-  // Function to create and append the language selector
-  function createLanguageSelector() {
-    const selectorsContainer = document.getElementById('selectors-container');
-    if (!selectorsContainer) {
-      console.error('Selectors container not found!');
-      return;
-    }
-
-    const languageGroup = document.createElement('div');
-    languageGroup.className = 'form-group language';
-
-    const languageLabel = document.createElement('label');
-    languageLabel.setAttribute('for', 'language');
-    languageLabel.id = 'languageLabel';
-    languageLabel.textContent = 'Language:'; // Default text, will be updated by translation
-
-    const languageSelect = document.createElement('select');
-    languageSelect.id = 'language';
-
-    const languages = [
-      { value: 'en', label: 'English' },
-      { value: 'bg', label: 'Български' },
-      { value: 'de', label: 'Deutsch' },
-      { value: 'it', label: 'Italiano' },
-      { value: 'es', label: 'Español' }
-    ];
-
-    languages.forEach(lang => {
-      const option = document.createElement('option');
-      option.value = lang.value;
-      option.textContent = lang.label;
-      languageSelect.appendChild(option);
-    });
-
-    languageGroup.appendChild(languageLabel);
-    languageGroup.appendChild(languageSelect);
-    selectorsContainer.appendChild(languageGroup);
-
-    // Add event listener for language change
-    languageSelect.addEventListener('change', (event) => {
-      const selectedLanguage = event.target.value;
-      localStorage.setItem('selectedLanguage', selectedLanguage);
-      document.documentElement.lang = selectedLanguage;
-      updateContent(selectedLanguage);
-      // Update background label if background-selector.js is present
-      const backgroundLabel = document.getElementById('backgroundLabel');
-      if (backgroundLabel) {
-        const bgLabelTranslations = {
-          en: "Background:",
-          bg: "Фон:",
-          de: "Hintergrund:",
-          it: "Sfondo:",
-          es: "Fondo:"
-        };
-        backgroundLabel.textContent = bgLabelTranslations[selectedLanguage] || "Background:";
+      // Keys missing here are translated by the page itself (e.g. the home page hero)
+      const text = pageTranslations[element.dataset.translationKey];
+      if (typeof text === 'string') {
+        element.textContent = text;
       }
     });
-
-    // Set initial language based on saved preference or default to English
-    // This is now handled by an inline script in the HTML to prevent flicker
-    // const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
-    // languageSelect.value = savedLanguage;
-    // document.documentElement.lang = savedLanguage;
-    // updateContent(savedLanguage);
+    // Update background label if background-selector.js is present
+    const backgroundLabel = document.getElementById('backgroundLabel');
+    if (backgroundLabel) {
+      backgroundLabel.textContent = bgLabelTranslations[language] || bgLabelTranslations.en;
+    }
   }
 
-  // Call the function to create the language selector when the DOM is loaded
-  createLanguageSelector();
+  const languageSelect = document.getElementById('language');
+  if (languageSelect) {
+    languageSelect.addEventListener('change', (event) => updateContent(event.target.value));
+  }
+  updateContent(document.documentElement.lang || 'en');
 });
