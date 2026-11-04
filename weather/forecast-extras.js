@@ -191,8 +191,32 @@ window.ForecastExtras = (function () {
       `<span class="legend-rain"></span>${pickText(T.chartRainChance)}</div>`;
   }
 
+  // ---- Local time of the selected place, kept current ----
+  let clockZone = null;
+  let clockTimer = null;
+
+  function renderClock() {
+    const element = document.getElementById('local-time');
+    if (!element || !clockZone) return;
+    let text;
+    try {
+      text = new Date().toLocaleString(locale(), { timeZone: clockZone, weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+    } catch (e) {
+      return; // unknown time zone
+    }
+    element.textContent = `${_t('localTime')}: ${text}`;
+  }
+
+  function startLocalClock(timeZone) {
+    clockZone = timeZone;
+    renderClock();
+    clearInterval(clockTimer);
+    clockTimer = setInterval(renderClock, 30000);
+  }
+
   // Re-render the texts when the language changes
   function onLanguageChange() {
+    renderClock();
     renderKpForecast();
     renderHourlyChart();
   }
@@ -203,5 +227,5 @@ window.ForecastExtras = (function () {
     if (languageSelect) languageSelect.addEventListener('change', onLanguageChange);
   });
 
-  return { sunMoonCell, dayWarnings, renderHourlyChart };
+  return { sunMoonCell, dayWarnings, renderHourlyChart, startLocalClock };
 })();
