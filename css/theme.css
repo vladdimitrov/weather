@@ -381,3 +381,146 @@ h1,
   display: block;
   margin: 14px auto 0;
 }
+
+/* Weather: how certain the forecast is (forecast-precision.js) */
+.reliability {
+  margin-top: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.reliability.rel-high { color: #2ecc71; }
+.reliability.rel-medium { color: #f1c40f; }
+.reliability.rel-low { color: #ff8a65; }
+.reliability.rel-rough { color: rgba(255, 255, 255, 0.65); }
+
+.temp-range,
+.rain-chance {
+  margin-top: 2px;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.model-compare {
+  max-width: 760px;
+  margin: 12px auto;
+  padding: 10px 14px;
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  background: var(--panel);
+  color: #ffffff;
+}
+
+.model-compare summary,
+.kp-outlook summary {
+  cursor: pointer;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.model-compare table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.model-compare th,
+.model-compare td {
+  padding: 6px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+  color: #ffffff;
+}
+
+.model-compare th small {
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.model-note,
+.outlook-note {
+  margin: 8px 0 0;
+  font-size: 0.82rem;
+  opacity: 0.8;
+}
+
+/* Weather: solar wind now and 27-day outlook (space-weather.js) */
+.space-weather {
+  max-width: 760px;
+  margin: 12px auto;
+  padding: 12px 16px;
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  background: var(--panel);
+  color: #ffffff;
+  text-align: center;
+}
+
+.space-weather[hidden] {
+  display: none;
+}
+
+.solar-wind h3 {
+  margin: 0 0 6px;
+  color: var(--gold);
+  font-size: 1.05rem;
+}
+
+.solar-wind-values {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+}
+
+.solar-wind-status {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.solar-wind-status.wind-calm { background: rgba(46, 204, 113, 0.2); color: #7dffb0; }
+.solar-wind-status.wind-watch { background: rgba(241, 196, 15, 0.2); color: #ffe066; }
+.solar-wind-status.wind-storm { background: #c0392b; color: #ffffff; }
+
+.kp-outlook {
+  margin-top: 12px;
+  text-align: left;
+}
+
+.outlook-days {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.outlook-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30px;
+  padding: 3px 0;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+.outlook-day .outlook-kp { font-weight: 700; font-size: 0.9rem; }
+.outlook-day .outlook-date { opacity: 0.8; }
+.outlook-day.kp-calm { background: rgba(46, 204, 113, 0.35); }
+.outlook-day.kp-active { background: rgba(241, 196, 15, 0.55); color: #162447; }
+.outlook-day.kp-storm { background: #c0392b; }
+
+/* Weather: aurora chance under the 3-day Kp forecast */
+.aurora-chance {
+  margin-top: 10px;
+  font-size: 0.88rem;
+  opacity: 0.9;
+}
