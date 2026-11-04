@@ -354,3 +354,30 @@ h1,
     font-size: 16px;
   }
 }
+
+/* No connection: the service worker shows the last saved data */
+.offline-notice {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--footer-height, 40px) + 12px);
+  transform: translateX(-50%);
+  max-width: calc(100% - 32px);
+  padding: 8px 16px;
+  border-radius: 10px;
+  background: #b03a2e;
+  color: #ffffff;
+  font-family: var(--font-text);
+  font-size: 0.9rem;
+  text-align: center;
+  z-index: 10001;
+}
+
+.offline-notice[hidden] {
+  display: none;
+}
+
+/* Holidays: "Add to calendar" under the list */
+.holiday-ics {
+  display: block;
+  margin: 14px auto 0;
+}

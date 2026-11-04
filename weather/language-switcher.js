@@ -469,16 +469,7 @@ function updateContent(language) {
     weatherMapsLink.textContent = translations[language].weatherMaps;
   }
 
-  // Change the link to the appropriate language version
   document.documentElement.lang = language;
-  // Avoid using pushState when running from file://
-  if (window.location.protocol !== "file:") {
-    let newUrl = 'index.html';
-    if (language === 'de') {
-      newUrl = 'index.html';
-    }
-    window.history.pushState({lang: language}, 'Weather', newUrl);
-  }
 }
 
 // Load saved language or default to English

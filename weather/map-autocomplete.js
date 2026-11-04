@@ -100,10 +100,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Clear location functionality removed as requested
     
-    // Show the forecast right away: the last location, or Sofia on a first visit.
+    // Show the forecast right away: the place in the address (?city=...), the last location, or Sofia.
     // The short delay lets the other page scripts attach their handlers first.
-    setTimeout(() => {
-      const place = CitySearch.startPlace();
+    setTimeout(async () => {
+      const place = await CitySearch.openingPlace();
       selectedPlace = place.name ? place : null;
       cityInput.value = place.name;
       document.getElementById("latitude").value = place.latitude;

@@ -161,13 +161,40 @@
       if (items[index]) items[index].scrollIntoView({ block: 'nearest' });
     }
 
-    function select(index) {
-      const place = places[index];
-      if (!place) return;
+    function pick(place) {
       input.value = place.name;
       hide();
+      rememberPlace(place);
+      setUrlPlace(place);
+      renderRecent();
       if (onSelect) onSelect(place);
     }
+
+    function select(index) {
+      if (places[index]) pick(places[index]);
+    }
+
+    // Recently picked places as one-tap buttons under the field
+    const recent = document.createElement('div');
+    recent.className = 'recent-places';
+    input.insertAdjacentElement('afterend', recent);
+
+    function renderRecent() {
+      const current = `${input.value}`.trim();
+      const saved = recentPlaces().filter(place => place.name !== current);
+      recent.replaceChildren(...saved.map(place => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'recent-place';
+        button.textContent = place.name;
+        button.title = place.country ? `${place.name}, ${place.country}` : place.name;
+        button.addEventListener('click', () => pick(place));
+        return button;
+      }));
+      recent.hidden = saved.length === 0;
+    }
+    // After the page has filled in its start place
+    setTimeout(renderRecent, 600);
 
     function render(found) {
       const origin = getOrigin ? getOrigin() : null;
@@ -280,6 +307,71 @@
       Math.abs(place.longitude - parseFloat(longitude)) < 1e-6;
   }
 
+  // ---- Recently picked places (shared by all pages through localStorage) ----
+  const RECENT_KEY = 'recentPlaces';
+  const RECENT_MAX = 5;
+
+  function recentPlaces() {
+    try {
+      const list = JSON.parse(localStorage.getItem(RECENT_KEY));
+      return Array.isArray(list) ? list : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function rememberPlace(place) {
+    const same = other => Math.abs(other.latitude - place.latitude) < 0.01 && Math.abs(other.longitude - place.longitude) < 0.01;
+    const entry = {
+      name: place.name,
+      country: place.country || '',
+      countryCode: place.countryCode || '',
+      latitude: place.latitude,
+      longitude: place.longitude
+    };
+    const list = [entry, ...recentPlaces().filter(other => !same(other))].slice(0, RECENT_MAX);
+    try { localStorage.setItem(RECENT_KEY, JSON.stringify(list)); } catch (e) { /* storage blocked */ }
+  }
+
+  // ---- Links to a place: ?city=Пловдив, optionally with &lat=..&lon=.. ----
+  // The page address follows the picked place, so it can be shared or bookmarked
+  function setUrlPlace(place) {
+    if (!place || !place.name) return;
+    const url = new URL(location.href);
+    url.search = '';
+    url.searchParams.set('city', place.name);
+    url.searchParams.set('lat', Number(place.latitude).toFixed(4));
+    url.searchParams.set('lon', Number(place.longitude).toFixed(4));
+    if (place.countryCode) url.searchParams.set('cc', place.countryCode);
+    history.replaceState(history.state, '', url);
+  }
+
+  // The place given in the page address, or null
+  async function placeFromUrl() {
+    const params = new URLSearchParams(location.search);
+    const name = (params.get('city') || '').trim();
+    const latitude = parseFloat(params.get('lat'));
+    const longitude = parseFloat(params.get('lon'));
+    if (isFinite(latitude) && isFinite(longitude)) {
+      return { name, country: '', countryCode: (params.get('cc') || '').toUpperCase(), latitude, longitude };
+    }
+    if (!name) return null;
+    try {
+      const [place] = await search(name, { count: 1 });
+      return place || null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  // Where a page opens: a place in the address first, then the last picked
+  // place, then Sofia. The address is updated to match.
+  async function openingPlace() {
+    const place = (await placeFromUrl()) || startPlace();
+    setUrlPlace(place);
+    return place;
+  }
+
   const defaultNames = {
     en: ['Sofia', 'Bulgaria'],
     bg: ['София', 'България'],
@@ -306,6 +398,14 @@
     const [name, country] = defaultNames[currentLanguage()] || defaultNames.en;
     return { name, country, countryCode: 'BG', latitude: 42.6977, longitude: 23.3219 };
   }
+
+  const shareTexts = {
+    en: ['🔗 Share', '✓ Link copied'],
+    bg: ['🔗 Сподели', '✓ Линкът е копиран'],
+    de: ['🔗 Teilen', '✓ Link kopiert'],
+    it: ['🔗 Condividi', '✓ Link copiato'],
+    es: ['🔗 Compartir', '✓ Enlace copiado']
+  };
 
   const coordinatesToggleText = {
     en: ['📐 Enter coordinates', '📐 Hide coordinates'],
@@ -344,6 +444,25 @@
         opacity: 0.85;
       }
       .coords-toggle:hover { opacity: 1; }
+      .coords-toggle + .coords-toggle { margin-left: 14px; }
+      .recent-places {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+      }
+      .recent-places[hidden] { display: none; }
+      .recent-place {
+        padding: 4px 12px;
+        border: 1px solid rgba(255, 215, 0, 0.45);
+        border-radius: 14px;
+        background: rgba(22, 36, 71, 0.6);
+        color: #FFD700;
+        font-family: inherit;
+        font-size: 0.85em;
+        cursor: pointer;
+      }
+      .recent-place:hover { background: rgba(255, 215, 0, 0.2); }
     `;
     document.head.appendChild(style);
 
@@ -366,8 +485,36 @@
       form.classList.toggle('coords-hidden');
       updateText();
     });
+
+    // Share the page address (it follows the picked place, see setUrlPlace)
+    const share = document.createElement('button');
+    share.type = 'button';
+    share.className = 'coords-toggle';
+    cityGroup.appendChild(share);
+    const shareText = () => {
+      share.textContent = (shareTexts[currentLanguage()] || shareTexts.en)[0];
+    };
+    shareText();
+    share.addEventListener('click', async () => {
+      const url = location.href;
+      if (navigator.share) {
+        try { await navigator.share({ title: document.title, url }); } catch (e) { /* cancelled */ }
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(url);
+        share.textContent = (shareTexts[currentLanguage()] || shareTexts.en)[1];
+        setTimeout(shareText, 2000);
+      } catch (e) {
+        window.prompt('', url);
+      }
+    });
+
     const languageSelect = document.getElementById('language');
-    if (languageSelect) languageSelect.addEventListener('change', updateText);
+    if (languageSelect) {
+      languageSelect.addEventListener('change', updateText);
+      languageSelect.addEventListener('change', shareText);
+    }
   }
 
   if (document.readyState === 'loading') {
@@ -376,5 +523,5 @@
     addCoordinatesToggle();
   }
 
-  window.CitySearch = { search, attach, isAt, startPlace };
+  window.CitySearch = { search, attach, isAt, startPlace, openingPlace, setUrlPlace };
 })();
