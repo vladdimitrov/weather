@@ -195,11 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       } catch (err) {
         // Use translations for error messages
-        const errorMessage = document.getElementById("language").value === "bg" ?
-          "Грешка при търсене на град:" :
-          document.getElementById("language").value === "de" ?
-          "Fehler bei der Stadtsuche:" :
-          "Error searching for city:";
+        const errorMessage = pickText({ en: "Error searching for city:", bg: "Грешка при търсене на град:", de: "Fehler bei der Stadtsuche:", it: "Errore nella ricerca della città:", es: "Error al buscar la ciudad:" });
         console.error(errorMessage, err);
       }
     });
@@ -311,11 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if ((!query || query.length === 0) && ((!latitude || latitude.length === 0) || (!longitude || longitude.length === 0))) {
           // Use translations for alert messages
-          const alertMessage = document.getElementById("language").value === "bg" ?
-            "Моля, въведете град или географска ширина и дължина." :
-            document.getElementById("language").value === "de" ?
-            "Bitte geben Sie eine Stadt oder Breiten- und Längengrad ein." :
-            "Please enter a city or latitude and longitude.";
+          const alertMessage = pickText({ en: "Please enter a city or latitude and longitude.", bg: "Моля, въведете град или географска ширина и дължина.", de: "Bitte geben Sie eine Stadt oder Breiten- und Längengrad ein.", it: "Inserisci una città oppure latitudine e longitudine.", es: "Introduce una ciudad o la latitud y la longitud." });
           alert(alertMessage);
           return;
         }
@@ -332,22 +324,14 @@ document.addEventListener('DOMContentLoaded', function() {
               document.getElementById("selected-city").textContent = `${_t('selectedLocation')}: ${city}, ${data.address.country}`;
             } else {
               // Use translations for coordinates text
-              const coordsText = document.getElementById("language").value === "bg" ?
-                "Координати" :
-                document.getElementById("language").value === "de" ?
-                "Koordinaten" :
-                "Coordinates";
+              const coordsText = pickText({ en: "Coordinates", bg: "Координати", de: "Koordinaten", it: "Coordinate", es: "Coordenadas" });
               document.getElementById("selected-city").textContent = `${coordsText} (${latitude}, ${longitude})`;
             }
             //document.getElementById("loadData").click();
           } catch (err) {
             console.error("Error getting weather data:", err);
             // Use translations for error messages
-            const errorMessage = document.getElementById("language").value === "bg" ?
-              "Грешка при получаване на данни за времето. Моля, опитайте отново по-късно." :
-              document.getElementById("language").value === "de" ?
-              "Fehler beim Abrufen von Wetterdaten. Bitte versuchen Sie es später erneut." :
-              "Error getting weather data. Please try again later.";
+            const errorMessage = pickText({ en: "Error getting weather data. Please try again later.", bg: "Грешка при получаване на данни за времето. Моля, опитайте отново по-късно.", de: "Fehler beim Abrufen von Wetterdaten. Bitte versuchen Sie es später erneut.", it: "Errore nel recupero dei dati meteo. Riprova più tardi.", es: "Error al obtener los datos del tiempo. Inténtalo de nuevo más tarde." });
             alert(errorMessage);
           }
           return;
@@ -377,11 +361,7 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         } catch (err) {
           // Use translations for error messages
-          const errorMessage = document.getElementById("language").value === "bg" ?
-            "Грешка при избор на град:" :
-            document.getElementById("language").value === "de" ?
-            "Fehler bei der Stadtauswahl:" :
-            "Error selecting city:";
+          const errorMessage = pickText({ en: "Error selecting city:", bg: "Грешка при избор на град:", de: "Fehler bei der Stadtauswahl:", it: "Errore nella selezione della città:", es: "Error al seleccionar la ciudad:" });
           console.error(errorMessage, err);
         }
       });

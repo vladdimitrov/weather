@@ -253,7 +253,7 @@
       </div>
     </div>
     <div class="footer-attribution">
-      Weather data visualization powered by <a href="https://www.windy.com" target="_blank">Windy.com</a>
+      <span id="poweredByText">Weather data visualization powered by</span> <a href="https://www.windy.com" target="_blank">Windy.com</a>
   </div>
   
     </div>
@@ -361,7 +361,7 @@
     // Update current layer display
     const layerSelect = document.getElementById('weatherLayer');
     const selectedOption = layerSelect.options[layerSelect.selectedIndex];
-    document.getElementById('current-layer').textContent = `Layer: ${selectedOption.text}`;
+    document.getElementById('current-layer').textContent = `${_t('currentLayer')}: ${selectedOption.text}`;
   }
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -501,7 +501,7 @@
           },
           (error) => {
             console.error("Error getting location:", error);
-            alert("Failed to get location");
+            alert(pickText({ en: "Failed to get location", bg: "Неуспешно определяне на местоположението", de: "Standort konnte nicht ermittelt werden", it: "Impossibile ottenere la posizione", es: "No se pudo obtener la ubicación" }));
           }
         );
       });
@@ -537,15 +537,15 @@
               const selectedLocationText = _t ? _t('selectedLocation') : 'Selected location';
               document.getElementById("selected-city").textContent = `${selectedLocationText}: ${result.name}, ${result.country}`;
             } else {
-              alert("City not found");
+              alert(pickText({ en: "City not found", bg: "Градът не е намерен", de: "Stadt nicht gefunden", it: "Città non trovata", es: "Ciudad no encontrada" }));
             }
           })
           .catch(error => {
             console.error("Geocoding error:", error);
-            alert("Error finding city");
+            alert(pickText({ en: "Error finding city", bg: "Грешка при търсене на града", de: "Fehler bei der Stadtsuche", it: "Errore nella ricerca della città", es: "Error al buscar la ciudad" }));
           });
         } else {
-          alert("Please enter a city or coordinates");
+          alert(pickText({ en: "Please enter a city or coordinates", bg: "Моля, въведете град или координати", de: "Bitte geben Sie eine Stadt oder Koordinaten ein", it: "Inserisci una città o le coordinate", es: "Introduce una ciudad o coordenadas" }));
         }
       });
     }
@@ -556,7 +556,7 @@
       layerSelect.addEventListener("change", () => {
         // Update the current layer display without refreshing the map
         const selectedOption = layerSelect.options[layerSelect.selectedIndex];
-        document.getElementById('current-layer').textContent = `Layer: ${selectedOption.text}`;
+        document.getElementById('current-layer').textContent = `${_t('currentLayer')}: ${selectedOption.text}`;
       });
     }
 
@@ -578,11 +578,11 @@
 
 <!-- Load JavaScript files -->
 <script src="/js/mobile-nav.js?v=1"></script>
-<script src="/js/language-selector.js?v=1"></script>
-<script src="js/language-switcher.js?v=2"></script>
+<script src="/js/language-selector.js?v=2"></script>
+<script src="js/language-switcher.js?v=3"></script>
 <script src="/js/background-selector.js?v=1"></script>
-<script src="js/map-autocomplete.js"></script>
-<script src="js/favorites-manager.js"></script>
+<script src="js/map-autocomplete.js?v=2"></script>
+<script src="js/favorites-manager.js?v=2"></script>
 
 </body>
 </html>

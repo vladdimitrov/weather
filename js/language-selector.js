@@ -86,6 +86,12 @@
     });
   }
 
+  // Pick the text for the current language from { en, bg, de, it, es },
+  // falling back to English. Used by page scripts for short messages.
+  window.pickText = function (texts) {
+    return texts[document.documentElement.lang] || texts.en;
+  };
+
   if (document.body) {
     createLanguageSelector();
   } else {

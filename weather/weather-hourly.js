@@ -21,7 +21,7 @@ function showHourlyForecast(date) {
     const tableTitle = document.querySelector("#hourlyTableBlock h2");
     if (tableTitle) {
       console.log("DEBUG: weather-hourly.js updating table title");
-      tableTitle.textContent = `Hourly forecast for ${dayName} ${date}`;
+      tableTitle.textContent = `${_t("hourlyForecastFor")} ${dayName} ${date}`;
     }
   }
   
@@ -65,20 +65,12 @@ function updateHourlyForecast(selectedDate) {
   console.log("City:", city, "Days:", days, "Hours:", hours);
   const tbody = document.querySelector("#hourlyTable tbody");
   // Use translations for loading message
-  const loadingMessage = document.getElementById("language").value === "bg" ?
-    "Зареждане..." :
-    document.getElementById("language").value === "de" ?
-    "Wird geladen..." :
-    "Loading...";
+  const loadingMessage = pickText({ en: "Loading...", bg: "Зареждане...", de: "Wird geladen...", it: "Caricamento...", es: "Cargando..." });
   tbody.innerHTML = `<tr><td colspan='6'>${loadingMessage}</td></tr>`;
 
   if ((!city && (!currentCoords.latitude || !currentCoords.longitude))) {
     // Use translations for error message
-    const errorMessage = document.getElementById("language").value === "bg" ?
-      "Моля, въведете град или активирайте местоположението." :
-      document.getElementById("language").value === "de" ?
-      "Bitte geben Sie eine Stadt ein oder aktivieren Sie den Standort." :
-      "Please enter a city or enable location.";
+    const errorMessage = pickText({ en: "Please enter a city or enable location.", bg: "Моля, въведете град или активирайте местоположението.", de: "Bitte geben Sie eine Stadt ein oder aktivieren Sie den Standort.", it: "Inserisci una città o attiva la posizione.", es: "Introduce una ciudad o activa la ubicación." });
     tbody.innerHTML = `<tr><td colspan='6'>${errorMessage}</td></tr>`;
     return;
   }
@@ -96,11 +88,7 @@ function updateHourlyForecast(selectedDate) {
         geoData = await geoRes.json();
         if (!geoData.results || geoData.results.length === 0) {
           // Use translations for error message
-          const errorMessage = document.getElementById("language").value === "bg" ?
-            "Градът не е намерен." :
-            document.getElementById("language").value === "de" ?
-            "Stadt nicht gefunden." :
-            "City not found.";
+          const errorMessage = pickText({ en: "City not found.", bg: "Градът не е намерен.", de: "Stadt nicht gefunden.", it: "Città non trovata.", es: "Ciudad no encontrada." });
           tbody.innerHTML = `<tr><td colspan='6'>${errorMessage}</td></tr>`;
           return;
         }
@@ -242,7 +230,7 @@ function updateHourlyForecast(selectedDate) {
             <td>${weatherIcon}</td>
             <td>${temperature}</td>
             <td>${cloudcover}</td>
-            <td>${precipitation} ${isThunderstorm(weatherCode) ? '<span style="font-size: 24px; margin-left: 5px;" title="Thunderstorm">⚡</span>' : ''}</td>
+            <td>${precipitation} ${isThunderstorm(weatherCode) ? `<span style="font-size: 24px; margin-left: 5px;" title="${_t('iconThunder')}">⚡</span>` : ''}</td>
             <td>${precipitationProbability}%${precipProbBar}</td>
             <td><span class="wind-value">${windspeed}</span></td>
           </tr>
@@ -258,7 +246,7 @@ function updateHourlyForecast(selectedDate) {
        const tableTitle = document.querySelector("#hourlyTableBlock h2");
        if (tableTitle) {
          console.log("DEBUG: weather-hourly.js updating table title after data load");
-         tableTitle.textContent = `Hourly forecast for ${dayName} ${firstDate}`;
+         tableTitle.textContent = `${_t("hourlyForecastFor")} ${dayName} ${firstDate}`;
        }
        
        // Check if headers are still translated after data load
@@ -269,21 +257,15 @@ function updateHourlyForecast(selectedDate) {
      }
      document.getElementById("location").textContent = `${city}, ${region}, ${country}`;
      // Get the current time in the specified timezone
-      const currentTime = new Date().toLocaleString("en-US", { timeZone: timezone });
-
-      // Extract the date and time components
-      const dateTimeParts = currentTime.split(", ");
-      const date = dateTimeParts[0];
-      const time = dateTimeParts[1];
-      document.getElementById("local-time").textContent = `Local Time: ${date} ${time}`;
+      const locales = { en: "en-GB", bg: "bg-BG", de: "de-DE", it: "it-IT", es: "es-ES" };
+      const currentTime = new Date().toLocaleString(locales[document.documentElement.lang] || "en-GB", {
+        timeZone: timezone, dateStyle: "short", timeStyle: "short"
+      });
+      document.getElementById("local-time").textContent = `${_t("localTime")}: ${currentTime}`;
     } catch (err) {
       console.error("Error:", err);
       // Use translations for error message
-      const errorMessage = document.getElementById("language").value === "bg" ?
-        "Грешка при зареждане на данните." :
-        document.getElementById("language").value === "de" ?
-        "Fehler beim Laden der Daten." :
-        "Error loading data.";
+      const errorMessage = pickText({ en: "Error loading data.", bg: "Грешка при зареждане на данните.", de: "Fehler beim Laden der Daten.", it: "Errore nel caricamento dei dati.", es: "Error al cargar los datos." });
       tbody.innerHTML = `<tr><td colspan='6'>${errorMessage}</td></tr>`;
     }
   })();
@@ -298,26 +280,26 @@ function getWeatherIcon(cloudcover, precipitation, temperature) {
   
   // Snow icon if there's precipitation and temperature is at or below 0°C
   if (precipitation > 0 && temperature <= 0) {
-    icons.push('<span style="font-size: 24px; margin: 0 3px;" title="Snow">❄️</span>');
+    icons.push(`<span style="font-size: 24px; margin: 0 3px;" title="${_t('iconSnow')}">❄️</span>`);
   }
   // Rain icon if there's precipitation and temperature is above 0°C
   else if (precipitation > 0 && temperature > 0) {
-    icons.push('<span style="font-size: 24px; margin: 0 3px;" title="Cloud with Rain">🌧️</span>');
+    icons.push(`<span style="font-size: 24px; margin: 0 3px;" title="${_t('iconRain')}">🌧️</span>`);
   }
   
   // Cloud icon if cloudiness is high
   if (cloudcover > 70) {
-    icons.push('<span style="font-size: 24px; margin: 0 3px;" title="Cloud">☁️</span>');
+    icons.push(`<span style="font-size: 24px; margin: 0 3px;" title="${_t('iconCloud')}">☁️</span>`);
   }
   
   // Partly cloudy icon if cloudiness is moderate
   if (cloudcover > 30 && cloudcover <= 70) {
-    icons.push('<span style="font-size: 24px; margin: 0 3px;" title="Sun with Cloud">⛅</span>');
+    icons.push(`<span style="font-size: 24px; margin: 0 3px;" title="${_t('iconSunCloud')}">⛅</span>`);
   }
   
   // Sun icon if cloudiness is low and no precipitation
   if (cloudcover <= 30 && precipitation === 0) {
-    icons.push('<span style="font-size: 24px; margin: 0 3px;" title="Sun">☀️</span>');
+    icons.push(`<span style="font-size: 24px; margin: 0 3px;" title="${_t('iconSun')}">☀️</span>`);
   }
   
   return icons.join(' ');

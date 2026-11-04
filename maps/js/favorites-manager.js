@@ -53,7 +53,7 @@ class FavoritesManager {
       localStorage.setItem(this.storageKey, JSON.stringify(this.favorites));
     } catch (error) {
       console.error('Error saving favorites:', error);
-      this.showMessage('Error saving favorites', 'error');
+      this.showMessage(this.t('errorSavingFavorites'), 'error');
     }
   }
 
@@ -63,12 +63,12 @@ class FavoritesManager {
     const lon = parseFloat(document.getElementById('longitude').value);
 
     if (!lat || !lon) {
-      this.showMessage('Please enter valid coordinates', 'error');
+      this.showMessage(this.t('invalidCoordinates'), 'error');
       return;
     }
 
     if (this.favorites.length >= this.maxFavorites) {
-      this.showMessage(`Maximum ${this.maxFavorites} favorite locations allowed`, 'error');
+      this.showMessage(this.t('maxFavoritesReached'), 'error');
       return;
     }
 
@@ -78,13 +78,13 @@ class FavoritesManager {
     );
 
     if (exists) {
-      this.showMessage('Location already in favorites', 'error');
+      this.showMessage(this.t('alreadyInFavorites'), 'error');
       return;
     }
 
     const favorite = {
       id: this.generateId(),
-      name: city || `Location (${lat.toFixed(4)}, ${lon.toFixed(4)})`,
+      name: city || `${this.t('locationName')} (${lat.toFixed(4)}, ${lon.toFixed(4)})`,
       latitude: lat,
       longitude: lon,
       country: '', // Could be enhanced with reverse geocoding
@@ -95,7 +95,7 @@ class FavoritesManager {
     this.favorites.push(favorite);
     this.saveFavoritesToStorage();
     this.renderFavorites();
-    this.showMessage('Location saved to favorites', 'success');
+    this.showMessage(this.t('locationSaved'), 'success');
   }
 
   loadFavorite(id) {
@@ -119,21 +119,21 @@ class FavoritesManager {
     const selectedLocationText = (typeof _t === 'function') ? _t('selectedLocation') : 'Selected location';
     document.getElementById('selected-city').textContent = `${selectedLocationText}: ${favorite.name}`;
 
-    this.showMessage('Favorite location loaded', 'success');
+    this.showMessage(this.t('locationLoaded'), 'success');
   }
 
   deleteFavorite(id) {
-    if (confirm('Are you sure you want to delete this favorite location?')) {
+    if (confirm(this.t('confirmDeleteFavorite'))) {
       this.favorites = this.favorites.filter(fav => fav.id !== id);
       this.saveFavoritesToStorage();
       this.renderFavorites();
-      this.showMessage('Favorite location deleted', 'success');
+      this.showMessage(this.t('locationDeleted'), 'success');
     }
   }
 
   exportFavorites() {
     if (this.favorites.length === 0) {
-      this.showMessage('No favorites to export', 'error');
+      this.showMessage(this.t('noFavoritesToExport'), 'error');
       return;
     }
 
@@ -149,7 +149,7 @@ class FavoritesManager {
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
 
-    this.showMessage('Favorites exported successfully', 'success');
+    this.showMessage(this.t('favoritesExported'), 'success');
   }
 
   importFavorites() {
@@ -178,7 +178,7 @@ class FavoritesManager {
         );
 
         if (validFavorites.length === 0) {
-          this.showMessage('No valid favorites found in file', 'error');
+          this.showMessage(this.t('noValidFavorites'), 'error');
           return;
         }
 
@@ -205,14 +205,14 @@ class FavoritesManager {
         this.renderFavorites();
         
         if (addedCount > 0) {
-          this.showMessage(`${addedCount} favorite(s) imported successfully`, 'success');
+          this.showMessage(`${addedCount} ${this.t('favoritesImported')}`, 'success');
         } else {
-          this.showMessage('No new favorites were imported (duplicates or limit reached)', 'error');
+          this.showMessage(this.t('noNewFavorites'), 'error');
         }
 
       } catch (error) {
         console.error('Import error:', error);
-        this.showMessage('Error importing favorites: Invalid file format', 'error');
+        this.showMessage(this.t('errorImporting'), 'error');
       }
     };
 
@@ -227,7 +227,7 @@ class FavoritesManager {
 
     if (this.favorites.length === 0) {
       favoritesList.className = 'favorites-list empty';
-      favoritesList.innerHTML = '<div>No favorite locations saved yet</div>';
+      favoritesList.innerHTML = `<div>${this.t('noFavoritesYet')}</div>`;
       return;
     }
 
@@ -245,15 +245,20 @@ class FavoritesManager {
           <div class="favorite-coords">${favorite.latitude.toFixed(4)}, ${favorite.longitude.toFixed(4)}</div>
         </div>
         <div class="favorite-actions">
-          <button class="favorite-load" onclick="favoritesManager.loadFavorite('${favorite.id}')" title="Load location">
+          <button class="favorite-load" onclick="favoritesManager.loadFavorite('${favorite.id}')" title="${this.t('loadLocationTitle')}">
             📍
           </button>
-          <button class="favorite-delete" onclick="favoritesManager.deleteFavorite('${favorite.id}')" title="Delete favorite">
+          <button class="favorite-delete" onclick="favoritesManager.deleteFavorite('${favorite.id}')" title="${this.t('deleteFavoriteTitle')}">
             🗑️
           </button>
         </div>
       </div>
     `).join('');
+  }
+
+  // Translated text from the page's language-switcher.js
+  t(key) {
+    return (typeof _t === 'function') ? _t(key) : key;
   }
 
   generateId() {
@@ -302,11 +307,11 @@ class FavoritesManager {
 
   // Clear all favorites (for testing/admin purposes)
   clearAllFavorites() {
-    if (confirm('Are you sure you want to delete ALL favorite locations? This cannot be undone.')) {
+    if (confirm(this.t('confirmDeleteAll'))) {
       this.favorites = [];
       this.saveFavoritesToStorage();
       this.renderFavorites();
-      this.showMessage('All favorites cleared', 'success');
+      this.showMessage(this.t('allFavoritesCleared'), 'success');
     }
   }
 }
@@ -318,13 +323,16 @@ document.addEventListener('DOMContentLoaded', function() {
   // Wait a bit to ensure other scripts are loaded
   setTimeout(() => {
     favoritesManager = new FavoritesManager();
+    // Export for global access (the language switcher re-renders the list)
+    window.favoritesManager = favoritesManager;
     
     // Add clear all button for development (can be removed in production)
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
       const favoritesHeader = document.querySelector('.favorites-header');
       if (favoritesHeader) {
         const clearAllBtn = document.createElement('button');
-        clearAllBtn.textContent = '🗑️ Clear All';
+        clearAllBtn.id = 'clearAllFavorites';
+        clearAllBtn.textContent = favoritesManager.t('clearAll');
         clearAllBtn.className = 'btn';
         clearAllBtn.style.fontSize = '0.8em';
         clearAllBtn.style.padding = '6px 12px';
@@ -340,6 +348,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, 500);
 });
-
-// Export for global access
-window.favoritesManager = favoritesManager;

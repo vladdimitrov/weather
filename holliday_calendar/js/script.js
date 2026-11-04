@@ -1,82 +1,112 @@
-// Translation function
+// Translations for the holiday calendar (alerts, calendar and holiday details)
+const holidayTranslations = {
+  en: {
+    selectedLocation: "Selected location",
+    monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    dayNames: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+    holidayDate: "Date",
+    countryCode: "Country Code",
+    holidayType: "Type",
+    holidayTypes: { Public: "Public holiday", Bank: "Bank holiday", School: "School holiday", Authorities: "Public offices closed", Optional: "Optional holiday", Observance: "Observance" },
+    fillAllDates: "Please fill in all date fields.",
+    couldNotDetermineCountry: "Could not determine country code for the selected city. Please try another city.",
+    errorFetchingCountry: "Error fetching country code for the selected city. Please try again.",
+    couldNotDetermineCountryCoords: "Could not determine country code from coordinates. Please try another location.",
+    errorFetchingCountryCoords: "Error fetching country code from coordinates. Please try again.",
+    enterCityOrLocation: "Please enter a city or use your current location.",
+    errorFetchingHolidays: "Error fetching holidays. Please check the console for details.",
+    locating: "Locating...",
+    errorDeterminingCity: "Error determining city from your location. Please try again or enter manually.",
+    couldNotGetLocation: "Could not get your location. Please ensure location services are enabled and try again.",
+    geolocationNotSupported: "Geolocation is not supported by your browser."
+  },
+  bg: {
+    selectedLocation: "Избрана локация",
+    monthNames: ["Януари", "Февруари", "Март", "Април", "Май", "Юни", "Юли", "Август", "Септември", "Октомври", "Ноември", "Декември"],
+    dayNames: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"],
+    holidayDate: "Дата",
+    countryCode: "Код на страната",
+    holidayType: "Тип",
+    holidayTypes: { Public: "Официален празник", Bank: "Банков празник", School: "Училищна ваканция", Authorities: "Неработен ден за администрацията", Optional: "Незадължителен празник", Observance: "Отбелязван ден" },
+    fillAllDates: "Моля, попълнете всички полета за дати.",
+    couldNotDetermineCountry: "Не можа да се определи кодът на страната за избрания град. Моля, опитайте с друг град.",
+    errorFetchingCountry: "Грешка при извличане на кода на страната за избрания град. Моля, опитайте отново.",
+    couldNotDetermineCountryCoords: "Не можа да се определи кодът на страната от координатите. Моля, опитайте с друго местоположение.",
+    errorFetchingCountryCoords: "Грешка при извличане на кода на страната от координатите. Моля, опитайте отново.",
+    enterCityOrLocation: "Моля, въведете град или използвайте текущото си местоположение.",
+    errorFetchingHolidays: "Грешка при извличане на празниците. Моля, проверете конзолата за подробности.",
+    locating: "Локализиране...",
+    errorDeterminingCity: "Грешка при определяне на града от вашето местоположение. Моля, опитайте отново или въведете ръчно.",
+    couldNotGetLocation: "Не можа да се получи вашето местоположение. Моля, уверете се, че услугите за местоположение са включени и опитайте отново.",
+    geolocationNotSupported: "Геолокацията не се поддържа от вашия браузър."
+  },
+  de: {
+    selectedLocation: "Ausgewählter Standort",
+    monthNames: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+    dayNames: ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+    holidayDate: "Datum",
+    countryCode: "Ländercode",
+    holidayType: "Typ",
+    holidayTypes: { Public: "Gesetzlicher Feiertag", Bank: "Bankfeiertag", School: "Schulferien", Authorities: "Behörden geschlossen", Optional: "Optionaler Feiertag", Observance: "Gedenktag" },
+    fillAllDates: "Bitte füllen Sie alle Datumsfelder aus.",
+    couldNotDetermineCountry: "Ländercode für die ausgewählte Stadt konnte nicht bestimmt werden. Bitte versuchen Sie eine andere Stadt.",
+    errorFetchingCountry: "Fehler beim Abrufen des Ländercodes für die ausgewählte Stadt. Bitte versuchen Sie es erneut.",
+    couldNotDetermineCountryCoords: "Ländercode aus Koordinaten konnte nicht bestimmt werden. Bitte versuchen Sie einen anderen Standort.",
+    errorFetchingCountryCoords: "Fehler beim Abrufen des Ländercodes aus Koordinaten. Bitte versuchen Sie es erneut.",
+    enterCityOrLocation: "Bitte geben Sie eine Stadt ein oder verwenden Sie Ihren aktuellen Standort.",
+    errorFetchingHolidays: "Fehler beim Abrufen der Feiertage. Bitte überprüfen Sie die Konsole für Details.",
+    locating: "Lokalisierung...",
+    errorDeterminingCity: "Fehler beim Bestimmen der Stadt aus Ihrem Standort. Bitte versuchen Sie es erneut oder geben Sie manuell ein.",
+    couldNotGetLocation: "Ihr Standort konnte nicht abgerufen werden. Bitte stellen Sie sicher, dass Standortdienste aktiviert sind und versuchen Sie es erneut.",
+    geolocationNotSupported: "Geolokalisierung wird von Ihrem Browser nicht unterstützt."
+  },
+  it: {
+    selectedLocation: "Posizione selezionata",
+    monthNames: ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"],
+    dayNames: ["Lu", "Ma", "Me", "Gi", "Ve", "Sa", "Do"],
+    holidayDate: "Data",
+    countryCode: "Codice paese",
+    holidayType: "Tipo",
+    holidayTypes: { Public: "Festività nazionale", Bank: "Festività bancaria", School: "Vacanza scolastica", Authorities: "Uffici pubblici chiusi", Optional: "Festività facoltativa", Observance: "Ricorrenza" },
+    fillAllDates: "Compila tutti i campi delle date.",
+    couldNotDetermineCountry: "Impossibile determinare il codice del paese per la città selezionata. Prova con un'altra città.",
+    errorFetchingCountry: "Errore nel recupero del codice del paese per la città selezionata. Riprova.",
+    couldNotDetermineCountryCoords: "Impossibile determinare il codice del paese dalle coordinate. Prova con un'altra posizione.",
+    errorFetchingCountryCoords: "Errore nel recupero del codice del paese dalle coordinate. Riprova.",
+    enterCityOrLocation: "Inserisci una città o usa la tua posizione attuale.",
+    errorFetchingHolidays: "Errore nel recupero delle festività. Controlla la console per i dettagli.",
+    locating: "Localizzazione...",
+    errorDeterminingCity: "Errore nel determinare la città dalla tua posizione. Riprova o inseriscila manualmente.",
+    couldNotGetLocation: "Impossibile ottenere la tua posizione. Assicurati che i servizi di localizzazione siano attivi e riprova.",
+    geolocationNotSupported: "La geolocalizzazione non è supportata dal tuo browser."
+  },
+  es: {
+    selectedLocation: "Ubicación seleccionada",
+    monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+    dayNames: ["Lu", "Ma", "Mi", "Ju", "Vi", "Sá", "Do"],
+    holidayDate: "Fecha",
+    countryCode: "Código de país",
+    holidayType: "Tipo",
+    holidayTypes: { Public: "Festivo oficial", Bank: "Festivo bancario", School: "Vacaciones escolares", Authorities: "Oficinas públicas cerradas", Optional: "Festivo opcional", Observance: "Conmemoración" },
+    fillAllDates: "Rellena todos los campos de fecha.",
+    couldNotDetermineCountry: "No se pudo determinar el código de país de la ciudad seleccionada. Prueba con otra ciudad.",
+    errorFetchingCountry: "Error al obtener el código de país de la ciudad seleccionada. Inténtalo de nuevo.",
+    couldNotDetermineCountryCoords: "No se pudo determinar el código de país a partir de las coordenadas. Prueba con otra ubicación.",
+    errorFetchingCountryCoords: "Error al obtener el código de país a partir de las coordenadas. Inténtalo de nuevo.",
+    enterCityOrLocation: "Introduce una ciudad o usa tu ubicación actual.",
+    errorFetchingHolidays: "Error al obtener los días festivos. Consulta la consola para más detalles.",
+    locating: "Localizando...",
+    errorDeterminingCity: "Error al determinar la ciudad a partir de tu ubicación. Inténtalo de nuevo o introdúcela manualmente.",
+    couldNotGetLocation: "No se pudo obtener tu ubicación. Asegúrate de que los servicios de ubicación estén activados e inténtalo de nuevo.",
+    geolocationNotSupported: "Tu navegador no admite la geolocalización."
+  }
+};
+
 function _t(key) {
   const language = document.documentElement.lang || 'en';
-  // Add logging to diagnose translation issues
-  console.log('DEBUG: Translation requested for key:', key, 'language:', language);
-  const translations = {
-    en: {
-      selectedLocation: "Selected location",
-      monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-      dayNames: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-      holidayDate: "Date",
-      countryCode: "Country Code",
-      holidayType: "Type",
-      fillAllDates: "Please fill in all date fields.",
-      couldNotDetermineCountry: "Could not determine country code for the selected city. Please try another city.",
-      errorFetchingCountry: "Error fetching country code for the selected city. Please try again.",
-      couldNotDetermineCountryCoords: "Could not determine country code from coordinates. Please try another location.",
-      errorFetchingCountryCoords: "Error fetching country code from coordinates. Please try again.",
-      enterCityOrLocation: "Please enter a city or use your current location.",
-      errorFetchingHolidays: "Error fetching holidays. Please check the console for details.",
-      locating: "Locating...",
-      errorDeterminingCity: "Error determining city from your location. Please try again or enter manually.",
-      couldNotGetLocation: "Could not get your location. Please ensure location services are enabled and try again.",
-      geolocationNotSupported: "Geolocation is not supported by your browser."
-    },
-    bg: {
-      selectedLocation: "Избрана локация",
-      monthNames: ["Януари", "Февруари", "Март", "Април", "Май", "Юни", "Юли", "Август", "Септември", "Октомври", "Ноември", "Декември"],
-      dayNames: ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"],
-      holidayDate: "Дата",
-      countryCode: "Код на страната",
-      holidayType: "Тип",
-      fillAllDates: "Моля, попълнете всички полета за дати.",
-      couldNotDetermineCountry: "Не можа да се определи кодът на страната за избрания град. Моля, опитайте с друг град.",
-      errorFetchingCountry: "Грешка при извличане на кода на страната за избрания град. Моля, опитайте отново.",
-      couldNotDetermineCountryCoords: "Не можа да се определи кодът на страната от координатите. Моля, опитайте с друго местоположение.",
-      errorFetchingCountryCoords: "Грешка при извличане на кода на страната от координатите. Моля, опитайте отново.",
-      enterCityOrLocation: "Моля, въведете град или използвайте текущото си местоположение.",
-      errorFetchingHolidays: "Грешка при извличане на празниците. Моля, проверете конзолата за подробности.",
-      locating: "Локализиране...",
-      errorDeterminingCity: "Грешка при определяне на града от вашето местоположение. Моля, опитайте отново или въведете ръчно.",
-      couldNotGetLocation: "Не можа да се получи вашето местоположение. Моля, уверете се, че услугите за местоположение са включени и опитайте отново.",
-      geolocationNotSupported: "Геолокацията не се поддържа от вашия браузър."
-    },
-    de: {
-      selectedLocation: "Ausgewählter Standort",
-      monthNames: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
-      dayNames: ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
-      holidayDate: "Datum",
-      countryCode: "Ländercode",
-      holidayType: "Typ",
-      fillAllDates: "Bitte füllen Sie alle Datumsfelder aus.",
-      couldNotDetermineCountry: "Ländercode für die ausgewählte Stadt konnte nicht bestimmt werden. Bitte versuchen Sie eine andere Stadt.",
-      errorFetchingCountry: "Fehler beim Abrufen des Ländercodes für die ausgewählte Stadt. Bitte versuchen Sie es erneut.",
-      couldNotDetermineCountryCoords: "Ländercode aus Koordinaten konnte nicht bestimmt werden. Bitte versuchen Sie einen anderen Standort.",
-      errorFetchingCountryCoords: "Fehler beim Abrufen des Ländercodes aus Koordinaten. Bitte versuchen Sie es erneut.",
-      enterCityOrLocation: "Bitte geben Sie eine Stadt ein oder verwenden Sie Ihren aktuellen Standort.",
-      errorFetchingHolidays: "Fehler beim Abrufen der Feiertage. Bitte überprüfen Sie die Konsole für Details.",
-      locating: "Lokalisierung...",
-      errorDeterminingCity: "Fehler beim Bestimmen der Stadt aus Ihrem Standort. Bitte versuchen Sie es erneut oder geben Sie manuell ein.",
-      couldNotGetLocation: "Ihr Standort konnte nicht abgerufen werden. Bitte stellen Sie sicher, dass Standortdienste aktiviert sind und versuchen Sie es erneut.",
-      geolocationNotSupported: "Geolokalisierung wird von Ihrem Browser nicht unterstützt."
-    }
-  };
-  // Add logging to diagnose missing translations
-  if (!translations[language]) {
-    console.error('DEBUG: Language not supported in holiday calendar:', language, 'Available languages:', Object.keys(translations));
-    console.error('DEBUG: Falling back to English for key:', key);
-    return translations['en'][key] || key;
-  }
-  
-  if (!translations[language][key]) {
-    console.warn('DEBUG: Translation key not found:', key, 'for language:', language);
-  }
-  
-  return translations[language][key] || key;
+  const texts = holidayTranslations[language] || holidayTranslations.en;
+  return texts[key] !== undefined ? texts[key] : (holidayTranslations.en[key] || key);
 }
-
-console.log('DEBUG: Holiday calendar script loaded, current language:', document.documentElement.lang);
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DEBUG: DOMContentLoaded fired in holiday calendar script');
@@ -251,11 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
           });
       }
     } catch (err) {
-      const errorMessage = document.documentElement.lang === "bg" ?
-        "Грешка при търсене на град:" :
-        document.documentElement.lang === "de" ?
-        "Fehler bei der Stadtsuche:" :
-        "Error searching for city:";
+      const errorMessage = pickText({ en: "Error searching for city:", bg: "Грешка при търсене на град:", de: "Fehler bei der Stadtsuche:", it: "Errore nella ricerca della città:", es: "Error al buscar la ciudad:" });
       console.error(errorMessage, err);
     }
   });
@@ -471,6 +497,7 @@ let countryCode = '';
             localName: h.localName,
             date: { iso: h.date },
             country: { id: h.countryCode },
+            types: h.types,
             primary_type: h.types.includes('Public') ? 'National holiday' : h.types.join(', ')
           })));
           break; // If the request is successful, break out of the retry loop
@@ -589,7 +616,7 @@ let countryCode = '';
         calendarCell.classList.add('holiday');
         const holidayInfo = holidays.find(h => h.date.iso.slice(0, 10) === currentISODate);
         if (holidayInfo) {
-          calendarCell.title = holidayInfo.name; // Add tooltip for holiday name
+          calendarCell.title = holidayTitle(holidayInfo); // Add tooltip for holiday name
           calendarCell.addEventListener('click', () => displayHolidayDetails(holidayInfo));
           if (holidayInfo.primary_type === 'National holiday') {
             calendarCell.classList.add('official-holiday-red');
@@ -626,12 +653,25 @@ let countryCode = '';
     calendarDiv.appendChild(calendarTable);
   }
 
+  // Nager.Date has only English and local-language names: show the local
+  // name first unless the site is in English, and the other one in brackets
+  function holidayTitle(holiday) {
+    const local = holiday.localName || holiday.name;
+    const [first, second] = document.documentElement.lang === 'en' ? [holiday.name, local] : [local, holiday.name];
+    return first === second ? first : `${first} (${second})`;
+  }
+
+  function holidayTypeNames(holiday) {
+    const typeNames = _t('holidayTypes');
+    return (holiday.types || []).map(type => typeNames[type] || type).join(', ');
+  }
+
   function displayHolidayDetails(holiday) {
     holidayDetailsDiv.innerHTML = `
-      <h3>${holiday.name} (${holiday.localName || holiday.name})</h3>
+      <h3>${holidayTitle(holiday)}</h3>
       <p>${_t('holidayDate')}: ${holiday.date.iso}</p>
       <p>${_t('countryCode')}: ${holiday.country.id.toUpperCase()}</p>
-      <p>${_t('holidayType')}: ${holiday.primary_type}</p>
+      <p>${_t('holidayType')}: ${holidayTypeNames(holiday)}</p>
     `;
   }
 
