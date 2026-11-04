@@ -152,7 +152,7 @@ const translations = {
     holidayCalendar: "Calendario de fiestas",
     dataSources: "Fuentes de datos",
     language: "Idioma",
-	weatherMaps: "Mappe Meteorologiche"
+	weatherMaps: "Mapas del Tiempo"
   },
   it: {
     title: "Previsioni del tempo e tempeste magnetiche",
@@ -190,7 +190,7 @@ const translations = {
     holidayCalendar: "Calendario delle festività",
     dataSources: "Fonti di dati",
     language: "Lingua",
-	weatherMaps: "Mapas del Tiempo"
+	weatherMaps: "Mappe Meteorologiche"
   }
 };
 
@@ -199,89 +199,11 @@ function _t(key) {
   return translations[language][key] || key;
 }
 
-// Create language selector with flags
-function createLanguageSelector() {
-  // Create a form group for the language selector
-  const languageGroup = document.createElement("div");
-  languageGroup.className = "form-group";
-  
-  // Icon is automatically added by CSS .form-group.language::before rule
-
-  // Create the label for the dropdown
-  const languageLabel = document.createElement("label");
-  languageLabel.setAttribute("for", "language");
-  languageLabel.textContent = "Language:";
-  
-  // Create the select element
-  const languageSelect = document.createElement("select");
-  languageSelect.id = "language";
-  
-  // Define language options with their labels and flag icons
-  const languageOptions = [
-    { value: "en", label: "English", flag: "🇬🇧" },
-    { value: "bg", label: "Bulgarian", flag: "🇧🇬" },
-    { value: "de", label: "German", flag: "🇩🇪" },
-    { value: "es", label: "Español", flag: "🇪🇸" },
-    { value: "it", label: "Italiano", flag: "🇮🇹" }
-  ];
-  
-  // Add language options to the dropdown with flags
-  languageOptions.forEach(option => {
-    const langOption = document.createElement("option");
-    langOption.value = option.value;
-    langOption.innerHTML = `${option.flag} ${option.label}`;
-    languageSelect.appendChild(langOption);
-  });
-  
-  // Add elements to the form group
-  languageGroup.appendChild(languageLabel);
-  languageGroup.appendChild(languageSelect);
-  
-  // Find the selectors container (now in header)
-  const selectorsContainer = document.getElementById("selectors-container");
-  
-  if (selectorsContainer) {
-    // Add our language selector to the container
-    selectorsContainer.appendChild(languageGroup);
-    console.log("Language selector added to header selectors container");
-  } else {
-    // If we couldn't find the selectors container, create one in the header
-    console.log("Selectors container not found, creating one in header");
-    
-    // Create a container for the language selector
-    const newSelectorsContainer = document.createElement("div");
-    newSelectorsContainer.id = "selectors-container";
-    newSelectorsContainer.className = "header-selectors";
-    
-    // Add the language selector to the container
-    newSelectorsContainer.appendChild(languageGroup);
-    
-    // Add the container to the nav header
-    const navHeader = document.querySelector(".nav-header");
-    if (navHeader) {
-      navHeader.appendChild(newSelectorsContainer);
-      console.log("Language selector added to nav header");
-    } else {
-      // If nav header not found, add to body as fallback
-      document.body.insertBefore(newSelectorsContainer, document.body.firstChild);
-      console.error("Nav header not found, added to body");
-    }
-  }
-  
-  // Style the language selector
-  languageSelect.style.paddingLeft = "40px";
-  
-  return languageSelect;
-}
-
-// Create and initialize the language selector
-const languageSelect = createLanguageSelector();
+// The dropdown comes from /js/language-selector.js, which also saves the choice
+const languageSelect = document.getElementById("language");
 
 languageSelect.addEventListener("change", (event) => {
-  const selectedLanguage = event.target.value;
-  // Save selected language to localStorage
-  localStorage.setItem('selectedLanguage', selectedLanguage);
-  updateContent(selectedLanguage);
+  updateContent(event.target.value);
 });
 
 function updateContent(language) {
@@ -556,10 +478,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // Add flag icon before the language selector
-  const languageGroup = document.querySelector('.form-group:has(#language)');
-  if (languageGroup) {
-    languageGroup.classList.add('language');
-    //languageGroup.insertAdjacentHTML('beforebegin', '<span class="language-icon">🌐</span>');
-  }
 });
