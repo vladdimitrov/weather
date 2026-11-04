@@ -280,5 +280,101 @@
       Math.abs(place.longitude - parseFloat(longitude)) < 1e-6;
   }
 
-  window.CitySearch = { search, attach, isAt };
+  const defaultNames = {
+    en: ['Sofia', 'Bulgaria'],
+    bg: ['София', 'България'],
+    de: ['Sofia', 'Bulgarien'],
+    it: ['Sofia', 'Bulgaria'],
+    es: ['Sofía', 'Bulgaria']
+  };
+
+  // The place a page opens with: the last one picked (saved in localStorage
+  // as "lastLocation"), or Sofia on a first visit
+  function startPlace() {
+    try {
+      const saved = JSON.parse(localStorage.getItem('lastLocation'));
+      if (saved && saved.latitude && saved.longitude) {
+        return {
+          name: saved.city || '',
+          country: saved.country || '',
+          countryCode: saved.countryCode || '',
+          latitude: parseFloat(saved.latitude),
+          longitude: parseFloat(saved.longitude)
+        };
+      }
+    } catch (e) { /* storage blocked or invalid data */ }
+    const [name, country] = defaultNames[currentLanguage()] || defaultNames.en;
+    return { name, country, countryCode: 'BG', latitude: 42.6977, longitude: 23.3219 };
+  }
+
+  const coordinatesToggleText = {
+    en: ['📐 Enter coordinates', '📐 Hide coordinates'],
+    bg: ['📐 Въведи координати', '📐 Скрий координатите'],
+    de: ['📐 Koordinaten eingeben', '📐 Koordinaten ausblenden'],
+    it: ['📐 Inserisci coordinate', '📐 Nascondi coordinate'],
+    es: ['📐 Introducir coordenadas', '📐 Ocultar coordenadas']
+  };
+
+  // Most visitors search by city, so the latitude/longitude fields are hidden
+  // behind a small link under the city field. They are still filled in (and
+  // used) when a city is picked.
+  function addCoordinatesToggle() {
+    const latitude = document.getElementById('latitude');
+    const cityGroup = document.querySelector('.form-group.city');
+    const form = latitude && latitude.closest('.form-container');
+    if (!form || !cityGroup || document.getElementById('coordinatesToggle')) return;
+
+    const style = document.createElement('style');
+    style.textContent = `
+      .form-container.coords-hidden .form-group.latitude,
+      .form-container.coords-hidden .form-group.longitude {
+        display: none !important;
+      }
+      .coords-toggle {
+        display: inline-block;
+        margin-top: 6px;
+        padding: 4px 0;
+        border: none;
+        background: none;
+        color: #FFD700;
+        font-family: inherit;
+        font-size: 0.85em;
+        text-decoration: underline dotted;
+        cursor: pointer;
+        opacity: 0.85;
+      }
+      .coords-toggle:hover { opacity: 1; }
+    `;
+    document.head.appendChild(style);
+
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.id = 'coordinatesToggle';
+    toggle.className = 'coords-toggle';
+    cityGroup.appendChild(toggle);
+    form.classList.add('coords-hidden');
+
+    function updateText() {
+      const [showText, hideText] = coordinatesToggleText[currentLanguage()] || coordinatesToggleText.en;
+      const hidden = form.classList.contains('coords-hidden');
+      toggle.textContent = hidden ? showText : hideText;
+      toggle.setAttribute('aria-expanded', String(!hidden));
+    }
+    updateText();
+
+    toggle.addEventListener('click', () => {
+      form.classList.toggle('coords-hidden');
+      updateText();
+    });
+    const languageSelect = document.getElementById('language');
+    if (languageSelect) languageSelect.addEventListener('change', updateText);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addCoordinatesToggle);
+  } else {
+    addCoordinatesToggle();
+  }
+
+  window.CitySearch = { search, attach, isAt, startPlace };
 })();

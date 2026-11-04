@@ -361,3 +361,68 @@ header a:hover {
     text-align: center !important;
   }
 }
+
+/* Today in the calendar */
+.calendar-cell.today {
+  outline: 2px solid #00e5ff;
+  outline-offset: -2px;
+  font-weight: 700;
+}
+
+/* List of the holidays in the period, under the calendar */
+.holiday-list {
+  max-width: 600px;
+  margin: 20px auto 0;
+  text-align: left;
+}
+
+.holiday-list h3 {
+  color: #FFD700;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.holiday-list p {
+  text-align: center;
+  opacity: 0.8;
+}
+
+.holiday-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.holiday-list li {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  cursor: pointer;
+}
+
+.holiday-list li:hover {
+  background: rgba(255, 215, 0, 0.1);
+}
+
+.holiday-list .holiday-date {
+  flex: 0 0 9.5em;
+  color: #FFD700;
+  font-size: 0.9em;
+}
+
+.holiday-list li.official .holiday-name {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .holiday-list li {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .holiday-list .holiday-date {
+    flex-basis: auto;
+  }
+}

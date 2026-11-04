@@ -1,39 +1,13 @@
-// Function to save location to localStorage
-function saveLocationToLocalStorage(city, latitude, longitude, country) {
+// Function to save location to localStorage (read back by CitySearch.startPlace)
+function saveLocationToLocalStorage(city, latitude, longitude, country, countryCode) {
   const locationData = {
     city: city,
     latitude: latitude,
     longitude: longitude,
-    country: country
+    country: country,
+    countryCode: countryCode || ''
   };
   localStorage.setItem('lastLocation', JSON.stringify(locationData));
-}
-
-// Function to load location from localStorage
-function loadLocationFromLocalStorage() {
-  const locationData = localStorage.getItem('lastLocation');
-  if (locationData) {
-    try {
-      const location = JSON.parse(locationData);
-      if (location.city && location.latitude && location.longitude) {
-        document.getElementById("city").value = location.city;
-        document.getElementById("latitude").value = location.latitude;
-        document.getElementById("longitude").value = location.longitude;
-        updateMap(location.latitude, location.longitude);
-        
-        const label = location.country ?
-          `${location.city}, ${location.country}` :
-          `${location.city}`;
-        
-        // We'll update the selected-city text after the language is loaded
-        // This will be handled when the loadData button is clicked
-        return true;
-      }
-    } catch (e) {
-      console.error("Error parsing saved location:", e);
-    }
-  }
-  return false;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -51,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("selected-city").textContent = `${_t('selectedLocation')}: ${label}`;
         document.getElementById("latitude").value = place.latitude;
         document.getElementById("longitude").value = place.longitude;
-        saveLocationToLocalStorage(place.name, place.latitude, place.longitude, place.country);
+        saveLocationToLocalStorage(place.name, place.latitude, place.longitude, place.country, place.countryCode);
       }
     });
 
@@ -106,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById("selected-city").textContent = `${_t('selectedLocation')}: ${place.name}, ${place.country}`;
             
             // Save location to localStorage
-            saveLocationToLocalStorage(place.name, lat, lon, place.country);
+            saveLocationToLocalStorage(place.name, lat, lon, place.country, place.countryCode);
             
             //document.getElementById("loadData").click();
           }
@@ -120,66 +94,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Clear location functionality removed as requested
     
-    // Load last location data only (without auto-refreshing map)
-    console.log("DEBUG: Setting up setTimeout for loading last location data only");
+    // Open with the map of the last location, or Sofia on a first visit.
+    // The short delay lets the page script attach the "Load Map" handler first.
     setTimeout(() => {
-      // Make sure language is loaded first
-      if (typeof _t === 'function') {
-        console.log("DEBUG: Translation function available, loading location data only");
-        // Modified to just load location data without auto-triggering map refresh
-        const locationData = localStorage.getItem('lastLocation');
-        if (locationData) {
-          try {
-            const location = JSON.parse(locationData);
-            if (location.city && location.latitude && location.longitude) {
-              document.getElementById("city").value = location.city;
-              document.getElementById("latitude").value = location.latitude;
-              document.getElementById("longitude").value = location.longitude;
-              
-              const label = location.country ?
-                `${location.city}, ${location.country}` :
-                `${location.city}`;
-              
-              // Just update the selected city text without refreshing map
-              document.getElementById("selected-city").textContent =
-                `${_t('selectedLocation')}: ${label}`;
-              
-              console.log("DEBUG: Loaded previous location data without auto-refreshing map");
-            }
-          } catch (e) {
-            console.error("Error parsing saved location:", e);
-          }
-        }
-      } else {
-        console.warn("Translation function not available yet, delaying location load");
-        // Try again after another delay
-        setTimeout(() => {
-          // Same change as above - just load data without auto-refreshing map
-          const locationData = localStorage.getItem('lastLocation');
-          if (locationData) {
-            try {
-              const location = JSON.parse(locationData);
-              if (location.city && location.latitude && location.longitude) {
-                document.getElementById("city").value = location.city;
-                document.getElementById("latitude").value = location.latitude;
-                document.getElementById("longitude").value = location.longitude;
-                
-                const label = location.country ?
-                  `${location.city}, ${location.country}` :
-                  `${location.city}`;
-                
-                // Just update the selected city text without refreshing map
-                document.getElementById("selected-city").textContent =
-                  `${_t('selectedLocation')}: ${label}`;
-                
-                console.log("DEBUG: Loaded previous location data without auto-refreshing map");
-              }
-            } catch (e) {
-              console.error("Error parsing saved location:", e);
-            }
-          }
-        }, 500);
+      const place = CitySearch.startPlace();
+      document.getElementById("city").value = place.name;
+      document.getElementById("latitude").value = place.latitude;
+      document.getElementById("longitude").value = place.longitude;
+      document.getElementById("loadMap").click();
+      if (place.name) {
+        document.getElementById("selected-city").textContent =
+          `${_t('selectedLocation')}: ${place.country ? `${place.name}, ${place.country}` : place.name}`;
       }
-    }, 500); // Small delay to ensure all components are loaded
+    }, 300);
   }
 });
