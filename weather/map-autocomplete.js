@@ -112,7 +112,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("selected-city").textContent =
           `${_t('selectedLocation')}: ${place.country ? `${place.name}, ${place.country}` : place.name}`;
       }
-      document.getElementById("loadData").click();
+      const loadButton = document.getElementById("loadData");
+      loadButton.dataset.autoload = "true"; // no scrolling to the table
+      loadButton.click();
     }, 300);
   }
 });

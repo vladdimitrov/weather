@@ -121,13 +121,19 @@ function updateForecast() {
 
       tbody.innerHTML = rows.join("");
       
-      // Scroll to the weather table after loading data
-      setTimeout(() => {
-        const weatherTable = document.getElementById("weatherTable");
-        if (weatherTable) {
-          weatherTable.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
+      // Scroll to the weather table after loading data, unless the page
+      // loaded it by itself on open (data-autoload on the button)
+      const loadButton = document.getElementById("loadData");
+      const autoLoaded = loadButton && loadButton.dataset.autoload === "true";
+      if (loadButton) delete loadButton.dataset.autoload;
+      if (!autoLoaded) {
+        setTimeout(() => {
+          const weatherTable = document.getElementById("weatherTable");
+          if (weatherTable) {
+            weatherTable.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      }
     } catch (err) {
       console.error("Error:", err);
       // Use translations for error messages
