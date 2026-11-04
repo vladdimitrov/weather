@@ -49,4 +49,225 @@
     <priority>0.3</priority>
   </url>
 
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/praznici/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/sofia/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/plovdiv/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/varna/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/burgas/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/ruse/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/stara-zagora/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/pleven/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/sliven/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/dobrich/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/shumen/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/pernik/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/haskovo/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/yambol/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/pazardzhik/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/blagoevgrad/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/veliko-tarnovo/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/vratsa/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/gabrovo/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/asenovgrad/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/vidin/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/kazanlak/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/kardzhali/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/kyustendil/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/montana/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/dimitrovgrad/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/lovech/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/silistra/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/targovishte/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/razgrad/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/smolyan/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/bansko/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/borovets/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/pamporovo/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/sozopol/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/nesebar/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <priority>0.6</priority>
+  </url>
 </urlset>
