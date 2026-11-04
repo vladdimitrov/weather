@@ -70,8 +70,7 @@ function updateForecast() {
         if (typeof saveLocationToLocalStorage === 'function') {
           saveLocationToLocalStorage(geoData.results[0].name, lat, lon, geoData.results[0].country);
         }
-        
-        window.updateLocalTime(lat, lon);
+
       }
 
       const today = new Date().toISOString().split("T")[0];
@@ -90,6 +89,11 @@ function updateForecast() {
         const errorMessage = pickText({ en: "Error processing data.", bg: "Грешка при обработка на данните.", de: "Fehler bei der Datenverarbeitung.", it: "Errore nell'elaborazione dei dati.", es: "Error al procesar los datos." });
         tbody.innerHTML = `<tr><td colspan='8'>${errorMessage}</td></tr>`;
         return;
+      }
+
+      // Local time of the place (the forecast comes with its time zone)
+      if (window.ForecastExtras && weatherData.timezone) {
+        ForecastExtras.startLocalClock(weatherData.timezone);
       }
 
       const rows = weatherData.daily.time.map((date, i) => {
