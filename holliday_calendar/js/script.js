@@ -159,202 +159,22 @@ document.addEventListener('DOMContentLoaded', function() {
     return false;
   }
 
-  // Apply modern styling to the suggestions dropdown
-  citySuggestions.style.fontFamily = "'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
-  citySuggestions.style.maxHeight = "250px";
-  citySuggestions.style.overflowY = "auto";
-  citySuggestions.style.borderRadius = "0 0 8px 8px";
-  citySuggestions.style.boxShadow = "0 5px 15px rgba(0, 0, 0, 0.3)";
-  citySuggestions.style.border = "1px solid rgba(255, 215, 0, 0.3)";
-  citySuggestions.style.backgroundColor = "rgba(28, 46, 74, 0.95)";
+  let selectedPlace = null; // last place picked from the suggestions
 
-  const transliterate = (text) => {
-    const transliterationTable = {
-      'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h', 'ц': 'c', 'ч': 'ch', 'ш': 'sh', 'щ': 'sht', 'ъ': 'a', 'ь': 'y', 'ю': 'yu', 'я': 'ya'
-    };
-    let result = '';
-    for (let i = 0; i < text.length; i++) {
-      const char = text[i].toLowerCase();
-      result += transliterationTable[char] || char;
+  CitySearch.attach(cityInput, citySuggestions, {
+    getOrigin: () => ({
+      latitude: parseFloat(latitudeInput.value),
+      longitude: parseFloat(longitudeInput.value)
+    }),
+    onSelect: (place) => {
+      selectedPlace = place;
+      const label = `${place.name}, ${place.country}`;
+      document.getElementById("selected-city").textContent = `${_t('selectedLocation')}: ${label}`;
+      latitudeInput.value = place.latitude;
+      longitudeInput.value = place.longitude;
+      saveLocationToLocalStorage(place.name, place.latitude, place.longitude, place.country);
+      loadDataButton.click();
     }
-    return result;
-  };
-
-  cityInput.addEventListener("input", async () => {
-    const query = cityInput.value.trim();
-    if (query.length < 2) {
-      citySuggestions.innerHTML = "";
-      citySuggestions.style.display = "none";
-      return;
-    }
-
-    try {
-      const transliteratedQuery = transliterate(query);
-      const encodedQuery = encodeURIComponent(transliteratedQuery);
-      const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodedQuery}&count=10&format=json&language=en`;
-      const res = await fetch(url);
-      const data = await res.json();
-      citySuggestions.innerHTML = "";
-      citySuggestions.style.display = "none";
-
-      if (data.results) {
-        citySuggestions.style.display = "block";
-
-        const userLat = latitudeInput.value;
-        const userLon = longitudeInput.value;
-
-        function calculateDistance(lat1, lon1, lat2, lon2) {
-          const R = 6371;
-          const dLat = deg2rad(lat2 - lat1);
-          const dLon = deg2rad(lon2 - lon1);
-          const a =
-            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-            Math.sin(dLon / 2) * Math.sin(dLon / 2);
-          const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-          const distance = R * c;
-          return distance;
-        }
-
-        function deg2rad(deg) {
-          return deg * (Math.PI / 180);
-        }
-
-        const placesWithDistance = data.results.map(place => {
-          const distance = (userLat && userLon) ? calculateDistance(userLat, userLon, place.latitude, place.longitude) : null;
-          return { ...place, distance };
-        });
-
-        placesWithDistance.sort((a, b) => {
-          if (a.distance === null) return -1;
-          if (b.distance === null) return 1;
-          return a.distance - b.distance;
-        });
-
-        placesWithDistance
-          .filter(place => {
-            const nameLower = place.name.toLowerCase();
-            const queryLower = transliteratedQuery.toLowerCase();
-            return nameLower.includes(queryLower) && (nameLower.startsWith(queryLower) || nameLower.includes(` ${queryLower}`));
-          })
-          .forEach(place => {
-            const native = place.name;
-            const distanceText = place.distance ? ` (${place.distance.toFixed(1)} km)` : "";
-            let label = `${native}, ${place.country}${distanceText}`;
-            
-            const suggestion = document.createElement("div");
-            suggestion.className = "suggestion";
-            suggestion.dataset.latitude = place.latitude;
-            suggestion.dataset.longitude = place.longitude;
-            suggestion.style.padding = "10px 15px";
-            suggestion.style.cursor = "pointer";
-            suggestion.style.borderBottom = "1px solid rgba(255, 255, 255, 0.1)";
-            suggestion.style.color = "#ffffff";
-            suggestion.style.transition = "background 0.3s ease";
-            
-            if (place.distance) {
-              const nameCountry = document.createElement("span");
-              nameCountry.textContent = `${native}, ${place.country}`;
-              
-              const distanceSpan = document.createElement("span");
-              distanceSpan.textContent = ` (${place.distance.toFixed(1)} km)`;
-              distanceSpan.style.color = "#FFD700";
-              distanceSpan.style.fontSize = "0.9em";
-              distanceSpan.style.marginLeft = "5px";
-              
-              suggestion.appendChild(nameCountry);
-              suggestion.appendChild(distanceSpan);
-            } else {
-              suggestion.textContent = label;
-            }
-            suggestion.addEventListener("click", () => {
-              cityInput.value = native;
-              citySuggestions.style.display = "none";
-              const selectedLanguage = document.documentElement.lang || 'en';
-              document.getElementById("selected-city").textContent = `${_t('selectedLocation')}: ${label}`;
-              latitudeInput.value = place.latitude;
-              longitudeInput.value = place.longitude;
-              saveLocationToLocalStorage(native, place.latitude, place.longitude, place.country);
-              loadDataButton.click();
-            });
-            citySuggestions.appendChild(suggestion);
-          });
-      }
-    } catch (err) {
-      const errorMessage = pickText({ en: "Error searching for city:", bg: "Грешка при търсене на град:", de: "Fehler bei der Stadtsuche:", it: "Errore nella ricerca della città:", es: "Error al buscar la ciudad:" });
-      console.error(errorMessage, err);
-    }
-  });
-
-  let selectedSuggestionIndex = -1;
-
-  cityInput.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowUp" || event.key === "ArrowDown") {
-      const suggestions = citySuggestions.querySelectorAll("div");
-      if (suggestions.length === 0) return;
-
-      if (event.key === "ArrowUp") {
-        selectedSuggestionIndex = Math.max(0, selectedSuggestionIndex - 1);
-      } else {
-        selectedSuggestionIndex = Math.min(suggestions.length - 1, selectedSuggestionIndex + 1);
-      }
-
-      suggestions.forEach((suggestion, index) => {
-        if (index === selectedSuggestionIndex) {
-          suggestion.style.backgroundColor = "rgba(255, 215, 0, 0.2)";
-          suggestion.style.color = "#FFD700";
-        } else {
-          suggestion.style.backgroundColor = "";
-          suggestion.style.color = "#ffffff";
-        }
-      });
-      event.preventDefault(); // Prevent cursor movement in input
-    } else if (event.key === "Enter") {
-      const suggestions = citySuggestions.querySelectorAll("div");
-      if (suggestions.length === 0) return;
-
-      if (selectedSuggestionIndex !== -1) {
-        const selectedSuggestion = suggestions[selectedSuggestionIndex];
-        const cityName = selectedSuggestion.textContent.split(',')[0];
-        cityInput.value = cityName;
-        citySuggestions.style.display = "none";
-        
-        if (selectedSuggestion.dataset.latitude && selectedSuggestion.dataset.longitude) {
-          const lat = selectedSuggestion.dataset.latitude;
-          const lon = selectedSuggestion.dataset.longitude;
-          latitudeInput.value = lat;
-          longitudeInput.value = lon;
-          
-          const country = selectedSuggestion.textContent.split(',')[1]?.trim();
-          saveLocationToLocalStorage(cityName, lat, lon, country);
-        }
-        loadDataButton.click();
-        event.preventDefault(); // Prevent form submission
-      }
-    }
-  });
-
-  citySuggestions.addEventListener("mousedown", (event) => {
-    const suggestions = citySuggestions.querySelectorAll("div");
-    suggestions.forEach((suggestion, index) => {
-      if (suggestion === event.target) {
-        selectedSuggestionIndex = index;
-        const cityName = suggestion.textContent.split(',')[0];
-        cityInput.value = cityName;
-        citySuggestions.style.display = "none";
-        
-        if (suggestion.dataset.latitude && suggestion.dataset.longitude) {
-          const lat = suggestion.dataset.latitude;
-          const lon = suggestion.dataset.longitude;
-          latitudeInput.value = lat;
-          longitudeInput.value = lon;
-          
-          const country = suggestion.textContent.split(',')[1]?.trim();
-          saveLocationToLocalStorage(cityName, lat, lon, country);
-        }
-        loadDataButton.click();
-      }
-    });
   });
 
   useLocationButton.addEventListener('click', function() {
@@ -420,7 +240,13 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-let countryCode = '';
+    // A place picked from the suggestions already has its country code
+    if (selectedPlace && selectedPlace.countryCode && CitySearch.isAt(selectedPlace, latitude, longitude)) {
+      fetchHolidays(selectedPlace.countryCode, selectedPlace.country, fromDate, toDate);
+      return;
+    }
+
+    let countryCode = '';
     let countryName = '';
 
     if (city && latitude && longitude) {
