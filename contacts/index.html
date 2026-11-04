@@ -19,42 +19,6 @@
     (function() {
       const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
       document.documentElement.lang = savedLanguage;
-
-      const savedBackground = localStorage.getItem('defaultBackground') || 'blue';
-      function applyBackgroundImmediately(background) {
-        let style = '';
-        switch (background) {
-          case "default":
-            style = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
-            break;
-          case "blue":
-            style = "linear-gradient(135deg, #00c6ff, #0072ff)";
-            break;
-          case "dark":
-            style = "linear-gradient(135deg, #232526, #414345)";
-            break;
-          case "green":
-            style = "linear-gradient(135deg, #11998e, #38ef7d)";
-            break;
-          case "purple":
-            style = "linear-gradient(135deg, #834d9b, #d04ed6)";
-            break;
-          case "red":
-            style = "linear-gradient(135deg, #cb2d3e, #ef473a)";
-            break;
-          default:
-            style = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
-        }
-        document.body.style.background = style;
-      }
-      // The script runs in <head>, before <body> exists - wait for it
-      if (document.body) {
-        applyBackgroundImmediately(savedBackground);
-      } else {
-        document.addEventListener('DOMContentLoaded', function () {
-          applyBackgroundImmediately(savedBackground);
-        });
-      }
     })();
   </script>
   <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
@@ -462,7 +426,7 @@
       window.scrollTo(0, 0);
     }
     
-    // Inherit language and background settings from localStorage
+    // Inherit language setting from localStorage
     inheritSettingsFromParent();
   });
   
@@ -471,9 +435,6 @@
     // Get saved language from localStorage (same as index.html)
     const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
     
-    // Get saved background from localStorage (same as index.html)
-    const savedBackground = localStorage.getItem('defaultBackground') || 'blue';
-    
     // Apply the inherited language setting
     if (savedLanguage) {
       document.documentElement.lang = savedLanguage;
@@ -481,48 +442,11 @@
       console.log('Inherited language setting:', savedLanguage);
     }
     
-    // Apply the inherited background setting immediately
-    if (savedBackground) {
-      applyInheritedBackground(savedBackground);
-      console.log('Inherited background setting:', savedBackground);
-    }
   }
   
-  // Function to apply inherited background (simplified version of applyBackground from background-selector.js)
-  function applyInheritedBackground(background) {
-    // Remove any previously applied background classes
-    document.body.classList.remove("bg-default", "bg-blue", "bg-dark", "bg-green", "bg-purple", "bg-red");
-    
-    // Apply the selected background with animation
-    document.body.style.transition = "background 0.5s ease";
-    
-    // Apply the selected background
-    switch (background) {
-      case "default":
-        document.body.style.background = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
-        break;
-      case "blue":
-        document.body.style.background = "linear-gradient(135deg, #00c6ff, #0072ff)";
-        break;
-      case "dark":
-        document.body.style.background = "linear-gradient(135deg, #232526, #414345)";
-        break;
-      case "green":
-        document.body.style.background = "linear-gradient(135deg, #11998e, #38ef7d)";
-        break;
-      case "purple":
-        document.body.style.background = "linear-gradient(135deg, #834d9b, #d04ed6)";
-        break;
-      case "red":
-        document.body.style.background = "linear-gradient(135deg, #cb2d3e, #ef473a)";
-        break;
-      default:
-        document.body.style.background = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
-    }
-  }
 </script>
 <script src="/js/language-selector.js?v=1"></script>
-<script src="background-selector.js"></script>
+<script src="/js/background-selector.js?v=1"></script>
 
 
 
@@ -566,13 +490,6 @@
         // Set initial value from localStorage
         const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
         languageSelect.value = savedLanguage;
-      }
-      
-      const backgroundSelect = document.getElementById('background-color');
-      if (backgroundSelect) {
-        // Set initial value from localStorage
-        const savedBackground = localStorage.getItem('defaultBackground') || 'blue';
-        backgroundSelect.value = savedBackground;
       }
     }, 200);
     

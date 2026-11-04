@@ -20,42 +20,6 @@
     (function() {
       const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
       document.documentElement.lang = savedLanguage;
-
-      const savedBackground = localStorage.getItem('defaultBackground') || 'blue';
-      function applyBackgroundImmediately(background) {
-        let style = '';
-        switch (background) {
-          case "default":
-            style = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
-            break;
-          case "blue":
-            style = "linear-gradient(135deg, #00c6ff, #0072ff)";
-            break;
-          case "dark":
-            style = "linear-gradient(135deg, #232526, #414345)";
-            break;
-          case "green":
-            style = "linear-gradient(135deg, #11998e, #38ef7d)";
-            break;
-          case "purple":
-            style = "linear-gradient(135deg, #834d9b, #d04ed6)";
-            break;
-          case "red":
-            style = "linear-gradient(135deg, #cb2d3e, #ef473a)";
-            break;
-          default:
-            style = "linear-gradient(135deg, #a8c0ff, #3f2b96)";
-        }
-        document.body.style.background = style;
-      }
-      // The script runs in <head>, before <body> exists - wait for it
-      if (document.body) {
-        applyBackgroundImmediately(savedBackground);
-      } else {
-        document.addEventListener('DOMContentLoaded', function () {
-          applyBackgroundImmediately(savedBackground);
-        });
-      }
     })();
   </script>
   <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
@@ -614,7 +578,7 @@
 <!-- Load JavaScript files -->
 <script src="/js/language-selector.js?v=1"></script>
 <script src="js/language-switcher.js?v=2"></script>
-<script src="js/background-selector.js"></script>
+<script src="/js/background-selector.js?v=1"></script>
 <script src="js/map-autocomplete.js"></script>
 <script src="js/favorites-manager.js"></script>
 

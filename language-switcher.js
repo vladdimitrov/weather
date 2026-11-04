@@ -451,14 +451,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
 
-  const bgLabelTranslations = {
-    en: "Background:",
-    bg: "Фон:",
-    de: "Hintergrund:",
-    it: "Sfondo:",
-    es: "Fondo:"
-  };
-
   function updateContent(language) {
     const pageTranslations = translations[language] || translations.en;
     document.querySelectorAll('[data-translation-key]').forEach(element => {
@@ -468,11 +460,6 @@ document.addEventListener('DOMContentLoaded', function() {
         element.textContent = text;
       }
     });
-    // Update background label if background-selector.js is present
-    const backgroundLabel = document.getElementById('backgroundLabel');
-    if (backgroundLabel) {
-      backgroundLabel.textContent = bgLabelTranslations[language] || bgLabelTranslations.en;
-    }
   }
 
   const languageSelect = document.getElementById('language');
