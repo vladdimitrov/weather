@@ -79,7 +79,7 @@ function updateForecast() {
       const endDate = end.toISOString().split("T")[0];
 
       await delay(500); // Delay for 500 milliseconds
-      const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_min,temperature_2m_max,cloudcover_mean,precipitation_sum,windspeed_10m_max,temperature_2m_mean,weather_code,sunrise,sunset&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${today}&end_date=${endDate}`;
+      const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_min,temperature_2m_max,cloudcover_mean,precipitation_sum,windspeed_10m_max,temperature_2m_mean,weather_code,sunrise,sunset,precipitation_probability_max&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${today}&end_date=${endDate}`;
       const weatherRes = await fetch(weatherURL);
       const weatherData = await weatherRes.json();
 
@@ -94,6 +94,7 @@ function updateForecast() {
       // Local time of the place (the forecast comes with its time zone)
       if (window.ForecastExtras && weatherData.timezone) {
         ForecastExtras.startLocalClock(weatherData.timezone);
+        ForecastExtras.renderKpForecast(); // aurora chance for this latitude
       }
 
       const rows = weatherData.daily.time.map((date, i) => {
@@ -117,7 +118,7 @@ function updateForecast() {
           <td>${weatherData.daily.temperature_2m_min[i]}</td>
           <td>${weatherData.daily.temperature_2m_max[i]}</td>
           <td>${weatherData.daily.cloudcover_mean[i]}</td>
-          <td>${weatherData.daily.precipitation_sum[i]} ${isThunderstorm(weatherData.daily.weather_code[i]) ? `<span style="font-size: 24px; margin-left: 5px;" title="${_t('iconThunder')}">⚡</span>` : ''}</td>
+          <td>${weatherData.daily.precipitation_sum[i]} ${isThunderstorm(weatherData.daily.weather_code[i]) ? `<span style="font-size: 24px; margin-left: 5px;" title="${_t('iconThunder')}">⚡</span>` : ''}${rainChanceHtml(weatherData.daily, i)}</td>
           <td><span class="wind-value">${weatherData.daily.windspeed_10m_max[i]}</span></td>
           <td>${window.ForecastExtras ? ForecastExtras.sunMoonCell(date, weatherData.daily.sunrise[i], weatherData.daily.sunset[i]) : ""}</td>
          </tr>
@@ -126,6 +127,11 @@ function updateForecast() {
 
       tbody.innerHTML = rows.join("");
       labelForecastCells();
+
+      // How certain the forecast is: ranges, reliability, model comparison
+      if (window.ForecastPrecision) {
+        ForecastPrecision.enhance(lat, lon, weatherData.daily.time);
+      }
 
       // Scroll to the weather table after loading data, unless the page
       // loaded it by itself on open (data-autoload on the button)
@@ -234,4 +240,12 @@ function dayWarningsHtml(daily, i) {
     tempMax: daily.temperature_2m_max[i]
   });
   return badges ? `<div class="wx-warnings">${badges}</div>` : "";
+}
+
+// Chance of rain for a forecast day, under the precipitation amount
+function rainChanceHtml(daily, i) {
+  const chance = daily.precipitation_probability_max && daily.precipitation_probability_max[i];
+  if (typeof chance !== "number") return "";
+  const title = pickText({ en: "Chance of rain", bg: "Вероятност за валеж", de: "Regenwahrscheinlichkeit", it: "Probabilità di pioggia", es: "Probabilidad de lluvia" });
+  return `<div class="rain-chance" title="${title}">☔ ${chance}%</div>`;
 }

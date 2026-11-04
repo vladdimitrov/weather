@@ -16,6 +16,11 @@ window.ForecastExtras = (function () {
     storm: { en: 'storm', bg: 'буря', de: 'Sturm', it: 'tempesta', es: 'tormenta' },
     sunrise: { en: 'Sunrise', bg: 'Изгрев', de: 'Sonnenaufgang', it: 'Alba', es: 'Amanecer' },
     sunset: { en: 'Sunset', bg: 'Залез', de: 'Sonnenuntergang', it: 'Tramonto', es: 'Atardecer' },
+    auroraLikely: { en: 'Aurora possible at your latitude in the next 3 days', bg: 'Възможно е полярно сияние на вашата ширина в следващите 3 дни', de: 'Polarlicht auf Ihrer Breite in den nächsten 3 Tagen möglich', it: 'Aurora possibile alla tua latitudine nei prossimi 3 giorni', es: 'Aurora posible en tu latitud en los próximos 3 días' },
+    auroraMaybe: { en: 'Small chance of aurora low on the horizon', bg: 'Слаб шанс за полярно сияние ниско над хоризонта', de: 'Geringe Chance auf Polarlicht tief am Horizont', it: "Piccola possibilità di aurora bassa sull'orizzonte", es: 'Pequeña posibilidad de aurora baja en el horizonte' },
+    auroraUnlikely: { en: 'Aurora unlikely here (needs Kp ≈ {kp})', bg: 'Полярно сияние: малко вероятно тук (нужен е Kp ≈ {kp})', de: 'Polarlicht hier unwahrscheinlich (benötigt Kp ≈ {kp})', it: 'Aurora improbabile qui (serve Kp ≈ {kp})', es: 'Aurora poco probable aquí (necesita Kp ≈ {kp})' },
+    auroraRare: { en: 'Aurora is very rare at this latitude (only in extreme storms)', bg: 'На тази ширина полярно сияние е много рядко (само при изключителни бури)', de: 'Polarlicht ist auf dieser Breite sehr selten (nur bei extremen Stürmen)', it: 'Aurora molto rara a questa latitudine (solo con tempeste estreme)', es: 'La aurora es muy rara en esta latitud (solo con tormentas extremas)' },
+    auroraHelp: { en: 'Rough estimate from the highest expected Kp and the latitude', bg: 'Груба оценка по най-високия очакван Kp и географската ширина', de: 'Grobe Schätzung aus dem höchsten erwarteten Kp und der Breite', it: 'Stima approssimativa dal Kp massimo previsto e dalla latitudine', es: 'Estimación aproximada a partir del Kp máximo previsto y la latitud' },
     chartTemperature: { en: 'Temperature (°C)', bg: 'Температура (°C)', de: 'Temperatur (°C)', it: 'Temperatura (°C)', es: 'Temperatura (°C)' },
     chartRainChance: { en: 'Chance of rain', bg: 'Вероятност за валеж', de: 'Regenwahrscheinlichkeit', it: 'Probabilità di pioggia', es: 'Probabilidad de lluvia' }
   };
@@ -97,6 +102,22 @@ window.ForecastExtras = (function () {
     return `<span class="kp-scale" role="img" aria-label="Kp ${kp} / 9">${segments}</span>`;
   }
 
+  // Aurora is seen low on the horizon from about 66° − 2.6·Kp latitude in
+  // Europe (Kp 5 ≈ 53°, Kp 9 ≈ 43°). A rough estimate, not a forecast.
+  function auroraLine() {
+    const latitude = Math.abs(parseFloat((document.getElementById('latitude') || {}).value));
+    if (!isFinite(latitude) || !kpDays || !kpDays.length) return '';
+    const maxKp = Math.max(...kpDays.map(day => day.kp));
+    const visibleFrom = 66 - 2.6 * maxKp;
+    const neededKp = Math.max(0, Math.ceil((66 - latitude) / 2.6));
+    let text;
+    if (latitude >= visibleFrom) text = pickText(T.auroraLikely);
+    else if (latitude >= visibleFrom - 3) text = pickText(T.auroraMaybe);
+    else if (neededKp <= 9) text = pickText(T.auroraUnlikely).replace('{kp}', neededKp);
+    else text = pickText(T.auroraRare);
+    return `<div class="aurora-chance" title="${escapeAttribute(pickText(T.auroraHelp))}">🌌 ${text}</div>`;
+  }
+
   function renderKpForecast() {
     const container = document.getElementById('kpForecast');
     if (!container || !kpDays) return;
@@ -108,7 +129,7 @@ window.ForecastExtras = (function () {
         `<div>Kp ${day.kp}${kpScale(day.kp)}</div>` +
         `<div class="kp-day-status">${pickText(kpStatus(day.kp))}${scale}</div></div>`;
     }).join('');
-    container.innerHTML = `<h3>${pickText(T.kpForecastTitle)}</h3><div class="kp-days">${days}</div>`;
+    container.innerHTML = `<h3>${pickText(T.kpForecastTitle)}</h3><div class="kp-days">${days}</div>${auroraLine()}`;
     container.hidden = false;
   }
 
@@ -227,5 +248,5 @@ window.ForecastExtras = (function () {
     if (languageSelect) languageSelect.addEventListener('change', onLanguageChange);
   });
 
-  return { sunMoonCell, dayWarnings, renderHourlyChart, startLocalClock };
+  return { sunMoonCell, dayWarnings, renderHourlyChart, startLocalClock, renderKpForecast };
 })();
