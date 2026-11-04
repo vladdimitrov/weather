@@ -23,10 +23,13 @@
     es: { label: 'Fondo:', blue: 'Azul', default: 'Predeterminado (Morado)', dark: 'Oscuro', green: 'Verde', purple: 'Morado', red: 'Rojo' }
   };
 
+  // A background the visitor picked wins; otherwise follow the device's dark mode
   function getSavedBackground() {
     let saved = null;
     try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) { /* storage blocked */ }
-    return backgrounds[saved] ? saved : DEFAULT_BACKGROUND;
+    if (backgrounds[saved]) return saved;
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return prefersDark ? 'dark' : DEFAULT_BACKGROUND;
   }
 
   function saveBackground(background) {
