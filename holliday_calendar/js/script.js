@@ -448,22 +448,31 @@ let countryCode = '';
 
     let allHolidays = [];
 
-    const API_KEY = 'ktpKNZOXTQaKNDFYceUuKJA13RkiDtWi'; // Calendarific API Key
-
     for (let year = startYear; year <= endYear; year++) {
-      const apiUrl = `https://calendarific.com/api/v2/holidays?api_key=${API_KEY}&country=${countryCode}&year=${year}`;
+      // Nager.Date - free public holidays API, no key required
+      const apiUrl = `https://date.nager.at/api/v3/PublicHolidays/${year}/${countryCode}`;
 
       let retries = 3;
       while (retries > 0) {
         try {
           const response = await fetch(apiUrl);
+          // 204/404 = country not supported -> show the calendar without holidays
+          if (response.status === 204 || response.status === 404) {
+            console.warn(`No holiday data for country ${countryCode}`);
+            break;
+          }
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
           }
           const data = await response.json();
-          if (data.response && data.response.holidays) {
-            allHolidays = allHolidays.concat(data.response.holidays);
-          }
+          // Convert to the format used by the calendar below
+          allHolidays = allHolidays.concat(data.map(h => ({
+            name: h.name,
+            localName: h.localName,
+            date: { iso: h.date },
+            country: { id: h.countryCode },
+            primary_type: h.types.includes('Public') ? 'National holiday' : h.types.join(', ')
+          })));
           break; // If the request is successful, break out of the retry loop
         } catch (error) {
           console.error(`Error fetching holidays (retry ${4 - retries}):`, error);
