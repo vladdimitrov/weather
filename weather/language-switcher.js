@@ -475,7 +475,7 @@ function updateContent(language) {
 // Load saved language or default to English
 document.addEventListener('DOMContentLoaded', function() {
   // Get saved language from localStorage or default to English
-  const savedLanguage = localStorage.getItem('selectedLanguage') || 'en';
+  const savedLanguage = localStorage.getItem('selectedLanguage') || 'bg';
   
   // Set the language selector to the saved language
   const languageSelect = document.getElementById('language');

@@ -92,11 +92,56 @@
     }
   }
 
+  // Menu links marked with data-nav (the newer pages and the "Magnetic
+  // storms" link on every page); the older links are translated by each page
+  const navTexts = {
+    home: { en: 'Home', bg: 'Начало', de: 'Startseite', it: 'Home', es: 'Inicio' },
+    weather: { en: 'Weather Forecast', bg: 'Прогноза за времето', de: 'Wettervorhersage', it: 'Previsioni del tempo', es: 'Pronóstico del tiempo' },
+    maps: { en: 'Weather Maps', bg: 'Карти за времето', de: 'Wetterkarten', it: 'Mappe meteorologiche', es: 'Mapas del tiempo' },
+    holidays: { en: 'Holiday Calendar', bg: 'Календар на празниците', de: 'Feiertagskalender', it: 'Calendario delle festività', es: 'Calendario de festivos' },
+    sources: { en: 'Data Sources', bg: 'Източници на данни', de: 'Datenquellen', it: 'Fonti dei dati', es: 'Fuentes de datos' },
+    storms: { en: 'Magnetic Storms', bg: 'Магнитни бури', de: 'Magnetstürme', it: 'Tempeste magnetiche', es: 'Tormentas magnéticas' },
+    about: { en: 'About', bg: 'За сайта', de: 'Über uns', it: 'Chi siamo', es: 'Acerca de' },
+    privacy: { en: 'Privacy', bg: 'Поверителност', de: 'Datenschutz', it: 'Privacy', es: 'Privacidad' }
+  };
+
+  function translateNav() {
+    const lang = document.documentElement.lang;
+    document.querySelectorAll('[data-nav]').forEach(link => {
+      const texts = navTexts[link.dataset.nav];
+      if (texts) link.textContent = texts[lang] || texts.en;
+    });
+  }
+
+  // Storm notifications turned on at /magnitni-buri/: ask the service worker
+  // to check the Kp forecast (at most every 3 hours); installed apps on
+  // Android also check in the background
+  function checkStormAlerts() {
+    try {
+      if (localStorage.getItem('stormAlerts') !== 'on') return;
+      if (!('Notification' in window) || Notification.permission !== 'granted' || !navigator.serviceWorker) return;
+      const last = Number(localStorage.getItem('stormAlertsChecked') || 0);
+      if (Date.now() - last < 3 * 3600 * 1000) return;
+      localStorage.setItem('stormAlertsChecked', String(Date.now()));
+      navigator.serviceWorker.ready.then(registration => {
+        if (registration.active) registration.active.postMessage({ type: 'storm-check' });
+      });
+    } catch (e) { /* storage blocked */ }
+  }
+
   function initSite() {
     initMobileNav();
     updateYear();
     initOfflineNotice();
     registerServiceWorker();
+    translateNav();
+    // after the language selector exists (it loads after this script)
+    setTimeout(() => {
+      const languageSelect = document.getElementById('language');
+      if (languageSelect) languageSelect.addEventListener('change', translateNav);
+      translateNav();
+    }, 0);
+    checkStormAlerts();
   }
 
   if (document.body) {

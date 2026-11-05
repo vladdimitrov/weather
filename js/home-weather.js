@@ -84,7 +84,7 @@
       if (kpResponse && kpResponse.ok) {
         const kpData = await kpResponse.json();
         const last = kpData[kpData.length - 1];
-        if (last) kp = Math.round(parseFloat(last.kp_index) * 10) / 10;
+        if (last) kp = Math.round(parseFloat(last.estimated_kp ?? last.kp_index) * 10) / 10;
       }
       render();
     } catch (err) {

@@ -47,7 +47,7 @@
 
   function t() {
     let lang = 'en';
-    try { lang = localStorage.getItem('selectedLanguage') || 'en'; } catch (e) { /* ignore */ }
+    try { lang = localStorage.getItem('selectedLanguage') || 'bg'; } catch (e) { /* ignore */ }
     return texts[lang] || texts.en;
   }
 

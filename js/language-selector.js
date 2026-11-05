@@ -25,7 +25,8 @@
   function getSavedLanguage() {
     let saved = null;
     try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) { /* storage blocked */ }
-    return languages.some(lang => lang.value === saved) ? saved : 'en';
+    // Bulgarian unless the visitor picked another language
+    return languages.some(lang => lang.value === saved) ? saved : 'bg';
   }
 
   function saveLanguage(language) {
