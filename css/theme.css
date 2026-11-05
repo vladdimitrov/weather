@@ -842,6 +842,14 @@ body {
   .form-group:has(.destination-places) { min-width: 0; }
 }
 
+/* After "Load" the page scrolls to the result: leave room for the fixed header */
+#weatherTable,
+#hourlyTableBlock,
+#calendar,
+#mapContainer {
+  scroll-margin-top: calc(var(--header-height, 60px) + 12px);
+}
+
 /* Weather page: link to the magnetic storms page */
 .storms-link { color: var(--gold); font-weight: 600; }
 

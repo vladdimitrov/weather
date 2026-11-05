@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById("city").value = place.name;
       document.getElementById("latitude").value = place.latitude;
       document.getElementById("longitude").value = place.longitude;
+      document.getElementById("loadMap").dataset.autoload = "true"; // no scrolling on open
       document.getElementById("loadMap").click();
       if (place.name) {
         document.getElementById("selected-city").textContent =
