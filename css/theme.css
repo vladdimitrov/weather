@@ -845,6 +845,25 @@ body {
 /* Weather page: link to the magnetic storms page */
 .storms-link { color: var(--gold); font-weight: 600; }
 
+/* The header used to fade in and animate every change on each page load
+   (it blinked when moving between pages) */
+.nav-header {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* A language other than Bulgarian (the language of the HTML): the page stays
+   hidden until /js/mobile-nav.js sees it translated, instead of showing the
+   Bulgarian text first. Shown after 2 s at the latest, even if a script fails. */
+html.i18n-pending body {
+  visibility: hidden;
+  animation: i18n-reveal 0s linear 2s forwards;
+}
+
+@keyframes i18n-reveal {
+  to { visibility: visible; }
+}
+
 /* Home: the hero shows at once (its fade-in kept the main text invisible
    for over a second) and reads well on every background */
 .hero-title,
@@ -870,6 +889,7 @@ body {
 .orbit-container { border: 2px dashed rgba(255, 215, 0, 0.45) !important; }
 
 #weather-orbit-btn,
+#magnetic-orbit-btn,
 #maps-orbit-btn,
 #holliday-calendar-btn,
 #contacts-orbit-btn {
@@ -887,8 +907,27 @@ body {
 #maps-orbit-btn { border-color: rgba(255, 165, 0, 0.9); }
 #holliday-calendar-btn { border-color: rgba(255, 100, 150, 0.9); }
 #contacts-orbit-btn { border-color: rgba(100, 255, 150, 0.9); }
+#magnetic-orbit-btn { border-color: rgba(180, 110, 255, 0.95); }
+
+/* Five planets evenly around the 60 s orbit */
+#weather-orbit-btn { animation-delay: 0s, 0s !important; }
+#magnetic-orbit-btn {
+  animation: orbit 60s linear infinite, stormAura 2.4s ease-in-out infinite;
+  animation-delay: -12s, 0s;
+  box-shadow: 0 0 25px rgba(180, 110, 255, 0.8), 0 0 50px rgba(180, 110, 255, 0.4);
+}
+#magnetic-orbit-btn:hover { animation-play-state: paused; }
+#holliday-calendar-btn { animation-delay: -24s, 0s !important; }
+#maps-orbit-btn { animation-delay: -36s, 0s !important; }
+#contacts-orbit-btn { animation-delay: -48s, 0s !important; }
+
+@keyframes stormAura {
+  0%, 100% { box-shadow: 0 0 20px rgba(180, 110, 255, 0.6), 0 0 40px rgba(180, 110, 255, 0.3); }
+  50% { box-shadow: 0 0 35px rgba(180, 110, 255, 1), 0 0 70px rgba(180, 110, 255, 0.5); }
+}
 
 #weather-orbit-label,
+#magnetic-orbit-label,
 #maps-orbit-label,
 #holiday-calendar-label,
 #contacts-orbit-label {
@@ -904,6 +943,7 @@ body {
   .circular-nav { margin: 44px auto 48px !important; }
 
   #weather-orbit-btn,
+  #magnetic-orbit-btn,
   #maps-orbit-btn,
   #holliday-calendar-btn,
   #contacts-orbit-btn {
@@ -914,6 +954,7 @@ body {
   }
 
   #weather-orbit-label,
+  #magnetic-orbit-label,
   #maps-orbit-label,
   #holiday-calendar-label,
   #contacts-orbit-label {

@@ -22,6 +22,8 @@
     (function() {
       const savedLanguage = localStorage.getItem('selectedLanguage') || 'bg';
       document.documentElement.lang = savedLanguage;
+      // Hidden until translated from the Bulgarian HTML (no flash of Bulgarian text)
+      if (savedLanguage !== 'bg') document.documentElement.classList.add('i18n-pending');
     })();
   </script>
   <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
@@ -92,8 +94,8 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=14">
-  <link rel="stylesheet" href="/css/mobile.css?v=3">
+  <link rel="stylesheet" href="/css/theme.css?v=15">
+  <link rel="stylesheet" href="/css/mobile.css?v=4">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
@@ -456,7 +458,7 @@
   }
   
 </script>
-<script src="/js/mobile-nav.js?v=9"></script>
+<script src="/js/mobile-nav.js?v=10"></script>
 <script src="/js/language-selector.js?v=2"></script>
 <script src="/js/background-selector.js?v=2"></script>
 
