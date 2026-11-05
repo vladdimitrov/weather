@@ -211,7 +211,9 @@
       const favorites = favoritePlaces();
       const nodes = [];
       const shown = [];
-      const notShown = place => !shown.some(other => samePlace(other, place));
+      const sameName = (a, b) => `${a.name}`.trim().toLowerCase() === `${b.name}`.trim().toLowerCase() &&
+        (a.countryCode || '').toUpperCase() === (b.countryCode || '').toUpperCase();
+      const notShown = place => !shown.some(other => samePlace(other, place) || sameName(other, place));
       favorites.forEach(place => {
         if (!notShown(place)) return;
         shown.push(place);
@@ -662,11 +664,19 @@
     `;
     document.head.appendChild(style);
 
+    // The links (coordinates, share, favorite) share one row. In the Weather
+    // form (two columns: city and days) the row spans the form under both.
+    const actions = document.createElement('div');
+    actions.className = 'place-actions';
+    const daysGroup = form.classList.contains('weather-form') && form.querySelector(':scope > .form-group.days');
+    if (daysGroup) daysGroup.insertAdjacentElement('afterend', actions);
+    else cityGroup.appendChild(actions);
+
     const toggle = document.createElement('button');
     toggle.type = 'button';
     toggle.id = 'coordinatesToggle';
     toggle.className = 'coords-toggle';
-    cityGroup.appendChild(toggle);
+    actions.appendChild(toggle);
     form.classList.add('coords-hidden');
 
     function updateText() {
@@ -686,7 +696,7 @@
     const share = document.createElement('button');
     share.type = 'button';
     share.className = 'coords-toggle';
-    cityGroup.appendChild(share);
+    actions.appendChild(share);
     const shareText = () => {
       share.textContent = (shareTexts[currentLanguage()] || shareTexts.en)[0];
     };
@@ -710,7 +720,7 @@
     const favorite = document.createElement('button');
     favorite.type = 'button';
     favorite.className = 'coords-toggle favorite-toggle';
-    cityGroup.appendChild(favorite);
+    actions.appendChild(favorite);
 
     function currentPlace() {
       const lat = parseFloat(latitude.value);

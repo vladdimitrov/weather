@@ -1019,6 +1019,21 @@ body {
 
 .weather-form .form-group.days input { width: 100%; }
 
+/* Coordinates, share and favorite links: one row */
+.place-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px 16px;
+}
+
+.place-actions .coords-toggle + .coords-toggle { margin-left: 0; }
+
+.weather-form > .place-actions {
+  grid-column: 1 / -1;
+  margin-top: -8px;
+}
+
 /* Interval above the hourly table */
 .hourly-interval {
   display: flex;
