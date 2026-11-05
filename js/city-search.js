@@ -193,14 +193,29 @@
       input.insertAdjacentElement('afterend', placeRow);
     }
 
-    function placeButton(place, favorite) {
+    function placeButton(place, favorite, removable) {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = favorite ? 'recent-place favorite-place' : 'recent-place';
       button.textContent = favorite ? `★ ${place.name}` : place.name;
       button.title = place.country ? `${place.name}, ${place.country}` : place.name;
       button.addEventListener('click', () => pick(place));
-      return button;
+      if (!removable) return button;
+      const chip = document.createElement('span');
+      chip.className = 'place-chip';
+      const remove = document.createElement('button');
+      remove.type = 'button';
+      remove.className = 'place-remove';
+      remove.textContent = '✕';
+      const label = removeTexts[currentLanguage()] || removeTexts.en;
+      remove.title = label;
+      remove.setAttribute('aria-label', `${label}: ${place.name}`);
+      remove.addEventListener('click', () => {
+        if (favorite) toggleFavorite(place);
+        else forgetRecent(place);
+      });
+      chip.append(button, remove);
+      return chip;
     }
 
     let popular = [];
@@ -217,7 +232,7 @@
       favorites.forEach(place => {
         if (!notShown(place)) return;
         shown.push(place);
-        nodes.push(placeButton(place, true));
+        nodes.push(placeButton(place, true, true));
       });
       const popularNodes = [];
       popular.forEach(place => {
@@ -240,7 +255,7 @@
       recentPlaces().filter(place => place.name !== current).forEach(place => {
         if (!notShown(place)) return;
         shown.push(place);
-        recentNodes.push(placeButton(place, false));
+        recentNodes.push(placeButton(place, false, true));
       });
       if (recentNodes.length && nodes.length) {
         const divider = document.createElement('span');
@@ -248,7 +263,12 @@
         divider.setAttribute('aria-hidden', 'true');
         nodes.push(divider);
       }
-      nodes.push(...recentNodes);
+      if (recentNodes.length) {
+        const label = document.createElement('span');
+        label.className = 'destination-title';
+        label.textContent = recentTexts[currentLanguage()] || recentTexts.en;
+        nodes.push(label, ...recentNodes);
+      }
       placeRow.replaceChildren(...nodes);
       placeRow.hidden = nodes.length === 0;
     }
@@ -264,6 +284,7 @@
     }
 
     document.addEventListener('favoriteschange', renderRow);
+    document.addEventListener('recentplaceschange', renderRow);
     window.addEventListener('storage', event => {
       if (event.key === FAVORITES_KEY || event.key === RECENT_KEY) renderRow();
     });
@@ -408,6 +429,22 @@
     es: 'Populares en {country}:'
   };
 
+  const recentTexts = {
+    en: 'Recently picked:',
+    bg: 'Последно избрани:',
+    de: 'Zuletzt gewählt:',
+    it: 'Scelti di recente:',
+    es: 'Elegidos recientemente:'
+  };
+
+  const removeTexts = {
+    en: 'Remove',
+    bg: 'Премахни',
+    de: 'Entfernen',
+    it: 'Rimuovi',
+    es: 'Quitar'
+  };
+
   function countryName(code) {
     try {
       return new Intl.DisplayNames([currentLanguage()], { type: 'region' }).of(code);
@@ -494,6 +531,14 @@
     };
     const list = [entry, ...recentPlaces().filter(other => !same(other))].slice(0, RECENT_MAX);
     try { localStorage.setItem(RECENT_KEY, JSON.stringify(list)); } catch (e) { /* storage blocked */ }
+  }
+
+  // Removes a place from the recently picked list
+  function forgetRecent(place) {
+    const list = recentPlaces().filter(other =>
+      !(Math.abs(other.latitude - place.latitude) < 0.01 && Math.abs(other.longitude - place.longitude) < 0.01));
+    try { localStorage.setItem(RECENT_KEY, JSON.stringify(list)); } catch (e) { /* storage blocked */ }
+    document.dispatchEvent(new CustomEvent('recentplaceschange'));
   }
 
   // ---- Favorite places, shared by all pages ----
