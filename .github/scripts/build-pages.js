@@ -98,7 +98,7 @@ ${jsonLd}  <script>
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/theme.css?v=${VERSION.theme}">
-  <link rel="stylesheet" href="/css/mobile.css?v=4">
+  <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
