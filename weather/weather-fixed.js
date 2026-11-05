@@ -94,7 +94,6 @@ function updateForecast() {
       // Local time of the place (the forecast comes with its time zone)
       if (window.ForecastExtras && weatherData.timezone) {
         ForecastExtras.startLocalClock(weatherData.timezone);
-        ForecastExtras.renderKpForecast(); // aurora chance for this latitude
       }
 
       const rows = weatherData.daily.time.map((date, i) => {

@@ -105,7 +105,8 @@
     privacy: { en: 'Privacy', bg: 'Поверителност', de: 'Datenschutz', it: 'Privacy', es: 'Privacidad' },
     cities: { en: 'Weather in Bulgarian cities', bg: 'Времето в градовете на България', de: 'Wetter in bulgarischen Städten', it: 'Meteo nelle città bulgare', es: 'El tiempo en ciudades de Bulgaria' },
     allCities: { en: 'All cities →', bg: 'Всички градове →', de: 'Alle Städte →', it: 'Tutte le città →', es: 'Todas las ciudades →' },
-    holidaysBg: { en: 'Public holidays in Bulgaria', bg: 'Официални празници в България', de: 'Feiertage in Bulgarien', it: 'Festività in Bulgaria', es: 'Festivos en Bulgaria' }
+    holidaysBg: { en: 'Public holidays in Bulgaria', bg: 'Официални празници в България', de: 'Feiertage in Bulgarien', it: 'Festività in Bulgaria', es: 'Festivos en Bulgaria' },
+    stormsToday: { en: '🧭 Magnetic storms today →', bg: '🧭 Магнитни бури днес →', de: '🧭 Magnetstürme heute →', it: '🧭 Tempeste magnetiche oggi →', es: '🧭 Tormentas magnéticas hoy →' }
   };
 
   function translateNav() {
@@ -132,6 +133,48 @@
     } catch (e) { /* storage blocked */ }
   }
 
+  // On wide screens the links sit in one row next to the language and
+  // background selectors. When they don't fit (long labels in some languages,
+  // smaller laptops), use the compact header with the menu button instead
+  // (html.nav-compact in /css/mobile.css); narrow screens get it from CSS.
+  const narrowScreen = window.matchMedia('(max-width: 768px)');
+
+  function fitNav() {
+    const header = document.querySelector('.nav-header');
+    const root = document.documentElement;
+    root.classList.remove('nav-compact');
+    if (!header || narrowScreen.matches) return;
+    const links = [...header.querySelectorAll('.nav-links .nav-link')];
+    if (!links.length) return;
+    const firstRow = links[0].getBoundingClientRect();
+    const selectors = header.querySelector('.header-selectors');
+    const wrapped = links.some(link => Math.abs(link.getBoundingClientRect().top - firstRow.top) > 4) ||
+      (selectors && selectors.getBoundingClientRect().top >= firstRow.bottom) ||
+      header.scrollHeight > header.clientHeight + 2;
+    root.classList.toggle('nav-compact', wrapped);
+  }
+
+  function initNavFit() {
+    const header = document.querySelector('.nav-header');
+    if (!header) return;
+    fitNav();
+    let pending = false;
+    const scheduleFit = () => {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(() => { pending = false; fitNav(); });
+    };
+    window.addEventListener('resize', scheduleFit);
+    // Labels change with the language: each page translates its own links,
+    // some of them later, so watch the menu itself
+    if (window.MutationObserver) {
+      new MutationObserver(scheduleFit).observe(header.querySelector('.nav-links') || header, { childList: true, characterData: true, subtree: true });
+    }
+    // The Orbitron font is wider than the fallback font
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitNav);
+    window.addEventListener('load', fitNav);
+  }
+
   function initSite() {
     initMobileNav();
     updateYear();
@@ -144,6 +187,8 @@
       if (event.target && event.target.id === 'language') translateNav();
     });
     checkStormAlerts();
+    // after the selectors are added by the scripts loaded after this one
+    setTimeout(initNavFit, 0);
   }
 
   if (document.body) {

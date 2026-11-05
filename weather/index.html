@@ -7,14 +7,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Прогноза за времето и магнитни бури | Weather Pulse</title>
+  <title>Прогноза за времето по дни и часове | Weather Pulse</title>
 <link rel="canonical" href="https://weatherpulse.eu/weather/" />
-<meta name="description" content="Прогноза за времето по дни и часове за всеки град: температура, валежи, вятър, изгрев и залез, фаза на Луната и магнитни бури (Kp индекс от NOAA).">
+<meta name="description" content="Прогноза за времето по дни и часове за всеки град: температура, валежи, вятър, изгрев и залез и фаза на Луната.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Weather Pulse">
 <meta property="og:locale" content="bg_BG">
 <meta property="og:title" content="Прогноза за времето и магнитни бури | Weather Pulse">
-<meta property="og:description" content="Прогноза за времето по дни и часове за всеки град: температура, валежи, вятър, изгрев и залез, фаза на Луната и магнитни бури (Kp индекс от NOAA).">
+<meta property="og:description" content="Прогноза за времето по дни и часове за всеки град: температура, валежи, вятър, изгрев и залез и фаза на Луната.">
 <meta property="og:url" content="https://weatherpulse.eu/weather/">
 <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
 <meta name="twitter:card" content="summary">
@@ -62,16 +62,12 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    #kp-summary .kp-icon {
-      font-size: 2em; /* Increased font size to make the icon more prominent */
-      margin-right: 6px;
-    }
-  </style>
+      </style>
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=10">
-  <link rel="stylesheet" href="/css/mobile.css?v=2">
+  <link rel="stylesheet" href="/css/theme.css?v=11">
+  <link rel="stylesheet" href="/css/mobile.css?v=3">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
@@ -89,7 +85,7 @@
   </div>
 
   <div class="container" style="margin-top: calc(var(--header-height) + 20px);">
-    <h1 style="text-align: center;">Weather forecast and magnetic storms</h1>
+    <h1 style="text-align: center;">Прогноза за времето</h1>
 
     <div class="form-container">
       <div class="form-group city">
@@ -130,9 +126,7 @@
     <div class="info-display" style="display: flex; justify-content: center; align-items: baseline; margin-top: 10px; flex-wrap: wrap; gap: 10px;">
       <div id="selected-city" style="font-weight: bold; font-size: 1.1em; color: #FFD700;"></div>
       <div id="local-time" style="display: inline-block;"></div>
-      <div id="kp-summary" style="display: inline-flex; align-items: center; font-size: 1em; color: #FFD700; vertical-align: baseline;">
-      <span id="kp-index-label">Kp Index</span>: <a href="https://www.swpc.noaa.gov/products/planetary-k-index" target="_blank" style="text-decoration: none; color: #FFD700;" title='Click on a source'><span class='kp-icon'>🧭</span></a>
-    </div>
+      <a class="storms-link" href="../magnitni-buri/" data-nav="stormsToday">🧭 Магнитни бури днес →</a>
     </div>
     <div class="table-container">
       <table id="weatherTable">
@@ -290,208 +284,14 @@
   // and triggers the loadData button click
 </script>
 
-<script src="/js/mobile-nav.js?v=6"></script>
+<script src="/js/mobile-nav.js?v=7"></script>
 <script src="/js/language-selector.js?v=2"></script>
 <script src="/js/city-search.js?v=5"></script>
-<script src="forecast-extras.js?v=3"></script>
+<script src="forecast-extras.js?v=4"></script>
 <script src="forecast-precision.js?v=2"></script>
-<script src="space-weather.js?v=1"></script>
 <script src="map-autocomplete.js?v=5"></script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Ten segments for Kp 0-9, lit up to the current value (colors in /css/theme.css)
-  function kpScaleSegments(kp) {
-    return Array.from({ length: 10 }, (_, i) => `<span class="${i <= Math.round(kp) ? 'on' : ''}"></span>`).join('');
-  }
-
-  async function updateKpSummary() {
-    const kpSummaryElement = document.getElementById("kp-summary");
-    if (!kpSummaryElement) return;
-    
-    const selectedLanguage = document.documentElement.lang || 'en';
-    
-    // Use the _t function to get translations
-    const kpIndexText = _t('kpIndex');
-    
-    // Show loading indicator
-    kpSummaryElement.innerHTML = `${kpIndexText} <span class="spinner"></span>`;
-    
-    try {
-      const res = await fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json");
-      if (!res.ok) {
-        throw new Error(`HTTP error! Status: ${res.status}`);
-      }
-      
-      const data = await res.json();
-      if (!data || !data.length) {
-        throw new Error("No data received from NOAA API");
-      }
-      
-      const last = data[data.length - 1];
-      const kp = parseFloat(last.kp_index);
-      const date = new Date(last.time_tag);
-      let formatted = new Date(date).toLocaleString(selectedLanguage, {
-        hour12: false,
-        timeZoneName: 'short'
-      });
-      
-      // Add these translations to our main translations object in language-switcher.js
-      if (!translations[selectedLanguage].strongStorm) {
-        translations.en.strongStorm = "(Strong storm)";
-        translations.bg.strongStorm = "(Силна буря)";
-        translations.de.strongStorm = "(Starker Sturm)";
-        translations.es.strongStorm = "(Tormenta fuerte)";
-        translations.it.strongStorm = "(Tempesta forte)";
-        
-        translations.en.moderateActivity = "(Moderate activity)";
-        translations.bg.moderateActivity = "(Умерена активност)";
-        translations.de.moderateActivity = "(Mäßige Aktivität)";
-        translations.es.moderateActivity = "(Actividad moderada)";
-        translations.it.moderateActivity = "(Attività moderata)";
-        
-        translations.en.calm = "(Calm)";
-        translations.bg.calm = "(Спокойно)";
-        translations.de.calm = "(Ruhig)";
-        translations.es.calm = "(Tranquilo)";
-        translations.it.calm = "(Calmo)";
-      }
-      
-      let statusTranslations = {
-        en: {
-          strongStorm: translations.en.strongStorm,
-          moderateActivity: translations.en.moderateActivity,
-          calm: translations.en.calm
-        },
-        bg: {
-          strongStorm: translations.bg.strongStorm,
-          moderateActivity: translations.bg.moderateActivity,
-          calm: translations.bg.calm
-        },
-        de: {
-          strongStorm: translations.de.strongStorm,
-          moderateActivity: translations.de.moderateActivity,
-          calm: translations.de.calm
-        },
-        es: {
-          strongStorm: translations.es.strongStorm,
-          moderateActivity: translations.es.moderateActivity,
-          calm: translations.es.calm
-        },
-        it: {
-          strongStorm: translations.it.strongStorm,
-          moderateActivity: translations.it.moderateActivity,
-          calm: translations.it.calm
-        }
-      };
-      
-      let status = kp >= 7 ? statusTranslations[selectedLanguage].strongStorm :
-                  kp >= 5 ? statusTranslations[selectedLanguage].moderateActivity :
-                  statusTranslations[selectedLanguage].calm;
-      
-      const icon = kp >= 7 ? '🛑' : kp >= 5 ? '⚠️' : '✅';
-      
-      // Add these translations to our main translations object in language-switcher.js
-      if (!translations[selectedLanguage].strongStormTooltip) {
-        translations.en.strongStormTooltip = "Strong geomagnetic storm (Kp ≥ 7). The Kp index measures the disturbance of Earth's magnetic field caused by solar activity. Data source: NOAA Space Weather Prediction Center.";
-        translations.bg.strongStormTooltip = "Силна геомагнитна буря (Kp ≥ 7). Kp индексът измерва смущенията в магнитното поле на Земята, причинени от слънчевата активност. Източник на данни: NOAA Space Weather Prediction Center.";
-        translations.de.strongStormTooltip = "Starker geomagnetischer Sturm (Kp ≥ 7). Der Kp-Index misst die Störung des Erdmagnetfelds durch Sonnenaktivität. Datenquelle: NOAA Space Weather Prediction Center.";
-        translations.es.strongStormTooltip = "Tormenta geomagnética fuerte (Kp ≥ 7). El índice Kp mide la perturbación del campo magnético terrestre causada por la actividad solar. Fuente de datos: NOAA Space Weather Prediction Center.";
-        translations.it.strongStormTooltip = "Tempesta geomagnetica forte (Kp ≥ 7). L'indice Kp misura il disturbo del campo magnetico terrestre causato dall'attività solare. Fonte dati: NOAA Space Weather Prediction Center.";
-        
-        translations.en.moderateActivityTooltip = "Moderate activity (Kp 5–6). The Kp index measures the disturbance of Earth's magnetic field caused by solar activity. Data source: NOAA Space Weather Prediction Center.";
-        translations.bg.moderateActivityTooltip = "Умерена активност (Kp 5–6). Kp индексът измерва смущенията в магнитното поле на Земята, причинени от слънчевата активност. Източник на данни: NOAA Space Weather Prediction Center.";
-        translations.de.moderateActivityTooltip = "Mäßige Aktivität (Kp 5–6). Der Kp-Index misst die Störung des Erdmagnetfelds durch Sonnenaktivität. Datenquelle: NOAA Space Weather Prediction Center.";
-        translations.es.moderateActivityTooltip = "Actividad moderada (Kp 5–6). El índice Kp mide la perturbación del campo magnético terrestre causada por la actividad solar. Fuente de datos: NOAA Space Weather Prediction Center.";
-        translations.it.moderateActivityTooltip = "Attività moderata (Kp 5–6). L'indice Kp misura il disturbo del campo magnetico terrestre causato dall'attività solare. Fonte dati: NOAA Space Weather Prediction Center.";
-        
-        translations.en.calmTooltip = "Calm activity (Kp < 5). The Kp index measures the disturbance of Earth's magnetic field caused by solar activity. Data source: NOAA Space Weather Prediction Center.";
-        translations.bg.calmTooltip = "Спокойна активност (Kp < 5). Kp индексът измерва смущенията в магнитното поле на Земята, причинени от слънчевата активност. Източник на данни: NOAA Space Weather Prediction Center.";
-        translations.de.calmTooltip = "Ruhige Aktivität (Kp < 5). Der Kp-Index misst die Störung des Erdmagnetfelds durch Sonnenaktivität. Datenquelle: NOAA Space Weather Prediction Center.";
-        translations.es.calmTooltip = "Actividad tranquila (Kp < 5). El índice Kp mide la perturbación del campo magnético terrestre causada por la actividad solar. Fuente de datos: NOAA Space Weather Prediction Center.";
-        translations.it.calmTooltip = "Attività calma (Kp < 5). L'indice Kp misura il disturbo del campo magnetico terrestre causato dall'attività solare. Fonte dati: NOAA Space Weather Prediction Center.";
-      }
-      
-      let tooltipTranslations = {
-        en: {
-          strongStorm: translations.en.strongStormTooltip,
-          moderateActivity: translations.en.moderateActivityTooltip,
-          calm: translations.en.calmTooltip
-        },
-        bg: {
-          strongStorm: translations.bg.strongStormTooltip,
-          moderateActivity: translations.bg.moderateActivityTooltip,
-          calm: translations.bg.calmTooltip
-        },
-        de: {
-          strongStorm: translations.de.strongStormTooltip,
-          moderateActivity: translations.de.moderateActivityTooltip,
-          calm: translations.de.calmTooltip
-        },
-        es: {
-          strongStorm: translations.es.strongStormTooltip,
-          moderateActivity: translations.es.moderateActivityTooltip,
-          calm: translations.es.calmTooltip
-        },
-        it: {
-          strongStorm: translations.it.strongStormTooltip,
-          moderateActivity: translations.it.moderateActivityTooltip,
-          calm: translations.it.calmTooltip
-        }
-      };
-      
-      const tooltip = kp >= 7 ? tooltipTranslations[selectedLanguage].strongStorm :
-                      kp >= 5 ? tooltipTranslations[selectedLanguage].moderateActivity :
-                      tooltipTranslations[selectedLanguage].calm;
-      
-      kpSummaryElement.innerHTML = `
-        <span class='kp-icon' title='${tooltip}'>${icon}</span>
-        ${_t('kpIndex')}
-        <a href="https://www.swpc.noaa.gov/products/planetary-k-index" target="_blank"
-           style="text-decoration: none; color: #FFD700;"
-           title='${_t('noaaSource')}'>
-          <span class='kp-icon'>🧭</span>
-        </a>: ${kp}<span class='kp-scale' role='img' aria-label='Kp ${kp} / 9'>${kpScaleSegments(kp)}</span>${status}
-        <br>
-        <span id="kp-updated" style='font-size: 0.8em;'>${_t('lastUpdated')}: ${formatted}</span>
-      `;
-    } catch (err) {
-      console.error("Error downloading Kp index:", err);
-      // Add these translations to our main translations object in language-switcher.js
-      if (!translations[selectedLanguage].errorLoadingKp) {
-        translations.en.errorLoadingKp = "Unable to load Kp index data";
-        translations.bg.errorLoadingKp = "Не може да се зареди Kp индекс";
-        translations.de.errorLoadingKp = "Kp-Index-Daten können nicht geladen werden";
-        translations.es.errorLoadingKp = "No se pueden cargar los datos del índice Kp";
-        translations.it.errorLoadingKp = "Impossibile caricare i dati dell'indice Kp";
-      }
-      
-      const errorTranslations = {
-        en: translations.en.errorLoadingKp,
-        bg: translations.bg.errorLoadingKp,
-        de: translations.de.errorLoadingKp,
-        es: translations.es.errorLoadingKp,
-        it: translations.it.errorLoadingKp
-      };
-      kpSummaryElement.innerHTML = `
-        ${_t('kpIndex')}:
-        <span style="color: #ff6b6b;">${errorTranslations[selectedLanguage] || 'Unable to load data'}</span>
-        <a href="https://www.swpc.noaa.gov/products/planetary-k-index" target="_blank"
-           style="text-decoration: none; color: #FFD700; margin-left: 5px;"
-           title='${_t('noaaView')}'>
-          <span class='kp-icon'>🧭</span>
-        </a>
-      `;
-    }
-  }
-
-  // Initialize KP summary
-  updateKpSummary();
-  setInterval(updateKpSummary, 15 * 60 * 1000);
-});
-</script>
-
-<script src="weather-fixed.js?v=6"></script>
+<script src="weather-fixed.js?v=7"></script>
 <script src="weather-hourly.js?v=3"></script>
 
   <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
@@ -507,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   </footer>
 
-<script src="language-switcher.js?v=8"></script>
+<script src="language-switcher.js?v=9"></script>
 <script src="/js/background-selector.js?v=2"></script>
 </body>
 </html>

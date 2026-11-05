@@ -172,6 +172,120 @@
   }
 }
 
+/* Wide screens where the menu links don't fit in one row (long labels in
+   some languages): the same compact header with the menu button.
+   html.nav-compact is set by /js/mobile-nav.js; generated from the rules above. */
+html.nav-compact {
+  --header-height: 56px;
+}
+
+html.nav-compact .nav-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: var(--header-height) !important;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding: 0 12px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0 !important;
+  transform: none !important;
+  z-index: 1000 !important;
+}
+
+html.nav-compact .nav-brand {
+  display: block;
+  max-width: calc(100% - 56px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: var(--header-height);
+  color: #FFD700;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+html.nav-compact .nav-menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  border-radius: 8px;
+  background: rgba(28, 46, 74, 0.6);
+  color: #FFD700;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+html.nav-compact .nav-header .nav-links,
+html.nav-compact .nav-header .header-selectors {
+  display: none !important;
+}
+
+html.nav-compact .nav-header {
+  background: rgb(22, 36, 71) !important;
+}
+
+html.nav-compact .nav-header.menu-open .nav-links {
+  display: flex !important;
+  flex: none !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  width: 100%;
+  gap: 8px !important;
+  padding: 4px 0 12px;
+}
+
+html.nav-compact .nav-header.menu-open .nav-link {
+  justify-content: center;
+  margin: 0 !important;
+  padding: 12px 15px !important;
+  font-size: 1rem !important;
+}
+
+html.nav-compact .nav-header.menu-open .header-selectors {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  justify-content: space-between !important;
+  width: 100%;
+  gap: 12px !important;
+  padding-bottom: 14px;
+}
+
+html.nav-compact .nav-header.menu-open .header-selectors .form-group {
+  flex: 1 1 0;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 4px !important;
+  min-width: 0;
+}
+
+html.nav-compact .nav-header.menu-open .header-selectors select {
+  width: 100%;
+  height: auto !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 10px !important;
+}
+
+html.nav-compact .container {
+  margin-top: calc(var(--header-height) + 16px) !important;
+}
+
+
 /* The fixed footer must not cover the end of the page (print buttons,
    map credits, last panel). Some page styles fix body at the screen height,
    which leaves the padding behind the first screen, so let it grow. */

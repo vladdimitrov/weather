@@ -1,26 +1,12 @@
 // Extra forecast information for the Weather page:
-//   - 3-day geomagnetic (Kp) forecast from NOAA
 //   - sunrise, sunset and moon phase for each day
 //   - warning badges (storm, strong wind, heavy rain, snow, frost, heat)
 //   - temperature chart above the hourly table
 // Texts in 5 languages via pickText() (/js/language-selector.js).
 window.ForecastExtras = (function () {
-  const KP_FORECAST_URL = 'https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json';
-
   const T = {
-    kpForecastTitle: { en: 'Geomagnetic forecast', bg: 'Магнитни бури — прогноза', de: 'Magnetsturm-Prognose', it: 'Previsione tempeste magnetiche', es: 'Pronóstico de tormentas magnéticas' },
-    today: { en: 'Today', bg: 'Днес', de: 'Heute', it: 'Oggi', es: 'Hoy' },
-    tomorrow: { en: 'Tomorrow', bg: 'Утре', de: 'Morgen', it: 'Domani', es: 'Mañana' },
-    calm: { en: 'calm', bg: 'спокойно', de: 'ruhig', it: 'calmo', es: 'tranquilo' },
-    active: { en: 'active', bg: 'активно', de: 'aktiv', it: 'attivo', es: 'activo' },
-    storm: { en: 'storm', bg: 'буря', de: 'Sturm', it: 'tempesta', es: 'tormenta' },
     sunrise: { en: 'Sunrise', bg: 'Изгрев', de: 'Sonnenaufgang', it: 'Alba', es: 'Amanecer' },
     sunset: { en: 'Sunset', bg: 'Залез', de: 'Sonnenuntergang', it: 'Tramonto', es: 'Atardecer' },
-    auroraLikely: { en: 'Aurora possible at your latitude in the next 3 days', bg: 'Възможно е полярно сияние на вашата ширина в следващите 3 дни', de: 'Polarlicht auf Ihrer Breite in den nächsten 3 Tagen möglich', it: 'Aurora possibile alla tua latitudine nei prossimi 3 giorni', es: 'Aurora posible en tu latitud en los próximos 3 días' },
-    auroraMaybe: { en: 'Small chance of aurora low on the horizon', bg: 'Слаб шанс за полярно сияние ниско над хоризонта', de: 'Geringe Chance auf Polarlicht tief am Horizont', it: "Piccola possibilità di aurora bassa sull'orizzonte", es: 'Pequeña posibilidad de aurora baja en el horizonte' },
-    auroraUnlikely: { en: 'Aurora unlikely here (needs Kp ≈ {kp})', bg: 'Полярно сияние: малко вероятно тук (нужен е Kp ≈ {kp})', de: 'Polarlicht hier unwahrscheinlich (benötigt Kp ≈ {kp})', it: 'Aurora improbabile qui (serve Kp ≈ {kp})', es: 'Aurora poco probable aquí (necesita Kp ≈ {kp})' },
-    auroraRare: { en: 'Aurora is very rare at this latitude (only in extreme storms)', bg: 'На тази ширина полярно сияние е много рядко (само при изключителни бури)', de: 'Polarlicht ist auf dieser Breite sehr selten (nur bei extremen Stürmen)', it: 'Aurora molto rara a questa latitudine (solo con tempeste estreme)', es: 'La aurora es muy rara en esta latitud (solo con tormentas extremas)' },
-    auroraHelp: { en: 'Rough estimate from the highest expected Kp and the latitude', bg: 'Груба оценка по най-високия очакван Kp и географската ширина', de: 'Grobe Schätzung aus dem höchsten erwarteten Kp und der Breite', it: 'Stima approssimativa dal Kp massimo previsto e dalla latitudine', es: 'Estimación aproximada a partir del Kp máximo previsto y la latitud' },
     chartTemperature: { en: 'Temperature (°C)', bg: 'Температура (°C)', de: 'Temperatur (°C)', it: 'Temperatura (°C)', es: 'Temperatura (°C)' },
     chartRainChance: { en: 'Chance of rain', bg: 'Вероятност за валеж', de: 'Regenwahrscheinlichkeit', it: 'Probabilità di pioggia', es: 'Probabilidad de lluvia' }
   };
@@ -87,85 +73,6 @@ window.ForecastExtras = (function () {
       const warning = warningTexts[key];
       return `<span class="wx-warning wx-${key}">${warning.icon} ${pickText(warning.text)}</span>`;
     }).join('');
-  }
-
-  // ---- 3-day Kp forecast ----
-  let kpDays = null;
-
-  function kpStatus(kp) {
-    return kp >= 7 ? T.storm : kp >= 5 ? T.active : T.calm;
-  }
-
-  function kpScale(kp) {
-    let segments = '';
-    for (let i = 0; i < 10; i++) segments += `<span class="${i <= Math.round(kp) ? 'on' : ''}"></span>`;
-    return `<span class="kp-scale" role="img" aria-label="Kp ${kp} / 9">${segments}</span>`;
-  }
-
-  // Aurora is seen low on the horizon from about 66° − 2.6·Kp latitude in
-  // Europe (Kp 5 ≈ 53°, Kp 9 ≈ 43°). A rough estimate, not a forecast.
-  function auroraLine() {
-    const latitude = Math.abs(parseFloat((document.getElementById('latitude') || {}).value));
-    if (!isFinite(latitude) || !kpDays || !kpDays.length) return '';
-    const maxKp = Math.max(...kpDays.map(day => day.kp));
-    const visibleFrom = 66 - 2.6 * maxKp;
-    const neededKp = Math.max(0, Math.ceil((66 - latitude) / 2.6));
-    let text;
-    if (latitude >= visibleFrom) text = pickText(T.auroraLikely);
-    else if (latitude >= visibleFrom - 3) text = pickText(T.auroraMaybe);
-    else if (neededKp <= 9) text = pickText(T.auroraUnlikely).replace('{kp}', neededKp);
-    else text = pickText(T.auroraRare);
-    return `<div class="aurora-chance" title="${escapeAttribute(pickText(T.auroraHelp))}">🌌 ${text}</div>`;
-  }
-
-  function renderKpForecast() {
-    const container = document.getElementById('kpForecast');
-    if (!container || !kpDays) return;
-    const dayFormat = new Intl.DateTimeFormat(locale(), { weekday: 'long', timeZone: 'UTC' });
-    const days = kpDays.map((day, index) => {
-      const label = index === 0 ? pickText(T.today) : index === 1 ? pickText(T.tomorrow) : dayFormat.format(new Date(day.date + 'T12:00:00Z'));
-      const scale = day.scale ? ` <span class="kp-g-scale">${day.scale}</span>` : '';
-      return `<div class="kp-day"><div class="kp-day-name">${label}</div>` +
-        `<div>Kp ${day.kp}${kpScale(day.kp)}</div>` +
-        `<div class="kp-day-status">${pickText(kpStatus(day.kp))}${scale}</div></div>`;
-    }).join('');
-    container.innerHTML = `<h3>${pickText(T.kpForecastTitle)}</h3><div class="kp-days">${days}</div>${auroraLine()}`;
-    container.hidden = false;
-  }
-
-  async function loadKpForecast() {
-    const anchor = document.querySelector('.info-display');
-    if (!anchor || document.getElementById('kpForecast')) return;
-    const container = document.createElement('div');
-    container.id = 'kpForecast';
-    container.className = 'kp-forecast';
-    container.hidden = true;
-    anchor.insertAdjacentElement('afterend', container);
-
-    try {
-      const response = await fetch(KP_FORECAST_URL);
-      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      const data = await response.json();
-      const today = new Date().toISOString().slice(0, 10);
-      // Highest Kp per day (3-hour values: observed, estimated and predicted)
-      const byDay = new Map();
-      data.forEach(entry => {
-        const date = String(entry.time_tag).slice(0, 10);
-        const kp = parseFloat(entry.kp);
-        if (date < today || isNaN(kp)) return;
-        const day = byDay.get(date) || { date, kp: 0, scale: null };
-        if (kp >= day.kp) {
-          day.kp = kp;
-          if (entry.noaa_scale) day.scale = entry.noaa_scale;
-        }
-        byDay.set(date, day);
-      });
-      kpDays = [...byDay.values()].slice(0, 3).map(day => ({ ...day, kp: Math.round(day.kp * 10) / 10 }));
-      renderKpForecast();
-    } catch (err) {
-      // The block stays hidden; the rest of the page works without it
-      console.error('Error loading Kp forecast:', err);
-    }
   }
 
   // ---- Hourly temperature chart ----
@@ -238,15 +145,13 @@ window.ForecastExtras = (function () {
   // Re-render the texts when the language changes
   function onLanguageChange() {
     renderClock();
-    renderKpForecast();
     renderHourlyChart();
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    loadKpForecast();
     const languageSelect = document.getElementById('language');
     if (languageSelect) languageSelect.addEventListener('change', onLanguageChange);
   });
 
-  return { sunMoonCell, dayWarnings, renderHourlyChart, startLocalClock, renderKpForecast };
+  return { sunMoonCell, dayWarnings, renderHourlyChart, startLocalClock };
 })();
