@@ -1,0 +1,2701 @@
+{
+ "source": "Open-Meteo historical archive (ERA5)",
+ "years": "2015–2024",
+ "cities": {
+  "sofia": {
+   "elevation": 548,
+   "months": [
+    {
+     "high": 4.6,
+     "low": -3.7,
+     "precip": 64,
+     "rainDays": 9
+    },
+    {
+     "high": 8.9,
+     "low": -1.3,
+     "precip": 38,
+     "rainDays": 8
+    },
+    {
+     "high": 11.5,
+     "low": 0.9,
+     "precip": 71,
+     "rainDays": 12
+    },
+    {
+     "high": 16.7,
+     "low": 5.2,
+     "precip": 60,
+     "rainDays": 10
+    },
+    {
+     "high": 20.6,
+     "low": 10.1,
+     "precip": 70,
+     "rainDays": 14
+    },
+    {
+     "high": 24.9,
+     "low": 14.5,
+     "precip": 76,
+     "rainDays": 12
+    },
+    {
+     "high": 28.1,
+     "low": 16.8,
+     "precip": 46,
+     "rainDays": 6
+    },
+    {
+     "high": 28.4,
+     "low": 16.6,
+     "precip": 34,
+     "rainDays": 6
+    },
+    {
+     "high": 24,
+     "low": 12.7,
+     "precip": 34,
+     "rainDays": 5
+    },
+    {
+     "high": 18.3,
+     "low": 7.5,
+     "precip": 57,
+     "rainDays": 7
+    },
+    {
+     "high": 11.6,
+     "low": 2.9,
+     "precip": 60,
+     "rainDays": 9
+    },
+    {
+     "high": 6.6,
+     "low": -1,
+     "precip": 57,
+     "rainDays": 10
+    }
+   ]
+  },
+  "plovdiv": {
+   "elevation": 163,
+   "months": [
+    {
+     "high": 6.9,
+     "low": -0.9,
+     "precip": 58,
+     "rainDays": 7
+    },
+    {
+     "high": 10.5,
+     "low": 1.6,
+     "precip": 44,
+     "rainDays": 7
+    },
+    {
+     "high": 13.3,
+     "low": 3.6,
+     "precip": 64,
+     "rainDays": 11
+    },
+    {
+     "high": 18.8,
+     "low": 7.6,
+     "precip": 61,
+     "rainDays": 9
+    },
+    {
+     "high": 23.1,
+     "low": 12.5,
+     "precip": 60,
+     "rainDays": 12
+    },
+    {
+     "high": 27.8,
+     "low": 17.4,
+     "precip": 71,
+     "rainDays": 11
+    },
+    {
+     "high": 31.2,
+     "low": 20.1,
+     "precip": 46,
+     "rainDays": 4
+    },
+    {
+     "high": 31.4,
+     "low": 20,
+     "precip": 21,
+     "rainDays": 3
+    },
+    {
+     "high": 26.4,
+     "low": 15.7,
+     "precip": 36,
+     "rainDays": 4
+    },
+    {
+     "high": 19.9,
+     "low": 10.1,
+     "precip": 47,
+     "rainDays": 6
+    },
+    {
+     "high": 13.4,
+     "low": 5.3,
+     "precip": 54,
+     "rainDays": 7
+    },
+    {
+     "high": 8.6,
+     "low": 1.3,
+     "precip": 56,
+     "rainDays": 8
+    }
+   ]
+  },
+  "varna": {
+   "elevation": 50,
+   "months": [
+    {
+     "high": 6.7,
+     "low": 0.3,
+     "precip": 59,
+     "rainDays": 8
+    },
+    {
+     "high": 9.2,
+     "low": 2.2,
+     "precip": 42,
+     "rainDays": 7
+    },
+    {
+     "high": 11.2,
+     "low": 3.6,
+     "precip": 47,
+     "rainDays": 9
+    },
+    {
+     "high": 15.7,
+     "low": 7.5,
+     "precip": 52,
+     "rainDays": 8
+    },
+    {
+     "high": 20.3,
+     "low": 12.7,
+     "precip": 62,
+     "rainDays": 11
+    },
+    {
+     "high": 25.3,
+     "low": 17.8,
+     "precip": 84,
+     "rainDays": 11
+    },
+    {
+     "high": 28.1,
+     "low": 19.8,
+     "precip": 43,
+     "rainDays": 7
+    },
+    {
+     "high": 28.6,
+     "low": 20.5,
+     "precip": 28,
+     "rainDays": 5
+    },
+    {
+     "high": 24.4,
+     "low": 16.7,
+     "precip": 36,
+     "rainDays": 5
+    },
+    {
+     "high": 18.5,
+     "low": 11.5,
+     "precip": 51,
+     "rainDays": 6
+    },
+    {
+     "high": 13.4,
+     "low": 7,
+     "precip": 66,
+     "rainDays": 9
+    },
+    {
+     "high": 9,
+     "low": 2.9,
+     "precip": 57,
+     "rainDays": 9
+    }
+   ]
+  },
+  "burgas": {
+   "elevation": 15,
+   "months": [
+    {
+     "high": 7.9,
+     "low": 0.2,
+     "precip": 68,
+     "rainDays": 8
+    },
+    {
+     "high": 10.7,
+     "low": 2.2,
+     "precip": 49,
+     "rainDays": 7
+    },
+    {
+     "high": 12.8,
+     "low": 3.7,
+     "precip": 50,
+     "rainDays": 9
+    },
+    {
+     "high": 17.3,
+     "low": 7.4,
+     "precip": 54,
+     "rainDays": 9
+    },
+    {
+     "high": 21.4,
+     "low": 12.4,
+     "precip": 63,
+     "rainDays": 11
+    },
+    {
+     "high": 26.3,
+     "low": 17.5,
+     "precip": 67,
+     "rainDays": 11
+    },
+    {
+     "high": 29.2,
+     "low": 19.6,
+     "precip": 41,
+     "rainDays": 7
+    },
+    {
+     "high": 29.7,
+     "low": 20.3,
+     "precip": 29,
+     "rainDays": 5
+    },
+    {
+     "high": 25.6,
+     "low": 16.4,
+     "precip": 37,
+     "rainDays": 6
+    },
+    {
+     "high": 19.7,
+     "low": 11.2,
+     "precip": 57,
+     "rainDays": 6
+    },
+    {
+     "high": 14.6,
+     "low": 6.8,
+     "precip": 63,
+     "rainDays": 8
+    },
+    {
+     "high": 9.9,
+     "low": 2.6,
+     "precip": 61,
+     "rainDays": 8
+    }
+   ]
+  },
+  "ruse": {
+   "elevation": 66,
+   "months": [
+    {
+     "high": 5,
+     "low": -2.3,
+     "precip": 52,
+     "rainDays": 8
+    },
+    {
+     "high": 9.1,
+     "low": 0.4,
+     "precip": 39,
+     "rainDays": 7
+    },
+    {
+     "high": 12.4,
+     "low": 2.8,
+     "precip": 59,
+     "rainDays": 10
+    },
+    {
+     "high": 18.1,
+     "low": 7.4,
+     "precip": 58,
+     "rainDays": 9
+    },
+    {
+     "high": 22.5,
+     "low": 12.4,
+     "precip": 61,
+     "rainDays": 10
+    },
+    {
+     "high": 27.3,
+     "low": 17.2,
+     "precip": 80,
+     "rainDays": 11
+    },
+    {
+     "high": 30.3,
+     "low": 19.5,
+     "precip": 54,
+     "rainDays": 7
+    },
+    {
+     "high": 30.8,
+     "low": 19.5,
+     "precip": 33,
+     "rainDays": 5
+    },
+    {
+     "high": 25.9,
+     "low": 15,
+     "precip": 39,
+     "rainDays": 5
+    },
+    {
+     "high": 19,
+     "low": 9.3,
+     "precip": 50,
+     "rainDays": 6
+    },
+    {
+     "high": 12.5,
+     "low": 4.7,
+     "precip": 61,
+     "rainDays": 9
+    },
+    {
+     "high": 7.3,
+     "low": 0.5,
+     "precip": 48,
+     "rainDays": 9
+    }
+   ]
+  },
+  "stara-zagora": {
+   "elevation": 204,
+   "months": [
+    {
+     "high": 6.5,
+     "low": -2.1,
+     "precip": 63,
+     "rainDays": 9
+    },
+    {
+     "high": 10,
+     "low": 0.2,
+     "precip": 49,
+     "rainDays": 7
+    },
+    {
+     "high": 12.7,
+     "low": 2.4,
+     "precip": 64,
+     "rainDays": 10
+    },
+    {
+     "high": 18,
+     "low": 6.4,
+     "precip": 61,
+     "rainDays": 10
+    },
+    {
+     "high": 22.4,
+     "low": 11.3,
+     "precip": 64,
+     "rainDays": 12
+    },
+    {
+     "high": 27.1,
+     "low": 16,
+     "precip": 78,
+     "rainDays": 12
+    },
+    {
+     "high": 30.5,
+     "low": 18.4,
+     "precip": 41,
+     "rainDays": 6
+    },
+    {
+     "high": 31,
+     "low": 18.6,
+     "precip": 23,
+     "rainDays": 5
+    },
+    {
+     "high": 26.2,
+     "low": 14.4,
+     "precip": 30,
+     "rainDays": 5
+    },
+    {
+     "high": 19.3,
+     "low": 8.6,
+     "precip": 57,
+     "rainDays": 6
+    },
+    {
+     "high": 13.2,
+     "low": 4.4,
+     "precip": 61,
+     "rainDays": 8
+    },
+    {
+     "high": 8.4,
+     "low": 0.1,
+     "precip": 61,
+     "rainDays": 7
+    }
+   ]
+  },
+  "pleven": {
+   "elevation": 100,
+   "months": [
+    {
+     "high": 5.2,
+     "low": -2.5,
+     "precip": 53,
+     "rainDays": 9
+    },
+    {
+     "high": 9.7,
+     "low": 0.6,
+     "precip": 38,
+     "rainDays": 8
+    },
+    {
+     "high": 12.4,
+     "low": 2.8,
+     "precip": 66,
+     "rainDays": 10
+    },
+    {
+     "high": 18.1,
+     "low": 7.4,
+     "precip": 53,
+     "rainDays": 9
+    },
+    {
+     "high": 22.3,
+     "low": 12.3,
+     "precip": 71,
+     "rainDays": 11
+    },
+    {
+     "high": 26.8,
+     "low": 16.9,
+     "precip": 89,
+     "rainDays": 12
+    },
+    {
+     "high": 30.2,
+     "low": 19.2,
+     "precip": 48,
+     "rainDays": 7
+    },
+    {
+     "high": 30.7,
+     "low": 19.3,
+     "precip": 25,
+     "rainDays": 5
+    },
+    {
+     "high": 25.7,
+     "low": 14.9,
+     "precip": 35,
+     "rainDays": 4
+    },
+    {
+     "high": 19,
+     "low": 9,
+     "precip": 50,
+     "rainDays": 6
+    },
+    {
+     "high": 12.3,
+     "low": 4.3,
+     "precip": 55,
+     "rainDays": 8
+    },
+    {
+     "high": 7.7,
+     "low": 0.3,
+     "precip": 49,
+     "rainDays": 8
+    }
+   ]
+  },
+  "sliven": {
+   "elevation": 266,
+   "months": [
+    {
+     "high": 6.1,
+     "low": -1.3,
+     "precip": 74,
+     "rainDays": 10
+    },
+    {
+     "high": 9.4,
+     "low": 0.8,
+     "precip": 55,
+     "rainDays": 8
+    },
+    {
+     "high": 12.1,
+     "low": 2.5,
+     "precip": 63,
+     "rainDays": 10
+    },
+    {
+     "high": 17.4,
+     "low": 6.6,
+     "precip": 65,
+     "rainDays": 11
+    },
+    {
+     "high": 21.7,
+     "low": 11.3,
+     "precip": 63,
+     "rainDays": 12
+    },
+    {
+     "high": 26.4,
+     "low": 16.1,
+     "precip": 65,
+     "rainDays": 11
+    },
+    {
+     "high": 29.8,
+     "low": 18.4,
+     "precip": 28,
+     "rainDays": 5
+    },
+    {
+     "high": 30.5,
+     "low": 18.8,
+     "precip": 23,
+     "rainDays": 5
+    },
+    {
+     "high": 25.7,
+     "low": 14.6,
+     "precip": 27,
+     "rainDays": 5
+    },
+    {
+     "high": 19,
+     "low": 9.4,
+     "precip": 51,
+     "rainDays": 6
+    },
+    {
+     "high": 13,
+     "low": 5.3,
+     "precip": 82,
+     "rainDays": 9
+    },
+    {
+     "high": 8,
+     "low": 1.1,
+     "precip": 75,
+     "rainDays": 9
+    }
+   ]
+  },
+  "dobrich": {
+   "elevation": 212,
+   "months": [
+    {
+     "high": 5.3,
+     "low": -1.7,
+     "precip": 57,
+     "rainDays": 9
+    },
+    {
+     "high": 8.5,
+     "low": 0.6,
+     "precip": 42,
+     "rainDays": 7
+    },
+    {
+     "high": 11,
+     "low": 2,
+     "precip": 48,
+     "rainDays": 9
+    },
+    {
+     "high": 16.3,
+     "low": 6.1,
+     "precip": 52,
+     "rainDays": 9
+    },
+    {
+     "high": 20.7,
+     "low": 10.9,
+     "precip": 61,
+     "rainDays": 12
+    },
+    {
+     "high": 25.6,
+     "low": 15.9,
+     "precip": 93,
+     "rainDays": 13
+    },
+    {
+     "high": 28.5,
+     "low": 17.9,
+     "precip": 48,
+     "rainDays": 7
+    },
+    {
+     "high": 29.1,
+     "low": 18.3,
+     "precip": 26,
+     "rainDays": 5
+    },
+    {
+     "high": 24.5,
+     "low": 14.3,
+     "precip": 30,
+     "rainDays": 5
+    },
+    {
+     "high": 18.1,
+     "low": 9.2,
+     "precip": 47,
+     "rainDays": 6
+    },
+    {
+     "high": 12.5,
+     "low": 4.9,
+     "precip": 58,
+     "rainDays": 8
+    },
+    {
+     "high": 7.8,
+     "low": 1,
+     "precip": 47,
+     "rainDays": 9
+    }
+   ]
+  },
+  "shumen": {
+   "elevation": 239,
+   "months": [
+    {
+     "high": 5.8,
+     "low": -2.6,
+     "precip": 59,
+     "rainDays": 9
+    },
+    {
+     "high": 9.1,
+     "low": -0.4,
+     "precip": 43,
+     "rainDays": 8
+    },
+    {
+     "high": 11.9,
+     "low": 1.4,
+     "precip": 55,
+     "rainDays": 9
+    },
+    {
+     "high": 17.3,
+     "low": 5.4,
+     "precip": 51,
+     "rainDays": 9
+    },
+    {
+     "high": 21.5,
+     "low": 10.6,
+     "precip": 64,
+     "rainDays": 12
+    },
+    {
+     "high": 26.2,
+     "low": 15.5,
+     "precip": 82,
+     "rainDays": 11
+    },
+    {
+     "high": 29.5,
+     "low": 17.7,
+     "precip": 50,
+     "rainDays": 6
+    },
+    {
+     "high": 30.1,
+     "low": 18,
+     "precip": 27,
+     "rainDays": 5
+    },
+    {
+     "high": 25.3,
+     "low": 13.8,
+     "precip": 28,
+     "rainDays": 5
+    },
+    {
+     "high": 18.8,
+     "low": 8.4,
+     "precip": 47,
+     "rainDays": 6
+    },
+    {
+     "high": 12.7,
+     "low": 4.1,
+     "precip": 65,
+     "rainDays": 9
+    },
+    {
+     "high": 8,
+     "low": 0.2,
+     "precip": 55,
+     "rainDays": 9
+    }
+   ]
+  },
+  "pernik": {
+   "elevation": 697,
+   "months": [
+    {
+     "high": 4.4,
+     "low": -4.9,
+     "precip": 58,
+     "rainDays": 9
+    },
+    {
+     "high": 8.6,
+     "low": -2.1,
+     "precip": 40,
+     "rainDays": 7
+    },
+    {
+     "high": 10.9,
+     "low": 0,
+     "precip": 67,
+     "rainDays": 11
+    },
+    {
+     "high": 16,
+     "low": 3.9,
+     "precip": 57,
+     "rainDays": 10
+    },
+    {
+     "high": 20.2,
+     "low": 8.9,
+     "precip": 65,
+     "rainDays": 12
+    },
+    {
+     "high": 24.5,
+     "low": 13.2,
+     "precip": 61,
+     "rainDays": 11
+    },
+    {
+     "high": 27.6,
+     "low": 15.5,
+     "precip": 37,
+     "rainDays": 7
+    },
+    {
+     "high": 27.9,
+     "low": 15.5,
+     "precip": 27,
+     "rainDays": 5
+    },
+    {
+     "high": 23.3,
+     "low": 11.6,
+     "precip": 34,
+     "rainDays": 6
+    },
+    {
+     "high": 17.7,
+     "low": 6.2,
+     "precip": 52,
+     "rainDays": 6
+    },
+    {
+     "high": 11.5,
+     "low": 1.8,
+     "precip": 58,
+     "rainDays": 8
+    },
+    {
+     "high": 6.6,
+     "low": -1.8,
+     "precip": 55,
+     "rainDays": 8
+    }
+   ]
+  },
+  "haskovo": {
+   "elevation": 195,
+   "months": [
+    {
+     "high": 7.1,
+     "low": -1.2,
+     "precip": 67,
+     "rainDays": 9
+    },
+    {
+     "high": 10.7,
+     "low": 1.2,
+     "precip": 54,
+     "rainDays": 8
+    },
+    {
+     "high": 13.3,
+     "low": 3.1,
+     "precip": 74,
+     "rainDays": 10
+    },
+    {
+     "high": 18.6,
+     "low": 7,
+     "precip": 67,
+     "rainDays": 10
+    },
+    {
+     "high": 23.1,
+     "low": 12,
+     "precip": 66,
+     "rainDays": 11
+    },
+    {
+     "high": 27.7,
+     "low": 16.8,
+     "precip": 81,
+     "rainDays": 11
+    },
+    {
+     "high": 31.3,
+     "low": 19.4,
+     "precip": 32,
+     "rainDays": 5
+    },
+    {
+     "high": 31.8,
+     "low": 19.7,
+     "precip": 26,
+     "rainDays": 4
+    },
+    {
+     "high": 26.9,
+     "low": 15.5,
+     "precip": 38,
+     "rainDays": 5
+    },
+    {
+     "high": 19.9,
+     "low": 9.7,
+     "precip": 55,
+     "rainDays": 6
+    },
+    {
+     "high": 14.1,
+     "low": 5.4,
+     "precip": 68,
+     "rainDays": 9
+    },
+    {
+     "high": 9.2,
+     "low": 1.1,
+     "precip": 72,
+     "rainDays": 9
+    }
+   ]
+  },
+  "yambol": {
+   "elevation": 134,
+   "months": [
+    {
+     "high": 7.2,
+     "low": -1.2,
+     "precip": 58,
+     "rainDays": 8
+    },
+    {
+     "high": 10.6,
+     "low": 0.8,
+     "precip": 44,
+     "rainDays": 7
+    },
+    {
+     "high": 13.3,
+     "low": 2.5,
+     "precip": 53,
+     "rainDays": 9
+    },
+    {
+     "high": 18.5,
+     "low": 6.4,
+     "precip": 59,
+     "rainDays": 9
+    },
+    {
+     "high": 22.9,
+     "low": 11.4,
+     "precip": 58,
+     "rainDays": 11
+    },
+    {
+     "high": 27.8,
+     "low": 16.3,
+     "precip": 60,
+     "rainDays": 10
+    },
+    {
+     "high": 31.4,
+     "low": 18.8,
+     "precip": 26,
+     "rainDays": 5
+    },
+    {
+     "high": 31.8,
+     "low": 19.2,
+     "precip": 19,
+     "rainDays": 4
+    },
+    {
+     "high": 27,
+     "low": 15,
+     "precip": 27,
+     "rainDays": 4
+    },
+    {
+     "high": 20.2,
+     "low": 9.4,
+     "precip": 52,
+     "rainDays": 6
+    },
+    {
+     "high": 14.2,
+     "low": 5.4,
+     "precip": 64,
+     "rainDays": 8
+    },
+    {
+     "high": 9,
+     "low": 1,
+     "precip": 53,
+     "rainDays": 8
+    }
+   ]
+  },
+  "pazardzhik": {
+   "elevation": 212,
+   "months": [
+    {
+     "high": 6.9,
+     "low": -2.2,
+     "precip": 53,
+     "rainDays": 7
+    },
+    {
+     "high": 10.6,
+     "low": 0.5,
+     "precip": 45,
+     "rainDays": 7
+    },
+    {
+     "high": 13.6,
+     "low": 2.7,
+     "precip": 63,
+     "rainDays": 11
+    },
+    {
+     "high": 19.2,
+     "low": 6.8,
+     "precip": 57,
+     "rainDays": 9
+    },
+    {
+     "high": 23.2,
+     "low": 11.8,
+     "precip": 62,
+     "rainDays": 11
+    },
+    {
+     "high": 28.1,
+     "low": 16.7,
+     "precip": 63,
+     "rainDays": 9
+    },
+    {
+     "high": 31.5,
+     "low": 19.4,
+     "precip": 35,
+     "rainDays": 4
+    },
+    {
+     "high": 31.6,
+     "low": 19.4,
+     "precip": 22,
+     "rainDays": 4
+    },
+    {
+     "high": 26.4,
+     "low": 14.9,
+     "precip": 34,
+     "rainDays": 4
+    },
+    {
+     "high": 19.8,
+     "low": 9.1,
+     "precip": 46,
+     "rainDays": 6
+    },
+    {
+     "high": 13.1,
+     "low": 4.4,
+     "precip": 57,
+     "rainDays": 8
+    },
+    {
+     "high": 8.4,
+     "low": 0.2,
+     "precip": 51,
+     "rainDays": 9
+    }
+   ]
+  },
+  "blagoevgrad": {
+   "elevation": 387,
+   "months": [
+    {
+     "high": 6.9,
+     "low": -2.7,
+     "precip": 70,
+     "rainDays": 10
+    },
+    {
+     "high": 11,
+     "low": -0.2,
+     "precip": 52,
+     "rainDays": 8
+    },
+    {
+     "high": 13.3,
+     "low": 2.2,
+     "precip": 82,
+     "rainDays": 12
+    },
+    {
+     "high": 18.4,
+     "low": 6.4,
+     "precip": 69,
+     "rainDays": 9
+    },
+    {
+     "high": 22.5,
+     "low": 11.2,
+     "precip": 56,
+     "rainDays": 10
+    },
+    {
+     "high": 27.2,
+     "low": 15.7,
+     "precip": 48,
+     "rainDays": 6
+    },
+    {
+     "high": 30.5,
+     "low": 18.2,
+     "precip": 28,
+     "rainDays": 4
+    },
+    {
+     "high": 30.7,
+     "low": 18.4,
+     "precip": 22,
+     "rainDays": 4
+    },
+    {
+     "high": 25.9,
+     "low": 14,
+     "precip": 40,
+     "rainDays": 5
+    },
+    {
+     "high": 19.7,
+     "low": 8.5,
+     "precip": 49,
+     "rainDays": 6
+    },
+    {
+     "high": 13.7,
+     "low": 3.9,
+     "precip": 74,
+     "rainDays": 9
+    },
+    {
+     "high": 9.1,
+     "low": 0.1,
+     "precip": 72,
+     "rainDays": 9
+    }
+   ]
+  },
+  "veliko-tarnovo": {
+   "elevation": 213,
+   "months": [
+    {
+     "high": 6.2,
+     "low": -2.1,
+     "precip": 65,
+     "rainDays": 10
+    },
+    {
+     "high": 9.7,
+     "low": 0.5,
+     "precip": 55,
+     "rainDays": 9
+    },
+    {
+     "high": 12.2,
+     "low": 2.7,
+     "precip": 74,
+     "rainDays": 12
+    },
+    {
+     "high": 17.6,
+     "low": 6.9,
+     "precip": 71,
+     "rainDays": 11
+    },
+    {
+     "high": 21.7,
+     "low": 11.5,
+     "precip": 91,
+     "rainDays": 14
+    },
+    {
+     "high": 25.9,
+     "low": 15.9,
+     "precip": 100,
+     "rainDays": 13
+    },
+    {
+     "high": 29.1,
+     "low": 18.1,
+     "precip": 57,
+     "rainDays": 7
+    },
+    {
+     "high": 29.6,
+     "low": 18.2,
+     "precip": 38,
+     "rainDays": 6
+    },
+    {
+     "high": 25.1,
+     "low": 14,
+     "precip": 37,
+     "rainDays": 5
+    },
+    {
+     "high": 19,
+     "low": 8.8,
+     "precip": 52,
+     "rainDays": 7
+    },
+    {
+     "high": 12.8,
+     "low": 4.4,
+     "precip": 64,
+     "rainDays": 9
+    },
+    {
+     "high": 8.2,
+     "low": 0.5,
+     "precip": 63,
+     "rainDays": 10
+    }
+   ]
+  },
+  "vratsa": {
+   "elevation": 357,
+   "months": [
+    {
+     "high": 5.1,
+     "low": -3.4,
+     "precip": 70,
+     "rainDays": 10
+    },
+    {
+     "high": 9,
+     "low": -0.1,
+     "precip": 53,
+     "rainDays": 9
+    },
+    {
+     "high": 11.4,
+     "low": 2,
+     "precip": 88,
+     "rainDays": 12
+    },
+    {
+     "high": 16.7,
+     "low": 6.6,
+     "precip": 74,
+     "rainDays": 12
+    },
+    {
+     "high": 20.7,
+     "low": 11.4,
+     "precip": 106,
+     "rainDays": 15
+    },
+    {
+     "high": 25.1,
+     "low": 16.1,
+     "precip": 116,
+     "rainDays": 15
+    },
+    {
+     "high": 28.2,
+     "low": 18.2,
+     "precip": 70,
+     "rainDays": 8
+    },
+    {
+     "high": 28.4,
+     "low": 18.4,
+     "precip": 49,
+     "rainDays": 7
+    },
+    {
+     "high": 23.9,
+     "low": 14.2,
+     "precip": 46,
+     "rainDays": 7
+    },
+    {
+     "high": 18,
+     "low": 8.9,
+     "precip": 60,
+     "rainDays": 7
+    },
+    {
+     "high": 11.7,
+     "low": 4,
+     "precip": 71,
+     "rainDays": 8
+    },
+    {
+     "high": 7.5,
+     "low": -0.2,
+     "precip": 63,
+     "rainDays": 10
+    }
+   ]
+  },
+  "gabrovo": {
+   "elevation": 382,
+   "months": [
+    {
+     "high": 5.7,
+     "low": -2,
+     "precip": 80,
+     "rainDays": 12
+    },
+    {
+     "high": 9.2,
+     "low": 0.6,
+     "precip": 65,
+     "rainDays": 9
+    },
+    {
+     "high": 11.5,
+     "low": 2.7,
+     "precip": 87,
+     "rainDays": 13
+    },
+    {
+     "high": 16.8,
+     "low": 7,
+     "precip": 81,
+     "rainDays": 12
+    },
+    {
+     "high": 20.6,
+     "low": 11.6,
+     "precip": 110,
+     "rainDays": 15
+    },
+    {
+     "high": 24.7,
+     "low": 15.9,
+     "precip": 132,
+     "rainDays": 15
+    },
+    {
+     "high": 27.8,
+     "low": 18.2,
+     "precip": 65,
+     "rainDays": 9
+    },
+    {
+     "high": 28.3,
+     "low": 18.3,
+     "precip": 46,
+     "rainDays": 7
+    },
+    {
+     "high": 23.9,
+     "low": 14.3,
+     "precip": 45,
+     "rainDays": 6
+    },
+    {
+     "high": 18.3,
+     "low": 9.3,
+     "precip": 60,
+     "rainDays": 7
+    },
+    {
+     "high": 12.5,
+     "low": 4.8,
+     "precip": 71,
+     "rainDays": 10
+    },
+    {
+     "high": 8,
+     "low": 0.7,
+     "precip": 75,
+     "rainDays": 10
+    }
+   ]
+  },
+  "asenovgrad": {
+   "elevation": 223,
+   "months": [
+    {
+     "high": 6.7,
+     "low": -1.6,
+     "precip": 63,
+     "rainDays": 8
+    },
+    {
+     "high": 10.3,
+     "low": 0.8,
+     "precip": 54,
+     "rainDays": 8
+    },
+    {
+     "high": 13.1,
+     "low": 2.9,
+     "precip": 79,
+     "rainDays": 11
+    },
+    {
+     "high": 18.6,
+     "low": 6.9,
+     "precip": 65,
+     "rainDays": 9
+    },
+    {
+     "high": 22.9,
+     "low": 11.8,
+     "precip": 70,
+     "rainDays": 11
+    },
+    {
+     "high": 27.7,
+     "low": 16.6,
+     "precip": 68,
+     "rainDays": 10
+    },
+    {
+     "high": 31,
+     "low": 19.5,
+     "precip": 41,
+     "rainDays": 5
+    },
+    {
+     "high": 31.2,
+     "low": 19.5,
+     "precip": 32,
+     "rainDays": 4
+    },
+    {
+     "high": 26.2,
+     "low": 15.2,
+     "precip": 52,
+     "rainDays": 4
+    },
+    {
+     "high": 19.6,
+     "low": 9.6,
+     "precip": 53,
+     "rainDays": 6
+    },
+    {
+     "high": 13.2,
+     "low": 5,
+     "precip": 60,
+     "rainDays": 8
+    },
+    {
+     "high": 8.3,
+     "low": 0.8,
+     "precip": 61,
+     "rainDays": 8
+    }
+   ]
+  },
+  "vidin": {
+   "elevation": 37,
+   "months": [
+    {
+     "high": 5.1,
+     "low": -2,
+     "precip": 60,
+     "rainDays": 9
+    },
+    {
+     "high": 9.1,
+     "low": 0.6,
+     "precip": 35,
+     "rainDays": 7
+    },
+    {
+     "high": 12.6,
+     "low": 3,
+     "precip": 65,
+     "rainDays": 9
+    },
+    {
+     "high": 18.4,
+     "low": 7.9,
+     "precip": 47,
+     "rainDays": 8
+    },
+    {
+     "high": 22.8,
+     "low": 12.9,
+     "precip": 75,
+     "rainDays": 11
+    },
+    {
+     "high": 27.9,
+     "low": 17.9,
+     "precip": 61,
+     "rainDays": 9
+    },
+    {
+     "high": 30.9,
+     "low": 20,
+     "precip": 34,
+     "rainDays": 5
+    },
+    {
+     "high": 31,
+     "low": 19.7,
+     "precip": 27,
+     "rainDays": 5
+    },
+    {
+     "high": 25.7,
+     "low": 15.2,
+     "precip": 35,
+     "rainDays": 4
+    },
+    {
+     "high": 18.5,
+     "low": 9.1,
+     "precip": 49,
+     "rainDays": 7
+    },
+    {
+     "high": 11.4,
+     "low": 4.7,
+     "precip": 75,
+     "rainDays": 10
+    },
+    {
+     "high": 7.3,
+     "low": 0.8,
+     "precip": 50,
+     "rainDays": 8
+    }
+   ]
+  },
+  "kazanlak": {
+   "elevation": 376,
+   "months": [
+    {
+     "high": 6.2,
+     "low": -2.2,
+     "precip": 65,
+     "rainDays": 10
+    },
+    {
+     "high": 9.5,
+     "low": -0.2,
+     "precip": 52,
+     "rainDays": 8
+    },
+    {
+     "high": 12,
+     "low": 1.8,
+     "precip": 66,
+     "rainDays": 11
+    },
+    {
+     "high": 17.3,
+     "low": 6,
+     "precip": 66,
+     "rainDays": 10
+    },
+    {
+     "high": 21.3,
+     "low": 10.8,
+     "precip": 59,
+     "rainDays": 12
+    },
+    {
+     "high": 25.8,
+     "low": 15.3,
+     "precip": 73,
+     "rainDays": 11
+    },
+    {
+     "high": 29.1,
+     "low": 17.7,
+     "precip": 27,
+     "rainDays": 5
+    },
+    {
+     "high": 29.7,
+     "low": 17.6,
+     "precip": 30,
+     "rainDays": 4
+    },
+    {
+     "high": 25,
+     "low": 13.7,
+     "precip": 28,
+     "rainDays": 5
+    },
+    {
+     "high": 18.9,
+     "low": 8.3,
+     "precip": 52,
+     "rainDays": 7
+    },
+    {
+     "high": 12.7,
+     "low": 4.3,
+     "precip": 66,
+     "rainDays": 9
+    },
+    {
+     "high": 8,
+     "low": 0.4,
+     "precip": 65,
+     "rainDays": 8
+    }
+   ]
+  },
+  "kardzhali": {
+   "elevation": 233,
+   "months": [
+    {
+     "high": 7.8,
+     "low": -0.6,
+     "precip": 80,
+     "rainDays": 9
+    },
+    {
+     "high": 10.8,
+     "low": 1.5,
+     "precip": 58,
+     "rainDays": 7
+    },
+    {
+     "high": 13,
+     "low": 3.3,
+     "precip": 79,
+     "rainDays": 11
+    },
+    {
+     "high": 18.2,
+     "low": 7,
+     "precip": 68,
+     "rainDays": 10
+    },
+    {
+     "high": 22.4,
+     "low": 11.8,
+     "precip": 68,
+     "rainDays": 12
+    },
+    {
+     "high": 27,
+     "low": 16.4,
+     "precip": 80,
+     "rainDays": 12
+    },
+    {
+     "high": 30.4,
+     "low": 18.9,
+     "precip": 30,
+     "rainDays": 5
+    },
+    {
+     "high": 30.9,
+     "low": 19.4,
+     "precip": 21,
+     "rainDays": 4
+    },
+    {
+     "high": 26.4,
+     "low": 15.3,
+     "precip": 40,
+     "rainDays": 5
+    },
+    {
+     "high": 19.9,
+     "low": 9.9,
+     "precip": 54,
+     "rainDays": 6
+    },
+    {
+     "high": 14.5,
+     "low": 5.9,
+     "precip": 61,
+     "rainDays": 9
+    },
+    {
+     "high": 9.9,
+     "low": 2.1,
+     "precip": 80,
+     "rainDays": 9
+    }
+   ]
+  },
+  "kyustendil": {
+   "elevation": 518,
+   "months": [
+    {
+     "high": 6.4,
+     "low": -2.7,
+     "precip": 70,
+     "rainDays": 10
+    },
+    {
+     "high": 10.3,
+     "low": -0.4,
+     "precip": 47,
+     "rainDays": 9
+    },
+    {
+     "high": 12.4,
+     "low": 1.4,
+     "precip": 82,
+     "rainDays": 12
+    },
+    {
+     "high": 17.5,
+     "low": 5.5,
+     "precip": 60,
+     "rainDays": 10
+    },
+    {
+     "high": 21.5,
+     "low": 10.3,
+     "precip": 77,
+     "rainDays": 14
+    },
+    {
+     "high": 25.6,
+     "low": 14.7,
+     "precip": 78,
+     "rainDays": 13
+    },
+    {
+     "high": 29,
+     "low": 17.1,
+     "precip": 42,
+     "rainDays": 7
+    },
+    {
+     "high": 29.3,
+     "low": 17.3,
+     "precip": 42,
+     "rainDays": 6
+    },
+    {
+     "high": 24.7,
+     "low": 13,
+     "precip": 43,
+     "rainDays": 6
+    },
+    {
+     "high": 19.3,
+     "low": 8.1,
+     "precip": 52,
+     "rainDays": 6
+    },
+    {
+     "high": 13.4,
+     "low": 3.6,
+     "precip": 68,
+     "rainDays": 9
+    },
+    {
+     "high": 8.7,
+     "low": -0.3,
+     "precip": 68,
+     "rainDays": 8
+    }
+   ]
+  },
+  "montana": {
+   "elevation": 147,
+   "months": [
+    {
+     "high": 5.5,
+     "low": -3.3,
+     "precip": 60,
+     "rainDays": 9
+    },
+    {
+     "high": 9.6,
+     "low": -0.6,
+     "precip": 45,
+     "rainDays": 8
+    },
+    {
+     "high": 12.5,
+     "low": 1.4,
+     "precip": 78,
+     "rainDays": 11
+    },
+    {
+     "high": 18,
+     "low": 6.3,
+     "precip": 58,
+     "rainDays": 10
+    },
+    {
+     "high": 22.1,
+     "low": 11.4,
+     "precip": 86,
+     "rainDays": 13
+    },
+    {
+     "high": 26.7,
+     "low": 16.2,
+     "precip": 83,
+     "rainDays": 12
+    },
+    {
+     "high": 29.9,
+     "low": 18.3,
+     "precip": 56,
+     "rainDays": 7
+    },
+    {
+     "high": 30,
+     "low": 18.4,
+     "precip": 37,
+     "rainDays": 6
+    },
+    {
+     "high": 25.2,
+     "low": 14.1,
+     "precip": 40,
+     "rainDays": 6
+    },
+    {
+     "high": 18.9,
+     "low": 8.5,
+     "precip": 52,
+     "rainDays": 7
+    },
+    {
+     "high": 11.8,
+     "low": 4,
+     "precip": 65,
+     "rainDays": 9
+    },
+    {
+     "high": 7.5,
+     "low": -0.3,
+     "precip": 52,
+     "rainDays": 10
+    }
+   ]
+  },
+  "dimitrovgrad": {
+   "elevation": 106,
+   "months": [
+    {
+     "high": 7.3,
+     "low": -1.6,
+     "precip": 61,
+     "rainDays": 9
+    },
+    {
+     "high": 11.1,
+     "low": 0.9,
+     "precip": 47,
+     "rainDays": 8
+    },
+    {
+     "high": 13.9,
+     "low": 3.1,
+     "precip": 70,
+     "rainDays": 10
+    },
+    {
+     "high": 19.2,
+     "low": 7.1,
+     "precip": 59,
+     "rainDays": 10
+    },
+    {
+     "high": 23.7,
+     "low": 12.2,
+     "precip": 69,
+     "rainDays": 11
+    },
+    {
+     "high": 28.5,
+     "low": 17,
+     "precip": 76,
+     "rainDays": 10
+    },
+    {
+     "high": 32,
+     "low": 19.7,
+     "precip": 37,
+     "rainDays": 5
+    },
+    {
+     "high": 32.6,
+     "low": 20,
+     "precip": 26,
+     "rainDays": 4
+    },
+    {
+     "high": 27.6,
+     "low": 15.8,
+     "precip": 36,
+     "rainDays": 5
+    },
+    {
+     "high": 20.4,
+     "low": 9.6,
+     "precip": 56,
+     "rainDays": 6
+    },
+    {
+     "high": 14.4,
+     "low": 5.4,
+     "precip": 61,
+     "rainDays": 8
+    },
+    {
+     "high": 9.3,
+     "low": 0.9,
+     "precip": 65,
+     "rainDays": 8
+    }
+   ]
+  },
+  "lovech": {
+   "elevation": 178,
+   "months": [
+    {
+     "high": 6.6,
+     "low": -2.1,
+     "precip": 56,
+     "rainDays": 10
+    },
+    {
+     "high": 10.5,
+     "low": 0.9,
+     "precip": 48,
+     "rainDays": 8
+    },
+    {
+     "high": 12.8,
+     "low": 2.9,
+     "precip": 70,
+     "rainDays": 11
+    },
+    {
+     "high": 18.3,
+     "low": 7.3,
+     "precip": 64,
+     "rainDays": 10
+    },
+    {
+     "high": 22.3,
+     "low": 12,
+     "precip": 84,
+     "rainDays": 13
+    },
+    {
+     "high": 26.5,
+     "low": 16.3,
+     "precip": 107,
+     "rainDays": 14
+    },
+    {
+     "high": 29.6,
+     "low": 18.7,
+     "precip": 50,
+     "rainDays": 7
+    },
+    {
+     "high": 30.1,
+     "low": 18.5,
+     "precip": 28,
+     "rainDays": 6
+    },
+    {
+     "high": 25.5,
+     "low": 14.4,
+     "precip": 36,
+     "rainDays": 5
+    },
+    {
+     "high": 19.5,
+     "low": 8.8,
+     "precip": 57,
+     "rainDays": 7
+    },
+    {
+     "high": 13.4,
+     "low": 4.5,
+     "precip": 57,
+     "rainDays": 8
+    },
+    {
+     "high": 8.7,
+     "low": 0.5,
+     "precip": 57,
+     "rainDays": 10
+    }
+   ]
+  },
+  "silistra": {
+   "elevation": 23,
+   "months": [
+    {
+     "high": 5.2,
+     "low": -1.9,
+     "precip": 51,
+     "rainDays": 8
+    },
+    {
+     "high": 9.1,
+     "low": 0.6,
+     "precip": 42,
+     "rainDays": 7
+    },
+    {
+     "high": 12.2,
+     "low": 2.7,
+     "precip": 53,
+     "rainDays": 9
+    },
+    {
+     "high": 18,
+     "low": 7.2,
+     "precip": 55,
+     "rainDays": 9
+    },
+    {
+     "high": 22.4,
+     "low": 12.2,
+     "precip": 57,
+     "rainDays": 10
+    },
+    {
+     "high": 27,
+     "low": 17.2,
+     "precip": 75,
+     "rainDays": 10
+    },
+    {
+     "high": 29.9,
+     "low": 19.2,
+     "precip": 45,
+     "rainDays": 7
+    },
+    {
+     "high": 30.4,
+     "low": 19.3,
+     "precip": 36,
+     "rainDays": 5
+    },
+    {
+     "high": 25.5,
+     "low": 14.8,
+     "precip": 37,
+     "rainDays": 5
+    },
+    {
+     "high": 18.8,
+     "low": 9.4,
+     "precip": 57,
+     "rainDays": 7
+    },
+    {
+     "high": 12.5,
+     "low": 5,
+     "precip": 58,
+     "rainDays": 8
+    },
+    {
+     "high": 7.6,
+     "low": 0.8,
+     "precip": 48,
+     "rainDays": 9
+    }
+   ]
+  },
+  "targovishte": {
+   "elevation": 185,
+   "months": [
+    {
+     "high": 6,
+     "low": -2.1,
+     "precip": 61,
+     "rainDays": 9
+    },
+    {
+     "high": 9.4,
+     "low": 0,
+     "precip": 44,
+     "rainDays": 8
+    },
+    {
+     "high": 12.1,
+     "low": 1.8,
+     "precip": 59,
+     "rainDays": 10
+    },
+    {
+     "high": 17.6,
+     "low": 5.9,
+     "precip": 56,
+     "rainDays": 9
+    },
+    {
+     "high": 21.7,
+     "low": 10.9,
+     "precip": 78,
+     "rainDays": 13
+    },
+    {
+     "high": 26.3,
+     "low": 15.7,
+     "precip": 89,
+     "rainDays": 12
+    },
+    {
+     "high": 29.5,
+     "low": 17.8,
+     "precip": 48,
+     "rainDays": 7
+    },
+    {
+     "high": 30.2,
+     "low": 18,
+     "precip": 28,
+     "rainDays": 5
+    },
+    {
+     "high": 25.5,
+     "low": 13.9,
+     "precip": 28,
+     "rainDays": 5
+    },
+    {
+     "high": 19,
+     "low": 8.6,
+     "precip": 46,
+     "rainDays": 6
+    },
+    {
+     "high": 12.9,
+     "low": 4.3,
+     "precip": 65,
+     "rainDays": 9
+    },
+    {
+     "high": 8.2,
+     "low": 0.5,
+     "precip": 55,
+     "rainDays": 9
+    }
+   ]
+  },
+  "razgrad": {
+   "elevation": 198,
+   "months": [
+    {
+     "high": 5.6,
+     "low": -1.8,
+     "precip": 53,
+     "rainDays": 9
+    },
+    {
+     "high": 9.1,
+     "low": 0.6,
+     "precip": 43,
+     "rainDays": 8
+    },
+    {
+     "high": 11.8,
+     "low": 2.4,
+     "precip": 61,
+     "rainDays": 10
+    },
+    {
+     "high": 17.4,
+     "low": 6.8,
+     "precip": 59,
+     "rainDays": 10
+    },
+    {
+     "high": 21.7,
+     "low": 11.6,
+     "precip": 76,
+     "rainDays": 13
+    },
+    {
+     "high": 26.3,
+     "low": 16.3,
+     "precip": 91,
+     "rainDays": 12
+    },
+    {
+     "high": 29.4,
+     "low": 18.6,
+     "precip": 58,
+     "rainDays": 8
+    },
+    {
+     "high": 30,
+     "low": 18.7,
+     "precip": 32,
+     "rainDays": 5
+    },
+    {
+     "high": 25.2,
+     "low": 14.5,
+     "precip": 31,
+     "rainDays": 5
+    },
+    {
+     "high": 18.7,
+     "low": 9.3,
+     "precip": 53,
+     "rainDays": 6
+    },
+    {
+     "high": 12.6,
+     "low": 4.8,
+     "precip": 64,
+     "rainDays": 9
+    },
+    {
+     "high": 7.9,
+     "low": 1,
+     "precip": 50,
+     "rainDays": 10
+    }
+   ]
+  },
+  "smolyan": {
+   "elevation": 947,
+   "months": [
+    {
+     "high": 5.2,
+     "low": -3.2,
+     "precip": 102,
+     "rainDays": 9
+    },
+    {
+     "high": 7.8,
+     "low": -1.6,
+     "precip": 75,
+     "rainDays": 9
+    },
+    {
+     "high": 9.5,
+     "low": -0.2,
+     "precip": 107,
+     "rainDays": 14
+    },
+    {
+     "high": 14.2,
+     "low": 3.5,
+     "precip": 88,
+     "rainDays": 14
+    },
+    {
+     "high": 18.1,
+     "low": 8.1,
+     "precip": 93,
+     "rainDays": 16
+    },
+    {
+     "high": 22.1,
+     "low": 11.9,
+     "precip": 122,
+     "rainDays": 16
+    },
+    {
+     "high": 25.2,
+     "low": 14.2,
+     "precip": 72,
+     "rainDays": 9
+    },
+    {
+     "high": 25.3,
+     "low": 14.5,
+     "precip": 43,
+     "rainDays": 8
+    },
+    {
+     "high": 21.4,
+     "low": 10.9,
+     "precip": 49,
+     "rainDays": 8
+    },
+    {
+     "high": 16.6,
+     "low": 6.5,
+     "precip": 63,
+     "rainDays": 7
+    },
+    {
+     "high": 11.5,
+     "low": 2.9,
+     "precip": 85,
+     "rainDays": 9
+    },
+    {
+     "high": 7.3,
+     "low": -0.3,
+     "precip": 88,
+     "rainDays": 9
+    }
+   ]
+  },
+  "bansko": {
+   "elevation": 926,
+   "months": [
+    {
+     "high": 5.1,
+     "low": -4.2,
+     "precip": 101,
+     "rainDays": 10
+    },
+    {
+     "high": 8.1,
+     "low": -2.5,
+     "precip": 72,
+     "rainDays": 10
+    },
+    {
+     "high": 10,
+     "low": -0.6,
+     "precip": 110,
+     "rainDays": 14
+    },
+    {
+     "high": 15,
+     "low": 3.2,
+     "precip": 84,
+     "rainDays": 12
+    },
+    {
+     "high": 19.2,
+     "low": 7.7,
+     "precip": 79,
+     "rainDays": 14
+    },
+    {
+     "high": 23.2,
+     "low": 11.6,
+     "precip": 60,
+     "rainDays": 11
+    },
+    {
+     "high": 26.4,
+     "low": 14,
+     "precip": 37,
+     "rainDays": 6
+    },
+    {
+     "high": 26.6,
+     "low": 14.1,
+     "precip": 38,
+     "rainDays": 6
+    },
+    {
+     "high": 22.4,
+     "low": 10.5,
+     "precip": 44,
+     "rainDays": 6
+    },
+    {
+     "high": 17.3,
+     "low": 6,
+     "precip": 59,
+     "rainDays": 7
+    },
+    {
+     "high": 11.7,
+     "low": 2.4,
+     "precip": 105,
+     "rainDays": 10
+    },
+    {
+     "high": 7.3,
+     "low": -1.3,
+     "precip": 93,
+     "rainDays": 10
+    }
+   ]
+  },
+  "borovets": {
+   "elevation": 1315,
+   "months": [
+    {
+     "high": 1.5,
+     "low": -6.1,
+     "precip": 89,
+     "rainDays": 12
+    },
+    {
+     "high": 4.4,
+     "low": -4.2,
+     "precip": 76,
+     "rainDays": 11
+    },
+    {
+     "high": 6.2,
+     "low": -2.3,
+     "precip": 102,
+     "rainDays": 15
+    },
+    {
+     "high": 11.2,
+     "low": 1.7,
+     "precip": 116,
+     "rainDays": 16
+    },
+    {
+     "high": 15,
+     "low": 6.1,
+     "precip": 125,
+     "rainDays": 18
+    },
+    {
+     "high": 18.9,
+     "low": 10.5,
+     "precip": 153,
+     "rainDays": 16
+    },
+    {
+     "high": 21.9,
+     "low": 12.9,
+     "precip": 86,
+     "rainDays": 11
+    },
+    {
+     "high": 22,
+     "low": 13.1,
+     "precip": 67,
+     "rainDays": 9
+    },
+    {
+     "high": 17.9,
+     "low": 9.2,
+     "precip": 72,
+     "rainDays": 9
+    },
+    {
+     "high": 13.3,
+     "low": 4.9,
+     "precip": 63,
+     "rainDays": 8
+    },
+    {
+     "high": 8.2,
+     "low": 0.9,
+     "precip": 78,
+     "rainDays": 10
+    },
+    {
+     "high": 3.8,
+     "low": -3.1,
+     "precip": 94,
+     "rainDays": 11
+    }
+   ]
+  },
+  "pamporovo": {
+   "elevation": 1549,
+   "months": [
+    {
+     "high": 1.4,
+     "low": -6.8,
+     "precip": 90,
+     "rainDays": 9
+    },
+    {
+     "high": 3.9,
+     "low": -5.2,
+     "precip": 67,
+     "rainDays": 9
+    },
+    {
+     "high": 5.5,
+     "low": -3.5,
+     "precip": 99,
+     "rainDays": 14
+    },
+    {
+     "high": 10.3,
+     "low": 0.2,
+     "precip": 90,
+     "rainDays": 15
+    },
+    {
+     "high": 14.3,
+     "low": 4.8,
+     "precip": 93,
+     "rainDays": 17
+    },
+    {
+     "high": 18.2,
+     "low": 9,
+     "precip": 119,
+     "rainDays": 17
+    },
+    {
+     "high": 21.1,
+     "low": 11.2,
+     "precip": 69,
+     "rainDays": 10
+    },
+    {
+     "high": 21.2,
+     "low": 11.4,
+     "precip": 54,
+     "rainDays": 8
+    },
+    {
+     "high": 17.4,
+     "low": 7.6,
+     "precip": 63,
+     "rainDays": 8
+    },
+    {
+     "high": 12.8,
+     "low": 3.3,
+     "precip": 58,
+     "rainDays": 7
+    },
+    {
+     "high": 7.9,
+     "low": -0.7,
+     "precip": 71,
+     "rainDays": 9
+    },
+    {
+     "high": 3.6,
+     "low": -4,
+     "precip": 79,
+     "rainDays": 10
+    }
+   ]
+  },
+  "sozopol": {
+   "elevation": 28,
+   "months": [
+    {
+     "high": 7.9,
+     "low": 1.9,
+     "precip": 85,
+     "rainDays": 10
+    },
+    {
+     "high": 9.9,
+     "low": 3.4,
+     "precip": 62,
+     "rainDays": 8
+    },
+    {
+     "high": 11.4,
+     "low": 4.7,
+     "precip": 58,
+     "rainDays": 10
+    },
+    {
+     "high": 15.2,
+     "low": 8,
+     "precip": 63,
+     "rainDays": 9
+    },
+    {
+     "high": 19.4,
+     "low": 13,
+     "precip": 52,
+     "rainDays": 10
+    },
+    {
+     "high": 24.4,
+     "low": 18.2,
+     "precip": 60,
+     "rainDays": 10
+    },
+    {
+     "high": 27,
+     "low": 20.5,
+     "precip": 34,
+     "rainDays": 6
+    },
+    {
+     "high": 27.1,
+     "low": 21.4,
+     "precip": 35,
+     "rainDays": 4
+    },
+    {
+     "high": 23.8,
+     "low": 17.7,
+     "precip": 59,
+     "rainDays": 7
+    },
+    {
+     "high": 18.7,
+     "low": 12.7,
+     "precip": 63,
+     "rainDays": 8
+    },
+    {
+     "high": 14.5,
+     "low": 8.5,
+     "precip": 90,
+     "rainDays": 10
+    },
+    {
+     "high": 10.2,
+     "low": 4.4,
+     "precip": 79,
+     "rainDays": 10
+    }
+   ]
+  },
+  "nesebar": {
+   "elevation": 17,
+   "months": [
+    {
+     "high": 7.5,
+     "low": 1.3,
+     "precip": 70,
+     "rainDays": 9
+    },
+    {
+     "high": 9.8,
+     "low": 3.1,
+     "precip": 52,
+     "rainDays": 8
+    },
+    {
+     "high": 11.5,
+     "low": 4.4,
+     "precip": 52,
+     "rainDays": 9
+    },
+    {
+     "high": 15.8,
+     "low": 7.8,
+     "precip": 54,
+     "rainDays": 8
+    },
+    {
+     "high": 20.2,
+     "low": 12.9,
+     "precip": 47,
+     "rainDays": 10
+    },
+    {
+     "high": 25.2,
+     "low": 18,
+     "precip": 59,
+     "rainDays": 11
+    },
+    {
+     "high": 27.9,
+     "low": 20.3,
+     "precip": 36,
+     "rainDays": 7
+    },
+    {
+     "high": 28.4,
+     "low": 21.1,
+     "precip": 25,
+     "rainDays": 4
+    },
+    {
+     "high": 24.4,
+     "low": 17.5,
+     "precip": 32,
+     "rainDays": 6
+    },
+    {
+     "high": 18.9,
+     "low": 12.4,
+     "precip": 55,
+     "rainDays": 7
+    },
+    {
+     "high": 14.2,
+     "low": 8.2,
+     "precip": 70,
+     "rainDays": 10
+    },
+    {
+     "high": 9.7,
+     "low": 3.9,
+     "precip": 60,
+     "rainDays": 9
+    }
+   ]
+  }
+ }
+}

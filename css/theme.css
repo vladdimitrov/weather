@@ -1056,6 +1056,17 @@ body {
   .hourly-interval { display: none !important; }
 }
 
+/* City pages: monthly climate table */
+.table-scroll { overflow-x: auto; }
+.climate-table { font-size: 0.85rem; }
+.climate-table th,
+.climate-table td { padding: 6px 4px; }
+.climate-table th:not(:first-child),
+.climate-table td:not(:first-child) { text-align: center; }
+.climate-table td:not(:first-child) { white-space: nowrap; }
+.climate-table td:first-child { text-transform: capitalize; }
+.city-climate p { line-height: 1.6; }
+
 /* Weather page: link to the magnetic storms page */
 .storms-link { color: var(--gold); font-weight: 600; }
 
