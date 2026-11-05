@@ -60,6 +60,31 @@ self.addEventListener('fetch', event => {
 const KP_FORECAST_URL = 'https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json';
 const ALERTS_CACHE = 'weatherpulse-alerts';
 
+// The notification follows the site language. The worker cannot read
+// localStorage, so the pages send the language ({ type: 'language' }, from
+// /js/mobile-nav.js) and it is kept in the alerts cache.
+const LANGUAGE_KEY = '/storm-alert/language';
+const ALERT_TEXTS = {
+  bg: { title: 'Магнитна буря', body: 'Очаква се Kp {kp} ({when}).', locale: 'bg-BG' },
+  en: { title: 'Magnetic storm', body: 'Kp {kp} expected ({when}).', locale: 'en-GB' },
+  de: { title: 'Magnetsturm', body: 'Kp {kp} erwartet ({when}).', locale: 'de-DE' },
+  it: { title: 'Tempesta magnetica', body: 'Previsto Kp {kp} ({when}).', locale: 'it-IT' },
+  es: { title: 'Tormenta magnética', body: 'Se espera Kp {kp} ({when}).', locale: 'es-ES' }
+};
+
+async function alertLanguage() {
+  const cache = await caches.open(ALERTS_CACHE);
+  const saved = await cache.match(LANGUAGE_KEY);
+  const language = saved ? await saved.text() : 'bg';
+  return ALERT_TEXTS[language] ? language : 'bg';
+}
+
+async function saveAlertLanguage(language) {
+  if (!ALERT_TEXTS[language]) return;
+  const cache = await caches.open(ALERTS_CACHE);
+  await cache.put(LANGUAGE_KEY, new Response(language));
+}
+
 async function checkStorm() {
   const response = await fetch(KP_FORECAST_URL, { cache: 'no-store' });
   if (!response.ok) return;
@@ -79,9 +104,11 @@ async function checkStorm() {
   if (await cache.match(key)) return;
 
   const g = 'G' + Math.min(5, Math.floor(peak.kp) - 4);
-  const when = new Date(peak.time).toLocaleString('bg-BG', { weekday: 'long', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Sofia' });
-  await self.registration.showNotification(`⚠️ Магнитна буря ${g}`, {
-    body: `Очаква се Kp ${Math.round(peak.kp * 10) / 10} (${when}).`,
+  const text = ALERT_TEXTS[await alertLanguage()];
+  // In the visitor's own time zone (the worker runs on their device)
+  const when = new Date(peak.time).toLocaleString(text.locale, { weekday: 'long', hour: '2-digit', minute: '2-digit' });
+  await self.registration.showNotification(`⚠️ ${text.title} ${g}`, {
+    body: text.body.replace('{kp}', Math.round(peak.kp * 10) / 10).replace('{when}', when),
     icon: '/images/icons/icon-192.png',
     tag: 'storm-alert',
     data: { url: '/magnitni-buri/' }
@@ -94,7 +121,12 @@ self.addEventListener('periodicsync', event => {
 });
 
 self.addEventListener('message', event => {
-  if (event.data && event.data.type === 'storm-check') event.waitUntil(checkStorm().catch(() => {}));
+  if (!event.data) return;
+  if (event.data.type === 'language') event.waitUntil(saveAlertLanguage(event.data.language).catch(() => {}));
+  if (event.data.type === 'storm-check') {
+    // the language first, so the check uses it
+    event.waitUntil(saveAlertLanguage(event.data.language).catch(() => {}).then(checkStorm).catch(() => {}));
+  }
 });
 
 self.addEventListener('notificationclick', event => {
