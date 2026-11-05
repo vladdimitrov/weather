@@ -18,7 +18,7 @@ const translations = {
     iconSunCloud: "Sun with clouds",
     iconSun: "Sunny",
     iconThunder: "Thunderstorm",
-    title: "Weather forecast and magnetic storms",
+    title: "Weather forecast",
     cityLabel: "City / Resort:",
     useLocation: "📍 Use the current location",
     daysLabel: "Number of days:",
@@ -72,7 +72,7 @@ const translations = {
     iconSunCloud: "Слънце и облаци",
     iconSun: "Слънчево",
     iconThunder: "Гръмотевична буря",
-    title: "Прогноза за времето и магнитни бури",
+    title: "Прогноза за времето",
     cityLabel: "Град / Курорт:",
     useLocation: "📍 Използвай текущото местоположение",
     daysLabel: "Брой дни:",
@@ -127,7 +127,7 @@ const translations = {
     iconSunCloud: "Sonne mit Wolken",
     iconSun: "Sonnig",
     iconThunder: "Gewitter",
-    title: "Wettervorhersage und Magnetstürme",
+    title: "Wettervorhersage",
     cityLabel: "Stadt / Urlaubsort:",
     useLocation: "📍 Aktuellen Standort verwenden",
     daysLabel: "Anzahl der Tage:",
@@ -182,7 +182,7 @@ const translations = {
     iconSunCloud: "Sol con nubes",
     iconSun: "Soleado",
     iconThunder: "Tormenta",
-    title: "Pronóstico del tiempo y tormentas magnéticas",
+    title: "Pronóstico del tiempo",
     cityLabel: "Ciudad / Resort:",
     useLocation: "📍 Usar la ubicación actual",
     daysLabel: "Número de días:",
@@ -236,7 +236,7 @@ const translations = {
     iconSunCloud: "Sole con nuvole",
     iconSun: "Soleggiato",
     iconThunder: "Temporale",
-    title: "Previsioni del tempo e tempeste magnetiche",
+    title: "Previsioni del tempo",
     cityLabel: "Città / Resort:",
     useLocation: "📍 Usa la posizione attuale",
     daysLabel: "Numero di giorni:",
@@ -359,20 +359,6 @@ function updateContent(language) {
     localTimeElement.textContent = `${translations[language].localTime}: ${timeText}`;
   }
   
-  // Update KP index text
-  const kpSummaryElement = document.querySelector("#kp-summary");
-  if (kpSummaryElement) {
-    // Keep the HTML structure but update the text
-    const kpHtml = kpSummaryElement.innerHTML;
-    const kpIndexText = translations[language].kpIndex;
-    kpSummaryElement.innerHTML = kpHtml.replace(/Kp индекс|Kp index|Kp-Index/, kpIndexText);
-  }
-  
-  // Update KP index label if it exists
-  const kpIndexLabelElement = document.getElementById("kp-index-label");
-  if (kpIndexLabelElement) {
-    kpIndexLabelElement.textContent = translations[language].kpIndex;
-  }
   
   // Update hourly table headers if they exist
   const hourlyTableHeaders = document.querySelectorAll("#hourlyTable thead tr th");

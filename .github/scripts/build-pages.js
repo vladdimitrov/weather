@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 10, mobileNav: 6, cityForecast: 1 };
+const VERSION = { theme: 11, mobileNav: 7, cityForecast: 1 };
 
 const CITIES = [
   ['sofia', 'София', 42.6977, 23.3219],
@@ -96,7 +96,7 @@ ${jsonLd}  <script>
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/theme.css?v=${VERSION.theme}">
-  <link rel="stylesheet" href="/css/mobile.css?v=2">
+  <link rel="stylesheet" href="/css/mobile.css?v=3">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
