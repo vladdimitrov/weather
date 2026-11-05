@@ -102,7 +102,10 @@
     sources: { en: 'Data Sources', bg: 'Източници на данни', de: 'Datenquellen', it: 'Fonti dei dati', es: 'Fuentes de datos' },
     storms: { en: 'Magnetic Storms', bg: 'Магнитни бури', de: 'Magnetstürme', it: 'Tempeste magnetiche', es: 'Tormentas magnéticas' },
     about: { en: 'About', bg: 'За сайта', de: 'Über uns', it: 'Chi siamo', es: 'Acerca de' },
-    privacy: { en: 'Privacy', bg: 'Поверителност', de: 'Datenschutz', it: 'Privacy', es: 'Privacidad' }
+    privacy: { en: 'Privacy', bg: 'Поверителност', de: 'Datenschutz', it: 'Privacy', es: 'Privacidad' },
+    cities: { en: 'Weather in Bulgarian cities', bg: 'Времето в градовете на България', de: 'Wetter in bulgarischen Städten', it: 'Meteo nelle città bulgare', es: 'El tiempo en ciudades de Bulgaria' },
+    allCities: { en: 'All cities →', bg: 'Всички градове →', de: 'Alle Städte →', it: 'Tutte le città →', es: 'Todas las ciudades →' },
+    holidaysBg: { en: 'Public holidays in Bulgaria', bg: 'Официални празници в България', de: 'Feiertage in Bulgarien', it: 'Festività in Bulgaria', es: 'Festivos en Bulgaria' }
   };
 
   function translateNav() {

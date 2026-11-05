@@ -692,6 +692,102 @@ h1,
   resize: none;
 }
 
+/* City weather pages (/vremeto/, js/city-forecast.js) and Bulgarian holidays (/praznici/) */
+.breadcrumbs {
+  margin: 0 0 4px;
+  font-size: 0.85rem;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.breadcrumbs a,
+.storm-intro a,
+.storm-updated a { color: var(--gold); }
+
+.city-now .now-icon { font-size: 2.2rem; }
+
+.city-days {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: 8px;
+}
+
+.city-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 4px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.city-day-icon { font-size: 1.6rem; }
+.city-day-temp { font-weight: 700; }
+.city-day-rain,
+.city-day-wind { font-size: 0.8rem; opacity: 0.85; }
+
+.city-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.city-actions .btn { text-decoration: none; }
+
+.city-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.city-links .recent-place { text-decoration: none; }
+
+.city-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  max-width: 900px;
+  margin: 16px auto;
+}
+
+.city-tile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  background: var(--panel);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.city-tile:hover { border-color: var(--gold); }
+.city-tile-name { color: var(--gold); font-weight: 600; }
+.city-tile-temp { white-space: nowrap; }
+
+.holiday-table tr.weekend td:nth-child(2) { color: var(--gold); }
+
+.holiday-note {
+  display: block;
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+/* Home: links to the city pages */
+.home-cities {
+  max-width: 900px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.home-cities h2 { color: var(--gold); font-size: 1.15rem; }
+.home-cities .city-links { justify-content: center; }
+
 @media print {
   @page {
     margin: 12mm;
