@@ -26,6 +26,11 @@
     toggle.type = 'button';
     toggle.className = 'nav-menu-toggle';
     if (header.id) toggle.setAttribute('aria-controls', header.id);
+    // Bars drawn with CSS (/css/mobile.css), they turn into a cross when open
+    const icon = document.createElement('span');
+    icon.className = 'nav-menu-icon';
+    icon.setAttribute('aria-hidden', 'true');
+    toggle.appendChild(icon);
 
     header.insertBefore(toggle, header.firstChild);
     header.insertBefore(brand, toggle);
@@ -35,7 +40,6 @@
       const labels = menuLabels[document.documentElement.lang] || menuLabels.en;
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? labels.close : labels.open);
-      toggle.textContent = open ? '✕' : '☰';
     }
     setOpen(false);
 
@@ -206,5 +210,19 @@
     initSite();
   } else {
     document.addEventListener('DOMContentLoaded', initSite);
+  }
+
+  // A page in another language than Bulgarian is hidden (html.i18n-pending,
+  // set in the page head) until the page scripts have translated it: they do
+  // it on DOMContentLoaded, so show it right after their handlers have run
+  function revealPage() {
+    document.documentElement.classList.remove('i18n-pending');
+  }
+  if (document.documentElement.classList.contains('i18n-pending')) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => setTimeout(revealPage, 0));
+    } else {
+      setTimeout(revealPage, 0);
+    }
   }
 })();

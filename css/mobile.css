@@ -10,6 +10,40 @@
   display: none;
 }
 
+/* Menu button icon: three bars that turn into a cross (drawn with CSS: the
+   ☰ character is missing from some phone fonts) */
+.nav-menu-toggle {
+  flex: 0 0 44px;
+  margin-left: auto;
+}
+
+.nav-menu-icon,
+.nav-menu-icon::before,
+.nav-menu-icon::after {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.2s ease, top 0.2s ease, background 0.2s ease;
+}
+
+.nav-menu-icon { position: relative; }
+
+.nav-menu-icon::before,
+.nav-menu-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.nav-menu-icon::before { top: -7px; }
+.nav-menu-icon::after { top: 7px; }
+
+.menu-open .nav-menu-icon { background: transparent; }
+.menu-open .nav-menu-icon::before { top: 0; transform: rotate(45deg); }
+.menu-open .nav-menu-icon::after { top: 0; transform: rotate(-45deg); }
+
 @media (max-width: 768px) {
   :root {
     --header-height: 56px;

@@ -23,6 +23,8 @@
     (function() {
       const savedLanguage = localStorage.getItem('selectedLanguage') || 'bg';
       document.documentElement.lang = savedLanguage;
+      // Hidden until translated from the Bulgarian HTML (no flash of Bulgarian text)
+      if (savedLanguage !== 'bg') document.documentElement.classList.add('i18n-pending');
     })();
   </script>
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -667,8 +669,8 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=14">
-  <link rel="stylesheet" href="/css/mobile.css?v=3">
+  <link rel="stylesheet" href="/css/theme.css?v=15">
+  <link rel="stylesheet" href="/css/mobile.css?v=4">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
@@ -705,11 +707,9 @@
           <span class="label" id="weather-orbit-label">ВРЕМЕ</span>
         </a>
         
-       <!-- <a href="weather/weather.html" class="orbit-button" id="magnetic-orbit-btn" title="Magnetic Storm Monitoring">
-          <span class="icon"><img src="./images/magnetic.png" alt="Magnetic" style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 50%;"></span>
-          <span class="label" id="magnetic-orbit-label">Geomagnetic Storms</span>
+       <a href="magnitni-buri/" class="orbit-button" id="magnetic-orbit-btn" title="Магнитни бури">
+          <span class="label" id="magnetic-orbit-label">БУРИ</span>
         </a>
-		-->
 		<a href="holliday_calendar/index.html" class="orbit-button" id="holliday-calendar-btn" title="Календар на празниците">
           <span class="label" id="holiday-calendar-label">ПРАЗНИЦИ</span>
         </a>
@@ -775,6 +775,7 @@
       sunTitle: "Home - Weather & Magnetic Storms",
 
       weatherOrbitTitle: "Weather Forecast",
+      magneticOrbitTitle: "Magnetic Storms",
 
       holidayOrbitTitle: "Holiday Calendar",
 
@@ -786,19 +787,20 @@
       featuresTitle: "Everything about the weather in one place",
       featuresDescription: "A 16-day and hourly forecast for any place in the world, magnetic storms with phone alerts, rain and wind maps, public holidays and the weather in Bulgarian cities. Free, no sign-up.",
       weatherOrbitLabel: "WEATHER",
-      magneticOrbitLabel: "GEOMAGNETIC STORMS",
+      magneticOrbitLabel: "STORMS",
       mapsOrbitLabel: "MAPS",
       contactsOrbitLabel: "SOURCES",
       locationOrbitLabel: "LOCATION",
 	  contactsLink:       "Contacts",
       holidayCalendarLinkNav: "HOLIDAY",
-	  holidayCalendarLabel: 	"HOLIDAY"
+	  holidayCalendarLabel: 	"HOLIDAYS"
     },
     bg: {
 
       sunTitle: "Начало - времето и магнитните бури",
 
       weatherOrbitTitle: "Прогноза за времето",
+      magneticOrbitTitle: "Магнитни бури",
 
       holidayOrbitTitle: "Календар на празниците",
 
@@ -813,7 +815,7 @@
       mapsOrbitLabel:     		"КАРТИ",
       contactsOrbitLabel: 		"ИЗТОЧНИЦИ",
       locationOrbitLabel: 		"МЕСТОПОЛОЖЕНИЕ",
-      magneticOrbitLabel: 		"ГЕОМАГНИТНИ БУРИ",
+      magneticOrbitLabel: 		"БУРИ",
 	  holidayCalendarLabel: 	"ПРАЗНИЦИ",
       weatherForecast:      	"Прогноза за времето",
       contactsLink:         	"Източници на данни",
@@ -825,6 +827,7 @@
       sunTitle: "Startseite - Wetter und Magnetstürme",
 
       weatherOrbitTitle: "Wettervorhersage",
+      magneticOrbitTitle: "Magnetstürme",
 
       holidayOrbitTitle: "Feiertagskalender",
 
@@ -836,12 +839,12 @@
       featuresTitle: 			"Alles rund ums Wetter an einem Ort",
       featuresDescription:  	"16-Tage- und Stundenvorhersage für jeden Ort der Welt, Magnetstürme mit Benachrichtigungen aufs Handy, Regen- und Windkarten, gesetzliche Feiertage und das Wetter in bulgarischen Städten. Kostenlos und ohne Anmeldung.",
       weatherOrbitLabel: 		"WETTER",
-      magneticOrbitLabel: 		"GEOMAGNETISCHE STÜRME",
+      magneticOrbitLabel: 		"STÜRME",
       mapsOrbitLabel: 			"KARTEN",
       contactsOrbitLabel: 		"QUELLEN",
       locationOrbitLabel: 		"STANDORT",
       weatherForecast: 			"Wettervorhersage",
-      holidayCalendarLabel: 	"FEIERTAGSKALENDER",
+      holidayCalendarLabel: 	"FEIERTAGE",
       contactsLink: 			"Datenquellen",
       holidayCalendarLinkNav:   "FEIERTAGSKALENDER",
       holidayCalendarLink: 		"FEIERTAGSKALENDER"
@@ -851,6 +854,7 @@
       sunTitle: "Home - Meteo e tempeste magnetiche",
 
       weatherOrbitTitle: "Previsioni del tempo",
+      magneticOrbitTitle: "Tempeste magnetiche",
 
       holidayOrbitTitle: "Calendario delle festività",
 
@@ -862,7 +866,7 @@
       featuresTitle: "Tutto sul meteo in un unico posto",
       featuresDescription: "Previsioni a 16 giorni e ora per ora per qualsiasi luogo del mondo, tempeste magnetiche con avvisi sul telefono, mappe di pioggia e vento, festività ufficiali e il meteo nelle città bulgare. Gratis e senza registrazione.",
       weatherOrbitLabel: 		"TEMPO",
-      magneticOrbitLabel: 		"TEMPESTE GEOMAGNETICHE",
+      magneticOrbitLabel: 		"TEMPESTE",
       mapsOrbitLabel: 			"MAPPE",
       contactsOrbitLabel: 		"FONTI",
       locationOrbitLabel: 		"POSIZIONE",
@@ -877,6 +881,7 @@
       sunTitle: "Inicio - Tiempo y tormentas magnéticas",
 
       weatherOrbitTitle: "Pronóstico del tiempo",
+      magneticOrbitTitle: "Tormentas magnéticas",
 
       holidayOrbitTitle: "Calendario de días festivos",
 
@@ -888,7 +893,7 @@
       featuresTitle: "Todo sobre el tiempo en un solo lugar",
       featuresDescription: "Pronóstico de 16 días y por horas para cualquier lugar del mundo, tormentas magnéticas con avisos en el móvil, mapas de lluvia y viento, festivos oficiales y el tiempo en las ciudades de Bulgaria. Gratis y sin registro.",
       weatherOrbitLabel:  		"CLIMA",
-      magneticOrbitLabel: 		"TORMENTAS GEOMAGNÉTICAS",
+      magneticOrbitLabel: 		"TORMENTAS",
       mapsOrbitLabel: 	  		"MAPAS",
       contactsOrbitLabel: 		"FUENTES",
       locationOrbitLabel: 		"UBICACIÓN",
@@ -928,6 +933,7 @@
     const titles = {
       '.sun-center': 'sunTitle',
       '#weather-orbit-btn': 'weatherOrbitTitle',
+      '#magnetic-orbit-btn': 'magneticOrbitTitle',
       '#holliday-calendar-btn': 'holidayOrbitTitle',
       '#maps-orbit-btn': 'mapsOrbitTitle',
       '#contacts-orbit-btn': 'contactsOrbitTitle'
@@ -971,7 +977,7 @@
   }
 </script>
 
-<script src="/js/mobile-nav.js?v=9"></script>
+<script src="/js/mobile-nav.js?v=10"></script>
 <script src="/js/language-selector.js?v=2"></script>
 <script src="language-switcher.js?v=3"></script>
 <script src="/js/background-selector.js?v=2"></script>
