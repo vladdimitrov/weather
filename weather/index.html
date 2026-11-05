@@ -68,7 +68,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=18">
+  <link rel="stylesheet" href="/css/theme.css?v=21">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -111,7 +111,14 @@
         <input type="number" id="days" data-remember="forecastDays" value="3" min="1" max="16" placeholder="напр. 7">
       </div>
 
-      <div class="form-group interval">
+      <div class="form-group detailed">
+        <label class="detailed-toggle" for="detailedForecast">
+          <input type="checkbox" id="detailedForecast">
+          <span id="detailedLabel">Детайлна прогноза (по часове)</span>
+        </label>
+      </div>
+
+      <div class="form-group interval" id="intervalGroup" hidden>
         <label for="interval" id="intervalLabel">Почасова прогноза(мин.):</label>
         <select id="interval" data-remember="forecastInterval">
           <option value="60">60</option>
@@ -289,11 +296,12 @@
 
 <script src="/js/mobile-nav.js?v=11"></script>
 <script src="/js/language-selector.js?v=2"></script>
-<script src="/js/city-search.js?v=7"></script>
+<script src="/js/city-search.js?v=8"></script>
 <script src="forecast-extras.js?v=4"></script>
 <script src="forecast-precision.js?v=2"></script>
 <script src="map-autocomplete.js?v=5"></script>
 
+<script src="detailed-toggle.js?v=1"></script>
 <script src="weather-fixed.js?v=8"></script>
 <script src="weather-hourly.js?v=3"></script>
 

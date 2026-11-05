@@ -167,20 +167,31 @@
       hide();
       rememberPlace(place);
       setUrlPlace(place);
-      renderRecent();
+      renderRow();
       if (onSelect) onSelect(place);
       // the page has saved the new place by now
-      setTimeout(renderDestinations, 0);
+      setTimeout(() => refresh(), 0);
     }
 
     function select(index) {
       if (places[index]) pick(places[index]);
     }
 
-    // Favorite (★) and recently picked places as one-tap buttons under the field
-    const recent = document.createElement('div');
-    recent.className = 'recent-places';
-    input.insertAdjacentElement('afterend', recent);
+    // Favorites (★), the main places of the selected country and recently picked
+    // places: one row of one-tap buttons, favorites first, no repeats
+    const placeRow = document.createElement('div');
+    placeRow.className = 'recent-places destination-places';
+    placeRow.hidden = true;
+    // In the page forms (a grid of fields) the row spans the whole form, above
+    // the buttons; elsewhere it goes under the field
+    const formGroup = input.closest('.form-group');
+    const buttonRow = formGroup && formGroup.parentElement && formGroup.parentElement.querySelector(':scope > .buttons-container');
+    if (buttonRow) {
+      placeRow.classList.add('destination-row');
+      buttonRow.insertAdjacentElement('beforebegin', placeRow);
+    } else {
+      input.insertAdjacentElement('afterend', placeRow);
+    }
 
     function placeButton(place, favorite) {
       const button = document.createElement('button');
@@ -192,62 +203,67 @@
       return button;
     }
 
-    function renderRecent() {
+    let popular = [];
+    let popularFor = null;
+
+    function renderRow() {
       const current = `${input.value}`.trim();
       const favorites = favoritePlaces();
-      const others = recentPlaces().filter(place => place.name !== current && !favorites.some(fav => samePlace(fav, place)));
-      recent.replaceChildren(...favorites.map(place => placeButton(place, true)), ...others.map(place => placeButton(place, false)));
-      recent.hidden = favorites.length + others.length === 0;
+      const nodes = [];
+      const shown = [];
+      const notShown = place => !shown.some(other => samePlace(other, place));
+      favorites.forEach(place => {
+        if (!notShown(place)) return;
+        shown.push(place);
+        nodes.push(placeButton(place, true));
+      });
+      const popularNodes = [];
+      popular.forEach(place => {
+        if (!notShown(place)) return;
+        shown.push(place);
+        popularNodes.push(placeButton(place, false));
+      });
+      if (popularNodes.length) {
+        const label = document.createElement('span');
+        label.className = 'destination-title';
+        const country = countryName(popularFor);
+        // Bulgarian "във" before В/Ф: "във Франция"
+        label.textContent = (destinationTexts[currentLanguage()] || destinationTexts.en)
+          .replace('{in}', /^[ВФвф]/.test(country) ? 'във' : 'в')
+          .replace('{country}', country);
+        nodes.push(label, ...popularNodes);
+      }
+      recentPlaces().filter(place => place.name !== current).forEach(place => {
+        if (!notShown(place)) return;
+        shown.push(place);
+        nodes.push(placeButton(place, false));
+      });
+      placeRow.replaceChildren(...nodes);
+      placeRow.hidden = nodes.length === 0;
     }
-    document.addEventListener('favoriteschange', renderRecent);
+
+    // Popular places follow the country of the selected place
+    async function refresh(force) {
+      const countryCode = (startPlace().countryCode || '').toUpperCase();
+      if (force || countryCode !== popularFor) {
+        popularFor = countryCode;
+        popular = destinations && countryCode ? await popularPlaces(countryCode) : [];
+      }
+      renderRow();
+    }
+
+    document.addEventListener('favoriteschange', renderRow);
     window.addEventListener('storage', event => {
-      if (event.key === FAVORITES_KEY || event.key === RECENT_KEY) renderRecent();
+      if (event.key === FAVORITES_KEY || event.key === RECENT_KEY) renderRow();
     });
     // After the page has filled in its start place
-    setTimeout(renderRecent, 600);
-
-    // Main cities and resorts of the selected place's country
-    const destinationBox = document.createElement('div');
-    destinationBox.className = 'recent-places destination-places';
-    destinationBox.hidden = true;
-    // In the page forms (a grid of fields) the row spans the whole form,
-    // above the buttons; elsewhere it goes under the field
-    const formGroup = input.closest('.form-group');
-    const buttonRow = formGroup && formGroup.parentElement && formGroup.parentElement.querySelector(':scope > .buttons-container');
-    if (buttonRow) {
-      destinationBox.classList.add('destination-row');
-      buttonRow.insertAdjacentElement('beforebegin', destinationBox);
-    } else {
-      recent.insertAdjacentElement('afterend', destinationBox);
-    }
-    let shownCountry = null;
-
-    async function renderDestinations(force) {
-      if (!destinations) return;
-      const countryCode = (startPlace().countryCode || '').toUpperCase();
-      if (!force && countryCode === shownCountry) return;
-      shownCountry = countryCode;
-      const places = await popularPlaces(countryCode);
-      if (!places.length) {
-        destinationBox.hidden = true;
-        return;
-      }
-      const title = document.createElement('span');
-      title.className = 'destination-title';
-      const country = countryName(countryCode);
-      // Bulgarian "във" before В/Ф: "във Франция"
-      title.textContent = (destinationTexts[currentLanguage()] || destinationTexts.en)
-        .replace('{in}', /^[ВФвф]/.test(country) ? 'във' : 'в')
-        .replace('{country}', country);
-      destinationBox.replaceChildren(title, ...places.map(place => placeButton(place, false)));
-      destinationBox.hidden = false;
-    }
-    setTimeout(renderDestinations, 600);
-    // The place also changes through the location button and the map:
-    // follow the saved place
-    setInterval(renderDestinations, 1500);
+    setTimeout(() => refresh(), 600);
+    // The place also changes through the location button and the map
+    setInterval(() => {
+      if ((startPlace().countryCode || '').toUpperCase() !== popularFor) refresh(true);
+    }, 1500);
     document.addEventListener('change', event => {
-      if (event.target && event.target.id === 'language') renderDestinations(true);
+      if (event.target && event.target.id === 'language') refresh(true);
     });
 
     function render(found) {
