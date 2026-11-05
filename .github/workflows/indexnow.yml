@@ -1,0 +1,30 @@
+name: IndexNow
+
+# After the site changes, tell Bing and the other IndexNow search engines about
+# the pages in sitemap.xml (.github/scripts/indexnow.js). Waits for GitHub
+# Pages to publish first, so the key file and the new pages are live.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'sitemap.xml'
+      # also when IndexNow itself is set up or changed
+      - '.github/workflows/indexnow.yml'
+      - '.github/scripts/indexnow.js'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Wait for GitHub Pages to publish
+        run: sleep 120
+      - run: node .github/scripts/indexnow.js
