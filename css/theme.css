@@ -1003,6 +1003,38 @@ body {
 }
 
 
+/* Weather form: a short days field; the detailed-forecast switch */
+.form-group.days { max-width: 170px; }
+
+#intervalGroup[hidden] { display: none !important; }
+
+.form-group.detailed {
+  display: flex;
+  align-items: flex-end;
+}
+
+.detailed-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: #FFD700;
+  font-weight: 600;
+}
+
+.detailed-toggle input {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid #FFD700;
+  border-radius: 4px;
+  background: #1c2e4a;
+  accent-color: #FFD700;
+  cursor: pointer;
+}
+
 /* Weather page: link to the magnetic storms page */
 .storms-link { color: var(--gold); font-weight: 600; }
 
