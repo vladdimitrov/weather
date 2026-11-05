@@ -15,6 +15,31 @@
 .nav-menu-toggle {
   flex: 0 0 44px;
   margin-left: auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* The general button styles of the pages (gold on hover, scale, margin,
+   transition) stuck to the menu button after a tap on phones (hover and focus
+   stay on a touched button), and it could vanish. It keeps its own look. */
+.nav-header .nav-menu-toggle,
+.nav-header .nav-menu-toggle:hover,
+.nav-header .nav-menu-toggle:focus,
+.nav-header .nav-menu-toggle:active {
+  margin: 0 0 0 auto !important;
+  padding: 0 !important;
+  transform: none !important;
+  transition: none !important;
+  background: rgb(28, 46, 74) !important;
+  color: #FFD700 !important;
+  border: 1px solid rgba(255, 215, 0, 0.75) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.nav-header .nav-menu-toggle:focus-visible {
+  outline: 2px solid #FFD700;
+  outline-offset: 2px;
 }
 
 .nav-menu-icon,
