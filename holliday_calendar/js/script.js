@@ -223,7 +223,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  // After the button is pressed the page scrolls to the result, like the Weather
+  // page. Not when the page loads the first result by itself (data-autoload).
+  let scrollWanted = false;
+  function scrollToResults(element) {
+    if (!scrollWanted) return;
+    scrollWanted = false;
+    setTimeout(() => element.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  }
+
   loadDataButton.addEventListener('click', async function() {
+    scrollWanted = loadDataButton.dataset.autoload !== 'true';
+    delete loadDataButton.dataset.autoload;
     const city = cityInput.value.trim();
     const latitude = latitudeInput.value;
     const longitude = longitudeInput.value;
@@ -343,6 +354,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     displayCalendar(filteredHolidays, startDate, endDate, countryName);
+    scrollToResults(calendarDiv);
   }
 
   function displayCalendar(holidays, startDate, endDate, countryName) {
@@ -617,6 +629,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById("selected-city").textContent =
         `${_t('selectedLocation')}: ${place.country ? `${place.name}, ${place.country}` : place.name}`;
     }
+    loadDataButton.dataset.autoload = 'true'; // no scrolling on open
     loadDataButton.click();
   }, 300);
 });

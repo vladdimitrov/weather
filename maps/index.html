@@ -159,7 +159,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=15">
+  <link rel="stylesheet" href="/css/theme.css?v=16">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -493,6 +493,10 @@
     const loadMapBtn = document.getElementById("loadMap");
     if (loadMapBtn) {
       loadMapBtn.addEventListener("click", () => {
+        // Scroll to the map after the button is pressed, like the Weather page;
+        // not when the page opens the first map by itself (data-autoload)
+        const scrollToMap = loadMapBtn.dataset.autoload !== "true";
+        delete loadMapBtn.dataset.autoload;
         const city = document.getElementById("city").value.trim();
         const lat = parseFloat(document.getElementById("latitude").value);
         const lon = parseFloat(document.getElementById("longitude").value);
@@ -500,8 +504,10 @@
 
         // Show the map container before loading (updateMap skips a hidden map)
         const showMap = (mapLat, mapLon) => {
-          document.getElementById('mapContainer').style.display = 'block';
+          const mapBox = document.getElementById('mapContainer');
+          mapBox.style.display = 'block';
           updateMap(mapLat, mapLon, layer);
+          if (scrollToMap) setTimeout(() => mapBox.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
         };
 
         if (lat && lon) {
@@ -570,7 +576,7 @@
 <script src="/js/city-search.js?v=7"></script>
 <script src="js/language-switcher.js?v=7"></script>
 <script src="/js/background-selector.js?v=2"></script>
-<script src="js/map-autocomplete.js?v=6"></script>
+<script src="js/map-autocomplete.js?v=7"></script>
 <script src="js/favorites-manager.js?v=4"></script>
 
 </body>
