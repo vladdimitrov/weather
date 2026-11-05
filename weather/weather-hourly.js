@@ -155,7 +155,8 @@ function updateHourlyForecast(selectedDate) {
         console.log("Hourly Data:", hourlyData);
         const timezone = hourlyData.timezone;
         parsedInterval = parseInt(document.getElementById("interval").value);
-        const dataPointsPerDay = 24 * (60 / parsedInterval);
+        // The 30- and 15-minute tables come from the 15-minute data (4 points an hour)
+        const dataPointsPerDay = 24 * (parsedInterval <= 30 ? 4 : 1);
         console.log("dataPointsPerDay:", dataPointsPerDay, "parsedInterval:", parsedInterval);
         const totalDataPoints = days * dataPointsPerDay;
         console.log("totalDataPoints:", totalDataPoints, "days:", days);
@@ -184,7 +185,8 @@ function updateHourlyForecast(selectedDate) {
           if (parsedInterval === 30 && j % 2 !== 0) {
             continue; // Skip every other data point for 30-minute interval
           }
-          if (allTimes.length < hours) {
+          // a whole day of rows: 24 at 60 min, 48 at 30 min, 96 at 15 min
+          if (allTimes.length < hours * (60 / parsedInterval)) {
             allTimes.push(times[j]);
             allTemperatures.push(temperatures[j]);
             allCloudcovers.push(cloudcovers[j]);
