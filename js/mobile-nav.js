@@ -190,11 +190,103 @@
     window.addEventListener('load', fitNav);
   }
 
+
+  // ---- Install as an app ----
+  // Chrome (Android, desktop): a button for the browser's install prompt, shown
+  // only when the browser allows it. iPhone Safari has no prompt: the button
+  // shows the steps. Hidden once installed, and for 30 days after "close".
+  const installTexts = {
+    en: { install: 'Install the app', ios: 'On iPhone: tap Share (square with arrow), then “Add to Home Screen”.', close: 'Close' },
+    bg: { install: 'Инсталирай приложението', ios: 'На iPhone: натисни „Сподели“ (квадрат със стрелка), после „Добави към началния екран“.', close: 'Затвори' },
+    de: { install: 'App installieren', ios: 'Auf dem iPhone: „Teilen“ (Quadrat mit Pfeil) antippen, dann „Zum Home-Bildschirm“.', close: 'Schließen' },
+    it: { install: "Installa l'app", ios: 'Su iPhone: tocca Condividi (quadrato con freccia), poi “Aggiungi alla schermata Home”.', close: 'Chiudi' },
+    es: { install: 'Instalar la aplicación', ios: 'En iPhone: toca Compartir (cuadrado con flecha) y luego “Añadir a pantalla de inicio”.', close: 'Cerrar' }
+  };
+
+  function initInstall() {
+    const standalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
+    if (standalone) return;
+    try {
+      const dismissed = Number(localStorage.getItem('installDismissedAt') || 0);
+      if (Date.now() - dismissed < 30 * 24 * 3600 * 1000) return;
+    } catch (e) { /* storage blocked */ }
+
+    const iosSafari = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    let deferred = null;
+
+    const box = document.createElement('div');
+    box.className = 'install-app';
+    box.hidden = true;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'install-app-button';
+    const info = document.createElement('p');
+    info.className = 'install-app-info';
+    info.hidden = true;
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'install-app-close';
+    close.textContent = '✕';
+    box.append(button, close, info);
+    document.body.appendChild(box);
+
+    function render() {
+      const t = installTexts[document.documentElement.lang] || installTexts.en;
+      button.textContent = '📲 ' + t.install;
+      info.textContent = t.ios;
+      close.setAttribute('aria-label', t.close);
+      close.title = t.close;
+    }
+
+    function hide() {
+      box.hidden = true;
+    }
+
+    button.addEventListener('click', async () => {
+      if (iosSafari) {
+        info.hidden = !info.hidden;
+        return;
+      }
+      if (!deferred) return;
+      deferred.prompt();
+      try { await deferred.userChoice; } catch (e) { /* ignore */ }
+      deferred = null;
+      hide();
+    });
+
+    close.addEventListener('click', () => {
+      info.hidden = true;
+      hide();
+      try { localStorage.setItem('installDismissedAt', String(Date.now())); } catch (e) { /* storage blocked */ }
+    });
+
+    if (iosSafari) {
+      // No install event on iPhone: show the steps on the first visit
+      render();
+      box.hidden = false;
+    } else {
+      window.addEventListener('beforeinstallprompt', event => {
+        event.preventDefault();
+        deferred = event;
+        render();
+        box.hidden = false;
+      });
+    }
+    window.addEventListener('appinstalled', () => {
+      deferred = null;
+      hide();
+    });
+    const languageSelect = document.getElementById('language');
+    if (languageSelect) languageSelect.addEventListener('change', render);
+    render();
+  }
+
   function initSite() {
     initMobileNav();
     updateYear();
     initOfflineNotice();
     registerServiceWorker();
+    initInstall();
     translateNav();
     // The language dropdown is created later by /js/language-selector.js; its
     // own listener updates <html lang> before the change bubbles up to here
