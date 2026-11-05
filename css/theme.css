@@ -845,6 +845,83 @@ body {
 /* Weather page: link to the magnetic storms page */
 .storms-link { color: var(--gold); font-weight: 600; }
 
+/* Home: the hero shows at once (its fade-in kept the main text invisible
+   for over a second) and reads well on every background */
+.hero-title,
+.hero-subtitle {
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+.hero-subtitle,
+.features-description {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.hero-section { padding: 8px 15px !important; margin: 0 auto !important; }
+.hero-title { margin: 0 0 8px !important; }
+.hero-subtitle { max-width: 640px; margin: 0 auto 14px !important; }
+/* the buttons stick out of the orbit by half their size */
+.circular-nav { margin: 52px auto 58px !important; }
+.features-section { margin: 10px auto 30px !important; }
+
+/* Home: orbit buttons on a dark glass disc, so the labels read on any
+   background (the blue planet used to vanish on the blue background) */
+.orbit-container { border: 2px dashed rgba(255, 215, 0, 0.45) !important; }
+
+#weather-orbit-btn,
+#maps-orbit-btn,
+#holliday-calendar-btn,
+#contacts-orbit-btn {
+  width: 88px;
+  height: 88px;
+  margin-left: -44px;
+  margin-top: -44px;
+  background: rgba(14, 24, 48, 0.78);
+  border: 2px solid rgba(255, 215, 0, 0.6);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+#weather-orbit-btn { border-color: rgba(0, 170, 255, 0.9); }
+#maps-orbit-btn { border-color: rgba(255, 165, 0, 0.9); }
+#holliday-calendar-btn { border-color: rgba(255, 100, 150, 0.9); }
+#contacts-orbit-btn { border-color: rgba(100, 255, 150, 0.9); }
+
+#weather-orbit-label,
+#maps-orbit-label,
+#holiday-calendar-label,
+#contacts-orbit-label {
+  font-family: var(--font-text) !important;
+  font-size: 12px !important;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 768px) {
+  .hero-section { padding: 4px 10px !important; }
+  .circular-nav { margin: 44px auto 48px !important; }
+
+  #weather-orbit-btn,
+  #maps-orbit-btn,
+  #holliday-calendar-btn,
+  #contacts-orbit-btn {
+    width: 74px;
+    height: 74px;
+    margin-left: -37px;
+    margin-top: -37px;
+  }
+
+  #weather-orbit-label,
+  #maps-orbit-label,
+  #holiday-calendar-label,
+  #contacts-orbit-label {
+    font-size: 10.5px !important;
+    letter-spacing: 0;
+  }
+}
+
 /* Home: links to the city pages */
 .home-cities {
   max-width: 900px;
