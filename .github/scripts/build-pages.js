@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 23, mobileNav: 11, cityForecast: 1 };
+const VERSION = { theme: 24, mobileNav: 11, cityForecast: 1 };
 
 const CITIES = [
   ['sofia', 'София', 42.6977, 23.3219],
@@ -50,6 +50,40 @@ const CITIES = [
 
 // "в Пловдив", but "във Варна"
 const inCity = name => (/^[ВФвф]/.test(name) ? 'във ' : 'в ') + name;
+
+// Monthly climate of each city (built by build-climate.js); optional
+const CLIMATE_FILE = path.join(__dirname, 'climate.json');
+const CLIMATE = fs.existsSync(CLIMATE_FILE) ? JSON.parse(fs.readFileSync(CLIMATE_FILE, 'utf8')) : null;
+const MONTHS = ['януари', 'февруари', 'март', 'април', 'май', 'юни', 'юли', 'август', 'септември', 'октомври', 'ноември', 'декември'];
+// Whole degrees with a real minus sign ("−3°"), never "−0°"
+const degrees = t => { const r = Math.round(t); return (r < 0 ? '−' : '') + Math.abs(r) + '°'; };
+
+function climateSection(city, where) {
+  const climate = CLIMATE && CLIMATE.cities[city.slug];
+  if (!climate) return '';
+  const m = climate.months;
+  const warmest = m.reduce((best, x, i) => (x.high > m[best].high ? i : best), 0);
+  const coldest = m.reduce((best, x, i) => (x.low < m[best].low ? i : best), 0);
+  const wettest = m.reduce((best, x, i) => (x.precip > m[best].precip ? i : best), 0);
+  const yearly = m.reduce((sum, x) => sum + x.precip, 0);
+  const elevation = climate.elevation >= 100 ? Math.round(climate.elevation / 10) * 10 : climate.elevation;
+  const rows = m.map((x, i) =>
+    `          <tr><td>${MONTHS[i]}</td><td>${degrees(x.high)}</td><td>${degrees(x.low)}</td><td>${x.precip} мм</td><td>${x.rainDays}</td></tr>`).join('\n');
+  return `
+    <section class="info-card city-climate">
+      <h2>Климатът ${where}</h2>
+      <p>${city.name} е на около ${elevation} м надморска височина. Най-топлият месец е ${MONTHS[warmest]} със средна максимална температура ${degrees(m[warmest].high)}C, а най-студеният е ${MONTHS[coldest]}, когато нощем температурата пада средно до ${degrees(m[coldest].low)}C. Средно за година падат около ${Math.round(yearly / 10) * 10} мм валежи, най-много през ${MONTHS[wettest]} (около ${m[wettest].precip} мм).</p>
+      <div class="table-scroll">
+      <table class="kp-table climate-table">
+        <thead><tr><th>Месец</th><th>Ср. макс.</th><th>Ср. мин.</th><th>Валежи</th><th>Дни с валеж</th></tr></thead>
+        <tbody>
+${rows}
+        </tbody>
+      </table>
+      </div>
+      <p class="storm-updated">Средни стойности за ${CLIMATE.years} г. по данни на Open-Meteo (ERA5). „Дни с валеж“ са дните с поне 1 мм. Данните са от модел с мрежа около 10 км, затова за планински места може да се различават от измерванията на метеорологична станция.</p>
+    </section>`;
+}
 
 const FOOTER = `  <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
     <div class="logo" style="flex-shrink: 0;">
@@ -160,7 +194,7 @@ function cityPage(city) {
     url: `/vremeto/${city.slug}/`,
     // page() adds " | Weather Pulse"
     title: `Прогноза за времето ${where}`,
-    description: `Прогноза за времето ${where} за днес, утре и 7 дни: температура, валежи, вятър и вероятност за дъжд. Обновява се на всеки час.`,
+    description: `Прогноза за времето ${where} за днес, утре и 7 дни: температура, валежи и вятър. Климатът по месеци: средни температури и валежи.`,
     jsonLd: breadcrumbs,
     body: `    <p class="breadcrumbs"><a href="/vremeto/">Времето в България</a> › ${city.name}</p>
     <h1>Времето ${where}</h1>
@@ -175,6 +209,8 @@ function cityPage(city) {
       <a class="btn" href="/weather/?${params}">Подробна прогноза по часове →</a>
       <a class="btn" href="/magnitni-buri/">Магнитни бури днес →</a>
     </p>
+
+${climateSection(city, where)}
 
     <section class="info-card">
       <h2>Времето в други градове</h2>
@@ -262,7 +298,9 @@ ${tables}
   });
 }
 
-(async function main() {
+// Used by build-climate.js (the city list); the pages are built only when run directly
+module.exports = { CITIES };
+if (require.main === module) (async function main() {
   const firstYear = Number(process.argv[2]) || new Date().getFullYear();
   CITIES.forEach(city => write(`vremeto/${city.slug}`, cityPage(city)));
   write('vremeto', hubPage());
