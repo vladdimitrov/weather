@@ -68,7 +68,7 @@ function updateForecast() {
         
         // Save location to localStorage if the function exists
         if (typeof saveLocationToLocalStorage === 'function') {
-          saveLocationToLocalStorage(geoData.results[0].name, lat, lon, geoData.results[0].country);
+          saveLocationToLocalStorage(geoData.results[0].name, lat, lon, geoData.results[0].country, geoData.results[0].country_code);
         }
 
       }
