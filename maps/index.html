@@ -157,7 +157,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=12">
+  <link rel="stylesheet" href="/css/theme.css?v=13">
   <link rel="stylesheet" href="/css/mobile.css?v=3">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -241,7 +241,7 @@
         <div class="spinner"></div>
         <div id="loadingText">Loading weather map...</div>
       </div>
-      <iframe id="windyMap" style="display: none;"></iframe>
+      <iframe id="windyMap" style="visibility: hidden;"></iframe>
     </div>
 
     <div style="text-align: center; margin-top: 20px;">
@@ -309,9 +309,11 @@
     const iframe = document.getElementById('windyMap');
     const spinner = document.getElementById('loadingSpinner');
     
-    // Show loading spinner
+    // Show the spinner over the map. The map keeps its size while loading:
+    // Windy hidden with display:none starts at 0x0 and stays grey.
     spinner.style.display = 'flex';
-    iframe.style.display = 'none';
+    iframe.style.display = 'block';
+    iframe.style.visibility = 'hidden';
     
     iframe.src = mapURL;
     
@@ -319,7 +321,7 @@
     iframe.onload = function() {
       setTimeout(() => {
         spinner.style.display = 'none';
-        iframe.style.display = 'block';
+        iframe.style.visibility = 'visible';
         
         // Focus on the map when it's loaded
         const mapContainer = document.getElementById('mapContainer');
@@ -563,7 +565,7 @@
 <!-- Load JavaScript files -->
 <script src="/js/mobile-nav.js?v=7"></script>
 <script src="/js/language-selector.js?v=2"></script>
-<script src="/js/city-search.js?v=6"></script>
+<script src="/js/city-search.js?v=7"></script>
 <script src="js/language-switcher.js?v=7"></script>
 <script src="/js/background-selector.js?v=2"></script>
 <script src="js/map-autocomplete.js?v=6"></script>

@@ -210,7 +210,16 @@
     const destinationBox = document.createElement('div');
     destinationBox.className = 'recent-places destination-places';
     destinationBox.hidden = true;
-    recent.insertAdjacentElement('afterend', destinationBox);
+    // In the page forms (a grid of fields) the row spans the whole form,
+    // above the buttons; elsewhere it goes under the field
+    const formGroup = input.closest('.form-group');
+    const buttonRow = formGroup && formGroup.parentElement && formGroup.parentElement.querySelector(':scope > .buttons-container');
+    if (buttonRow) {
+      destinationBox.classList.add('destination-row');
+      buttonRow.insertAdjacentElement('beforebegin', destinationBox);
+    } else {
+      recent.insertAdjacentElement('afterend', destinationBox);
+    }
     let shownCountry = null;
 
     async function renderDestinations(force) {
@@ -218,21 +227,18 @@
       const countryCode = (startPlace().countryCode || '').toUpperCase();
       if (!force && countryCode === shownCountry) return;
       shownCountry = countryCode;
-      const all = await loadDestinations();
-      const places = (all[countryCode] || []).map(place => ({
-        name: place.name[currentLanguage()] || place.name.en,
-        country: countryName(countryCode),
-        countryCode,
-        latitude: place.latitude,
-        longitude: place.longitude
-      }));
+      const places = await popularPlaces(countryCode);
       if (!places.length) {
         destinationBox.hidden = true;
         return;
       }
       const title = document.createElement('span');
       title.className = 'destination-title';
-      title.textContent = (destinationTexts[currentLanguage()] || destinationTexts.en).replace('{country}', countryName(countryCode));
+      const country = countryName(countryCode);
+      // Bulgarian "във" before В/Ф: "във Франция"
+      title.textContent = (destinationTexts[currentLanguage()] || destinationTexts.en)
+        .replace('{in}', /^[ВФвф]/.test(country) ? 'във' : 'в')
+        .replace('{country}', country);
       destinationBox.replaceChildren(title, ...places.map(place => placeButton(place, false)));
       destinationBox.hidden = false;
     }
@@ -369,7 +375,7 @@
 
   const destinationTexts = {
     en: 'Popular in {country}:',
-    bg: 'Популярни места в {country}:',
+    bg: 'Популярни места {in} {country}:',
     de: 'Beliebt in {country}:',
     it: 'Popolari in {country}:',
     es: 'Populares en {country}:'
@@ -381,6 +387,18 @@
     } catch (e) {
       return code;
     }
+  }
+
+  // The main places of a country, as places in the site language ([] when unknown)
+  async function popularPlaces(countryCode) {
+    const all = await loadDestinations();
+    return (all[countryCode] || []).map(place => ({
+      name: place.name[currentLanguage()] || place.name.en,
+      country: countryName(countryCode),
+      countryCode,
+      latitude: place.latitude,
+      longitude: place.longitude
+    }));
   }
 
   // ---- Form choices kept between visits: fields with data-remember="key" ----
@@ -735,5 +753,5 @@
     rememberFields();
   }
 
-  window.CitySearch = { search, attach, isAt, startPlace, openingPlace, setUrlPlace, saveLastPlace, favoritePlaces, favoriteTitle: () => (favoriteTexts[currentLanguage()] || favoriteTexts.en).title };
+  window.CitySearch = { search, attach, isAt, startPlace, openingPlace, setUrlPlace, saveLastPlace, popularPlaces, countryName, favoritePlaces, favoriteTitle: () => (favoriteTexts[currentLanguage()] || favoriteTexts.en).title };
 })();

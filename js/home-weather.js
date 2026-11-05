@@ -131,6 +131,55 @@
     if (event.key === 'weatherMapsFavorites') renderFavorites();
   });
 
+  // "Weather in Bulgarian cities": for a place in another country, its main
+  // places and holidays instead (the Bulgarian links stay in the HTML for
+  // search engines and for Bulgaria)
+  const citiesSection = document.querySelector('.home-cities');
+  const countryTexts = {
+    title: { en: 'Weather in {country}', bg: 'Времето {in} {country}', de: 'Wetter in {country}', it: 'Meteo in {country}', es: 'El tiempo en {country}' },
+    holidays: { en: 'Public holidays in {country}', bg: 'Официални празници {in} {country}', de: 'Feiertage in {country}', it: 'Festività in {country}', es: 'Festivos en {country}' }
+  };
+
+  function countryText(texts, country) {
+    // Bulgarian "във" before В/Ф: "във Франция"
+    const preposition = /^[ВФвф]/.test(country) ? 'във' : 'в';
+    return pickText(texts).replace('{in}', preposition).replace('{country}', country);
+  }
+
+  async function renderCountryCities() {
+    if (!citiesSection) return;
+    const countryCode = (CitySearch.startPlace().countryCode || 'BG').toUpperCase();
+    if (countryCode === 'BG') return;
+    const country = CitySearch.countryName(countryCode);
+    const places = await CitySearch.popularPlaces(countryCode);
+
+    const title = citiesSection.querySelector('h2');
+    title.removeAttribute('data-nav');
+    title.textContent = countryText(countryTexts.title, country);
+
+    const list = citiesSection.querySelector('.city-links');
+    list.hidden = places.length === 0;
+    list.replaceChildren(...places.map(place => {
+      const params = new URLSearchParams({ city: place.name, lat: place.latitude.toFixed(4), lon: place.longitude.toFixed(4), cc: countryCode });
+      const link = document.createElement('a');
+      link.className = 'recent-place';
+      link.href = `weather/?${params}`;
+      link.textContent = place.name;
+      return link;
+    }));
+
+    const holidays = citiesSection.querySelector('[data-nav="holidaysBg"], .home-holidays-link');
+    if (holidays) {
+      holidays.removeAttribute('data-nav');
+      holidays.classList.add('home-holidays-link');
+      holidays.href = 'holliday_calendar/';
+      holidays.textContent = countryText(countryTexts.holidays, country);
+    }
+  }
+
+  if (languageSelect) languageSelect.addEventListener('change', renderCountryCities);
+
   load();
   renderFavorites();
+  renderCountryCities();
 })();
