@@ -156,6 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let selectedPlace = null; // last place picked from the suggestions
 
   CitySearch.attach(cityInput, citySuggestions, {
+    destinations: false, // holidays are per country
     getOrigin: () => ({
       latitude: parseFloat(latitudeInput.value),
       longitude: parseFloat(longitudeInput.value)
@@ -585,6 +586,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
   fromDateInput.value = new Date(Date.UTC(currentYear, currentMonth, 1)).toISOString().slice(0, 10);
   toDateInput.value = new Date(Date.UTC(currentYear, currentMonth + 1, 0)).toISOString().slice(0, 10);
+
+  // The last chosen period, while it has not ended yet
+  try {
+    const period = JSON.parse(localStorage.getItem('holidayPeriod'));
+    const todayText = new Date().toISOString().slice(0, 10);
+    if (period && period.from && period.to && period.to >= todayText && period.from <= period.to) {
+      fromDateInput.value = period.from;
+      toDateInput.value = period.to;
+    }
+  } catch (e) { /* storage blocked or invalid data */ }
+  const savePeriod = () => {
+    if (!fromDateInput.value || !toDateInput.value) return;
+    try {
+      localStorage.setItem('holidayPeriod', JSON.stringify({ from: fromDateInput.value, to: toDateInput.value }));
+    } catch (e) { /* storage blocked */ }
+  };
+  fromDateInput.addEventListener('change', savePeriod);
+  toDateInput.addEventListener('change', savePeriod);
 
   // Open with the holidays of the place in the address (?city=...), the last location, or Sofia.
   // A known country code skips the reverse lookup when loading.
