@@ -136,7 +136,8 @@
   // Options:
   //   onSelect(place)  called with { name, country, region, latitude, longitude }
   //   getOrigin()      optional, returns { latitude, longitude } to show and sort by distance
-  function attach(input, list, { onSelect, getOrigin } = {}) {
+  //   destinations     false to hide the main places of the selected country
+  function attach(input, list, { onSelect, getOrigin, destinations = true } = {}) {
     if (!input || !list) return;
     addStyles();
     input.setAttribute('autocomplete', 'off');
@@ -168,6 +169,8 @@
       setUrlPlace(place);
       renderRecent();
       if (onSelect) onSelect(place);
+      // the page has saved the new place by now
+      setTimeout(renderDestinations, 0);
     }
 
     function select(index) {
@@ -202,6 +205,44 @@
     });
     // After the page has filled in its start place
     setTimeout(renderRecent, 600);
+
+    // Main cities and resorts of the selected place's country
+    const destinationBox = document.createElement('div');
+    destinationBox.className = 'recent-places destination-places';
+    destinationBox.hidden = true;
+    recent.insertAdjacentElement('afterend', destinationBox);
+    let shownCountry = null;
+
+    async function renderDestinations(force) {
+      if (!destinations) return;
+      const countryCode = (startPlace().countryCode || '').toUpperCase();
+      if (!force && countryCode === shownCountry) return;
+      shownCountry = countryCode;
+      const all = await loadDestinations();
+      const places = (all[countryCode] || []).map(place => ({
+        name: place.name[currentLanguage()] || place.name.en,
+        country: countryName(countryCode),
+        countryCode,
+        latitude: place.latitude,
+        longitude: place.longitude
+      }));
+      if (!places.length) {
+        destinationBox.hidden = true;
+        return;
+      }
+      const title = document.createElement('span');
+      title.className = 'destination-title';
+      title.textContent = (destinationTexts[currentLanguage()] || destinationTexts.en).replace('{country}', countryName(countryCode));
+      destinationBox.replaceChildren(title, ...places.map(place => placeButton(place, false)));
+      destinationBox.hidden = false;
+    }
+    setTimeout(renderDestinations, 600);
+    // The place also changes through the location button and the map:
+    // follow the saved place
+    setInterval(renderDestinations, 1500);
+    document.addEventListener('change', event => {
+      if (event.target && event.target.id === 'language') renderDestinations(true);
+    });
 
     function render(found) {
       const origin = getOrigin ? getOrigin() : null;
@@ -312,6 +353,76 @@
     return !!place &&
       Math.abs(place.latitude - parseFloat(latitude)) < 1e-6 &&
       Math.abs(place.longitude - parseFloat(longitude)) < 1e-6;
+  }
+
+  // ---- Main destinations per country (/js/destinations.json, built by
+  // .github/scripts/build-destinations.js) ----
+  let destinationsData = null;
+  function loadDestinations() {
+    if (!destinationsData) {
+      destinationsData = fetch('/js/destinations.json?v=1')
+        .then(response => (response.ok ? response.json() : {}))
+        .catch(() => ({}));
+    }
+    return destinationsData;
+  }
+
+  const destinationTexts = {
+    en: 'Popular in {country}:',
+    bg: 'Популярни места в {country}:',
+    de: 'Beliebt in {country}:',
+    it: 'Popolari in {country}:',
+    es: 'Populares en {country}:'
+  };
+
+  function countryName(code) {
+    try {
+      return new Intl.DisplayNames([currentLanguage()], { type: 'region' }).of(code);
+    } catch (e) {
+      return code;
+    }
+  }
+
+  // ---- Form choices kept between visits: fields with data-remember="key" ----
+  function allowedValue(field, value) {
+    if (field.tagName === 'SELECT') return [...field.options].some(option => option.value === value);
+    if (field.type === 'number') {
+      const number = Number(value);
+      return value !== '' && isFinite(number) &&
+        (field.min === '' || number >= Number(field.min)) &&
+        (field.max === '' || number <= Number(field.max));
+    }
+    return true;
+  }
+
+  function rememberFields() {
+    document.querySelectorAll('[data-remember]').forEach(field => {
+      const key = 'field:' + field.dataset.remember;
+      try {
+        const saved = localStorage.getItem(key);
+        if (saved !== null && allowedValue(field, saved)) field.value = saved;
+      } catch (e) { /* storage blocked */ }
+      const save = () => {
+        if (!allowedValue(field, field.value)) return;
+        try { localStorage.setItem(key, field.value); } catch (e) { /* storage blocked */ }
+      };
+      field.addEventListener('change', save);
+      field.addEventListener('input', save);
+    });
+  }
+
+  // The selected place, read back by startPlace() on every page
+  function saveLastPlace(place) {
+    if (!place || !isFinite(place.latitude) || !isFinite(place.longitude)) return;
+    try {
+      localStorage.setItem('lastLocation', JSON.stringify({
+        city: place.name || '',
+        latitude: place.latitude,
+        longitude: place.longitude,
+        country: place.country || '',
+        countryCode: (place.countryCode || '').toUpperCase()
+      }));
+    } catch (e) { /* storage blocked */ }
   }
 
   // ---- Recently picked places (shared by all pages through localStorage) ----
@@ -425,7 +536,9 @@
   // Where a page opens: a place in the address first, then the last picked
   // place, then Sofia. The address is updated to match.
   async function openingPlace() {
-    const place = (await placeFromUrl()) || startPlace();
+    const fromUrl = await placeFromUrl();
+    const place = fromUrl || startPlace();
+    if (fromUrl && fromUrl.name) saveLastPlace(fromUrl);
     setUrlPlace(place);
     return place;
   }
@@ -616,9 +729,11 @@
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', addCoordinatesToggle);
+    document.addEventListener('DOMContentLoaded', rememberFields);
   } else {
     addCoordinatesToggle();
+    rememberFields();
   }
 
-  window.CitySearch = { search, attach, isAt, startPlace, openingPlace, setUrlPlace, favoritePlaces, favoriteTitle: () => (favoriteTexts[currentLanguage()] || favoriteTexts.en).title };
+  window.CitySearch = { search, attach, isAt, startPlace, openingPlace, setUrlPlace, saveLastPlace, favoritePlaces, favoriteTitle: () => (favoriteTexts[currentLanguage()] || favoriteTexts.en).title };
 })();

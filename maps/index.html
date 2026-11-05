@@ -197,7 +197,7 @@
 
       <div class="form-group">
         <label for="weatherLayer" id="layerLabel">Weather Layer:</label>
-        <select id="weatherLayer">
+        <select id="weatherLayer" data-remember="mapLayer">
           <option value="rain">🌧️ Rain</option>
           <option value="wind">💨 Wind</option>
           <option value="temp">🌡️ Temperature</option>
@@ -459,6 +459,7 @@
               const name = address.city || address.town || address.village || address.municipality || "";
               const country = address.country || "";
               updateSelectedCity(name, country, lat, lon);
+              CitySearch.saveLastPlace({ name, country, countryCode: address.country_code || "", latitude: lat, longitude: lon });
             })
             .catch((err) => {
               console.error("Reverse geocoding error:", err);
@@ -562,7 +563,7 @@
 <!-- Load JavaScript files -->
 <script src="/js/mobile-nav.js?v=7"></script>
 <script src="/js/language-selector.js?v=2"></script>
-<script src="/js/city-search.js?v=5"></script>
+<script src="/js/city-search.js?v=6"></script>
 <script src="js/language-switcher.js?v=7"></script>
 <script src="/js/background-selector.js?v=2"></script>
 <script src="js/map-autocomplete.js?v=6"></script>
