@@ -9,6 +9,9 @@ on:
     paths:
       - '**.html'
       - 'sitemap.xml'
+      # also when IndexNow itself is set up or changed
+      - '.github/workflows/indexnow.yml'
+      - '.github/scripts/indexnow.js'
   workflow_dispatch:
 
 permissions:
