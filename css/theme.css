@@ -778,6 +778,21 @@ h1,
   opacity: 0.75;
 }
 
+/* One background over the whole page: the page scripts set a gradient on
+   body, which used to repeat every screen height on long pages. Fixed to the
+   screen where supported; elsewhere stretched over the full page height. */
+html {
+  height: auto !important;
+  min-height: 100%;
+}
+
+body {
+  height: auto !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+}
+
 /* Wide screens: a tighter header so the links and selectors fit in one row
    (when they still don't, /js/mobile-nav.js switches to the menu button) */
 @media (min-width: 769px) {
