@@ -6,30 +6,35 @@
 
   const texts = {
     en: {
+      more: 'Learn more',
       message: 'We use analytics cookies (Google Analytics) to understand how the site is used. They are only set if you accept.',
       accept: 'Accept',
       reject: 'Reject',
       settings: 'Cookie settings'
     },
     bg: {
+      more: 'Научете повече',
       message: 'Използваме бисквитки за анализ (Google Analytics), за да разберем как се използва сайтът. Те се записват само ако ги приемете.',
       accept: 'Приемам',
       reject: 'Отказвам',
       settings: 'Настройки за бисквитки'
     },
     de: {
+      more: 'Mehr erfahren',
       message: 'Wir verwenden Analyse-Cookies (Google Analytics), um zu verstehen, wie die Website genutzt wird. Sie werden nur gesetzt, wenn Sie zustimmen.',
       accept: 'Akzeptieren',
       reject: 'Ablehnen',
       settings: 'Cookie-Einstellungen'
     },
     it: {
+      more: 'Maggiori informazioni',
       message: 'Utilizziamo cookie analitici (Google Analytics) per capire come viene utilizzato il sito. Vengono impostati solo se accetti.',
       accept: 'Accetta',
       reject: 'Rifiuta',
       settings: 'Impostazioni cookie'
     },
     es: {
+      more: 'Más información',
       message: 'Usamos cookies analíticas (Google Analytics) para entender cómo se usa el sitio. Solo se instalan si las aceptas.',
       accept: 'Aceptar',
       reject: 'Rechazar',
@@ -185,7 +190,12 @@
     banner.setAttribute('aria-label', text.settings);
 
     const message = document.createElement('p');
-    message.textContent = text.message;
+    message.textContent = text.message + ' ';
+    const more = document.createElement('a');
+    more.href = '/poveritelnost/';
+    more.textContent = text.more;
+    more.style.color = 'inherit';
+    message.appendChild(more);
 
     const buttons = document.createElement('div');
     buttons.className = 'cc-buttons';

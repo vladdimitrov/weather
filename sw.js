@@ -3,7 +3,7 @@
 // the cache is only the fallback when there is no connection.
 const CACHE = 'weatherpulse-v1';
 
-const PAGES = ['/', '/weather/', '/maps/', '/holliday_calendar/', '/contacts/', '/magnitni-buri/'];
+const PAGES = ['/', '/weather/', '/maps/', '/holliday_calendar/', '/contacts/', '/magnitni-buri/', '/za-saita/', '/poveritelnost/'];
 
 // Data sources whose last answer is kept for offline use
 const DATA_HOSTS = ['api.open-meteo.com', 'geocoding-api.open-meteo.com', 'services.swpc.noaa.gov', 'date.nager.at'];
