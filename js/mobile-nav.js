@@ -124,11 +124,22 @@
     try {
       if (localStorage.getItem('stormAlerts') !== 'on') return;
       if (!('Notification' in window) || Notification.permission !== 'granted' || !navigator.serviceWorker) return;
+      // The notification is written in the site language
+      const language = document.documentElement.lang;
+      const sendLanguage = () => navigator.serviceWorker.ready.then(registration => {
+        if (registration.active) registration.active.postMessage({ type: 'language', language: document.documentElement.lang });
+      });
+      document.addEventListener('change', event => {
+        if (event.target && event.target.id === 'language') sendLanguage();
+      });
       const last = Number(localStorage.getItem('stormAlertsChecked') || 0);
-      if (Date.now() - last < 3 * 3600 * 1000) return;
+      if (Date.now() - last < 3 * 3600 * 1000) {
+        sendLanguage();
+        return;
+      }
       localStorage.setItem('stormAlertsChecked', String(Date.now()));
       navigator.serviceWorker.ready.then(registration => {
-        if (registration.active) registration.active.postMessage({ type: 'storm-check' });
+        if (registration.active) registration.active.postMessage({ type: 'storm-check', language });
       });
     } catch (e) { /* storage blocked */ }
   }
