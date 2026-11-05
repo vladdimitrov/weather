@@ -1067,6 +1067,15 @@ body {
 .climate-table td:first-child { text-transform: capitalize; }
 .city-climate p { line-height: 1.6; }
 
+/* Divider between the popular places and the recently picked ones */
+.places-divider {
+  flex: 0 0 1px;
+  align-self: center;
+  width: 1px;
+  height: 1.8em;
+  margin: 0 6px;
+  background: rgba(255, 215, 0, 0.55);
+}
 /* Weather page: link to the magnetic storms page */
 .storms-link { color: var(--gold); font-weight: 600; }
 
