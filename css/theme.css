@@ -877,6 +877,64 @@ body {
   }
 }
 
+/* Maps: full screen button on the map */
+.map-fullscreen-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 30;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 215, 0, 0.75);
+  border-radius: 8px;
+  background: rgba(14, 24, 48, 0.88);
+  color: #FFD700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.map-fullscreen-button:hover,
+.map-fullscreen-button:focus,
+.map-fullscreen-button:active {
+  /* keep the look (the general button hover is gold and grows) */
+  transform: none;
+  background: rgba(14, 24, 48, 0.88);
+  color: #FFD700;
+  box-shadow: none;
+}
+
+.map-fullscreen-button:focus-visible { outline: 2px solid #FFD700; outline-offset: 2px; }
+
+/* The map over the whole screen (above the header and the footer) */
+.map-container.map-fullscreen {
+  position: fixed !important;
+  inset: 0;
+  z-index: 3000;
+  width: 100% !important;
+  height: 100% !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  animation: none !important;
+}
+
+.map-container.map-fullscreen iframe { border-radius: 0; }
+
+.map-fullscreen-open,
+.map-fullscreen-open body { overflow: hidden !important; }
+
+/* The map has its own full screen on the page: not in print */
+@media print {
+  .map-fullscreen-button { display: none !important; }
+}
+
 /* Weather page: link to the magnetic storms page */
 .storms-link { color: var(--gold); font-weight: 600; }
 
