@@ -235,11 +235,20 @@
           .replace('{country}', country);
         nodes.push(label, ...popularNodes);
       }
+      // recently picked places, after a divider when there are other places
+      const recentNodes = [];
       recentPlaces().filter(place => place.name !== current).forEach(place => {
         if (!notShown(place)) return;
         shown.push(place);
-        nodes.push(placeButton(place, false));
+        recentNodes.push(placeButton(place, false));
       });
+      if (recentNodes.length && nodes.length) {
+        const divider = document.createElement('span');
+        divider.className = 'places-divider';
+        divider.setAttribute('aria-hidden', 'true');
+        nodes.push(divider);
+      }
+      nodes.push(...recentNodes);
       placeRow.replaceChildren(...nodes);
       placeRow.hidden = nodes.length === 0;
     }
