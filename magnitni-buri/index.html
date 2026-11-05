@@ -63,7 +63,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=11">
+  <link rel="stylesheet" href="/css/theme.css?v=12">
   <link rel="stylesheet" href="/css/mobile.css?v=3">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -82,12 +82,12 @@
   </div>
 
   <div class="container storm-page" style="margin-top: calc(var(--header-height) + 20px);">
-    <h1>Магнитни бури днес и утре</h1>
-    <p class="storm-intro">Прогноза за магнитните бури (геомагнитната активност) за днес и следващите 3 дни по данни на NOAA. Данните се обновяват автоматично.</p>
+    <h1 data-i18n="h1">Магнитни бури днес и утре</h1>
+    <p class="storm-intro" data-i18n="intro">Прогноза за магнитните бури (геомагнитната активност) за днес и следващите 3 дни по данни на NOAA. Данните се обновяват автоматично.</p>
 
     <div class="kp-forecast storm-now" id="stormNow">
-      <h3>Kp индекс сега</h3>
-      <p class="storm-loading">Зареждане…</p>
+      <h3 data-i18n="kpNow">Kp индекс сега</h3>
+      <p class="storm-loading" data-i18n="loading">Зареждане…</p>
     </div>
 
     <div class="kp-forecast" id="stormForecast" hidden></div>
@@ -95,47 +95,47 @@
     <div class="space-weather" id="stormOutlook" hidden></div>
 
     <div class="kp-forecast storm-alerts">
-      <h3>🔔 Известие при магнитна буря</h3>
-      <p>Получете известие на телефона, когато се очаква буря (Kp 5 или повече) в следващите 24 часа.</p>
+      <h3 data-i18n="alertsTitle">🔔 Известие при магнитна буря</h3>
+      <p data-i18n="alertsText">Получете известие на телефона, когато се очаква буря (Kp 5 или повече) в следващите 24 часа.</p>
       <button type="button" class="btn" id="stormAlertsButton">Включи известията</button>
       <p class="storm-alerts-status" id="stormAlertsStatus"></p>
     </div>
 
     <section class="storm-faq">
-      <h2>Какво е магнитна буря?</h2>
-      <p>Магнитната буря е смущение в магнитното поле на Земята. Предизвикват я слънчевият вятър и изхвърлянията на плазма от Слънцето (CME). Когато такъв облак достигне Земята, магнитното ѝ поле се „разклаща“. Това може да засегне сателитите, GPS и радиовръзките, а при силни бури се вижда полярно сияние далеч на юг.</p>
+      <h2 data-i18n="q1">Какво е магнитна буря?</h2>
+      <p data-i18n="a1">Магнитната буря е смущение в магнитното поле на Земята. Предизвикват я слънчевият вятър и изхвърлянията на плазма от Слънцето (CME). Когато такъв облак достигне Земята, магнитното ѝ поле се „разклаща“. Това може да засегне сателитите, GPS и радиовръзките, а при силни бури се вижда полярно сияние далеч на юг.</p>
 
-      <h2>Какво означава Kp индексът?</h2>
-      <p>Kp индексът показва колко е смутено магнитното поле на Земята по скала от 0 до 9:</p>
+      <h2 data-i18n="q2">Какво означава Kp индексът?</h2>
+      <p data-i18n="a2">Kp индексът показва колко е смутено магнитното поле на Земята по скала от 0 до 9:</p>
       <table class="kp-table">
-        <thead><tr><th>Kp</th><th>Ниво</th><th>Какво означава</th></tr></thead>
+        <thead><tr><th>Kp</th><th data-i18n="thLevel">Ниво</th><th data-i18n="thMeaning">Какво означава</th></tr></thead>
         <tbody>
-          <tr><td>0–3</td><td>Спокойно</td><td>Нормално състояние</td></tr>
-          <tr><td>4</td><td>Активно</td><td>Повишена активност, не е буря</td></tr>
-          <tr><td>5</td><td>G1 — слаба буря</td><td>Сияние в Северна Скандинавия</td></tr>
-          <tr><td>6</td><td>G2 — умерена буря</td><td>Сияние в Южна Скандинавия</td></tr>
-          <tr><td>7</td><td>G3 — силна буря</td><td>Сияние в Северна Европа</td></tr>
-          <tr><td>8</td><td>G4 — много силна буря</td><td>Сияние в Централна Европа</td></tr>
-          <tr><td>9</td><td>G5 — изключителна буря</td><td>Сияние може да се види и в България</td></tr>
+          <tr><td>0–3</td><td data-i18n="l0">Спокойно</td><td data-i18n="m0">Нормално състояние</td></tr>
+          <tr><td>4</td><td data-i18n="l4">Активно</td><td data-i18n="m4">Повишена активност, не е буря</td></tr>
+          <tr><td>5</td><td data-i18n="l5">G1 — слаба буря</td><td data-i18n="m5">Сияние в Северна Скандинавия</td></tr>
+          <tr><td>6</td><td data-i18n="l6">G2 — умерена буря</td><td data-i18n="m6">Сияние в Южна Скандинавия</td></tr>
+          <tr><td>7</td><td data-i18n="l7">G3 — силна буря</td><td data-i18n="m7">Сияние в Северна Европа</td></tr>
+          <tr><td>8</td><td data-i18n="l8">G4 — много силна буря</td><td data-i18n="m8">Сияние в Централна Европа</td></tr>
+          <tr><td>9</td><td data-i18n="l9">G5 — изключителна буря</td><td data-i18n="m9">Сияние може да се види и в България</td></tr>
         </tbody>
       </table>
 
-      <h2>Как се прави прогнозата?</h2>
-      <p>Прогнозата е на NOAA Space Weather Prediction Center, американската служба за космическо време. Спътниците SOHO и STEREO снимат Слънцето и засичат изхвърлянията на плазма. Спътникът DSCOVR е на 1,5 милиона км от Земята, към Слънцето, и мери слънчевия вятър 30–60 минути преди той да стигне до нас. Компютърен модел изчислява кога облакът ще пристигне, а синоптиците правят прогнозата за Kp за 3 дни. Тя е добра за днес и утре и ориентировъчна за третия ден, защото времето на пристигане е с грешка около ±7–12 часа.</p>
+      <h2 data-i18n="q3">Как се прави прогнозата?</h2>
+      <p data-i18n="a3">Прогнозата е на NOAA Space Weather Prediction Center, американската служба за космическо време. Спътниците SOHO и STEREO снимат Слънцето и засичат изхвърлянията на плазма. Спътникът DSCOVR е на 1,5 милиона км от Земята, към Слънцето, и мери слънчевия вятър 30–60 минути преди той да стигне до нас. Компютърен модел изчислява кога облакът ще пристигне, а синоптиците правят прогнозата за Kp за 3 дни. Тя е добра за днес и утре и ориентировъчна за третия ден, защото времето на пристигане е с грешка около ±7–12 часа.</p>
 
-      <h2>Влияят ли магнитните бури на здравето?</h2>
-      <p>Изследванията не показват ясно въздействие при повечето хора. Някои метеочувствителни хора съобщават за главоболие, умора или нарушен сън в дни с бури. Ако имате здравословни оплаквания, консултирайте се с лекар.</p>
+      <h2 data-i18n="q4">Влияят ли магнитните бури на здравето?</h2>
+      <p data-i18n="a4">Изследванията не показват ясно въздействие при повечето хора. Някои метеочувствителни хора съобщават за главоболие, умора или нарушен сън в дни с бури. Ако имате здравословни оплаквания, консултирайте се с лекар.</p>
 
-      <h2>Може ли да се види полярно сияние в България?</h2>
-      <p>Рядко, само при изключително силни бури с Kp 8–9. Така беше през май 2024 г., когато сиянието се видя в цяла България ниско над северния хоризонт. На страница <a href="../weather/index.html">Прогноза за времето</a> ще видите шанса за сияние за вашия град.</p>
+      <h2 data-i18n="q5">Може ли да се види полярно сияние в България?</h2>
+      <p data-i18n="a5">Рядко, само при изключително силни бури с Kp 8–9. Така беше през май 2024 г., когато сиянието се видя в цяла България ниско над северния хоризонт.</p>
     </section>
 
     <div class="kp-forecast widget-embed">
-      <h3>Добавете прогнозата на вашия сайт</h3>
-      <p>Безплатна карта с Kp индекса и прогнозата за 3 дни. Копирайте кода в своя сайт или блог:</p>
+      <h3 data-i18n="widgetTitle">Добавете прогнозата на вашия сайт</h3>
+      <p data-i18n="widgetText">Безплатна карта с Kp индекса и прогнозата за 3 дни. Копирайте кода в своя сайт или блог:</p>
       <textarea id="widgetCode" readonly rows="3">&lt;iframe src="https://weatherpulse.eu/widget/kp.html" width="320" height="190" style="border:0" title="Магнитни бури — Weather Pulse" loading="lazy"&gt;&lt;/iframe&gt;</textarea>
       <button type="button" class="btn" id="copyWidgetCode">Копирай кода</button>
-      <iframe src="../widget/kp.html" width="320" height="190" style="border:0; display:block; margin:14px auto 0;" title="Магнитни бури — Weather Pulse" loading="lazy"></iframe>
+      <iframe id="widgetPreview" src="../widget/kp.html" width="320" height="190" style="border:0; display:block; margin:14px auto 0;" title="Магнитни бури — Weather Pulse" loading="lazy"></iframe>
     </div>
   </div>
 
@@ -153,6 +153,6 @@
 <script src="/js/mobile-nav.js?v=7"></script>
 <script src="/js/language-selector.js?v=2"></script>
 <script src="/js/background-selector.js?v=2"></script>
-<script src="/js/storm-page.js?v=1"></script>
+<script src="/js/storm-page.js?v=2"></script>
 </body>
 </html>

@@ -66,7 +66,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=11">
+  <link rel="stylesheet" href="/css/theme.css?v=12">
   <link rel="stylesheet" href="/css/mobile.css?v=3">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -76,8 +76,8 @@
       <a href="../index.html" class="nav-link" id="home-link">Home</a>
       <a href="../maps/index.html" class="nav-link" id="weather-maps-link">Weather Maps</a>
       <a href="../holliday_calendar/index.html" class="nav-link" id="holiday-calendar-link">Holiday Calendar</a>
-      <a href="../contacts/index.html" class="nav-link" id="data-sources-link">Data Sources</a>
       <a href="../magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
+      <a href="../contacts/index.html" class="nav-link" id="data-sources-link">Data Sources</a>
      </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -106,12 +106,12 @@
 
       <div class="form-group days">
         <label for="days" id="daysLabel">Number of days:</label>
-        <input type="number" id="days" value="3" min="1" max="16" placeholder="e.g. 7">
+        <input type="number" id="days" data-remember="forecastDays" value="3" min="1" max="16" placeholder="e.g. 7">
       </div>
 
       <div class="form-group interval">
         <label for="interval" id="intervalLabel">Detail Forecast Interval (min.):</label>
-        <select id="interval">
+        <select id="interval" data-remember="forecastInterval">
           <option value="60">60</option>
           <option value="30">30</option>
           <option value="15">15</option>
@@ -224,13 +224,14 @@
               const address = g.address || {};
               const name = address.city || address.town || address.village || address.municipality || "";
               const country = address.country || "";
+              const countryCode = (address.country_code || "").toUpperCase();
               updateSelectedCity(name, country, lat, lon);
               currentCoords.latitude = lat;
               currentCoords.longitude = lon;
               
               // Save location to localStorage
               if (typeof saveLocationToLocalStorage === 'function') {
-                saveLocationToLocalStorage(name, lat, lon, country);
+                saveLocationToLocalStorage(name, lat, lon, country, countryCode);
               }
               
               document.getElementById("loadData").click();
@@ -286,12 +287,12 @@
 
 <script src="/js/mobile-nav.js?v=7"></script>
 <script src="/js/language-selector.js?v=2"></script>
-<script src="/js/city-search.js?v=5"></script>
+<script src="/js/city-search.js?v=6"></script>
 <script src="forecast-extras.js?v=4"></script>
 <script src="forecast-precision.js?v=2"></script>
 <script src="map-autocomplete.js?v=5"></script>
 
-<script src="weather-fixed.js?v=7"></script>
+<script src="weather-fixed.js?v=8"></script>
 <script src="weather-hourly.js?v=3"></script>
 
   <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">

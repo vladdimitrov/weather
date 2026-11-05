@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex">
   <title>Магнитни бури — Weather Pulse</title>
   <!-- Embeddable card for other sites: <iframe src="https://weatherpulse.eu/widget/kp.html" width="320" height="190">.
-       Self-contained (no site scripts, no cookies or analytics). ?lang=en for English. -->
+       Self-contained (no site scripts, no cookies or analytics). ?lang=en, de, it or es for other languages. -->
   <style>
     * { box-sizing: border-box; }
     html, body {
@@ -54,11 +54,17 @@
   </a>
   <script>
     (function () {
-      const en = new URLSearchParams(location.search).get('lang') === 'en';
-      const t = en
-        ? { title: '🧭 Magnetic storms', now: 'Kp now', today: 'Today', tomorrow: 'Tomorrow', calm: 'calm', active: 'active', storm: 'storm', error: 'Data unavailable', locale: 'en-GB', link: 'https://weatherpulse.eu/magnitni-buri/' }
-        : { title: '🧭 Магнитни бури', now: 'Kp сега', today: 'Днес', tomorrow: 'Утре', calm: 'спокойно', active: 'повишено', storm: 'буря', error: 'Няма данни в момента', locale: 'bg-BG', link: 'https://weatherpulse.eu/magnitni-buri/' };
-      document.documentElement.lang = en ? 'en' : 'bg';
+      const texts = {
+        bg: { title: '🧭 Магнитни бури', now: 'Kp сега', today: 'Днес', tomorrow: 'Утре', calm: 'спокойно', active: 'повишено', storm: 'буря', error: 'Няма данни в момента', locale: 'bg-BG' },
+        en: { title: '🧭 Magnetic storms', now: 'Kp now', today: 'Today', tomorrow: 'Tomorrow', calm: 'calm', active: 'active', storm: 'storm', error: 'Data unavailable', locale: 'en-GB' },
+        de: { title: '🧭 Magnetstürme', now: 'Kp aktuell', today: 'Heute', tomorrow: 'Morgen', calm: 'ruhig', active: 'erhöht', storm: 'Sturm', error: 'Keine Daten verfügbar', locale: 'de-DE' },
+        it: { title: '🧭 Tempeste magnetiche', now: 'Kp ora', today: 'Oggi', tomorrow: 'Domani', calm: 'calmo', active: 'elevato', storm: 'tempesta', error: 'Dati non disponibili', locale: 'it-IT' },
+        es: { title: '🧭 Tormentas magnéticas', now: 'Kp ahora', today: 'Hoy', tomorrow: 'Mañana', calm: 'tranquilo', active: 'elevado', storm: 'tormenta', error: 'Sin datos por ahora', locale: 'es-ES' }
+      };
+      const requested = new URLSearchParams(location.search).get('lang');
+      const language = texts[requested] ? requested : 'bg';
+      const t = texts[language];
+      document.documentElement.lang = language;
       document.getElementById('title').textContent = t.title;
 
       const level = kp => kp >= 5 ? 'storm' : kp >= 4 ? 'active' : 'calm';

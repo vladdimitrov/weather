@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 11, mobileNav: 7, cityForecast: 1 };
+const VERSION = { theme: 12, mobileNav: 7, cityForecast: 1 };
 
 const CITIES = [
   ['sofia', 'София', 42.6977, 23.3219],
@@ -106,8 +106,8 @@ ${jsonLd}  <script>
       <a href="/weather/" class="nav-link" data-nav="weather">Прогноза за времето</a>
       <a href="/maps/" class="nav-link" data-nav="maps">Карти за времето</a>
       <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Календар на празниците</a>
-      <a href="/contacts/" class="nav-link" data-nav="sources">Източници на данни</a>
       <a href="/magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
+      <a href="/contacts/" class="nav-link" data-nav="sources">Източници на данни</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->

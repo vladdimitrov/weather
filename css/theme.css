@@ -778,6 +778,21 @@ h1,
   opacity: 0.75;
 }
 
+/* One background over the whole page: the page scripts set a gradient on
+   body, which used to repeat every screen height on long pages. Fixed to the
+   screen where supported; elsewhere stretched over the full page height. */
+html {
+  height: auto !important;
+  min-height: 100%;
+}
+
+body {
+  height: auto !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+}
+
 /* Wide screens: a tighter header so the links and selectors fit in one row
    (when they still don't, /js/mobile-nav.js switches to the menu button) */
 @media (min-width: 769px) {
@@ -793,6 +808,32 @@ h1,
     min-width: 0 !important;
     padding: 4px 6px !important;
   }
+}
+
+/* Main destinations of the selected country, under the place search */
+.destination-places { margin-top: 6px; }
+.destination-title {
+  align-self: center;
+  margin-right: 2px;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* Phones: one row that scrolls sideways */
+@media (max-width: 768px) {
+  .destination-places {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    /* its buttons must not widen the form */
+    contain: inline-size;
+    width: 100%;
+    min-width: 0;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .destination-places::-webkit-scrollbar { display: none; }
+  .destination-places > * { flex: none; }
+  .form-group:has(.destination-places) { min-width: 0; }
 }
 
 /* Weather page: link to the magnetic storms page */
