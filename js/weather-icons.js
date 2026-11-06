@@ -25,7 +25,7 @@ window.WeatherIcons = (function () {
     moonWaneGibbous: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 0 24 40 A8 16 0 0 0 24 8 Z" fill="#F7DC6F"/>',
     moonLastQ: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 0 24 40 Z" fill="#F7DC6F"/>',
     moonWaneCrescent: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 0 24 40 A8 16 0 0 1 24 8 Z" fill="#F7DC6F"/>',
-    hourly: '<path d="M15 9h18M15 39h18" stroke="#7A4B00" stroke-width="3" stroke-linecap="round"/><path d="M18 12h12C30 18 25 20 24 24C23 20 18 18 18 12Z" fill="#FFF8E1" stroke="#B9770E" stroke-width="1.6" stroke-linejoin="round"/><path d="M24 24C25 28 30 30 30 36H18C18 30 23 28 24 24Z" fill="#FFD54A"/>'
+    hourly: '<path d="M15 9h18M15 39h18" stroke="#F7DC6F" stroke-width="3" stroke-linecap="round"/><path d="M18 12h12C30 18 25 20 24 24C23 20 18 18 18 12Z" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round"/><path d="M24 24C25 28 30 30 30 36H18C18 30 23 28 24 24Z" fill="#F7DC6F"/><path d="M24 17.5V21" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"/>'
   };
 
   // Background of each medallion
@@ -44,7 +44,7 @@ window.WeatherIcons = (function () {
     moon: 'radial-gradient(circle at 40% 30%, #2c3e6b, #0d1830 70%)',
     sunrise: 'radial-gradient(circle at 50% 70%, #ffd27a, #e8745a 45%, #2b2d5c 100%)',
     sunset: 'radial-gradient(circle at 50% 70%, #ff9d6c, #b03a6b 50%, #1d1338 100%)',
-    hourly: 'radial-gradient(circle at 40% 30%, #ffe9a6, #d4a017 55%, #3d2a05 100%)'
+    hourly: 'radial-gradient(circle at 40% 30%, #3a4a6b, #1b2a4a 65%, #0d1830 100%)'
   };
 
   function glyph(key) {
