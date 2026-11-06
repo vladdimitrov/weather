@@ -220,26 +220,30 @@ h1,
   margin-top: 6px;
 }
 
+/* Badges: gradient pills with a thin gold edge and a soft shadow */
 .wx-warning {
   display: inline-block;
   padding: 2px 8px;
-  border-radius: 10px;
+  border-radius: 999px;
   font-size: 0.78rem;
   font-weight: 600;
   line-height: 1.5;
   white-space: nowrap;
   color: #ffffff;
-  background: #c0392b;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 215, 0, 0.45);
+  background: linear-gradient(180deg, #e74c3c, #922b21);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
-.wx-warning.wx-wind { background: #d35400; }
-.wx-warning.wx-rain { background: #2471a3; }
-.wx-warning.wx-snow,
-.wx-warning.wx-frost { background: #5d6d7e; }
-.wx-warning.wx-heat { background: #b03a2e; }
-.wx-warning.wx-fog { background: #7f8c8d; }
-.wx-warning.wx-drizzle { background: #3d7fb0; }
-.wx-warning.wx-thunder { background: #6c3483; }
+.wx-warning.wx-wind { background: linear-gradient(180deg, #f39c12, #a04000); }
+.wx-warning.wx-rain { background: linear-gradient(180deg, #5dade2, #1b4f72); }
+.wx-warning.wx-snow { background: linear-gradient(180deg, #d6eaf8, #5d6d7e); color: #17202a; text-shadow: none; }
+.wx-warning.wx-frost { background: linear-gradient(180deg, #aed6f1, #2e86c1); color: #0b2239; text-shadow: none; }
+.wx-warning.wx-heat { background: linear-gradient(180deg, #ff7043, #922b21); }
+.wx-warning.wx-fog { background: linear-gradient(180deg, #d5dbdb, #717d7e); color: #17202a; text-shadow: none; }
+.wx-warning.wx-drizzle { background: linear-gradient(180deg, #85c1e9, #2874a6); }
+.wx-warning.wx-thunder { background: linear-gradient(180deg, #af7ac5, #4a235a); }
 
 /* Weather: bigger, bolder text in the forecast tables for easier reading */
 #weatherTable tbody td,
@@ -429,10 +433,26 @@ h1,
   white-space: nowrap;
 }
 
-.reliability.rel-high { color: #2ecc71; }
-.reliability.rel-medium { color: #f1c40f; }
-.reliability.rel-low { color: #ff8a65; }
-.reliability.rel-rough { color: rgba(255, 255, 255, 0.65); }
+/* Reliability shown as a small gold-edged pill */
+.reliability {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: rgba(10, 18, 40, 0.55);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.reliability.rel-high { color: #7dffb0; border-color: rgba(46, 204, 113, 0.6); background: linear-gradient(180deg, rgba(46, 204, 113, 0.28), rgba(10, 60, 35, 0.55)); }
+.reliability.rel-medium { color: #ffe27a; border-color: rgba(241, 196, 15, 0.6); background: linear-gradient(180deg, rgba(241, 196, 15, 0.25), rgba(70, 55, 5, 0.55)); }
+.reliability.rel-low { color: #ffb199; border-color: rgba(255, 138, 101, 0.6); background: linear-gradient(180deg, rgba(255, 138, 101, 0.25), rgba(80, 35, 20, 0.55)); }
+.reliability.rel-rough { color: rgba(255, 255, 255, 0.8); border-color: rgba(255, 255, 255, 0.3); }
+
+/* Weather icons: a soft shadow so they stand out on the dark table */
+#weatherTable tbody td span[title],
+#hourlyTable tbody td span[title] {
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.45));
+}
 
 .temp-range,
 .rain-chance {
