@@ -6,14 +6,14 @@
 
   // WMO weather codes, grouped (as in /js/home-weather.js)
   const conditions = [
-    { codes: [0], icon: '☀️', text: { en: 'Clear', bg: 'Ясно' } },
-    { codes: [1, 2], icon: '⛅', text: { en: 'Partly cloudy', bg: 'Променлива облачност' } },
-    { codes: [3], icon: '☁️', text: { en: 'Cloudy', bg: 'Облачно' } },
-    { codes: [45, 48], icon: '🌫️', text: { en: 'Fog', bg: 'Мъгла' } },
-    { codes: [51, 53, 55, 56, 57], icon: '🌦️', text: { en: 'Drizzle', bg: 'Ръмеж' } },
-    { codes: [61, 63, 65, 66, 67, 80, 81, 82], icon: '🌧️', text: { en: 'Rain', bg: 'Дъжд' } },
-    { codes: [71, 73, 75, 77, 85, 86], icon: '❄️', text: { en: 'Snow', bg: 'Сняг' } },
-    { codes: [95, 96, 99], icon: '⛈️', text: { en: 'Thunderstorm', bg: 'Гръмотевична буря' } }
+    { codes: [0], key: 'sun', icon: '☀️', text: { en: 'Clear', bg: 'Ясно' } },
+    { codes: [1, 2], key: 'cloudSun', icon: '⛅', text: { en: 'Partly cloudy', bg: 'Променлива облачност' } },
+    { codes: [3], key: 'cloud', icon: '☁️', text: { en: 'Cloudy', bg: 'Облачно' } },
+    { codes: [45, 48], key: 'fog', icon: '🌫️', text: { en: 'Fog', bg: 'Мъгла' } },
+    { codes: [51, 53, 55, 56, 57], key: 'drizzle', icon: '🌦️', text: { en: 'Drizzle', bg: 'Ръмеж' } },
+    { codes: [61, 63, 65, 66, 67, 80, 81, 82], key: 'rain', icon: '🌧️', text: { en: 'Rain', bg: 'Дъжд' } },
+    { codes: [71, 73, 75, 77, 85, 86], key: 'snow', icon: '❄️', text: { en: 'Snow', bg: 'Сняг' } },
+    { codes: [95, 96, 99], key: 'thunder', icon: '⛈️', text: { en: 'Thunderstorm', bg: 'Гръмотевична буря' } }
   ];
   const condition = code => conditions.find(c => c.codes.includes(code)) || conditions[2];
 
@@ -50,7 +50,7 @@
 
     nowBox.replaceChildren(
       el('h3', '', `${text.now}: ${box.dataset.name}`),
-      el('span', 'now-icon', current.icon),
+      WeatherIcons.node('now-icon', current.key, pickText(current.text)),
       el('span', 'storm-now-value', `${Math.round(now.temperature_2m)}°`),
       el('p', 'storm-now-status', `${pickText(current.text)} · ${text.feels} ${Math.round(now.apparent_temperature)}°`),
       el('p', 'storm-updated', `${text.wind}: ${Math.round(now.wind_speed_10m)} km/h · ${text.humidity}: ${now.relative_humidity_2m}%`)
@@ -65,16 +65,19 @@
       const amount = forecast.daily.precipitation_sum[i];
       day.append(
         el('span', 'kp-day-name', name),
-        el('span', 'city-day-icon', dayCondition.icon),
+        WeatherIcons.node('city-day-icon', dayCondition.key, pickText(dayCondition.text)),
         el('span', 'city-day-temp', `${Math.round(forecast.daily.temperature_2m_max[i])}° / ${Math.round(forecast.daily.temperature_2m_min[i])}°`),
         el('span', 'kp-day-status', pickText(dayCondition.text))
       );
       if (rain !== null && rain !== undefined) {
-        const rainText = el('span', 'city-day-rain', `💧 ${rain}%${amount >= 0.1 ? ` · ${amount.toFixed(1)} mm` : ''}`);
+        const rainText = el('span', 'city-day-rain', `${rain}%${amount >= 0.1 ? ` · ${amount.toFixed(1)} mm` : ''}`);
+        rainText.prepend(WeatherIcons.node('', 'rain', text.rain, 'sm'));
         rainText.title = text.rain;
         day.appendChild(rainText);
       }
-      day.appendChild(el('span', 'city-day-wind', `💨 ${Math.round(forecast.daily.wind_speed_10m_max[i])} km/h`));
+      const wind = el('span', 'city-day-wind', `${Math.round(forecast.daily.wind_speed_10m_max[i])} km/h`);
+      wind.prepend(WeatherIcons.node('', 'wind', text.wind, 'sm'));
+      day.appendChild(wind);
       return day;
     });
     const grid = el('div', 'city-days');
@@ -108,7 +111,11 @@
       tiles.forEach((tile, i) => {
         const current = results[i] && results[i].current;
         if (!current) return;
-        tile.querySelector('.city-tile-temp').textContent = `${condition(current.weather_code).icon} ${Math.round(current.temperature_2m)}°`;
+        const tileCondition = condition(current.weather_code);
+        tile.querySelector('.city-tile-temp').replaceChildren(
+          WeatherIcons.node('', tileCondition.key, pickText(tileCondition.text), 'sm'),
+          document.createTextNode(` ${Math.round(current.temperature_2m)}°`)
+        );
       });
     } catch (error) {
       console.error('City temperatures:', error);
