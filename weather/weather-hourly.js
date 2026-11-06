@@ -229,10 +229,10 @@ function updateHourlyForecast(selectedDate) {
         return `
           <tr>
             <td>${timePart}</td>
-            <td>${weatherIcon}</td>
+            <td>${weatherIcon}${window.ForecastExtras ? ForecastExtras.hourWarnings({ weatherCode, windspeed, precipitation, temperature }) : ''}</td>
             <td>${temperature}</td>
             <td>${cloudcover}</td>
-            <td>${precipitation} ${isThunderstorm(weatherCode) ? `<span style="font-size: 24px; margin-left: 5px;" title="${_t('iconThunder')}">⚡</span>` : ''}</td>
+            <td>${precipitation}</td>
             <td>${precipitationProbability}%${precipProbBar}</td>
             <td><span class="wind-value">${windspeed}</span></td>
           </tr>

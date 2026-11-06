@@ -237,6 +237,45 @@ h1,
 .wx-warning.wx-snow,
 .wx-warning.wx-frost { background: #5d6d7e; }
 .wx-warning.wx-heat { background: #b03a2e; }
+.wx-warning.wx-fog { background: #7f8c8d; }
+.wx-warning.wx-drizzle { background: #3d7fb0; }
+.wx-warning.wx-thunder { background: #6c3483; }
+
+/* Weather: bigger, bolder text in the forecast tables for easier reading */
+#weatherTable tbody td,
+#hourlyTable tbody td {
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+
+#weatherTable th,
+#hourlyTable th {
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.wx-warning {
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 3px 10px;
+}
+
+.reliability {
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.temp-range,
+.rain-chance {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.moon-phase {
+  font-size: 1rem;
+  font-weight: 600;
+}
 
 /* Weather: sunrise, sunset and moon phase */
 .moon-phase {

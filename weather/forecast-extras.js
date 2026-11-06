@@ -28,8 +28,16 @@ window.ForecastExtras = (function () {
     rain: { icon: '🌧️', text: { en: 'Heavy rain', bg: 'Обилни валежи', de: 'Starkregen', it: 'Pioggia intensa', es: 'Lluvia intensa' } },
     snow: { icon: '❄️', text: { en: 'Snow', bg: 'Сняг', de: 'Schnee', it: 'Neve', es: 'Nieve' } },
     frost: { icon: '🧊', text: { en: 'Frost', bg: 'Слана', de: 'Frost', it: 'Gelate', es: 'Heladas' } },
-    heat: { icon: '🔥', text: { en: 'Heat', bg: 'Жега', de: 'Hitze', it: 'Caldo intenso', es: 'Calor intenso' } }
+    heat: { icon: '🔥', text: { en: 'Heat', bg: 'Жега', de: 'Hitze', it: 'Caldo intenso', es: 'Calor intenso' } },
+    fog: { icon: '🌫️', text: { en: 'Fog', bg: 'Мъгла', de: 'Nebel', it: 'Nebbia', es: 'Niebla' } },
+    drizzle: { icon: '🌦️', text: { en: 'Drizzle', bg: 'Ръмене', de: 'Nieselregen', it: 'Pioggerella', es: 'Llovizna' } }
   };
+
+  // Weather codes (WMO, as used by Open-Meteo)
+  const FOG_CODES = [45, 48];
+  const DRIZZLE_CODES = [51, 53, 55, 56, 57];
+  const SNOW_CODES = [71, 73, 75, 77, 85, 86];
+  const THUNDER_CODES = [95, 96, 99];
 
   const locales = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES' };
 
@@ -61,18 +69,39 @@ window.ForecastExtras = (function () {
   }
 
   // ---- Warning badges for a forecast day ----
-  function dayWarnings({ weatherCode, windMax, precipitation, tempMin, tempMax }) {
-    const found = [];
-    if (weatherCode >= 95) found.push('thunder');
-    if (windMax >= 50) found.push('wind');
-    if (precipitation >= 20) found.push('rain');
-    if ([71, 73, 75, 77, 85, 86].includes(weatherCode)) found.push('snow');
-    if (tempMin <= 0) found.push('frost');
-    if (tempMax >= 35) found.push('heat');
-    return found.map(key => {
+  function badgesFor(keys) {
+    return keys.map(key => {
       const warning = warningTexts[key];
       return `<span class="wx-warning wx-${key}">${warning.icon} ${pickText(warning.text)}</span>`;
     }).join('');
+  }
+
+  // Shown in the "Forecast" column of the daily table
+  function dayWarnings({ weatherCode, windMax, precipitation, tempMin, tempMax }) {
+    const found = [];
+    if (THUNDER_CODES.includes(weatherCode)) found.push('thunder');
+    if (FOG_CODES.includes(weatherCode)) found.push('fog');
+    if (windMax >= 50) found.push('wind');
+    if (precipitation >= 20) found.push('rain');
+    if (SNOW_CODES.includes(weatherCode)) found.push('snow');
+    if (tempMin <= 0) found.push('frost');
+    if (tempMax >= 35) found.push('heat');
+    return badgesFor(found);
+  }
+
+  // Phenomena of one hour, shown in the "Forecast" column of the hourly table.
+  // Frost is taken as a temperature at or below 0 °C without precipitation.
+  function hourWarnings({ weatherCode, windspeed, precipitation, temperature }) {
+    const found = [];
+    if (THUNDER_CODES.includes(weatherCode)) found.push('thunder');
+    if (FOG_CODES.includes(weatherCode)) found.push('fog');
+    if (DRIZZLE_CODES.includes(weatherCode)) found.push('drizzle');
+    if (SNOW_CODES.includes(weatherCode)) found.push('snow');
+    if (temperature <= 0 && !(precipitation > 0)) found.push('frost');
+    if (windspeed >= 50) found.push('wind');
+    if (temperature >= 35) found.push('heat');
+    const badges = badgesFor(found);
+    return badges ? `<div class="wx-warnings">${badges}</div>` : '';
   }
 
   // ---- Hourly temperature chart ----
@@ -153,5 +182,5 @@ window.ForecastExtras = (function () {
     if (languageSelect) languageSelect.addEventListener('change', onLanguageChange);
   });
 
-  return { sunMoonCell, dayWarnings, renderHourlyChart, startLocalClock };
+  return { sunMoonCell, dayWarnings, hourWarnings, renderHourlyChart, startLocalClock };
 })();
