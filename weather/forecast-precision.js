@@ -142,17 +142,17 @@ window.ForecastPrecision = (function () {
     return a === b ? `≈${a}°` : `${a}…${b}°`; // all runs agree: one value
   }
 
-  // Puts the legend above the table (once; updated with the language)
+  // Puts the legend inside the "Compare weather models" panel (it is rebuilt
+  // with every render, so the legend is added after it)
   function renderLegend() {
-    const table = document.getElementById('weatherTable');
-    if (!table) return;
-    const container = table.closest('.table-container') || table;
+    const panel = document.getElementById('modelCompare');
+    if (!panel) return;
     let box = document.getElementById('reliabilityLegend');
     if (!box) {
       box = document.createElement('div');
       box.id = 'reliabilityLegend';
       box.className = 'reliability-legend';
-      container.parentNode.insertBefore(box, container);
+      panel.appendChild(box);
     }
     const rows = ['high', 'medium', 'low', 'rough'].map(level => {
       const dots = { high: '●●●', medium: '●●○', low: '●○○', rough: '○○○' }[level];
@@ -165,7 +165,6 @@ window.ForecastPrecision = (function () {
 
   function render() {
     if (!state) return;
-    renderLegend();
     const rows = document.querySelectorAll('#weatherTable tbody tr');
     document.querySelectorAll('#weatherTable .precision-added').forEach(el => el.remove());
 
@@ -197,6 +196,7 @@ window.ForecastPrecision = (function () {
     });
 
     renderModelComparison();
+    renderLegend();
   }
 
   function renderModelComparison() {
