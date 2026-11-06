@@ -72,7 +72,8 @@ window.ForecastExtras = (function () {
   function badgesFor(keys) {
     return keys.map(key => {
       const warning = warningTexts[key];
-      return `<span class="wx-warning wx-${key}">${warning.icon} ${pickText(warning.text)}</span>`;
+      const icon = window.WeatherIcons ? WeatherIcons.medal(key, '', 'sm') : warning.icon;
+      return `<span class="wx-warning wx-${key}">${icon} ${pickText(warning.text)}</span>`;
     }).join('');
   }
 

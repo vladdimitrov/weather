@@ -290,26 +290,26 @@ function getWeatherIcon(cloudcover, precipitation, temperature) {
   
   // Snow icon if there's precipitation and temperature is at or below 0°C
   if (precipitation > 0 && temperature <= 0) {
-    icons.push(`<span style="font-size: 24px; margin: 0 3px;" title="${_t('iconSnow')}">❄️</span>`);
+    icons.push(WeatherIcons.medal('snow', _t('iconSnow')));
   }
   // Rain icon if there's precipitation and temperature is above 0°C
   else if (precipitation > 0 && temperature > 0) {
-    icons.push(`<span style="font-size: 24px; margin: 0 3px;" title="${_t('iconRain')}">🌧️</span>`);
+    icons.push(WeatherIcons.medal('rain', _t('iconRain')));
   }
-  
+
   // Cloud icon if cloudiness is high
   if (cloudcover > 70) {
-    icons.push(`<span style="font-size: 24px; margin: 0 3px;" title="${_t('iconCloud')}">☁️</span>`);
+    icons.push(WeatherIcons.medal('cloud', _t('iconCloud')));
   }
-  
+
   // Partly cloudy icon if cloudiness is moderate
   if (cloudcover > 30 && cloudcover <= 70) {
-    icons.push(`<span style="font-size: 24px; margin: 0 3px;" title="${_t('iconSunCloud')}">⛅</span>`);
+    icons.push(WeatherIcons.medal('cloudSun', _t('iconSunCloud')));
   }
-  
+
   // Sun icon if cloudiness is low and no precipitation
   if (cloudcover <= 30 && precipitation === 0) {
-    icons.push(`<span style="font-size: 24px; margin: 0 3px;" title="${_t('iconSun')}">☀️</span>`);
+    icons.push(WeatherIcons.medal('sun', _t('iconSun')));
   }
   
   return icons.join(' ');

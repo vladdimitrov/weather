@@ -1,0 +1,58 @@
+// Weather icons for the forecast tables: round medallions with a coloured
+// background and a gold rim. Used by weather-fixed.js (daily),
+// weather-hourly.js (hourly) and forecast-extras.js (warning badges).
+window.WeatherIcons = (function () {
+  // Glyphs on a 48x48 grid
+  const GLYPHS = {
+    sun: '<circle cx="24" cy="24" r="9" fill="#FFD54A"/><path d="M24 6v5M24 37v5M6 24h5M37 24h5M11.5 11.5l3.5 3.5M33 33l3.5 3.5M36.5 11.5L33 15M15 33l-3.5 3.5" stroke="#F39C12" stroke-width="3" stroke-linecap="round"/>',
+    cloudSun: '<circle cx="17" cy="16" r="7" fill="#FFD54A"/><path d="M17 5v2M7 16h2M9 8l1.4 1.4M25 8l-1.4 1.4" stroke="#F39C12" stroke-width="2.5" stroke-linecap="round"/><path d="M19 36h17a6 6 0 0 0 0-12 8 8 0 0 0-15-2A5 5 0 0 0 19 36z" fill="#EAF2F8" stroke="#AED6F1" stroke-width="1.5"/>',
+    cloud: '<path d="M14 34h20a7 7 0 0 0 0-14 9 9 0 0 0-17.5 2.5A6 6 0 0 0 14 34z" fill="#EAF2F8" stroke="#AED6F1" stroke-width="1.5"/>',
+    rain: '<path d="M14 28h20a6 6 0 0 0 0-12 8 8 0 0 0-15.4 2.2A5 5 0 0 0 14 28z" fill="#AEB6BF"/><path d="M18 33l-2 5M26 33l-2 5M34 33l-2 5" stroke="#3498DB" stroke-width="2.5" stroke-linecap="round"/>',
+    drizzle: '<path d="M14 28h20a6 6 0 0 0 0-12 8 8 0 0 0-15.4 2.2A5 5 0 0 0 14 28z" fill="#AEB6BF"/><circle cx="18" cy="35" r="1.8" fill="#85C1E9"/><circle cx="26" cy="38" r="1.8" fill="#85C1E9"/><circle cx="34" cy="35" r="1.8" fill="#85C1E9"/>',
+    snow: '<path d="M14 28h20a6 6 0 0 0 0-12 8 8 0 0 0-15.4 2.2A5 5 0 0 0 14 28z" fill="#AEB6BF"/><circle cx="18" cy="36" r="2.2" fill="#D6EAF8"/><circle cx="26" cy="39" r="2.2" fill="#D6EAF8"/><circle cx="34" cy="36" r="2.2" fill="#D6EAF8"/>',
+    fog: '<path d="M8 19h32M6 25h36M10 31h28M8 37h32" stroke="#D5DBDB" stroke-width="3.5" stroke-linecap="round"/>',
+    thunder: '<path d="M14 26h20a6 6 0 0 0 0-12 8 8 0 0 0-15.4 2.2A5 5 0 0 0 14 26z" fill="#7F8C8D"/><path d="M25 29l-5 8h5l-3 6 8-9h-5l3-5z" fill="#F4D03F"/>',
+    frost: '<path d="M24 6v36M9.8 14l28.4 20M38.2 14L9.8 34" stroke="#2E86C1" stroke-width="3" stroke-linecap="round"/><path d="M20 9l4 3 4-3M20 39l4-3 4 3" stroke="#85C1E9" stroke-width="3" stroke-linecap="round" fill="none"/>',
+    wind: '<path d="M6 18h22a5 5 0 1 0-5-5M6 26h30a5 5 0 1 1-5 5M6 34h14" stroke="#AEB6BF" stroke-width="3.2" stroke-linecap="round" fill="none"/>',
+    heat: '<path d="M20 9a4 4 0 0 1 8 0v21a7 7 0 1 1-8 0z" fill="#EC7063"/><circle cx="24" cy="37" r="5" fill="#E74C3C"/>',
+    moonNew: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/>',
+    moonWaxCrescent: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 1 24 40 A8 16 0 0 0 24 8 Z" fill="#F7DC6F"/>',
+    moonFirstQ: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 1 24 40 Z" fill="#F7DC6F"/>',
+    moonWaxGibbous: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 1 24 40 A8 16 0 0 1 24 8 Z" fill="#F7DC6F"/>',
+    moonFull: '<circle cx="24" cy="24" r="16" fill="#F7DC6F" stroke="#F7DC6F" stroke-width="1.2"/>',
+    moonWaneGibbous: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 0 24 40 A8 16 0 0 0 24 8 Z" fill="#F7DC6F"/>',
+    moonLastQ: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 0 24 40 Z" fill="#F7DC6F"/>',
+    moonWaneCrescent: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 0 24 40 A8 16 0 0 1 24 8 Z" fill="#F7DC6F"/>'
+  };
+
+  // Background of each medallion
+  const BACKGROUNDS = {
+    sun: 'radial-gradient(circle at 50% 35%, #ffe07a, #e67e22 45%, #1b3a5c 100%)',
+    cloudSun: 'radial-gradient(circle at 40% 30%, #fff3c4, #5dade2 55%, #1b3a5c 100%)',
+    cloud: 'radial-gradient(circle at 50% 30%, #d6eaf8, #5d7b99 60%, #1b2a4a 100%)',
+    rain: 'radial-gradient(circle at 50% 30%, #85c1e9, #2e4a6b 60%, #0f1b30 100%)',
+    drizzle: 'radial-gradient(circle at 50% 30%, #aed6f1, #34495e 60%, #0f1b30 100%)',
+    snow: 'radial-gradient(circle at 50% 30%, #ffffff, #aed6f1 55%, #34495e 100%)',
+    fog: 'radial-gradient(circle at 50% 30%, #e5e8e8, #7f8c8d 60%, #2c3e50 100%)',
+    thunder: 'radial-gradient(circle at 50% 25%, #a569bd, #4a235a 55%, #0b0716 100%)',
+    frost: 'radial-gradient(circle at 50% 30%, #d4f1f9, #48c9b0 40%, #0e3a4f 100%)',
+    wind: 'radial-gradient(circle at 50% 30%, #d5dbdb, #5d6d7e 60%, #1c2833 100%)',
+    heat: 'radial-gradient(circle at 50% 30%, #ffb07a, #c0392b 55%, #3b0d0d 100%)',
+    moon: 'radial-gradient(circle at 40% 30%, #2c3e6b, #0d1830 70%)'
+  };
+
+  function glyph(key) {
+    const body = GLYPHS[key] || GLYPHS.cloud;
+    return `<svg viewBox="0 0 48 48" aria-hidden="true">${body}</svg>`;
+  }
+
+  // A medallion: size is 'lg' (table) or 'sm' (inside a warning badge)
+  function medal(key, title, size) {
+    const bg = BACKGROUNDS[key] || (key.startsWith('moon') ? BACKGROUNDS.moon : BACKGROUNDS.cloud);
+    const cls = size === 'sm' ? 'wx-medal wx-medal-sm' : 'wx-medal';
+    const titleAttr = title ? ` title="${title}" aria-label="${title}"` : '';
+    return `<span class="${cls}" style="--bg:${bg}"${titleAttr}>${glyph(key)}</span>`;
+  }
+
+  return { medal, glyph };
+})();
