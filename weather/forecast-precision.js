@@ -51,6 +51,16 @@ window.ForecastPrecision = (function () {
     day: { en: 'Day', bg: 'Ден', de: 'Tag', it: 'Giorno', es: 'Día' }
   };
 
+  // Legend above the table: what the reliability labels mean
+  const LEGEND = {
+    title: { en: 'How reliable is the forecast?', bg: 'Колко е надеждна прогнозата', de: 'Wie zuverlässig ist die Vorhersage?', it: 'Quanto è affidabile la previsione?', es: '¿Qué tan fiable es el pronóstico?' },
+    high: { en: 'The runs agree: the highest temperature is within 2 °C from run to run', bg: 'Изчисленията съвпадат: максималната температура се различава с до 2 °C между тях', de: 'Die Läufe stimmen überein: die Höchsttemperatur weicht um höchstens 2 °C ab', it: 'Le simulazioni concordano: la temperatura massima differisce al massimo di 2 °C', es: 'Las simulaciones coinciden: la temperatura máxima difiere como mucho 2 °C' },
+    medium: { en: 'Some difference: 2 to 4 °C between the runs', bg: 'Има разлика: между 2 и 4 °C между изчисленията', de: 'Etwas Unterschied: 2 bis 4 °C zwischen den Läufen', it: 'Qualche differenza: da 2 a 4 °C tra le simulazioni', es: 'Algo de diferencia: de 2 a 4 °C entre las simulaciones' },
+    low: { en: 'The runs disagree: more than 4 °C apart, the weather may turn out differently', bg: 'Изчисленията се различават: над 4 °C, времето може да е различно от прогнозата', de: 'Die Läufe weichen ab: mehr als 4 °C, das Wetter kann anders ausfallen', it: 'Le simulazioni differiscono: oltre 4 °C, il tempo potrebbe essere diverso', es: 'Las simulaciones difieren: más de 4 °C, el tiempo puede ser distinto' },
+    rough: { en: 'More than a week ahead: only a rough guide', bg: 'За повече от седмица напред: само ориентировъчно', de: 'Mehr als eine Woche voraus: nur eine grobe Orientierung', it: 'Oltre una settimana: solo indicativa', es: 'Más de una semana: solo orientativo' },
+    how: { en: 'How it is worked out: about 40 runs of the ICON model start from slightly different conditions. The range shows where 80% of them fall. The reliability comes from how far apart the runs are. The model comparison under the table (ECMWF, ICON, GFS) is an extra check: when they agree, the forecast is more certain.', bg: 'Как се определя: около 40 изчисления на модела ICON тръгват от леко различни начални условия. Диапазонът показва къде са 80% от тях. Надеждността зависи от това колко са разделени изчисленията. Сравнението на трите модела под таблицата (ECMWF, ICON, GFS) е допълнителна проверка: когато съвпадат, прогнозата е по-сигурна.', de: 'So wird es ermittelt: etwa 40 Läufe des ICON-Modells starten mit leicht unterschiedlichen Bedingungen. Der Bereich zeigt, wo 80 % davon liegen. Die Zuverlässigkeit hängt davon ab, wie weit die Läufe auseinanderliegen. Der Modellvergleich unter der Tabelle (ECMWF, ICON, GFS) ist eine zusätzliche Prüfung: Wenn sie übereinstimmen, ist die Vorhersage sicherer.', it: 'Come si calcola: circa 40 simulazioni del modello ICON partono da condizioni leggermente diverse. L\'intervallo mostra dove cade l\'80% di esse. L\'affidabilità dipende da quanto sono distanti le simulazioni. Il confronto dei modelli sotto la tabella (ECMWF, ICON, GFS) è un controllo in più: quando concordano, la previsione è più sicura.', es: 'Cómo se calcula: unas 40 simulaciones del modelo ICON parten de condiciones ligeramente distintas. El rango muestra dónde cae el 80% de ellas. La fiabilidad depende de lo separadas que estén. La comparación de modelos bajo la tabla (ECMWF, ICON, GFS) es una comprobación extra: cuando coinciden, el pronóstico es más seguro.' }
+  };
+
   const locales = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES' };
   let state = null; // { dates, ensemble: { [date]: info }, models: { [date]: { [model]: { max, rain } } } }
   let requestId = 0;
@@ -132,6 +142,27 @@ window.ForecastPrecision = (function () {
     return a === b ? `≈${a}°` : `${a}…${b}°`; // all runs agree: one value
   }
 
+  // Puts the legend inside the "Compare weather models" panel (it is rebuilt
+  // with every render, so the legend is added after it)
+  function renderLegend() {
+    const panel = document.getElementById('modelCompare');
+    if (!panel) return;
+    let box = document.getElementById('reliabilityLegend');
+    if (!box) {
+      box = document.createElement('div');
+      box.id = 'reliabilityLegend';
+      box.className = 'reliability-legend';
+      panel.appendChild(box);
+    }
+    const rows = ['high', 'medium', 'low', 'rough'].map(level => {
+      const dots = { high: '●●●', medium: '●●○', low: '●○○', rough: '○○○' }[level];
+      const row = element('div', 'legend-row');
+      row.append(element('span', 'reliability rel-' + level, dots + ' ' + pickText(T[level])), element('span', 'legend-text', pickText(LEGEND[level])));
+      return row;
+    });
+    box.replaceChildren(element('div', 'legend-title', pickText(LEGEND.title)), ...rows, element('p', 'legend-how', pickText(LEGEND.how)));
+  }
+
   function render() {
     if (!state) return;
     const rows = document.querySelectorAll('#weatherTable tbody tr');
@@ -165,6 +196,7 @@ window.ForecastPrecision = (function () {
     });
 
     renderModelComparison();
+    renderLegend();
   }
 
   function renderModelComparison() {
