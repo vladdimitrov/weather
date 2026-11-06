@@ -199,10 +199,23 @@ h1,
     font-weight: 600;
   }
 
-  /* reliability pill on its own line, centred under the date */
+  /* day name, date and reliability pill on one centred row */
+  #weatherTable tbody td:nth-child(1) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4px 8px;
+  }
+
+  #weatherTable tbody td:nth-child(1) br {
+    display: none;
+  }
+
   #weatherTable tbody td:nth-child(1) .reliability {
-    display: table;
-    margin: 6px auto 0;
+    margin: 0;
+    font-size: 0.8rem;
+    white-space: nowrap;
   }
 
   /* min and max: the two big numbers of the card, side by side */
