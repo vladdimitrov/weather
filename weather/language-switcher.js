@@ -338,10 +338,7 @@ function updateContent(language) {
   
   document.querySelector("#weatherTable thead tr th:nth-child(3)").textContent = translations[language].minTemp;
   document.querySelector("#weatherTable thead tr th:nth-child(4)").textContent = translations[language].maxTemp;
-  document.querySelector("#weatherTable thead tr th:nth-child(5)").textContent = translations[language].cloudiness;
-  document.querySelector("#weatherTable thead tr th:nth-child(6)").textContent = translations[language].rainfall;
-  document.querySelector("#weatherTable thead tr th:nth-child(7)").textContent = translations[language].wind;
-  document.querySelector("#weatherTable thead tr th:nth-child(8)").textContent = translations[language].sunMoon;
+  document.querySelector("#weatherTable thead tr th:nth-child(5)").textContent = translations[language].sunMoon;
   
   // Update hourly forecast elements if they exist
   const showHourlyElement = document.getElementById("showHourly");

@@ -433,7 +433,7 @@ h1,
 
 @media (max-width: 600px) {
   /* Sun & Moon spans the whole forecast card */
-  #weatherTable tbody td:nth-child(8) {
+  #weatherTable tbody td:nth-child(5) {
     grid-column: 1 / -1;
   }
 
