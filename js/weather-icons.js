@@ -25,7 +25,7 @@ window.WeatherIcons = (function () {
     moonWaneGibbous: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 0 24 40 A8 16 0 0 0 24 8 Z" fill="#F7DC6F"/>',
     moonLastQ: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 0 24 40 Z" fill="#F7DC6F"/>',
     moonWaneCrescent: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 0 24 40 A8 16 0 0 1 24 8 Z" fill="#F7DC6F"/>',
-    hourly: '<circle cx="24" cy="24" r="15" fill="#FFF8E1"/><path d="M24 11v3M24 34v3M11 24h3M34 24h3" stroke="#7A4B00" stroke-width="2.2" stroke-linecap="round"/><path d="M24 24V16.5" stroke="#5D3A00" stroke-width="3.2" stroke-linecap="round"/><path d="M24 24l6.5 4" stroke="#5D3A00" stroke-width="2.4" stroke-linecap="round"/><circle cx="24" cy="24" r="2.2" fill="#5D3A00"/>'
+    hourly: '<path d="M15 9h18M15 39h18" stroke="#7A4B00" stroke-width="3" stroke-linecap="round"/><path d="M18 12h12C30 18 25 20 24 24C23 20 18 18 18 12Z" fill="#FFF8E1" stroke="#B9770E" stroke-width="1.6" stroke-linejoin="round"/><path d="M24 24C25 28 30 30 30 36H18C18 30 23 28 24 24Z" fill="#FFD54A"/>'
   };
 
   // Background of each medallion
