@@ -58,5 +58,19 @@ window.WeatherIcons = (function () {
     return `<span class="${cls}" style="--bg:${bg}"${titleAttr}>${glyph(key)}</span>`;
   }
 
-  return { medal, glyph };
+  // The same medallion as a DOM element (for pages that build their content
+  // with DOM methods). className is added to the medallion.
+  function node(className, key, title, size) {
+    const wrapper = document.createElement('span');
+    wrapper.innerHTML = medal(key, title ? escapeText(title) : '', size);
+    const element = wrapper.firstElementChild;
+    if (className) element.classList.add(...className.split(' ').filter(Boolean));
+    return element;
+  }
+
+  function escapeText(text) {
+    return String(text).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+  }
+
+  return { medal, glyph, node };
 })();

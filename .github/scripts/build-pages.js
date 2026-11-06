@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 32, mobileNav: 11, cityForecast: 1 };
+const VERSION = { theme: 33, mobileNav: 11, cityForecast: 2 };
 
 const CITIES = [
   ['sofia', 'София', 42.6977, 23.3219],
@@ -218,7 +218,8 @@ ${climateSection(city, where)}
         ${cityLinks(city)}
       </div>
     </section>`,
-    scripts: `<script src="/js/city-forecast.js?v=${VERSION.cityForecast}"></script>\n`
+    scripts: `<script src="/js/weather-icons.js?v=3"></script>
+<script src="/js/city-forecast.js?v=${VERSION.cityForecast}"></script>\n`
   });
 }
 
@@ -233,7 +234,8 @@ function hubPage() {
     <div class="city-grid" id="cityList">
       ${CITIES.map(city => `<a href="/vremeto/${city.slug}/" class="city-tile" data-lat="${city.lat}" data-lon="${city.lon}"><span class="city-tile-name">${city.name}</span><span class="city-tile-temp"></span></a>`).join('\n      ')}
     </div>`,
-    scripts: `<script src="/js/city-forecast.js?v=${VERSION.cityForecast}"></script>\n`
+    scripts: `<script src="/js/weather-icons.js?v=3"></script>
+<script src="/js/city-forecast.js?v=${VERSION.cityForecast}"></script>\n`
   });
 }
 
