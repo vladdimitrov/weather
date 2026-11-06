@@ -112,14 +112,11 @@ function updateForecast() {
              <div>${weatherIcons}</div>
              ${dayWarningsHtml(weatherData.daily, i)}
              <div style="margin-top: 10px; font-size: 14px; cursor: pointer; color: #FFD700; padding: 5px; border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 4px;" onclick="showHourlyForecast('${date}')">
-               ${pickText({ en: "👉 Hourly forecast", bg: "👉 Почасова прогноза", de: "👉 Stündliche Vorhersage", it: "👉 Previsioni orarie", es: "👉 Pronóstico por horas" })}
+               ${window.WeatherIcons ? WeatherIcons.medal('hourly', '', 'sm') : '👉'} ${pickText({ en: "Hourly forecast", bg: "Почасова прогноза", de: "Stündliche Vorhersage", it: "Previsioni orarie", es: "Pronóstico por horas" })}
              </div>
           </td>
           <td>${weatherData.daily.temperature_2m_min[i]}</td>
           <td>${weatherData.daily.temperature_2m_max[i]}</td>
-          <td>${weatherData.daily.cloudcover_mean[i]}</td>
-          <td>${weatherData.daily.precipitation_sum[i]} ${isThunderstorm(weatherData.daily.weather_code[i]) ? `<span style="font-size: 24px; margin-left: 5px;" title="${_t('iconThunder')}">⚡</span>` : ''}${rainChanceHtml(weatherData.daily, i)}</td>
-          <td><span class="wind-value">${weatherData.daily.windspeed_10m_max[i]}</span></td>
           <td>${window.ForecastExtras ? ForecastExtras.sunMoonCell(date, weatherData.daily.sunrise[i], weatherData.daily.sunset[i]) : ""}</td>
          </tr>
        `;

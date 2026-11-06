@@ -216,6 +216,7 @@ h1,
 .wx-warnings {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 4px;
   margin-top: 6px;
 }
@@ -282,6 +283,21 @@ h1,
 }
 
 /* Weather: round medallion icons (weather-icons.js) */
+
+/* Medallions are always round, also inside buttons and cells */
+.wx-medal {
+  border-radius: 50% !important;
+}
+
+/* Table content is centred in every column, desktop and phone */
+#weatherTable th,
+#weatherTable td,
+#hourlyTable th,
+#hourlyTable td {
+  text-align: center !important;
+  vertical-align: middle;
+}
+
 .wx-medal.wx-medal-md {
   width: 34px;
   height: 34px;
@@ -433,7 +449,7 @@ h1,
 
 @media (max-width: 600px) {
   /* Sun & Moon spans the whole forecast card */
-  #weatherTable tbody td:nth-child(8) {
+  #weatherTable tbody td:nth-child(5) {
     grid-column: 1 / -1;
   }
 

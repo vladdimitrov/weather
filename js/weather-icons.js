@@ -15,8 +15,8 @@ window.WeatherIcons = (function () {
     frost: '<path d="M24 6v36M9.8 14l28.4 20M38.2 14L9.8 34" stroke="#2E86C1" stroke-width="3" stroke-linecap="round"/><path d="M20 9l4 3 4-3M20 39l4-3 4 3" stroke="#85C1E9" stroke-width="3" stroke-linecap="round" fill="none"/>',
     wind: '<path d="M6 18h22a5 5 0 1 0-5-5M6 26h30a5 5 0 1 1-5 5M6 34h14" stroke="#AEB6BF" stroke-width="3.2" stroke-linecap="round" fill="none"/>',
     heat: '<path d="M20 9a4 4 0 0 1 8 0v21a7 7 0 1 1-8 0z" fill="#EC7063"/><circle cx="24" cy="37" r="5" fill="#E74C3C"/>',
-    sunrise: '<path d="M8 33h32" stroke="#F5CBA7" stroke-width="2.5" stroke-linecap="round"/><path d="M14 33a10 10 0 0 1 20 0z" fill="#FFB347"/><path d="M24 11v4M12 17l3 3M36 17l-3 3M7 25h3M38 25h3" stroke="#FFD54A" stroke-width="2.5" stroke-linecap="round"/><path d="M19 42l5-4 5 4" stroke="#F5CBA7" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
-    sunset: '<path d="M8 33h32" stroke="#F5CBA7" stroke-width="2.5" stroke-linecap="round"/><path d="M14 33a10 10 0 0 1 20 0z" fill="#FF7A59"/><path d="M24 11v4M12 17l3 3M36 17l-3 3M7 25h3M38 25h3" stroke="#FFD54A" stroke-width="2.5" stroke-linecap="round"/><path d="M19 38l5 4 5-4" stroke="#F5CBA7" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    sunrise: '<path d="M7 37h34" stroke="#FFF3C4" stroke-width="3" stroke-linecap="round"/><path d="M14 37a10 10 0 0 1 20 0z" fill="#FFD54A"/><path d="M9 30h3M36 30h3M13.5 24l2 2M34.5 24l-2 2" stroke="#FFD54A" stroke-width="2.4" stroke-linecap="round"/><path d="M24 17V7M19.5 11.5L24 7l4.5 4.5" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
+    sunset: '<path d="M7 37h34" stroke="#FFF3C4" stroke-width="3" stroke-linecap="round"/><path d="M14 37a10 10 0 0 1 20 0z" fill="#FF8A5C"/><path d="M9 30h3M36 30h3M13.5 24l2 2M34.5 24l-2 2" stroke="#FFB38A" stroke-width="2.4" stroke-linecap="round"/><path d="M24 7V17M19.5 12.5L24 17l4.5-4.5" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>',
     moonNew: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/>',
     moonWaxCrescent: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 1 24 40 A8 16 0 0 0 24 8 Z" fill="#F7DC6F"/>',
     moonFirstQ: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 1 24 40 Z" fill="#F7DC6F"/>',
@@ -24,7 +24,8 @@ window.WeatherIcons = (function () {
     moonFull: '<circle cx="24" cy="24" r="16" fill="#F7DC6F" stroke="#F7DC6F" stroke-width="1.2"/>',
     moonWaneGibbous: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 0 24 40 A8 16 0 0 0 24 8 Z" fill="#F7DC6F"/>',
     moonLastQ: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 0 24 40 Z" fill="#F7DC6F"/>',
-    moonWaneCrescent: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 0 24 40 A8 16 0 0 1 24 8 Z" fill="#F7DC6F"/>'
+    moonWaneCrescent: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 0 24 40 A8 16 0 0 1 24 8 Z" fill="#F7DC6F"/>',
+    hourly: '<path d="M15 9h18M15 39h18" stroke="#F7DC6F" stroke-width="3" stroke-linecap="round"/><path d="M18 12h12C30 18 25 20 24 24C23 20 18 18 18 12Z" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round"/><path d="M24 24C25 28 30 30 30 36H18C18 30 23 28 24 24Z" fill="#F7DC6F"/><path d="M24 17.5V21" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"/>'
   };
 
   // Background of each medallion
@@ -42,7 +43,8 @@ window.WeatherIcons = (function () {
     heat: 'radial-gradient(circle at 50% 30%, #ffb07a, #c0392b 55%, #3b0d0d 100%)',
     moon: 'radial-gradient(circle at 40% 30%, #2c3e6b, #0d1830 70%)',
     sunrise: 'radial-gradient(circle at 50% 70%, #ffd27a, #e8745a 45%, #2b2d5c 100%)',
-    sunset: 'radial-gradient(circle at 50% 70%, #ff9d6c, #b03a6b 50%, #1d1338 100%)'
+    sunset: 'radial-gradient(circle at 50% 70%, #ff9d6c, #b03a6b 50%, #1d1338 100%)',
+    hourly: 'radial-gradient(circle at 40% 30%, #3a4a6b, #1b2a4a 65%, #0d1830 100%)'
   };
 
   function glyph(key) {
