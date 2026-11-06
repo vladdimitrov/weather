@@ -163,7 +163,7 @@ h1,
 
   #weatherTable tbody tr {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 6px;
     margin: 0 0 12px;
     padding: 12px;
@@ -194,9 +194,28 @@ h1,
   }
 
   #weatherTable tbody td:nth-child(1) {
-    text-align: left;
+    text-align: center !important;
     color: var(--gold) !important;
     font-weight: 600;
+  }
+
+  /* reliability pill on its own line, centred under the date */
+  #weatherTable tbody td:nth-child(1) .reliability {
+    display: table;
+    margin: 6px auto 0;
+  }
+
+  /* min and max: the two big numbers of the card, side by side */
+  #weatherTable tbody td:nth-child(3),
+  #weatherTable tbody td:nth-child(4) {
+    font-size: 1.7rem !important;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  #weatherTable tbody td:nth-child(3) .temp-range,
+  #weatherTable tbody td:nth-child(4) .temp-range {
+    font-size: 1rem;
   }
 
   #weatherTable tbody td:nth-child(n+3)::before {
