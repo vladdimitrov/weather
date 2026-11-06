@@ -107,9 +107,10 @@ function updateForecast() {
         );
         return `
         <tr>
-          <td>${getDayName(date)}<br>${date}${dayWarningsHtml(weatherData.daily, i)}</td>
+          <td>${getDayName(date)}<br>${date}</td>
           <td>
              <div>${weatherIcons}</div>
+             ${dayWarningsHtml(weatherData.daily, i)}
              <div style="margin-top: 10px; font-size: 14px; cursor: pointer; color: #FFD700; padding: 5px; border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 4px;" onclick="showHourlyForecast('${date}')">
                ${pickText({ en: "👉 Hourly forecast", bg: "👉 Почасова прогноза", de: "👉 Stündliche Vorhersage", it: "👉 Previsioni orarie", es: "👉 Pronóstico por horas" })}
              </div>
