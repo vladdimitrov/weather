@@ -282,6 +282,22 @@ h1,
 }
 
 /* Weather: round medallion icons (weather-icons.js) */
+.wx-medal.wx-medal-md {
+  width: 34px;
+  height: 34px;
+  margin: 0 3px 0 0;
+  border-width: 1.5px;
+}
+
+.wx-medal.wx-medal-md svg {
+  width: 22px;
+  height: 22px;
+}
+
+.sm-time {
+  white-space: nowrap;
+}
+
 .wx-medal {
   display: inline-flex;
   align-items: center;

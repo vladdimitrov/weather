@@ -15,6 +15,8 @@ window.WeatherIcons = (function () {
     frost: '<path d="M24 6v36M9.8 14l28.4 20M38.2 14L9.8 34" stroke="#2E86C1" stroke-width="3" stroke-linecap="round"/><path d="M20 9l4 3 4-3M20 39l4-3 4 3" stroke="#85C1E9" stroke-width="3" stroke-linecap="round" fill="none"/>',
     wind: '<path d="M6 18h22a5 5 0 1 0-5-5M6 26h30a5 5 0 1 1-5 5M6 34h14" stroke="#AEB6BF" stroke-width="3.2" stroke-linecap="round" fill="none"/>',
     heat: '<path d="M20 9a4 4 0 0 1 8 0v21a7 7 0 1 1-8 0z" fill="#EC7063"/><circle cx="24" cy="37" r="5" fill="#E74C3C"/>',
+    sunrise: '<path d="M8 33h32" stroke="#F5CBA7" stroke-width="2.5" stroke-linecap="round"/><path d="M14 33a10 10 0 0 1 20 0z" fill="#FFB347"/><path d="M24 11v4M12 17l3 3M36 17l-3 3M7 25h3M38 25h3" stroke="#FFD54A" stroke-width="2.5" stroke-linecap="round"/><path d="M19 42l5-4 5 4" stroke="#F5CBA7" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    sunset: '<path d="M8 33h32" stroke="#F5CBA7" stroke-width="2.5" stroke-linecap="round"/><path d="M14 33a10 10 0 0 1 20 0z" fill="#FF7A59"/><path d="M24 11v4M12 17l3 3M36 17l-3 3M7 25h3M38 25h3" stroke="#FFD54A" stroke-width="2.5" stroke-linecap="round"/><path d="M19 38l5 4 5-4" stroke="#F5CBA7" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
     moonNew: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/>',
     moonWaxCrescent: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 1 24 40 A8 16 0 0 0 24 8 Z" fill="#F7DC6F"/>',
     moonFirstQ: '<circle cx="24" cy="24" r="16" fill="#1B2A4A" stroke="#F7DC6F" stroke-width="1.2"/><path d="M24 8 A16 16 0 0 1 24 40 Z" fill="#F7DC6F"/>',
@@ -38,7 +40,9 @@ window.WeatherIcons = (function () {
     frost: 'radial-gradient(circle at 50% 30%, #d4f1f9, #48c9b0 40%, #0e3a4f 100%)',
     wind: 'radial-gradient(circle at 50% 30%, #d5dbdb, #5d6d7e 60%, #1c2833 100%)',
     heat: 'radial-gradient(circle at 50% 30%, #ffb07a, #c0392b 55%, #3b0d0d 100%)',
-    moon: 'radial-gradient(circle at 40% 30%, #2c3e6b, #0d1830 70%)'
+    moon: 'radial-gradient(circle at 40% 30%, #2c3e6b, #0d1830 70%)',
+    sunrise: 'radial-gradient(circle at 50% 70%, #ffd27a, #e8745a 45%, #2b2d5c 100%)',
+    sunset: 'radial-gradient(circle at 50% 70%, #ff9d6c, #b03a6b 50%, #1d1338 100%)'
   };
 
   function glyph(key) {
@@ -49,7 +53,7 @@ window.WeatherIcons = (function () {
   // A medallion: size is 'lg' (table) or 'sm' (inside a warning badge)
   function medal(key, title, size) {
     const bg = BACKGROUNDS[key] || (key.startsWith('moon') ? BACKGROUNDS.moon : BACKGROUNDS.cloud);
-    const cls = size === 'sm' ? 'wx-medal wx-medal-sm' : 'wx-medal';
+    const cls = size === 'sm' ? 'wx-medal wx-medal-sm' : size === 'md' ? 'wx-medal wx-medal-md' : 'wx-medal';
     const titleAttr = title ? ` title="${title}" aria-label="${title}"` : '';
     return `<span class="${cls}" style="--bg:${bg}"${titleAttr}>${glyph(key)}</span>`;
   }

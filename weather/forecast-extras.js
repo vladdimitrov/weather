@@ -12,14 +12,14 @@ window.ForecastExtras = (function () {
   };
 
   const moonPhases = [
-    { icon: '🌑', name: { en: 'New moon', bg: 'Новолуние', de: 'Neumond', it: 'Luna nuova', es: 'Luna nueva' } },
-    { icon: '🌒', name: { en: 'Waxing crescent', bg: 'Растящ полумесец', de: 'Zunehmende Sichel', it: 'Falce crescente', es: 'Luna creciente' } },
-    { icon: '🌓', name: { en: 'First quarter', bg: 'Първа четвърт', de: 'Erstes Viertel', it: 'Primo quarto', es: 'Cuarto creciente' } },
-    { icon: '🌔', name: { en: 'Waxing gibbous', bg: 'Растяща луна', de: 'Zunehmender Mond', it: 'Gibbosa crescente', es: 'Gibosa creciente' } },
-    { icon: '🌕', name: { en: 'Full moon', bg: 'Пълнолуние', de: 'Vollmond', it: 'Luna piena', es: 'Luna llena' } },
-    { icon: '🌖', name: { en: 'Waning gibbous', bg: 'Намаляваща луна', de: 'Abnehmender Mond', it: 'Gibbosa calante', es: 'Gibosa menguante' } },
-    { icon: '🌗', name: { en: 'Last quarter', bg: 'Последна четвърт', de: 'Letztes Viertel', it: 'Ultimo quarto', es: 'Cuarto menguante' } },
-    { icon: '🌘', name: { en: 'Waning crescent', bg: 'Намаляващ полумесец', de: 'Abnehmende Sichel', it: 'Falce calante', es: 'Luna menguante' } }
+    { key: 'moonNew', icon: '🌑', name: { en: 'New moon', bg: 'Новолуние', de: 'Neumond', it: 'Luna nuova', es: 'Luna nueva' } },
+    { key: 'moonWaxCrescent', icon: '🌒', name: { en: 'Waxing crescent', bg: 'Растящ полумесец', de: 'Zunehmende Sichel', it: 'Falce crescente', es: 'Luna creciente' } },
+    { key: 'moonFirstQ', icon: '🌓', name: { en: 'First quarter', bg: 'Първа четвърт', de: 'Erstes Viertel', it: 'Primo quarto', es: 'Cuarto creciente' } },
+    { key: 'moonWaxGibbous', icon: '🌔', name: { en: 'Waxing gibbous', bg: 'Растяща луна', de: 'Zunehmender Mond', it: 'Gibbosa crescente', es: 'Gibosa creciente' } },
+    { key: 'moonFull', icon: '🌕', name: { en: 'Full moon', bg: 'Пълнолуние', de: 'Vollmond', it: 'Luna piena', es: 'Luna llena' } },
+    { key: 'moonWaneGibbous', icon: '🌖', name: { en: 'Waning gibbous', bg: 'Намаляваща луна', de: 'Abnehmender Mond', it: 'Gibbosa calante', es: 'Gibosa menguante' } },
+    { key: 'moonLastQ', icon: '🌗', name: { en: 'Last quarter', bg: 'Последна четвърт', de: 'Letztes Viertel', it: 'Ultimo quarto', es: 'Cuarto menguante' } },
+    { key: 'moonWaneCrescent', icon: '🌘', name: { en: 'Waning crescent', bg: 'Намаляващ полумесец', de: 'Abnehmende Sichel', it: 'Falce calante', es: 'Luna menguante' } }
   ];
 
   const warningTexts = {
@@ -63,9 +63,11 @@ window.ForecastExtras = (function () {
   function sunMoonCell(isoDate, sunrise, sunset) {
     const moon = moonPhase(isoDate);
     const time = value => (value || '').substring(11, 16);
-    return `<span title="${escapeAttribute(pickText(T.sunrise))}">🌅 ${time(sunrise)}</span>` +
-      ` <span title="${escapeAttribute(pickText(T.sunset))}">🌇 ${time(sunset)}</span>` +
-      `<br><span class="moon-phase" title="${escapeAttribute(pickText(moon.name))}">${moon.icon} ${pickText(moon.name)}</span>`;
+    // Medallion icons (weather-icons.js); the emoji is the fallback
+    const icon = (key, emoji, title) => window.WeatherIcons ? WeatherIcons.medal(key, escapeAttribute(title), 'md') : emoji;
+    return `<span class="sm-time" title="${escapeAttribute(pickText(T.sunrise))}">${icon('sunrise', '🌅', pickText(T.sunrise))} ${time(sunrise)}</span>` +
+      ` <span class="sm-time" title="${escapeAttribute(pickText(T.sunset))}">${icon('sunset', '🌇', pickText(T.sunset))} ${time(sunset)}</span>` +
+      `<br><span class="moon-phase" title="${escapeAttribute(pickText(moon.name))}">${icon(moon.key, moon.icon, pickText(moon.name))} ${pickText(moon.name)}</span>`;
   }
 
   // ---- Warning badges for a forecast day ----
