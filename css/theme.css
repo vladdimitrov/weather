@@ -259,6 +259,20 @@ h1,
   font-weight: 700;
 }
 
+/* Min and max temperature: the main numbers of the daily table */
+#weatherTable tbody td:nth-child(3),
+#weatherTable tbody td:nth-child(4) {
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+#weatherTable tbody td:nth-child(3) .temp-range,
+#weatherTable tbody td:nth-child(4) .temp-range {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
 .wx-warning {
   font-size: 0.92rem;
   font-weight: 700;
