@@ -199,21 +199,57 @@ h1,
     font-weight: 600;
   }
 
-  /* day name, date and reliability pill on one centred row */
-  #weatherTable tbody td:nth-child(1) {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 4px 8px;
+  /* Card order: day and date, icons, warnings, min/max, sun and moon,
+     then the hourly button and the reliability status at the very bottom.
+     The date and forecast cells dissolve so their parts can be ordered. */
+  #weatherTable tbody td:nth-child(1),
+  #weatherTable tbody td:nth-child(2) {
+    display: contents;
   }
 
   #weatherTable tbody td:nth-child(1) br {
     display: none;
   }
 
-  #weatherTable tbody td:nth-child(1) .reliability {
-    margin: 0;
+  #weatherTable tbody .day-head {
+    order: 1;
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 8px;
+    padding: 4px;
+    text-align: center;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  #weatherTable tbody td:nth-child(2) > div:first-child {
+    order: 2;
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+
+  #weatherTable tbody td:nth-child(2) > .wx-warnings {
+    order: 3;
+    grid-column: 1 / -1;
+  }
+
+  #weatherTable tbody td:nth-child(3) { order: 4; }
+  #weatherTable tbody td:nth-child(4) { order: 5; }
+  #weatherTable tbody td:nth-child(5) { order: 6; }
+
+  #weatherTable tbody td:nth-child(2) > div[onclick] {
+    order: 7;
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+
+  #weatherTable tbody td:nth-child(1) > .reliability {
+    order: 8;
+    grid-column: 1 / -1;
+    display: table;
+    margin: 2px auto 0;
     font-size: 0.8rem;
     white-space: nowrap;
   }

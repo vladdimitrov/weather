@@ -107,7 +107,7 @@ function updateForecast() {
         );
         return `
         <tr>
-          <td><span class="day-name">${getDayName(date)}</span><br><span class="day-date">${date}</span></td>
+          <td><span class="day-head"><span class="day-name">${getDayName(date)}</span><br><span class="day-date">${date}</span></span></td>
           <td>
              <div>${weatherIcons}</div>
              ${dayWarningsHtml(weatherData.daily, i)}
