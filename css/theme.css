@@ -448,11 +448,6 @@ h1,
 .reliability.rel-low { color: #ffb199; border-color: rgba(255, 138, 101, 0.6); background: linear-gradient(180deg, rgba(255, 138, 101, 0.25), rgba(80, 35, 20, 0.55)); }
 .reliability.rel-rough { color: rgba(255, 255, 255, 0.8); border-color: rgba(255, 255, 255, 0.3); }
 
-/* Weather icons: a soft shadow so they stand out on the dark table */
-#weatherTable tbody td span[title],
-#hourlyTable tbody td span[title] {
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.45));
-}
 
 .temp-range,
 .rain-chance {
