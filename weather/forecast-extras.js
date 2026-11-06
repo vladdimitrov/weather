@@ -13,13 +13,13 @@ window.ForecastExtras = (function () {
 
   const moonPhases = [
     { icon: '🌑', name: { en: 'New moon', bg: 'Новолуние', de: 'Neumond', it: 'Luna nuova', es: 'Luna nueva' } },
-    { icon: '🌒', name: { en: 'Waxing crescent', bg: 'Растящ сърп', de: 'Zunehmende Sichel', it: 'Falce crescente', es: 'Luna creciente' } },
+    { icon: '🌒', name: { en: 'Waxing crescent', bg: 'Растящ полумесец', de: 'Zunehmende Sichel', it: 'Falce crescente', es: 'Luna creciente' } },
     { icon: '🌓', name: { en: 'First quarter', bg: 'Първа четвърт', de: 'Erstes Viertel', it: 'Primo quarto', es: 'Cuarto creciente' } },
     { icon: '🌔', name: { en: 'Waxing gibbous', bg: 'Растяща луна', de: 'Zunehmender Mond', it: 'Gibbosa crescente', es: 'Gibosa creciente' } },
     { icon: '🌕', name: { en: 'Full moon', bg: 'Пълнолуние', de: 'Vollmond', it: 'Luna piena', es: 'Luna llena' } },
     { icon: '🌖', name: { en: 'Waning gibbous', bg: 'Намаляваща луна', de: 'Abnehmender Mond', it: 'Gibbosa calante', es: 'Gibosa menguante' } },
     { icon: '🌗', name: { en: 'Last quarter', bg: 'Последна четвърт', de: 'Letztes Viertel', it: 'Ultimo quarto', es: 'Cuarto menguante' } },
-    { icon: '🌘', name: { en: 'Waning crescent', bg: 'Намаляващ сърп', de: 'Abnehmende Sichel', it: 'Falce calante', es: 'Luna menguante' } }
+    { icon: '🌘', name: { en: 'Waning crescent', bg: 'Намаляващ полумесец', de: 'Abnehmende Sichel', it: 'Falce calante', es: 'Luna menguante' } }
   ];
 
   const warningTexts = {
