@@ -15,10 +15,10 @@ window.ForecastPrecision = (function () {
   ];
 
   const T = {
-    high: { en: 'Forecast: reliable', bg: 'Прогноза: надеждна', de: 'Vorhersage: zuverlässig', it: 'Previsione: affidabile', es: 'Pronóstico: fiable' },
-    medium: { en: 'Forecast: fairly reliable', bg: 'Прогноза: средно надеждна', de: 'Vorhersage: mittel zuverlässig', it: 'Previsione: abbastanza affidabile', es: 'Pronóstico: bastante fiable' },
-    low: { en: 'Forecast: uncertain', bg: 'Прогноза: несигурна', de: 'Vorhersage: unsicher', it: 'Previsione: incerta', es: 'Pronóstico: incierto' },
-    rough: { en: 'Forecast: rough guide', bg: 'Прогноза: ориентировъчна', de: 'Vorhersage: grobe Orientierung', it: 'Previsione: indicativa', es: 'Pronóstico: orientativo' },
+    high: { en: 'Reliable forecast', bg: 'Надеждна прогноза', de: 'Zuverlässige Vorhersage', it: 'Previsione affidabile', es: 'Pronóstico fiable' },
+    medium: { en: 'Fairly reliable forecast', bg: 'Средно надеждна прогноза', de: 'Mittel zuverlässige Vorhersage', it: 'Previsione abbastanza affidabile', es: 'Pronóstico bastante fiable' },
+    low: { en: 'Uncertain forecast', bg: 'Несигурна прогноза', de: 'Unsichere Vorhersage', it: 'Previsione incerta', es: 'Pronóstico incierto' },
+    rough: { en: 'Rough forecast', bg: 'Ориентировъчна прогноза', de: 'Grobe Vorhersage', it: 'Previsione indicativa', es: 'Pronóstico orientativo' },
     reliabilityTitle: {
       en: 'Based on how much {n} runs of the forecast model disagree',
       bg: 'Според разликата между {n} изчисления на модела',
