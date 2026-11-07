@@ -280,6 +280,26 @@ h1,
   }
 }
 
+.day-cards { margin: 12px 0; }
+.day-cards { grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); padding: 0 8px; box-sizing: border-box; }
+.day-card { font: inherit; cursor: pointer; width: 100%; min-width: 0; overflow: hidden; }
+.day-card .wx-warnings { margin-top: 2px; }
+.day-card .wx-warning { font-size: 0.7rem; padding: 1px 6px; white-space: normal; text-align: center; }
+.day-card .reliability { white-space: normal; text-align: center; }
+.day-card .dc-sun .moon-phase { display: block; }
+.day-card > * { display: block; }
+.day-card .dc-icons { text-align: center; }
+.day-card .dc-line { font-size: 0.8rem; opacity: 0.9; }
+.day-card .dc-sun { font-size: 0.78rem; text-align: center; }
+.day-card .dc-sun .sm-time { display: inline-block; margin: 1px 2px; }
+.day-card .temp-range,
+.day-card .reliability { font-size: 0.7rem; font-weight: 600; opacity: 0.9; }
+.day-card.selected { border-color: var(--gold); background: rgba(255, 215, 0, 0.14); }
+.day-msg { grid-column: 1 / -1; text-align: center; }
+@media (max-width: 600px) {
+  .day-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* Weather: warning badges in the date cell */
 .wx-warnings {
   display: flex;
