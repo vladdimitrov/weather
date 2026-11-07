@@ -281,7 +281,7 @@ h1,
 }
 
 .day-cards { margin: 12px 0; }
-.day-cards { grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); padding: 0 8px; box-sizing: border-box; }
+.day-cards { grid-template-columns: repeat(auto-fill, minmax(96px, 108px)); justify-content: center; max-width: 100%; padding: 0 8px; box-sizing: border-box; }
 .day-card { font: inherit; cursor: pointer; width: 100%; min-width: 0; overflow: hidden; }
 .day-card .wx-warnings { margin-top: 2px; }
 .day-card .wx-warning { font-size: 0.7rem; padding: 1px 6px; white-space: normal; text-align: center; }

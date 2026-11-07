@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 45, mobileNav: 11, cityForecast: 3 };
+const VERSION = { theme: 46, mobileNav: 11, cityForecast: 3 };
 
 const CITIES = [
   ['sofia', 'София', 42.6977, 23.3219],
