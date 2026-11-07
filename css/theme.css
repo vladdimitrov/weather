@@ -924,8 +924,13 @@ h1,
   background: rgba(255, 255, 255, 0.06);
 }
 
+.city-day { text-decoration: none; color: inherit; text-align: center; cursor: pointer; border: 1px solid transparent; }
+.city-day:hover { border-color: var(--gold); background: rgba(255, 255, 255, 0.1); }
+.city-day .kp-day-name { color: var(--gold); font-weight: 700; }
+.city-day-date { font-size: 0.75rem; opacity: 0.75; }
 .city-day-icon { font-size: 1.6rem; }
-.city-day-temp { font-weight: 700; }
+.city-day-temp { font-weight: 800; font-size: 1.2rem; color: #fff; }
+.city-day-hourly { margin-top: 4px; font-size: 0.72rem; color: var(--gold); }
 .city-day-rain,
 .city-day-wind { font-size: 0.8rem; opacity: 0.85; }
 

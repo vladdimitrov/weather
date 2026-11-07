@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 40, mobileNav: 11, cityForecast: 2 };
+const VERSION = { theme: 41, mobileNav: 11, cityForecast: 3 };
 
 const CITIES = [
   ['sofia', 'София', 42.6977, 23.3219],
@@ -200,7 +200,7 @@ function cityPage(city) {
     <h1>Времето ${where}</h1>
     <p class="storm-intro">Прогноза за времето ${where} за днес, утре и следващите 7 дни: температура, валежи, вятър и вероятност за дъжд. Данните са от Open-Meteo и се обновяват на всеки час.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="${city.name}" data-lat="${city.lat}" data-lon="${city.lon}">
+    <div class="city-forecast" id="cityForecast" data-name="${city.name}" data-lat="${city.lat}" data-lon="${city.lon}" data-query="${params}">
       <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">Зареждане…</p></div>
       <div class="kp-forecast" id="cityDays" hidden></div>
     </div>

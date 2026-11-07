@@ -18,8 +18,8 @@
   const condition = code => conditions.find(c => c.codes.includes(code)) || conditions[2];
 
   const T = {
-    en: { now: 'Now', feels: 'feels like', wind: 'Wind', humidity: 'Humidity', days: '7-day forecast', today: 'Today', tomorrow: 'Tomorrow', rain: 'chance of rain', error: 'The forecast could not be loaded. Please try again later.', locale: 'en-GB' },
-    bg: { now: 'Сега', feels: 'усеща се като', wind: 'Вятър', humidity: 'Влажност', days: 'Прогноза за 7 дни', today: 'Днес', tomorrow: 'Утре', rain: 'вероятност за валеж', error: 'Прогнозата не може да се зареди. Опитайте отново по-късно.', locale: 'bg-BG' }
+    en: { now: 'Now', feels: 'feels like', wind: 'Wind', humidity: 'Humidity', days: '7-day forecast', hourly: 'Hourly forecast →', today: 'Today', tomorrow: 'Tomorrow', rain: 'chance of rain', error: 'The forecast could not be loaded. Please try again later.', locale: 'en-GB' },
+    bg: { now: 'Сега', feels: 'усеща се като', wind: 'Вятър', humidity: 'Влажност', days: 'Прогноза за 7 дни', hourly: 'По часове →', today: 'Днес', tomorrow: 'Утре', rain: 'вероятност за валеж', error: 'Прогнозата не може да се зареди. Опитайте отново по-късно.', locale: 'bg-BG' }
   };
   const t = () => T[document.documentElement.lang] || T.en;
 
@@ -57,7 +57,9 @@
     );
 
     const days = forecast.daily.time.map((date, i) => {
-      const day = el('div', 'kp-day city-day');
+      const day = el('a', 'kp-day city-day');
+      day.href = `/weather/?${box.dataset.query}&date=${date}`;
+      day.title = text.hourly;
       const name = i === 0 ? text.today : i === 1 ? text.tomorrow
         : new Date(date + 'T12:00:00').toLocaleDateString(text.locale, { weekday: 'short', day: 'numeric' });
       const dayCondition = condition(forecast.daily.weather_code[i]);
@@ -66,7 +68,8 @@
       day.append(
         el('span', 'kp-day-name', name),
         WeatherIcons.node('city-day-icon', dayCondition.key, pickText(dayCondition.text)),
-        el('span', 'city-day-temp', `${Math.round(forecast.daily.temperature_2m_max[i])}° / ${Math.round(forecast.daily.temperature_2m_min[i])}°`),
+        el('span', 'city-day-date', date.slice(5).split('-').reverse().join('.')),
+        el('span', 'city-day-temp', `${Math.round(forecast.daily.temperature_2m_min[i])}° / ${Math.round(forecast.daily.temperature_2m_max[i])}°`),
         el('span', 'kp-day-status', pickText(dayCondition.text))
       );
       if (rain !== null && rain !== undefined) {
@@ -78,6 +81,7 @@
       const wind = el('span', 'city-day-wind', `${Math.round(forecast.daily.wind_speed_10m_max[i])} km/h`);
       wind.prepend(WeatherIcons.node('', 'wind', text.wind, 'sm'));
       day.appendChild(wind);
+      day.appendChild(el('span', 'city-day-hourly', text.hourly));
       return day;
     });
     const grid = el('div', 'city-days');

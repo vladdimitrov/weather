@@ -1,4 +1,6 @@
 let headerSet = false;
+// Day asked for in the address (?date=...); read now, the address is rewritten later
+const dayFromUrl = new URLSearchParams(location.search).get("date");
 
 function updateForecast() {
   // Hide hourly forecast table when a destination is reloaded
@@ -27,7 +29,15 @@ function updateForecast() {
     }
   }
   const city = document.getElementById("city").value.trim();
-  const days = parseInt(document.getElementById("days").value);
+  let days = parseInt(document.getElementById("days").value);
+  if (dayFromUrl && !window.dayFromUrlShown) {
+    // Make sure the requested day is inside the loaded range
+    const needed = Math.round((new Date(dayFromUrl) - new Date(new Date().toISOString().split("T")[0])) / 86400000) + 1;
+    if (needed > 0 && needed <= 16 && (isNaN(days) || days < needed)) {
+      days = needed;
+      document.getElementById("days").value = needed;
+    }
+  }
   const tbody = document.querySelector("#weatherTable tbody");
   
   if ((!city && (!currentCoords.latitude || !currentCoords.longitude)) || isNaN(days)) {
@@ -124,6 +134,13 @@ function updateForecast() {
 
       tbody.innerHTML = rows.join("");
       labelForecastCells();
+
+      // Opened from a city page's day card (?date=...): show that day's hours
+      const wantedDay = dayFromUrl;
+      if (wantedDay && !window.dayFromUrlShown && weatherData.daily.time.includes(wantedDay)) {
+        window.dayFromUrlShown = true;
+        showHourlyForecast(wantedDay);
+      }
 
       // How certain the forecast is: ranges, reliability, model comparison
       if (window.ForecastPrecision) {
