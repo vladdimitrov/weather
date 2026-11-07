@@ -291,7 +291,37 @@ h1,
 .day-card .dc-icons { text-align: center; }
 .day-card .dc-line { font-size: 0.8rem; opacity: 0.9; }
 .day-card .dc-sun { font-size: 0.78rem; text-align: center; }
-.day-card .dc-sun .sm-time { display: inline-block; margin: 1px 2px; }
+.day-card .dc-sun .sm-time { display: block; }
+.day-card .dc-line,
+.day-card .dc-sun .sm-time,
+.day-card .dc-sun .moon-phase {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  width: 100%;
+  margin: 2px 0;
+}
+.day-card .dc-sun { width: 100%; text-align: left; }
+.day-card .dc-icons { text-align: left; width: 100%; }
+.day-card .wx-warnings { justify-content: flex-start; }
+/* One icon size for the whole card: 28px, left-aligned */
+.day-card .wx-medal,
+.day-card .wx-medal.wx-medal-sm,
+.day-card .wx-medal.wx-medal-md {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  margin: 0 6px 0 0;
+  border-width: 1.5px;
+  flex-shrink: 0;
+}
+.day-card .wx-medal svg,
+.day-card .wx-medal.wx-medal-sm svg,
+.day-card .wx-medal.wx-medal-md svg { width: 21px; height: 21px; }
+.day-card .dc-icons .wx-medal { margin-bottom: 2px; }
+.day-card .wx-warning .wx-medal { width: 20px; height: 20px; min-width: 20px; margin-right: 3px; }
+.day-card .wx-warning .wx-medal svg { width: 14px; height: 14px; }
 .day-card .temp-range,
 .day-card .reliability { font-size: 0.7rem; font-weight: 600; opacity: 0.9; }
 .day-card.selected { border-color: var(--gold); background: rgba(255, 215, 0, 0.14); }
