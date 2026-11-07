@@ -193,8 +193,8 @@ function cityPage(city) {
   return page({
     url: `/vremeto/${city.slug}/`,
     // page() adds " | Weather Pulse"
-    title: `Прогноза за времето ${where}`,
-    description: `Прогноза за времето ${where} за днес, утре и 7 дни: температура, валежи и вятър. Климатът по месеци: средни температури и валежи.`,
+    title: `Времето ${where} днес – прогноза за 7 дни`,
+    description: `Времето ${where} днес: прогноза за времето за утре и 7 дни, температура, валежи и вятър. Климатът по месеци: средни температури и валежи.`,
     jsonLd: breadcrumbs,
     body: `    <p class="breadcrumbs"><a href="/vremeto/">Времето в България</a> › ${city.name}</p>
     <h1>Времето ${where}</h1>
