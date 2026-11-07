@@ -32,7 +32,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=45">
+  <link rel="stylesheet" href="/css/theme.css?v=46">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -54,6 +54,8 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <h1>Времето в България по градове</h1>
     <p class="storm-intro">Изберете град за прогноза за 7 дни. Температурата се обновява на всеки час. За друго място използвайте търсенето на страница <a href="/weather/">Прогноза за времето</a>.</p>
+
+    <p class="city-actions"><a class="btn" href="/europe/">Weather in Europe: all countries →</a></p>
 
     <div class="city-grid" id="cityList">
       <a href="/vremeto/sofia/" class="city-tile" data-lat="42.6977" data-lon="23.3219"><span class="city-tile-name">София</span><span class="city-tile-temp"></span></a>
@@ -106,9 +108,9 @@
   </footer>
 
 <script src="/js/mobile-nav.js?v=11"></script>
-<script src="/js/language-selector.js?v=2"></script>
+<script src="/js/language-selector.js?v=3"></script>
 <script src="/js/background-selector.js?v=2"></script>
 <script src="/js/weather-icons.js?v=4"></script>
-<script src="/js/city-forecast.js?v=3"></script>
+<script src="/js/city-forecast.js?v=4"></script>
 </body>
 </html>
