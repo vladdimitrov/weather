@@ -280,6 +280,56 @@ h1,
   }
 }
 
+.day-cards { margin: 12px 0; }
+.day-cards { grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); padding: 0 8px; box-sizing: border-box; }
+.day-card { font: inherit; cursor: pointer; width: 100%; min-width: 0; overflow: hidden; }
+.day-card .wx-warnings { margin-top: 2px; }
+.day-card .wx-warning { font-size: 0.7rem; padding: 1px 6px; white-space: normal; text-align: center; }
+.day-card .reliability { white-space: normal; text-align: center; }
+.day-card .dc-sun .moon-phase { display: block; }
+.day-card > * { display: block; }
+.day-card .dc-icons { text-align: center; }
+.day-card .dc-line { font-size: 0.8rem; opacity: 0.9; }
+.day-card .dc-sun { font-size: 0.78rem; text-align: center; }
+.day-card .dc-sun .sm-time { display: block; }
+.day-card .dc-line,
+.day-card .dc-sun .sm-time,
+.day-card .dc-sun .moon-phase {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  width: 100%;
+  margin: 2px 0;
+}
+.day-card .dc-sun { width: 100%; text-align: left; }
+.day-card .dc-icons { text-align: left; width: 100%; }
+.day-card .wx-warnings { justify-content: flex-start; }
+/* One icon size for the whole card: 28px, left-aligned */
+.day-card .wx-medal,
+.day-card .wx-medal.wx-medal-sm,
+.day-card .wx-medal.wx-medal-md {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  margin: 0 6px 0 0;
+  border-width: 1.5px;
+  flex-shrink: 0;
+}
+.day-card .wx-medal svg,
+.day-card .wx-medal.wx-medal-sm svg,
+.day-card .wx-medal.wx-medal-md svg { width: 21px; height: 21px; }
+.day-card .dc-icons .wx-medal { margin-bottom: 2px; }
+.day-card .wx-warning .wx-medal { width: 20px; height: 20px; min-width: 20px; margin-right: 3px; }
+.day-card .wx-warning .wx-medal svg { width: 14px; height: 14px; }
+.day-card .temp-range,
+.day-card .reliability { font-size: 0.7rem; font-weight: 600; opacity: 0.9; }
+.day-card.selected { border-color: var(--gold); background: rgba(255, 215, 0, 0.14); }
+.day-msg { grid-column: 1 / -1; text-align: center; }
+@media (max-width: 600px) {
+  .day-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* Weather: warning badges in the date cell */
 .wx-warnings {
   display: flex;
@@ -924,8 +974,13 @@ h1,
   background: rgba(255, 255, 255, 0.06);
 }
 
+.city-day { text-decoration: none; color: inherit; text-align: center; cursor: pointer; border: 1px solid transparent; }
+.city-day:hover { border-color: var(--gold); background: rgba(255, 255, 255, 0.1); }
+.city-day .kp-day-name { color: var(--gold); font-weight: 700; }
+.city-day-date { font-size: 0.75rem; opacity: 0.75; }
 .city-day-icon { font-size: 1.6rem; }
-.city-day-temp { font-weight: 700; }
+.city-day-temp { font-weight: 800; font-size: 1.2rem; color: #fff; }
+.city-day-hourly { margin-top: 4px; font-size: 0.72rem; color: var(--gold); }
 .city-day-rain,
 .city-day-wind { font-size: 0.8rem; opacity: 0.85; }
 

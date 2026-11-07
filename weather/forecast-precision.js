@@ -165,13 +165,12 @@ window.ForecastPrecision = (function () {
 
   function render() {
     if (!state) return;
-    const rows = document.querySelectorAll('#weatherTable tbody tr');
-    document.querySelectorAll('#weatherTable .precision-added').forEach(el => el.remove());
+    const cards = document.querySelectorAll('#dayCards .day-card');
+    document.querySelectorAll('#dayCards .precision-added').forEach(el => el.remove());
 
-    rows.forEach((row, index) => {
+    cards.forEach((card, index) => {
       const date = state.dates[index];
-      const cells = row.children;
-      if (!date || cells.length < 4) return;
+      if (!date) return;
       const info = state.ensemble[date];
 
       let level = null;
@@ -180,18 +179,16 @@ window.ForecastPrecision = (function () {
         const spread = info.max[1] - info.max[0];
         level = spread <= 2 ? 'high' : spread <= 4 ? 'medium' : 'low';
       }
+      if (info) {
+        const range = element('span', 'temp-range precision-added', `${rangeText(info.min)} / ${rangeText(info.max)}`);
+        range.title = pickText(T.rangeTitle);
+        card.querySelector('.dc-temp').insertAdjacentElement('afterend', range);
+      }
       if (level) {
         const dots = { high: '●●●', medium: '●●○', low: '●○○', rough: '○○○' }[level];
-        const badge = element('div', `reliability rel-${level} precision-added`, `${dots} ${pickText(T[level])}`);
+        const badge = element('span', `reliability rel-${level} precision-added`, `${dots} ${pickText(T[level])}`);
         badge.title = level === 'rough' ? pickText(T.roughTitle) : pickText(T.reliabilityTitle).replace('{n}', info.runs);
-        cells[0].appendChild(badge);
-      }
-      if (info) {
-        const min = element('div', 'temp-range precision-added', rangeText(info.min));
-        const max = element('div', 'temp-range precision-added', rangeText(info.max));
-        min.title = max.title = pickText(T.rangeTitle);
-        cells[2].appendChild(min);
-        cells[3].appendChild(max);
+        card.querySelector('.city-day-hourly').insertAdjacentElement('beforebegin', badge);
       }
     });
 
@@ -202,8 +199,7 @@ window.ForecastPrecision = (function () {
   function renderModelComparison() {
     document.getElementById('modelCompare')?.remove();
     if (!state.models) return;
-    const table = document.getElementById('weatherTable');
-    const anchor = table && (table.closest('.table-container') || table);
+    const anchor = document.getElementById('dayCards');
     if (!anchor) return;
 
     const details = element('details', 'model-compare');
