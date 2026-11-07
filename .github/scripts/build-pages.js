@@ -247,70 +247,88 @@ function hubPage() {
 }
 
 
-// /contacts/: where every number on the site comes from (sources, models, limits)
-function sourcesPage() {
-  const link = (url, text) => `<a href="${url}" target="_blank" rel="noopener">${text}</a>`;
-  return page({
-    url: '/contacts/',
-    title: 'Източници на данни и как се правят прогнозите',
-    description: 'Откъде са данните на Weather Pulse: прогнозата идва от Open-Meteo (модели ECMWF, ICON, GFS и др.), магнитните бури от NOAA, празниците от Nager.Date. Как се смята надеждността и какви са ограниченията.',
-    body: `    <h1>Източници на данни</h1>
-    <p class="storm-intro">Weather Pulse не изчислява прогнозите сам и няма собствен метеорологичен модел. Сайтът показва данни от открити източници, подрежда ги и добавя оценка колко може да им се вярва. Тук е описано откъде идва всяко число.</p>
+// /contacts/: where every number on the site comes from (sources, models, limits).
+// Text in sources-text.js: Bulgarian is the page itself, the other languages are
+// embedded as JSON and swapped in by a small script when the visitor's language differs.
+const SOURCES_TEXT = require('./sources-text.js');
+
+function sourcesContent(language) {
+  const link = (url, text, internal) => `<a href="${url}"${internal ? '' : ' target="_blank" rel="noopener"'}>${text}</a>`;
+  const t = SOURCES_TEXT[language](link);
+  return `    <h1>${t.title}</h1>
+    <p class="storm-intro">${t.intro}</p>
 
     <section class="info-card">
-      <h2>Прогнозата за времето</h2>
-      <p>Всички прогнози (текущо време, 7 и 16 дни, по часове и на 15 минути) са от ${link('https://open-meteo.com/', 'Open-Meteo')}. Open-Meteo събира резултатите от числените модели на националните метеорологични служби и ги предоставя чрез API. Сайтът ги иска в режима по подразбиране („най-добра комбинация“): за всяко място и час Open-Meteo сам избира или комбинира най-подходящите модели, например ICON на германската служба DWD, IFS на ECMWF, GFS на американската NOAA и модели на Météo-France. Кой точно модел е дал дадено число, Weather Pulse не определя и не показва.</p>
-      <p>Прогнозата за първите дни е по-надеждна, а след 7-ия ден е само ориентировъчна, както при всички модели.</p>
+      <h2>${t.hForecast}</h2>
+      <p>${t.forecast1}</p>
+      <p>${t.forecast2}</p>
     </section>
 
     <section class="info-card">
-      <h2>Колко сигурна е прогнозата</h2>
-      <p>На страница ${'<a href="/weather/">Прогноза за времето</a>'} под температурите има още две неща, за да се види несигурността:</p>
+      <h2>${t.hCertainty}</h2>
+      <p>${t.certaintyIntro}</p>
       <ul>
-        <li><strong>Диапазон и надеждност.</strong> Взема се ансамбълът на модела ICON (40 пускания с малко различни начални условия) от Open-Meteo Ensemble API. Показаният диапазон е между 10-ия и 90-ия процент от резултатите, т.е. в него попадат 80% от пусканията. Надеждността зависи от това колко се различават: до 2° разлика в максимума е „надеждна“, до 4° „средно надеждна“, над това „несигурна“. Дните след 7-ия са белязани като „ориентировъчни“.</li>
-        <li><strong>Сравнение на модели.</strong> Таблица „Сравнение на метеорологичните модели“ показва максималната температура и валежа за всеки ден по три отделни модела: ECMWF IFS (Европа), ICON (Германия) и GFS (САЩ). Ако се различават много, прогнозата е несигурна.</li>
+        <li>${t.liRange}</li>
+        <li>${t.liModels}</li>
       </ul>
     </section>
 
     <section class="info-card">
-      <h2>Всички източници</h2>
+      <h2>${t.hAll}</h2>
       <div class="table-scroll">
       <table class="kp-table">
-        <thead><tr><th>Данни</th><th>Източник</th></tr></thead>
+        <thead><tr><th>${t.thData}</th><th>${t.thSource}</th></tr></thead>
         <tbody>
-          <tr><td>Прогноза за времето, изгрев и залез</td><td>${link('https://open-meteo.com/en/docs', 'Open-Meteo Forecast API')}</td></tr>
-          <tr><td>Диапазон и надеждност (ансамбъл ICON)</td><td>${link('https://open-meteo.com/en/docs/ensemble-api', 'Open-Meteo Ensemble API')}</td></tr>
-          <tr><td>Сравнение ECMWF, ICON, GFS</td><td>Open-Meteo Forecast API с избран модел (ecmwf_ifs025, icon_seamless, gfs_seamless)</td></tr>
-          <tr><td>Климат по месеци на градските страници</td><td>${link('https://open-meteo.com/en/docs/historical-weather-api', 'Open-Meteo Historical Weather API')}: реанализа ERA5, средни стойности за 2015–2024 г.</td></tr>
-          <tr><td>Търсене на места</td><td>${link('https://open-meteo.com/en/docs/geocoding-api', 'Open-Meteo Geocoding API')}, а за „текущо местоположение“ ${link('https://nominatim.openstreetmap.org/', 'OpenStreetMap Nominatim')}</td></tr>
-          <tr><td>Магнитни бури, Kp индекс, слънчев вятър</td><td>${link('https://www.swpc.noaa.gov/', 'NOAA Space Weather Prediction Center')}</td></tr>
-          <tr><td>Официални празници</td><td>${link('https://date.nager.at/', 'Nager.Date')}</td></tr>
-          <tr><td>Карти (вятър, валежи, облаци, температура)</td><td>${link('https://www.windy.com/', 'Windy')}</td></tr>
-          <tr><td>Фаза на Луната</td><td>Изчислява се в сайта по средния лунен месец (29,53 дни) от известна нова луна, без заявка към външен източник. Подходяща е за ориентир, не за астрономически точни моменти.</td></tr>
+${t.rows.map(([data, source]) => `          <tr><td>${data}</td><td>${source}</td></tr>`).join('\n')}
         </tbody>
       </table>
       </div>
     </section>
 
     <section class="info-card">
-      <h2>Ограничения</h2>
+      <h2>${t.hLimits}</h2>
       <ul>
-        <li>Weather Pulse не е официална метеорологична служба. За предупреждения за опасно време (бури, наводнения, жеги) гледайте националната служба, например НИМХ в България.</li>
-        <li>Данните са от модели с мрежа от точки, не от измервания на станция. В планини, долини и по брега реалната температура и валеж може да се различават от показаното.</li>
-        <li>Климатът по градове е от реанализа ERA5 с мрежа около 10 км, затова за планински места може да се различава от измерванията на метеорологична станция.</li>
-        <li>Open-Meteo е безплатна услуга. Ако няма връзка с нея, сайтът показва съобщение за грешка, а не стари данни.</li>
+${t.limits.map(item => `        <li>${item}</li>`).join('\n')}
       </ul>
     </section>
 
     <section class="info-card">
-      <h2>In English</h2>
-      <p>Weather Pulse does not run its own weather model. Forecasts come from ${link('https://open-meteo.com/', 'Open-Meteo')} in its default “best match” mode, which combines national weather models such as DWD ICON, ECMWF IFS and NOAA GFS depending on the location. The reliability label uses the 40-member ICON ensemble (10th–90th percentile range), and the model comparison table shows ECMWF IFS, ICON and GFS side by side. Geomagnetic data is from NOAA SWPC, holidays from Nager.Date, maps from Windy. The Moon phase is calculated on the site.</p>
-    </section>
+      <h2>${t.hContact}</h2>
+      <p>${t.contact}</p>
+    </section>`;
+}
 
-    <section class="info-card">
-      <h2>Контакти</h2>
-      <p>Предложения, грешки и въпроси за данните: <a href="mailto:woodwideweb@yahoo.com">woodwideweb@yahoo.com</a>. Weather Pulse се поддържа от VYZYA. Вижте и <a href="/za-saita/">За сайта</a> и <a href="/poveritelnost/">Поверителност</a>.</p>
-    </section>`
+function sourcesPage() {
+  const others = {};
+  const titles = { bg: SOURCES_TEXT.bg(() => '').pageTitle };
+  ['en', 'de', 'it', 'es'].forEach(language => {
+    others[language] = sourcesContent(language);
+    titles[language] = SOURCES_TEXT[language](() => '').pageTitle;
+  });
+  const data = JSON.stringify({ html: others, titles }).replace(/</g, '\u003c');
+  return page({
+    url: '/contacts/',
+    title: titles.bg,
+    description: 'Откъде са данните на Weather Pulse: прогнозата идва от Open-Meteo (модели ECMWF, ICON, GFS и др.), магнитните бури от NOAA, празниците от Nager.Date. Как се смята надеждността и какви са ограниченията.',
+    body: `<div id="sourcesContent">
+${sourcesContent('bg')}
+    </div>`,
+    scripts: `<script>
+  // Shows the page in the visitor's language (Bulgarian is the page itself)
+  (function () {
+    const box = document.getElementById('sourcesContent');
+    const texts = ${data};
+    const original = { html: box.innerHTML, title: document.title };
+    function show() {
+      const language = document.documentElement.lang;
+      const html = texts.html[language];
+      box.innerHTML = html || original.html;
+      document.title = (html ? texts.titles[language] + ' | Weather Pulse' : original.title);
+    }
+    show();
+    document.addEventListener('change', event => { if (event.target && event.target.id === 'language') show(); });
+  })();
+</script>\n`
   });
 }
 
