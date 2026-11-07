@@ -94,7 +94,7 @@
     const url = `${API}?latitude=${box.dataset.lat}&longitude=${box.dataset.lon}` +
       '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m' +
       '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max' +
-      '&forecast_days=7&timezone=Europe%2FSofia';
+      '&forecast_days=7&timezone=auto';
     try {
       forecast = await getJson(url);
       renderCity();
@@ -108,7 +108,7 @@
   async function loadTiles(list) {
     const tiles = [...list.querySelectorAll('.city-tile')];
     const url = `${API}?latitude=${tiles.map(tile => tile.dataset.lat).join(',')}` +
-      `&longitude=${tiles.map(tile => tile.dataset.lon).join(',')}&current=temperature_2m,weather_code&timezone=Europe%2FSofia`;
+      `&longitude=${tiles.map(tile => tile.dataset.lon).join(',')}&current=temperature_2m,weather_code&timezone=auto`;
     try {
       const data = await getJson(url);
       const results = Array.isArray(data) ? data : [data];

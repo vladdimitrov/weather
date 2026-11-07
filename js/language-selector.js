@@ -23,6 +23,9 @@
   };
 
   function getSavedLanguage() {
+    // Pages written in one language (the English /europe/ pages) keep it
+    const fixed = document.documentElement.dataset.pageLang;
+    if (fixed) return fixed;
     let saved = null;
     try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) { /* storage blocked */ }
     // Bulgarian unless the visitor picked another language
