@@ -30,10 +30,21 @@
     return node;
   }
 
+  // Forecasts are kept for 10 minutes in this tab, so going back to a page or
+  // opening the same city again does not call the API a second time.
+  const CACHE_MS = 10 * 60 * 1000;
+
   async function getJson(url) {
+    const key = 'wp-forecast:' + url;
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(key));
+      if (saved && Date.now() - saved.time < CACHE_MS) return saved.data;
+    } catch (error) { /* storage unavailable: fetch as usual */ }
     const response = await fetch(url);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    return response.json();
+    const data = await response.json();
+    try { sessionStorage.setItem(key, JSON.stringify({ time: Date.now(), data })); } catch (error) { /* full or blocked */ }
+    return data;
   }
 
   // --- One city ---
