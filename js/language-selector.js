@@ -85,6 +85,13 @@
     languageSelect.addEventListener('change', event => {
       const selectedLanguage = event.target.value;
       saveLanguage(selectedLanguage);
+      // A page that exists in this language as its own URL (<link rel="alternate" hreflang>):
+      // open the translation instead of translating in place
+      const alternate = document.querySelector('link[rel="alternate"][hreflang="' + selectedLanguage + '"]');
+      if (alternate && selectedLanguage !== document.documentElement.dataset.pageLang) {
+        location.href = new URL(alternate.href).pathname + location.search + location.hash;
+        return;
+      }
       document.documentElement.lang = selectedLanguage;
       languageLabel.textContent = labelTranslations[selectedLanguage] || labelTranslations.en;
     });

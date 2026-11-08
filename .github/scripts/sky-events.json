@@ -1,141 +1,219 @@
 {
-  "_about": "Astronomical events for /nebeto/ (build-nebeto.js). Maintained by hand: every event has a source. Times are UTC (ISO). Meteor showers: IMO Meteor Shower Calendar. Eclipses: only those visible from Bulgaria. Supermoons: the full moon is computed by js/moon.js (checked against USNO); the 'supermoon' label and the distance come from the cited source. Add the next year's events every autumn (see README).",
+  "_about": "Astronomical events for /nebeto/ (build-nebeto.js). Maintained by hand: every event has a source. Times are UTC (ISO). Texts (name, note, text ...) are objects with the five site languages bg/en/de/it/es. Meteor showers: IMO Meteor Shower Calendar; 'active' is [from, to] as MM-DD; zhr is { prefix: '' | 'about' | 'over', value, range }. Eclipses: only those visible from Bulgaria. Supermoons: the full moon is computed by js/moon.js (checked against USNO); the 'supermoon' label and distanceKm come from the cited source. Add the next year's events every autumn (see README).",
   "updated": "2026-11-08",
   "meteors": [
     {
-      "name": "Леониди",
+      "name": { "bg": "Леониди", "en": "Leonids", "de": "Leoniden", "it": "Leonidi", "es": "Leónidas" },
       "max": "2026-11-17T23:45:00Z",
-      "active": "6–30 ноември",
-      "zhr": "около 15",
-      "note": "Максимумът по IMO е на 17 ноември в 23:45 ч. UTC; по друга прогноза (Маслов) е по-рано същия ден, около 16 ч. UTC.",
+      "active": ["11-06", "11-30"],
+      "zhr": { "prefix": "about", "value": "15" },
+      "note": {
+        "bg": "Максимумът по IMO е на 17 ноември в 23:45 ч. UTC; по друга прогноза (Маслов) е по-рано същия ден, около 16 ч. UTC.",
+        "en": "The IMO peak is on 17 November at 23:45 UTC; another forecast (Maslov) puts it earlier the same day, around 16:00 UTC.",
+        "de": "Das Maximum liegt laut IMO am 17. November um 23:45 Uhr UTC; eine andere Prognose (Maslov) sieht es früher am selben Tag, gegen 16 Uhr UTC.",
+        "it": "Secondo l'IMO il massimo è il 17 novembre alle 23:45 UTC; un'altra previsione (Maslov) lo anticipa allo stesso giorno, verso le 16:00 UTC.",
+        "es": "Según la IMO el máximo es el 17 de noviembre a las 23:45 UTC; otra previsión (Maslov) lo sitúa antes ese mismo día, hacia las 16:00 UTC."
+      },
       "source": "IMO Meteor Shower Calendar 2026",
       "url": "https://www.imo.net/files/meteor-shower/cal2026.pdf"
     },
     {
-      "name": "Геминиди",
+      "name": { "bg": "Геминиди", "en": "Geminids", "de": "Geminiden", "it": "Geminidi", "es": "Gemínidas" },
       "max": "2026-12-14T14:00:00Z",
-      "active": "4–20 декември",
-      "zhr": "150",
-      "note": "IMO го описва като най-добрия и най-надежден от големите годишни потоци, с широк максимум.",
+      "active": ["12-04", "12-20"],
+      "zhr": { "prefix": "", "value": "150" },
+      "note": {
+        "bg": "IMO го описва като най-добрия и най-надежден от големите годишни потоци, с широк максимум.",
+        "en": "The IMO describes it as the best and most reliable of the major annual showers, with a broad maximum.",
+        "de": "Die IMO beschreibt ihn als den besten und zuverlässigsten der großen jährlichen Ströme, mit einem breiten Maximum.",
+        "it": "L'IMO lo descrive come il migliore e più affidabile dei grandi sciami annuali, con un massimo ampio.",
+        "es": "La IMO lo describe como la mejor y más fiable de las grandes lluvias anuales, con un máximo amplio."
+      },
       "source": "IMO Meteor Shower Calendar 2026",
       "url": "https://www.imo.net/files/meteor-shower/cal2026.pdf"
     },
     {
-      "name": "Урсиди",
+      "name": { "bg": "Урсиди", "en": "Ursids", "de": "Ursiden", "it": "Ursidi", "es": "Úrsidas" },
       "max": "2026-12-22T12:00:00Z",
       "dateOnly": true,
-      "active": "17–26 декември",
-      "zhr": "около 10",
-      "note": "Слаб поток.",
+      "active": ["12-17", "12-26"],
+      "zhr": { "prefix": "about", "value": "10" },
+      "note": {
+        "bg": "Слаб поток.",
+        "en": "A weak shower.",
+        "de": "Ein schwacher Strom.",
+        "it": "Uno sciame debole.",
+        "es": "Una lluvia débil."
+      },
       "source": "IMO Meteor Shower Calendar 2026",
       "url": "https://www.imo.net/files/meteor-shower/cal2026.pdf"
     },
     {
-      "name": "Квадрантиди",
+      "name": { "bg": "Квадрантиди", "en": "Quadrantids", "de": "Quadrantiden", "it": "Quadrantidi", "es": "Cuadrántidas" },
       "max": "2027-01-04T03:25:00Z",
-      "active": "28 декември – 12 януари",
-      "zhr": "около 80 (60–200)",
-      "note": "Максимумът е на 4 януари в 03:25 ч. UTC.",
+      "active": ["12-28", "01-12"],
+      "zhr": { "prefix": "about", "value": "80", "range": "60–200" },
+      "note": {
+        "bg": "Максимумът е на 4 януари в 03:25 ч. UTC.",
+        "en": "The peak is on 4 January at 03:25 UTC.",
+        "de": "Das Maximum liegt am 4. Januar um 03:25 Uhr UTC.",
+        "it": "Il massimo è il 4 gennaio alle 03:25 UTC.",
+        "es": "El máximo es el 4 de enero a las 03:25 UTC."
+      },
       "source": "IMO Meteor Shower Calendar 2027",
       "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
     },
     {
-      "name": "Лириди",
+      "name": { "bg": "Лириди", "en": "Lyrids", "de": "Lyriden", "it": "Liridi", "es": "Líridas" },
       "max": "2027-04-23T01:40:00Z",
-      "active": "14–30 април",
-      "zhr": "около 18",
-      "note": "IMO отбелязва, че активността може да се променя – понякога до ZHR 90.",
+      "active": ["04-14", "04-30"],
+      "zhr": { "prefix": "about", "value": "18" },
+      "note": {
+        "bg": "IMO отбелязва, че активността може да се променя – понякога до ZHR 90.",
+        "en": "The IMO notes that activity can vary – sometimes up to a ZHR of 90.",
+        "de": "Laut IMO kann die Aktivität schwanken – manchmal bis zu einer ZHR von 90.",
+        "it": "L'IMO osserva che l'attività può variare, a volte fino a uno ZHR di 90.",
+        "es": "La IMO señala que la actividad puede variar, a veces hasta una ZHR de 90."
+      },
       "source": "IMO Meteor Shower Calendar 2027",
       "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
     },
     {
-      "name": "Ета-Аквариди",
+      "name": { "bg": "Ета-Аквариди", "en": "Eta Aquariids", "de": "Eta-Aquariden", "it": "Eta Aquaridi", "es": "Eta Acuáridas" },
       "max": "2027-05-06T09:00:00Z",
-      "active": "19 април – 28 май",
-      "zhr": "около 50 (40–80)",
-      "note": "Радиантът е близо до небесния екватор, затова от България е ниско над хоризонта преди зазоряване.",
+      "active": ["04-19", "05-28"],
+      "zhr": { "prefix": "about", "value": "50", "range": "40–80" },
+      "note": {
+        "bg": "Радиантът е близо до небесния екватор, затова от България е ниско над хоризонта преди зазоряване.",
+        "en": "The radiant is near the celestial equator, so from Bulgaria it is low above the horizon before dawn.",
+        "de": "Der Radiant liegt nahe dem Himmelsäquator, deshalb steht er von Bulgarien aus vor der Morgendämmerung tief über dem Horizont.",
+        "it": "Il radiante è vicino all'equatore celeste, quindi dalla Bulgaria è basso sull'orizzonte prima dell'alba.",
+        "es": "El radiante está cerca del ecuador celeste, así que desde Bulgaria queda bajo sobre el horizonte antes del amanecer."
+      },
       "source": "IMO Meteor Shower Calendar 2027",
       "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
     },
     {
-      "name": "Персеиди",
+      "name": { "bg": "Персеиди", "en": "Perseids", "de": "Perseiden", "it": "Perseidi", "es": "Perseidas" },
       "max": "2027-08-13T09:00:00Z",
-      "active": "17 юли – 24 август",
-      "zhr": "над 110",
-      "note": "Максимумът е между 08 и 10 ч. UTC на 13 август.",
+      "active": ["07-17", "08-24"],
+      "zhr": { "prefix": "over", "value": "110" },
+      "note": {
+        "bg": "Максимумът е между 08 и 10 ч. UTC на 13 август.",
+        "en": "The peak is between 08:00 and 10:00 UTC on 13 August.",
+        "de": "Das Maximum liegt am 13. August zwischen 08 und 10 Uhr UTC.",
+        "it": "Il massimo è tra le 08:00 e le 10:00 UTC del 13 agosto.",
+        "es": "El máximo es entre las 08:00 y las 10:00 UTC del 13 de agosto."
+      },
       "source": "IMO Meteor Shower Calendar 2027",
       "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
     },
     {
-      "name": "Ориониди",
+      "name": { "bg": "Ориониди", "en": "Orionids", "de": "Orioniden", "it": "Orionidi", "es": "Oriónidas" },
       "max": "2027-10-22T12:00:00Z",
       "dateOnly": true,
-      "active": "2 октомври – 7 ноември",
-      "zhr": "около 20",
-      "note": "IMO: максимумът е широк, около денонощие.",
+      "active": ["10-02", "11-07"],
+      "zhr": { "prefix": "about", "value": "20" },
+      "note": {
+        "bg": "IMO: максимумът е широк, около денонощие.",
+        "en": "IMO: the maximum is broad, lasting about a day.",
+        "de": "IMO: Das Maximum ist breit und dauert etwa einen Tag.",
+        "it": "IMO: il massimo è ampio, di circa un giorno.",
+        "es": "IMO: el máximo es amplio, de aproximadamente un día."
+      },
       "source": "IMO Meteor Shower Calendar 2027",
       "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
     },
     {
-      "name": "Леониди",
+      "name": { "bg": "Леониди", "en": "Leonids", "de": "Leoniden", "it": "Leonidi", "es": "Leónidas" },
       "max": "2027-11-18T06:00:00Z",
-      "active": "6–30 ноември",
-      "zhr": "над 15",
-      "note": "Максимумът е на 18 ноември в 06 ч. UTC.",
+      "active": ["11-06", "11-30"],
+      "zhr": { "prefix": "over", "value": "15" },
+      "note": {
+        "bg": "Максимумът е на 18 ноември в 06 ч. UTC.",
+        "en": "The peak is on 18 November at 06:00 UTC.",
+        "de": "Das Maximum liegt am 18. November um 06 Uhr UTC.",
+        "it": "Il massimo è il 18 novembre alle 06:00 UTC.",
+        "es": "El máximo es el 18 de noviembre a las 06:00 UTC."
+      },
       "source": "IMO Meteor Shower Calendar 2027",
       "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
     },
     {
-      "name": "Геминиди",
+      "name": { "bg": "Геминиди", "en": "Geminids", "de": "Geminiden", "it": "Geminidi", "es": "Gemínidas" },
       "max": "2027-12-14T20:00:00Z",
-      "active": "4–20 декември",
-      "zhr": "150",
-      "note": "Максимумът е около 20 ч. UTC на 14 декември, т.е. в нощта към 15 декември по българско време.",
+      "active": ["12-04", "12-20"],
+      "zhr": { "prefix": "", "value": "150" },
+      "note": {
+        "bg": "Максимумът е около 20 ч. UTC на 14 декември, т.е. в нощта към 15 декември по българско време.",
+        "en": "The peak is around 20:00 UTC on 14 December, i.e. in the night towards 15 December Bulgarian time.",
+        "de": "Das Maximum liegt gegen 20 Uhr UTC am 14. Dezember, also in der Nacht zum 15. Dezember bulgarischer Zeit.",
+        "it": "Il massimo è verso le 20:00 UTC del 14 dicembre, cioè nella notte verso il 15 dicembre ora bulgara.",
+        "es": "El máximo es hacia las 20:00 UTC del 14 de diciembre, es decir, en la noche hacia el 15 de diciembre, hora de Bulgaria."
+      },
       "source": "IMO Meteor Shower Calendar 2027",
       "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
     },
     {
-      "name": "Урсиди",
+      "name": { "bg": "Урсиди", "en": "Ursids", "de": "Ursiden", "it": "Ursidi", "es": "Úrsidas" },
       "max": "2027-12-23T04:00:00Z",
-      "active": "17–26 декември",
-      "zhr": "около 10",
-      "note": "IMO: понякога активността надхвърля обичайната (до ZHR 50).",
+      "active": ["12-17", "12-26"],
+      "zhr": { "prefix": "about", "value": "10" },
+      "note": {
+        "bg": "IMO: понякога активността надхвърля обичайната (до ZHR 50).",
+        "en": "IMO: sometimes activity exceeds the usual level (up to a ZHR of 50).",
+        "de": "IMO: Manchmal übertrifft die Aktivität das übliche Maß (bis zu einer ZHR von 50).",
+        "it": "IMO: a volte l'attività supera il livello abituale (fino a uno ZHR di 50).",
+        "es": "IMO: a veces la actividad supera lo habitual (hasta una ZHR de 50)."
+      },
       "source": "IMO Meteor Shower Calendar 2027",
       "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
     }
   ],
   "eclipses": [
     {
-      "name": "Частично слънчево затъмнение",
+      "name": { "bg": "Частично слънчево затъмнение", "en": "Partial solar eclipse", "de": "Partielle Sonnenfinsternis", "it": "Eclissi solare parziale", "es": "Eclipse solar parcial" },
       "max": "2027-08-02T09:25:00Z",
-      "visible": "от цяла България",
-      "text": "В София затъмнението започва в 11:18 ч., максимумът е в 12:25 ч. (закрити са около 53% от диска на Слънцето, степен на затъмнението 0,67) и свършва в 13:41 ч. Пълно е в ивица, която минава през Гибралтар и Северна Африка. Никога не гледайте Слънцето без специални очила за затъмнение.",
-      "source": "time.now – затъмнения в София (изчислени данни)",
+      "visible": { "bg": "от цяла България", "en": "from all of Bulgaria", "de": "aus ganz Bulgarien", "it": "da tutta la Bulgaria", "es": "desde toda Bulgaria" },
+      "text": {
+        "bg": "В София затъмнението започва в 11:18 ч., максимумът е в 12:25 ч. (закрити са около 53% от диска на Слънцето, степен на затъмнението 0,67) и свършва в 13:41 ч. Пълно е в ивица, която минава през Гибралтар и Северна Африка. Никога не гледайте Слънцето без специални очила за затъмнение.",
+        "en": "In Sofia the eclipse begins at 11:18, the maximum is at 12:25 (about 53% of the Sun's disk is covered, magnitude 0.67) and it ends at 13:41. It is total in a band that passes over Gibraltar and North Africa. Never look at the Sun without special eclipse glasses.",
+        "de": "In Sofia beginnt die Finsternis um 11:18 Uhr, das Maximum ist um 12:25 Uhr (etwa 53 % der Sonnenscheibe sind bedeckt, Größe 0,67) und sie endet um 13:41 Uhr. Total ist sie in einem Streifen, der über Gibraltar und Nordafrika verläuft. Schauen Sie niemals ohne spezielle Finsternisbrille in die Sonne.",
+        "it": "A Sofia l'eclissi inizia alle 11:18, il massimo è alle 12:25 (circa il 53% del disco del Sole è coperto, magnitudine 0,67) e termina alle 13:41. È totale in una fascia che passa sopra Gibilterra e il Nord Africa. Non guardare mai il Sole senza occhiali speciali per eclissi.",
+        "es": "En Sofía el eclipse empieza a las 11:18, el máximo es a las 12:25 (queda cubierto cerca del 53 % del disco del Sol, magnitud 0,67) y termina a las 13:41. Es total en una franja que pasa por Gibraltar y el norte de África. No mires nunca al Sol sin gafas especiales para eclipses."
+      },
+      "source": {
+        "bg": "time.now – затъмнения в София (изчислени данни)",
+        "en": "time.now – eclipses in Sofia (calculated data)",
+        "de": "time.now – Finsternisse in Sofia (berechnete Daten)",
+        "it": "time.now – eclissi a Sofia (dati calcolati)",
+        "es": "time.now – eclipses en Sofía (datos calculados)"
+      },
       "url": "https://time.now/sofia/eclipses/"
     }
   ],
   "supermoons": [
     {
       "full": "2026-11-24T14:53:00Z",
-      "distance": "около 360 800 км",
+      "distanceKm": 360800,
       "source": "Space.com",
       "url": "https://www.space.com/supermoon-what-is-it-2026"
     },
     {
       "full": "2026-12-24T01:28:00Z",
-      "distance": "около 356 700 км",
+      "distanceKm": 356700,
       "source": "icalendrier.fr",
       "url": "https://icalendrier.fr/lune/superlune"
     },
     {
       "full": "2027-01-22T12:17:00Z",
-      "distance": "около 357 600 км",
+      "distanceKm": 357600,
       "source": "Star Walk",
       "url": "https://starwalk.space/en/news/what-is-supermoon"
     },
     {
       "full": "2027-02-20T23:23:00Z",
-      "distance": "",
+      "distanceKm": null,
       "source": "The Old Farmer's Almanac",
       "url": "https://cdn.almanac.com/what-supermoon"
     }

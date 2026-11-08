@@ -10,6 +10,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vrijeme Mostar – Weather in Mostar, 7-day forecast | Weather Pulse</title>
   <link rel="canonical" href="https://weatherpulse.eu/europe/bosnia-and-herzegovina/mostar/" />
+  <link rel="alternate" hreflang="bg" href="https://weatherpulse.eu/bg/europe/bosnia-and-herzegovina/mostar/" />
+  <link rel="alternate" hreflang="en" href="https://weatherpulse.eu/europe/bosnia-and-herzegovina/mostar/" />
+  <link rel="alternate" hreflang="de" href="https://weatherpulse.eu/de/europe/bosnia-and-herzegovina/mostar/" />
+  <link rel="alternate" hreflang="it" href="https://weatherpulse.eu/it/europe/bosnia-and-herzegovina/mostar/" />
+  <link rel="alternate" hreflang="es" href="https://weatherpulse.eu/es/europe/bosnia-and-herzegovina/mostar/" />
+  <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu/europe/bosnia-and-herzegovina/mostar/" />
   <meta name="description" content="Weather in Mostar, Bosnia and Herzegovina today: forecast for tomorrow and the next 7 days with temperature, rain and wind. Vrijeme Mostar. Updated every hour (data: Open-Meteo).">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Weather Pulse">
@@ -27,7 +33,7 @@
         "@type": "ListItem",
         "position": 1,
         "name": "Weather Pulse",
-        "item": "https://weatherpulse.eu/"
+        "item": "https://weatherpulse.eu/en/"
       },
       {
         "@type": "ListItem",
@@ -52,7 +58,14 @@
   </script>
   <script>
     (function() {
-      // English page: the language stays English (see language-selector.js)
+      // The page has its own language. Bulgarian (default) pages send a visitor who chose
+      // another language to the translation; a translated page remembers its language.
+      try {
+        const saved = localStorage.getItem('selectedLanguage');
+        const alt = {"bg":"/bg/europe/bosnia-and-herzegovina/mostar/","en":"/europe/bosnia-and-herzegovina/mostar/","de":"/de/europe/bosnia-and-herzegovina/mostar/","it":"/it/europe/bosnia-and-herzegovina/mostar/","es":"/es/europe/bosnia-and-herzegovina/mostar/"};
+        if ('en' === 'en') { if (saved && saved !== 'en' && alt[saved]) location.replace(alt[saved] + location.search + location.hash); }
+        else localStorage.setItem('selectedLanguage', 'en');
+      } catch (e) { /* storage blocked */ }
     })();
   </script>
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
@@ -69,12 +82,12 @@
   <div class="nav-header" tabindex="-1" id="header">
     <div class="nav-links">
       <a href="/" class="nav-link" data-nav="home">Home</a>
-      <a href="/weather/" class="nav-link" data-nav="weather">Weather forecast</a>
-      <a href="/maps/" class="nav-link" data-nav="maps">Weather maps</a>
-      <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Holiday calendar</a>
-      <a href="/magnitni-buri/" class="nav-link" data-nav="storms">Geomagnetic storms</a>
-      <a href="/nebeto/" class="nav-link" data-nav="sky">The sky</a>
-      <a href="/contacts/" class="nav-link" data-nav="sources">Data sources</a>
+      <a href="/weather/" class="nav-link" data-nav="weather">Weather Forecast</a>
+      <a href="/maps/" class="nav-link" data-nav="maps">Weather Maps</a>
+      <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Holiday Calendar</a>
+      <a href="/magnitni-buri/" class="nav-link" data-nav="storms">Magnetic Storms</a>
+      <a href="/en/nebeto/" class="nav-link" data-nav="sky">The Sky</a>
+      <a href="/contacts/" class="nav-link" data-nav="sources">Data Sources</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -150,20 +163,20 @@
 
   <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
     <div class="logo" style="flex-shrink: 0;">
-        <a href="/"><img src="/images/logo-64.webp" alt="Лого" class="logo-img" width="30" height="30" style="height: 30px; width: auto;"></a>
+        <a href="/"><img src="/images/logo-64.webp" alt="Logo" class="logo-img" width="30" height="30" style="height: 30px; width: auto;"></a>
     </div>
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
-      · <a href="/za-saita/" class="footer-link" data-nav="about">About</a>
-      · <a href="/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
+      · <a href="/en/za-saita/" class="footer-link" data-nav="about">About</a>
+      · <a href="/en/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
     </p>
   </footer>
 
 <script src="/js/mobile-nav.js?v=12" defer></script>
-<script src="/js/language-selector.js?v=3" defer></script>
+<script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
 <script src="/js/weather-icons.js?v=4" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=6" defer></script>
+<script src="/js/city-forecast.js?v=7" defer></script>
 </body>
 </html>
