@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 46, mobileNav: 11, cityForecast: 4 };
+const VERSION = { theme: 46, mobileNav: 11, cityForecast: 5 };
 
 const CITIES = [
   ['sofia', 'София', 42.6977, 23.3219],
@@ -161,9 +161,9 @@ ${body}
 
 ${(FOOTER_TEXT = en ? { about: NAV_EN.about, privacy: NAV_EN.privacy } : { about: 'За сайта', privacy: 'Поверителност' }, footer())}
 
-<script src="/js/mobile-nav.js?v=${VERSION.mobileNav}"></script>
-<script src="/js/language-selector.js?v=3"></script>
-<script src="/js/background-selector.js?v=2"></script>
+<script src="/js/mobile-nav.js?v=${VERSION.mobileNav}" defer></script>
+<script src="/js/language-selector.js?v=3" defer></script>
+<script src="/js/background-selector.js?v=2" defer></script>
 ${scripts}</body>
 </html>
 `;
@@ -223,8 +223,8 @@ ${climateSection(city, where)}
         ${cityLinks(city)}
       </div>
     </section>`,
-    scripts: `<script src="/js/weather-icons.js?v=4"></script>
-<script src="/js/city-forecast.js?v=${VERSION.cityForecast}"></script>\n`
+    scripts: `<script src="/js/weather-icons.js?v=4" defer></script>
+<script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`
   });
 }
 
@@ -241,8 +241,8 @@ function hubPage() {
     <div class="city-grid" id="cityList">
       ${CITIES.map(city => `<a href="/vremeto/${city.slug}/" class="city-tile" data-lat="${city.lat}" data-lon="${city.lon}"><span class="city-tile-name">${city.name}</span><span class="city-tile-temp"></span></a>`).join('\n      ')}
     </div>`,
-    scripts: `<script src="/js/weather-icons.js?v=4"></script>
-<script src="/js/city-forecast.js?v=${VERSION.cityForecast}"></script>\n`
+    scripts: `<script src="/js/weather-icons.js?v=4" defer></script>
+<script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`
   });
 }
 
