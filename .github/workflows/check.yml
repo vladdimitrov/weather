@@ -20,3 +20,4 @@ jobs:
           node-version: 20
       - run: node .github/scripts/check-site.js
       - run: node .github/scripts/test-moon.js
+      - run: node .github/scripts/test-sun.js

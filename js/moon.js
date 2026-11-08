@@ -130,7 +130,17 @@
     return { fraction, waxing: angle < 180, angle, index };
   }
 
-  const Moon = { phaseEvents, nextPhase, state, phaseJde, jdFromDate, dateFromJd };
+  // Names of the 8 phases (index of state()) in the 5 site languages
+  const ICONS = ['🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘'];
+  const NAMES = {
+    bg: ['Новолуние', 'Растящ сърп', 'Първа четвърт', 'Растяща луна', 'Пълнолуние', 'Намаляваща луна', 'Последна четвърт', 'Намаляващ сърп'],
+    en: ['New moon', 'Waxing crescent', 'First quarter', 'Waxing gibbous', 'Full moon', 'Waning gibbous', 'Last quarter', 'Waning crescent'],
+    de: ['Neumond', 'Zunehmende Sichel', 'Erstes Viertel', 'Zunehmender Mond', 'Vollmond', 'Abnehmender Mond', 'Letztes Viertel', 'Abnehmende Sichel'],
+    it: ['Luna nuova', 'Luna crescente (falce)', 'Primo quarto', 'Gibbosa crescente', 'Luna piena', 'Gibbosa calante', 'Ultimo quarto', 'Luna calante (falce)'],
+    es: ['Luna nueva', 'Luna creciente', 'Cuarto creciente', 'Gibosa creciente', 'Luna llena', 'Gibosa menguante', 'Cuarto menguante', 'Luna menguante']
+  };
+
+  const Moon = { phaseEvents, nextPhase, state, phaseJde, jdFromDate, dateFromJd, ICONS, NAMES };
   if (typeof module !== 'undefined' && module.exports) module.exports = Moon;
   else root.Moon = Moon;
 })(typeof window !== 'undefined' ? window : this);

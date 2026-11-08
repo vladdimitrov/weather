@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 47, mobileNav: 11, cityForecast: 5, moon: 1, lunaToday: 1 };
+const VERSION = { theme: 48, mobileNav: 11, cityForecast: 6, moon: 2, lunaToday: 2 };
 
 const CITIES = [
   ['sofia', 'София', 42.6977, 23.3219],
@@ -82,6 +82,40 @@ ${rows}
       </table>
       </div>
       <p class="storm-updated">Средни стойности за ${CLIMATE.years} г. по данни на Open-Meteo (ERA5). „Дни с валеж“ са дните с поне 1 мм. Данните са от модел с мрежа около 10 км, затова за планински места може да се различават от измерванията на метеорологична станция.</p>
+    </section>`;
+}
+
+// Sunrise and sunset on the 15th of every month (computed locally, sun.js; Sofia time,
+// summer time included) and the longest and shortest day: text for searches like "изгрев София"
+const { sunTimes } = require('./sun.js');
+const sunClock = new Intl.DateTimeFormat('bg-BG', { timeZone: 'Europe/Sofia', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+const dayLength = (sunrise, sunset) => {
+  const minutes = Math.round((sunset - sunrise) / 60000);
+  return `${Math.floor(minutes / 60)} ч ${String(minutes % 60).padStart(2, '0')} мин`;
+};
+
+function sunSection(city, where) {
+  const year = new Date().getFullYear();
+  const at = (month, day) => sunTimes(year, month, day, city.lat, city.lon);
+  const rows = MONTHS.map((name, month) => {
+    const sun = at(month, 15);
+    return `          <tr><td>15 ${name}</td><td>${sunClock.format(sun.sunrise)}</td><td>${sunClock.format(sun.sunset)}</td><td>${dayLength(sun.sunrise, sun.sunset)}</td></tr>`;
+  }).join('\n');
+  const longest = at(5, 21);
+  const shortest = at(11, 21);
+  return `
+    <section class="info-card city-sun-table">
+      <h2>Изгрев и залез ${where}</h2>
+      <p>Най-дългият ден ${where} е около 21 юни: слънцето изгрява в ${sunClock.format(longest.sunrise)}, залязва в ${sunClock.format(longest.sunset)} и денят е ${dayLength(longest.sunrise, longest.sunset)}. Най-краткият е около 21 декември – от ${sunClock.format(shortest.sunrise)} до ${sunClock.format(shortest.sunset)}, общо ${dayLength(shortest.sunrise, shortest.sunset)}. Днешният изгрев и залез са до прогнозата по-горе.</p>
+      <div class="table-scroll">
+      <table class="kp-table climate-table">
+        <thead><tr><th>Дата</th><th>Изгрев</th><th>Залез</th><th>Дължина на деня</th></tr></thead>
+        <tbody>
+${rows}
+        </tbody>
+      </table>
+      </div>
+      <p class="storm-updated">Часовете са по българско време (през лятото – лятно часово време) за ${year} г. Изчислени са по астрономически формули (Meeus, NOAA) и са проверени спрямо Open-Meteo с точност до около минута. Фазата на Луната: <a href="/luna/">лунен календар</a>.</p>
     </section>`;
 }
 
@@ -199,7 +233,7 @@ function cityPage(city) {
     url: `/vremeto/${city.slug}/`,
     // page() adds " | Weather Pulse"
     title: `Времето ${where} днес – прогноза за 7 дни`,
-    description: `Времето ${where} днес: прогноза за времето за утре и 7 дни, температура, валежи и вятър. Климатът по месеци: средни температури и валежи.`,
+    description: `Времето ${where} днес: прогноза за времето за утре и 7 дни, температура, валежи и вятър. Изгрев и залез. Климатът по месеци: средни температури и валежи.`,
     jsonLd: breadcrumbs,
     body: `    <p class="breadcrumbs"><a href="/vremeto/">Времето в България</a> › ${city.name}</p>
     <h1>Времето ${where}</h1>
@@ -215,6 +249,7 @@ function cityPage(city) {
       <a class="btn" href="/magnitni-buri/">Магнитни бури днес →</a>
     </p>
 
+${sunSection(city, where)}
 ${climateSection(city, where)}
 
     <section class="info-card">
@@ -224,6 +259,7 @@ ${climateSection(city, where)}
       </div>
     </section>`,
     scripts: `<script src="/js/weather-icons.js?v=4" defer></script>
+<script src="/js/moon.js?v=${VERSION.moon}" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`
   });
 }
