@@ -1704,3 +1704,9 @@ html.i18n-pending body {
     break-inside: avoid;
   }
 }
+/* Reserve the height of the loaded forecast so the sections below
+   (climate, links) do not jump when it arrives (layout shift) */
+.city-forecast { min-height: 540px; }
+@media (max-width: 640px) {
+  .city-forecast { min-height: 1050px; }
+}
