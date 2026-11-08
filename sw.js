@@ -1,9 +1,9 @@
 // Service worker: makes the site installable and keeps the last data for
 // offline use. Network first everywhere, so a new deploy shows up right away;
 // the cache is only the fallback when there is no connection.
-const CACHE = 'weatherpulse-v1';
+const CACHE = 'weatherpulse-v2';
 
-const PAGES = ['/', '/weather/', '/maps/', '/holliday_calendar/', '/contacts/', '/magnitni-buri/', '/za-saita/', '/poveritelnost/'];
+const PAGES = ['/', '/weather/', '/maps/', '/holliday_calendar/', '/contacts/', '/magnitni-buri/', '/za-saita/', '/poveritelnost/', '/luna/', '/nebeto/'];
 
 // Data sources whose last answer is kept for offline use
 const DATA_HOSTS = ['api.open-meteo.com', 'geocoding-api.open-meteo.com', 'services.swpc.noaa.gov', 'date.nager.at'];

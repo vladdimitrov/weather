@@ -29,6 +29,7 @@ Static site hosted on **GitHub Pages**.
 | `contacts/` | `build-pages.js`: data sources page (text in `sources-text.js`, 5 languages) |
 | `europe/`, `europe/<country>/`, `europe/<country>/<city>/` | `build-europe.js`: English pages, data in `europe-data.js` |
 | `luna/`, `luna/<year>/`, `luna/<year>/<month>/` | `build-luna.js`: Moon calendar for this and next year; phases from `js/moon.js` |
+| `nebeto/` | `build-nebeto.js`: meteor showers, eclipses, supermoons, northern lights; events in `sky-events.json` (kept by hand, with sources) |
 
 Change the script or its data file and run it again; changes made directly in the generated HTML are overwritten.
 
@@ -43,6 +44,7 @@ All scripts are in `.github/scripts/` and are run from the repository root with 
 | `node .github/scripts/build-pages.js` | Writes the Bulgarian city, hub, holiday and sources pages |
 | `node .github/scripts/build-europe.js [--sitemap]` | Writes the Europe pages; `--sitemap` adds missing URLs to `sitemap.xml` |
 | `node .github/scripts/build-luna.js [year] [--sitemap]` | Writes the Moon calendar pages (the year and the next one) |
+| `node .github/scripts/build-nebeto.js [--sitemap]` | Writes `/nebeto/` from `sky-events.json`; add next year's events there every autumn (IMO calendar for meteors) |
 | `node .github/scripts/test-moon.js` | Checks `js/moon.js` against USNO phase times (`moon-reference.json`) |
 | `node .github/scripts/test-sun.js` | Checks `sun.js` (sunrise/sunset on the city pages) against Open-Meteo (`sun-reference.json`) |
 | `node .github/scripts/build-climate.js` | Refreshes `climate.json` (monthly climate from the ERA5 archive); rarely needed |
