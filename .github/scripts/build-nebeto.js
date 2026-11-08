@@ -7,6 +7,11 @@ const fs = require('fs');
 const path = require('path');
 const Moon = require('../../js/moon.js');
 const { page, write, VERSION } = require('./build-pages.js');
+// Medallion icons from the forecast (js/weather-icons.js), drawn into the static HTML
+global.window = global.window || {};
+require('../../js/weather-icons.js');
+const Icons = global.window.WeatherIcons;
+const head = (key, _id, title) => `<div class="sky-head">${Icons.medal(key, '', 'xl')}<h2>${title}</h2></div>`;
 const EVENTS = require('./sky-events.json');
 
 const ROOT = process.cwd();
@@ -27,13 +32,13 @@ function moonCondition(date) {
   return `${lit}% (${verdict})`;
 }
 
-const meteorRows = EVENTS.meteors.map(m => `          <tr data-end="${m.max}"><td><strong>${esc(m.name)}</strong><br><span class="holiday-note">активен ${esc(m.active)}</span></td><td>${dateText(m.max)}${m.dateOnly ? '' : `<br>${timeText(m.max)}`}</td><td>${esc(m.zhr)}</td><td>${moonCondition(m.max)}</td><td>${esc(m.note)} ${link(m.url, m.source)}</td></tr>`).join('\n');
+const meteorRows = EVENTS.meteors.map(m => `          <tr data-end="${m.max}"><td><div class="sky-name">${Icons.medal('meteor', '', 'md')}<div><strong>${esc(m.name)}</strong><br><span class="holiday-note">активен ${esc(m.active)}</span></div></div></td><td>${dateText(m.max)}${m.dateOnly ? '' : `<br>${timeText(m.max)}`}</td><td>${esc(m.zhr)}</td><td>${moonCondition(m.max)}</td><td>${esc(m.note)} ${link(m.url, m.source)}</td></tr>`).join('\n');
 
 const eclipseBlocks = EVENTS.eclipses.map(e => `
-      <h3 data-end="${e.max}">${esc(e.name)} – ${dateText(e.max)}</h3>
+      <div class="sky-eclipse" data-end="${e.max}">${Icons.medal('eclipse', '', 'md')}<h3>${esc(e.name)} – ${dateText(e.max)}</h3></div>
       <p>Видимо ${esc(e.visible)}. ${esc(e.text)} Източник: ${link(e.url, e.source)}.</p>`).join('\n');
 
-const supermoonRows = EVENTS.supermoons.map(s => `          <tr data-end="${s.full}"><td>${dateText(s.full)}</td><td>${timeText(s.full)}</td><td>${esc(s.distance) || '–'}</td><td>${link(s.url, s.source)}</td></tr>`).join('\n');
+const supermoonRows = EVENTS.supermoons.map(s => `          <tr data-end="${s.full}"><td><div class="sky-name">${Icons.medal('moonSuper', '', 'md')}<strong>${dateText(s.full)}</strong></div></td><td>${timeText(s.full)}</td><td>${esc(s.distance) || '–'}</td><td>${link(s.url, s.source)}</td></tr>`).join('\n');
 
 const jsonLd = [
   ...EVENTS.meteors.map(m => ({ name: `${m.name} – максимум на метеорния поток`, date: m.max, description: `${m.name}: максимум на ${dateText(m.max)}, ZHR ${m.zhr}. Източник: ${m.source}.`, url: m.url })),
@@ -71,7 +76,7 @@ const html = page({
     <p class="city-actions"><a class="btn" href="/luna/">Лунен календар →</a> <a class="btn" href="/magnitni-buri/">Магнитни бури днес →</a></p>
 
     <section class="info-card" id="meteorni-potoci">
-      <h2>Метеорни потоци 2026–2027</h2>
+      ${head('meteor', 'meteorni-potoci', 'Метеорни потоци 2026–2027')}
       <p>ZHR е броят метеори на час, който би видял наблюдател под идеално тъмно небе с радианта високо над хоризонта; в градовете и при Луна се виждат много по-малко. Осветеността на Луната е в момента на максимума.</p>
       <div class="table-scroll">
       <table class="kp-table sky-table">
@@ -84,12 +89,12 @@ ${meteorRows}
     </section>
 
     <section class="info-card" id="zatmeniya">
-      <h2>Затъмнения, видими от България</h2>${eclipseBlocks}
+      ${head('eclipse', 'zatmeniya', 'Затъмнения, видими от България')}${eclipseBlocks}
       <p class="storm-updated">Затъмненията от 12 и 28 август 2026 г. вече минаха (слънчевото беше видимо само в най-северозападните части на България, а лунното – само в началото, ниско на запад).</p>
     </section>
 
     <section class="info-card" id="superluni">
-      <h2>Суперлуни 2026–2027</h2>
+      ${head('moonSuper', 'superluni', 'Суперлуни 2026–2027')}
       <p>Суперлуна е пълнолуние, когато Луната е близо до перигея си. Точно определение няма: според NASA, цитирана от Space.com, това е пълнолуние на разстояние под около 362 000 км. Датите и часовете на пълнолуниета са изчислени от нашия лунен календар, а етикетът „суперлуна“ е по посочения източник. Разликата в видимия размер е малка.</p>
       <div class="table-scroll">
       <table class="kp-table sky-table">
@@ -102,7 +107,7 @@ ${supermoonRows}
     </section>
 
     <section class="info-card" id="severno-siyanie">
-      <h2>Северно сияние в България</h2>
+      ${head('aurora', 'severno-siyanie', 'Северно сияние в България')}
       <p id="auroraKp" class="storm-now-status">Зареждане на Kp…</p>
       <p>Северното сияние от България се вижда <strong>много рядко</strong>. Kp е мярка за геомагнитната активност от 0 до 9. Обичайните „магнитни бури“ (Kp 5–6) осветяват небето само на север от Европа. За да се види сияние от нашите ширини, обикновено трябва Kp да е около 7 или повече (степени G3 и над по скалата на NOAA), при ясно небе, далеч от градските светлини и с поглед към север.</p>
       <p>Случва се само при най-силните бури. Например в ранните часове на 11 октомври 2024 г. сиянието беше видимо и от България (${link('https://www.bta.bg/en/news/bulgaria/759233-strong-solar-flare-makes-northern-lights-visible-from-bulgaria', 'БТА')}). Така че голяма част от „бурите“ в новините не значат сияние над нас.</p>

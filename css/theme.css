@@ -1114,6 +1114,7 @@ body {
   #weather-orbit-btn,
   #magnetic-orbit-btn,
   #maps-orbit-btn,
+  #sky-orbit-btn,
   #holliday-calendar-btn,
   #contacts-orbit-btn {
     animation-name: orbit !important;
@@ -1433,6 +1434,7 @@ html.i18n-pending body {
 #weather-orbit-btn,
 #magnetic-orbit-btn,
 #maps-orbit-btn,
+#sky-orbit-btn,
 #holliday-calendar-btn,
 #contacts-orbit-btn {
   width: 88px;
@@ -1448,18 +1450,30 @@ html.i18n-pending body {
 #holliday-calendar-btn { border-color: rgba(255, 100, 150, 0.9); }
 #contacts-orbit-btn { border-color: rgba(100, 255, 150, 0.9); }
 #magnetic-orbit-btn { border-color: rgba(180, 110, 255, 0.95); }
+#sky-orbit-btn { border-color: rgba(120, 150, 255, 0.95); }
 
-/* Five planets evenly around the 60 s orbit */
+/* Six planets evenly around the 60 s orbit */
 #weather-orbit-btn { animation-delay: 0s, 0s !important; }
 #magnetic-orbit-btn {
   animation: orbit 60s linear infinite, stormAura 2.4s ease-in-out infinite;
-  animation-delay: -12s, 0s;
+  animation-delay: -10s, 0s;
   box-shadow: 0 0 25px rgba(180, 110, 255, 0.8), 0 0 50px rgba(180, 110, 255, 0.4);
 }
 #magnetic-orbit-btn:hover { animation-play-state: paused; }
-#holliday-calendar-btn { animation-delay: -24s, 0s !important; }
-#maps-orbit-btn { animation-delay: -36s, 0s !important; }
-#contacts-orbit-btn { animation-delay: -48s, 0s !important; }
+#holliday-calendar-btn { animation-delay: -20s, 0s !important; }
+#sky-orbit-btn {
+  animation: orbit 60s linear infinite, skyAura 2.8s ease-in-out infinite;
+  animation-delay: -30s, 0s;
+  box-shadow: 0 0 25px rgba(110, 140, 255, 0.8), 0 0 50px rgba(110, 140, 255, 0.4);
+}
+#sky-orbit-btn:hover { animation-play-state: paused; }
+#maps-orbit-btn { animation-delay: -40s, 0s !important; }
+#contacts-orbit-btn { animation-delay: -50s, 0s !important; }
+
+@keyframes skyAura {
+  0%, 100% { box-shadow: 0 0 20px rgba(110, 140, 255, 0.6), 0 0 40px rgba(110, 140, 255, 0.3); }
+  50% { box-shadow: 0 0 35px rgba(110, 140, 255, 1), 0 0 70px rgba(110, 140, 255, 0.5); }
+}
 
 @keyframes stormAura {
   0%, 100% { box-shadow: 0 0 20px rgba(180, 110, 255, 0.6), 0 0 40px rgba(180, 110, 255, 0.3); }
@@ -1469,6 +1483,7 @@ html.i18n-pending body {
 #weather-orbit-label,
 #magnetic-orbit-label,
 #maps-orbit-label,
+#sky-orbit-label,
 #holiday-calendar-label,
 #contacts-orbit-label {
   font-family: var(--font-text) !important;
@@ -1485,6 +1500,7 @@ html.i18n-pending body {
   #weather-orbit-btn,
   #magnetic-orbit-btn,
   #maps-orbit-btn,
+  #sky-orbit-btn,
   #holliday-calendar-btn,
   #contacts-orbit-btn {
     width: 74px;
@@ -1496,6 +1512,7 @@ html.i18n-pending body {
   #weather-orbit-label,
   #magnetic-orbit-label,
   #maps-orbit-label,
+  #sky-orbit-label,
   #holiday-calendar-label,
   #contacts-orbit-label {
     font-size: 10.5px !important;
@@ -1709,4 +1726,34 @@ html.i18n-pending body {
 .city-forecast { min-height: 590px; }
 @media (max-width: 640px) {
   .city-forecast { min-height: 1090px; }
+}
+
+/* Sky (/nebeto/): medallion icons in the style of the forecast */
+.sky-head { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+.sky-head h2 { margin: 0; }
+.wx-medal.wx-medal-xl {
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  margin: 0;
+  border-width: 2px;
+  animation: skyGlow 4.5s ease-in-out infinite;
+}
+.wx-medal.wx-medal-xl svg { width: 46px; height: 46px; }
+@keyframes skyGlow {
+  0%, 100% { box-shadow: 0 0 12px rgba(255, 215, 0, 0.35), inset 0 0 14px rgba(0, 0, 0, 0.45); }
+  50% { box-shadow: 0 0 24px rgba(255, 215, 0, 0.7), inset 0 0 14px rgba(0, 0, 0, 0.45); }
+}
+.sky-name { display: flex; align-items: center; gap: 10px; }
+.sky-name .wx-medal { flex-shrink: 0; margin: 0; width: 42px; height: 42px; }
+.sky-name .wx-medal svg { width: 32px; height: 32px; }
+.sky-table tbody tr:hover { background: rgba(255, 215, 0, 0.06); }
+.sky-eclipse { display: flex; align-items: center; gap: 12px; margin: 16px 0 6px; }
+.sky-eclipse h3 { margin: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .wx-medal.wx-medal-xl { animation: none; }
+}
+@media (max-width: 640px) {
+  .wx-medal.wx-medal-xl { width: 52px; height: 52px; min-width: 52px; }
+  .wx-medal.wx-medal-xl svg { width: 38px; height: 38px; }
 }
