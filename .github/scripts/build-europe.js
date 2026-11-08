@@ -11,6 +11,7 @@ const COUNTRIES = require('./europe-data.js');
 
 const ROOT = process.cwd();
 const SCRIPTS = `<script src="/js/weather-icons.js?v=4" defer></script>
+<script src="/js/moon.js?v=${VERSION.moon}" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`;
 
 const esc = text => text.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');

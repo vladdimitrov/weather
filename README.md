@@ -44,6 +44,7 @@ All scripts are in `.github/scripts/` and are run from the repository root with 
 | `node .github/scripts/build-europe.js [--sitemap]` | Writes the Europe pages; `--sitemap` adds missing URLs to `sitemap.xml` |
 | `node .github/scripts/build-luna.js [year] [--sitemap]` | Writes the Moon calendar pages (the year and the next one) |
 | `node .github/scripts/test-moon.js` | Checks `js/moon.js` against USNO phase times (`moon-reference.json`) |
+| `node .github/scripts/test-sun.js` | Checks `sun.js` (sunrise/sunset on the city pages) against Open-Meteo (`sun-reference.json`) |
 | `node .github/scripts/build-climate.js` | Refreshes `climate.json` (monthly climate from the ERA5 archive); rarely needed |
 | `node .github/scripts/build-destinations.js [GR,CZ]` | Refreshes `js/destinations.json`, the one-tap city buttons under the search |
 | `node .github/scripts/check-site.js` | Checks for missing local files and JavaScript/JSON syntax errors |

@@ -23,6 +23,31 @@
   };
   const t = () => T[document.documentElement.lang] || T.en;
 
+  // Sunrise, sunset, day length and the Moon of today (labels in the 5 site languages)
+  const SUN = {
+    en: { sunrise: 'Sunrise', sunset: 'Sunset', daylight: 'Day length', moon: 'Moon', h: 'h', m: 'min' },
+    bg: { sunrise: 'Изгрев', sunset: 'Залез', daylight: 'Дължина на деня', moon: 'Луна', h: 'ч', m: 'мин' },
+    de: { sunrise: 'Sonnenaufgang', sunset: 'Sonnenuntergang', daylight: 'Tageslänge', moon: 'Mond', h: 'Std', m: 'Min' },
+    it: { sunrise: 'Alba', sunset: 'Tramonto', daylight: 'Durata del giorno', moon: 'Luna', h: 'h', m: 'min' },
+    es: { sunrise: 'Amanecer', sunset: 'Atardecer', daylight: 'Duración del día', moon: 'Luna', h: 'h', m: 'min' }
+  };
+
+  function sunLines() {
+    const daily = forecast.daily;
+    if (!daily.sunrise || !daily.sunrise[0]) return [];
+    const language = SUN[document.documentElement.lang] ? document.documentElement.lang : 'en';
+    const s = SUN[language];
+    const minutes = Math.round(daily.daylight_duration[0] / 60);
+    const lines = [el('p', 'storm-updated city-sun',
+      `🌅 ${s.sunrise} ${daily.sunrise[0].slice(11, 16)} · 🌇 ${s.sunset} ${daily.sunset[0].slice(11, 16)} · ${s.daylight}: ${Math.floor(minutes / 60)} ${s.h} ${minutes % 60} ${s.m}`)];
+    if (typeof Moon !== 'undefined') {
+      const state = Moon.state(new Date(daily.time[0] + 'T12:00:00Z'));
+      lines.push(el('p', 'storm-updated city-moon',
+        `${Moon.ICONS[state.index]} ${s.moon}: ${Moon.NAMES[language][state.index]}, ${Math.round(state.fraction * 100)}%`));
+    }
+    return lines;
+  }
+
   function el(tag, className, text) {
     const node = document.createElement(tag);
     if (className) node.className = className;
@@ -64,7 +89,8 @@
       WeatherIcons.node('now-icon', current.key, pickText(current.text)),
       el('span', 'storm-now-value', `${Math.round(now.temperature_2m)}°`),
       el('p', 'storm-now-status', `${pickText(current.text)} · ${text.feels} ${Math.round(now.apparent_temperature)}°`),
-      el('p', 'storm-updated', `${text.wind}: ${Math.round(now.wind_speed_10m)} km/h · ${text.humidity}: ${now.relative_humidity_2m}%`)
+      el('p', 'storm-updated', `${text.wind}: ${Math.round(now.wind_speed_10m)} km/h · ${text.humidity}: ${now.relative_humidity_2m}%`),
+      ...sunLines()
     );
 
     const days = forecast.daily.time.map((date, i) => {
@@ -104,7 +130,7 @@
   async function loadCity() {
     const url = `${API}?latitude=${box.dataset.lat}&longitude=${box.dataset.lon}` +
       '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m' +
-      '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max' +
+      '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,sunrise,sunset,daylight_duration' +
       '&forecast_days=7&timezone=auto';
     try {
       forecast = await getJson(url);
