@@ -4,7 +4,7 @@
   <script src="/cookie-consent.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet"></noscript>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Прогноза за времето по дни и часове | Weather Pulse</title>
@@ -116,7 +116,7 @@
         <button id="loadData" class="btn btn-primary pulse">Зареди прогнозата</button>
       </div>
     </div>
-    <div class="info-display" style="display: flex; justify-content: center; align-items: baseline; margin-top: 10px; flex-wrap: wrap; gap: 10px;">
+    <div class="info-display" style="display: flex; justify-content: center; align-items: baseline; margin-top: 10px; flex-wrap: wrap; gap: 10px; min-height: 3.2em;">
       <div id="selected-city" style="font-weight: bold; font-size: 1.1em; color: #FFD700;"></div>
       <div id="local-time" style="display: inline-block;"></div>
       <a class="storms-link" href="../magnitni-buri/" data-nav="stormsToday">🧭 Магнитни бури днес →</a>
