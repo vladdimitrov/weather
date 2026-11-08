@@ -158,6 +158,8 @@ I18N.LANGS.forEach(lang => {
   });
   write(dir(lang, '/europe/'), europePage(lang));
 });
+// country code -> slug of its /europe/ page, for the home page cities block (js/home-cities.js)
+fs.writeFileSync(path.join(ROOT, 'js', 'europe-countries.json'), JSON.stringify(Object.fromEntries(COUNTRIES.map(country => [country.code, country.slug]))) + '\n');
 const cityCount = COUNTRIES.reduce((sum, country) => sum + country.cities.length, 0);
 console.log(`Wrote ${cityCount} city pages, ${COUNTRIES.length} country pages and /europe/ in ${I18N.LANGS.length} languages.`);
 

@@ -55,13 +55,14 @@ function nebetoPage(lang) {
   const url = '/nebeto/';
   const kmFormat = new Intl.NumberFormat(I18N.LOCALE[lang]);
 
-  const meteorRows = EVENTS.meteors.map(m => `          <tr data-end="${m.max}"><td><div class="sky-name">${Icons.medal('meteor', '', 'md')}<div><strong>${esc(m.name[lang])}</strong><br><span class="holiday-note">${T.active} ${activeText(lang, m.active)}</span></div></div></td><td>${dateText(lang, m.max)}${m.dateOnly ? '' : `<br>${T.time(clock(m.max))}`}</td><td>${esc(zhrText(T, m.zhr))}</td><td>${moonCondition(T, m.max)}</td><td>${esc(m.note[lang])} ${link(m.url, m.source)}</td></tr>`).join('\n');
+  const meteorRows = EVENTS.meteors.map(m => `          <tr data-end="${m.max}"><td><div class="sky-name">${Icons.medal('meteor', '', 'md')}<div><strong>${esc(m.name[lang])}</strong><br><span class="holiday-note">${T.active} ${activeText(lang, m.active)}</span></div></div></td><td data-utc="${m.max}" data-fmt="${m.dateOnly ? 'date' : 'datetime'}">${dateText(lang, m.max)}${m.dateOnly ? '' : `<br>${T.time(clock(m.max))}`}</td><td>${esc(zhrText(T, m.zhr))}</td><td>${moonCondition(T, m.max)}</td><td>${esc(m.note[lang])} ${link(m.url, m.source)}</td></tr>`).join('\n');
 
   const eclipseBlocks = EVENTS.eclipses.map(e => `
       <div class="sky-eclipse" data-end="${e.max}">${Icons.medal('eclipse', '', 'md')}<h3>${esc(e.name[lang])} – ${dateText(lang, e.max)}</h3></div>
-      <p>${T.visible} ${esc(e.visible[lang])}. ${esc(e.text[lang])} ${T.sourceWord}: ${link(e.url, e.source[lang])}.</p>`).join('\n');
+      <p data-bg-only>${T.visible} ${esc(e.visible[lang])}. ${esc(e.text[lang])} ${T.sourceWord}: ${link(e.url, e.source[lang])}.</p>
+      <p id="skyEclipseGeneric" data-other-only hidden></p>`).join('\n');
 
-  const supermoonRows = EVENTS.supermoons.map(s => `          <tr data-end="${s.full}"><td><div class="sky-name">${Icons.medal('moonSuper', '', 'md')}<strong>${dateText(lang, s.full)}</strong></div></td><td>${T.time(clock(s.full))}</td><td>${s.distanceKm ? T.distance(kmFormat.format(s.distanceKm)) : '–'}</td><td>${link(s.url, s.source)}</td></tr>`).join('\n');
+  const supermoonRows = EVENTS.supermoons.map(s => `          <tr data-end="${s.full}"><td><div class="sky-name">${Icons.medal('moonSuper', '', 'md')}<strong data-utc="${s.full}" data-fmt="date">${dateText(lang, s.full)}</strong></div></td><td data-utc="${s.full}" data-fmt="time">${T.time(clock(s.full))}</td><td>${s.distanceKm ? T.distance(kmFormat.format(s.distanceKm)) : '–'}</td><td>${link(s.url, s.source)}</td></tr>`).join('\n');
 
   const events = [
     ...EVENTS.meteors.map(m => ({ name: T.ldMeteor(m.name[lang]), date: m.max, description: T.ldMeteorText(m.name[lang], dateText(lang, m.max), zhrText(T, m.zhr), m.source), url: m.url })),
@@ -96,8 +97,9 @@ function nebetoPage(lang) {
     title: T.title,
     description: T.description,
     jsonLd: structured,
-    body: `    <h1>${T.h1}</h1>
+    body: `    <h1>${T.h1}<span id="skyH1Place"> – ${new Intl.DisplayNames([I18N.LOCALE[lang]], { type: 'region' }).of('BG')}</span></h1>
     <p class="storm-intro">${T.intro}</p>
+    <p id="skyPlace" class="storm-updated" style="margin:6px 0 14px"></p>
     <p class="city-actions"><a class="btn" href="${L(lang, '/luna/')}">${T.calBtn}</a> <a class="btn" href="/magnitni-buri/">${T.stormsBtn}</a></p>
 
     <section class="info-card" id="meteorni-potoci">
@@ -115,7 +117,7 @@ ${meteorRows}
 
     <section class="info-card" id="zatmeniya">
       ${head('eclipse', T.eclipseH)}${eclipseBlocks}
-      <p class="storm-updated">${T.eclipsePast}</p>
+      <p class="storm-updated" data-bg-only>${T.eclipsePast}</p>
     </section>
 
     <section class="info-card" id="superluni">
@@ -134,8 +136,9 @@ ${supermoonRows}
     <section class="info-card" id="severno-siyanie">
       ${head('aurora', T.auroraH)}
       <p id="auroraKp" class="storm-now-status">${T.loadingKp}</p>
-      <p>${T.aurora1}</p>
-      <p>${T.aurora2(link('https://www.bta.bg/en/news/bulgaria/759233-strong-solar-flare-makes-northern-lights-visible-from-bulgaria', T.btaText))}</p>
+      <p data-bg-only>${T.aurora1}</p>
+      <p id="skyAuroraGeneric" data-other-only hidden></p>
+      <p data-bg-only>${T.aurora2(link('https://www.bta.bg/en/news/bulgaria/759233-strong-solar-flare-makes-northern-lights-visible-from-bulgaria', T.btaText))}</p>
       <p>${T.aurora3(`<a href="/magnitni-buri/">${T.stormsLink}</a>`, link('https://www.swpc.noaa.gov/', 'NOAA SWPC'))}</p>
     </section>
 
@@ -145,10 +148,12 @@ ${supermoonRows}
         <a href="${L(lang, '/luna/')}" class="recent-place">${T.cal}</a>
         <a href="/magnitni-buri/" class="recent-place">${T.storms}</a>
         <a href="${L(lang, '/vremeto/')}" class="recent-place">${T.weather}</a>
-        <a href="${L(lang, '/vremeto/sofia/')}" class="recent-place">${T.sunSofia}</a>
+        <a href="${L(lang, '/vremeto/sofia/')}" class="recent-place" id="skySunLink">${T.sunSofia}</a>
       </div>
     </section>`,
-    scripts: `<script src="/js/aurora-kp.js?v=${VERSION.auroraKp}" defer></script>
+    scripts: `<script src="/js/place-context.js?v=${VERSION.placeContext}" defer></script>
+<script src="/js/aurora-kp.js?v=${VERSION.auroraKp}" defer></script>
+<script src="/js/sky-local.js?v=${VERSION.skyLocal}" defer></script>
 <script>
   // Events that already happened are shown faded
   document.querySelectorAll('[data-end]').forEach(function (node) {

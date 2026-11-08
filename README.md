@@ -42,6 +42,11 @@ switcher opens the translation of the same page, and a visitor who chose another
 (`page()` in `build-pages.js`, `language-selector.js`). City names in `/europe/` stay as in `europe-data.js`; country names come from `Intl.DisplayNames`.
 The hand-written pages (home, forecast, maps, holidays, storms) and `/contacts/` are still translated in the browser from dictionaries in their scripts.
 
+**Country context.** `js/place-context.js` reads the place the visitor picked on the forecast page (`lastLocation`; Sofia on a first visit).
+The home page cities block (`js/home-cities.js`) then lists the main cities of that country (`js/destinations.json`), and `/nebeto/` (`js/sky-local.js`,
+`js/aurora-kp.js`) shows times in the time zone of the place, a country picker, and eclipse and northern lights texts for that latitude instead of the Bulgarian ones.
+The generated HTML stays written for Bulgaria; the scripts only replace it for other countries.
+
 **Adding or changing text:** every generator takes its text from a `text-*.js` file (or `sky-events.json`) that has the same keys in all five
 languages; change all five together. A new language needs its code in `i18n.js` and a text block in each of those files.
 
