@@ -669,7 +669,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=48">
+  <link rel="stylesheet" href="/css/theme.css?v=49">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -713,6 +713,9 @@
         </a>
 		<a href="holliday_calendar/index.html" class="orbit-button" id="holliday-calendar-btn" title="Календар на празниците">
           <span class="label" id="holiday-calendar-label">ПРАЗНИЦИ</span>
+        </a>
+        <a href="nebeto/" class="orbit-button" id="sky-orbit-btn" title="Небето: Луна, метеори, затъмнения">
+          <span class="label" id="sky-orbit-label">НЕБЕТО</span>
         </a>
         <a href="maps/index.html" class="orbit-button" id="maps-orbit-btn" title="Карти за времето">
           <span class="label" id="maps-orbit-label">КАРТИ</span>
@@ -779,6 +782,8 @@
       magneticOrbitTitle: "Magnetic Storms",
 
       holidayOrbitTitle: "Holiday Calendar",
+      skyOrbitTitle: "The sky: Moon, meteors, eclipses",
+      skyOrbitLabel: "SKY",
 
       mapsOrbitTitle: "Weather Maps",
 
@@ -804,6 +809,8 @@
       magneticOrbitTitle: "Магнитни бури",
 
       holidayOrbitTitle: "Календар на празниците",
+      skyOrbitTitle: "Небето: Луна, метеори, затъмнения",
+      skyOrbitLabel: "НЕБЕТО",
 
       mapsOrbitTitle: "Карти за времето",
 
@@ -831,6 +838,8 @@
       magneticOrbitTitle: "Magnetstürme",
 
       holidayOrbitTitle: "Feiertagskalender",
+      skyOrbitTitle: "Der Himmel: Mond, Meteore, Finsternisse",
+      skyOrbitLabel: "HIMMEL",
 
       mapsOrbitTitle: "Wetterkarten",
 
@@ -858,6 +867,8 @@
       magneticOrbitTitle: "Tempeste magnetiche",
 
       holidayOrbitTitle: "Calendario delle festività",
+      skyOrbitTitle: "Il cielo: Luna, meteore, eclissi",
+      skyOrbitLabel: "CIELO",
 
       mapsOrbitTitle: "Mappe meteorologiche",
 
@@ -885,6 +896,8 @@
       magneticOrbitTitle: "Tormentas magnéticas",
 
       holidayOrbitTitle: "Calendario de días festivos",
+      skyOrbitTitle: "El cielo: Luna, meteoros, eclipses",
+      skyOrbitLabel: "CIELO",
 
       mapsOrbitTitle: "Mapas del tiempo",
 
@@ -918,6 +931,7 @@
       'contacts-orbit-label': 'contactsOrbitLabel',
       'location-orbit-label': 'locationOrbitLabel',
       'maps-orbit-label': 'mapsOrbitLabel',
+      'sky-orbit-label': 'skyOrbitLabel',
       'weather-forecast': 'weatherForecast',
       'contacts-link': 'contactsLink',
       'holiday-calendar-label': 'holidayCalendarLabel'
@@ -937,6 +951,7 @@
       '#magnetic-orbit-btn': 'magneticOrbitTitle',
       '#holliday-calendar-btn': 'holidayOrbitTitle',
       '#maps-orbit-btn': 'mapsOrbitTitle',
+      '#sky-orbit-btn': 'skyOrbitTitle',
       '#contacts-orbit-btn': 'contactsOrbitTitle'
     };
     Object.entries(titles).forEach(([selector, translationKey]) => {
