@@ -25,14 +25,17 @@
     }
   };
 
+  // Time zone: the browser's, or that of the place picked on the forecast page (/js/place-context.js)
+  let zone;
+
   function render() {
     const language = T[document.documentElement.lang] ? document.documentElement.lang : 'en';
     const text = T[language];
     const names = Moon.NAMES[language];
     const now = new Date();
     const state = Moon.state(now);
-    const date = value => value.toLocaleDateString(LOCALES[language], { day: 'numeric', month: 'long', year: 'numeric' });
-    const time = value => value.toLocaleTimeString(LOCALES[language], { hour: '2-digit', minute: '2-digit' });
+    const date = value => value.toLocaleDateString(LOCALES[language], { day: 'numeric', month: 'long', year: 'numeric', timeZone: zone });
+    const time = value => value.toLocaleTimeString(LOCALES[language], { hour: '2-digit', minute: '2-digit', timeZone: zone });
     const full = Moon.nextPhase(now, 2);
     const fresh = Moon.nextPhase(now, 0);
     target.innerHTML = `
@@ -44,6 +47,15 @@
       </div>`;
   }
 
+  function useZone() {
+    if (typeof PlaceContext === 'undefined') return;
+    const place = PlaceContext.get();
+    if (place.isDefault) { zone = undefined; render(); return; }
+    PlaceContext.timeZone(place).then(value => { zone = value; render(); });
+  }
+
   render();
+  useZone();
+  document.addEventListener('placechange', useZone);
   document.addEventListener('change', event => { if (event.target && event.target.id === 'language') render(); });
 })();

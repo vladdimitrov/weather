@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/it/luna/">Calendario lunare</a> › <a href="/it/luna/2026/">2026</a> › aprile</p>
     <h1>Calendario lunare di aprile 2026</h1>
-    <p class="storm-intro">A aprile 2026 la luna piena è il 2 aprile alle 05:11, e la luna nuova è il 17 aprile alle 14:51. Tutti gli orari sono in ora bulgara. La tabella qui sotto mostra la fase della Luna e la parte illuminata per ogni giorno.</p>
+    <p class="storm-intro" id="lunaIntro">A aprile 2026 la luna piena è il 2 aprile alle 05:11, e la luna nuova è il 17 aprile alle 14:51. Tutti gli orari sono in ora bulgara. La tabella qui sotto mostra la fase della Luna e la parte illuminata per ogni giorno.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Fasi lunari a aprile 2026</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Fase</th><th>Data</th><th>Giorno</th><th>Ora</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2026" data-month="3">
           <tr><td>🌕 Luna piena</td><td>2 aprile</td><td>giovedì</td><td>05:11</td></tr>
           <tr><td>🌗 Ultimo quarto</td><td>10 aprile</td><td>venerdì</td><td>07:51</td></tr>
           <tr><td>🌑 Luna nuova</td><td>17 aprile</td><td>venerdì</td><td>14:51</td></tr>
@@ -119,7 +121,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Data</th><th>Giorno</th><th>Fase</th><th>Illuminazione</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr><td>1 aprile</td><td>mercoledì</td><td>🌔 Gibbosa crescente</td><td>99%</td></tr>
           <tr><td>2 aprile</td><td>giovedì</td><td>🌕 Luna piena <span class="holiday-note">alle 05:11</span></td><td>100%</td></tr>
           <tr><td>3 aprile</td><td>venerdì</td><td>🌖 Gibbosa calante</td><td>98%</td></tr>
@@ -153,7 +155,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">L'illuminazione è alle 12:00 ora bulgara. Calcolata con l'algoritmo di Jean Meeus («Astronomical Algorithms»); gli orari delle fasi sono stati verificati con i dati dell'Osservatorio navale degli Stati Uniti (USNO).</p>
+      <p class="storm-updated"><span id="dayNoteTz">L'illuminazione è alle 12:00 ora bulgara.</span> Calcolata con l'algoritmo di Jean Meeus («Astronomical Algorithms»); gli orari delle fasi sono stati verificati con i dati dell'Osservatorio navale degli Stati Uniti (USNO).</p>
     </section>
 
     <p class="city-actions">
@@ -205,5 +207,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

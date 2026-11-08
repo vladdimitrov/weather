@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/luna/">Лунен календар</a> › <a href="/luna/2027/">2027</a> › януари</p>
     <h1>Лунен календар за януари 2027</h1>
-    <p class="storm-intro">През януари 2027 г. пълнолунието е на 22 януари в 14:17 ч., а новолунието е на 7 януари в 22:24 ч. Всички часове са по българско време. Таблицата по-долу показва фазата на Луната и осветената ѝ част за всеки ден.</p>
+    <p class="storm-intro" id="lunaIntro">През януари 2027 г. пълнолунието е на 22 януари в 14:17 ч., а новолунието е на 7 януари в 22:24 ч. Всички часове са по българско време. Таблицата по-долу показва фазата на Луната и осветената ѝ част за всеки ден.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Фази на Луната през януари 2027</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Фаза</th><th>Дата</th><th>Ден</th><th>Час</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2027" data-month="0">
           <tr><td>🌑 Новолуние</td><td>7 януари</td><td>четвъртък</td><td>22:24 ч.</td></tr>
           <tr><td>🌓 Първа четвърт</td><td>15 януари</td><td>петък</td><td>22:34 ч.</td></tr>
           <tr><td>🌕 Пълнолуние</td><td>22 януари</td><td>петък</td><td>14:17 ч.</td></tr>
@@ -119,7 +121,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Дата</th><th>Ден</th><th>Фаза</th><th>Осветеност</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr><td>1 януари</td><td>петък</td><td>🌘 Намаляващ сърп</td><td>34%</td></tr>
           <tr class="weekend"><td>2 януари</td><td>събота</td><td>🌘 Намаляващ сърп</td><td>25%</td></tr>
           <tr class="weekend"><td>3 януари</td><td>неделя</td><td>🌘 Намаляващ сърп</td><td>17%</td></tr>
@@ -154,7 +156,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">Осветеността е в 12:00 ч. българско време. Изчислено по алгоритъма на Жан Меюс („Astronomical Algorithms“); времената на фазите са проверени спрямо данните на Военноморската обсерватория на САЩ (USNO).</p>
+      <p class="storm-updated"><span id="dayNoteTz">Осветеността е в 12:00 ч. българско време.</span> Изчислено по алгоритъма на Жан Меюс („Astronomical Algorithms“); времената на фазите са проверени спрямо данните на Военноморската обсерватория на САЩ (USNO).</p>
     </section>
 
     <p class="city-actions">
@@ -206,5 +208,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

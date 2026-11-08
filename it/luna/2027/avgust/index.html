@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/it/luna/">Calendario lunare</a> › <a href="/it/luna/2027/">2027</a> › agosto</p>
     <h1>Calendario lunare di agosto 2027</h1>
-    <p class="storm-intro">A agosto 2027 la luna piena è il 17 agosto alle 10:28, e la luna nuova è il 2 agosto alle 13:04 e 31 agosto alle 20:40. Tutti gli orari sono in ora bulgara. La tabella qui sotto mostra la fase della Luna e la parte illuminata per ogni giorno.</p>
+    <p class="storm-intro" id="lunaIntro">A agosto 2027 la luna piena è il 17 agosto alle 10:28, e la luna nuova è il 2 agosto alle 13:04 e 31 agosto alle 20:40. Tutti gli orari sono in ora bulgara. La tabella qui sotto mostra la fase della Luna e la parte illuminata per ogni giorno.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Fasi lunari a agosto 2027</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Fase</th><th>Data</th><th>Giorno</th><th>Ora</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2027" data-month="7">
           <tr><td>🌑 Luna nuova</td><td>2 agosto</td><td>lunedì</td><td>13:04</td></tr>
           <tr><td>🌓 Primo quarto</td><td>9 agosto</td><td>lunedì</td><td>07:54</td></tr>
           <tr><td>🌕 Luna piena</td><td>17 agosto</td><td>martedì</td><td>10:28</td></tr>
@@ -120,7 +122,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Data</th><th>Giorno</th><th>Fase</th><th>Illuminazione</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr class="weekend"><td>1 agosto</td><td>domenica</td><td>🌒 Luna crescente (falce)</td><td>2%</td></tr>
           <tr><td>2 agosto</td><td>lunedì</td><td>🌑 Luna nuova <span class="holiday-note">alle 13:04</span></td><td>0%</td></tr>
           <tr><td>3 agosto</td><td>martedì</td><td>🌒 Luna crescente (falce)</td><td>1%</td></tr>
@@ -155,7 +157,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">L'illuminazione è alle 12:00 ora bulgara. Calcolata con l'algoritmo di Jean Meeus («Astronomical Algorithms»); gli orari delle fasi sono stati verificati con i dati dell'Osservatorio navale degli Stati Uniti (USNO).</p>
+      <p class="storm-updated"><span id="dayNoteTz">L'illuminazione è alle 12:00 ora bulgara.</span> Calcolata con l'algoritmo di Jean Meeus («Astronomical Algorithms»); gli orari delle fasi sono stati verificati con i dati dell'Osservatorio navale degli Stati Uniti (USNO).</p>
     </section>
 
     <p class="city-actions">
@@ -207,5 +209,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/es/luna/">Calendario lunar</a> › <a href="/es/luna/2027/">2027</a> › diciembre</p>
     <h1>Calendario lunar de diciembre de 2027</h1>
-    <p class="storm-intro">En diciembre de 2027 la luna llena es el 13 de diciembre a las 18:08, y la luna nueva es el 27 de diciembre a las 22:12. Todas las horas son de Bulgaria. La tabla de abajo muestra la fase de la Luna y su parte iluminada para cada día.</p>
+    <p class="storm-intro" id="lunaIntro">En diciembre de 2027 la luna llena es el 13 de diciembre a las 18:08, y la luna nueva es el 27 de diciembre a las 22:12. Todas las horas son de Bulgaria. La tabla de abajo muestra la fase de la Luna y su parte iluminada para cada día.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Fases de la Luna en diciembre de 2027</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Fase</th><th>Fecha</th><th>Día</th><th>Hora</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2027" data-month="11">
           <tr><td>🌓 Cuarto creciente</td><td>6 de diciembre</td><td>lunes</td><td>07:22</td></tr>
           <tr><td>🌕 Luna llena</td><td>13 de diciembre</td><td>lunes</td><td>18:08</td></tr>
           <tr><td>🌗 Cuarto menguante</td><td>20 de diciembre</td><td>lunes</td><td>11:10</td></tr>
@@ -119,7 +121,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Fecha</th><th>Día</th><th>Fase</th><th>Iluminación</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr><td>1 de diciembre</td><td>miércoles</td><td>🌒 Luna creciente</td><td>10%</td></tr>
           <tr><td>2 de diciembre</td><td>jueves</td><td>🌒 Luna creciente</td><td>17%</td></tr>
           <tr><td>3 de diciembre</td><td>viernes</td><td>🌒 Luna creciente</td><td>25%</td></tr>
@@ -154,7 +156,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">La iluminación corresponde a las 12:00, hora de Bulgaria. Calculado con el algoritmo de Jean Meeus («Astronomical Algorithms»); las horas de las fases se han comprobado con los datos del Observatorio Naval de EE. UU. (USNO).</p>
+      <p class="storm-updated"><span id="dayNoteTz">La iluminación corresponde a las 12:00, hora de Bulgaria.</span> Calculado con el algoritmo de Jean Meeus («Astronomical Algorithms»); las horas de las fases se han comprobado con los datos del Observatorio Naval de EE. UU. (USNO).</p>
     </section>
 
     <p class="city-actions">
@@ -206,5 +208,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

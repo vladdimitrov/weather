@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/de/luna/">Mondkalender</a> › <a href="/de/luna/2027/">2027</a> › August</p>
     <h1>Mondkalender für August 2027</h1>
-    <p class="storm-intro">Im August 2027 ist der Vollmond am 17. August um 10:28 Uhr, und der Neumond ist am 2. August um 13:04 Uhr und 31. August um 20:40 Uhr. Alle Zeiten gelten in bulgarischer Zeit. Die Tabelle unten zeigt für jeden Tag die Mondphase und den beleuchteten Anteil.</p>
+    <p class="storm-intro" id="lunaIntro">Im August 2027 ist der Vollmond am 17. August um 10:28 Uhr, und der Neumond ist am 2. August um 13:04 Uhr und 31. August um 20:40 Uhr. Alle Zeiten gelten in bulgarischer Zeit. Die Tabelle unten zeigt für jeden Tag die Mondphase und den beleuchteten Anteil.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Mondphasen im August 2027</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Phase</th><th>Datum</th><th>Tag</th><th>Uhrzeit</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2027" data-month="7">
           <tr><td>🌑 Neumond</td><td>2. August</td><td>Montag</td><td>13:04 Uhr</td></tr>
           <tr><td>🌓 Erstes Viertel</td><td>9. August</td><td>Montag</td><td>07:54 Uhr</td></tr>
           <tr><td>🌕 Vollmond</td><td>17. August</td><td>Dienstag</td><td>10:28 Uhr</td></tr>
@@ -120,7 +122,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Datum</th><th>Tag</th><th>Phase</th><th>Beleuchtung</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr class="weekend"><td>1. August</td><td>Sonntag</td><td>🌒 Zunehmende Sichel</td><td>2%</td></tr>
           <tr><td>2. August</td><td>Montag</td><td>🌑 Neumond <span class="holiday-note">um 13:04 Uhr</span></td><td>0%</td></tr>
           <tr><td>3. August</td><td>Dienstag</td><td>🌒 Zunehmende Sichel</td><td>1%</td></tr>
@@ -155,7 +157,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">Die Beleuchtung gilt für 12:00 Uhr bulgarischer Zeit. Berechnet nach dem Algorithmus von Jean Meeus („Astronomical Algorithms“); die Phasenzeiten wurden mit den Daten des US Naval Observatory (USNO) abgeglichen.</p>
+      <p class="storm-updated"><span id="dayNoteTz">Die Beleuchtung gilt für 12:00 Uhr bulgarischer Zeit.</span> Berechnet nach dem Algorithmus von Jean Meeus („Astronomical Algorithms“); die Phasenzeiten wurden mit den Daten des US Naval Observatory (USNO) abgeglichen.</p>
     </section>
 
     <p class="city-actions">
@@ -207,5 +209,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

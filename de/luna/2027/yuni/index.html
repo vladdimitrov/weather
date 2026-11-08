@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/de/luna/">Mondkalender</a> › <a href="/de/luna/2027/">2027</a> › Juni</p>
     <h1>Mondkalender für Juni 2027</h1>
-    <p class="storm-intro">Im Juni 2027 ist der Vollmond am 19. Juni um 03:44 Uhr, und der Neumond ist am 4. Juni um 22:40 Uhr. Alle Zeiten gelten in bulgarischer Zeit. Die Tabelle unten zeigt für jeden Tag die Mondphase und den beleuchteten Anteil.</p>
+    <p class="storm-intro" id="lunaIntro">Im Juni 2027 ist der Vollmond am 19. Juni um 03:44 Uhr, und der Neumond ist am 4. Juni um 22:40 Uhr. Alle Zeiten gelten in bulgarischer Zeit. Die Tabelle unten zeigt für jeden Tag die Mondphase und den beleuchteten Anteil.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Mondphasen im Juni 2027</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Phase</th><th>Datum</th><th>Tag</th><th>Uhrzeit</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2027" data-month="5">
           <tr><td>🌑 Neumond</td><td>4. Juni</td><td>Freitag</td><td>22:40 Uhr</td></tr>
           <tr><td>🌓 Erstes Viertel</td><td>11. Juni</td><td>Freitag</td><td>13:55 Uhr</td></tr>
           <tr><td>🌕 Vollmond</td><td>19. Juni</td><td>Samstag</td><td>03:44 Uhr</td></tr>
@@ -119,7 +121,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Datum</th><th>Tag</th><th>Phase</th><th>Beleuchtung</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr><td>1. Juni</td><td>Dienstag</td><td>🌘 Abnehmende Sichel</td><td>15%</td></tr>
           <tr><td>2. Juni</td><td>Mittwoch</td><td>🌘 Abnehmende Sichel</td><td>8%</td></tr>
           <tr><td>3. Juni</td><td>Donnerstag</td><td>🌒 Zunehmende Sichel</td><td>3%</td></tr>
@@ -153,7 +155,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">Die Beleuchtung gilt für 12:00 Uhr bulgarischer Zeit. Berechnet nach dem Algorithmus von Jean Meeus („Astronomical Algorithms“); die Phasenzeiten wurden mit den Daten des US Naval Observatory (USNO) abgeglichen.</p>
+      <p class="storm-updated"><span id="dayNoteTz">Die Beleuchtung gilt für 12:00 Uhr bulgarischer Zeit.</span> Berechnet nach dem Algorithmus von Jean Meeus („Astronomical Algorithms“); die Phasenzeiten wurden mit den Daten des US Naval Observatory (USNO) abgeglichen.</p>
     </section>
 
     <p class="city-actions">
@@ -205,5 +207,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/en/luna/">Moon calendar</a> › <a href="/en/luna/2026/">2026</a> › May</p>
     <h1>Moon calendar for May 2026</h1>
-    <p class="storm-intro">In May 2026 the full moon is on 1 May at 20:23 and 31 May at 11:45 (a "blue moon" – the second full moon of the month), and the new moon is on 16 May at 23:00. All times are Bulgarian time. The table below shows the phase of the Moon and its illuminated part for every day.</p>
+    <p class="storm-intro" id="lunaIntro">In May 2026 the full moon is on 1 May at 20:23 and 31 May at 11:45 (a "blue moon" – the second full moon of the month), and the new moon is on 16 May at 23:00. All times are Bulgarian time. The table below shows the phase of the Moon and its illuminated part for every day.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Moon phases in May 2026</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Phase</th><th>Date</th><th>Day</th><th>Time</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2026" data-month="4">
           <tr><td>🌕 Full moon</td><td>1 May</td><td>Friday</td><td>20:23</td></tr>
           <tr><td>🌗 Last quarter</td><td>10 May</td><td>Sunday</td><td>00:10</td></tr>
           <tr><td>🌑 New moon</td><td>16 May</td><td>Saturday</td><td>23:00</td></tr>
@@ -120,7 +122,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Date</th><th>Day</th><th>Phase</th><th>Illumination</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr><td>1 May</td><td>Friday</td><td>🌕 Full moon <span class="holiday-note">at 20:23</span></td><td>100%</td></tr>
           <tr class="weekend"><td>2 May</td><td>Saturday</td><td>🌖 Waning gibbous</td><td>100%</td></tr>
           <tr class="weekend"><td>3 May</td><td>Sunday</td><td>🌖 Waning gibbous</td><td>98%</td></tr>
@@ -155,7 +157,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">Illumination is at 12:00 Bulgarian time. Calculated with the algorithm of Jean Meeus ("Astronomical Algorithms"); the phase times were checked against data from the US Naval Observatory (USNO).</p>
+      <p class="storm-updated"><span id="dayNoteTz">Illumination is at 12:00 Bulgarian time.</span> Calculated with the algorithm of Jean Meeus ("Astronomical Algorithms"); the phase times were checked against data from the US Naval Observatory (USNO).</p>
     </section>
 
     <p class="city-actions">
@@ -207,5 +209,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

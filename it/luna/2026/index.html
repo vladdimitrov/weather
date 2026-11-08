@@ -91,14 +91,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/it/luna/">Calendario lunare</a> › 2026</p>
     <h1>Calendario lunare 2026: lune piene e lune nuove</h1>
-    <p class="storm-intro">Nel 2026 ci sono 13 lune piene, e la seconda luna piena del 31 maggio è una «luna blu». La prima luna piena è il 3 gennaio e l'ultima il 24 dicembre. Scegli un mese per le fasi giorno per giorno. Gli orari sono in ora bulgara.</p>
+    <p class="storm-intro" id="lunaIntro">Nel 2026 ci sono 13 lune piene, e la seconda luna piena del 31 maggio è una «luna blu». La prima luna piena è il 3 gennaio e l'ultima il 24 dicembre. Scegli un mese per le fasi giorno per giorno. Gli orari sono in ora bulgara.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Fasi lunari del 2026 per mese</h2>
       <div class="table-scroll">
       <table class="kp-table">
         <thead><tr><th>Mese</th><th>Luna nuova</th><th>Primo quarto</th><th>Luna piena</th><th>Ultimo quarto</th></tr></thead>
-        <tbody>
+        <tbody id="yearBody" data-year="2026">
           <tr><td><a href="/it/luna/2026/yanuari/">gennaio</a></td><td>18 gen, 21:52</td><td>26 gen, 06:47</td><td>3 gen, 12:02</td><td>10 gen, 17:48</td></tr>
           <tr><td><a href="/it/luna/2026/fevruari/">febbraio</a></td><td>17 feb, 14:01</td><td>24 feb, 14:27</td><td>2 feb, 00:09</td><td>9 feb, 14:43</td></tr>
           <tr><td><a href="/it/luna/2026/mart/">marzo</a></td><td>19 mar, 03:23</td><td>25 mar, 21:17</td><td>3 mar, 13:37</td><td>11 mar, 11:38</td></tr>
@@ -137,5 +139,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>
