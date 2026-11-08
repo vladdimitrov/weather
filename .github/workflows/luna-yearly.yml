@@ -1,0 +1,52 @@
+name: Moon calendar for the new year
+
+# Every 1 December: builds the /luna/ pages for the coming year and the one after it
+# (.github/scripts/build-luna.js), adds them to sitemap.xml and opens a pull request.
+# If GitHub does not allow Actions to open pull requests, it opens an issue instead,
+# so the new year is never forgotten. Can also be run by hand ("Run workflow").
+on:
+  schedule:
+    - cron: '0 6 1 12 *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  luna:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check the moon algorithm
+        run: node .github/scripts/test-moon.js
+      - name: Build the pages
+        run: |
+          YEAR=$(( $(date +%Y) + 1 ))
+          echo "YEAR=$YEAR" >> "$GITHUB_ENV"
+          node .github/scripts/build-luna.js "$YEAR" --sitemap
+          node .github/scripts/check-site.js
+      - name: Open a pull request
+        run: |
+          if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
+            echo "Nothing changed."; exit 0
+          fi
+          BRANCH="auto/luna-$YEAR"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add -A
+          git commit -m "Moon calendar $YEAR and $(( YEAR + 1 ))"
+          git push origin "$BRANCH"
+          gh pr create --base main --head "$BRANCH" \
+            --title "Moon calendar $YEAR and $(( YEAR + 1 ))" \
+            --body "Built by the yearly workflow (build-luna.js). Check the pages and merge." \
+          || gh issue create \
+            --title "Moon calendar $YEAR: branch $BRANCH is ready" \
+            --body "The workflow built the /luna/ pages for $YEAR and $(( YEAR + 1 )) on branch \`$BRANCH\` but could not open a pull request (enable \"Allow GitHub Actions to create and approve pull requests\" in Settings → Actions). Open the pull request and merge it."

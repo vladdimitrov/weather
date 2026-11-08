@@ -28,6 +28,7 @@ Static site hosted on **GitHub Pages**.
 | `vremeto/`, `vremeto/<city>/`, `praznici/` | `build-pages.js`: Bulgarian hub, 35 city pages and holidays page |
 | `contacts/` | `build-pages.js`: data sources page (text in `sources-text.js`, 5 languages) |
 | `europe/`, `europe/<country>/`, `europe/<country>/<city>/` | `build-europe.js`: English pages, data in `europe-data.js` |
+| `luna/`, `luna/<year>/`, `luna/<year>/<month>/` | `build-luna.js`: Moon calendar for this and next year; phases from `js/moon.js` |
 
 Change the script or its data file and run it again; changes made directly in the generated HTML are overwritten.
 
@@ -41,6 +42,8 @@ All scripts are in `.github/scripts/` and are run from the repository root with 
 |--------|--------------|
 | `node .github/scripts/build-pages.js` | Writes the Bulgarian city, hub, holiday and sources pages |
 | `node .github/scripts/build-europe.js [--sitemap]` | Writes the Europe pages; `--sitemap` adds missing URLs to `sitemap.xml` |
+| `node .github/scripts/build-luna.js [year] [--sitemap]` | Writes the Moon calendar pages (the year and the next one) |
+| `node .github/scripts/test-moon.js` | Checks `js/moon.js` against USNO phase times (`moon-reference.json`) |
 | `node .github/scripts/build-climate.js` | Refreshes `climate.json` (monthly climate from the ERA5 archive); rarely needed |
 | `node .github/scripts/build-destinations.js [GR,CZ]` | Refreshes `js/destinations.json`, the one-tap city buttons under the search |
 | `node .github/scripts/check-site.js` | Checks for missing local files and JavaScript/JSON syntax errors |
@@ -51,6 +54,7 @@ Static assets use a version in the URL (`theme.css?v=N`). When a stylesheet or s
 ## GitHub Actions
 
 - **Site check** (`check.yml`): runs `check-site.js` on every pull request and push to `main`.
+- **Moon calendar** (`luna-yearly.yml`): on 1 December builds the next year's `/luna/` pages and opens a pull request (an issue if Actions may not open PRs). Pull requests opened by Actions do not start the Site check; run it by hand.
 - **IndexNow** (`indexnow.yml`): after pushes to `main` that change HTML or the sitemap, waits for Pages to publish and notifies Bing and others. Do not delete the key file `fd0de53b5adf000adbdcd0dff74d4364.txt` in the root: it proves the site is ours.
 
 ## Data sources
