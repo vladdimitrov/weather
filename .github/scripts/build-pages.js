@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 48, mobileNav: 11, cityForecast: 6, moon: 2, lunaToday: 2 };
+const VERSION = { theme: 48, mobileNav: 12, cityForecast: 6, moon: 2, lunaToday: 2, auroraKp: 1 };
 
 const CITIES = [
   ['sofia', 'София', 42.6977, 23.3219],
@@ -131,7 +131,7 @@ const footer = () => `  <footer style="background: var(--card-bg); border-top: 1
     </p>
   </footer>`;
 
-const NAV_EN = { home: 'Home', weather: 'Weather forecast', maps: 'Weather maps', holidays: 'Holiday calendar', storms: 'Geomagnetic storms', sources: 'Data sources', about: 'About', privacy: 'Privacy' };
+const NAV_EN = { home: 'Home', weather: 'Weather forecast', maps: 'Weather maps', holidays: 'Holiday calendar', storms: 'Geomagnetic storms', sky: 'The sky', sources: 'Data sources', about: 'About', privacy: 'Privacy' };
 
 function page({ url, title, description, body, scripts = '', jsonLd = '', lang = 'bg' }) {
   const en = lang === 'en';
@@ -182,6 +182,7 @@ ${en ? "      // English page: the language stays English (see language-selector
       <a href="/maps/" class="nav-link" data-nav="maps">${nav('maps', 'Карти за времето')}</a>
       <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">${nav('holidays', 'Календар на празниците')}</a>
       <a href="/magnitni-buri/" class="nav-link" data-nav="storms">${nav('storms', 'Магнитни бури')}</a>
+      <a href="/nebeto/" class="nav-link" data-nav="sky">${nav('sky', 'Небето')}</a>
       <a href="/contacts/" class="nav-link" data-nav="sources">${nav('sources', 'Източници на данни')}</a>
     </div>
     <div class="header-selectors" id="selectors-container">
@@ -247,6 +248,7 @@ function cityPage(city) {
     <p class="city-actions">
       <a class="btn" href="/weather/?${params}">Подробна прогноза по часове →</a>
       <a class="btn" href="/magnitni-buri/">Магнитни бури днес →</a>
+      <a class="btn" href="/luna/">Лунен календар →</a>
     </p>
 
 ${sunSection(city, where)}

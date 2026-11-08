@@ -196,6 +196,7 @@ ${dayRows}
         <a href="/luna/" class="recent-place">Луната днес</a>
         <a href="/vremeto/" class="recent-place">Времето в България</a>
         <a href="/magnitni-buri/" class="recent-place">Магнитни бури днес</a>
+        <a href="/nebeto/" class="recent-place">Небето: метеори, затъмнения, суперлуни</a>
       </div>
     </section>`
   });
@@ -272,6 +273,7 @@ ${years.map(year => `
       <div class="city-links">
         <a href="/vremeto/" class="recent-place">Времето в България</a>
         <a href="/magnitni-buri/" class="recent-place">Магнитни бури днес</a>
+        <a href="/nebeto/" class="recent-place">Небето: метеори, затъмнения, суперлуни</a>
         <a href="/praznici/" class="recent-place">Официални празници</a>
       </div>
     </section>`,

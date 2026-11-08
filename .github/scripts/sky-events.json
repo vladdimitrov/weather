@@ -1,0 +1,143 @@
+{
+  "_about": "Astronomical events for /nebeto/ (build-nebeto.js). Maintained by hand: every event has a source. Times are UTC (ISO). Meteor showers: IMO Meteor Shower Calendar. Eclipses: only those visible from Bulgaria. Supermoons: the full moon is computed by js/moon.js (checked against USNO); the 'supermoon' label and the distance come from the cited source. Add the next year's events every autumn (see README).",
+  "updated": "2026-11-08",
+  "meteors": [
+    {
+      "name": "Леониди",
+      "max": "2026-11-17T23:45:00Z",
+      "active": "6–30 ноември",
+      "zhr": "около 15",
+      "note": "Максимумът по IMO е на 17 ноември в 23:45 ч. UTC; по друга прогноза (Маслов) е по-рано същия ден, около 16 ч. UTC.",
+      "source": "IMO Meteor Shower Calendar 2026",
+      "url": "https://www.imo.net/files/meteor-shower/cal2026.pdf"
+    },
+    {
+      "name": "Геминиди",
+      "max": "2026-12-14T14:00:00Z",
+      "active": "4–20 декември",
+      "zhr": "150",
+      "note": "IMO го описва като най-добрия и най-надежден от големите годишни потоци, с широк максимум.",
+      "source": "IMO Meteor Shower Calendar 2026",
+      "url": "https://www.imo.net/files/meteor-shower/cal2026.pdf"
+    },
+    {
+      "name": "Урсиди",
+      "max": "2026-12-22T12:00:00Z",
+      "dateOnly": true,
+      "active": "17–26 декември",
+      "zhr": "около 10",
+      "note": "Слаб поток.",
+      "source": "IMO Meteor Shower Calendar 2026",
+      "url": "https://www.imo.net/files/meteor-shower/cal2026.pdf"
+    },
+    {
+      "name": "Квадрантиди",
+      "max": "2027-01-04T03:25:00Z",
+      "active": "28 декември – 12 януари",
+      "zhr": "около 80 (60–200)",
+      "note": "Максимумът е на 4 януари в 03:25 ч. UTC.",
+      "source": "IMO Meteor Shower Calendar 2027",
+      "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
+    },
+    {
+      "name": "Лириди",
+      "max": "2027-04-23T01:40:00Z",
+      "active": "14–30 април",
+      "zhr": "около 18",
+      "note": "IMO отбелязва, че активността може да се променя – понякога до ZHR 90.",
+      "source": "IMO Meteor Shower Calendar 2027",
+      "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
+    },
+    {
+      "name": "Ета-Аквариди",
+      "max": "2027-05-06T09:00:00Z",
+      "active": "19 април – 28 май",
+      "zhr": "около 50 (40–80)",
+      "note": "Радиантът е близо до небесния екватор, затова от България е ниско над хоризонта преди зазоряване.",
+      "source": "IMO Meteor Shower Calendar 2027",
+      "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
+    },
+    {
+      "name": "Персеиди",
+      "max": "2027-08-13T09:00:00Z",
+      "active": "17 юли – 24 август",
+      "zhr": "над 110",
+      "note": "Максимумът е между 08 и 10 ч. UTC на 13 август.",
+      "source": "IMO Meteor Shower Calendar 2027",
+      "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
+    },
+    {
+      "name": "Ориониди",
+      "max": "2027-10-22T12:00:00Z",
+      "dateOnly": true,
+      "active": "2 октомври – 7 ноември",
+      "zhr": "около 20",
+      "note": "IMO: максимумът е широк, около денонощие.",
+      "source": "IMO Meteor Shower Calendar 2027",
+      "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
+    },
+    {
+      "name": "Леониди",
+      "max": "2027-11-18T06:00:00Z",
+      "active": "6–30 ноември",
+      "zhr": "над 15",
+      "note": "Максимумът е на 18 ноември в 06 ч. UTC.",
+      "source": "IMO Meteor Shower Calendar 2027",
+      "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
+    },
+    {
+      "name": "Геминиди",
+      "max": "2027-12-14T20:00:00Z",
+      "active": "4–20 декември",
+      "zhr": "150",
+      "note": "Максимумът е около 20 ч. UTC на 14 декември, т.е. в нощта към 15 декември по българско време.",
+      "source": "IMO Meteor Shower Calendar 2027",
+      "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
+    },
+    {
+      "name": "Урсиди",
+      "max": "2027-12-23T04:00:00Z",
+      "active": "17–26 декември",
+      "zhr": "около 10",
+      "note": "IMO: понякога активността надхвърля обичайната (до ZHR 50).",
+      "source": "IMO Meteor Shower Calendar 2027",
+      "url": "https://www.imo.net/files/meteor-shower/cal2027.pdf"
+    }
+  ],
+  "eclipses": [
+    {
+      "name": "Частично слънчево затъмнение",
+      "max": "2027-08-02T09:25:00Z",
+      "visible": "от цяла България",
+      "text": "В София затъмнението започва в 11:18 ч., максимумът е в 12:25 ч. (закрити са около 53% от диска на Слънцето, степен на затъмнението 0,67) и свършва в 13:41 ч. Пълно е в ивица, която минава през Гибралтар и Северна Африка. Никога не гледайте Слънцето без специални очила за затъмнение.",
+      "source": "time.now – затъмнения в София (изчислени данни)",
+      "url": "https://time.now/sofia/eclipses/"
+    }
+  ],
+  "supermoons": [
+    {
+      "full": "2026-11-24T14:53:00Z",
+      "distance": "около 360 800 км",
+      "source": "Space.com",
+      "url": "https://www.space.com/supermoon-what-is-it-2026"
+    },
+    {
+      "full": "2026-12-24T01:28:00Z",
+      "distance": "около 356 700 км",
+      "source": "icalendrier.fr",
+      "url": "https://icalendrier.fr/lune/superlune"
+    },
+    {
+      "full": "2027-01-22T12:17:00Z",
+      "distance": "около 357 600 км",
+      "source": "Star Walk",
+      "url": "https://starwalk.space/en/news/what-is-supermoon"
+    },
+    {
+      "full": "2027-02-20T23:23:00Z",
+      "distance": "",
+      "source": "The Old Farmer's Almanac",
+      "url": "https://cdn.almanac.com/what-supermoon"
+    }
+  ]
+}
