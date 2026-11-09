@@ -240,7 +240,7 @@ ${(FOOTER_TEXT = { about: NAV.about, privacy: NAV.privacy }, LOGO = I18N.LOGO_AL
 
 <script src="/js/mobile-nav.js?v=${VERSION.mobileNav}" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
-<script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/background-selector.js?v=3" defer></script>
 ${scripts}</body>
 </html>
 `;
