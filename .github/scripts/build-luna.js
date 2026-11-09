@@ -177,7 +177,7 @@ function monthPage(lang, year, month, years) {
     <h1>${T.monthH1(name, year)}</h1>
     <p class="storm-intro" id="lunaIntro">${T.monthIntro({ name, year, full, fresh, blue: blue.length > 0 })}</p>
     <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
-    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px auto 14px;max-width:900px;padding:0 16px;text-align:center"></p>
 
     <section class="info-card">
       <h2>${T.phasesH(name, year)}</h2>
@@ -251,7 +251,7 @@ function yearPage(lang, year, years) {
     <h1>${T.yearH1(year)}</h1>
     <p class="storm-intro" id="lunaIntro">${T.yearIntro({ year, n: fullMoons.length, blue: blue.length ? fullDate(lang, blue[0].time) : '', first: fullDate(lang, fullMoons[0].time), last: fullDate(lang, fullMoons[fullMoons.length - 1].time) })}</p>
     <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
-    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px auto 14px;max-width:900px;padding:0 16px;text-align:center"></p>
 
     <section class="info-card">
       <h2>${T.yearH2(year)}</h2>
@@ -287,7 +287,7 @@ function hubPage(lang, years, now) {
     jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.cal, '/luna/']]),
     body: `    <h1>${T.hubH1}</h1>
     <p class="storm-intro">${T.hubIntro}</p>
-    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px auto 14px;max-width:900px;padding:0 16px;text-align:center"></p>
 
     ${todayBlock(lang, now)}
 

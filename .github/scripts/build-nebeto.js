@@ -99,7 +99,7 @@ function nebetoPage(lang) {
     jsonLd: structured,
     body: `    <h1>${T.h1}<span id="skyH1Place"> – ${new Intl.DisplayNames([I18N.LOCALE[lang]], { type: 'region' }).of('BG')}</span></h1>
     <p class="storm-intro">${T.intro}</p>
-    <p id="skyPlace" class="storm-updated" style="margin:6px 0 14px"></p>
+    <p id="skyPlace" class="storm-updated" style="margin:6px auto 14px;max-width:900px;padding:0 16px;text-align:center"></p>
     <p class="city-actions"><a class="btn" href="${L(lang, '/luna/')}">${T.calBtn}</a> <a class="btn" href="/magnitni-buri/">${T.stormsBtn}</a></p>
 
     <section class="info-card" id="meteorni-potoci">
