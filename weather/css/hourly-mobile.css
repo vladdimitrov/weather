@@ -1,0 +1,95 @@
+/* Hourly forecast on a phone: a seven-column table did not fit (precipitation
+   probability and wind were cut off). Each hour becomes a compact card:
+   time, icon and temperature on the first line, cloudiness, rain, chance of
+   rain and wind on the second. Screen only; the printed table is unchanged. */
+@media screen and (max-width: 640px) {
+  #hourlyTableBlock {
+    overflow-x: hidden !important;
+  }
+
+  #hourlyTable,
+  #hourlyTable tbody {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* the column names are replaced by the units next to the values */
+  #hourlyTable thead {
+    display: none !important;
+  }
+
+  #hourlyTable tbody tr {
+    display: grid !important;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    row-gap: 6px;
+    margin: 0 0 8px;
+    padding: 8px 6px 6px;
+    background: rgba(10, 25, 60, 0.55) !important;
+    border: 1px solid rgba(255, 215, 0, 0.35) !important;
+    border-radius: 12px;
+  }
+
+  #hourlyTable tbody td {
+    display: block !important;
+    box-sizing: border-box;
+    min-width: 0;
+    padding: 0 !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  /* first line */
+  #hourlyTable tbody td:nth-child(1) {
+    grid-column: span 3;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  #hourlyTable tbody td:nth-child(2) {
+    grid-column: span 5;
+  }
+
+  #hourlyTable tbody td:nth-child(3) {
+    grid-column: span 4;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  #hourlyTable tbody td:nth-child(3)::after {
+    content: "°";
+  }
+
+  /* second line: four small values with their units */
+  #hourlyTable tbody td:nth-child(n+4) {
+    grid-column: span 3;
+    font-size: 0.82rem !important;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0.92;
+  }
+
+  #hourlyTable tbody td:nth-child(4)::before { content: "☁ "; }
+  #hourlyTable tbody td:nth-child(4)::after { content: "%"; }
+  #hourlyTable tbody td:nth-child(5)::before { content: "💧 "; }
+  #hourlyTable tbody td:nth-child(5)::after { content: " mm"; }
+  #hourlyTable tbody td:nth-child(6)::before { content: "☔ "; }
+  #hourlyTable tbody td:nth-child(7)::before { content: "💨 "; }
+  #hourlyTable tbody td:nth-child(7)::after { content: " km/h"; }
+
+  /* the bar of the chance of rain is for the printed table */
+  #hourlyTable .precip-prob-bar-container {
+    display: none !important;
+  }
+
+  /* warning badges under the icon take the whole line */
+  #hourlyTable tbody td:nth-child(2) .wx-warnings {
+    justify-content: flex-start;
+  }
+}
