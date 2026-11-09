@@ -172,10 +172,10 @@ function renderDayCards() {
       <span class="kp-day-name">${name}</span>
       <span class="city-day-date">${shortDate}</span>
       <span class="dc-icons">${icons}</span>
-      ${dayWarningsHtml(daily, i)}
       <span class="city-day-temp dc-temp">${Math.round(daily.temperature_2m_min[i])}° / ${Math.round(daily.temperature_2m_max[i])}°</span>
       ${rain}${wind}
       <span class="dc-sun">${sunMoon}</span>
+      ${dayWarningsHtml(daily, i)}
       <span class="city-day-hourly">${hint}</span>
     </button>`;
   }).join("");
