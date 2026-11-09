@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/it/luna/">Calendario lunare</a> › <a href="/it/luna/2026/">2026</a> › maggio</p>
     <h1>Calendario lunare di maggio 2026</h1>
-    <p class="storm-intro">A maggio 2026 la luna piena è il 1 maggio alle 20:23 e 31 maggio alle 11:45 (una «luna blu»: la seconda luna piena del mese), e la luna nuova è il 16 maggio alle 23:00. Tutti gli orari sono in ora bulgara. La tabella qui sotto mostra la fase della Luna e la parte illuminata per ogni giorno.</p>
+    <p class="storm-intro" id="lunaIntro">A maggio 2026 la luna piena è il 1 maggio alle 20:23 e 31 maggio alle 11:45 (una «luna blu»: la seconda luna piena del mese), e la luna nuova è il 16 maggio alle 23:00. Tutti gli orari sono in ora bulgara. La tabella qui sotto mostra la fase della Luna e la parte illuminata per ogni giorno.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Fasi lunari a maggio 2026</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Fase</th><th>Data</th><th>Giorno</th><th>Ora</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2026" data-month="4">
           <tr><td>🌕 Luna piena</td><td>1 maggio</td><td>venerdì</td><td>20:23</td></tr>
           <tr><td>🌗 Ultimo quarto</td><td>10 maggio</td><td>domenica</td><td>00:10</td></tr>
           <tr><td>🌑 Luna nuova</td><td>16 maggio</td><td>sabato</td><td>23:00</td></tr>
@@ -120,7 +122,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Data</th><th>Giorno</th><th>Fase</th><th>Illuminazione</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr><td>1 maggio</td><td>venerdì</td><td>🌕 Luna piena <span class="holiday-note">alle 20:23</span></td><td>100%</td></tr>
           <tr class="weekend"><td>2 maggio</td><td>sabato</td><td>🌖 Gibbosa calante</td><td>100%</td></tr>
           <tr class="weekend"><td>3 maggio</td><td>domenica</td><td>🌖 Gibbosa calante</td><td>98%</td></tr>
@@ -155,7 +157,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">L'illuminazione è alle 12:00 ora bulgara. Calcolata con l'algoritmo di Jean Meeus («Astronomical Algorithms»); gli orari delle fasi sono stati verificati con i dati dell'Osservatorio navale degli Stati Uniti (USNO).</p>
+      <p class="storm-updated"><span id="dayNoteTz">L'illuminazione è alle 12:00 ora bulgara.</span> Calcolata con l'algoritmo di Jean Meeus («Astronomical Algorithms»); gli orari delle fasi sono stati verificati con i dati dell'Osservatorio navale degli Stati Uniti (USNO).</p>
     </section>
 
     <p class="city-actions">
@@ -207,5 +209,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

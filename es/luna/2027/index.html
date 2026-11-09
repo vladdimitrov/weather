@@ -91,14 +91,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/es/luna/">Calendario lunar</a> › 2027</p>
     <h1>Calendario lunar 2027: lunas llenas y lunas nuevas</h1>
-    <p class="storm-intro">En 2027 hay 12 lunas llenas. La primera luna llena es el 22 de enero y la última el 13 de diciembre. Elige un mes para ver las fases día a día. Las horas son de Bulgaria.</p>
+    <p class="storm-intro" id="lunaIntro">En 2027 hay 12 lunas llenas. La primera luna llena es el 22 de enero y la última el 13 de diciembre. Elige un mes para ver las fases día a día. Las horas son de Bulgaria.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Fases de la Luna en 2027 por meses</h2>
       <div class="table-scroll">
       <table class="kp-table">
         <thead><tr><th>Mes</th><th>Luna nueva</th><th>Cuarto creciente</th><th>Luna llena</th><th>Cuarto menguante</th></tr></thead>
-        <tbody>
+        <tbody id="yearBody" data-year="2027">
           <tr><td><a href="/es/luna/2027/yanuari/">enero</a></td><td>7 ene, 22:24</td><td>15 ene, 22:34</td><td>22 ene, 14:17</td><td>29 ene, 12:55</td></tr>
           <tr><td><a href="/es/luna/2027/fevruari/">febrero</a></td><td>6 feb, 17:56</td><td>14 feb, 09:58</td><td>21 feb, 01:23</td><td>28 feb, 07:16</td></tr>
           <tr><td><a href="/es/luna/2027/mart/">marzo</a></td><td>8 mar, 11:29</td><td>15 mar, 18:25</td><td>22 mar, 12:43</td><td>30 mar, 03:53</td></tr>
@@ -137,5 +139,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

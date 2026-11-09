@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/de/luna/">Mondkalender</a> › <a href="/de/luna/2027/">2027</a> › Januar</p>
     <h1>Mondkalender für Januar 2027</h1>
-    <p class="storm-intro">Im Januar 2027 ist der Vollmond am 22. Januar um 14:17 Uhr, und der Neumond ist am 7. Januar um 22:24 Uhr. Alle Zeiten gelten in bulgarischer Zeit. Die Tabelle unten zeigt für jeden Tag die Mondphase und den beleuchteten Anteil.</p>
+    <p class="storm-intro" id="lunaIntro">Im Januar 2027 ist der Vollmond am 22. Januar um 14:17 Uhr, und der Neumond ist am 7. Januar um 22:24 Uhr. Alle Zeiten gelten in bulgarischer Zeit. Die Tabelle unten zeigt für jeden Tag die Mondphase und den beleuchteten Anteil.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Mondphasen im Januar 2027</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Phase</th><th>Datum</th><th>Tag</th><th>Uhrzeit</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2027" data-month="0">
           <tr><td>🌑 Neumond</td><td>7. Januar</td><td>Donnerstag</td><td>22:24 Uhr</td></tr>
           <tr><td>🌓 Erstes Viertel</td><td>15. Januar</td><td>Freitag</td><td>22:34 Uhr</td></tr>
           <tr><td>🌕 Vollmond</td><td>22. Januar</td><td>Freitag</td><td>14:17 Uhr</td></tr>
@@ -119,7 +121,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Datum</th><th>Tag</th><th>Phase</th><th>Beleuchtung</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr><td>1. Januar</td><td>Freitag</td><td>🌘 Abnehmende Sichel</td><td>34%</td></tr>
           <tr class="weekend"><td>2. Januar</td><td>Samstag</td><td>🌘 Abnehmende Sichel</td><td>25%</td></tr>
           <tr class="weekend"><td>3. Januar</td><td>Sonntag</td><td>🌘 Abnehmende Sichel</td><td>17%</td></tr>
@@ -154,7 +156,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">Die Beleuchtung gilt für 12:00 Uhr bulgarischer Zeit. Berechnet nach dem Algorithmus von Jean Meeus („Astronomical Algorithms“); die Phasenzeiten wurden mit den Daten des US Naval Observatory (USNO) abgeglichen.</p>
+      <p class="storm-updated"><span id="dayNoteTz">Die Beleuchtung gilt für 12:00 Uhr bulgarischer Zeit.</span> Berechnet nach dem Algorithmus von Jean Meeus („Astronomical Algorithms“); die Phasenzeiten wurden mit den Daten des US Naval Observatory (USNO) abgeglichen.</p>
     </section>
 
     <p class="city-actions">
@@ -206,5 +208,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

@@ -91,14 +91,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/luna/">Лунен календар</a> › 2026</p>
     <h1>Лунен календар 2026: пълнолуния и новолуния</h1>
-    <p class="storm-intro">През 2026 г. има 13 пълнолуния, като второто пълнолуние на 31 май е „синя луна“. Първото пълнолуние е на 3 януари, а последното – на 24 декември. Изберете месец за фазите ден по ден. Часовете са по българско време.</p>
+    <p class="storm-intro" id="lunaIntro">През 2026 г. има 13 пълнолуния, като второто пълнолуние на 31 май е „синя луна“. Първото пълнолуние е на 3 януари, а последното – на 24 декември. Изберете месец за фазите ден по ден. Часовете са по българско време.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Фазите на Луната през 2026 по месеци</h2>
       <div class="table-scroll">
       <table class="kp-table">
         <thead><tr><th>Месец</th><th>Новолуние</th><th>Първа четвърт</th><th>Пълнолуние</th><th>Последна четвърт</th></tr></thead>
-        <tbody>
+        <tbody id="yearBody" data-year="2026">
           <tr><td><a href="/luna/2026/yanuari/">януари</a></td><td>18 01, 21:52</td><td>26 01, 06:47</td><td>3 01, 12:02</td><td>10 01, 17:48</td></tr>
           <tr><td><a href="/luna/2026/fevruari/">февруари</a></td><td>17 02, 14:01</td><td>24 02, 14:27</td><td>2 02, 00:09</td><td>9 02, 14:43</td></tr>
           <tr><td><a href="/luna/2026/mart/">март</a></td><td>19 03, 03:23</td><td>25 03, 21:17</td><td>3 03, 13:37</td><td>11 03, 11:38</td></tr>
@@ -137,5 +139,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

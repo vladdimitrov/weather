@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/en/luna/">Moon calendar</a> › <a href="/en/luna/2026/">2026</a> › March</p>
     <h1>Moon calendar for March 2026</h1>
-    <p class="storm-intro">In March 2026 the full moon is on 3 March at 13:37, and the new moon is on 19 March at 03:23. All times are Bulgarian time. The table below shows the phase of the Moon and its illuminated part for every day.</p>
+    <p class="storm-intro" id="lunaIntro">In March 2026 the full moon is on 3 March at 13:37, and the new moon is on 19 March at 03:23. All times are Bulgarian time. The table below shows the phase of the Moon and its illuminated part for every day.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Moon phases in March 2026</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Phase</th><th>Date</th><th>Day</th><th>Time</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2026" data-month="2">
           <tr><td>🌕 Full moon</td><td>3 March</td><td>Tuesday</td><td>13:37</td></tr>
           <tr><td>🌗 Last quarter</td><td>11 March</td><td>Wednesday</td><td>11:38</td></tr>
           <tr><td>🌑 New moon</td><td>19 March</td><td>Thursday</td><td>03:23</td></tr>
@@ -119,7 +121,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Date</th><th>Day</th><th>Phase</th><th>Illumination</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr class="weekend"><td>1 March</td><td>Sunday</td><td>🌔 Waxing gibbous</td><td>95%</td></tr>
           <tr><td>2 March</td><td>Monday</td><td>🌔 Waxing gibbous</td><td>99%</td></tr>
           <tr><td>3 March</td><td>Tuesday</td><td>🌕 Full moon <span class="holiday-note">at 13:37</span></td><td>100%</td></tr>
@@ -154,7 +156,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">Illumination is at 12:00 Bulgarian time. Calculated with the algorithm of Jean Meeus ("Astronomical Algorithms"); the phase times were checked against data from the US Naval Observatory (USNO).</p>
+      <p class="storm-updated"><span id="dayNoteTz">Illumination is at 12:00 Bulgarian time.</span> Calculated with the algorithm of Jean Meeus ("Astronomical Algorithms"); the phase times were checked against data from the US Naval Observatory (USNO).</p>
     </section>
 
     <p class="city-actions">
@@ -206,5 +208,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

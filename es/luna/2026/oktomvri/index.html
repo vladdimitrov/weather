@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/es/luna/">Calendario lunar</a> › <a href="/es/luna/2026/">2026</a> › octubre</p>
     <h1>Calendario lunar de octubre de 2026</h1>
-    <p class="storm-intro">En octubre de 2026 la luna llena es el 26 de octubre a las 06:11, y la luna nueva es el 10 de octubre a las 18:49. Todas las horas son de Bulgaria. La tabla de abajo muestra la fase de la Luna y su parte iluminada para cada día.</p>
+    <p class="storm-intro" id="lunaIntro">En octubre de 2026 la luna llena es el 26 de octubre a las 06:11, y la luna nueva es el 10 de octubre a las 18:49. Todas las horas son de Bulgaria. La tabla de abajo muestra la fase de la Luna y su parte iluminada para cada día.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Fases de la Luna en octubre de 2026</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Fase</th><th>Fecha</th><th>Día</th><th>Hora</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2026" data-month="9">
           <tr><td>🌗 Cuarto menguante</td><td>3 de octubre</td><td>sábado</td><td>16:24</td></tr>
           <tr><td>🌑 Luna nueva</td><td>10 de octubre</td><td>sábado</td><td>18:49</td></tr>
           <tr><td>🌓 Cuarto creciente</td><td>18 de octubre</td><td>domingo</td><td>19:12</td></tr>
@@ -119,7 +121,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Fecha</th><th>Día</th><th>Fase</th><th>Iluminación</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr><td>1 de octubre</td><td>jueves</td><td>🌖 Gibosa menguante</td><td>74%</td></tr>
           <tr><td>2 de octubre</td><td>viernes</td><td>🌖 Gibosa menguante</td><td>64%</td></tr>
           <tr class="weekend"><td>3 de octubre</td><td>sábado</td><td>🌗 Cuarto menguante <span class="holiday-note">a las 16:24</span></td><td>52%</td></tr>
@@ -154,7 +156,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">La iluminación corresponde a las 12:00, hora de Bulgaria. Calculado con el algoritmo de Jean Meeus («Astronomical Algorithms»); las horas de las fases se han comprobado con los datos del Observatorio Naval de EE. UU. (USNO).</p>
+      <p class="storm-updated"><span id="dayNoteTz">La iluminación corresponde a las 12:00, hora de Bulgaria.</span> Calculado con el algoritmo de Jean Meeus («Astronomical Algorithms»); las horas de las fases se han comprobado con los datos del Observatorio Naval de EE. UU. (USNO).</p>
     </section>
 
     <p class="city-actions">
@@ -206,5 +208,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

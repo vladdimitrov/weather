@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/es/luna/">Calendario lunar</a> › <a href="/es/luna/2027/">2027</a> › septiembre</p>
     <h1>Calendario lunar de septiembre de 2027</h1>
-    <p class="storm-intro">En septiembre de 2027 la luna llena es el 16 de septiembre a las 02:03, y la luna nueva es el 30 de septiembre a las 05:36. Todas las horas son de Bulgaria. La tabla de abajo muestra la fase de la Luna y su parte iluminada para cada día.</p>
+    <p class="storm-intro" id="lunaIntro">En septiembre de 2027 la luna llena es el 16 de septiembre a las 02:03, y la luna nueva es el 30 de septiembre a las 05:36. Todas las horas son de Bulgaria. La tabla de abajo muestra la fase de la Luna y su parte iluminada para cada día.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Fases de la Luna en septiembre de 2027</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Fase</th><th>Fecha</th><th>Día</th><th>Hora</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2027" data-month="8">
           <tr><td>🌓 Cuarto creciente</td><td>7 de septiembre</td><td>martes</td><td>21:31</td></tr>
           <tr><td>🌕 Luna llena</td><td>16 de septiembre</td><td>jueves</td><td>02:03</td></tr>
           <tr><td>🌗 Cuarto menguante</td><td>23 de septiembre</td><td>jueves</td><td>13:20</td></tr>
@@ -119,7 +121,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Fecha</th><th>Día</th><th>Fase</th><th>Iluminación</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr><td>1 de septiembre</td><td>miércoles</td><td>🌒 Luna creciente</td><td>1%</td></tr>
           <tr><td>2 de septiembre</td><td>jueves</td><td>🌒 Luna creciente</td><td>4%</td></tr>
           <tr><td>3 de septiembre</td><td>viernes</td><td>🌒 Luna creciente</td><td>10%</td></tr>
@@ -153,7 +155,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">La iluminación corresponde a las 12:00, hora de Bulgaria. Calculado con el algoritmo de Jean Meeus («Astronomical Algorithms»); las horas de las fases se han comprobado con los datos del Observatorio Naval de EE. UU. (USNO).</p>
+      <p class="storm-updated"><span id="dayNoteTz">La iluminación corresponde a las 12:00, hora de Bulgaria.</span> Calculado con el algoritmo de Jean Meeus («Astronomical Algorithms»); las horas de las fases se han comprobado con los datos del Observatorio Naval de EE. UU. (USNO).</p>
     </section>
 
     <p class="city-actions">
@@ -205,5 +207,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

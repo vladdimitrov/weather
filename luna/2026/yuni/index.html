@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/luna/">Лунен календар</a> › <a href="/luna/2026/">2026</a> › юни</p>
     <h1>Лунен календар за юни 2026</h1>
-    <p class="storm-intro">През юни 2026 г. пълнолунието е на 30 юни в 02:56 ч., а новолунието е на 15 юни в 05:54 ч. Всички часове са по българско време. Таблицата по-долу показва фазата на Луната и осветената ѝ част за всеки ден.</p>
+    <p class="storm-intro" id="lunaIntro">През юни 2026 г. пълнолунието е на 30 юни в 02:56 ч., а новолунието е на 15 юни в 05:54 ч. Всички часове са по българско време. Таблицата по-долу показва фазата на Луната и осветената ѝ част за всеки ден.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Фази на Луната през юни 2026</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Фаза</th><th>Дата</th><th>Ден</th><th>Час</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2026" data-month="5">
           <tr><td>🌗 Последна четвърт</td><td>8 юни</td><td>понеделник</td><td>13:00 ч.</td></tr>
           <tr><td>🌑 Новолуние</td><td>15 юни</td><td>понеделник</td><td>05:54 ч.</td></tr>
           <tr><td>🌓 Първа четвърт</td><td>22 юни</td><td>понеделник</td><td>00:55 ч.</td></tr>
@@ -119,7 +121,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Дата</th><th>Ден</th><th>Фаза</th><th>Осветеност</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr><td>1 юни</td><td>понеделник</td><td>🌖 Намаляваща луна</td><td>99%</td></tr>
           <tr><td>2 юни</td><td>вторник</td><td>🌖 Намаляваща луна</td><td>96%</td></tr>
           <tr><td>3 юни</td><td>сряда</td><td>🌖 Намаляваща луна</td><td>92%</td></tr>
@@ -153,7 +155,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">Осветеността е в 12:00 ч. българско време. Изчислено по алгоритъма на Жан Меюс („Astronomical Algorithms“); времената на фазите са проверени спрямо данните на Военноморската обсерватория на САЩ (USNO).</p>
+      <p class="storm-updated"><span id="dayNoteTz">Осветеността е в 12:00 ч. българско време.</span> Изчислено по алгоритъма на Жан Меюс („Astronomical Algorithms“); времената на фазите са проверени спрямо данните на Военноморската обсерватория на САЩ (USNO).</p>
     </section>
 
     <p class="city-actions">
@@ -205,5 +207,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

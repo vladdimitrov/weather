@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/luna/">Лунен календар</a> › <a href="/luna/2026/">2026</a> › август</p>
     <h1>Лунен календар за август 2026</h1>
-    <p class="storm-intro">През август 2026 г. пълнолунието е на 28 август в 07:18 ч., а новолунието е на 12 август в 20:36 ч. Всички часове са по българско време. Таблицата по-долу показва фазата на Луната и осветената ѝ част за всеки ден.</p>
+    <p class="storm-intro" id="lunaIntro">През август 2026 г. пълнолунието е на 28 август в 07:18 ч., а новолунието е на 12 август в 20:36 ч. Всички часове са по българско време. Таблицата по-долу показва фазата на Луната и осветената ѝ част за всеки ден.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Фази на Луната през август 2026</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Фаза</th><th>Дата</th><th>Ден</th><th>Час</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2026" data-month="7">
           <tr><td>🌗 Последна четвърт</td><td>6 август</td><td>четвъртък</td><td>05:21 ч.</td></tr>
           <tr><td>🌑 Новолуние</td><td>12 август</td><td>сряда</td><td>20:36 ч.</td></tr>
           <tr><td>🌓 Първа четвърт</td><td>20 август</td><td>четвъртък</td><td>05:46 ч.</td></tr>
@@ -119,7 +121,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Дата</th><th>Ден</th><th>Фаза</th><th>Осветеност</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr class="weekend"><td>1 август</td><td>събота</td><td>🌖 Намаляваща луна</td><td>92%</td></tr>
           <tr class="weekend"><td>2 август</td><td>неделя</td><td>🌖 Намаляваща луна</td><td>86%</td></tr>
           <tr><td>3 август</td><td>понеделник</td><td>🌖 Намаляваща луна</td><td>78%</td></tr>
@@ -154,7 +156,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">Осветеността е в 12:00 ч. българско време. Изчислено по алгоритъма на Жан Меюс („Astronomical Algorithms“); времената на фазите са проверени спрямо данните на Военноморската обсерватория на САЩ (USNO).</p>
+      <p class="storm-updated"><span id="dayNoteTz">Осветеността е в 12:00 ч. българско време.</span> Изчислено по алгоритъма на Жан Меюс („Astronomical Algorithms“); времената на фазите са проверени спрямо данните на Военноморската обсерватория на САЩ (USNO).</p>
     </section>
 
     <p class="city-actions">
@@ -206,5 +208,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

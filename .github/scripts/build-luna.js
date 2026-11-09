@@ -21,7 +21,9 @@ const ZONE = 'Europe/Sofia';
 const SLUGS = ['yanuari', 'fevruari', 'mart', 'april', 'may', 'yuni', 'yuli', 'avgust', 'septemvri', 'oktomvri', 'noemvri', 'dekemvri'];
 const ICONS = Moon.ICONS;
 const SCRIPTS = `<script src="/js/moon.js?v=${VERSION.moon}" defer></script>
-<script src="/js/luna-today.js?v=${VERSION.lunaToday}" defer></script>\n`;
+<script src="/js/place-context.js?v=${VERSION.placeContext}" defer></script>
+<script src="/js/luna-today.js?v=${VERSION.lunaToday}" defer></script>
+<script src="/js/luna-local.js?v=${VERSION.lunaLocal}" defer></script>\n`;
 const L = (lang, url) => I18N.localUrl(lang, url);
 
 // --- Sofia time -------------------------------------------------------------
@@ -159,24 +161,30 @@ function monthPage(lang, year, month, years) {
     return `          <tr${weekend}><td>${dayMonth(lang, year, month, day)}</td><td>${weekdayOf(lang, year, month, day)}</td><td>${ICONS[index]} ${names[index]}${note}</td><td>${Math.round(state.fraction * 100)}%</td></tr>`;
   }).join('\n');
 
+  // the first sentence of the note names the time zone (replaced by /js/luna-local.js)
+  const noteParts = T.daysNote.match(/^(.*?)\s+((?:Изчислено|Calculated|Berechnet|Calcolata|Calculado) .*)$/);
+  const noteHtml = noteParts ? `<span id="dayNoteTz">${noteParts[1]}</span> ${noteParts[2]}` : T.daysNote;
   const calUrl = L(lang, '/luna/');
   return page({
     url,
     lang,
     multi: true,
+    scripts: SCRIPTS,
     title: esc(T.monthTitle(name, year)),
     description: esc(T.monthDescription({ name, year, full, fresh, fullDates: dates(2), freshDates: dates(0) })),
     jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.cal, '/luna/'], [`${T.cal} ${year}`, `/luna/${year}/`], [`${name} ${year}`, url]]),
     body: `    <p class="breadcrumbs"><a href="${calUrl}">${T.cal}</a> › <a href="${L(lang, `/luna/${year}/`)}">${year}</a> › ${name}</p>
     <h1>${T.monthH1(name, year)}</h1>
-    <p class="storm-intro">${T.monthIntro({ name, year, full, fresh, blue: blue.length > 0 })}</p>
+    <p class="storm-intro" id="lunaIntro">${T.monthIntro({ name, year, full, fresh, blue: blue.length > 0 })}</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>${T.phasesH(name, year)}</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr>${T.phasesHead.map(h => `<th>${h}</th>`).join('')}</tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="${year}" data-month="${month}">
 ${phaseRows}
         </tbody>
       </table>
@@ -188,12 +196,12 @@ ${phaseRows}
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr>${T.daysHead.map(h => `<th>${h}</th>`).join('')}</tr></thead>
-        <tbody>
+        <tbody id="dayBody">
 ${dayRows}
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">${T.daysNote}</p>
+      <p class="storm-updated">${noteHtml}</p>
     </section>
 
     <p class="city-actions">
@@ -235,19 +243,22 @@ function yearPage(lang, year, years) {
     url,
     lang,
     multi: true,
+    scripts: SCRIPTS,
     title: esc(T.yearTitle(year)),
     description: esc(T.yearDescription(year, fullMoons.length)),
     jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.cal, '/luna/'], [`${T.cal} ${year}`, url]]),
     body: `    <p class="breadcrumbs"><a href="${L(lang, '/luna/')}">${T.cal}</a> › ${year}</p>
     <h1>${T.yearH1(year)}</h1>
-    <p class="storm-intro">${T.yearIntro({ year, n: fullMoons.length, blue: blue.length ? fullDate(lang, blue[0].time) : '', first: fullDate(lang, fullMoons[0].time), last: fullDate(lang, fullMoons[fullMoons.length - 1].time) })}</p>
+    <p class="storm-intro" id="lunaIntro">${T.yearIntro({ year, n: fullMoons.length, blue: blue.length ? fullDate(lang, blue[0].time) : '', first: fullDate(lang, fullMoons[0].time), last: fullDate(lang, fullMoons[fullMoons.length - 1].time) })}</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>${T.yearH2(year)}</h2>
       <div class="table-scroll">
       <table class="kp-table">
         <thead><tr><th>${T.month}</th><th>${names[0]}</th><th>${names[2]}</th><th>${names[4]}</th><th>${names[6]}</th></tr></thead>
-        <tbody>
+        <tbody id="yearBody" data-year="${year}">
 ${rows}
         </tbody>
       </table>
@@ -276,6 +287,7 @@ function hubPage(lang, years, now) {
     jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.cal, '/luna/']]),
     body: `    <h1>${T.hubH1}</h1>
     <p class="storm-intro">${T.hubIntro}</p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     ${todayBlock(lang, now)}
 

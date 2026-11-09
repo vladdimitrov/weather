@@ -91,14 +91,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/es/luna/">Calendario lunar</a> › 2026</p>
     <h1>Calendario lunar 2026: lunas llenas y lunas nuevas</h1>
-    <p class="storm-intro">En 2026 hay 13 lunas llenas, y la segunda luna llena, el 31 de mayo, es una «luna azul». La primera luna llena es el 3 de enero y la última el 24 de diciembre. Elige un mes para ver las fases día a día. Las horas son de Bulgaria.</p>
+    <p class="storm-intro" id="lunaIntro">En 2026 hay 13 lunas llenas, y la segunda luna llena, el 31 de mayo, es una «luna azul». La primera luna llena es el 3 de enero y la última el 24 de diciembre. Elige un mes para ver las fases día a día. Las horas son de Bulgaria.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Fases de la Luna en 2026 por meses</h2>
       <div class="table-scroll">
       <table class="kp-table">
         <thead><tr><th>Mes</th><th>Luna nueva</th><th>Cuarto creciente</th><th>Luna llena</th><th>Cuarto menguante</th></tr></thead>
-        <tbody>
+        <tbody id="yearBody" data-year="2026">
           <tr><td><a href="/es/luna/2026/yanuari/">enero</a></td><td>18 ene, 21:52</td><td>26 ene, 06:47</td><td>3 ene, 12:02</td><td>10 ene, 17:48</td></tr>
           <tr><td><a href="/es/luna/2026/fevruari/">febrero</a></td><td>17 feb, 14:01</td><td>24 feb, 14:27</td><td>2 feb, 00:09</td><td>9 feb, 14:43</td></tr>
           <tr><td><a href="/es/luna/2026/mart/">marzo</a></td><td>19 mar, 03:23</td><td>25 mar, 21:17</td><td>3 mar, 13:37</td><td>11 mar, 11:38</td></tr>
@@ -137,5 +139,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

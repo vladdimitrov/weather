@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/es/luna/">Calendario lunar</a> › <a href="/es/luna/2026/">2026</a> › marzo</p>
     <h1>Calendario lunar de marzo de 2026</h1>
-    <p class="storm-intro">En marzo de 2026 la luna llena es el 3 de marzo a las 13:37, y la luna nueva es el 19 de marzo a las 03:23. Todas las horas son de Bulgaria. La tabla de abajo muestra la fase de la Luna y su parte iluminada para cada día.</p>
+    <p class="storm-intro" id="lunaIntro">En marzo de 2026 la luna llena es el 3 de marzo a las 13:37, y la luna nueva es el 19 de marzo a las 03:23. Todas las horas son de Bulgaria. La tabla de abajo muestra la fase de la Luna y su parte iluminada para cada día.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Fases de la Luna en marzo de 2026</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Fase</th><th>Fecha</th><th>Día</th><th>Hora</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2026" data-month="2">
           <tr><td>🌕 Luna llena</td><td>3 de marzo</td><td>martes</td><td>13:37</td></tr>
           <tr><td>🌗 Cuarto menguante</td><td>11 de marzo</td><td>miércoles</td><td>11:38</td></tr>
           <tr><td>🌑 Luna nueva</td><td>19 de marzo</td><td>jueves</td><td>03:23</td></tr>
@@ -119,7 +121,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Fecha</th><th>Día</th><th>Fase</th><th>Iluminación</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr class="weekend"><td>1 de marzo</td><td>domingo</td><td>🌔 Gibosa creciente</td><td>95%</td></tr>
           <tr><td>2 de marzo</td><td>lunes</td><td>🌔 Gibosa creciente</td><td>99%</td></tr>
           <tr><td>3 de marzo</td><td>martes</td><td>🌕 Luna llena <span class="holiday-note">a las 13:37</span></td><td>100%</td></tr>
@@ -154,7 +156,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">La iluminación corresponde a las 12:00, hora de Bulgaria. Calculado con el algoritmo de Jean Meeus («Astronomical Algorithms»); las horas de las fases se han comprobado con los datos del Observatorio Naval de EE. UU. (USNO).</p>
+      <p class="storm-updated"><span id="dayNoteTz">La iluminación corresponde a las 12:00, hora de Bulgaria.</span> Calculado con el algoritmo de Jean Meeus («Astronomical Algorithms»); las horas de las fases se han comprobado con los datos del Observatorio Naval de EE. UU. (USNO).</p>
     </section>
 
     <p class="city-actions">
@@ -206,5 +208,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

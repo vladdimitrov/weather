@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/de/luna/">Mondkalender</a> › <a href="/de/luna/2026/">2026</a> › Dezember</p>
     <h1>Mondkalender für Dezember 2026</h1>
-    <p class="storm-intro">Im Dezember 2026 ist der Vollmond am 24. Dezember um 03:28 Uhr, und der Neumond ist am 9. Dezember um 02:51 Uhr. Alle Zeiten gelten in bulgarischer Zeit. Die Tabelle unten zeigt für jeden Tag die Mondphase und den beleuchteten Anteil.</p>
+    <p class="storm-intro" id="lunaIntro">Im Dezember 2026 ist der Vollmond am 24. Dezember um 03:28 Uhr, und der Neumond ist am 9. Dezember um 02:51 Uhr. Alle Zeiten gelten in bulgarischer Zeit. Die Tabelle unten zeigt für jeden Tag die Mondphase und den beleuchteten Anteil.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Mondphasen im Dezember 2026</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Phase</th><th>Datum</th><th>Tag</th><th>Uhrzeit</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2026" data-month="11">
           <tr><td>🌗 Letztes Viertel</td><td>1. Dezember</td><td>Dienstag</td><td>08:08 Uhr</td></tr>
           <tr><td>🌑 Neumond</td><td>9. Dezember</td><td>Mittwoch</td><td>02:51 Uhr</td></tr>
           <tr><td>🌓 Erstes Viertel</td><td>17. Dezember</td><td>Donnerstag</td><td>07:42 Uhr</td></tr>
@@ -120,7 +122,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Datum</th><th>Tag</th><th>Phase</th><th>Beleuchtung</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr><td>1. Dezember</td><td>Dienstag</td><td>🌗 Letztes Viertel <span class="holiday-note">um 08:08 Uhr</span></td><td>48%</td></tr>
           <tr><td>2. Dezember</td><td>Mittwoch</td><td>🌘 Abnehmende Sichel</td><td>38%</td></tr>
           <tr><td>3. Dezember</td><td>Donnerstag</td><td>🌘 Abnehmende Sichel</td><td>28%</td></tr>
@@ -155,7 +157,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">Die Beleuchtung gilt für 12:00 Uhr bulgarischer Zeit. Berechnet nach dem Algorithmus von Jean Meeus („Astronomical Algorithms“); die Phasenzeiten wurden mit den Daten des US Naval Observatory (USNO) abgeglichen.</p>
+      <p class="storm-updated"><span id="dayNoteTz">Die Beleuchtung gilt für 12:00 Uhr bulgarischer Zeit.</span> Berechnet nach dem Algorithmus von Jean Meeus („Astronomical Algorithms“); die Phasenzeiten wurden mit den Daten des US Naval Observatory (USNO) abgeglichen.</p>
     </section>
 
     <p class="city-actions">
@@ -207,5 +209,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

@@ -97,14 +97,16 @@
   <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
     <p class="breadcrumbs"><a href="/de/luna/">Mondkalender</a> › <a href="/de/luna/2026/">2026</a> › Februar</p>
     <h1>Mondkalender für Februar 2026</h1>
-    <p class="storm-intro">Im Februar 2026 ist der Vollmond am 2. Februar um 00:09 Uhr, und der Neumond ist am 17. Februar um 14:01 Uhr. Alle Zeiten gelten in bulgarischer Zeit. Die Tabelle unten zeigt für jeden Tag die Mondphase und den beleuchteten Anteil.</p>
+    <p class="storm-intro" id="lunaIntro">Im Februar 2026 ist der Vollmond am 2. Februar um 00:09 Uhr, und der Neumond ist am 17. Februar um 14:01 Uhr. Alle Zeiten gelten in bulgarischer Zeit. Die Tabelle unten zeigt für jeden Tag die Mondphase und den beleuchteten Anteil.</p>
+    <p class="storm-intro" id="lunaIntroGeneric" hidden></p>
+    <p id="lunaPlace" class="storm-updated" style="margin:6px 0 14px"></p>
 
     <section class="info-card">
       <h2>Mondphasen im Februar 2026</h2>
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Phase</th><th>Datum</th><th>Tag</th><th>Uhrzeit</th></tr></thead>
-        <tbody>
+        <tbody id="phaseBody" data-year="2026" data-month="1">
           <tr><td>🌕 Vollmond</td><td>2. Februar</td><td>Montag</td><td>00:09 Uhr</td></tr>
           <tr><td>🌗 Letztes Viertel</td><td>9. Februar</td><td>Montag</td><td>14:43 Uhr</td></tr>
           <tr><td>🌑 Neumond</td><td>17. Februar</td><td>Dienstag</td><td>14:01 Uhr</td></tr>
@@ -119,7 +121,7 @@
       <div class="table-scroll">
       <table class="kp-table holiday-table">
         <thead><tr><th>Datum</th><th>Tag</th><th>Phase</th><th>Beleuchtung</th></tr></thead>
-        <tbody>
+        <tbody id="dayBody">
           <tr class="weekend"><td>1. Februar</td><td>Sonntag</td><td>🌔 Zunehmender Mond</td><td>100%</td></tr>
           <tr><td>2. Februar</td><td>Montag</td><td>🌕 Vollmond <span class="holiday-note">um 00:09 Uhr</span></td><td>100%</td></tr>
           <tr><td>3. Februar</td><td>Dienstag</td><td>🌖 Abnehmender Mond</td><td>97%</td></tr>
@@ -151,7 +153,7 @@
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">Die Beleuchtung gilt für 12:00 Uhr bulgarischer Zeit. Berechnet nach dem Algorithmus von Jean Meeus („Astronomical Algorithms“); die Phasenzeiten wurden mit den Daten des US Naval Observatory (USNO) abgeglichen.</p>
+      <p class="storm-updated"><span id="dayNoteTz">Die Beleuchtung gilt für 12:00 Uhr bulgarischer Zeit.</span> Berechnet nach dem Algorithmus von Jean Meeus („Astronomical Algorithms“); die Phasenzeiten wurden mit den Daten des US Naval Observatory (USNO) abgeglichen.</p>
     </section>
 
     <p class="city-actions">
@@ -203,5 +205,9 @@
 <script src="/js/mobile-nav.js?v=12" defer></script>
 <script src="/js/language-selector.js?v=4" defer></script>
 <script src="/js/background-selector.js?v=2" defer></script>
+<script src="/js/moon.js?v=2" defer></script>
+<script src="/js/place-context.js?v=1" defer></script>
+<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>
