@@ -20,7 +20,7 @@ const ROOT = process.cwd();
 const ZONE = 'Europe/Sofia';
 const esc = I18N.esc;
 const L = (lang, url) => I18N.localUrl(lang, url);
-const head = (key, title) => `<div class="sky-head">${Icons.medal(key, '', 'xl')}<h2>${title}</h2></div>`;
+const head = (key, title, id) => `<div class="sky-head">${Icons.medal(key, '', 'xl')}<h2${id ? ` id="${id}"` : ''}>${title}</h2></div>`;
 
 const parts = date => Object.fromEntries(new Intl.DateTimeFormat('en-GB', {
   timeZone: ZONE, hourCycle: 'h23', year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'
@@ -116,7 +116,7 @@ ${meteorRows}
     </section>
 
     <section class="info-card" id="zatmeniya">
-      ${head('eclipse', T.eclipseH)}${eclipseBlocks}
+      ${head('eclipse', T.eclipseH, 'skyEclipseH')}${eclipseBlocks}
       <p class="storm-updated" data-bg-only>${T.eclipsePast}</p>
     </section>
 
@@ -134,7 +134,7 @@ ${supermoonRows}
     </section>
 
     <section class="info-card" id="severno-siyanie">
-      ${head('aurora', T.auroraH)}
+      ${head('aurora', T.auroraH, 'skyAuroraH')}
       <p id="auroraKp" class="storm-now-status">${T.loadingKp}</p>
       <p data-bg-only>${T.aurora1}</p>
       <p id="skyAuroraGeneric" data-other-only hidden></p>
@@ -147,7 +147,7 @@ ${supermoonRows}
       <div class="city-links">
         <a href="${L(lang, '/luna/')}" class="recent-place">${T.cal}</a>
         <a href="/magnitni-buri/" class="recent-place">${T.storms}</a>
-        <a href="${L(lang, '/vremeto/')}" class="recent-place">${T.weather}</a>
+        <a href="${L(lang, '/vremeto/')}" class="recent-place" id="skyWeatherLink">${T.weather}</a>
         <a href="${L(lang, '/vremeto/sofia/')}" class="recent-place" id="skySunLink">${T.sunSofia}</a>
       </div>
     </section>`,

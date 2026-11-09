@@ -46,6 +46,15 @@
     }
   };
 
+  // Headings and the weather link that name Bulgaria in the HTML
+  const H = {
+    bg: { aurora: c => `Северно сияние – ${c}`, eclipse: c => `Затъмнения – ${c}`, weather: p => `Времето – ${p}` },
+    en: { aurora: c => `Northern lights – ${c}`, eclipse: c => `Eclipses – ${c}`, weather: p => `Weather – ${p}` },
+    de: { aurora: c => `Polarlichter – ${c}`, eclipse: c => `Finsternisse – ${c}`, weather: p => `Wetter – ${p}` },
+    it: { aurora: c => `Aurora boreale – ${c}`, eclipse: c => `Eclissi – ${c}`, weather: p => `Meteo – ${p}` },
+    es: { aurora: c => `Auroras boreales – ${c}`, eclipse: c => `Eclipses – ${c}`, weather: p => `El tiempo – ${p}` }
+  };
+
   const originals = new Map();
   const remember = (node, key, value) => { if (!originals.has(node)) originals.set(node, {}); const saved = originals.get(node); if (!(key in saved)) saved[key] = value; return saved[key]; };
 
@@ -91,13 +100,26 @@
         aurora.textContent = t.aurora(name, latitude, PlaceContext.auroraBand(place).level, place.latitude < 0 ? t.south : t.north);
       }
     }
+    const forecast = `/weather/?city=${encodeURIComponent(name)}&lat=${place.latitude.toFixed(4)}&lon=${place.longitude.toFixed(4)}${place.countryCode ? '&cc=' + place.countryCode : ''}`;
+    [['skyAuroraH', 'aurora', country], ['skyEclipseH', 'eclipse', country]].forEach(([id, key, value]) => {
+      const node = document.getElementById(id);
+      if (!node) return;
+      const original = remember(node, 'text', node.textContent);
+      node.textContent = bulgaria ? original : H[lang][key](value);
+    });
+    const weatherLink = document.getElementById('skyWeatherLink');
+    if (weatherLink) {
+      const original = { text: remember(weatherLink, 'text', weatherLink.textContent), href: remember(weatherLink, 'href', weatherLink.getAttribute('href')) };
+      weatherLink.textContent = bulgaria ? original.text : H[lang].weather(name);
+      weatherLink.setAttribute('href', bulgaria ? original.href : forecast);
+    }
     const sun = document.getElementById('skySunLink');
     if (sun) {
       const original = { text: remember(sun, 'text', sun.textContent), href: remember(sun, 'href', sun.getAttribute('href')) };
       if (bulgaria) { sun.textContent = original.text; sun.setAttribute('href', original.href); }
       else {
         sun.textContent = t.sun(name);
-        sun.setAttribute('href', `/weather/?city=${encodeURIComponent(name)}&lat=${place.latitude.toFixed(4)}&lon=${place.longitude.toFixed(4)}${place.countryCode ? '&cc=' + place.countryCode : ''}`);
+        sun.setAttribute('href', forecast);
       }
     }
     buildBar(lang, place, bulgaria ? 'Europe/Sofia' : zone);
