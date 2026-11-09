@@ -6,21 +6,31 @@
   const STORAGE_KEY = 'defaultBackground';
   const DEFAULT_BACKGROUND = 'blue';
 
+  // Deep, rich tones: three colour stops plus a soft light from the top left corner.
+  // The keys are saved in the visitor's browser, so the old ones keep their names.
+  const GLOW = 'radial-gradient(ellipse at 15% 0%, rgba(255,255,255,0.14), rgba(255,255,255,0) 55%), ';
   const backgrounds = {
-    blue: 'linear-gradient(135deg, #00c6ff, #0072ff)',
-    default: 'linear-gradient(135deg, #a8c0ff, #3f2b96)',
-    dark: 'linear-gradient(135deg, #232526, #414345)',
-    green: 'linear-gradient(135deg, #11998e, #38ef7d)',
-    purple: 'linear-gradient(135deg, #834d9b, #d04ed6)',
-    red: 'linear-gradient(135deg, #cb2d3e, #ef473a)'
+    blue: GLOW + 'linear-gradient(135deg, #06204a 0%, #0d47a1 52%, #2284d6 100%)',
+    default: GLOW + 'linear-gradient(135deg, #1d1450 0%, #4a2f9e 50%, #8a6fe0 100%)',
+    dark: GLOW + 'linear-gradient(135deg, #0c0c0f 0%, #1c1d22 50%, #34363d 100%)',
+    green: GLOW + 'linear-gradient(135deg, #03251d 0%, #0a6650 52%, #14a37c 100%)',
+    purple: GLOW + 'linear-gradient(135deg, #1c0937 0%, #5b1f8e 52%, #a63fc4 100%)',
+    red: GLOW + 'linear-gradient(135deg, #26050e 0%, #7a1026 52%, #c22b3c 100%)',
+    midnight: GLOW + 'linear-gradient(135deg, #01030c 0%, #0a1740 52%, #1a3a7a 100%)',
+    gold: GLOW + 'linear-gradient(135deg, #16100a 0%, #4a3414 50%, #a07c2c 100%)',
+    teal: GLOW + 'linear-gradient(135deg, #021822 0%, #06506a 52%, #0f8fa3 100%)',
+    rose: GLOW + 'linear-gradient(135deg, #240c1a 0%, #7a2a55 52%, #c8648e 100%)',
+    sunset: GLOW + 'linear-gradient(135deg, #160d33 0%, #692c6b 50%, #d8664e 100%)'
   };
+  // Logo glow colour (r, g, b) on the home page for the newer backgrounds
+  const AURA = { midnight: '90, 130, 230', gold: '230, 190, 90', teal: '40, 190, 210', rose: '230, 120, 170', sunset: '240, 130, 90' };
 
   const texts = {
-    en: { label: 'Background:', blue: 'Blue', default: 'Default (Purple)', dark: 'Dark', green: 'Green', purple: 'Purple', red: 'Red' },
-    bg: { label: 'Фон:', blue: 'Син', default: 'Стандартен (лилав)', dark: 'Тъмен', green: 'Зелен', purple: 'Лилав', red: 'Червен' },
-    de: { label: 'Hintergrund:', blue: 'Blau', default: 'Standard (Lila)', dark: 'Dunkel', green: 'Grün', purple: 'Lila', red: 'Rot' },
-    it: { label: 'Sfondo:', blue: 'Blu', default: 'Predefinito (Viola)', dark: 'Scuro', green: 'Verde', purple: 'Viola', red: 'Rosso' },
-    es: { label: 'Fondo:', blue: 'Azul', default: 'Predeterminado (Morado)', dark: 'Oscuro', green: 'Verde', purple: 'Morado', red: 'Rojo' }
+    en: { label: 'Background:', blue: 'Blue', default: 'Default (Purple)', dark: 'Dark', green: 'Green', purple: 'Purple', red: 'Red', midnight: 'Midnight', gold: 'Gold', teal: 'Teal', rose: 'Rose', sunset: 'Sunset' },
+    bg: { label: 'Фон:', blue: 'Син', default: 'Стандартен (лилав)', dark: 'Тъмен', green: 'Зелен', purple: 'Лилав', red: 'Червен', midnight: 'Полунощ', gold: 'Злато', teal: 'Морска вълна', rose: 'Розов', sunset: 'Залез' },
+    de: { label: 'Hintergrund:', blue: 'Blau', default: 'Standard (Lila)', dark: 'Dunkel', green: 'Grün', purple: 'Lila', red: 'Rot', midnight: 'Mitternacht', gold: 'Gold', teal: 'Türkis', rose: 'Rosé', sunset: 'Sonnenuntergang' },
+    it: { label: 'Sfondo:', blue: 'Blu', default: 'Predefinito (Viola)', dark: 'Scuro', green: 'Verde', purple: 'Viola', red: 'Rosso', midnight: 'Mezzanotte', gold: 'Oro', teal: 'Turchese', rose: 'Rosa', sunset: 'Tramonto' },
+    es: { label: 'Fondo:', blue: 'Azul', default: 'Predeterminado (Morado)', dark: 'Oscuro', green: 'Verde', purple: 'Morado', red: 'Rojo', midnight: 'Medianoche', gold: 'Oro', teal: 'Turquesa', rose: 'Rosa', sunset: 'Atardecer' }
   };
 
   // A background the visitor picked wins; otherwise follow the device's dark mode
@@ -43,6 +53,8 @@
     if (animate) body.style.transition = 'background 0.5s ease';
     body.style.background = backgrounds[background];
     body.classList.add('bg-' + background);
+    if (AURA[background]) body.style.setProperty('--aura', AURA[background]);
+    body.style.backgroundAttachment = 'fixed';
 
     const formContainer = document.querySelector('.form-container');
     if (formContainer) {
