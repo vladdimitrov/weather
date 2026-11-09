@@ -50,6 +50,7 @@ const CITIES = [
 ].map(([slug, name, lat, lon]) => ({ slug, name, lat, lon }));
 
 const { TXT, HOLIDAYS } = require('./text-pages.js');
+const CITY_TEXT = require('./text-cities.js');
 const L = (lang, url) => I18N.localUrl(lang, url);
 const linkTo = (url, text) => `<a href="${url}">${text}</a>`;
 
@@ -84,7 +85,8 @@ function climateSection(city, lang) {
   return `
     <section class="info-card city-climate">
       <h2>${T.climateH(cityWhere(city, lang))}</h2>
-      <p>${text}</p>
+      <p>${text}</p>${CITY_TEXT[city.slug] ? `
+      <p>${CITY_TEXT[city.slug][lang]}</p>` : ''}
       <div class="table-scroll">
       <table class="kp-table climate-table">
         <thead><tr>${T.climateHead.map(h => `<th>${h}</th>`).join('')}</tr></thead>
