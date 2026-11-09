@@ -50,10 +50,25 @@
     try { localStorage.setItem(STORAGE_KEY, value); } catch (e) { /* private mode */ }
   }
 
+  // The language of the page wins (the page is already in the visitor's language);
+  // the saved choice is only a fallback, and English the last one
+  function pageLanguage() {
+    const fromPage = (document.documentElement.lang || '').slice(0, 2);
+    if (texts[fromPage]) return fromPage;
+    try {
+      const saved = localStorage.getItem('selectedLanguage');
+      if (texts[saved]) return saved;
+    } catch (e) { /* ignore */ }
+    return 'en';
+  }
+
   function t() {
-    let lang = 'en';
-    try { lang = localStorage.getItem('selectedLanguage') || 'bg'; } catch (e) { /* ignore */ }
-    return texts[lang] || texts.en;
+    return texts[pageLanguage()];
+  }
+
+  function privacyUrl() {
+    const lang = pageLanguage();
+    return lang === 'bg' ? '/poveritelnost/' : '/' + lang + '/poveritelnost/';
   }
 
   let gaLoaded = false;
@@ -192,7 +207,7 @@
     const message = document.createElement('p');
     message.textContent = text.message + ' ';
     const more = document.createElement('a');
-    more.href = '/poveritelnost/';
+    more.href = privacyUrl();
     more.textContent = text.more;
     more.style.color = 'inherit';
     message.appendChild(more);
