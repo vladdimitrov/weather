@@ -99,9 +99,3 @@
 #dayCards.compact .day-card .dc-sun,
 #dayCards.compact .day-card .reliability,
 #dayCards.compact .day-card .temp-range { display: none; }
-
-/* The footer scrolls with the page instead of covering the content */
-body > footer {
-  position: static !important;
-  margin-top: 28px !important;
-}
