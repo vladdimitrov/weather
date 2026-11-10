@@ -1941,3 +1941,76 @@ html body .btn:not(.btn-primary):not(.btn-location) { border: 1px solid rgba(255
    layout (3 columns) and stuck out of a narrow screen, which gave a sideways scroll */
 .form-container { width: 100%; box-sizing: border-box; }
 .map-container { box-sizing: border-box; max-width: 100%; }
+
+/* ---- premium details: spacing rhythm, temperature bar, hover hint, motion, grain, empty states ---- */
+:root { --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; }
+
+/* panels follow the same vertical steps (16px between panels, 32px between sections) */
+html body .form-container,
+html body .now-card,
+html body .info-display,
+html body details { margin-block: var(--s4); }
+html body .features-section,
+html body .home-cities { margin-block: var(--s6); }
+
+/* where the day sits between the coldest and the warmest of the period */
+.dc-range {
+  position: relative;
+  display: block;
+  height: 4px;
+  margin: 6px auto 4px;
+  width: 80%;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+}
+.dc-range i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #5cc8ff, #ffd54a 60%, #ff9a4a);
+}
+
+/* "Hourly forecast →" appears when the card is pointed at (always visible on touch screens) */
+@media (hover: hover) {
+  .city-day-hourly { opacity: 0; transform: translateY(-2px); transition: opacity 0.2s ease, transform 0.2s ease; }
+  .city-day:hover .city-day-hourly,
+  .city-day:focus-visible .city-day-hourly { opacity: 1; transform: none; }
+}
+
+/* motion: the content rises in, buttons lift, nothing for those who asked for less */
+@keyframes wpRise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .container > * { animation: wpRise 0.45s ease backwards; }
+  .container > :nth-child(2) { animation-delay: 0.04s; }
+  .container > :nth-child(3) { animation-delay: 0.08s; }
+  .container > :nth-child(4) { animation-delay: 0.12s; }
+  .container > :nth-child(n+5) { animation-delay: 0.16s; }
+  html body .btn { transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease; }
+  html body .btn:hover { transform: translateY(-1px); }
+  html body .btn:active { transform: none; }
+}
+
+/* a fine grain over the gradient takes the plastic look off the colour */
+html::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.055;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNjAnIGhlaWdodD0nMTYwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC45JyBudW1PY3RhdmVzPScyJyBzdGl0Y2hUaWxlcz0nc3RpdGNoJy8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPScwIDAgMCAwIDEgIDAgMCAwIDAgMSAgMCAwIDAgMCAxICAwIDAgMCAwLjkgMCcvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbHRlcj0ndXJsKCNuKScvPjwvc3ZnPg==");
+}
+@media print { html::after { display: none; } }
+
+/* empty and error messages: a quiet card with an icon instead of a bare line */
+.day-msg {
+  padding: 22px 16px;
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  border-radius: 14px;
+  background: rgba(16, 24, 52, 0.5);
+  color: var(--ink-soft);
+}
+.day-msg::before { content: "🌤"; display: block; margin-bottom: 6px; font-size: 1.8rem; }
+.day-msg .day-retry { margin-top: 12px; }

@@ -96,6 +96,22 @@
       ...sunLines()
     );
 
+    const lows = forecast.daily.temperature_2m_min, highs = forecast.daily.temperature_2m_max;
+    const lowest = Math.min(...lows), highest = Math.max(...highs);
+    // where the day sits between the coldest and the warmest of the period
+    const rangeBar = i => {
+      const bar = el('span', 'dc-range');
+      bar.setAttribute('aria-hidden', 'true');
+      if (highest > lowest) {
+        const left = ((lows[i] - lowest) / (highest - lowest)) * 100;
+        const width = Math.min(Math.max(((highs[i] - lows[i]) / (highest - lowest)) * 100, 6), 100 - left);
+        const fill = document.createElement('i');
+        fill.style.left = left.toFixed(1) + '%';
+        fill.style.width = width.toFixed(1) + '%';
+        bar.appendChild(fill);
+      }
+      return bar;
+    };
     const days = forecast.daily.time.map((date, i) => {
       const day = el('a', 'kp-day city-day');
       day.href = `/weather/?${box.dataset.query}&date=${date}`;
@@ -110,6 +126,7 @@
         WeatherIcons.node('city-day-icon', dayCondition.key, pickText(dayCondition.text)),
         el('span', 'city-day-date', date.slice(5).split('-').reverse().join('.')),
         el('span', 'city-day-temp', `${Math.round(forecast.daily.temperature_2m_min[i])}° / ${Math.round(forecast.daily.temperature_2m_max[i])}°`),
+        rangeBar(i),
         el('span', 'kp-day-status', pickText(dayCondition.text))
       );
       if (rain !== null && rain !== undefined) {

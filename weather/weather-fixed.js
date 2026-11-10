@@ -97,7 +97,7 @@ function updateForecast() {
         console.error("Invalid weather data format:", weatherData);
         // Use translations for error messages
         const errorMessage = pickText({ en: "Error processing data.", bg: "Грешка при обработка на данните.", de: "Fehler bei der Datenverarbeitung.", it: "Errore nell'elaborazione dei dati.", es: "Error al procesar los datos." });
-        showDayMessage(`${errorMessage}`);
+        showDayMessage(`${errorMessage}`, true);
         return;
       }
 
@@ -138,7 +138,7 @@ function updateForecast() {
       console.error("Error:", err);
       // Use translations for error messages
       const errorMessage = pickText({ en: "Error loading data.", bg: "Грешка при зареждане на данните.", de: "Fehler beim Laden der Daten.", it: "Errore nel caricamento dei dati.", es: "Error al cargar los datos." });
-      showDayMessage(`${errorMessage}`);
+      showDayMessage(`${errorMessage}`, true);
     }
   })();
 }
@@ -146,9 +146,14 @@ function updateForecast() {
 // Forecast days as buttons: a click opens that day's hourly forecast
 let lastDaily = null;
 
-function showDayMessage(html) {
+function showDayMessage(html, retry) {
   const box = document.getElementById("dayCards");
-  if (box) box.innerHTML = `<p class="day-msg">${html}</p>`;
+  if (!box) return;
+  box.removeAttribute("aria-busy");
+  const again = retry
+    ? `<br><button type="button" class="btn day-retry" onclick="document.getElementById('loadData').click()">↻ ${pickText({ en: "Try again", bg: "Опитай пак", de: "Erneut versuchen", it: "Riprova", es: "Reintentar" })}</button>`
+    : "";
+  box.innerHTML = `<p class="day-msg">${html}${again}</p>`;
 }
 
 function renderDayCards() {
@@ -175,7 +180,7 @@ function renderDayCards() {
       <span class="city-day-date">${shortDate}</span>
       <span class="dc-icons">${icons}</span>
       <span class="city-day-temp dc-temp">${Math.round(daily.temperature_2m_min[i])}° / ${Math.round(daily.temperature_2m_max[i])}°</span>
-      ${window.UiExtras ? UiExtras.condition(daily.weather_code[i]) : ""}
+      ${window.UiExtras ? UiExtras.rangeBar(daily, i) + UiExtras.condition(daily.weather_code[i]) : ""}
       ${rain}${wind}
       <span class="dc-sun">${sunMoon}</span>
       ${dayWarningsHtml(daily, i)}

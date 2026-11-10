@@ -208,8 +208,19 @@
     setTitle();
   });
 
+  // Bar under the temperature: where this day sits between the coldest and the warmest of the period
+  function rangeBar(daily, i) {
+    const lows = daily.temperature_2m_min, highs = daily.temperature_2m_max;
+    const lo = Math.min(...lows), hi = Math.max(...highs);
+    if (!(hi > lo)) return "";
+    const left = ((lows[i] - lo) / (hi - lo)) * 100;
+    const width = Math.max(((highs[i] - lows[i]) / (hi - lo)) * 100, 6);
+    return `<span class="dc-range" aria-hidden="true"><i style="left:${left.toFixed(1)}%;width:${Math.min(width, 100 - left).toFixed(1)}%"></i></span>`;
+  }
+
   window.UiExtras = {
     skeleton,
+    rangeBar,
     // visible condition text for a day card, from the WMO weather code
     condition(code) {
       const condition = conditionOf(code);
