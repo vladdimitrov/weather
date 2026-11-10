@@ -49,6 +49,7 @@ function updateForecast() {
     try {
       let lat = currentCoords.latitude;
       dayCards.replaceChildren();
+      if (window.UiExtras) UiExtras.skeleton(days);
       let lon = currentCoords.longitude;
       console.log("Latitude:", lat, "Longitude:", lon);
       
@@ -107,6 +108,7 @@ function updateForecast() {
 
       lastDaily = weatherData.daily;
       renderDayCards();
+      document.dispatchEvent(new CustomEvent("forecast:loaded", { detail: { lat, lon } }));
 
       // Opened from a city page's day card (?date=...): show that day's hours
       if (dayFromUrl && !window.dayFromUrlShown && weatherData.daily.time.includes(dayFromUrl)) {
@@ -173,6 +175,7 @@ function renderDayCards() {
       <span class="city-day-date">${shortDate}</span>
       <span class="dc-icons">${icons}</span>
       <span class="city-day-temp dc-temp">${Math.round(daily.temperature_2m_min[i])}° / ${Math.round(daily.temperature_2m_max[i])}°</span>
+      ${window.UiExtras ? UiExtras.condition(daily.weather_code[i]) : ""}
       ${rain}${wind}
       <span class="dc-sun">${sunMoon}</span>
       ${dayWarningsHtml(daily, i)}
