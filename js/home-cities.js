@@ -6,7 +6,32 @@
   const section = document.querySelector('.home-cities');
   if (!section || typeof PlaceContext === 'undefined') return;
   const place = PlaceContext.get();
-  if (place.isDefault || !place.countryCode || place.countryCode === 'BG') return;
+
+  // Bulgaria (or a first visit): the static block of the page has Cyrillic names, and links to the
+  // Bulgarian pages. In the other languages the names are written in Latin and the links open
+  // the translated city pages.
+  if (place.isDefault || !place.countryCode || place.countryCode === 'BG') {
+    const LATIN = { sofia: 'Sofia', plovdiv: 'Plovdiv', varna: 'Varna', burgas: 'Burgas', ruse: 'Ruse', 'stara-zagora': 'Stara Zagora', pleven: 'Pleven', 'veliko-tarnovo': 'Veliko Tarnovo', blagoevgrad: 'Blagoevgrad', bansko: 'Bansko' };
+    const LATIN_ES = { sofia: 'Sofía' };
+    const cityLinks = [...section.querySelectorAll('.city-links a[href^="vremeto/"]')].filter(a => /^vremeto\/[^/]+\/$/.test(a.getAttribute('href')));
+    const original = cityLinks.map(a => ({ text: a.textContent, href: a.getAttribute('href') }));
+    const translate = () => {
+      const lang = PlaceContext.language();
+      cityLinks.forEach((a, i) => {
+        const slug = original[i].href.split('/')[1];
+        if (lang === 'bg') {
+          a.textContent = original[i].text;
+          a.setAttribute('href', original[i].href);
+        } else {
+          a.textContent = (lang === 'es' && LATIN_ES[slug]) || LATIN[slug] || original[i].text;
+          a.setAttribute('href', `/${lang}/${original[i].href}`);
+        }
+      });
+    };
+    translate();
+    document.addEventListener('change', event => { if (event.target && event.target.id === 'language') setTimeout(translate, 0); });
+    return;
+  }
 
   const T = {
     bg: { cities: 'Времето в градовете', all: 'Всички градове →', holidays: 'Календар на празниците' },
