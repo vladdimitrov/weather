@@ -1,7 +1,7 @@
 // Service worker: makes the site installable and keeps the last data for
 // offline use. Network first everywhere, so a new deploy shows up right away;
 // the cache is only the fallback when there is no connection.
-const CACHE = 'weatherpulse-v12';
+const CACHE = 'weatherpulse-v13';
 
 const PAGES = ['/', '/weather/', '/maps/', '/holliday_calendar/', '/contacts/', '/magnitni-buri/', '/za-saita/', '/poveritelnost/', '/luna/', '/nebeto/'];
 

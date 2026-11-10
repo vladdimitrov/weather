@@ -2,14 +2,14 @@
 // remembered. All data stay metric inside the page (warnings and charts work on them);
 // for imperial the shown texts are converted: "11°" -> "52°", "5 km/h" -> "3 mph",
 // "1.5 mm" -> "0.06 in", and the unit names in the table headers. Switching reloads the page.
-// First visit: imperial only for browsers set to en-US.
+// Metric unless the visitor picks imperial in the header.
 (function () {
   const KEY = 'units';
   function stored() {
     try { return localStorage.getItem(KEY); } catch (e) { return null; }
   }
   const saved = stored();
-  const imperial = saved === 'imperial' || (saved !== 'metric' && /^en-US$/i.test(navigator.language || ''));
+  const imperial = saved === 'imperial';
   document.documentElement.dataset.units = imperial ? 'imperial' : 'metric';
   window.Units = { imperial };
 
