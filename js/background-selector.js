@@ -4,7 +4,7 @@
 // it appears next to the language dropdown and follows its language.
 (function () {
   const STORAGE_KEY = 'defaultBackground';
-  const DEFAULT_BACKGROUND = 'blue';
+  const DEFAULT_BACKGROUND = 'sunset';
 
   // Deep, rich tones: three colour stops plus a soft light from the top left corner.
   // The keys are saved in the visitor's browser, so the old ones keep their names.
@@ -33,13 +33,12 @@
     es: { label: 'Fondo:', blue: 'Azul', default: 'Predeterminado (Morado)', dark: 'Oscuro', green: 'Verde', purple: 'Morado', red: 'Rojo', midnight: 'Medianoche', gold: 'Oro', teal: 'Turquesa', rose: 'Rosa', sunset: 'Atardecer' }
   };
 
-  // A background the visitor picked wins; otherwise follow the device's dark mode
+  // A background the visitor picked wins; otherwise the default (Sunset)
   function getSavedBackground() {
     let saved = null;
     try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) { /* storage blocked */ }
     if (backgrounds[saved]) return saved;
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return prefersDark ? 'dark' : DEFAULT_BACKGROUND;
+    return DEFAULT_BACKGROUND;
   }
 
   function saveBackground(background) {
