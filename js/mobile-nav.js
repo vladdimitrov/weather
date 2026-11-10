@@ -313,7 +313,7 @@
   function initUnits() {
     if (document.querySelector('script[src*="/js/units.js"]')) return;
     const script = document.createElement('script');
-    script.src = '/js/units.js?v=2';
+    script.src = '/js/units.js?v=3';
     document.head.appendChild(script);
   }
 
