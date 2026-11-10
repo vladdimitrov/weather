@@ -98,3 +98,32 @@
 #dayCards.compact .day-card .dc-sun,
 #dayCards.compact .day-card .reliability,
 #dayCards.compact .day-card .temp-range { display: none; }
+
+/* quick choice of 3 / 7 / 14 days and the share button */
+.quick-days {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 12px auto 2px;
+}
+.quick-days button {
+  min-height: 36px;
+  padding: 6px 14px;
+  border: 1px solid var(--line, rgba(255, 255, 255, 0.18));
+  border-radius: 999px;
+  background: var(--glass, rgba(255, 255, 255, 0.06));
+  color: var(--ink-soft, #d8dcef);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.quick-days button:hover { color: #fff; border-color: rgba(255, 215, 0, 0.5); }
+.quick-days button[aria-pressed="true"] {
+  color: #1b1b2f;
+  background: var(--gold, #ffd700);
+  border-color: var(--gold, #ffd700);
+  font-weight: 650;
+}
+.quick-days .qd-share { margin-inline-start: 6px; }
+@media print { .quick-days { display: none; } }

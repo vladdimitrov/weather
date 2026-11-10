@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 56, mobileNav: 13, cityForecast: 9, moon: 2, lunaToday: 3, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
+const VERSION = { theme: 57, mobileNav: 14, cityForecast: 9, moon: 2, lunaToday: 3, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
 
 const CITIES = [
   ['sofia', 'София', 42.6977, 23.3219],
@@ -234,14 +234,14 @@ ${languageScript}
     </div>
   </div>
 
-  <div class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
+  <div id="main-content" role="main" class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
 ${body}
   </div>
 
 ${(FOOTER_TEXT = { about: NAV.about, privacy: NAV.privacy }, LOGO = I18N.LOGO_ALT[lang], FOOTER_URLS = multi ? { about: I18N.localUrl(lang, '/za-saita/'), privacy: I18N.localUrl(lang, '/poveritelnost/') } : { about: '/za-saita/', privacy: '/poveritelnost/' }, footer())}
 
 <script src="/js/mobile-nav.js?v=${VERSION.mobileNav}" defer></script>
-<script src="/js/language-selector.js?v=4" defer></script>
+<script src="/js/language-selector.js?v=5" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 ${scripts}</body>
 </html>

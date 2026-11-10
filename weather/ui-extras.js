@@ -26,6 +26,8 @@
     humidity: { en: 'Humidity', bg: 'Влажност', de: 'Luftfeuchte', it: 'Umidità', es: 'Humedad' },
     change: { en: 'Change', bg: 'Промени', de: 'Ändern', it: 'Modifica', es: 'Cambiar' },
     more: { en: 'More details', bg: 'Повече подробности', de: 'Mehr Details', it: 'Più dettagli', es: 'Más detalles' },
+    share: { en: 'Share', bg: 'Сподели', de: 'Teilen', it: 'Condividi', es: 'Compartir' },
+    copied: { en: 'Link copied', bg: 'Линкът е копиран', de: 'Link kopiert', it: 'Link copiato', es: 'Enlace copiado' },
     less: { en: 'Fewer details', bg: 'По-малко подробности', de: 'Weniger Details', it: 'Meno dettagli', es: 'Menos detalles' }
   };
   const dayWord = n => (n === 1
@@ -181,6 +183,69 @@
     applyDetails();
   }
 
+
+  // ---- quick choice of 3 / 7 / 14 days and a share button ----
+  const QUICK_DAYS = [3, 7, 14];
+  function currentDays() { return parseInt((el('days') || {}).value, 10) || 3; }
+
+  function renderQuick() {
+    const row = el('quickDays');
+    if (!row) return;
+    const now = currentDays();
+    row.querySelectorAll('button[data-days]').forEach(button => {
+      const n = +button.dataset.days;
+      button.textContent = `${n} ${pick(dayWord(n))}`;
+      button.setAttribute('aria-pressed', String(n === now));
+    });
+    const share = row.querySelector('.qd-share');
+    if (share && !share.dataset.busy) share.textContent = `🔗 ${pick(T.share)}`;
+  }
+
+  function ensureQuick() {
+    const box = el('dayCards');
+    if (!box || el('quickDays')) { renderQuick(); return; }
+    const row = document.createElement('div');
+    row.id = 'quickDays';
+    row.className = 'quick-days';
+    QUICK_DAYS.forEach(n => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.days = n;
+      button.addEventListener('click', () => {
+        const input = el('days');
+        const load = el('loadData');
+        if (!input || !load || currentDays() === n) return;
+        input.value = n;
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+        load.click();
+      });
+      row.appendChild(button);
+    });
+    const share = document.createElement('button');
+    share.type = 'button';
+    share.className = 'qd-share';
+    share.addEventListener('click', async () => {
+      const url = location.href;
+      if (navigator.share) {
+        try { await navigator.share({ title: document.title, url }); } catch (e) { /* cancelled */ }
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(url);
+        share.dataset.busy = '1';
+        share.textContent = `✓ ${pick(T.copied)}`;
+        setTimeout(() => { delete share.dataset.busy; renderQuick(); }, 2000);
+      } catch (e) {
+        window.prompt('', url);
+      }
+    });
+    row.appendChild(share);
+    const toggle = el('dayDetailsToggle');
+    (toggle || box).insertAdjacentElement('beforebegin', row);
+    renderQuick();
+  }
+
   // ---- page title in the site language ----
   function setTitle() {
     const lang = document.documentElement.lang;
@@ -192,6 +257,7 @@
     const box = el('dayCards');
     if (box) { box.removeAttribute('aria-busy'); box.style.setProperty('--n', box.children.length); }
     ensureToggle();
+    ensureQuick();
     collapseForm();
     loadNow(detail.lat, detail.lon);
   });
@@ -203,6 +269,7 @@
       renderNow();
       if (form() && form().classList.contains('collapsed')) renderSummary();
       applyDetails();
+      renderQuick();
     }, 0);
   });
 
