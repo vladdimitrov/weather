@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 50, mobileNav: 12, cityForecast: 7, moon: 2, lunaToday: 3, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
+const VERSION = { theme: 51, mobileNav: 12, cityForecast: 7, moon: 2, lunaToday: 3, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
 
 const CITIES = [
   ['sofia', 'София', 42.6977, 23.3219],
@@ -190,7 +190,7 @@ function page({ url, title, description, body, scripts = '', jsonLd = '', lang =
   <script src="/cookie-consent.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title} | Weather Pulse</title>
