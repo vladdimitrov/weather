@@ -13,6 +13,14 @@
     overflow-x: hidden !important;
   }
 
+  /* the strip is as wide as the chart above it (see .hourly-chart in theme.css) */
+  #hourlyTableBlock .table-container {
+    box-sizing: border-box;
+    max-width: 922px; /* 900 + padding and border of the chart */
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
   #hourlyTable {
     display: block !important;
     box-sizing: border-box;
