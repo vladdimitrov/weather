@@ -1,15 +1,22 @@
-/* Hourly forecast on a phone: the hours run left to right and the strip scrolls
-   sideways (a seven-column table did not fit, and a tall list of cards meant a lot
-   of scrolling down). Each hour is a narrow column: time, icon, temperature,
-   cloudiness, rain, chance of rain and wind, with their units. Screen only; the
-   printed table and the desktop table are unchanged. */
-@media screen and (max-width: 640px) {
+/* Hourly forecast, phone and desktop: the hours run left to right and the strip scrolls
+   sideways (a seven-column table did not fit on a phone, and a tall list meant a lot of
+   scrolling down). Each hour is a narrow column: time, icon, temperature, cloudiness,
+   rain, chance of rain and wind, with their units. Screen only; the printed table is
+   unchanged. */
+@media screen {
   #hourlyTableBlock {
+    overflow-x: hidden !important;
+  }
+
+  /* only the strip scrolls, not its box as well */
+  #hourlyTableBlock .table-container {
     overflow-x: hidden !important;
   }
 
   #hourlyTable {
     display: block !important;
+    box-sizing: border-box;
+    max-width: 100%;
     width: 100% !important;
     min-width: 0 !important;
     border: 0 !important;
@@ -38,7 +45,7 @@
 
   #hourlyTable tbody tr {
     display: flex !important;
-    flex: 0 0 82px;
+    flex: 0 0 90px;
     flex-direction: column;
     align-items: center;
     gap: 6px;
