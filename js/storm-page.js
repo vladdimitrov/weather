@@ -193,6 +193,15 @@
     });
   }
 
+  // "Kp every 3 hours · green — calm, yellow — G1–G2 storm, red — strong storm" as coloured chips
+  function legendHtml() {
+    const [head, rest] = t('legend').split(' · ');
+    if (!rest) return t('legend');
+    const keys = ['calm', 'active', 'storm'];
+    const chips = rest.split(', ').map((part, i) => `<span class="chart-key key-${keys[i] || 'calm'}">${(part.split(' — ')[1] || part).trim()}</span>`).join('');
+    return `<span class="chart-legend-head">${head}</span>${chips}`;
+  }
+
   function level(kp) {
     return kp >= 7 ? 'storm' : kp >= 5 ? 'active' : 'calm';
   }
@@ -304,7 +313,7 @@
       `<h3>${t('forecastTitle')}</h3>` +
       `<div class="kp-days">${dayCards}</div>` +
       `<div class="hourly-chart storm-chart"><svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${t('chartLabel')}">${grid}${separators}${bars}${dayLabels}</svg>` +
-      `<div class="chart-legend">${t('legend')}</div></div>`;
+      `<div class="chart-legend">${legendHtml()}</div></div>`;
     box.hidden = false;
   }
 

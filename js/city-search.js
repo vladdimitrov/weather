@@ -185,6 +185,31 @@
     // In the page forms (a grid of fields) the row spans the whole form, above
     // the buttons; elsewhere it goes under the field
     const formGroup = input.closest('.form-group');
+    // ✕ inside the field: clears it and puts the cursor back
+    if (formGroup) {
+      const clear = document.createElement('button');
+      clear.type = 'button';
+      clear.className = 'city-clear';
+      clear.textContent = '✕';
+      clear.setAttribute('aria-label', 'Clear');
+      clear.hidden = true;
+      const place = () => {
+        clear.hidden = !input.value;
+        clear.style.top = (input.offsetTop + (input.offsetHeight - 24) / 2) + 'px';
+      };
+      clear.addEventListener('click', () => {
+        input.value = '';
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        place();
+        input.focus();
+      });
+      input.addEventListener('input', place);
+      input.addEventListener('change', place);
+      window.addEventListener('resize', place);
+      setTimeout(place, 300);
+      setTimeout(place, 1500);
+      formGroup.appendChild(clear);
+    }
     const buttonRow = formGroup && formGroup.parentElement && formGroup.parentElement.querySelector(':scope > .buttons-container');
     if (buttonRow) {
       placeRow.classList.add('destination-row');

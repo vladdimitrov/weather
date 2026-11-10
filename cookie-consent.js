@@ -157,17 +157,19 @@
         position: fixed;
         right: 12px;
         bottom: calc(var(--footer-height, 50px) + 12px);
-        width: 36px;
-        height: 36px;
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         border: 1px solid rgba(255, 215, 0, 0.6);
         background: rgba(10, 25, 60, 0.7);
-        font-size: 18px;
+        font-size: 15px;
         line-height: 1;
         cursor: pointer;
         opacity: 0.6;
         z-index: 10000;
+        transition: opacity 0.25s ease, transform 0.25s ease;
       }
+      .cc-settings.cc-away { opacity: 0; transform: translateY(12px); pointer-events: none; }
       .cc-settings:hover {
         opacity: 1;
       }
@@ -195,6 +197,16 @@
       showBanner();
     });
     document.body.appendChild(settingsButton);
+    // out of the way while the page scrolls down, back when it scrolls up or stops
+    let lastY = window.scrollY, idle = null;
+    window.addEventListener('scroll', function () {
+      const y = window.scrollY;
+      if (y > lastY + 4 && y > 200) settingsButton.classList.add('cc-away');
+      else if (y < lastY - 4) settingsButton.classList.remove('cc-away');
+      lastY = y;
+      clearTimeout(idle);
+      idle = setTimeout(function () { settingsButton.classList.remove('cc-away'); }, 1200);
+    }, { passive: true });
   }
 
   function showBanner() {

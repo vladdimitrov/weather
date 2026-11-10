@@ -1761,7 +1761,7 @@ html.i18n-pending body {
 /* The footer sits at the end of the page instead of floating over the content:
    the body reserves its room (mobile.css) and the footer is placed in that room. */
 body { position: relative; box-sizing: border-box; padding-bottom: calc(var(--footer-height, 40px) + 40px) !important; }
-body > footer {
+body footer {
   position: absolute !important;
   bottom: 0 !important;
   left: 0 !important;
@@ -1770,7 +1770,7 @@ body > footer {
   margin-top: 0 !important;
   box-sizing: border-box;
 }
-@media print { body > footer { position: static !important; } }
+@media print { body footer { position: static !important; } }
 
 /* Premium look (all pages).
    1. Gold only for what matters: the main title, the main action, the selected item.
@@ -1917,8 +1917,8 @@ html body .btn-primary { box-shadow: 0 6px 18px rgba(255, 200, 0, 0.22); }
 
 /* header and footer: hairlines instead of glow */
 html body .nav-header { background: rgba(14, 22, 48, 0.82) !important; border-bottom: 1px solid var(--line); box-shadow: 0 6px 24px rgba(4, 8, 24, 0.25); }
-html body > footer { background: rgba(14, 22, 48, 0.82) !important; border-top: 1px solid var(--line) !important; box-shadow: none !important; }
-html body > footer p { color: var(--ink-soft) !important; }
+html body footer { background: rgba(14, 22, 48, 0.82) !important; border-top: 1px solid var(--line) !important; box-shadow: none !important; }
+html body footer p { color: var(--ink-soft) !important; }
 
 @media (prefers-reduced-motion: reduce) {
   html body .day-card, html body .city-day { transition: none; }
@@ -2014,3 +2014,111 @@ html::after {
 }
 .day-msg::before { content: "🌤"; display: block; margin-bottom: 6px; font-size: 1.8rem; }
 .day-msg .day-retry { margin-top: 12px; }
+
+/* ---- round 3: folding forms (maps, holidays), calmer titles, storms, scroll hints, skeletons ---- */
+
+/* the form folds into one line once the result is shown (see js/form-fold.js) */
+.form-container .form-summary {
+  display: none;
+  grid-column: 1 / -1;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.form-container .form-summary:hover { border-color: rgba(255, 215, 0, 0.6); }
+.form-container .form-summary .fs-change { color: var(--gold); white-space: nowrap; }
+.form-container.collapsed { padding: 10px; }
+.form-container.collapsed > .form-summary { display: flex; }
+.form-container.collapsed > :not(.form-summary) { display: none !important; }
+
+/* page titles: two lines at most on a phone */
+html body .container > h1 { font-size: clamp(1.4rem, 5.4vw, 2.1rem); line-height: 1.2; text-wrap: balance; }
+
+/* storms: the Kp figure as a round gauge, the legend as three coloured chips */
+.storm-now-value {
+  display: grid;
+  place-items: center;
+  width: 104px;
+  height: 104px;
+  margin: 8px auto;
+  border: 3px solid currentColor;
+  border-radius: 50%;
+  font-size: 2.6rem;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  box-shadow: 0 0 24px -4px currentColor, inset 0 0 18px -8px currentColor;
+}
+.chart-legend { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 8px; margin-top: 10px; font-size: 0.8rem; color: var(--ink-soft); }
+.chart-legend-head { flex: 1 0 100%; text-align: center; }
+.chart-key { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, 0.05); }
+.chart-key::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+.chart-key.key-calm::before { color: #2ecc71; }
+.chart-key.key-active::before { color: #f1c40f; }
+.chart-key.key-storm::before { color: #e74c3c; }
+
+/* wide tables: a soft edge shows there is more to the side */
+.table-scroll {
+  background:
+    linear-gradient(to right, rgba(16, 24, 52, 0.95) 30%, rgba(16, 24, 52, 0)) left center / 28px 100% no-repeat local,
+    linear-gradient(to left, rgba(16, 24, 52, 0.95) 30%, rgba(16, 24, 52, 0)) right center / 28px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)) left center / 12px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)) right center / 12px 100% no-repeat scroll;
+}
+@media (max-width: 600px) {
+  .sky-table th:first-child, .sky-table td:first-child { position: sticky; left: 0; z-index: 1; background: rgba(16, 24, 52, 0.96); }
+}
+
+/* loading placeholders (storms, city pages) as shimmering blocks */
+@keyframes wpShimmer { to { background-position: -200% 0; } }
+.storm-loading {
+  min-height: 110px;
+  margin: 0;
+  border-radius: 12px;
+  color: transparent !important;
+  background: linear-gradient(90deg, rgba(255,255,255,0.06) 25%, rgba(255,255,255,0.16) 50%, rgba(255,255,255,0.06) 75%) 0 0 / 200% 100%;
+  animation: wpShimmer 1.3s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) { .storm-loading { animation: none; } }
+
+/* the clear button inside the city field */
+.form-group.city input { padding-right: 36px; }
+.city-clear {
+  position: absolute;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 24px;
+  cursor: pointer;
+  z-index: 2;
+}
+.city-clear:hover { background: rgba(255, 255, 255, 0.24); }
+.city-clear[hidden] { display: none; }
+
+/* data tables: hairlines instead of the bright yellow grid of the old table rule */
+html body .kp-table th, html body .kp-table td,
+html body .climate-table th, html body .climate-table td,
+html body .holiday-table th, html body .holiday-table td,
+html body .model-compare th, html body .model-compare td {
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+html body .kp-table, html body .climate-table, html body .holiday-table, html body .model-compare table { border: 1px solid rgba(255, 255, 255, 0.14); }
+html body .kp-table, html body .climate-table, html body .holiday-table, html body .model-compare table,
+html body .kp-table th, html body .kp-table td, html body .climate-table th, html body .climate-table td,
+html body .holiday-table th, html body .holiday-table td, html body .model-compare th, html body .model-compare td { box-shadow: none; }
