@@ -70,6 +70,8 @@
 
   function renderNow() {
     const block = nowBlock();
+    const info = document.querySelector('.info-display');
+    if (info) info.classList.toggle('has-now', !!current);
     if (!current) { block.hidden = true; return; }
     const condition = conditionOf(current.weather_code) || conditions[2];
     const place = placeName();
@@ -188,7 +190,7 @@
   document.addEventListener('forecast:loaded', event => {
     const detail = event.detail || {};
     const box = el('dayCards');
-    if (box) box.removeAttribute('aria-busy');
+    if (box) { box.removeAttribute('aria-busy'); box.style.setProperty('--n', box.children.length); }
     ensureToggle();
     collapseForm();
     loadNow(detail.lat, detail.lon);

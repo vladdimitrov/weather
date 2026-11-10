@@ -68,11 +68,10 @@
 @media (prefers-reduced-motion: reduce) { .day-skel i { animation: none; } }
 
 /* Day cards: narrower, so more days fit on the screen */
+/* columns and width follow the number of days (see the end of /css/theme.css) */
 #dayCards.day-cards {
-  grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
   gap: 10px;
-  justify-content: center;
-  max-width: 100%;
+  margin-inline: auto;
 }
 #dayCards .day-card { padding: 10px 10px 8px; }
 #dayCards .day-card .dc-cond {

@@ -283,7 +283,34 @@
     render();
   }
 
+  // a link at the very top for keyboard users: straight to the content, past the menu
+  const skipTexts = { en: 'Skip to content', bg: 'Към съдържанието', de: 'Zum Inhalt springen', it: 'Vai al contenuto', es: 'Saltar al contenido' };
+  function initSkipLink() {
+    if (document.querySelector('.skip-link')) return;
+    const target = document.querySelector('main') || document.querySelector('.container');
+    if (!target) return;
+    if (!target.id) target.id = 'main-content';
+    target.setAttribute('tabindex', '-1');
+    const link = document.createElement('a');
+    link.className = 'skip-link';
+    link.href = '#' + target.id;
+    link.textContent = skipTexts[document.documentElement.lang] || skipTexts.en;
+    document.body.insertBefore(link, document.body.firstChild);
+    document.addEventListener('change', event => {
+      if (event.target && event.target.id === 'language') setTimeout(() => { link.textContent = skipTexts[document.documentElement.lang] || skipTexts.en; }, 0);
+    });
+  }
+
+  function initUnits() {
+    if (document.querySelector('script[src*="/js/units.js"]')) return;
+    const script = document.createElement('script');
+    script.src = '/js/units.js?v=1';
+    document.head.appendChild(script);
+  }
+
   function initSite() {
+    initUnits();
+    initSkipLink();
     initMobileNav();
     updateYear();
     initOfflineNotice();

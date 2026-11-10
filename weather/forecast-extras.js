@@ -110,6 +110,67 @@ window.ForecastExtras = (function () {
   // ---- Hourly temperature chart ----
   let chartPoints = null;
 
+  const NOW_TEXT = { en: 'now', bg: 'сега', de: 'jetzt', it: 'ora', es: 'ahora' };
+
+  // The hour you point at: a line, and a small box with the time, temperature and chance of rain.
+  // If the chart is for today (in the place's time), a dashed line marks the current hour.
+  function decorateChart(chart, width, pad) {
+    const svg = chart.querySelector('svg');
+    if (!svg || !chartPoints) return;
+    const count = chartPoints.length;
+    const step = (width - pad.left - pad.right) / (count - 1);
+    const xAt = i => pad.left + i * step;
+    const ns = 'http://www.w3.org/2000/svg';
+
+    if (clockZone) {
+      try {
+        const [date, time] = new Date().toLocaleString('sv-SE', { timeZone: clockZone }).split(' ');
+        if (chartPoints[0].date === date) {
+          let index = -1;
+          chartPoints.forEach((p, i) => { if (p.time <= time.slice(0, 5)) index = i; });
+          if (index >= 0) {
+            const line = document.createElementNS(ns, 'line');
+            line.setAttribute('x1', xAt(index)); line.setAttribute('x2', xAt(index));
+            line.setAttribute('y1', pad.top); line.setAttribute('y2', 220 - pad.bottom);
+            line.setAttribute('class', 'chart-now-line');
+            const label = document.createElementNS(ns, 'text');
+            label.setAttribute('x', xAt(index) + 4); label.setAttribute('y', pad.top + 9);
+            label.setAttribute('class', 'chart-now-label');
+            label.textContent = pickText(NOW_TEXT);
+            svg.append(line, label);
+          }
+        }
+      } catch (e) { /* unknown time zone: no marker */ }
+    }
+
+    const hoverLine = document.createElementNS(ns, 'line');
+    hoverLine.setAttribute('y1', pad.top); hoverLine.setAttribute('y2', 220 - pad.bottom);
+    hoverLine.setAttribute('class', 'chart-hover-line');
+    hoverLine.style.display = 'none';
+    svg.appendChild(hoverLine);
+    let tip = chart.querySelector('.chart-tip');
+    if (!tip) {
+      tip = document.createElement('div');
+      tip.className = 'chart-tip';
+      tip.hidden = true;
+      chart.appendChild(tip);
+    }
+    const hide = () => { hoverLine.style.display = 'none'; tip.hidden = true; };
+    svg.addEventListener('pointerleave', hide);
+    svg.addEventListener('pointermove', event => {
+      const box = svg.getBoundingClientRect();
+      const vx = (event.clientX - box.left) / box.width * width;
+      const i = Math.max(0, Math.min(count - 1, Math.round((vx - pad.left) / step)));
+      const p = chartPoints[i];
+      hoverLine.setAttribute('x1', xAt(i)); hoverLine.setAttribute('x2', xAt(i));
+      hoverLine.style.display = '';
+      tip.textContent = `${p.time} · ${Math.round(p.temperature * 10) / 10}°${typeof p.rainChance === 'number' && p.rainChance > 0 ? ` · ☔ ${p.rainChance}%` : ''}`;
+      tip.hidden = false;
+      const left = xAt(i) / width * box.width;
+      tip.style.left = Math.max(40, Math.min(box.width - 40, left)) + 'px';
+    });
+  }
+
   function renderHourlyChart(points) {
     if (points) chartPoints = points;
     const block = document.getElementById('hourlyTableBlock');
@@ -160,6 +221,7 @@ window.ForecastExtras = (function () {
       `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeAttribute(pickText(T.chartTemperature))}">${yTicks}${bars}<path d="${line}" class="chart-line"/>${dots}${values}${xLabels}</svg>` +
       `<div class="chart-legend"><span class="legend-line"></span>${pickText(T.chartTemperature)}` +
       `<span class="legend-rain"></span>${pickText(T.chartRainChance)}</div>`;
+    decorateChart(chart, width, pad);
   }
 
   // ---- Local time of the selected place, kept current ----

@@ -2122,3 +2122,129 @@ html body .kp-table, html body .climate-table, html body .holiday-table, html bo
 html body .kp-table, html body .climate-table, html body .holiday-table, html body .model-compare table,
 html body .kp-table th, html body .kp-table td, html body .climate-table th, html body .climate-table td,
 html body .holiday-table th, html body .holiday-table td, html body .model-compare th, html body .model-compare td { box-shadow: none; }
+
+/* ---- round 4a: desktop layout, focus, page transitions, compact header selectors ---- */
+
+/* one column width for the forecast page: form, "now" block and the info line */
+html body .info-display { max-width: 800px; margin-inline: auto; }
+html body .now-block { max-width: 800px; }
+/* the place is already in the "Now in ..." block */
+.info-display.has-now #selected-city { display: none; }
+/* the cards follow the number of days: three days stay compact, seven or more use the full width */
+#dayCards.day-cards {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  max-width: min(100%, calc(var(--n, 3) * 215px));
+}
+
+/* keyboard focus: a clear ring everywhere, and a link to skip the menu */
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; }
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -64px;
+  z-index: 10001;
+  padding: 8px 14px;
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  background: #0e1630;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-link:focus { top: 8px; }
+
+/* smooth change between pages (Chrome, Edge, Safari); the header and footer stay still */
+@view-transition { navigation: auto; }
+.nav-header { view-transition-name: site-header; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.22s; }
+@media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
+
+/* header selectors on wide screens: the icon and the box, the word stays for screen readers */
+@media (min-width: 769px) {
+  html:not(.nav-compact) body .nav-header .header-selectors .form-group { position: relative; padding-left: 20px; }
+  html:not(.nav-compact) body .nav-header .header-selectors .form-group label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  html:not(.nav-compact) body .nav-header .header-selectors .form-group::before { top: 50%; transform: translateY(-50%); }
+  html:not(.nav-compact) body .nav-header .header-selectors select { width: 100px !important; }
+}
+.form-group.units::before { content: "🌡️"; }
+
+/* ---- round 4b: chart read-out, moon grid, nearby cities, favorites, imperial units in the hourly strip ---- */
+
+/* hourly chart: the hour you point at, and the current hour */
+.hourly-chart { position: relative; }
+.chart-hover-line { stroke: rgba(255, 255, 255, 0.55); stroke-width: 1; stroke-dasharray: 3 3; pointer-events: none; }
+.chart-now-line { stroke: var(--gold); stroke-width: 1.5; stroke-dasharray: 4 3; pointer-events: none; }
+.chart-now-label { fill: var(--gold); font-size: 10px; font-weight: 700; pointer-events: none; }
+.chart-tip {
+  position: absolute;
+  top: 4px;
+  transform: translateX(-50%);
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(10, 16, 40, 0.92);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 3;
+}
+.chart-tip[hidden] { display: none; }
+
+/* moon calendar: a month grid with the phase of every day */
+.moon-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; margin: 12px 0 18px; }
+.moon-grid[hidden] { display: none; }
+.mg-head { padding: 4px 0; text-align: center; font-size: 0.78rem; font-weight: 600; color: var(--ink-soft); text-transform: capitalize; }
+.mg-day {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 6px 2px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+}
+.mg-num { font-size: 0.78rem; font-weight: 600; color: var(--ink-soft); }
+.mg-icon { font-size: 1.5rem; line-height: 1.1; }
+.mg-pct { font-size: 0.7rem; color: var(--ink-soft); }
+.mg-key { border-color: rgba(255, 215, 0, 0.55); background: rgba(255, 215, 0, 0.08); }
+.mg-today { box-shadow: 0 0 0 2px var(--gold); }
+@media (max-width: 480px) { .moon-grid { gap: 3px; } .mg-icon { font-size: 1.15rem; } .mg-pct { display: none; } }
+
+/* other cities nearby (city pages) */
+.city-nearby h2 { margin-top: 0; }
+.nearby-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.nearby-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.nearby-card:hover { border-color: rgba(255, 215, 0, 0.6); transform: translateY(-2px); }
+.nearby-name { font-weight: 600; }
+.nearby-temp { display: inline-flex; align-items: center; gap: 4px; font-size: 1.15rem; font-weight: 300; }
+
+/* favorites on the home page show the temperature */
+.favorite-place .fav-temp { margin-left: 4px; font-weight: 300; opacity: 0.9; }
+
+/* units in the sideways hourly strip */
+html[data-units="imperial"] #hourlyTable tbody td:nth-child(5)::after { content: " in"; }
+html[data-units="imperial"] #hourlyTable tbody td:nth-child(7)::after { content: " mph"; }
+html body .info-display { min-height: 0 !important; }
+html body .nearby-card .nearby-name { color: var(--ink); }

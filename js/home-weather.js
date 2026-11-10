@@ -120,6 +120,30 @@
     list.className = 'home-favorites-list';
     list.append(...links);
     favoritesBox.replaceChildren(title, list);
+    loadFavoriteTemperatures(favorites, links);
+  }
+
+  // the temperature now next to each favorite place, one request for all
+  async function loadFavoriteTemperatures(favorites, links) {
+    const shown = favorites.slice(0, links.length);
+    if (!shown.length) return;
+    const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + shown.map(p => Number(p.latitude).toFixed(3)).join(',') +
+      '&longitude=' + shown.map(p => Number(p.longitude).toFixed(3)).join(',') + '&current=temperature_2m&timezone=auto';
+    try {
+      const response = await fetch(url);
+      if (!response.ok) return;
+      const data = await response.json();
+      const results = Array.isArray(data) ? data : [data];
+      links.forEach((link, i) => {
+        const current = results[i] && results[i].current;
+        if (current && !link.querySelector('.fav-temp')) {
+          const badge = document.createElement('span');
+          badge.className = 'fav-temp';
+          badge.textContent = ` ${Math.round(current.temperature_2m)}°`;
+          link.appendChild(badge);
+        }
+      });
+    } catch (err) { /* the links work without temperatures */ }
   }
 
   const languageSelect = document.getElementById('language');
