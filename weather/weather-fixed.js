@@ -90,8 +90,8 @@ function updateForecast() {
 
       await delay(500); // Delay for 500 milliseconds
       const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_min,temperature_2m_max,cloudcover_mean,precipitation_sum,windspeed_10m_max,temperature_2m_mean,weather_code,sunrise,sunset,precipitation_probability_max&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${today}&end_date=${endDate}`;
-      const weatherRes = await fetch(weatherURL);
-      const weatherData = await weatherRes.json();
+      // the median of three models (js/forecast-core.js), the default forecast if that fails
+      const weatherData = window.ForecastCore ? await ForecastCore.load(weatherURL) : await (await fetch(weatherURL)).json();
 
       if (!weatherData.daily || !weatherData.daily.time) {
         console.error("Invalid weather data format:", weatherData);

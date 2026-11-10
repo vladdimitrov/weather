@@ -62,15 +62,39 @@
   // opening the same city again does not call the API a second time.
   const CACHE_MS = 10 * 60 * 1000;
 
-  async function getJson(url) {
-    const key = 'wp-forecast:' + url;
+  // the main forecast of the city is the median of three models (js/forecast-core.js)
+  let corePromise = null;
+  function loadCore() {
+    if (window.ForecastCore) return Promise.resolve();
+    if (!corePromise) {
+      corePromise = new Promise(resolve => {
+        const script = document.createElement('script');
+        script.src = '/js/forecast-core.js?v=1';
+        script.onload = script.onerror = () => resolve();
+        document.head.appendChild(script);
+      });
+    }
+    return corePromise;
+  }
+
+  async function getJson(url, consensus) {
+    const key = 'wp-forecast:' + (consensus ? 'median:' : '') + url;
     try {
       const saved = JSON.parse(sessionStorage.getItem(key));
       if (saved && Date.now() - saved.time < CACHE_MS) return saved.data;
     } catch (error) { /* storage unavailable: fetch as usual */ }
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const data = await response.json();
+    let data;
+    if (consensus) {
+      await loadCore();
+    }
+    if (consensus && window.ForecastCore) {
+      data = await ForecastCore.load(url);
+      if (!data || data.error || !data.daily) throw new Error('forecast failed');
+    } else {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      data = await response.json();
+    }
     try { sessionStorage.setItem(key, JSON.stringify({ time: Date.now(), data })); } catch (error) { /* full or blocked */ }
     return data;
   }
@@ -143,7 +167,8 @@
     });
     const grid = el('div', 'city-days');
     grid.append(...days);
-    daysBox.replaceChildren(el('h3', '', text.days), grid);
+    const note = window.ForecastCore ? ForecastCore.note({ models: forecast.models, elevation: forecast.elevation }) : '';
+    daysBox.replaceChildren(el('h3', '', text.days), grid, ...(note ? [el('p', 'forecast-note', note)] : []));
     daysBox.hidden = false;
   }
 
@@ -153,7 +178,7 @@
       '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,sunrise,sunset,daylight_duration' +
       '&forecast_days=7&timezone=auto';
     try {
-      forecast = await getJson(url);
+      forecast = await getJson(url, true);
       renderCity();
     } catch (error) {
       console.error('City forecast:', error);
