@@ -169,7 +169,8 @@ function monthPage(lang, year, month, years) {
     url,
     lang,
     multi: true,
-    scripts: SCRIPTS,
+    scripts: SCRIPTS + `<script src="/js/moon-grid.js?v=1" defer></script>
+`,
     title: esc(T.monthTitle(name, year)),
     description: esc(T.monthDescription({ name, year, full, fresh, fullDates: dates(2), freshDates: dates(0) })),
     jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.cal, '/luna/'], [`${T.cal} ${year}`, `/luna/${year}/`], [`${name} ${year}`, url]]),

@@ -183,11 +183,67 @@
     }
   }
 
-  if (box) loadCity();
+  // --- Other cities of the country near this one, with their temperature now ---
+  const NEARBY = { en: 'Other cities nearby', bg: 'Други градове наблизо', de: 'Weitere Städte in der Nähe', it: 'Altre città vicine', es: 'Otras ciudades cercanas' };
+  let nearby = null; // { section, items: [{ place, current }] }
+
+  function distanceKm(lat1, lon1, lat2, lon2) {
+    const rad = Math.PI / 180;
+    const a = Math.sin((lat2 - lat1) * rad / 2) ** 2 + Math.cos(lat1 * rad) * Math.cos(lat2 * rad) * Math.sin((lon2 - lon1) * rad / 2) ** 2;
+    return 12742 * Math.asin(Math.sqrt(a));
+  }
+
+  function renderNearby() {
+    if (!nearby) return;
+    const lang = document.documentElement.lang;
+    const links = nearby.items.map(({ place, current }) => {
+      const name = place.name[lang] || place.name.en;
+      const query = new URLSearchParams({ city: name, lat: place.latitude.toFixed(4), lon: place.longitude.toFixed(4), cc: nearby.cc });
+      const link = el('a', 'nearby-card');
+      link.href = `/weather/?${query}`;
+      link.append(el('span', 'nearby-name', name));
+      if (current) {
+        const info = condition(current.weather_code);
+        const value = el('span', 'nearby-temp');
+        value.append(WeatherIcons.node('', info.key, pickText(info.text), 'sm'), document.createTextNode(` ${Math.round(current.temperature_2m)}°`));
+        link.append(value);
+      }
+      return link;
+    });
+    nearby.section.replaceChildren(el('h2', '', NEARBY[lang] || NEARBY.en), (() => { const grid = el('div', 'nearby-grid'); grid.append(...links); return grid; })());
+  }
+
+  async function loadNearby() {
+    const cc = new URLSearchParams(box.dataset.query || '').get('cc');
+    if (!cc) return;
+    try {
+      const data = await getJson('/js/destinations.json');
+      const here = [+box.dataset.lat, +box.dataset.lon];
+      const places = (data[cc] || [])
+        .map(place => ({ place, km: distanceKm(here[0], here[1], place.latitude, place.longitude) }))
+        .filter(item => item.km > 5)
+        .sort((a, b) => a.km - b.km)
+        .slice(0, 6)
+        .map(item => item.place);
+      if (!places.length) return;
+      const url = `${API}?latitude=${places.map(p => p.latitude).join(',')}&longitude=${places.map(p => p.longitude).join(',')}&current=temperature_2m,weather_code&timezone=auto`;
+      let results = [];
+      try { const weather = await getJson(url); results = Array.isArray(weather) ? weather : [weather]; } catch (error) { /* names only */ }
+      const section = document.createElement('section');
+      section.className = 'info-card city-nearby';
+      box.insertAdjacentElement('afterend', section);
+      nearby = { cc, section, items: places.map((place, i) => ({ place, current: results[i] && results[i].current })) };
+      renderNearby();
+    } catch (error) {
+      console.error('Nearby cities:', error);
+    }
+  }
+
+  if (box) { loadCity(); loadNearby(); }
   const list = document.getElementById('cityList');
   if (list) loadTiles(list);
 
   document.addEventListener('change', event => {
-    if (event.target && event.target.id === 'language') renderCity();
+    if (event.target && event.target.id === 'language') { renderCity(); renderNearby(); }
   });
 })();
