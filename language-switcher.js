@@ -117,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
       clearLocation: "Изчисти местоположението",
       loadData: "Зареди прогнозата",
       date: "Дата (Ден)",
-	  Weather:"Прогноза",
       minTemp: "Мин. темп. (°C)",
       maxTemp: "Макс. темп. (°C)",
       cloudiness: "Облачност (%)",
