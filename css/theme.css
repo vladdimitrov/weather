@@ -1936,3 +1936,8 @@ html body #local-time { color: var(--ink-soft); }
 html body details { border: 1px solid var(--line) !important; border-radius: 14px; background: var(--glass) !important; box-shadow: var(--shadow-soft) !important; }
 html body details > summary { color: var(--ink) !important; font-weight: 600; }
 html body .btn:not(.btn-primary):not(.btn-location) { border: 1px solid rgba(255, 255, 255, 0.2) !important; background: rgba(255, 255, 255, 0.07) !important; color: var(--ink) !important; }
+
+/* Forms fit the screen: inside a centring parent a grid with auto-fit columns shrank to its widest
+   layout (3 columns) and stuck out of a narrow screen, which gave a sideways scroll */
+.form-container { width: 100%; box-sizing: border-box; }
+.map-container { box-sizing: border-box; max-width: 100%; }
