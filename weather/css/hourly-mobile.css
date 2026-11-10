@@ -107,6 +107,9 @@
   #hourlyTable tbody td:nth-child(6)::before { content: "☔ "; }
   #hourlyTable tbody td:nth-child(7)::before { content: "💨 "; }
   #hourlyTable tbody td:nth-child(7)::after { content: " km/h"; }
+  /* Bulgarian units, as in the table headers */
+  :lang(bg) #hourlyTable tbody td:nth-child(5)::after { content: " мм"; }
+  :lang(bg) #hourlyTable tbody td:nth-child(7)::after { content: " км/ч"; }
 
   /* the bar of the chance of rain is for the printed table */
   #hourlyTable .precip-prob-bar-container {
