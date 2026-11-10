@@ -1,0 +1,107 @@
+/* Weather page extras (see weather/ui-extras.js): "now" block, folding form, loading
+   skeleton, compact day cards, footer in the page flow. */
+
+/* Icons beside the form labels sit on the label line */
+.weather-form .form-group::before {
+  top: 1px;
+  width: auto;
+  height: auto;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* The form folds into one line once a forecast is shown */
+.weather-form .form-summary {
+  display: none;
+  grid-column: 1 / -1;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.weather-form .form-summary:hover { border-color: var(--primary-color); }
+.weather-form .form-summary .fs-change { color: var(--primary-color); white-space: nowrap; }
+.weather-form.collapsed { padding: 10px; }
+.weather-form.collapsed > .form-summary { display: flex; }
+.weather-form.collapsed > :not(.form-summary) { display: none !important; }
+
+/* "Now" block: same look as the card on the home page */
+.now-block { margin: 12px auto; max-width: 720px; cursor: default; }
+.now-block:hover { border-color: var(--panel-border); }
+.now-block .now-place { flex: 1 0 100%; text-align: center; }
+.now-block .now-temp { font-size: 2.4em; }
+.now-block .now-desc { opacity: 0.95; }
+.now-block .now-meta { flex: 1 0 100%; text-align: center; font-size: 0.85rem; opacity: 0.85; }
+
+/* Loading skeleton for the day cards */
+.day-skel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 190px;
+  padding: 14px;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.day-skel i {
+  display: block;
+  height: 14px;
+  border-radius: 7px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.08) 25%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.08) 75%);
+  background-size: 200% 100%;
+  animation: skel-shimmer 1.3s linear infinite;
+}
+.day-skel i.big { height: 28px; width: 60%; }
+.day-skel i:nth-child(4) { width: 80%; }
+.day-skel i:nth-child(5) { width: 50%; }
+@keyframes skel-shimmer { to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { .day-skel i { animation: none; } }
+
+/* Day cards: narrower, so more days fit on the screen */
+#dayCards.day-cards {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+  gap: 10px;
+  justify-content: center;
+  max-width: 100%;
+}
+#dayCards .day-card { padding: 10px 10px 8px; }
+#dayCards .day-card .dc-cond {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-align: left;
+  opacity: 0.95;
+}
+.day-details-toggle {
+  display: block;
+  margin: 4px auto 0;
+  padding: 6px 12px;
+  border: 0;
+  background: none;
+  color: var(--primary-color);
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+/* fewer details: sunrise, sunset, moon and the reliability line are hidden */
+#dayCards.compact .day-card .dc-sun,
+#dayCards.compact .day-card .reliability,
+#dayCards.compact .day-card .temp-range { display: none; }
+
+/* The footer scrolls with the page instead of covering the content */
+body > footer {
+  position: static !important;
+  margin-top: 28px !important;
+}
