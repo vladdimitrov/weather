@@ -2248,3 +2248,8 @@ html[data-units="imperial"] #hourlyTable tbody td:nth-child(5)::after { content:
 html[data-units="imperial"] #hourlyTable tbody td:nth-child(7)::after { content: " mph"; }
 html body .info-display { min-height: 0 !important; }
 html body .nearby-card .nearby-name { color: var(--ink); }
+
+/* Bigger click areas (round 5): the look stays, the hit area grows */
+.nav-header .nav-link, .footer-link, .storms-link { position: relative; }
+.nav-header .nav-link::after, .footer-link::after, .storms-link::after { content: ""; position: absolute; inset: -9px -4px; }
+html body .day-details-toggle { min-height: 40px; }

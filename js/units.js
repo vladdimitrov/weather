@@ -94,12 +94,12 @@
   }
 
   const written = new WeakMap(); // text node -> the text this script wrote
-  const SKIP = 'SCRIPT,STYLE,TEXTAREA,INPUT,SELECT,OPTION,NOSCRIPT';
+  const SKIP = new Set(['SCRIPT', 'STYLE', 'TEXTAREA', 'INPUT', 'SELECT', 'OPTION', 'NOSCRIPT']);
 
   function process(node) {
     if (node.nodeType !== 3) return;
     const parent = node.parentElement;
-    if (!parent || SKIP.includes(parent.tagName)) return;
+    if (!parent || SKIP.has(parent.tagName)) return;
     if (written.get(node) === node.data) return; // our own write
     const out = convertCell(node) ?? convert(node.data);
     if (out !== node.data) {
@@ -110,7 +110,7 @@
 
   function walk(root) {
     if (root.nodeType === 3) { process(root); return; }
-    if (root.nodeType !== 1 || SKIP.includes(root.tagName)) return;
+    if (root.nodeType !== 1 || SKIP.has(root.tagName)) return;
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
     let node = walker.nextNode();
     while (node) { process(node); node = walker.nextNode(); }

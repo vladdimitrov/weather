@@ -115,11 +115,19 @@
     stormsToday: { en: '🧭 Magnetic storms today →', bg: '🧭 Магнитни бури днес →', de: '🧭 Magnetstürme heute →', it: '🧭 Tempeste magnetiche oggi →', es: '🧭 Tormentas magnéticas hoy →' }
   };
 
+  // Pages that exist as a translation in /en/, /de/, /it/, /es/: the link follows the language
+  const localPages = { allCities: 'vremeto/', holidaysBg: 'praznici/', sky: 'nebeto/', about: 'za-saita/', privacy: 'poveritelnost/' };
+
   function translateNav() {
     const lang = document.documentElement.lang;
     document.querySelectorAll('[data-nav]').forEach(link => {
       const texts = navTexts[link.dataset.nav];
       if (texts) link.textContent = texts[lang] || texts.en;
+      const page = localPages[link.dataset.nav];
+      if (page && (link.dataset.navLocal || !/^\/?(en|de|it|es)\//.test(link.getAttribute('href') || ''))) {
+        link.dataset.navLocal = '1';
+        link.setAttribute('href', (lang === 'bg' || !navTexts.home[lang] ? '/' : '/' + lang + '/') + page);
+      }
     });
   }
 
@@ -160,7 +168,8 @@
     const header = document.querySelector('.nav-header');
     const root = document.documentElement;
     root.classList.remove('nav-compact');
-    if (!header || narrowScreen.matches) return;
+    // very wide windows always have room for the row (a false alarm here hid the menu in Firefox at 80% zoom)
+    if (!header || narrowScreen.matches || window.innerWidth >= 1600) return;
     const links = [...header.querySelectorAll('.nav-links .nav-link')];
     if (!links.length) return;
     const firstRow = links[0].getBoundingClientRect();
@@ -287,7 +296,7 @@
   const skipTexts = { en: 'Skip to content', bg: 'Към съдържанието', de: 'Zum Inhalt springen', it: 'Vai al contenuto', es: 'Saltar al contenido' };
   function initSkipLink() {
     if (document.querySelector('.skip-link')) return;
-    const target = document.querySelector('main') || document.querySelector('.container');
+    const target = document.querySelector('[role="main"]') || document.querySelector('main') || document.querySelector('.container');
     if (!target) return;
     if (!target.id) target.id = 'main-content';
     target.setAttribute('tabindex', '-1');
@@ -304,7 +313,7 @@
   function initUnits() {
     if (document.querySelector('script[src*="/js/units.js"]')) return;
     const script = document.createElement('script');
-    script.src = '/js/units.js?v=1';
+    script.src = '/js/units.js?v=2';
     document.head.appendChild(script);
   }
 

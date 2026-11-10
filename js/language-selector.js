@@ -32,6 +32,20 @@
     return languages.some(lang => lang.value === saved) ? saved : 'bg';
   }
 
+  // First visit (nothing chosen yet): the language of the browser, English when the site does not
+  // have it. Search engines and other robots keep the Bulgarian original.
+  function browserLanguage() {
+    if (/bot|crawl|spider|slurp|lighthouse|headless|preview/i.test(navigator.userAgent || '')) return null;
+    const wanted = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || '']).map(code => String(code).slice(0, 2).toLowerCase());
+    const match = wanted.find(code => languages.some(lang => lang.value === code));
+    return match || (wanted[0] ? 'en' : null);
+  }
+
+  function nothingChosen() {
+    if (document.documentElement.dataset.pageLang) return false;
+    try { return localStorage.getItem(STORAGE_KEY) === null; } catch (e) { return false; }
+  }
+
   function saveLanguage(language) {
     try { localStorage.setItem(STORAGE_KEY, language); } catch (e) { /* storage blocked */ }
   }
@@ -80,6 +94,17 @@
     getSelectorsContainer().appendChild(languageGroup);
 
     document.documentElement.lang = savedLanguage;
+
+    if (nothingChosen()) {
+      const detected = browserLanguage();
+      if (detected && detected !== savedLanguage) {
+        // after the page scripts have attached their listeners
+        window.addEventListener('load', () => setTimeout(() => {
+          languageSelect.value = detected;
+          languageSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        }, 0));
+      }
+    }
 
     // Registered first, so page listeners already see the new language
     languageSelect.addEventListener('change', event => {

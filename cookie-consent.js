@@ -157,8 +157,8 @@
         position: fixed;
         right: 12px;
         bottom: calc(var(--footer-height, 50px) + 12px);
-        width: 30px;
-        height: 30px;
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
         border: 1px solid rgba(255, 215, 0, 0.6);
         background: rgba(10, 25, 60, 0.7);
@@ -257,6 +257,12 @@
     banner.appendChild(message);
     banner.appendChild(buttons);
     document.body.appendChild(banner);
+    // the language can change after the banner is shown (first visit: the browser's language)
+    document.addEventListener('change', function (event) {
+      if (event.target && event.target.id === 'language' && banner.isConnected) {
+        setTimeout(function () { if (banner.isConnected) { banner.remove(); showBanner(); } }, 0);
+      }
+    }, { once: true });
   }
 
   function init() {
