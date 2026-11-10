@@ -141,12 +141,23 @@ window.ForecastExtras = (function () {
     }).join('');
     const line = chartPoints.map((p, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(p.temperature).toFixed(1)}`).join(' ');
     const dots = chartPoints.map((p, i) => `<circle cx="${x(i).toFixed(1)}" cy="${y(p.temperature).toFixed(1)}" r="3" class="chart-dot"><title>${p.time} · ${p.temperature}°</title></circle>`).join('');
+    // The temperature at each point, alternately above and below it so neighbouring numbers
+    // do not touch. With many points (15-minute steps) only about 24 are written.
+    const valueStep = Math.max(1, Math.ceil(chartPoints.length / 24));
+    let labelled = 0;
+    const values = chartPoints.map((p, i) => {
+      if (i % valueStep !== 0) return '';
+      const above = labelled++ % 2 === 0;
+      const py = y(p.temperature);
+      const ty = above ? Math.max(11, py - 8) : Math.min(height - pad.bottom - 3, py + 17);
+      return `<text x="${x(i).toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="middle" style="fill:#ffd700;font-size:11px;font-weight:700;paint-order:stroke;stroke:rgba(10,25,60,0.85);stroke-width:3px;stroke-linejoin:round">${Math.round(p.temperature)}°</text>`;
+    }).join('');
     const step = Math.max(1, Math.ceil(chartPoints.length / 8));
     const xLabels = chartPoints.map((p, i) => i % step === 0 ? `<text x="${x(i).toFixed(1)}" y="${height - 8}" text-anchor="middle">${p.time}</text>` : '').join('');
     const yTicks = [min, Math.round((min + max) / 2), max].map(t => `<line x1="${pad.left}" x2="${width - pad.right}" y1="${y(t).toFixed(1)}" y2="${y(t).toFixed(1)}" class="chart-grid"/><text x="${pad.left - 6}" y="${(y(t) + 4).toFixed(1)}" text-anchor="end">${t}°</text>`).join('');
 
     chart.innerHTML =
-      `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeAttribute(pickText(T.chartTemperature))}">${yTicks}${bars}<path d="${line}" class="chart-line"/>${dots}${xLabels}</svg>` +
+      `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeAttribute(pickText(T.chartTemperature))}">${yTicks}${bars}<path d="${line}" class="chart-line"/>${dots}${values}${xLabels}</svg>` +
       `<div class="chart-legend"><span class="legend-line"></span>${pickText(T.chartTemperature)}` +
       `<span class="legend-rain"></span>${pickText(T.chartRainChance)}</div>`;
   }
