@@ -159,7 +159,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=53">
+  <link rel="stylesheet" href="/css/theme.css?v=55">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -223,6 +223,16 @@
       <div id="current-layer" style="display: inline-block; color: #FFD700; font-size: 0.9em;"></div>
     </div>
 
+
+    <!-- Map Container -->
+    <div class="map-container" id="mapContainer" style="display: none;">
+      <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <div id="loadingText">Зареждане на картата...</div>
+      </div>
+      <iframe id="windyMap" style="visibility: hidden;"></iframe>
+    </div>
+
     <!-- Favorites Section -->
     <div class="favorites-section" id="favoritesSection">
       <div class="favorites-header">
@@ -236,15 +246,6 @@
         <!-- Favorite locations will be populated here -->
       </div>
       <input type="file" id="importFile" accept=".json" style="display: none;">
-    </div>
-
-    <!-- Map Container -->
-    <div class="map-container" id="mapContainer" style="display: none;">
-      <div class="loading-spinner" id="loadingSpinner">
-        <div class="spinner"></div>
-        <div id="loadingText">Зареждане на картата...</div>
-      </div>
-      <iframe id="windyMap" style="visibility: hidden;"></iframe>
     </div>
 
     <div style="text-align: center; margin-top: 20px;">
@@ -574,12 +575,13 @@
 <!-- Load JavaScript files -->
 <script src="/js/mobile-nav.js?v=12"></script>
 <script src="/js/language-selector.js?v=3"></script>
-<script src="/js/city-search.js?v=11"></script>
+<script src="/js/city-search.js?v=12"></script>
 <script src="js/language-switcher.js?v=7"></script>
 <script src="/js/background-selector.js?v=3"></script>
 <script src="js/map-autocomplete.js?v=7"></script>
 <script src="js/map-fullscreen.js?v=2"></script>
 <script src="js/favorites-manager.js?v=4"></script>
 
+<script src="/js/form-fold.js?v=1" defer></script>
 </body>
 </html>
