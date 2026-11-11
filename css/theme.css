@@ -2253,3 +2253,7 @@ html body .nearby-card .nearby-name { color: var(--ink); }
 .nav-header .nav-link, .footer-link, .storms-link { position: relative; }
 .nav-header .nav-link::after, .footer-link::after, .storms-link::after { content: ""; position: absolute; inset: -9px -4px; }
 html body .day-details-toggle { min-height: 40px; }
+
+/* the line about how the forecast is made */
+.forecast-note { margin: 10px auto 0; text-align: center; font-size: 0.75rem; color: var(--ink-soft, #c9cde6); opacity: 0.85; }
+@media print { .forecast-note { display: none; } }

@@ -246,6 +246,21 @@
     renderQuick();
   }
 
+  // ---- how the forecast is made: the line under the day cards ----
+  function renderNote() {
+    const box = el('dayCards');
+    if (!box || !window.ForecastCore) return;
+    let line = el('forecastNote');
+    if (!line) {
+      line = document.createElement('p');
+      line.id = 'forecastNote';
+      line.className = 'forecast-note';
+      box.insertAdjacentElement('afterend', line);
+    }
+    line.textContent = ForecastCore.note();
+    line.hidden = !line.textContent;
+  }
+
   // ---- page title in the site language ----
   function setTitle() {
     const lang = document.documentElement.lang;
@@ -258,6 +273,7 @@
     if (box) { box.removeAttribute('aria-busy'); box.style.setProperty('--n', box.children.length); }
     ensureToggle();
     ensureQuick();
+    renderNote();
     collapseForm();
     loadNow(detail.lat, detail.lon);
   });
@@ -270,6 +286,7 @@
       if (form() && form().classList.contains('collapsed')) renderSummary();
       applyDetails();
       renderQuick();
+      renderNote();
     }, 0);
   });
 
