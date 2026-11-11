@@ -783,36 +783,9 @@
    /* the row of recently picked places belongs to the forecast form; here it would move the page */
    .home-search .recent-places { display: none !important; }
 
-   /* ---- phones: the six sections as a still grid of big buttons ----
-      The orbit turns, so its small buttons are hard to hit with a thumb; here they stand
-      still, larger, in two rows. The text links under it repeat the same pages. */
+   /* ---- phones: a shorter start; the intro paragraph stays for wider screens ---- */
    @media (max-width: 600px) {
      .hero-subtitle { display: none; }
-     /* #main-content: the sizes in theme.css are set by id */
-     #main-content .circular-nav { display: block; width: auto; height: auto; max-width: 340px; margin: 18px auto 26px !important; }
-     .sun-center { display: none; }
-     #main-content .orbit-container {
-       border: 0 !important;
-       border-radius: 0;
-       position: static;
-       display: grid;
-       grid-template-columns: repeat(3, 1fr);
-       gap: 20px 10px;
-       justify-items: center;
-       width: auto;
-       height: auto;
-       border: 0;
-     }
-     #main-content .orbit-container .orbit-button {
-       position: static !important;
-       width: 96px;
-       height: 96px;
-       margin: 0 !important;
-       animation: none !important;
-       transform: none !important;
-     }
-     #main-content .orbit-container .orbit-button .label { font-size: 13px !important; letter-spacing: 0; }
-     .home-quicklinks { display: none; }
    }
  </style>
   <link rel="manifest" href="/manifest.webmanifest">
