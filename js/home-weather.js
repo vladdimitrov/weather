@@ -25,8 +25,23 @@
 
   const moreText = { en: 'Forecast →', bg: 'Прогноза →', de: 'Vorhersage →', it: 'Previsioni →', es: 'Pronóstico →' };
   const feelsText = { en: 'feels like', bg: 'усеща се като', de: 'gefühlt', it: 'percepita', es: 'sensación' };
+  const dayNames = [
+    { en: 'Today', bg: 'Днес', de: 'Heute', it: 'Oggi', es: 'Hoy' },
+    { en: 'Tomorrow', bg: 'Утре', de: 'Morgen', it: 'Domani', es: 'Mañana' }
+  ];
+  const searchText = { en: 'Search for a city…', bg: 'Търси град…', de: 'Stadt suchen…', it: 'Cerca una città…', es: 'Buscar una ciudad…' };
+  const locales = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES' };
+  // on a translated home page (/en/, /de/ ...) the links open the forecast page in that language
+  const pageLanguage = document.documentElement.dataset.pageLang;
+  const forecastPage = (pageLanguage && pageLanguage !== 'bg' ? '/' + pageLanguage : '') + '/weather/';
+  const placeQuery = place => {
+    const params = new URLSearchParams({ city: place.name || '', lat: Number(place.latitude).toFixed(4), lon: Number(place.longitude).toFixed(4) });
+    if (place.countryCode) params.set('cc', place.countryCode);
+    return params;
+  };
 
   let weather = null;
+  let daily = null;
   let kp = null;
 
   function element(className, text) {
@@ -68,19 +83,72 @@
 
     card.appendChild(element('now-more', pickText(moreText)));
     card.hidden = false;
+    renderDays(place);
+  }
+
+  // The next three days under the card; each opens the hourly forecast of that day
+  const daysBox = document.getElementById('nowDays');
+  function renderDays(place) {
+    if (!daysBox || !daily || !daily.time) return;
+    const language = locales[document.documentElement.lang] ? document.documentElement.lang : 'en';
+    const whole = value => `${Math.round(value)}°`;
+    daysBox.replaceChildren(...daily.time.slice(0, 3).map((date, i) => {
+      const condition = conditions.find(c => c.codes.includes(daily.weather_code[i])) || conditions[2];
+      const link = document.createElement('a');
+      link.className = 'now-day';
+      link.href = `${forecastPage}?${placeQuery(place)}&date=${date}`;
+      const name = dayNames[i] ? pickText(dayNames[i])
+        : new Date(date + 'T12:00:00').toLocaleDateString(locales[language], { weekday: 'short', day: 'numeric' });
+      link.append(
+        element('nd-name', name),
+        WeatherIcons.node('', condition.key, pickText(condition.text), 'md'),
+        element('nd-temp', `${whole(daily.temperature_2m_min[i])} / ${whole(daily.temperature_2m_max[i])}`)
+      );
+      return link;
+    }));
+    daysBox.hidden = false;
+  }
+
+  // A city search right on the home page: picking a place opens its forecast
+  const searchBox = document.getElementById('homeSearch');
+  if (searchBox && CitySearch.attach) {
+    const input = document.createElement('input');
+    input.type = 'search';
+    input.id = 'homeCity';
+    input.enterKeyHint = 'search';
+    const list = document.createElement('div');
+    list.id = 'homeCitySuggestions';
+    const label = () => {
+      input.placeholder = pickText(searchText);
+      input.setAttribute('aria-label', pickText(searchText));
+      list.setAttribute('aria-label', pickText(searchText));
+    };
+    label();
+    searchBox.append(input, list);
+    CitySearch.attach(input, list, {
+      destinations: false,
+      onSelect: place => {
+        CitySearch.saveLastPlace(place);
+        location.href = `${forecastPage}?${placeQuery(place)}`;
+      }
+    });
+    document.addEventListener('change', event => { if (event.target && event.target.id === 'language') label(); });
   }
 
   async function load() {
     const place = CitySearch.startPlace();
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${place.latitude}&longitude=${place.longitude}` +
-      '&current=temperature_2m,apparent_temperature,weather_code&timezone=auto';
+      '&current=temperature_2m,apparent_temperature,weather_code' +
+      '&daily=weather_code,temperature_2m_max,temperature_2m_min&forecast_days=3&timezone=auto';
     try {
-      const [weatherResponse, kpResponse] = await Promise.all([
-        fetch(url),
+      // the same forecast as the other pages: the median of three models (/js/forecast-core.js)
+      const [data, kpResponse] = await Promise.all([
+        window.ForecastCore ? ForecastCore.load(url) : fetch(url).then(response => response.json()),
         fetch('https://services.swpc.noaa.gov/json/planetary_k_index_1m.json').catch(() => null)
       ]);
-      if (!weatherResponse.ok) throw new Error(`HTTP error! status: ${weatherResponse.status}`);
-      weather = (await weatherResponse.json()).current;
+      if (!data || !data.current) throw new Error('no current weather in the answer');
+      weather = data.current;
+      daily = data.daily || null;
       if (kpResponse && kpResponse.ok) {
         const kpData = await kpResponse.json();
         const last = kpData[kpData.length - 1];
