@@ -1,7 +1,13 @@
 // Service worker: makes the site installable and keeps the last data for
-// offline use. Network first everywhere, so a new deploy shows up right away;
-// the cache is only the fallback when there is no connection.
-const CACHE = 'weatherpulse-v14';
+// offline use.
+//  - Pages and data: network first, so a new deploy shows up right away; the cache is only
+//    the fallback when there is no connection.
+//  - Scripts and styles with a version in the address (theme.css?v=58): cache first. A new
+//    version is a new address, so nothing stale is ever served; repeat visits do not wait for
+//    the network for them. Change such a file => raise its ?v= (see README).
+const CACHE = 'weatherpulse-v15';
+// Visited pages kept for offline use (the pages in PAGES are always kept)
+const MAX_PAGES = 60;
 
 const PAGES = ['/', '/weather/', '/maps/', '/holliday_calendar/', '/contacts/', '/magnitni-buri/', '/za-saita/', '/poveritelnost/', '/luna/', '/nebeto/'];
 
@@ -32,6 +38,28 @@ function offlineKey(url) {
   return `${url.origin}${url.pathname}`;
 }
 
+// A script or stylesheet of the site with ?v=<number> in its address
+const isVersioned = url => url.origin === self.location.origin && /^\d+$/.test(url.searchParams.get('v') || '') && /\.(js|css)$/.test(url.pathname);
+
+// Of the same file only the newest version is kept
+async function dropOldVersions(cache, url) {
+  const keys = await cache.keys();
+  await Promise.all(keys.filter(key => {
+    const other = new URL(key.url);
+    return other.pathname === url.pathname && other.search !== url.search;
+  }).map(key => cache.delete(key)));
+}
+
+// Visited pages: the oldest go first, the pages of PAGES never
+async function trimPages(cache) {
+  const keys = await cache.keys();
+  const pages = keys.filter(key => {
+    const url = new URL(key.url);
+    return url.origin === self.location.origin && url.pathname.endsWith('/') && !PAGES.includes(url.pathname);
+  });
+  await Promise.all(pages.slice(0, Math.max(0, pages.length - MAX_PAGES)).map(key => cache.delete(key)));
+}
+
 self.addEventListener('fetch', event => {
   const request = event.request;
   if (request.method !== 'GET') return;
@@ -39,13 +67,27 @@ self.addEventListener('fetch', event => {
   const sameOrigin = url.origin === self.location.origin;
   if (!sameOrigin && !DATA_HOSTS.includes(url.hostname)) return;
 
+  if (isVersioned(url)) {
+    event.respondWith(caches.open(CACHE).then(async cache => {
+      const cached = await cache.match(request);
+      if (cached) return cached;
+      const response = await fetch(request);
+      if (response.ok) {
+        const copy = response.clone();
+        event.waitUntil(cache.put(request, copy).then(() => dropOldVersions(cache, url)));
+      }
+      return response;
+    }));
+    return;
+  }
+
   const key = sameOrigin ? request : offlineKey(url);
   event.respondWith(
     fetch(request)
       .then(response => {
         if (response.ok) {
           const copy = response.clone();
-          caches.open(CACHE).then(cache => cache.put(key, copy));
+          event.waitUntil(caches.open(CACHE).then(cache => cache.put(key, copy).then(() => (request.mode === 'navigate' ? trimPages(cache) : null))));
         }
         return response;
       })

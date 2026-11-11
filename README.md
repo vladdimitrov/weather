@@ -93,7 +93,7 @@ No API keys are needed. All services below are free and called directly from the
 
 ## Offline mode
 
-The site is an installable PWA (`manifest.webmanifest`). `sw.js` caches the main pages for offline use. Add new top-level pages to the `PAGES` list in `sw.js` if they should work offline, and bump `CACHE` when cached files change in a way visitors must pick up.
+The site is an installable PWA (`manifest.webmanifest`). `sw.js` caches the main pages for offline use (network first, so a deploy shows at once; the last 60 visited pages are kept) and serves scripts and styles with `?v=N` from the cache first, so **a changed `.js`/`.css` file must get a new `?v=`** or visitors keep the old one. Add new top-level pages to the `PAGES` list in `sw.js` if they should work offline, and bump `CACHE` when cached files change in a way visitors must pick up.
 
 ## Hosting
 
