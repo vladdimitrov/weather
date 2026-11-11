@@ -40,7 +40,7 @@ Languages: Bulgarian, English, German, Italian, Spanish (switcher in the header,
 the others under a prefix (`/en/luna/`, `/de/luna/`, `/it/luna/`, `/es/luna/`). `/europe/` is the other way round: English at the root, the rest
 under `/bg/europe/`, `/de/europe/` and so on. Every page has `<link rel="alternate" hreflang>` for all five and `x-default`; the language
 switcher opens the translation of the same page, and a visitor who chose another language is sent from the root URL to it
-(`page()` in `build-pages.js`, `language-selector.js`). City names in `/europe/` stay as in `europe-data.js`; country names come from `Intl.DisplayNames`.
+(`page()` in `build-pages.js`, `language-selector.js`). Links to the home page and `/magnitni-buri/` follow the language of the page too: `page()` rewrites them in the generated pages, `localPages` in `js/mobile-nav.js` in the pages translated in the browser. City names in `/europe/` stay as in `europe-data.js`; country names come from `Intl.DisplayNames`.
 The home page and `/magnitni-buri/` are written by hand in Bulgarian and get their own translated pages from `build-main.js` (`/en/`, `/en/magnitni-buri/` ...): run it after changing either page or its texts. They link with root paths (`/weather/`, `/css/...`), never relative ones, because the same HTML is also served from `/en/`.
 The other hand-written pages (forecast, maps, holidays) and `/contacts/` are still translated in the browser from dictionaries in their scripts.
 
@@ -69,7 +69,7 @@ All scripts are in `.github/scripts/` and are run from the repository root with 
 | `node .github/scripts/test-sun.js` | Checks `sun.js` (sunrise/sunset on the city pages) against Open-Meteo (`sun-reference.json`) |
 | `node .github/scripts/build-climate.js` | Refreshes `climate.json` (monthly climate from the ERA5 archive); rarely needed |
 | `node .github/scripts/build-destinations.js [GR,CZ]` | Refreshes `js/destinations.json`, the one-tap city buttons under the search |
-| `node .github/scripts/check-site.js` | Checks for missing local files and JavaScript/JSON syntax errors |
+| `node .github/scripts/check-site.js` | Checks for missing local files, JavaScript/JSON syntax errors (the generators too), that every page's canonical and og:url are its own address, that the translations of a page list each other in `hreflang`, and that `sitemap.xml` lists exactly the pages that exist |
 | `node .github/scripts/indexnow.js` | Sends the pages in `sitemap.xml` to IndexNow search engines |
 
 Static assets use a version in the URL (`theme.css?v=N`). When a stylesheet or script changes, raise its version in the page templates (`VERSION` in `build-pages.js`) and regenerate.

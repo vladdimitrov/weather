@@ -116,7 +116,7 @@
   };
 
   // Pages that exist as a translation in /en/, /de/, /it/, /es/: the link follows the language
-  const localPages = { allCities: 'vremeto/', holidaysBg: 'praznici/', sky: 'nebeto/', about: 'za-saita/', privacy: 'poveritelnost/' };
+  const localPages = { home: '', storms: 'magnitni-buri/', stormsToday: 'magnitni-buri/', allCities: 'vremeto/', holidaysBg: 'praznici/', sky: 'nebeto/', about: 'za-saita/', privacy: 'poveritelnost/' };
 
   function translateNav() {
     const lang = document.documentElement.lang;
@@ -124,7 +124,7 @@
       const texts = navTexts[link.dataset.nav];
       if (texts) link.textContent = texts[lang] || texts.en;
       const page = localPages[link.dataset.nav];
-      if (page && (link.dataset.navLocal || !/^\/?(en|de|it|es)\//.test(link.getAttribute('href') || ''))) {
+      if (page !== undefined && (link.dataset.navLocal || !/^\/?(en|de|it|es)\//.test(link.getAttribute('href') || ''))) {
         link.dataset.navLocal = '1';
         link.setAttribute('href', (lang === 'bg' || !navTexts.home[lang] ? '/' : '/' + lang + '/') + page);
       }
