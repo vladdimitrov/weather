@@ -18,6 +18,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Translated home and storms pages are up to date
+        run: |
+          node .github/scripts/build-main.js
+          git diff --exit-code -- en/index.html de/index.html it/index.html es/index.html '*/magnitni-buri/index.html'
       - run: node .github/scripts/check-site.js
       - run: node .github/scripts/test-moon.js
       - run: node .github/scripts/test-sun.js

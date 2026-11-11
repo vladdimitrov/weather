@@ -111,7 +111,7 @@
       if (place.countryCode) params.set('cc', place.countryCode);
       const link = document.createElement('a');
       link.className = 'recent-place favorite-place';
-      link.href = `weather/?${params}`;
+      link.href = `/weather/?${params}`;
       link.textContent = place.name;
       if (place.country) link.title = `${place.name}, ${place.country}`;
       return link;
@@ -187,7 +187,7 @@
       const params = new URLSearchParams({ city: place.name, lat: place.latitude.toFixed(4), lon: place.longitude.toFixed(4), cc: countryCode });
       const link = document.createElement('a');
       link.className = 'recent-place';
-      link.href = `weather/?${params}`;
+      link.href = `/weather/?${params}`;
       link.textContent = place.name;
       return link;
     }));
@@ -196,7 +196,7 @@
     if (holidays) {
       holidays.removeAttribute('data-nav');
       holidays.classList.add('home-holidays-link');
-      holidays.href = 'holliday_calendar/';
+      holidays.href = '/holliday_calendar/';
       holidays.textContent = countryText(countryTexts.holidays, country);
     }
   }

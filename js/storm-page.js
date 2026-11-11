@@ -17,10 +17,17 @@
   // ---- Texts of the page (data-i18n="key"); Bulgarian is in the HTML ----
   const PAGE = {
     title: {
-      en: 'Magnetic storms today and tomorrow — 3-day forecast | Weather Pulse',
-      de: 'Magnetstürme heute und morgen — 3-Tage-Vorhersage | Weather Pulse',
-      it: 'Tempeste magnetiche oggi e domani — previsione a 3 giorni | Weather Pulse',
-      es: 'Tormentas magnéticas hoy y mañana — pronóstico de 3 días | Weather Pulse'
+      en: 'Magnetic storms today – Kp index and 3-day forecast | Weather Pulse',
+      de: 'Magnetstürme heute – Kp-Index und 3-Tage-Vorhersage | Weather Pulse',
+      it: 'Tempeste magnetiche oggi – indice Kp e previsione a 3 giorni | Weather Pulse',
+      es: 'Tormentas magnéticas hoy – índice Kp y pronóstico de 3 días | Weather Pulse'
+    },
+    // <meta name="description"> of the translated pages (build-main.js); not shown on the page
+    description: {
+      en: 'Magnetic storms today, tomorrow and for the next 3 days: live Kp index, solar wind and the NOAA forecast. Updates automatically. Storm alerts.',
+      de: 'Magnetstürme heute, morgen und in den nächsten 3 Tagen: Kp-Index in Echtzeit, Sonnenwind und NOAA-Vorhersage. Automatisch aktualisiert. Benachrichtigung bei Sturm.',
+      it: 'Tempeste magnetiche oggi, domani e nei prossimi 3 giorni: indice Kp in tempo reale, vento solare e previsione NOAA. Aggiornamento automatico. Avviso in caso di tempesta.',
+      es: 'Tormentas magnéticas hoy, mañana y en los próximos 3 días: índice Kp en tiempo real, viento solar y pronóstico de la NOAA. Actualización automática. Aviso de tormenta.'
     },
     h1: { en: 'Magnetic storms today and tomorrow', de: 'Magnetstürme heute und morgen', it: 'Tempeste magnetiche oggi e domani', es: 'Tormentas magnéticas hoy y mañana' },
     intro: {
@@ -476,7 +483,7 @@
     const query = language === 'bg' ? '' : `?lang=${language}`;
     if (code) code.value = `<iframe src="https://weatherpulse.eu/widget/kp.html${query}" width="320" height="190" style="border:0" title="${t('widgetName')}" loading="lazy"></iframe>`;
     if (preview) {
-      const src = `../widget/kp.html${query}`;
+      const src = `/widget/kp.html${query}`;
       if (preview.getAttribute('src') !== src) preview.setAttribute('src', src);
       preview.title = t('widgetName');
     }
