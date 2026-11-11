@@ -8,28 +8,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Прогноза за времето и магнитни бури | Weather Pulse</title>
-<link rel="canonical" href="https://weatherpulse.eu/" />
+  <link rel="canonical" href="https://weatherpulse.eu/" />
+  <link rel="alternate" hreflang="bg" href="https://weatherpulse.eu/" />
+  <link rel="alternate" hreflang="en" href="https://weatherpulse.eu/en/" />
+  <link rel="alternate" hreflang="de" href="https://weatherpulse.eu/de/" />
+  <link rel="alternate" hreflang="it" href="https://weatherpulse.eu/it/" />
+  <link rel="alternate" hreflang="es" href="https://weatherpulse.eu/es/" />
+  <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu/" />
 <meta name="description" content="Прогноза за времето за 16 дни и по часове, магнитни бури с известия, карти, празници и времето в градовете на България. Безплатно.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Weather Pulse">
 <meta property="og:locale" content="bg_BG">
 <meta property="og:title" content="Прогноза за времето и магнитни бури | Weather Pulse">
-<meta property="og:description" content="Безплатна прогноза за времето и магнитните бури (Kp индекс) за 3 дни, карти за времето и календар на празниците за всяко място. На български, английски, немски, италиански и испански.">
+<meta property="og:description" content="Прогноза за времето за 16 дни и по часове, магнитни бури с известия, карти, празници и времето в градовете на България. Безплатно.">
 <meta property="og:url" content="https://weatherpulse.eu/">
 <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Weather Pulse","url":"https://weatherpulse.eu/"}</script>
   <script>
     (function() {
-      const savedLanguage = localStorage.getItem('selectedLanguage') || 'bg';
-      document.documentElement.lang = savedLanguage;
-      // Hidden until translated from the Bulgarian HTML (no flash of Bulgarian text)
-      if (savedLanguage !== 'bg') document.documentElement.classList.add('i18n-pending');
+      // Bulgarian original. A visitor who chose another language is sent to the translation
+      // (/en/, /de/, /it/, /es/ + this path; written by .github/scripts/build-main.js)
+      try {
+        const saved = localStorage.getItem('selectedLanguage');
+        if (saved && ['en', 'de', 'it', 'es'].includes(saved)) location.replace('/' + saved + '/' + location.search + location.hash);
+      } catch (e) { /* storage blocked */ }
     })();
   </script>
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="css/weather.css">
-  <link rel="stylesheet" href="css/modern-form.css">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/weather.css">
+  <link rel="stylesheet" href="/css/modern-form.css">
   <style>
     @keyframes greenAura {
       0% {
@@ -179,7 +187,7 @@
       z-index: 10;
       cursor: pointer;
       transition: all 0.3s ease;
-      background-image: url('./images/center-320.webp');
+      background-image: url('/images/center-320.webp');
       background-size: cover;
       background-position: center;
       text-indent: -9999px; /* Hide the text content */
@@ -718,12 +726,12 @@
 
   <div class="nav-header" tabindex="-1" id="header">
     <div class="nav-links">
-      <a href="weather/index.html" class="nav-link" data-nav="weather">Прогноза за времето</a>
-      <a href="maps/index.html" class="nav-link" data-nav="maps">Карти за времето</a>
-      <a href="holliday_calendar/index.html" class="nav-link" data-nav="holidays">Календар на празниците</a>
-      <a href="magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
-      <a href="nebeto/" class="nav-link" data-nav="sky">Небето</a>
-      <a href="contacts/index.html" class="nav-link" data-nav="sources">Източници на данни</a>
+      <a href="/weather/" class="nav-link" data-nav="weather">Прогноза за времето</a>
+      <a href="/maps/" class="nav-link" data-nav="maps">Карти за времето</a>
+      <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Календар на празниците</a>
+      <a href="/magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
+      <a href="/nebeto/" class="nav-link" data-nav="sky">Небето</a>
+      <a href="/contacts/" class="nav-link" data-nav="sources">Източници на данни</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -738,7 +746,7 @@
       <p class="hero-subtitle" id="hero-subtitle" data-translation-key="heroSubtitle">
         Следете времето, фазите на Луната, магнитните бури и празничните дни в реално време за всяка точка по света. Планирайте деня си с точност и увереност.
       </p>
-      <a class="now-card" id="nowCard" href="weather/index.html" hidden></a>
+      <a class="now-card" id="nowCard" href="/weather/" hidden></a>
     </div>
 
     <!-- Circular Navigation -->
@@ -746,24 +754,24 @@
       <div class="sun-center" title="Начало - времето и магнитните бури"></div>
       
       <div class="orbit-container">
-        <a href="weather/index.html" class="orbit-button" id="weather-orbit-btn" title="Прогноза за времето">
+        <a href="/weather/" class="orbit-button" id="weather-orbit-btn" title="Прогноза за времето">
           <span class="label" id="weather-orbit-label">ВРЕМЕ</span>
         </a>
         
-       <a href="magnitni-buri/" class="orbit-button" id="magnetic-orbit-btn" title="Магнитни бури">
+       <a href="/magnitni-buri/" class="orbit-button" id="magnetic-orbit-btn" title="Магнитни бури">
           <span class="label" id="magnetic-orbit-label">БУРИ</span>
         </a>
-		<a href="holliday_calendar/index.html" class="orbit-button" id="holliday-calendar-btn" title="Календар на празниците">
+		<a href="/holliday_calendar/" class="orbit-button" id="holliday-calendar-btn" title="Календар на празниците">
           <span class="label" id="holiday-calendar-label">ПРАЗНИЦИ</span>
         </a>
-        <a href="nebeto/" class="orbit-button" id="sky-orbit-btn" title="Небето: Луна, метеори, затъмнения">
+        <a href="/nebeto/" class="orbit-button" id="sky-orbit-btn" title="Небето: Луна, метеори, затъмнения">
           <span class="label" id="sky-orbit-label">НЕБЕТО</span>
         </a>
-        <a href="maps/index.html" class="orbit-button" id="maps-orbit-btn" title="Карти за времето">
+        <a href="/maps/" class="orbit-button" id="maps-orbit-btn" title="Карти за времето">
           <span class="label" id="maps-orbit-label">КАРТИ</span>
         </a>
         
-        <a href="contacts/index.html" class="orbit-button" id="contacts-orbit-btn" title="Източници на данни и контакти">
+        <a href="/contacts/" class="orbit-button" id="contacts-orbit-btn" title="Източници на данни и контакти">
           <span class="label" id="contacts-orbit-label">ИЗТОЧНИЦИ</span>
         </a>
         
@@ -773,12 +781,12 @@
 
     <!-- Text links to the same pages as the planets, for phones and for readers who miss the orbit -->
     <nav class="home-quicklinks" aria-label="Quick links">
-      <a href="weather/index.html" data-nav="weather">Прогноза за времето</a>
-      <a href="maps/index.html" data-nav="maps">Карти за времето</a>
-      <a href="magnitni-buri/" data-nav="storms">Магнитни бури</a>
-      <a href="nebeto/" data-nav="sky">Небето</a>
-      <a href="holliday_calendar/index.html" data-nav="holidays">Календар на празниците</a>
-      <a href="contacts/index.html" data-nav="sources">Източници на данни</a>
+      <a href="/weather/" data-nav="weather">Прогноза за времето</a>
+      <a href="/maps/" data-nav="maps">Карти за времето</a>
+      <a href="/magnitni-buri/" data-nav="storms">Магнитни бури</a>
+      <a href="/nebeto/" data-nav="sky">Небето</a>
+      <a href="/holliday_calendar/" data-nav="holidays">Календар на празниците</a>
+      <a href="/contacts/" data-nav="sources">Източници на данни</a>
     </nav>
 
     <!-- Features Section -->
@@ -804,15 +812,15 @@
         <a href="vremeto/veliko-tarnovo/" class="recent-place">Велико Търново</a>
         <a href="vremeto/blagoevgrad/" class="recent-place">Благоевград</a>
         <a href="vremeto/bansko/" class="recent-place">Банско</a>
-        <a href="vremeto/" class="recent-place" data-nav="allCities">Всички градове →</a>
+        <a href="/vremeto/" class="recent-place" data-nav="allCities">Всички градове →</a>
       </div>
-      <p class="city-actions"><a class="btn" href="praznici/" data-nav="holidaysBg">Официални празници в България</a> <a class="btn" href="europe/">Weather in Europe →</a></p>
+      <p class="city-actions"><a class="btn" href="/praznici/" data-nav="holidaysBg">Официални празници в България</a> <a class="btn" href="/europe/">Weather in Europe →</a></p>
     </section>
   </div>
 
   <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
     <div class="logo" style="flex-shrink: 0;">
-        <a href="index.html"><img src="images/logo-64.webp" alt="Лого" class="logo-img" width="30" height="30" style="height: 30px; width: auto;"></a>
+        <a href="/"><img src="/images/logo-64.webp" alt="Лого" class="logo-img" width="30" height="30" style="height: 30px; width: auto;"></a>
     </div>
       
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
@@ -829,6 +837,8 @@
     en: {
 
       sunTitle: "Home - Weather & Magnetic Storms",
+      // <meta name="description"> of the translated page (build-main.js)
+      metaDescription: "Weather forecast for 16 days and by the hour, magnetic storms with alerts, weather maps, public holidays and the weather in Bulgarian cities. Free.",
 
       weatherOrbitTitle: "Weather Forecast",
       magneticOrbitTitle: "Magnetic Storms",
@@ -885,6 +895,8 @@
     de: {
 
       sunTitle: "Startseite - Wetter und Magnetstürme",
+      // <meta name="description"> of the translated page (build-main.js)
+      metaDescription: "16-Tage- und Stundenvorhersage, Magnetstürme mit Benachrichtigungen, Wetterkarten, Feiertage und das Wetter in bulgarischen Städten. Kostenlos.",
 
       weatherOrbitTitle: "Wettervorhersage",
       magneticOrbitTitle: "Magnetstürme",
@@ -914,6 +926,8 @@
     it: {
 
       sunTitle: "Home - Meteo e tempeste magnetiche",
+      // <meta name="description"> of the translated page (build-main.js)
+      metaDescription: "Previsioni meteo a 16 giorni e ora per ora, tempeste magnetiche con avvisi, mappe, festività e il meteo nelle città bulgare. Gratis.",
 
       weatherOrbitTitle: "Previsioni del tempo",
       magneticOrbitTitle: "Tempeste magnetiche",
@@ -943,6 +957,8 @@
     es: {
 
       sunTitle: "Inicio - Tiempo y tormentas magnéticas",
+      // <meta name="description"> of the translated page (build-main.js)
+      metaDescription: "Pronóstico del tiempo de 16 días y por horas, tormentas magnéticas con avisos, mapas, festivos y el tiempo en las ciudades de Bulgaria. Gratis.",
 
       weatherOrbitTitle: "Pronóstico del tiempo",
       magneticOrbitTitle: "Tormentas magnéticas",
@@ -1035,7 +1051,7 @@
   // Function to apply stored settings
   function applyStoredSettings() {
     // Get saved language from localStorage
-    const savedLanguage = localStorage.getItem('selectedLanguage') || 'bg';    
+    const savedLanguage = document.documentElement.dataset.pageLang || localStorage.getItem('selectedLanguage') || 'bg';
     // Apply the language setting
     if (savedLanguage) {
       document.documentElement.lang = savedLanguage;
@@ -1047,11 +1063,11 @@
 
 <script src="/js/mobile-nav.js?v=15"></script>
 <script src="/js/language-selector.js?v=5"></script>
-<script src="language-switcher.js?v=3"></script>
+<script src="/language-switcher.js?v=3"></script>
 <script src="/js/background-selector.js?v=3"></script>
 <script src="/js/city-search.js?v=12"></script>
 <script src="/js/weather-icons.js?v=4"></script>
-<script src="/js/home-weather.js?v=6"></script>
+<script src="/js/home-weather.js?v=7"></script>
 <script src="/js/place-context.js?v=1"></script>
 <script src="/js/home-cities.js?v=2"></script>
 
@@ -1072,7 +1088,7 @@
         });
         
         // Set initial value from localStorage
-        const savedLanguage = localStorage.getItem('selectedLanguage') || 'bg';
+        const savedLanguage = document.documentElement.dataset.pageLang || localStorage.getItem('selectedLanguage') || 'bg';
         languageSelect.value = savedLanguage;
       }
     }, 200);

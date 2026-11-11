@@ -30,6 +30,7 @@ Static site hosted on **GitHub Pages**.
 | `luna/`, `luna/<year>/`, `luna/<year>/<month>/` | `build-luna.js`: Moon calendar for this and next year; phases from `js/moon.js`, texts in `text-luna.js` |
 | `nebeto/` | `build-nebeto.js`: meteor showers, eclipses, supermoons, northern lights; events in `sky-events.json` (kept by hand, with sources, texts in 5 languages), page texts in `text-nebeto.js` |
 | `za-saita/`, `poveritelnost/` | `build-static.js`: About and Privacy (texts in `text-static.js`) |
+| `en/`, `de/`, `it/`, `es/` (home) and `<lang>/magnitni-buri/` | `build-main.js`: translations of the hand-written home and storms pages. The Bulgarian pages are the templates; the texts are the ones the pages use in the browser (`homepageTranslations` in `index.html`, `PAGE` and `T` in `js/storm-page.js`, `navTexts` in `js/mobile-nav.js`) |
 
 Change the script or its data file and run it again; changes made directly in the generated HTML are overwritten.
 
@@ -40,7 +41,8 @@ the others under a prefix (`/en/luna/`, `/de/luna/`, `/it/luna/`, `/es/luna/`). 
 under `/bg/europe/`, `/de/europe/` and so on. Every page has `<link rel="alternate" hreflang>` for all five and `x-default`; the language
 switcher opens the translation of the same page, and a visitor who chose another language is sent from the root URL to it
 (`page()` in `build-pages.js`, `language-selector.js`). City names in `/europe/` stay as in `europe-data.js`; country names come from `Intl.DisplayNames`.
-The hand-written pages (home, forecast, maps, holidays, storms) and `/contacts/` are still translated in the browser from dictionaries in their scripts.
+The home page and `/magnitni-buri/` are written by hand in Bulgarian and get their own translated pages from `build-main.js` (`/en/`, `/en/magnitni-buri/` ...): run it after changing either page or its texts. They link with root paths (`/weather/`, `/css/...`), never relative ones, because the same HTML is also served from `/en/`.
+The other hand-written pages (forecast, maps, holidays) and `/contacts/` are still translated in the browser from dictionaries in their scripts.
 
 **Country context.** `js/place-context.js` reads the place the visitor picked on the forecast page (`lastLocation`; Sofia on a first visit).
 The home page cities block (`js/home-cities.js`) then lists the main cities of that country (`js/destinations.json`), and `/nebeto/` (`js/sky-local.js`,
@@ -57,6 +59,7 @@ All scripts are in `.github/scripts/` and are run from the repository root with 
 | Script | What it does |
 |--------|--------------|
 | `node .github/scripts/build-pages.js` | Writes the city, hub and holiday pages (all languages) and the sources page |
+| `node .github/scripts/build-main.js [--sitemap]` | Writes the translated home and storms pages (`/en/`, `/de/magnitni-buri/` ...) from the Bulgarian ones; stops if a text is missing or Bulgarian text is left in a translation |
 | `node .github/scripts/build-static.js [--sitemap]` | Writes the About and Privacy pages (all languages) |
 | `node .github/scripts/build-europe.js [--sitemap]` | Writes the Europe pages (all languages); `--sitemap` adds missing URLs to `sitemap.xml` |
 | `node .github/scripts/build-luna.js [year] [--sitemap]` | Writes the Moon calendar pages (the year and the next one) |
