@@ -84,6 +84,19 @@
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/theme.css?v=59">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
+  <style>
+    /* The forecast, solar wind and outlook blocks are filled when the data arrives. They keep
+       their room until then (heights measured on the page), so the blocks below do not jump. */
+    #stormForecast[hidden], #stormWind[hidden], #stormOutlook[hidden] { display: block !important; visibility: hidden; }
+    #stormForecast[hidden] { min-height: 330px; }
+    #stormWind[hidden] { min-height: 177px; }
+    #stormOutlook[hidden] { min-height: 249px; }
+    @media (min-width: 700px) {
+      #stormForecast[hidden] { min-height: 390px; }
+      #stormWind[hidden] { min-height: 145px; }
+      #stormOutlook[hidden] { min-height: 192px; }
+    }
+  </style>
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
