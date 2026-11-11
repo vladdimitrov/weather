@@ -149,9 +149,9 @@ function updateHourlyForecast(selectedDate) {
         console.log("Hourly URL:", hourlyURL);
         
 // console.log("startIndex:", startIndex, "hours:", hours, "totalHours:", totalHours, "hourlyData.hourly.time.length:", hourlyData.hourly.time.length);
-        const hourlyRes = await fetch(hourlyURL);
+        const hourlyRes = null;
 // console.log("startIndex:", startIndex, "hours:", hours, "totalHours:", totalHours, "times.length:", times.length);
-        const hourlyData = await hourlyRes.json();
+        const hourlyData = window.ForecastCore ? await ForecastCore.load(hourlyURL) : await (await fetch(hourlyURL)).json();
         console.log("Hourly Data:", hourlyData);
         const timezone = hourlyData.timezone;
         parsedInterval = parseInt(document.getElementById("interval").value);

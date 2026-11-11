@@ -9,7 +9,7 @@ window.ForecastPrecision = (function () {
   const ENSEMBLE_URL = 'https://ensemble-api.open-meteo.com/v1/ensemble';
   const FORECAST_URL = 'https://api.open-meteo.com/v1/forecast';
   const MODELS = [
-    { id: 'ecmwf_ifs025', name: 'ECMWF', origin: { en: 'Europe', bg: 'Европа', de: 'Europa', it: 'Europa', es: 'Europa' } },
+    { id: 'ecmwf_ifs', name: 'ECMWF', origin: { en: 'Europe', bg: 'Европа', de: 'Europa', it: 'Europa', es: 'Europa' } },
     { id: 'icon_seamless', name: 'ICON', origin: { en: 'Germany', bg: 'Германия', de: 'Deutschland', it: 'Germania', es: 'Alemania' } },
     { id: 'gfs_seamless', name: 'GFS', origin: { en: 'USA', bg: 'САЩ', de: 'USA', it: 'USA', es: 'EE. UU.' } }
   ];
