@@ -27,7 +27,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Weather Pulse","url":"https://weatherpulse.eu/it/","inLanguage":"it"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://weatherpulse.eu/#website","name":"Weather Pulse","url":"https://weatherpulse.eu/it/","inLanguage":"it","publisher":{"@id":"https://weatherpulse.eu/#organization"}},{"@type":"Organization","@id":"https://weatherpulse.eu/#organization","name":"Weather Pulse","url":"https://weatherpulse.eu/","logo":"https://weatherpulse.eu/images/icons/icon-512.png"}]}</script>
   <script>
     (function() {
       // Translated page: the language of the page is the language of the site from now on
@@ -718,16 +718,16 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=58">
+  <link rel="stylesheet" href="/css/theme.css?v=59">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
   <div class="nav-header" tabindex="-1" id="header">
     <div class="nav-links">
-      <a href="/weather/" class="nav-link" data-nav="weather">Previsioni del tempo</a>
-      <a href="/maps/" class="nav-link" data-nav="maps">Mappe meteorologiche</a>
-      <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Calendario delle festività</a>
+      <a href="/it/weather/" class="nav-link" data-nav="weather">Previsioni del tempo</a>
+      <a href="/it/maps/" class="nav-link" data-nav="maps">Mappe meteorologiche</a>
+      <a href="/it/holliday_calendar/" class="nav-link" data-nav="holidays">Calendario delle festività</a>
       <a href="/it/magnitni-buri/" class="nav-link" data-nav="storms">Tempeste magnetiche</a>
       <a href="/it/nebeto/" class="nav-link" data-nav="sky">Il cielo</a>
       <a href="/contacts/" class="nav-link" data-nav="sources">Fonti dei dati</a>
@@ -743,7 +743,7 @@
     <div class="hero-section">
       <h1 class="hero-title" id="hero-title" data-translation-key="heroTitle">Previsioni del Tempo e Tempeste Magnetiche</h1>
       <p class="hero-subtitle" id="hero-subtitle" data-translation-key="heroSubtitle">Monitora il tempo, le fasi lunari, le tempeste magnetiche e le festività in tempo reale per qualsiasi località nel mondo. Pianifica la tua giornata con precisione e fiducia.</p>
-      <a class="now-card" id="nowCard" href="/weather/" hidden></a>
+      <a class="now-card" id="nowCard" href="/it/weather/" hidden></a>
     </div>
 
     <!-- Circular Navigation -->
@@ -751,20 +751,20 @@
       <div class="sun-center" title="Home - Meteo e tempeste magnetiche"></div>
       
       <div class="orbit-container">
-        <a href="/weather/" class="orbit-button" id="weather-orbit-btn" title="Previsioni del tempo">
+        <a href="/it/weather/" class="orbit-button" id="weather-orbit-btn" title="Previsioni del tempo">
           <span class="label" id="weather-orbit-label">TEMPO</span>
         </a>
         
        <a href="/it/magnitni-buri/" class="orbit-button" id="magnetic-orbit-btn" title="Tempeste magnetiche">
           <span class="label" id="magnetic-orbit-label">TEMPESTE</span>
         </a>
-		<a href="/holliday_calendar/" class="orbit-button" id="holliday-calendar-btn" title="Calendario delle festività">
+		<a href="/it/holliday_calendar/" class="orbit-button" id="holliday-calendar-btn" title="Calendario delle festività">
           <span class="label" id="holiday-calendar-label">FESTIVITÀ</span>
         </a>
         <a href="/it/nebeto/" class="orbit-button" id="sky-orbit-btn" title="Il cielo: Luna, meteore, eclissi">
           <span class="label" id="sky-orbit-label">CIELO</span>
         </a>
-        <a href="/maps/" class="orbit-button" id="maps-orbit-btn" title="Mappe meteorologiche">
+        <a href="/it/maps/" class="orbit-button" id="maps-orbit-btn" title="Mappe meteorologiche">
           <span class="label" id="maps-orbit-label">MAPPE</span>
         </a>
         
@@ -778,11 +778,11 @@
 
     <!-- Text links to the same pages as the planets, for phones and for readers who miss the orbit -->
     <nav class="home-quicklinks" aria-label="Quick links">
-      <a href="/weather/" data-nav="weather">Previsioni del tempo</a>
-      <a href="/maps/" data-nav="maps">Mappe meteorologiche</a>
+      <a href="/it/weather/" data-nav="weather">Previsioni del tempo</a>
+      <a href="/it/maps/" data-nav="maps">Mappe meteorologiche</a>
       <a href="/it/magnitni-buri/" data-nav="storms">Tempeste magnetiche</a>
       <a href="/it/nebeto/" data-nav="sky">Il cielo</a>
-      <a href="/holliday_calendar/" data-nav="holidays">Calendario delle festività</a>
+      <a href="/it/holliday_calendar/" data-nav="holidays">Calendario delle festività</a>
       <a href="/contacts/" data-nav="sources">Fonti dei dati</a>
     </nav>
 
@@ -1046,12 +1046,12 @@
   }
 </script>
 
-<script src="/js/mobile-nav.js?v=16"></script>
+<script src="/js/mobile-nav.js?v=17"></script>
 <script src="/js/language-selector.js?v=5"></script>
 <script src="/language-switcher.js?v=3"></script>
 <script src="/js/background-selector.js?v=3"></script>
 <script src="/js/city-search.js?v=12"></script>
-<script src="/js/weather-icons.js?v=4"></script>
+<script src="/js/weather-icons.js?v=5"></script>
 <script src="/js/home-weather.js?v=7"></script>
 <script src="/js/place-context.js?v=1"></script>
 <script src="/js/home-cities.js?v=2"></script>

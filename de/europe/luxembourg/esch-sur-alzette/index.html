@@ -59,6 +59,28 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Wetter in Esch-sur-Alzette",
+    "url": "https://weatherpulse.eu/de/europe/luxembourg/esch-sur-alzette/",
+    "inLanguage": "de",
+    "about": {
+      "@type": "City",
+      "name": "Esch-sur-Alzette",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "LU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 49.4958,
+        "longitude": 5.9806
+      }
+    }
+  }
+  </script>
   <script>
     (function() {
       // The page has its own language. Bulgarian (default) pages send a visitor who chose
@@ -77,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=58">
+  <link rel="stylesheet" href="/css/theme.css?v=59">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -85,9 +107,9 @@
   <div class="nav-header" tabindex="-1" id="header">
     <div class="nav-links">
       <a href="/de/" class="nav-link" data-nav="home">Startseite</a>
-      <a href="/weather/" class="nav-link" data-nav="weather">Wettervorhersage</a>
-      <a href="/maps/" class="nav-link" data-nav="maps">Wetterkarten</a>
-      <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Feiertagskalender</a>
+      <a href="/de/weather/" class="nav-link" data-nav="weather">Wettervorhersage</a>
+      <a href="/de/maps/" class="nav-link" data-nav="maps">Wetterkarten</a>
+      <a href="/de/holliday_calendar/" class="nav-link" data-nav="holidays">Feiertagskalender</a>
       <a href="/de/magnitni-buri/" class="nav-link" data-nav="storms">Magnetstürme</a>
       <a href="/de/nebeto/" class="nav-link" data-nav="sky">Himmel</a>
       <a href="/contacts/" class="nav-link" data-nav="sources">Datenquellen</a>
@@ -103,12 +125,85 @@
     <p class="storm-intro">Wettervorhersage für Esch-sur-Alzette, Luxemburg, für heute, morgen und die nächsten 7 Tage: Temperatur, Regen, Wind und Niederschlagswahrscheinlichkeit. Ortsname: Esch-sur-Alzette (Météo Esch-sur-Alzette). Daten von Open-Meteo, stündlich aktualisiert.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Esch-sur-Alzette" data-lat="49.4958" data-lon="5.9806" data-query="city=Esch-sur-Alzette&lat=49.4958&lon=5.9806&cc=LU">
-      <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">Wird geladen…</p></div>
-      <div class="kp-forecast" id="cityDays" hidden></div>
+      <div class="kp-forecast city-now" id="cityNow">
+        <h3>Esch-sur-Alzette: Mittwoch, 11. November</h3>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">7° / 13°</span>
+        <p class="storm-now-status">Nieselregen · Regenwahrscheinlichkeit 100%</p>
+        <p class="storm-updated">Vorhersage vom 11. November 2026</p>
+      </div>
+      <div class="kp-forecast" id="cityDays">
+        <h3>7-Tage-Vorhersage</h3>
+        <div class="city-days">
+          <a class="kp-day city-day" href="/weather/?city=Esch-sur-Alzette&lat=49.4958&lon=5.9806&cc=LU&date=2026-11-11" title="Stündlich →">
+            <span class="kp-day-name">Mi., 11.</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">11.11</span>
+            <span class="city-day-temp">7° / 13°</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 1.7 mm</span>
+            <span class="city-day-wind">Wind 14 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Esch-sur-Alzette&lat=49.4958&lon=5.9806&cc=LU&date=2026-11-12" title="Stündlich →">
+            <span class="kp-day-name">Do., 12.</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">12.11</span>
+            <span class="city-day-temp">3° / 10°</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">10% · 0.1 mm</span>
+            <span class="city-day-wind">Wind 19 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Esch-sur-Alzette&lat=49.4958&lon=5.9806&cc=LU&date=2026-11-13" title="Stündlich →">
+            <span class="kp-day-name">Fr., 13.</span>
+            <span class="city-day-icon" aria-hidden="true">⛅</span>
+            <span class="city-day-date">13.11</span>
+            <span class="city-day-temp">1° / 8°</span>
+            <span class="kp-day-status">Wechselnd bewölkt</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">0%</span>
+            <span class="city-day-wind">Wind 13 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Esch-sur-Alzette&lat=49.4958&lon=5.9806&cc=LU&date=2026-11-14" title="Stündlich →">
+            <span class="kp-day-name">Sa., 14.</span>
+            <span class="city-day-icon" aria-hidden="true">☀️</span>
+            <span class="city-day-date">14.11</span>
+            <span class="city-day-temp">0° / 7°</span>
+            <span class="kp-day-status">Klar</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">0%</span>
+            <span class="city-day-wind">Wind 13 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Esch-sur-Alzette&lat=49.4958&lon=5.9806&cc=LU&date=2026-11-15" title="Stündlich →">
+            <span class="kp-day-name">So., 15.</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">15.11</span>
+            <span class="city-day-temp">0° / 11°</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">56% · 2.3 mm</span>
+            <span class="city-day-wind">Wind 24 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Esch-sur-Alzette&lat=49.4958&lon=5.9806&cc=LU&date=2026-11-16" title="Stündlich →">
+            <span class="kp-day-name">Mo., 16.</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">16.11</span>
+            <span class="city-day-temp">7° / 10°</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">76% · 3.8 mm</span>
+            <span class="city-day-wind">Wind 24 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Esch-sur-Alzette&lat=49.4958&lon=5.9806&cc=LU&date=2026-11-17" title="Stündlich →">
+            <span class="kp-day-name">Di., 17.</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">17.11</span>
+            <span class="city-day-temp">6° / 12°</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">81% · 10.8 mm</span>
+            <span class="city-day-wind">Wind 33 km/h</span>
+          </a>
+        </div>
+        <p class="forecast-note">Median der Modelle ECMWF, ICON und GFS · Höhe 297 m</p>
+      </div>
     </div>
 
     <p class="city-actions">
-      <a class="btn" href="/weather/?city=Esch-sur-Alzette&lat=49.4958&lon=5.9806&cc=LU">Stundenvorhersage →</a>
+      <a class="btn" href="/de/weather/?city=Esch-sur-Alzette&lat=49.4958&lon=5.9806&cc=LU">Stundenvorhersage →</a>
       <a class="btn" href="/de/magnitni-buri/">Geomagnetische Stürme heute →</a>
     </p>
 
@@ -173,10 +268,10 @@
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=16" defer></script>
+<script src="/js/mobile-nav.js?v=17" defer></script>
 <script src="/js/language-selector.js?v=5" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
-<script src="/js/weather-icons.js?v=4" defer></script>
+<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/city-forecast.js?v=10" defer></script>
 </body>

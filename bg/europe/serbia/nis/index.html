@@ -59,6 +59,28 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Времето в Niš",
+    "url": "https://weatherpulse.eu/bg/europe/serbia/nis/",
+    "inLanguage": "bg",
+    "about": {
+      "@type": "City",
+      "name": "Niš",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "RS"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.3209,
+        "longitude": 21.8958
+      }
+    }
+  }
+  </script>
   <script>
     (function() {
       // The page has its own language. Bulgarian (default) pages send a visitor who chose
@@ -77,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=58">
+  <link rel="stylesheet" href="/css/theme.css?v=59">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -103,8 +125,81 @@
     <p class="storm-intro">Прогноза за времето в Niš, Сърбия, за днес, утре и следващите 7 дни: температура, валежи, вятър и вероятност за валеж. Местно име: Niš (Vreme Niš). Данните са от Open-Meteo и се обновяват на всеки час.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Niš" data-lat="43.3209" data-lon="21.8958" data-query="city=Ni%C5%A1&lat=43.3209&lon=21.8958&cc=RS">
-      <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">Зареждане…</p></div>
-      <div class="kp-forecast" id="cityDays" hidden></div>
+      <div class="kp-forecast city-now" id="cityNow">
+        <h3>Niš: сряда, 11 ноември</h3>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">11° / 18°</span>
+        <p class="storm-now-status">Дъжд · вероятност за валеж 97%</p>
+        <p class="storm-updated">Прогноза от 11 ноември 2026 г.</p>
+      </div>
+      <div class="kp-forecast" id="cityDays">
+        <h3>Прогноза за 7 дни</h3>
+        <div class="city-days">
+          <a class="kp-day city-day" href="/weather/?city=Ni%C5%A1&lat=43.3209&lon=21.8958&cc=RS&date=2026-11-11" title="По часове →">
+            <span class="kp-day-name">ср, 11</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">11.11</span>
+            <span class="city-day-temp">11° / 18°</span>
+            <span class="kp-day-status">Дъжд</span>
+            <span class="city-day-rain" title="вероятност за валеж">97% · 3.0 mm</span>
+            <span class="city-day-wind">Вятър 16 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Ni%C5%A1&lat=43.3209&lon=21.8958&cc=RS&date=2026-11-12" title="По часове →">
+            <span class="kp-day-name">чт, 12</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">12.11</span>
+            <span class="city-day-temp">12° / 21°</span>
+            <span class="kp-day-status">Ръмеж</span>
+            <span class="city-day-rain" title="вероятност за валеж">37% · 0.4 mm</span>
+            <span class="city-day-wind">Вятър 20 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Ni%C5%A1&lat=43.3209&lon=21.8958&cc=RS&date=2026-11-13" title="По часове →">
+            <span class="kp-day-name">пт, 13</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">13.11</span>
+            <span class="city-day-temp">6° / 23°</span>
+            <span class="kp-day-status">Дъжд</span>
+            <span class="city-day-rain" title="вероятност за валеж">80% · 6.4 mm</span>
+            <span class="city-day-wind">Вятър 28 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Ni%C5%A1&lat=43.3209&lon=21.8958&cc=RS&date=2026-11-14" title="По часове →">
+            <span class="kp-day-name">сб, 14</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">14.11</span>
+            <span class="city-day-temp">2° / 6°</span>
+            <span class="kp-day-status">Дъжд</span>
+            <span class="city-day-rain" title="вероятност за валеж">90% · 5.3 mm</span>
+            <span class="city-day-wind">Вятър 17 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Ni%C5%A1&lat=43.3209&lon=21.8958&cc=RS&date=2026-11-15" title="По часове →">
+            <span class="kp-day-name">нд, 15</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">15.11</span>
+            <span class="city-day-temp">1° / 11°</span>
+            <span class="kp-day-status">Облачно</span>
+            <span class="city-day-rain" title="вероятност за валеж">11%</span>
+            <span class="city-day-wind">Вятър 7 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Ni%C5%A1&lat=43.3209&lon=21.8958&cc=RS&date=2026-11-16" title="По часове →">
+            <span class="kp-day-name">пн, 16</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">16.11</span>
+            <span class="city-day-temp">4° / 11°</span>
+            <span class="kp-day-status">Дъжд</span>
+            <span class="city-day-rain" title="вероятност за валеж">29% · 4.4 mm</span>
+            <span class="city-day-wind">Вятър 11 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Ni%C5%A1&lat=43.3209&lon=21.8958&cc=RS&date=2026-11-17" title="По часове →">
+            <span class="kp-day-name">вт, 17</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">17.11</span>
+            <span class="city-day-temp">8° / 16°</span>
+            <span class="kp-day-status">Дъжд</span>
+            <span class="city-day-rain" title="вероятност за валеж">28% · 9.4 mm</span>
+            <span class="city-day-wind">Вятър 15 km/h</span>
+          </a>
+        </div>
+        <p class="forecast-note">Медиана на моделите ECMWF, ICON и GFS · надм. височина 199 м</p>
+      </div>
     </div>
 
     <p class="city-actions">
@@ -175,10 +270,10 @@
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=16" defer></script>
+<script src="/js/mobile-nav.js?v=17" defer></script>
 <script src="/js/language-selector.js?v=5" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
-<script src="/js/weather-icons.js?v=4" defer></script>
+<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/city-forecast.js?v=10" defer></script>
 </body>

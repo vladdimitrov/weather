@@ -8,7 +8,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Интерактивни карти за времето | Weather Pulse</title>
-<link rel="canonical" href="https://weatherpulse.eu/maps/" />
+  <link rel="canonical" href="https://weatherpulse.eu/maps/" />
+  <link rel="alternate" hreflang="bg" href="https://weatherpulse.eu/maps/" />
+  <link rel="alternate" hreflang="en" href="https://weatherpulse.eu/en/maps/" />
+  <link rel="alternate" hreflang="de" href="https://weatherpulse.eu/de/maps/" />
+  <link rel="alternate" hreflang="it" href="https://weatherpulse.eu/it/maps/" />
+  <link rel="alternate" hreflang="es" href="https://weatherpulse.eu/es/maps/" />
+  <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu/maps/" />
 <meta name="description" content="Интерактивни карти за дъжд, вятър, температура, облаци и гръмотевици за целия свят, с любими места.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Weather Pulse">
@@ -23,16 +29,25 @@
 
   <script>
     (function() {
-      const savedLanguage = localStorage.getItem('selectedLanguage') || 'bg';
-      document.documentElement.lang = savedLanguage;
-      // Hidden until translated from the Bulgarian HTML (no flash of Bulgarian text)
-      if (savedLanguage !== 'bg') document.documentElement.classList.add('i18n-pending');
+      // Bulgarian original. A visitor who chose another language is sent to the translation
+      // (/en/, /de/, /it/, /es/ + this path; written by .github/scripts/build-main.js)
+      try {
+        const languages = ['en', 'de', 'it', 'es'];
+        let wanted = localStorage.getItem('selectedLanguage');
+        // First visit: the language of the browser (English if the site does not have it), as
+        // /js/language-selector.js does on the other pages. Robots keep the Bulgarian page.
+        if (wanted === null && !/bot|crawl|spider|slurp|lighthouse|headless|preview/i.test(navigator.userAgent || '')) {
+          const browser = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || '']).map(code => String(code).slice(0, 2).toLowerCase());
+          wanted = browser.find(code => code === 'bg' || languages.includes(code)) || (browser[0] ? 'en' : null);
+        }
+        if (languages.includes(wanted)) location.replace('/' + wanted + '/maps/' + location.search + location.hash);
+      } catch (e) { /* storage blocked */ }
     })();
   </script>
-  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="../css/weather.css">
-  <link rel="stylesheet" href="css/modern-form.css">
-  <link rel="stylesheet" href="css/maps.css">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/weather.css">
+  <link rel="stylesheet" href="/maps/css/modern-form.css">
+  <link rel="stylesheet" href="/maps/css/maps.css">
   <style>
     @keyframes fade-in {
       0% { opacity: 0; transform: scale(0.95); }
@@ -161,19 +176,19 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=58">
+  <link rel="stylesheet" href="/css/theme.css?v=59">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
   <div class="nav-header" tabindex="-1" id="header">
     <div class="nav-links">
-      <a href="../index.html" class="nav-link" data-nav="home">Начало</a>
-      <a href="../weather/index.html" class="nav-link" data-nav="weather">Прогноза за времето</a>
-      <a href="../holliday_calendar/index.html" class="nav-link" data-nav="holidays">Календар на празниците</a>
-      <a href="../magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
-      <a href="../nebeto/" class="nav-link" data-nav="sky">Небето</a>
-      <a href="../contacts/index.html" class="nav-link" data-nav="sources">Източници на данни</a>
+      <a href="/" class="nav-link" data-nav="home">Начало</a>
+      <a href="/weather/" class="nav-link" data-nav="weather">Прогноза за времето</a>
+      <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Календар на празниците</a>
+      <a href="/magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
+      <a href="/nebeto/" class="nav-link" data-nav="sky">Небето</a>
+      <a href="/contacts/" class="nav-link" data-nav="sources">Източници на данни</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -273,7 +288,7 @@
 
   <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
     <div class="logo" style="flex-shrink: 0;">
-        <a href="../index.html"><img src="../images/logo-64.webp" alt="Лого" class="logo-img" width="30" height="30" style="height: 30px; width: auto;"></a>
+        <a href="/"><img src="/images/logo-64.webp" alt="Лого" class="logo-img" width="30" height="30" style="height: 30px; width: auto;"></a>
     </div>
       
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
@@ -557,14 +572,14 @@
 </script>
 
 <!-- Load JavaScript files -->
-<script src="/js/mobile-nav.js?v=16"></script>
+<script src="/js/mobile-nav.js?v=17"></script>
 <script src="/js/language-selector.js?v=5"></script>
 <script src="/js/city-search.js?v=12"></script>
-<script src="js/language-switcher.js?v=8"></script>
+<script src="/maps/js/language-switcher.js?v=9"></script>
 <script src="/js/background-selector.js?v=3"></script>
-<script src="js/map-autocomplete.js?v=7"></script>
-<script src="js/map-fullscreen.js?v=2"></script>
-<script src="js/favorites-manager.js?v=4"></script>
+<script src="/maps/js/map-autocomplete.js?v=7"></script>
+<script src="/maps/js/map-fullscreen.js?v=2"></script>
+<script src="/maps/js/favorites-manager.js?v=4"></script>
 
 <script src="/js/form-fold.js?v=1" defer></script>
 </body>

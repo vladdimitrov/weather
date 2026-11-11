@@ -64,8 +64,15 @@
       // Bulgarian original. A visitor who chose another language is sent to the translation
       // (/en/, /de/, /it/, /es/ + this path; written by .github/scripts/build-main.js)
       try {
-        const saved = localStorage.getItem('selectedLanguage');
-        if (saved && ['en', 'de', 'it', 'es'].includes(saved)) location.replace('/' + saved + '/magnitni-buri/' + location.search + location.hash);
+        const languages = ['en', 'de', 'it', 'es'];
+        let wanted = localStorage.getItem('selectedLanguage');
+        // First visit: the language of the browser (English if the site does not have it), as
+        // /js/language-selector.js does on the other pages. Robots keep the Bulgarian page.
+        if (wanted === null && !/bot|crawl|spider|slurp|lighthouse|headless|preview/i.test(navigator.userAgent || '')) {
+          const browser = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || '']).map(code => String(code).slice(0, 2).toLowerCase());
+          wanted = browser.find(code => code === 'bg' || languages.includes(code)) || (browser[0] ? 'en' : null);
+        }
+        if (languages.includes(wanted)) location.replace('/' + wanted + '/magnitni-buri/' + location.search + location.hash);
       } catch (e) { /* storage blocked */ }
     })();
   </script>
@@ -75,7 +82,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=58">
+  <link rel="stylesheet" href="/css/theme.css?v=59">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -146,9 +153,9 @@
     </section>
 
     <div class="kp-forecast widget-embed">
-      <h3 data-i18n="widgetTitle">Добавете прогнозата на вашия сайт</h3>
+      <h3 id="widgetTitle" data-i18n="widgetTitle">Добавете прогнозата на вашия сайт</h3>
       <p data-i18n="widgetText">Безплатна карта с Kp индекса и прогнозата за 3 дни. Копирайте кода в своя сайт или блог:</p>
-      <textarea id="widgetCode" readonly rows="3">&lt;iframe src="https://weatherpulse.eu/widget/kp.html" width="320" height="190" style="border:0" title="Магнитни бури — Weather Pulse" loading="lazy"&gt;&lt;/iframe&gt;</textarea>
+      <textarea id="widgetCode" aria-labelledby="widgetTitle" readonly rows="3">&lt;iframe src="https://weatherpulse.eu/widget/kp.html" width="320" height="190" style="border:0" title="Магнитни бури — Weather Pulse" loading="lazy"&gt;&lt;/iframe&gt;</textarea>
       <button type="button" class="btn" id="copyWidgetCode">Копирай кода</button>
       <iframe id="widgetPreview" src="/widget/kp.html" width="320" height="190" style="border:0; display:block; margin:14px auto 0;" title="Магнитни бури — Weather Pulse" loading="lazy"></iframe>
     </div>
@@ -165,7 +172,7 @@
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=16"></script>
+<script src="/js/mobile-nav.js?v=17"></script>
 <script src="/js/language-selector.js?v=5"></script>
 <script src="/js/background-selector.js?v=3"></script>
 <script src="/js/storm-page.js?v=4"></script>

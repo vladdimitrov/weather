@@ -2257,3 +2257,25 @@ html body .day-details-toggle { min-height: 40px; }
 /* the line about how the forecast is made */
 .forecast-note { margin: 10px auto 0; text-align: center; font-size: 0.75rem; color: var(--ink-soft, #c9cde6); opacity: 0.85; }
 @media print { .forecast-note { display: none; } }
+
+/* ---- forecast page: no jumps while it loads ----
+   The "now" block, the 3/7/14 days row and the details switch are added by the scripts above
+   the day cards. Until each of them is there, the cards keep its room as a top margin
+   (heights measured on the page; the row of days wraps on phones). */
+#main-content { --room-now: 154px; --room-quick: 50px; --room-toggle: 52px; }
+@media (max-width: 600px) { #main-content { --room-quick: 104px; } }
+#main-content:has(#nowBlock:not([hidden])) { --room-now: 0px; }
+#main-content:has(#quickDays) { --room-quick: 0px; }
+#main-content:has(#dayDetailsToggle) { --room-toggle: 0px; }
+#dayCards.day-cards { margin-top: calc(12px + var(--room-now) + var(--room-quick) + var(--room-toggle)); }
+/* the loading cards are as tall as the real ones (short cards on phones, with details on wide screens) */
+#dayCards .day-skel { min-height: 253px; }
+@media (min-width: 700px) { #dayCards .day-skel { min-height: 420px; } }
+.weather-form .form-summary { min-height: 43px; }
+
+/* ---- home and storms: room for the blocks that are filled when the data arrives ---- */
+/* home: the "now" card keeps its place while it loads (it is [hidden] until then) */
+#nowCard[hidden] { display: flex !important; visibility: hidden; min-height: 103px; }
+@media (max-width: 600px) { #nowCard[hidden] { min-height: 155px; } }
+/* storms: the Kp gauge */
+#stormNow { min-height: 245px; }

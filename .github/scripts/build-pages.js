@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 58, mobileNav: 16, cityForecast: 10, moon: 2, lunaToday: 3, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
+const VERSION = { theme: 59, mobileNav: 17, cityForecast: 10, moon: 2, lunaToday: 3, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
 
 const CITIES = [
   ['sofia', 'София', 42.6977, 23.3219],
@@ -249,9 +249,9 @@ ${(FOOTER_TEXT = { about: NAV.about, privacy: NAV.privacy }, LOGO = I18N.LOGO_AL
 ${scripts}</body>
 </html>
 `;
-  // The home page and the storms page exist in every language (build-main.js): a page in
-  // another language links to its own (/en/, /en/magnitni-buri/)
-  return lang === 'bg' ? html : html.replace(/href="\/(magnitni-buri\/)?(["#?])/g, (m, storms = '', end) => `href="/${lang}/${storms}${end}`);
+  // The home, forecast, maps, holiday calendar and storms pages exist in every language
+  // (build-main.js): a page in another language links to its own (/en/, /en/weather/?city=...)
+  return lang === 'bg' ? html : html.replace(/href="\/(weather\/|maps\/|holliday_calendar\/|magnitni-buri\/)?(["#?])/g, (m, page = '', end) => `href="/${lang}/${page}${end}`);
 }
 
 function write(relativeDir, html) {
@@ -264,6 +264,24 @@ const cityLinks = (current, lang) => CITIES
   .filter(city => city !== current)
   .map(city => `<a href="${L(lang, `/vremeto/${city.slug}/`)}" class="recent-place">${cityName(city, lang)}</a>`)
   .join('\n        ');
+
+// The place a city page is about (name, country, coordinates), as schema.org data
+function placeJson({ title, name, country, lat, lon, url, lang }) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    url: `https://weatherpulse.eu${url}`,
+    inLanguage: lang,
+    about: {
+      '@type': 'City',
+      name,
+      address: { '@type': 'PostalAddress', addressCountry: country },
+      geo: { '@type': 'GeoCoordinates', latitude: lat, longitude: lon }
+    }
+  };
+  return `  <script type="application/ld+json">\n${JSON.stringify(data, null, 2).replace(/^/gm, '  ').replace(/<\//g, '<\\/')}\n  </script>\n`;
+}
 
 function cityPage(city, lang) {
   const T = TXT[lang];
@@ -289,7 +307,7 @@ function cityPage(city, lang) {
     // page() adds " | Weather Pulse"
     title: T.title(where),
     description: T.description(where),
-    jsonLd: breadcrumbs,
+    jsonLd: breadcrumbs + placeJson({ title: T.cityName(where), name, country: 'BG', lat: city.lat, lon: city.lon, url: L(lang, `/vremeto/${city.slug}/`), lang }),
     body: `    <p class="breadcrumbs"><a href="${L(lang, '/vremeto/')}">${T.hubName}</a> › ${name}</p>
     <h1>${T.cityName(where)}</h1>
     <p class="storm-intro">${T.intro(where)}</p>
@@ -314,7 +332,7 @@ ${climateSection(city, lang)}
         ${cityLinks(city, lang)}
       </div>
     </section>`,
-    scripts: `<script src="/js/weather-icons.js?v=4" defer></script>
+    scripts: `<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=${VERSION.moon}" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`
   });
@@ -336,7 +354,7 @@ function hubPage(lang) {
     <div class="city-grid" id="cityList">
       ${CITIES.map(city => `<a href="${L(lang, `/vremeto/${city.slug}/`)}" class="city-tile" data-lat="${city.lat}" data-lon="${city.lon}"><span class="city-tile-name">${cityName(city, lang)}</span><span class="city-tile-temp"></span></a>`).join('\n      ')}
     </div>`,
-    scripts: `<script src="/js/weather-icons.js?v=4" defer></script>
+    scripts: `<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`
   });
 }
@@ -503,7 +521,7 @@ ${tables}
 }
 
 // Used by build-climate.js (the city list); the pages are built only when run directly
-module.exports = { CITIES, page, write, VERSION };
+module.exports = { CITIES, page, write, VERSION, placeJson };
 if (require.main === module) (async function main() {
   const firstYear = Number(process.argv[2]) || new Date().getFullYear();
   const years = [firstYear, firstYear + 1];

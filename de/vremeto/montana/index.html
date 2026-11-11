@@ -38,6 +38,28 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Wetter in Montana",
+    "url": "https://weatherpulse.eu/de/vremeto/montana/",
+    "inLanguage": "de",
+    "about": {
+      "@type": "City",
+      "name": "Montana",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "BG"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.4085,
+        "longitude": 23.2257
+      }
+    }
+  }
+  </script>
   <script>
     (function() {
       // The page has its own language. Bulgarian (default) pages send a visitor who chose
@@ -56,7 +78,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=58">
+  <link rel="stylesheet" href="/css/theme.css?v=59">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -64,9 +86,9 @@
   <div class="nav-header" tabindex="-1" id="header">
     <div class="nav-links">
       <a href="/de/" class="nav-link" data-nav="home">Startseite</a>
-      <a href="/weather/" class="nav-link" data-nav="weather">Wettervorhersage</a>
-      <a href="/maps/" class="nav-link" data-nav="maps">Wetterkarten</a>
-      <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Feiertagskalender</a>
+      <a href="/de/weather/" class="nav-link" data-nav="weather">Wettervorhersage</a>
+      <a href="/de/maps/" class="nav-link" data-nav="maps">Wetterkarten</a>
+      <a href="/de/holliday_calendar/" class="nav-link" data-nav="holidays">Feiertagskalender</a>
       <a href="/de/magnitni-buri/" class="nav-link" data-nav="storms">Magnetstürme</a>
       <a href="/de/nebeto/" class="nav-link" data-nav="sky">Himmel</a>
       <a href="/contacts/" class="nav-link" data-nav="sources">Datenquellen</a>
@@ -85,7 +107,7 @@
       <div class="kp-forecast city-now" id="cityNow">
         <h3>Montana: Mittwoch, 11. November</h3>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">6° / 15°</span>
-        <p class="storm-now-status">Regen · Regenwahrscheinlichkeit 58%</p>
+        <p class="storm-now-status">Nieselregen · Regenwahrscheinlichkeit 35%</p>
         <p class="storm-updated">Vorhersage vom 11. November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
@@ -93,21 +115,21 @@
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Montana&lat=43.4085&lon=23.2257&cc=BG&date=2026-11-11" title="Stündlich →">
             <span class="kp-day-name">Mi., 11.</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">11.11</span>
             <span class="city-day-temp">6° / 15°</span>
-            <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">58% · 0.3 mm</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">35%</span>
             <span class="city-day-wind">Wind 8 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Montana&lat=43.4085&lon=23.2257&cc=BG&date=2026-11-12" title="Stündlich →">
             <span class="kp-day-name">Do., 12.</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">12.11</span>
             <span class="city-day-temp">8° / 22°</span>
-            <span class="kp-day-status">Nebel</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">8%</span>
-            <span class="city-day-wind">Wind 17 km/h</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">10%</span>
+            <span class="city-day-wind">Wind 13 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Montana&lat=43.4085&lon=23.2257&cc=BG&date=2026-11-13" title="Stündlich →">
             <span class="kp-day-name">Fr., 13.</span>
@@ -115,35 +137,35 @@
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">11° / 24°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">53% · 0.5 mm</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">55%</span>
             <span class="city-day-wind">Wind 22 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Montana&lat=43.4085&lon=23.2257&cc=BG&date=2026-11-14" title="Stündlich →">
             <span class="kp-day-name">Sa., 14.</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">5° / 11°</span>
-            <span class="kp-day-status">Nieselregen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">70% · 2.4 mm</span>
-            <span class="city-day-wind">Wind 15 km/h</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">70% · 2.8 mm</span>
+            <span class="city-day-wind">Wind 18 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Montana&lat=43.4085&lon=23.2257&cc=BG&date=2026-11-15" title="Stündlich →">
             <span class="kp-day-name">So., 15.</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">3° / 9°</span>
+            <span class="city-day-temp">2° / 10°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">15%</span>
-            <span class="city-day-wind">Wind 8 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">16%</span>
+            <span class="city-day-wind">Wind 6 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Montana&lat=43.4085&lon=23.2257&cc=BG&date=2026-11-16" title="Stündlich →">
             <span class="kp-day-name">Mo., 16.</span>
             <span class="city-day-icon" aria-hidden="true">🌫️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">3° / 8°</span>
+            <span class="city-day-temp">1° / 9°</span>
             <span class="kp-day-status">Nebel</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">20% · 0.3 mm</span>
-            <span class="city-day-wind">Wind 5 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">21% · 0.3 mm</span>
+            <span class="city-day-wind">Wind 6 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Montana&lat=43.4085&lon=23.2257&cc=BG&date=2026-11-17" title="Stündlich →">
             <span class="kp-day-name">Di., 17.</span>
@@ -160,7 +182,7 @@
     </div>
 
     <p class="city-actions">
-      <a class="btn" href="/weather/?city=Montana&lat=43.4085&lon=23.2257&cc=BG">Detaillierte Stundenvorhersage →</a>
+      <a class="btn" href="/de/weather/?city=Montana&lat=43.4085&lon=23.2257&cc=BG">Detaillierte Stundenvorhersage →</a>
       <a class="btn" href="/de/magnitni-buri/">Magnetstürme heute →</a>
       <a class="btn" href="/de/luna/">Mondkalender →</a>
     </p>
@@ -269,10 +291,10 @@
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=16" defer></script>
+<script src="/js/mobile-nav.js?v=17" defer></script>
 <script src="/js/language-selector.js?v=5" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
-<script src="/js/weather-icons.js?v=4" defer></script>
+<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/city-forecast.js?v=10" defer></script>
 </body>

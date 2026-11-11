@@ -3,8 +3,8 @@
 // browser /js/city-forecast.js replaces it with the live forecast as before.
 // Run every morning by .github/workflows/forecast-daily.yml.
 //
-//   node .github/scripts/build-forecast.js              the Bulgarian city pages (/vremeto/<city>/, all languages)
-//   node .github/scripts/build-forecast.js europe ...    the city pages in these folders instead
+//   node .github/scripts/build-forecast.js               all city pages: /vremeto/<city>/ and /europe/<country>/<city>/, all languages
+//   node .github/scripts/build-forecast.js vremeto ...    only the city pages in these folders
 //
 // The forecast is the same one the site shows: the median of three models (js/forecast-core.js),
 // with the texts of js/city-forecast.js. If Open-Meteo does not answer, nothing is written and
@@ -131,7 +131,9 @@ ${days}
 
 (async function main() {
   const folders = process.argv.slice(2).filter(arg => !arg.startsWith('--'));
-  const pages = cityPages(folders.length ? folders : I18N.LANGS.map(lang => path.join(I18N.prefix(lang).slice(1), 'vremeto')));
+  // Bulgarian at the root for /vremeto/, English at the root for /europe/
+  const all = I18N.LANGS.flatMap(lang => [path.join(I18N.prefix(lang).slice(1), 'vremeto'), path.join(I18N.prefix(lang, 'en').slice(1), 'europe')]);
+  const pages = cityPages(folders.length ? folders : all);
   if (!pages.length) throw new Error('No city pages found');
   pages.forEach(page => { page.key = `${page.lat},${page.lon}`; });
   const places = [...new Map(pages.map(page => [page.key, page])).values()];

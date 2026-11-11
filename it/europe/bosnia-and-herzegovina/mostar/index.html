@@ -59,6 +59,28 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Meteo a Mostar",
+    "url": "https://weatherpulse.eu/it/europe/bosnia-and-herzegovina/mostar/",
+    "inLanguage": "it",
+    "about": {
+      "@type": "City",
+      "name": "Mostar",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "BA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.3438,
+        "longitude": 17.8078
+      }
+    }
+  }
+  </script>
   <script>
     (function() {
       // The page has its own language. Bulgarian (default) pages send a visitor who chose
@@ -77,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=58">
+  <link rel="stylesheet" href="/css/theme.css?v=59">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -85,9 +107,9 @@
   <div class="nav-header" tabindex="-1" id="header">
     <div class="nav-links">
       <a href="/it/" class="nav-link" data-nav="home">Home</a>
-      <a href="/weather/" class="nav-link" data-nav="weather">Previsioni del tempo</a>
-      <a href="/maps/" class="nav-link" data-nav="maps">Mappe meteorologiche</a>
-      <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Calendario delle festività</a>
+      <a href="/it/weather/" class="nav-link" data-nav="weather">Previsioni del tempo</a>
+      <a href="/it/maps/" class="nav-link" data-nav="maps">Mappe meteorologiche</a>
+      <a href="/it/holliday_calendar/" class="nav-link" data-nav="holidays">Calendario delle festività</a>
       <a href="/it/magnitni-buri/" class="nav-link" data-nav="storms">Tempeste magnetiche</a>
       <a href="/it/nebeto/" class="nav-link" data-nav="sky">Il cielo</a>
       <a href="/contacts/" class="nav-link" data-nav="sources">Fonti dei dati</a>
@@ -103,12 +125,85 @@
     <p class="storm-intro">Previsioni del tempo a Mostar, Bosnia ed Erzegovina, per oggi, domani e i prossimi 7 giorni: temperatura, pioggia, vento e probabilità di precipitazioni. Nome locale: Mostar (Vrijeme Mostar). Dati di Open-Meteo, aggiornati ogni ora.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Mostar" data-lat="43.3438" data-lon="17.8078" data-query="city=Mostar&lat=43.3438&lon=17.8078&cc=BA">
-      <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">Caricamento…</p></div>
-      <div class="kp-forecast" id="cityDays" hidden></div>
+      <div class="kp-forecast city-now" id="cityNow">
+        <h3>Mostar: mercoledì 11 novembre</h3>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">14° / 17°</span>
+        <p class="storm-now-status">Temporale · probabilità di pioggia 100%</p>
+        <p class="storm-updated">Previsione del 11 novembre 2026</p>
+      </div>
+      <div class="kp-forecast" id="cityDays">
+        <h3>Previsioni a 7 giorni</h3>
+        <div class="city-days">
+          <a class="kp-day city-day" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA&date=2026-11-11" title="Ora per ora →">
+            <span class="kp-day-name">mer 11</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-date">11.11</span>
+            <span class="city-day-temp">14° / 17°</span>
+            <span class="kp-day-status">Temporale</span>
+            <span class="city-day-rain" title="probabilità di pioggia">100% · 16.8 mm</span>
+            <span class="city-day-wind">Vento 6 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA&date=2026-11-12" title="Ora per ora →">
+            <span class="kp-day-name">gio 12</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">12.11</span>
+            <span class="city-day-temp">16° / 19°</span>
+            <span class="kp-day-status">Pioggia</span>
+            <span class="city-day-rain" title="probabilità di pioggia">100% · 15.0 mm</span>
+            <span class="city-day-wind">Vento 28 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA&date=2026-11-13" title="Ora per ora →">
+            <span class="kp-day-name">ven 13</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-date">13.11</span>
+            <span class="city-day-temp">10° / 18°</span>
+            <span class="kp-day-status">Temporale</span>
+            <span class="city-day-rain" title="probabilità di pioggia">100% · 78.3 mm</span>
+            <span class="city-day-wind">Vento 30 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA&date=2026-11-14" title="Ora per ora →">
+            <span class="kp-day-name">sab 14</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">14.11</span>
+            <span class="city-day-temp">7° / 12°</span>
+            <span class="kp-day-status">Pioviggine</span>
+            <span class="city-day-rain" title="probabilità di pioggia">99% · 5.0 mm</span>
+            <span class="city-day-wind">Vento 21 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA&date=2026-11-15" title="Ora per ora →">
+            <span class="kp-day-name">dom 15</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">15.11</span>
+            <span class="city-day-temp">7° / 16°</span>
+            <span class="kp-day-status">Nuvoloso</span>
+            <span class="city-day-rain" title="probabilità di pioggia">40% · 1.2 mm</span>
+            <span class="city-day-wind">Vento 9 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA&date=2026-11-16" title="Ora per ora →">
+            <span class="kp-day-name">lun 16</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-date">16.11</span>
+            <span class="city-day-temp">12° / 17°</span>
+            <span class="kp-day-status">Temporale</span>
+            <span class="city-day-rain" title="probabilità di pioggia">87% · 58.3 mm</span>
+            <span class="city-day-wind">Vento 16 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA&date=2026-11-17" title="Ora per ora →">
+            <span class="kp-day-name">mar 17</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-date">17.11</span>
+            <span class="city-day-temp">12° / 17°</span>
+            <span class="kp-day-status">Temporale</span>
+            <span class="city-day-rain" title="probabilità di pioggia">96% · 5.5 mm</span>
+            <span class="city-day-wind">Vento 9 km/h</span>
+          </a>
+        </div>
+        <p class="forecast-note">Mediana dei modelli ECMWF, ICON e GFS · altitudine 64 m</p>
+      </div>
     </div>
 
     <p class="city-actions">
-      <a class="btn" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA">Previsioni orarie →</a>
+      <a class="btn" href="/it/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA">Previsioni orarie →</a>
       <a class="btn" href="/it/magnitni-buri/">Tempeste geomagnetiche oggi →</a>
     </p>
 
@@ -175,10 +270,10 @@
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=16" defer></script>
+<script src="/js/mobile-nav.js?v=17" defer></script>
 <script src="/js/language-selector.js?v=5" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
-<script src="/js/weather-icons.js?v=4" defer></script>
+<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/city-forecast.js?v=10" defer></script>
 </body>

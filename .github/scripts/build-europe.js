@@ -10,12 +10,12 @@ const fs = require('fs');
 const path = require('path');
 const I18N = require('./i18n.js');
 const { EUROPE } = require('./text-europe.js');
-const { page, write, VERSION } = require('./build-pages.js');
+const { page, write, VERSION, placeJson } = require('./build-pages.js');
 const COUNTRIES = require('./europe-data.js');
 
 const ROOT = process.cwd();
 const BASE = 'en';
-const SCRIPTS = `<script src="/js/weather-icons.js?v=4" defer></script>
+const SCRIPTS = `<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=${VERSION.moon}" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`;
 
@@ -63,7 +63,8 @@ function cityPage(lang, country, city) {
     url,
     title: esc(T.cityTitle(en, term)),
     description: esc(T.cityDescription(en, k, term)),
-    jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.europeH1, '/europe/'], [k, `/europe/${country.slug}/`], [T.cityH1(en), url]]),
+    jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.europeH1, '/europe/'], [k, `/europe/${country.slug}/`], [T.cityH1(en), url]]) +
+      placeJson({ title: T.cityH1(en), name: en, country: country.code, lat, lon, url: E(lang, url), lang }),
     body: `    <p class="breadcrumbs"><a href="${E(lang, '/europe/')}">${T.europeH1}</a> › <a href="${E(lang, `/europe/${country.slug}/`)}">${esc(k)}</a> › ${esc(en)}</p>
     <h1>${esc(T.cityH1(en))}</h1>
     <p class="storm-intro">${esc(T.cityIntro(en, k, term, local))}</p>
