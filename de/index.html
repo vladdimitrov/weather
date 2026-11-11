@@ -24,7 +24,9 @@
 <meta property="og:description" content="16-Tage- und Stundenvorhersage, Magnetstürme mit Benachrichtigungen, Wetterkarten, Feiertage und das Wetter in bulgarischen Städten. Kostenlos.">
 <meta property="og:url" content="https://weatherpulse.eu/de/">
 <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Weather Pulse","url":"https://weatherpulse.eu/de/","inLanguage":"de"}</script>
   <script>
     (function() {
@@ -1028,15 +1030,6 @@
   
   // Header initialization for homepage
   document.addEventListener('DOMContentLoaded', function() {
-    const navHeader = document.querySelector('.nav-header');
-    if (navHeader) {
-      // Focus on the header when the page loads
-      navHeader.focus();
-      
-      // Scroll to top to ensure header is visible
-      window.scrollTo(0, 0);
-    }
-    
     // Apply saved settings from localStorage
     applyStoredSettings();
   });
@@ -1049,7 +1042,6 @@
     if (savedLanguage) {
       document.documentElement.lang = savedLanguage;
       updateHomepageContent(savedLanguage);
-      console.log('Applied language setting:', savedLanguage);
     }
   }
 </script>

@@ -20,7 +20,6 @@ function showHourlyForecast(date) {
     const dayName = getDayName(date);
     const tableTitle = document.querySelector("#hourlyTableBlock h2");
     if (tableTitle) {
-      console.log("DEBUG: weather-hourly.js updating table title");
       tableTitle.textContent = `${_t("hourlyForecastFor")} ${dayName} ${date}`;
     }
   }
@@ -28,7 +27,6 @@ function showHourlyForecast(date) {
   // Check if hourly table headers are being affected
   const hourlyHeaders = document.querySelectorAll("#hourlyTable thead tr th");
   if (hourlyHeaders.length > 1) {
-    console.log("DEBUG: weather-hourly.js - Current hourly Weather header text:", hourlyHeaders[1].textContent);
   }
   
   updateHourlyForecast(date);
@@ -37,13 +35,11 @@ function showHourlyForecast(date) {
 function updateHourlyForecast(selectedDate) {
   // Ensure selectedDate is in the correct format (YYYY-MM-DD)
   if (selectedDate) {
-    console.log("Original selectedDate:", selectedDate);
     // If the date is not in YYYY-MM-DD format, try to convert it
     if (!/^\d{4}-\d{2}-\d{2}$/.test(selectedDate)) {
       try {
         const dateObj = new Date(selectedDate);
         selectedDate = dateObj.toISOString().substring(0, 10);
-        console.log("Converted selectedDate:", selectedDate);
       } catch (e) {
         console.error("Error converting date:", e);
       }
@@ -62,7 +58,6 @@ function updateHourlyForecast(selectedDate) {
     hours = 24;
   }
   
-  console.log("City:", city, "Days:", days, "Hours:", hours);
   const tbody = document.querySelector("#hourlyTable tbody");
   // Use translations for loading message
   const loadingMessage = pickText({ en: "Loading...", bg: "Зареждане...", de: "Wird geladen...", it: "Caricamento...", es: "Cargando..." });
@@ -109,7 +104,6 @@ function updateHourlyForecast(selectedDate) {
       let now = new Date();
       const today = now.toISOString().slice(0, 10);
       const numDays = Math.ceil(hours / 24);
-      console.log("numDays:", numDays, "hours:", hours);
       let allTimes = [];
       let allTemperatures = [];
       let allCloudcovers = [];
@@ -146,20 +140,14 @@ function updateHourlyForecast(selectedDate) {
         } else {
           hourlyURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,cloudcover,precipitation,precipitation_probability,windspeed_10m,weather_code&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${startDate}&end_date=${endDateString}&interval=${parsedInterval}`;
         }
-        console.log("Hourly URL:", hourlyURL);
         
-// console.log("startIndex:", startIndex, "hours:", hours, "totalHours:", totalHours, "hourlyData.hourly.time.length:", hourlyData.hourly.time.length);
         const hourlyRes = null;
-// console.log("startIndex:", startIndex, "hours:", hours, "totalHours:", totalHours, "times.length:", times.length);
         const hourlyData = window.ForecastCore ? await ForecastCore.load(hourlyURL) : await (await fetch(hourlyURL)).json();
-        console.log("Hourly Data:", hourlyData);
         const timezone = hourlyData.timezone;
         parsedInterval = parseInt(document.getElementById("interval").value);
         // The 30- and 15-minute tables come from the 15-minute data (4 points an hour)
         const dataPointsPerDay = 24 * (parsedInterval <= 30 ? 4 : 1);
-        console.log("dataPointsPerDay:", dataPointsPerDay, "parsedInterval:", parsedInterval);
         const totalDataPoints = days * dataPointsPerDay;
-        console.log("totalDataPoints:", totalDataPoints, "days:", days);
         let times, temperatures, cloudcovers, precipitations, precipitationProbabilities, windspeeds;
         let weatherCodes; // Declare weatherCodes here
         if (parsedInterval <= 30) {
@@ -179,7 +167,6 @@ function updateHourlyForecast(selectedDate) {
           windspeeds = hourlyData.hourly.windspeed_10m.slice(0, Math.min(totalDataPoints, hourlyData.hourly.windspeed_10m.length));
           weatherCodes = hourlyData.hourly.weather_code ? hourlyData.hourly.weather_code.slice(0, Math.min(totalDataPoints, hourlyData.hourly.weather_code.length)) : Array(times.length).fill(0);
         }
-        console.log("times.length:", times.length);
         
         for (let j = 0; j < times.length; j++) {
           if (parsedInterval === 30 && j % 2 !== 0) {
@@ -208,7 +195,6 @@ function updateHourlyForecast(selectedDate) {
         
         // Debug the date comparison
         if (selectedDate) {
-          console.log("Comparing dates - Selected:", selectedDate, "Current:", datePart);
         }
         
         if (selectedDate && datePart !== selectedDate) {
@@ -255,14 +241,12 @@ function updateHourlyForecast(selectedDate) {
        const dayName = getDayName(firstDate);
        const tableTitle = document.querySelector("#hourlyTableBlock h2");
        if (tableTitle) {
-         console.log("DEBUG: weather-hourly.js updating table title after data load");
          tableTitle.textContent = `${_t("hourlyForecastFor")} ${dayName} ${firstDate}`;
        }
        
        // Check if headers are still translated after data load
        const hourlyHeaders = document.querySelectorAll("#hourlyTable thead tr th");
        if (hourlyHeaders.length > 1) {
-         console.log("DEBUG: weather-hourly.js - After data load, hourly Weather header text:", hourlyHeaders[1].textContent);
        }
      }
      document.getElementById("location").textContent = `${city}, ${region}, ${country}`;
@@ -349,7 +333,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function updateHourlyForecastOnClick() {
     const hourlyTableBlock = document.getElementById("hourlyTableBlock");
-    console.log("updateHourlyForecastOnClick called");
     if (hourlyTableBlock) {
       const wasHidden = hourlyTableBlock.style.display === "none";
       hourlyTableBlock.style.display = wasHidden ? "block" : "none";

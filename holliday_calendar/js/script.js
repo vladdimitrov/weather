@@ -129,7 +129,6 @@ function _t(key) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DEBUG: DOMContentLoaded fired in holiday calendar script');
   const cityInput = document.getElementById('city');
   const latitudeInput = document.getElementById('latitude');
   const longitudeInput = document.getElementById('longitude');
@@ -218,7 +217,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       );
     } else {
-      console.log('Geolocation is not supported by this browser.');
       alert(_t('geolocationNotSupported'));
     }
   });

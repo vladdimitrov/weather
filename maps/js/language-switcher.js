@@ -410,8 +410,6 @@ function updateContent(language) {
   translations.it.dateWithDay = new Date().toLocaleDateString('it-IT', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
   // Background class code removed
-  console.log("Language changed to:", language);
-  console.log("Body classes:", document.body.classList);
 
   // Update all UI elements with translations
   const pageTitle = document.querySelector("h1");
@@ -522,16 +520,12 @@ function updateContent(language) {
   // Update table headers
   const weatherTable = document.getElementById("weatherTable");
   if (weatherTable) {
-    console.log("DEBUG: Updating table headers for language:", language);
     weatherTable.querySelector("thead tr th:nth-child(1)").textContent = translations[language].date;
     
     // Add Weather column translation (2nd column)
     const weatherHeader = weatherTable.querySelector("thead tr th:nth-child(2)");
     if (weatherHeader) {
-      console.log("DEBUG: Found weather header, updating to:", translations[language].weather);
       weatherHeader.textContent = translations[language].weather;
-    } else {
-      console.log("DEBUG: Weather header not found!");
     }
     
     weatherTable.querySelector("thead tr th:nth-child(3)").textContent = translations[language].minTemp;
@@ -577,15 +571,11 @@ function updateContent(language) {
   if (hourlyTable) {
     const hourlyTableHeaders = hourlyTable.querySelectorAll("thead tr th");
     if (hourlyTableHeaders.length > 0) {
-      console.log("DEBUG: Updating hourly table headers for language:", language);
       hourlyTableHeaders[0].textContent = translations[language].hourlyDateTime;
       
       // Add Weather column translation for hourly table (2nd column)
       if (hourlyTableHeaders[1]) {
-        console.log("DEBUG: Found hourly weather header, updating to:", translations[language].weather);
         hourlyTableHeaders[1].textContent = translations[language].weather;
-      } else {
-        console.log("DEBUG: Hourly weather header not found!");
       }
       
       hourlyTableHeaders[2].textContent = translations[language].hourlyTemperature;
