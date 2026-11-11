@@ -1,0 +1,57 @@
+name: Daily forecast in the city pages
+
+# Every morning: writes today's 7-day forecast into the HTML of the Bulgarian city pages
+# (.github/scripts/build-forecast.js), updates their dates in sitemap.xml and commits to main,
+# so the pages have a forecast without JavaScript and search engines see fresh numbers.
+# Also runs when the city pages are regenerated on main (build-pages.js writes them with a
+# "Loading…" line) and by hand ("Run workflow"). If Open-Meteo does not answer, the run
+# fails and the pages keep the forecast of the day before.
+on:
+  schedule:
+    # 03:20 UTC = 05:20 in Sofia in winter, 06:20 in summer
+    - cron: '20 3 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'vremeto/**'
+      - '*/vremeto/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: forecast-daily
+  cancel-in-progress: false
+
+jobs:
+  forecast:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Write the forecast
+        run: node .github/scripts/build-forecast.js
+      - run: node .github/scripts/check-site.js
+      - name: Commit
+        id: commit
+        run: |
+          git add vremeto en/vremeto de/vremeto it/vremeto es/vremeto sitemap.xml
+          if git diff --cached --quiet; then
+            echo "Nothing changed."; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Forecast of $(date -u +%F) in the city pages"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+      # A push made by Actions may not start the Pages build by itself: ask for it
+      - name: Publish
+        if: steps.commit.outputs.pushed == 'true'
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"
