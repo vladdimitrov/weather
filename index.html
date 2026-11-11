@@ -724,6 +724,96 @@
        box-shadow: 0 0 20px rgba(var(--aura), 1), 0 0 40px rgba(var(--aura), 0.7), 0 0 60px rgba(var(--aura), 0.4);
      }
    }
+
+   /* ---- under the "now" card: the next three days and a city search ---- */
+   .now-days {
+     display: flex;
+     justify-content: center;
+     gap: 8px;
+     max-width: 560px;
+     margin: 0 auto 10px;
+   }
+   .now-day {
+     flex: 1 1 0;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 3px;
+     padding: 8px 6px;
+     border: 1px solid var(--panel-border);
+     border-radius: 12px;
+     background: var(--panel);
+     color: #ffffff;
+     text-decoration: none;
+     font-family: var(--font-text);
+     font-size: 0.9rem;
+     transition: border-color 0.2s ease;
+   }
+   .now-day:hover { border-color: var(--gold); }
+   .now-day .nd-name { color: var(--gold); font-weight: 600; }
+   .now-day .nd-temp { font-weight: 700; white-space: nowrap; }
+   /* keeps its room while it loads, so the page does not jump */
+   #nowDays[hidden] { display: flex !important; visibility: hidden; min-height: 94px; }
+   /* the room theme.css keeps for the "now" card is its whole height, padding included */
+   .hero-section #nowCard[hidden] { box-sizing: border-box; }
+   .home-search {
+     position: relative;
+     max-width: 560px;
+     min-height: 46px;
+     margin: 0 auto 10px;
+     text-align: left;
+   }
+   .home-search input {
+     width: 100%;
+     box-sizing: border-box;
+     min-height: 46px;
+     margin: 0;
+     padding: 10px 14px;
+     border: 1px solid var(--panel-border);
+     border-radius: 12px;
+     background: var(--panel);
+     color: #ffffff;
+     font-family: var(--font-text);
+     font-size: 16px; /* smaller text makes phones zoom into the field */
+   }
+   .home-search input::placeholder { color: rgba(255, 255, 255, 0.7); }
+   .home-search input:focus { outline: none; border-color: var(--gold); }
+   /* the suggestions open over the page instead of pushing it down */
+   .home-search #homeCitySuggestions { position: absolute; top: 100%; left: 0; right: 0; z-index: 20; }
+   /* the row of recently picked places belongs to the forecast form; here it would move the page */
+   .home-search .recent-places { display: none !important; }
+
+   /* ---- phones: the six sections as a still grid of big buttons ----
+      The orbit turns, so its small buttons are hard to hit with a thumb; here they stand
+      still, larger, in two rows. The text links under it repeat the same pages. */
+   @media (max-width: 600px) {
+     .hero-subtitle { display: none; }
+     /* #main-content: the sizes in theme.css are set by id */
+     #main-content .circular-nav { display: block; width: auto; height: auto; max-width: 340px; margin: 18px auto 26px !important; }
+     .sun-center { display: none; }
+     #main-content .orbit-container {
+       border: 0 !important;
+       border-radius: 0;
+       position: static;
+       display: grid;
+       grid-template-columns: repeat(3, 1fr);
+       gap: 20px 10px;
+       justify-items: center;
+       width: auto;
+       height: auto;
+       border: 0;
+     }
+     #main-content .orbit-container .orbit-button {
+       position: static !important;
+       width: 96px;
+       height: 96px;
+       margin: 0 !important;
+       animation: none !important;
+       transform: none !important;
+     }
+     #main-content .orbit-container .orbit-button .label { font-size: 13px !important; letter-spacing: 0; }
+     .home-quicklinks { display: none; }
+   }
  </style>
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
@@ -756,6 +846,8 @@
         Следете времето, фазите на Луната, магнитните бури и празничните дни в реално време за всяка точка по света. Планирайте деня си с точност и увереност.
       </p>
       <a class="now-card" id="nowCard" href="/weather/" hidden></a>
+      <div class="now-days" id="nowDays" hidden></div>
+      <div class="home-search" id="homeSearch"></div>
     </div>
 
     <!-- Circular Navigation -->
@@ -1066,7 +1158,8 @@
 <script src="/js/background-selector.js?v=3"></script>
 <script src="/js/city-search.js?v=12"></script>
 <script src="/js/weather-icons.js?v=5"></script>
-<script src="/js/home-weather.js?v=7"></script>
+<script src="/js/forecast-core.js?v=1"></script>
+<script src="/js/home-weather.js?v=8"></script>
 <script src="/js/place-context.js?v=1"></script>
 <script src="/js/home-cities.js?v=2"></script>
 
