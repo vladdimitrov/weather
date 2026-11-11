@@ -59,6 +59,28 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "El tiempo en Cardiff",
+    "url": "https://weatherpulse.eu/es/europe/united-kingdom/cardiff/",
+    "inLanguage": "es",
+    "about": {
+      "@type": "City",
+      "name": "Cardiff",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "GB"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 51.4816,
+        "longitude": -3.1791
+      }
+    }
+  }
+  </script>
   <script>
     (function() {
       // The page has its own language. Bulgarian (default) pages send a visitor who chose
@@ -77,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=58">
+  <link rel="stylesheet" href="/css/theme.css?v=59">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -103,8 +125,81 @@
     <p class="storm-intro">Previsión del tiempo en Cardiff, Reino Unido, para hoy, mañana y los próximos 7 días: temperatura, lluvia, viento y probabilidad de precipitación. Datos de Open-Meteo, actualizados cada hora.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Cardiff" data-lat="51.4816" data-lon="-3.1791" data-query="city=Cardiff&lat=51.4816&lon=-3.1791&cc=GB">
-      <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">Cargando…</p></div>
-      <div class="kp-forecast" id="cityDays" hidden></div>
+      <div class="kp-forecast city-now" id="cityNow">
+        <h3>Cardiff: miércoles, 11 de noviembre</h3>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">6° / 9°</span>
+        <p class="storm-now-status">Llovizna · probabilidad de lluvia 93%</p>
+        <p class="storm-updated">Previsión del 11 de noviembre de 2026</p>
+      </div>
+      <div class="kp-forecast" id="cityDays">
+        <h3>Previsión a 7 días</h3>
+        <div class="city-days">
+          <a class="kp-day city-day" href="/weather/?city=Cardiff&lat=51.4816&lon=-3.1791&cc=GB&date=2026-11-11" title="Por horas →">
+            <span class="kp-day-name">mié 11</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">11.11</span>
+            <span class="city-day-temp">6° / 9°</span>
+            <span class="kp-day-status">Llovizna</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">93% · 2.4 mm</span>
+            <span class="city-day-wind">Viento 22 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Cardiff&lat=51.4816&lon=-3.1791&cc=GB&date=2026-11-12" title="Por horas →">
+            <span class="kp-day-name">jue 12</span>
+            <span class="city-day-icon" aria-hidden="true">⛅</span>
+            <span class="city-day-date">12.11</span>
+            <span class="city-day-temp">2° / 7°</span>
+            <span class="kp-day-status">Parcialmente nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">0%</span>
+            <span class="city-day-wind">Viento 17 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Cardiff&lat=51.4816&lon=-3.1791&cc=GB&date=2026-11-13" title="Por horas →">
+            <span class="kp-day-name">vie 13</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">13.11</span>
+            <span class="city-day-temp">−1° / 8°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">0%</span>
+            <span class="city-day-wind">Viento 12 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Cardiff&lat=51.4816&lon=-3.1791&cc=GB&date=2026-11-14" title="Por horas →">
+            <span class="kp-day-name">sáb 14</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">14.11</span>
+            <span class="city-day-temp">0° / 8°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">9%</span>
+            <span class="city-day-wind">Viento 12 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Cardiff&lat=51.4816&lon=-3.1791&cc=GB&date=2026-11-15" title="Por horas →">
+            <span class="kp-day-name">dom 15</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">15.11</span>
+            <span class="city-day-temp">5° / 12°</span>
+            <span class="kp-day-status">Lluvia</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">61% · 7.8 mm</span>
+            <span class="city-day-wind">Viento 26 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Cardiff&lat=51.4816&lon=-3.1791&cc=GB&date=2026-11-16" title="Por horas →">
+            <span class="kp-day-name">lun 16</span>
+            <span class="city-day-icon" aria-hidden="true">🌫️</span>
+            <span class="city-day-date">16.11</span>
+            <span class="city-day-temp">4° / 10°</span>
+            <span class="kp-day-status">Niebla</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">51% · 0.1 mm</span>
+            <span class="city-day-wind">Viento 24 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Cardiff&lat=51.4816&lon=-3.1791&cc=GB&date=2026-11-17" title="Por horas →">
+            <span class="kp-day-name">mar 17</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">17.11</span>
+            <span class="city-day-temp">6° / 13°</span>
+            <span class="kp-day-status">Lluvia</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">70% · 13.1 mm</span>
+            <span class="city-day-wind">Viento 39 km/h</span>
+          </a>
+        </div>
+        <p class="forecast-note">Mediana de los modelos ECMWF, ICON y GFS · altitud 14 m</p>
+      </div>
     </div>
 
     <p class="city-actions">
@@ -181,7 +276,7 @@
 <script src="/js/mobile-nav.js?v=16" defer></script>
 <script src="/js/language-selector.js?v=5" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
-<script src="/js/weather-icons.js?v=4" defer></script>
+<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/city-forecast.js?v=10" defer></script>
 </body>

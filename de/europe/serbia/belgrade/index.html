@@ -59,6 +59,28 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Wetter in Belgrade",
+    "url": "https://weatherpulse.eu/de/europe/serbia/belgrade/",
+    "inLanguage": "de",
+    "about": {
+      "@type": "City",
+      "name": "Belgrade",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "RS"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 44.7866,
+        "longitude": 20.4489
+      }
+    }
+  }
+  </script>
   <script>
     (function() {
       // The page has its own language. Bulgarian (default) pages send a visitor who chose
@@ -77,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=58">
+  <link rel="stylesheet" href="/css/theme.css?v=59">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -103,8 +125,81 @@
     <p class="storm-intro">Wettervorhersage für Belgrade, Serbien, für heute, morgen und die nächsten 7 Tage: Temperatur, Regen, Wind und Niederschlagswahrscheinlichkeit. Ortsname: Beograd (Vreme Beograd). Daten von Open-Meteo, stündlich aktualisiert.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Belgrade" data-lat="44.7866" data-lon="20.4489" data-query="city=Belgrade&lat=44.7866&lon=20.4489&cc=RS">
-      <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">Wird geladen…</p></div>
-      <div class="kp-forecast" id="cityDays" hidden></div>
+      <div class="kp-forecast city-now" id="cityNow">
+        <h3>Belgrade: Mittwoch, 11. November</h3>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">10° / 15°</span>
+        <p class="storm-now-status">Regen · Regenwahrscheinlichkeit 100%</p>
+        <p class="storm-updated">Vorhersage vom 11. November 2026</p>
+      </div>
+      <div class="kp-forecast" id="cityDays">
+        <h3>7-Tage-Vorhersage</h3>
+        <div class="city-days">
+          <a class="kp-day city-day" href="/weather/?city=Belgrade&lat=44.7866&lon=20.4489&cc=RS&date=2026-11-11" title="Stündlich →">
+            <span class="kp-day-name">Mi., 11.</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">11.11</span>
+            <span class="city-day-temp">10° / 15°</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 11.7 mm</span>
+            <span class="city-day-wind">Wind 7 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Belgrade&lat=44.7866&lon=20.4489&cc=RS&date=2026-11-12" title="Stündlich →">
+            <span class="kp-day-name">Do., 12.</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">12.11</span>
+            <span class="city-day-temp">13° / 20°</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">75% · 3.4 mm</span>
+            <span class="city-day-wind">Wind 22 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Belgrade&lat=44.7866&lon=20.4489&cc=RS&date=2026-11-13" title="Stündlich →">
+            <span class="kp-day-name">Fr., 13.</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">13.11</span>
+            <span class="city-day-temp">6° / 23°</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">81% · 3.2 mm</span>
+            <span class="city-day-wind">Wind 24 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Belgrade&lat=44.7866&lon=20.4489&cc=RS&date=2026-11-14" title="Stündlich →">
+            <span class="kp-day-name">Sa., 14.</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">14.11</span>
+            <span class="city-day-temp">4° / 9°</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">88% · 3.8 mm</span>
+            <span class="city-day-wind">Wind 14 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Belgrade&lat=44.7866&lon=20.4489&cc=RS&date=2026-11-15" title="Stündlich →">
+            <span class="kp-day-name">So., 15.</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">15.11</span>
+            <span class="city-day-temp">3° / 11°</span>
+            <span class="kp-day-status">Bewölkt</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">5%</span>
+            <span class="city-day-wind">Wind 21 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Belgrade&lat=44.7866&lon=20.4489&cc=RS&date=2026-11-16" title="Stündlich →">
+            <span class="kp-day-name">Mo., 16.</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">16.11</span>
+            <span class="city-day-temp">6° / 10°</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">33% · 3.7 mm</span>
+            <span class="city-day-wind">Wind 22 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Belgrade&lat=44.7866&lon=20.4489&cc=RS&date=2026-11-17" title="Stündlich →">
+            <span class="kp-day-name">Di., 17.</span>
+            <span class="city-day-icon" aria-hidden="true">🌫️</span>
+            <span class="city-day-date">17.11</span>
+            <span class="city-day-temp">7° / 13°</span>
+            <span class="kp-day-status">Nebel</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">45% · 0.2 mm</span>
+            <span class="city-day-wind">Wind 21 km/h</span>
+          </a>
+        </div>
+        <p class="forecast-note">Median der Modelle ECMWF, ICON und GFS · Höhe 169 m</p>
+      </div>
     </div>
 
     <p class="city-actions">
@@ -178,7 +273,7 @@
 <script src="/js/mobile-nav.js?v=16" defer></script>
 <script src="/js/language-selector.js?v=5" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
-<script src="/js/weather-icons.js?v=4" defer></script>
+<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/city-forecast.js?v=10" defer></script>
 </body>

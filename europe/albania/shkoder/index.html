@@ -59,6 +59,28 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Weather in Shkodër",
+    "url": "https://weatherpulse.eu/europe/albania/shkoder/",
+    "inLanguage": "en",
+    "about": {
+      "@type": "City",
+      "name": "Shkodër",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "AL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.0693,
+        "longitude": 19.5126
+      }
+    }
+  }
+  </script>
   <script>
     (function() {
       // The page has its own language. Bulgarian (default) pages send a visitor who chose
@@ -77,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=58">
+  <link rel="stylesheet" href="/css/theme.css?v=59">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -103,8 +125,81 @@
     <p class="storm-intro">Weather forecast for Shkodër, Albania, for today, tomorrow and the next 7 days: temperature, rain, wind and chance of precipitation. Local name: Shkodër (Moti Shkodër). Data from Open-Meteo, updated every hour.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Shkodër" data-lat="42.0693" data-lon="19.5126" data-query="city=Shkod%C3%ABr&lat=42.0693&lon=19.5126&cc=AL">
-      <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">Loading…</p></div>
-      <div class="kp-forecast" id="cityDays" hidden></div>
+      <div class="kp-forecast city-now" id="cityNow">
+        <h3>Shkodër: Wednesday, 11 November</h3>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">13° / 17°</span>
+        <p class="storm-now-status">Thunderstorm · chance of rain 100%</p>
+        <p class="storm-updated">Forecast issued on 11 November 2026</p>
+      </div>
+      <div class="kp-forecast" id="cityDays">
+        <h3>7-day forecast</h3>
+        <div class="city-days">
+          <a class="kp-day city-day" href="/weather/?city=Shkod%C3%ABr&lat=42.0693&lon=19.5126&cc=AL&date=2026-11-11" title="Hourly forecast →">
+            <span class="kp-day-name">Wed 11</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-date">11.11</span>
+            <span class="city-day-temp">13° / 17°</span>
+            <span class="kp-day-status">Thunderstorm</span>
+            <span class="city-day-rain" title="chance of rain">100% · 28.2 mm</span>
+            <span class="city-day-wind">Wind 7 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Shkod%C3%ABr&lat=42.0693&lon=19.5126&cc=AL&date=2026-11-12" title="Hourly forecast →">
+            <span class="kp-day-name">Thu 12</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">12.11</span>
+            <span class="city-day-temp">16° / 20°</span>
+            <span class="kp-day-status">Rain</span>
+            <span class="city-day-rain" title="chance of rain">100% · 21.7 mm</span>
+            <span class="city-day-wind">Wind 13 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Shkod%C3%ABr&lat=42.0693&lon=19.5126&cc=AL&date=2026-11-13" title="Hourly forecast →">
+            <span class="kp-day-name">Fri 13</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-date">13.11</span>
+            <span class="city-day-temp">16° / 20°</span>
+            <span class="kp-day-status">Thunderstorm</span>
+            <span class="city-day-rain" title="chance of rain">100% · 60.2 mm</span>
+            <span class="city-day-wind">Wind 32 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Shkod%C3%ABr&lat=42.0693&lon=19.5126&cc=AL&date=2026-11-14" title="Hourly forecast →">
+            <span class="kp-day-name">Sat 14</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-date">14.11</span>
+            <span class="city-day-temp">8° / 17°</span>
+            <span class="kp-day-status">Thunderstorm</span>
+            <span class="city-day-rain" title="chance of rain">100% · 26.1 mm</span>
+            <span class="city-day-wind">Wind 16 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Shkod%C3%ABr&lat=42.0693&lon=19.5126&cc=AL&date=2026-11-15" title="Hourly forecast →">
+            <span class="kp-day-name">Sun 15</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">15.11</span>
+            <span class="city-day-temp">8° / 17°</span>
+            <span class="kp-day-status">Cloudy</span>
+            <span class="city-day-rain" title="chance of rain">44%</span>
+            <span class="city-day-wind">Wind 11 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Shkod%C3%ABr&lat=42.0693&lon=19.5126&cc=AL&date=2026-11-16" title="Hourly forecast →">
+            <span class="kp-day-name">Mon 16</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">16.11</span>
+            <span class="city-day-temp">11° / 17°</span>
+            <span class="kp-day-status">Rain</span>
+            <span class="city-day-rain" title="chance of rain">88% · 67.7 mm</span>
+            <span class="city-day-wind">Wind 12 km/h</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Shkod%C3%ABr&lat=42.0693&lon=19.5126&cc=AL&date=2026-11-17" title="Hourly forecast →">
+            <span class="kp-day-name">Tue 17</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-date">17.11</span>
+            <span class="city-day-temp">14° / 16°</span>
+            <span class="kp-day-status">Thunderstorm</span>
+            <span class="city-day-rain" title="chance of rain">91% · 58.4 mm</span>
+            <span class="city-day-wind">Wind 15 km/h</span>
+          </a>
+        </div>
+        <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 16 m</p>
+      </div>
     </div>
 
     <p class="city-actions">
@@ -178,7 +273,7 @@
 <script src="/js/mobile-nav.js?v=16" defer></script>
 <script src="/js/language-selector.js?v=5" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
-<script src="/js/weather-icons.js?v=4" defer></script>
+<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/city-forecast.js?v=10" defer></script>
 </body>

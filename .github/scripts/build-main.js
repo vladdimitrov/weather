@@ -118,7 +118,13 @@ function home() {
     // Bulgarian cities: Latin names and the translated city pages
     html = html.replace(/href="vremeto\/([a-z-]+)\/"([^>]*)>[^<]*</g, (m, slug, attributes) => `href="/${lang}/vremeto/${slug}/"${attributes}>${esc(I18N.latinName(lang, slug))}<`);
     html = once(html, /<script type="application\/ld\+json">[^<]*<\/script>/,
-      `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebSite', name: 'Weather Pulse', url: `${SITE}/${lang}/`, inLanguage: lang })}</script>`, 'JSON-LD');
+      `<script type="application/ld+json">${JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          { '@type': 'WebSite', '@id': `${SITE}/#website`, name: 'Weather Pulse', url: `${SITE}/${lang}/`, inLanguage: lang, publisher: { '@id': `${SITE}/#organization` } },
+          { '@type': 'Organization', '@id': `${SITE}/#organization`, name: 'Weather Pulse', url: `${SITE}/`, logo: `${SITE}/images/icons/icon-512.png` }
+        ]
+      })}</script>`, 'JSON-LD');
     write('/', lang, html);
   });
 }

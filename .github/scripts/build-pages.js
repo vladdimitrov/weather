@@ -265,6 +265,24 @@ const cityLinks = (current, lang) => CITIES
   .map(city => `<a href="${L(lang, `/vremeto/${city.slug}/`)}" class="recent-place">${cityName(city, lang)}</a>`)
   .join('\n        ');
 
+// The place a city page is about (name, country, coordinates), as schema.org data
+function placeJson({ title, name, country, lat, lon, url, lang }) {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    url: `https://weatherpulse.eu${url}`,
+    inLanguage: lang,
+    about: {
+      '@type': 'City',
+      name,
+      address: { '@type': 'PostalAddress', addressCountry: country },
+      geo: { '@type': 'GeoCoordinates', latitude: lat, longitude: lon }
+    }
+  };
+  return `  <script type="application/ld+json">\n${JSON.stringify(data, null, 2).replace(/^/gm, '  ').replace(/<\//g, '<\\/')}\n  </script>\n`;
+}
+
 function cityPage(city, lang) {
   const T = TXT[lang];
   const name = cityName(city, lang);
@@ -289,7 +307,7 @@ function cityPage(city, lang) {
     // page() adds " | Weather Pulse"
     title: T.title(where),
     description: T.description(where),
-    jsonLd: breadcrumbs,
+    jsonLd: breadcrumbs + placeJson({ title: T.cityName(where), name, country: 'BG', lat: city.lat, lon: city.lon, url: L(lang, `/vremeto/${city.slug}/`), lang }),
     body: `    <p class="breadcrumbs"><a href="${L(lang, '/vremeto/')}">${T.hubName}</a> › ${name}</p>
     <h1>${T.cityName(where)}</h1>
     <p class="storm-intro">${T.intro(where)}</p>
@@ -503,7 +521,7 @@ ${tables}
 }
 
 // Used by build-climate.js (the city list); the pages are built only when run directly
-module.exports = { CITIES, page, write, VERSION };
+module.exports = { CITIES, page, write, VERSION, placeJson };
 if (require.main === module) (async function main() {
   const firstYear = Number(process.argv[2]) || new Date().getFullYear();
   const years = [firstYear, firstYear + 1];
