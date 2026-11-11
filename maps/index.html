@@ -17,7 +17,9 @@
 <meta property="og:description" content="Интерактивни карти за дъжд, вятър, температура, облаци и гръмотевици за целия свят, с любими места.">
 <meta property="og:url" content="https://weatherpulse.eu/maps/">
 <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 
   <script>
     (function() {
@@ -365,7 +367,6 @@
             }
           } catch (e) {
             // Security restrictions might prevent accessing iframe content
-            console.log('Could not optimize iframe content for mobile');
           }
         }
       }, 1000);
@@ -388,13 +389,11 @@
         let scrollPosition = 0;
         
         cityInput.addEventListener('focus', function(e) {
-          console.log("DEBUG: City input focused on mobile");
           // Save current scroll position
           scrollPosition = window.scrollY;
           
           // Prevent automatic scrolling on mobile devices
           if (window.innerWidth <= 768) {
-            console.log("DEBUG: Preventing scroll on mobile");
             // Small delay to let browser's default behavior happen first
             setTimeout(function() {
               // Scroll back to form container
@@ -447,7 +446,6 @@
           (position) => {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
-            console.log("Latitude:", lat, "Longitude:", lon);
             
             document.getElementById('latitude').value = lat.toFixed(4);
             document.getElementById('longitude').value = lon.toFixed(4);
@@ -555,20 +553,6 @@
         }
       });
     }
-
-    if (navigator.geolocation) {
-      navigator.permissions.query({ name: 'geolocation' }).then(result => {
-        if (result.state === 'granted') {
-          console.log("Location services are granted.");
-        } else if (result.state === 'prompt') {
-          console.log("Location services prompt available.");
-        } else if (result.state === 'denied') {
-          console.log("Location services are blocked.");
-        }
-      });
-    } else {
-      console.log("Geolocation not supported");
-    }
   });
 </script>
 
@@ -576,7 +560,7 @@
 <script src="/js/mobile-nav.js?v=15"></script>
 <script src="/js/language-selector.js?v=5"></script>
 <script src="/js/city-search.js?v=12"></script>
-<script src="js/language-switcher.js?v=7"></script>
+<script src="js/language-switcher.js?v=8"></script>
 <script src="/js/background-selector.js?v=3"></script>
 <script src="js/map-autocomplete.js?v=7"></script>
 <script src="js/map-fullscreen.js?v=2"></script>

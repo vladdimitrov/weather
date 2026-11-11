@@ -17,13 +17,8 @@ function updateForecast() {
         const firstHeader = headerRow.querySelector("th:first-child");
         const weatherHeader = headerRow.querySelector("th:nth-child(2)");
         if (firstHeader) {
-          console.log("DEBUG: weather-fixed.js is setting Date header");
           firstHeader.textContent = _t("date");
           headerSet = true;
-        }
-        if (weatherHeader) {
-          console.log("DEBUG: weather-fixed.js found Weather header, current text:", weatherHeader.textContent);
-          console.log("DEBUG: weather-fixed.js is NOT changing Weather header - this should preserve translation");
         }
       }
     }
@@ -51,7 +46,6 @@ function updateForecast() {
       dayCards.replaceChildren();
       if (window.UiExtras) UiExtras.skeleton(days);
       let lon = currentCoords.longitude;
-      console.log("Latitude:", lat, "Longitude:", lon);
       
       if (!lat || !lon) {
         const geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1&format=json`);

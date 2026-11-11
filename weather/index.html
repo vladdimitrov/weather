@@ -17,7 +17,9 @@
 <meta property="og:description" content="Прогноза за времето по дни и часове за всеки град: температура, валежи, вятър, изгрев и залез и фаза на Луната.">
 <meta property="og:url" content="https://weatherpulse.eu/weather/">
 <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
   <script>
     (function() {
       const savedLanguage = localStorage.getItem('selectedLanguage') || 'bg';
@@ -218,7 +220,6 @@
           (position) => {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
-            console.log("Latitude:", lat, "Longitude:", lon);
             updateMap(lat, lon);
             fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
             .then(r => r.json())
@@ -297,8 +298,8 @@
 <script src="map-autocomplete.js?v=5" defer></script>
 
 <script src="ui-extras.js?v=5" defer></script>
-<script src="weather-fixed.js?v=22" defer></script>
-<script src="weather-hourly.js?v=7" defer></script>
+<script src="weather-fixed.js?v=23" defer></script>
+<script src="weather-hourly.js?v=8" defer></script>
 <script src="hourly-interval.js?v=1" defer></script>
 
   <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
@@ -314,7 +315,7 @@
 
   </footer>
 
-<script src="language-switcher.js?v=12" defer></script>
+<script src="language-switcher.js?v=13" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 </body>
 </html>
