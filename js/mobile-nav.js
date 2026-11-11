@@ -116,7 +116,7 @@
   };
 
   // Pages that exist as a translation in /en/, /de/, /it/, /es/: the link follows the language
-  const localPages = { home: '', storms: 'magnitni-buri/', stormsToday: 'magnitni-buri/', allCities: 'vremeto/', holidaysBg: 'praznici/', sky: 'nebeto/', about: 'za-saita/', privacy: 'poveritelnost/' };
+  const localPages = { home: '', weather: 'weather/', maps: 'maps/', holidays: 'holliday_calendar/', storms: 'magnitni-buri/', stormsToday: 'magnitni-buri/', allCities: 'vremeto/', holidaysBg: 'praznici/', sky: 'nebeto/', about: 'za-saita/', privacy: 'poveritelnost/' };
 
   function translateNav() {
     const lang = document.documentElement.lang;

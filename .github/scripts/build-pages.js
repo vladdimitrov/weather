@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 59, mobileNav: 16, cityForecast: 10, moon: 2, lunaToday: 3, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
+const VERSION = { theme: 59, mobileNav: 17, cityForecast: 10, moon: 2, lunaToday: 3, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
 
 const CITIES = [
   ['sofia', 'София', 42.6977, 23.3219],
@@ -249,9 +249,9 @@ ${(FOOTER_TEXT = { about: NAV.about, privacy: NAV.privacy }, LOGO = I18N.LOGO_AL
 ${scripts}</body>
 </html>
 `;
-  // The home page and the storms page exist in every language (build-main.js): a page in
-  // another language links to its own (/en/, /en/magnitni-buri/)
-  return lang === 'bg' ? html : html.replace(/href="\/(magnitni-buri\/)?(["#?])/g, (m, storms = '', end) => `href="/${lang}/${storms}${end}`);
+  // The home, forecast, maps, holiday calendar and storms pages exist in every language
+  // (build-main.js): a page in another language links to its own (/en/, /en/weather/?city=...)
+  return lang === 'bg' ? html : html.replace(/href="\/(weather\/|maps\/|holliday_calendar\/|magnitni-buri\/)?(["#?])/g, (m, page = '', end) => `href="/${lang}/${page}${end}`);
 }
 
 function write(relativeDir, html) {
