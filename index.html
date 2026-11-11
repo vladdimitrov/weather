@@ -32,8 +32,15 @@
       // Bulgarian original. A visitor who chose another language is sent to the translation
       // (/en/, /de/, /it/, /es/ + this path; written by .github/scripts/build-main.js)
       try {
-        const saved = localStorage.getItem('selectedLanguage');
-        if (saved && ['en', 'de', 'it', 'es'].includes(saved)) location.replace('/' + saved + '/' + location.search + location.hash);
+        const languages = ['en', 'de', 'it', 'es'];
+        let wanted = localStorage.getItem('selectedLanguage');
+        // First visit: the language of the browser (English if the site does not have it), as
+        // /js/language-selector.js does on the other pages. Robots keep the Bulgarian page.
+        if (wanted === null && !/bot|crawl|spider|slurp|lighthouse|headless|preview/i.test(navigator.userAgent || '')) {
+          const browser = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || '']).map(code => String(code).slice(0, 2).toLowerCase());
+          wanted = browser.find(code => code === 'bg' || languages.includes(code)) || (browser[0] ? 'en' : null);
+        }
+        if (languages.includes(wanted)) location.replace('/' + wanted + '/' + location.search + location.hash);
       } catch (e) { /* storage blocked */ }
     })();
   </script>
@@ -721,7 +728,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=58">
+  <link rel="stylesheet" href="/css/theme.css?v=59">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -1058,7 +1065,7 @@
 <script src="/language-switcher.js?v=3"></script>
 <script src="/js/background-selector.js?v=3"></script>
 <script src="/js/city-search.js?v=12"></script>
-<script src="/js/weather-icons.js?v=4"></script>
+<script src="/js/weather-icons.js?v=5"></script>
 <script src="/js/home-weather.js?v=7"></script>
 <script src="/js/place-context.js?v=1"></script>
 <script src="/js/home-cities.js?v=2"></script>

@@ -63,7 +63,7 @@ window.WeatherIcons = (function () {
   function medal(key, title, size) {
     const bg = BACKGROUNDS[key] || (key.startsWith('moon') ? BACKGROUNDS.moon : BACKGROUNDS.cloud);
     const cls = size === 'sm' ? 'wx-medal wx-medal-sm' : size === 'md' ? 'wx-medal wx-medal-md' : size === 'xl' ? 'wx-medal wx-medal-xl' : 'wx-medal';
-    const titleAttr = title ? ` title="${title}" aria-label="${title}"` : '';
+    const titleAttr = title ? ` role="img" title="${title}" aria-label="${title}"` : '';
     return `<span class="${cls}" style="--bg:${bg}"${titleAttr}>${glyph(key)}</span>`;
   }
 

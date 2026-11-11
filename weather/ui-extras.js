@@ -111,17 +111,21 @@
   function renderSummary() {
     const f = form();
     if (!f) return;
+    // the line is in the HTML of the page already (the form starts folded)
     let bar = f.querySelector('.form-summary');
     if (!bar) {
       bar = document.createElement('button');
       bar.type = 'button';
       bar.className = 'form-summary';
+      f.insertBefore(bar, f.firstChild);
+    }
+    if (!bar.dataset.ready) {
+      bar.dataset.ready = '1';
       bar.addEventListener('click', () => {
         f.classList.remove('collapsed');
         const city = el('city');
         if (city) city.focus();
       });
-      f.insertBefore(bar, f.firstChild);
     }
     const days = parseInt((el('days') || {}).value, 10);
     const parts = [placeName()];
@@ -292,6 +296,8 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     setTitle();
+    // the form starts folded (weather/index.html): its line works before the forecast arrives
+    renderSummary();
   });
 
   // Bar under the temperature: where this day sits between the coldest and the warmest of the period

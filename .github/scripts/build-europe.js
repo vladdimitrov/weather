@@ -15,7 +15,7 @@ const COUNTRIES = require('./europe-data.js');
 
 const ROOT = process.cwd();
 const BASE = 'en';
-const SCRIPTS = `<script src="/js/weather-icons.js?v=4" defer></script>
+const SCRIPTS = `<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=${VERSION.moon}" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`;
 

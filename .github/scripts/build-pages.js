@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 58, mobileNav: 16, cityForecast: 10, moon: 2, lunaToday: 3, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
+const VERSION = { theme: 59, mobileNav: 16, cityForecast: 10, moon: 2, lunaToday: 3, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
 
 const CITIES = [
   ['sofia', 'София', 42.6977, 23.3219],
@@ -314,7 +314,7 @@ ${climateSection(city, lang)}
         ${cityLinks(city, lang)}
       </div>
     </section>`,
-    scripts: `<script src="/js/weather-icons.js?v=4" defer></script>
+    scripts: `<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=${VERSION.moon}" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`
   });
@@ -336,7 +336,7 @@ function hubPage(lang) {
     <div class="city-grid" id="cityList">
       ${CITIES.map(city => `<a href="${L(lang, `/vremeto/${city.slug}/`)}" class="city-tile" data-lat="${city.lat}" data-lon="${city.lon}"><span class="city-tile-name">${cityName(city, lang)}</span><span class="city-tile-temp"></span></a>`).join('\n      ')}
     </div>`,
-    scripts: `<script src="/js/weather-icons.js?v=4" defer></script>
+    scripts: `<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`
   });
 }

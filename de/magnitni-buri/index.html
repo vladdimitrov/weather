@@ -88,7 +88,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=58">
+  <link rel="stylesheet" href="/css/theme.css?v=59">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -159,9 +159,9 @@
     </section>
 
     <div class="kp-forecast widget-embed">
-      <h3 data-i18n="widgetTitle">Die Vorhersage auf Ihrer Website</h3>
+      <h3 id="widgetTitle" data-i18n="widgetTitle">Die Vorhersage auf Ihrer Website</h3>
       <p data-i18n="widgetText">Eine kostenlose Karte mit dem Kp-Index und der 3-Tage-Vorhersage. Kopieren Sie den Code in Ihre Website oder Ihren Blog:</p>
-      <textarea id="widgetCode" readonly rows="3">&lt;iframe src="https://weatherpulse.eu/widget/kp.html?lang=de" width="320" height="190" style="border:0" title="Magnetstürme — Weather Pulse" loading="lazy"&gt;&lt;/iframe&gt;</textarea>
+      <textarea id="widgetCode" aria-labelledby="widgetTitle" readonly rows="3">&lt;iframe src="https://weatherpulse.eu/widget/kp.html?lang=de" width="320" height="190" style="border:0" title="Magnetstürme — Weather Pulse" loading="lazy"&gt;&lt;/iframe&gt;</textarea>
       <button type="button" class="btn" id="copyWidgetCode">Code kopieren</button>
       <iframe id="widgetPreview" src="/widget/kp.html?lang=de" width="320" height="190" style="border:0; display:block; margin:14px auto 0;" title="Magnetstürme — Weather Pulse" loading="lazy"></iframe>
     </div>
