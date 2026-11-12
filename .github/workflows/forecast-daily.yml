@@ -9,8 +9,10 @@ name: Daily forecast in the city pages
 # fails and the pages keep the forecast of the day before.
 on:
   schedule:
-    # 03:20 UTC = 05:20 in Sofia in winter, 06:20 in summer
-    - cron: '20 3 * * *'
+    # 02:47 UTC = 04:47 in Sofia in winter, 05:47 in summer. GitHub starts scheduled runs late when
+    # many are due at once: the run of 12 November planned for 03:20 started at 11:29. An odd
+    # minute is less busy than the usual ones.
+    - cron: '47 2 * * *'
   push:
     branches: [main]
     paths:
