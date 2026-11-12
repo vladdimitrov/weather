@@ -23,7 +23,7 @@
   };
 
   function getSavedLanguage() {
-    // Pages written in one language (the English /europe/ pages) keep it
+    // Pages written in one language (every generated page: /en/luna/ ...) keep it
     const fixed = document.documentElement.dataset.pageLang;
     if (fixed) return fixed;
     let saved = null;
@@ -114,9 +114,13 @@
       saveLanguage(selectedLanguage);
       // A page that exists in this language as its own URL (<link rel="alternate" hreflang>):
       // open the translation instead of translating in place
+      // or in data-alt on <html>, which lists the translations that are not indexed too
+      let target = null;
+      try { target = (JSON.parse(document.documentElement.dataset.alt || 'null') || {})[selectedLanguage] || null; } catch (e) { /* no list */ }
       const alternate = document.querySelector('link[rel="alternate"][hreflang="' + selectedLanguage + '"]');
-      if (alternate && selectedLanguage !== document.documentElement.dataset.pageLang) {
-        location.href = new URL(alternate.href).pathname + location.search + location.hash;
+      if (!target && alternate) target = new URL(alternate.href).pathname;
+      if (target && selectedLanguage !== document.documentElement.dataset.pageLang) {
+        location.href = target + location.search + location.hash;
         return;
       }
       document.documentElement.lang = selectedLanguage;

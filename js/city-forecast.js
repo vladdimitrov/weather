@@ -25,6 +25,24 @@
     es: { now: 'Ahora', feels: 'sensación', wind: 'Viento', humidity: 'Humedad', days: 'Previsión a 7 días', hourly: 'Por horas →', today: 'Hoy', tomorrow: 'Mañana', rain: 'probabilidad de lluvia', error: 'No se pudo cargar la previsión. Inténtalo de nuevo más tarde.', locale: 'es-ES' }
   };
   const t = () => T[document.documentElement.lang] || T.en;
+  // Pages with more days (data-days="10") or only the coming weekend (data-weekend)
+  const PERIOD = {
+    en: { days: n => `${n}-day forecast`, weekend: 'The weekend' },
+    bg: { days: n => `Прогноза за ${n} дни`, weekend: 'Уикендът' },
+    de: { days: n => `${n}-Tage-Vorhersage`, weekend: 'Das Wochenende' },
+    it: { days: n => `Previsioni a ${n} giorni`, weekend: 'Il fine settimana' },
+    es: { days: n => `Previsión a ${n} días`, weekend: 'El fin de semana' }
+  };
+  const period = () => PERIOD[document.documentElement.lang] || PERIOD.en;
+  // Friday to Sunday of the coming weekend (from today when the weekend has started)
+  function weekendDays(dates) {
+    const weekday = iso => new Date(iso + 'T12:00:00Z').getUTCDay();
+    const start = dates.findIndex(iso => [5, 6, 0].includes(weekday(iso)));
+    if (start < 0) return dates.map((d, i) => i);
+    const list = [];
+    for (let i = start; i < dates.length && [5, 6, 0].includes(weekday(dates[i])); i++) list.push(i);
+    return list;
+  }
 
   // Sunrise, sunset, day length and the Moon of today (labels in the 5 site languages)
   const SUN = {
@@ -136,7 +154,9 @@
       }
       return bar;
     };
-    const days = forecast.daily.time.map((date, i) => {
+    const shown = box.dataset.weekend ? weekendDays(forecast.daily.time) : forecast.daily.time.map((d, i) => i);
+    const days = shown.map(i => {
+      const date = forecast.daily.time[i];
       const day = el('a', 'kp-day city-day');
       day.href = `/weather/?${box.dataset.query}&date=${date}`;
       day.title = text.hourly;
@@ -168,7 +188,8 @@
     const grid = el('div', 'city-days');
     grid.append(...days);
     const note = window.ForecastCore ? ForecastCore.note({ models: forecast.models, elevation: forecast.elevation }) : '';
-    daysBox.replaceChildren(el('h3', '', text.days), grid, ...(note ? [el('p', 'forecast-note', note)] : []));
+    const heading = box.dataset.weekend ? period().weekend : box.dataset.days ? period().days(+box.dataset.days) : text.days;
+    daysBox.replaceChildren(el('h3', '', heading), grid, ...(note ? [el('p', 'forecast-note', note)] : []));
     daysBox.hidden = false;
   }
 
@@ -176,7 +197,7 @@
     const url = `${API}?latitude=${box.dataset.lat}&longitude=${box.dataset.lon}` +
       '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m' +
       '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,sunrise,sunset,daylight_duration' +
-      '&forecast_days=7&timezone=auto';
+      `&forecast_days=${Math.min(Math.max(+box.dataset.days || 7, 7), 16)}&timezone=auto`;
     try {
       forecast = await getJson(url, true);
       renderCity();
@@ -264,7 +285,7 @@
     }
   }
 
-  if (box) { loadCity(); loadNearby(); }
+  if (box) { loadCity(); if (!box.dataset.days) loadNearby(); }
   const list = document.getElementById('cityList');
   if (list) loadTiles(list);
 

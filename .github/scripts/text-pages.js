@@ -26,7 +26,7 @@ const TXT = {
     hubTitle: 'Времето в България по градове',
     hubDescription: 'Прогноза за времето в София, Пловдив, Варна, Бургас и още 30 града в България: температура сега и прогноза за 7 дни.',
     hubIntro: link => `Изберете град за прогноза за 7 дни. Температурата се обновява на всеки час. За друго място използвайте търсенето на страница ${link('Прогноза за времето')}.`,
-    europe: 'Weather in Europe: all countries →',
+    europe: 'Времето в Европа: всички държави →',
     holidaysTitle: (a, b) => `Официални празници ${a} и ${b}`,
     holidaysH1: (a, b) => `Официални празници в България ${a} и ${b}`,
     holidaysDescription: (a, b) => `Всички официални празници и почивни дни в България за ${a} и ${b}: Великден, Коледа, 3 март, 6 септември и др. С дните от седмицата и преместените почивни дни.`,
@@ -36,7 +36,12 @@ const TXT = {
     holidaysOther: 'Празници в други държави →',
     holidaysMoved: (date, weekday) => `почивен ден, защото ${date} е ${weekday}`,
     holidaysSource: (link, date) => `Източник: ${link('Nager.Date')}. Проверено на ${date}.`,
-    secondDay: ' (втори ден)'
+    secondDay: ' (втори ден)',
+    and: ' и ', km: 'км',
+    nearH: 'Близки градове', abroad: 'Отвъд границата:',
+    bestH: where => `Кога е най-приятно времето ${where}`,
+    bestText: b => `Най-приятното време ${b.where} обикновено е през ${b.months}: средната максимална температура е ${b.from === b.to ? `около ${b.from}C` : `между ${b.from}C и ${b.to}C`}, а дните с валеж са до ${b.rain} в месеца.${b.hot ? ` През ${b.hot} е горещо – следобед средно над 30°C.` : ''}${b.cold ? ` През ${b.cold} нощите са мразовити (средно под −3°C) и често вали сняг.` : ''}`,
+    recordText: r => `Най-високата температура ${r.where} за ${r.years} г. е ${r.max}C (${r.maxDate}), а най-ниската – ${r.min}C (${r.minDate}).`
   },
   en: {
     where: name => name,
@@ -73,7 +78,12 @@ const TXT = {
     holidaysOther: 'Holidays in other countries →',
     holidaysMoved: (date, weekday) => `day off because ${date} is a ${weekday}`,
     holidaysSource: (link, date) => `Source: ${link('Nager.Date')}. Checked on ${date}.`,
-    secondDay: ''
+    secondDay: '',
+    and: ' and ', km: 'km',
+    nearH: 'Nearby cities', abroad: 'Across the border:',
+    bestH: where => `Best time to visit ${where}`,
+    bestText: b => `The most pleasant weather in ${b.where} is usually in ${b.months}: average highs are ${b.from === b.to ? `around ${b.from}C` : `between ${b.from}C and ${b.to}C`}, with up to ${b.rain} days of rain a month.${b.hot ? ` In ${b.hot} it is hot, over 30°C in the afternoon on average.` : ''}${b.cold ? ` In ${b.cold} nights are frosty (below −3°C on average) and snow is common.` : ''}`,
+    recordText: r => `The highest temperature in ${r.where} in ${r.years} was ${r.max}C (${r.maxDate}) and the lowest ${r.min}C (${r.minDate}).`
   },
   de: {
     where: name => name,
@@ -110,7 +120,12 @@ const TXT = {
     holidaysOther: 'Feiertage in anderen Ländern →',
     holidaysMoved: (date, weekday) => `freier Tag, weil der ${date} ein ${weekday} ist`,
     holidaysSource: (link, date) => `Quelle: ${link('Nager.Date')}. Geprüft am ${date}.`,
-    secondDay: ''
+    secondDay: '',
+    and: ' und ', km: 'km',
+    nearH: 'Städte in der Nähe', abroad: 'Jenseits der Grenze:',
+    bestH: where => `Beste Reisezeit für ${where}`,
+    bestText: b => `Das angenehmste Wetter in ${b.where} herrscht meist im ${b.months}: Die Höchstwerte liegen im Mittel ${b.from === b.to ? `bei ${b.from}C` : `zwischen ${b.from}C und ${b.to}C`}, mit höchstens ${b.rain} Regentagen im Monat.${b.hot ? ` Im ${b.hot} ist es heiß, nachmittags im Mittel über 30 °C.` : ''}${b.cold ? ` Im ${b.cold} sind die Nächte frostig (im Mittel unter −3 °C), Schnee ist häufig.` : ''}`,
+    recordText: r => `Die höchste Temperatur in ${r.where} im Zeitraum ${r.years} lag bei ${r.max}C (${r.maxDate}), die tiefste bei ${r.min}C (${r.minDate}).`
   },
   it: {
     where: name => name,
@@ -147,7 +162,12 @@ const TXT = {
     holidaysOther: 'Festività in altri paesi →',
     holidaysMoved: (date, weekday) => `giorno di riposo perché il ${date} è ${weekday}`,
     holidaysSource: (link, date) => `Fonte: ${link('Nager.Date')}. Verificato il ${date}.`,
-    secondDay: ''
+    secondDay: '',
+    and: ' e ', km: 'km',
+    nearH: 'Città vicine', abroad: 'Oltre confine:',
+    bestH: where => `Quando andare a ${where}`,
+    bestText: b => `Il clima più piacevole a ${b.where} è di solito a ${b.months}: le massime medie sono ${b.from === b.to ? `intorno a ${b.from}C` : `tra ${b.from}C e ${b.to}C`}, con al massimo ${b.rain} giorni di pioggia al mese.${b.hot ? ` A ${b.hot} fa caldo, nel pomeriggio in media oltre 30 °C.` : ''}${b.cold ? ` A ${b.cold} le notti sono gelide (in media sotto −3 °C) e la neve è frequente.` : ''}`,
+    recordText: r => `La temperatura più alta a ${r.where} nel periodo ${r.years} è stata di ${r.max}C (${r.maxDate}), la più bassa di ${r.min}C (${r.minDate}).`
   },
   es: {
     where: name => name,
@@ -184,7 +204,12 @@ const TXT = {
     holidaysOther: 'Festivos en otros países →',
     holidaysMoved: (date, weekday) => `día libre porque el ${date} es ${weekday}`,
     holidaysSource: (link, date) => `Fuente: ${link('Nager.Date')}. Comprobado el ${date}.`,
-    secondDay: ''
+    secondDay: '',
+    and: ' y ', km: 'km',
+    nearH: 'Ciudades cercanas', abroad: 'Al otro lado de la frontera:',
+    bestH: where => `Cuándo ir a ${where}`,
+    bestText: b => `El tiempo más agradable en ${b.where} suele darse en ${b.months}: las máximas medias están ${b.from === b.to ? `en torno a ${b.from}C` : `entre ${b.from}C y ${b.to}C`}, con un máximo de ${b.rain} días de lluvia al mes.${b.hot ? ` En ${b.hot} hace calor, por la tarde de media más de 30 °C.` : ''}${b.cold ? ` En ${b.cold} las noches son frías (de media bajo −3 °C) y suele nevar.` : ''}`,
+    recordText: r => `La temperatura más alta en ${r.where} en ${r.years} fue de ${r.max}C (${r.maxDate}) y la más baja de ${r.min}C (${r.minDate}).`
   }
 };
 

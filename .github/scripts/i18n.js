@@ -5,17 +5,17 @@ const LANGS = ['bg', 'en', 'de', 'it', 'es'];
 const LOCALE = { bg: 'bg-BG', en: 'en-GB', de: 'de-DE', it: 'it-IT', es: 'es-ES' };
 const OG_LOCALE = { bg: 'bg_BG', en: 'en_GB', de: 'de_DE', it: 'it_IT', es: 'es_ES' };
 
-// base: the language of the root URLs of a page family (Bulgarian, but English for /europe/)
+// base: the language of the root URLs of a page family (Bulgarian everywhere)
 const prefix = (lang, base = 'bg') => (lang === base ? '' : `/${lang}`);
 const localUrl = (lang, url, base = 'bg') => prefix(lang, base) + url;
 
 // Same texts as navTexts in /js/mobile-nav.js
 const NAV = {
-  bg: { home: 'Начало', weather: 'Прогноза за времето', maps: 'Карти за времето', holidays: 'Календар на празниците', storms: 'Магнитни бури', sky: 'Небето', sources: 'Източници на данни', about: 'За сайта', privacy: 'Поверителност' },
-  en: { home: 'Home', weather: 'Weather Forecast', maps: 'Weather Maps', holidays: 'Holiday Calendar', storms: 'Magnetic Storms', sky: 'The Sky', sources: 'Data Sources', about: 'About', privacy: 'Privacy' },
-  de: { home: 'Startseite', weather: 'Wettervorhersage', maps: 'Wetterkarten', holidays: 'Feiertagskalender', storms: 'Magnetstürme', sky: 'Himmel', sources: 'Datenquellen', about: 'Über uns', privacy: 'Datenschutz' },
-  it: { home: 'Home', weather: 'Previsioni del tempo', maps: 'Mappe meteorologiche', holidays: 'Calendario delle festività', storms: 'Tempeste magnetiche', sky: 'Il cielo', sources: 'Fonti dei dati', about: 'Chi siamo', privacy: 'Privacy' },
-  es: { home: 'Inicio', weather: 'Pronóstico del tiempo', maps: 'Mapas del tiempo', holidays: 'Calendario de festivos', storms: 'Tormentas magnéticas', sky: 'El cielo', sources: 'Fuentes de datos', about: 'Acerca de', privacy: 'Privacidad' }
+  bg: { home: 'Начало', weather: 'Прогноза за времето', maps: 'Карти за времето', holidays: 'Календар на празниците', storms: 'Магнитни бури', sky: 'Небето', sources: 'Източници на данни', cities: 'Всички градове', about: 'За сайта', privacy: 'Поверителност' },
+  en: { home: 'Home', weather: 'Weather Forecast', maps: 'Weather Maps', holidays: 'Holiday Calendar', storms: 'Magnetic Storms', sky: 'The Sky', sources: 'Data Sources', cities: 'All cities', about: 'About', privacy: 'Privacy' },
+  de: { home: 'Startseite', weather: 'Wettervorhersage', maps: 'Wetterkarten', holidays: 'Feiertagskalender', storms: 'Magnetstürme', sky: 'Himmel', sources: 'Datenquellen', cities: 'Alle Städte', about: 'Über uns', privacy: 'Datenschutz' },
+  it: { home: 'Home', weather: 'Previsioni del tempo', maps: 'Mappe meteorologiche', holidays: 'Calendario delle festività', storms: 'Tempeste magnetiche', sky: 'Il cielo', sources: 'Fonti dei dati', cities: 'Tutte le città', about: 'Chi siamo', privacy: 'Privacy' },
+  es: { home: 'Inicio', weather: 'Pronóstico del tiempo', maps: 'Mapas del tiempo', holidays: 'Calendario de festivos', storms: 'Tormentas magnéticas', sky: 'El cielo', sources: 'Fuentes de datos', cities: 'Todas las ciudades', about: 'Acerca de', privacy: 'Privacidad' }
 };
 const LOGO_ALT = { bg: 'Лого', en: 'Logo', de: 'Logo', it: 'Logo', es: 'Logo' };
 

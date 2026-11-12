@@ -1,8 +1,9 @@
 name: Daily forecast in the city pages
 
-# Every morning: writes today's 7-day forecast into the HTML of the city pages (Bulgaria and Europe)
-# (.github/scripts/build-forecast.js), updates their dates in sitemap.xml and commits to main,
-# so the pages have a forecast without JavaScript and search engines see fresh numbers.
+# Every morning: writes today's forecast into the HTML of the city pages (Bulgaria and Europe)
+# (.github/scripts/build-forecast.js) and the storm forecast into /magnitni-buri/ and its Bulgarian
+# pages (build-storms.js), refreshes sitemap.xml (build-sitemap.js: <lastmod> changes only for pages
+# whose content changed, not for a new forecast) and commits to main.
 # Also runs when the city pages are regenerated on main (build-pages.js writes them with a
 # "Loading…" line) and by hand ("Run workflow"). If Open-Meteo does not answer, the run
 # fails and the pages keep the forecast of the day before.
@@ -43,11 +44,13 @@ jobs:
       - name: Write the storm forecast
         continue-on-error: true
         run: node .github/scripts/build-storms.js
+      - name: Update the sitemap
+        run: node .github/scripts/build-sitemap.js
       - run: node .github/scripts/check-site.js
       - name: Commit
         id: commit
         run: |
-          git add vremeto en/vremeto de/vremeto it/vremeto es/vremeto europe bg/europe de/europe it/europe es/europe magnitni-buri en/magnitni-buri de/magnitni-buri it/magnitni-buri es/magnitni-buri sitemap.xml
+          git add vremeto en/vremeto de/vremeto it/vremeto es/vremeto europe en/europe de/europe it/europe es/europe magnitni-buri en/magnitni-buri de/magnitni-buri it/magnitni-buri es/magnitni-buri sitemap.xml .github/scripts/sitemap-hashes.json .github/scripts/storms-data.json
           if git diff --cached --quiet; then
             echo "Nothing changed."; exit 0
           fi
