@@ -3,14 +3,20 @@
 // the Open-Meteo historical archive (ERA5 reanalysis), for the years below.
 // build-pages.js reads the file; run this only to refresh the data.
 // Run from the repository root: node .github/scripts/build-climate.js
+//   --europe   the cities of the /europe/ pages instead (europe-data.js), into climate-europe.json,
+//              keyed "<country>/<city>"; build-europe.js reads it. About 25 minutes for 168 cities:
+//              the free API allows a few of these requests a minute. An interrupted run continues.
 const fs = require('fs');
 const path = require('path');
-const { CITIES } = require('./build-pages.js');
+const EUROPE = process.argv.includes('--europe');
+const CITIES = EUROPE
+  ? require('./europe-data.js').flatMap(country => country.cities.map(([slug, , , lat, lon]) => ({ slug: `${country.slug}/${slug}`, lat, lon })))
+  : require('./build-pages.js').CITIES;
 
 const FIRST_YEAR = 2015;
 const LAST_YEAR = 2024;
 const API = 'https://archive-api.open-meteo.com/v1/archive';
-const OUT = path.join(__dirname, 'climate.json');
+const OUT = path.join(__dirname, EUROPE ? 'climate-europe.json' : 'climate.json');
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const round1 = n => Math.round(n * 10) / 10;
@@ -18,7 +24,7 @@ const round1 = n => Math.round(n * 10) / 10;
 async function getDaily(city) {
   const url = `${API}?latitude=${city.lat}&longitude=${city.lon}` +
     `&start_date=${FIRST_YEAR}-01-01&end_date=${LAST_YEAR}-12-31` +
-    '&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Europe%2FSofia';
+    '&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=' + (EUROPE ? 'auto' : 'Europe%2FSofia');
   for (let attempt = 0; attempt < 6; attempt++) {
     let response;
     try {

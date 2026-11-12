@@ -9,9 +9,14 @@
 const fs = require('fs');
 const path = require('path');
 const I18N = require('./i18n.js');
-const { EUROPE } = require('./text-europe.js');
-const { page, write, VERSION, placeJson } = require('./build-pages.js');
+const { EUROPE, SUN_NOTE } = require('./text-europe.js');
+const { page, write, VERSION, placeJson, climateSection, sunSection } = require('./build-pages.js');
+const { TXT } = require('./text-pages.js');
 const COUNTRIES = require('./europe-data.js');
+const ZONES = require('./europe-zones.js');
+// Monthly climate of each city (build-climate.js --europe); optional
+const CLIMATE_FILE = path.join(__dirname, 'climate-europe.json');
+const CLIMATE = fs.existsSync(CLIMATE_FILE) ? JSON.parse(fs.readFileSync(CLIMATE_FILE, 'utf8')) : null;
 
 const ROOT = process.cwd();
 const BASE = 'en';
@@ -78,6 +83,10 @@ function cityPage(lang, country, city) {
       <a class="btn" href="/weather/?${params}">${T.hourly}</a>
       <a class="btn" href="/magnitni-buri/">${T.storms}</a>
     </p>
+${sunSection({ lat, lon }, lang, { where: TXT[lang].where(en), zone: ZONES[country.code], note: SUN_NOTE[lang] })}
+${climateSection({ slug: `${country.slug}/${slug}` }, lang, {
+      climate: CLIMATE && CLIMATE.cities[`${country.slug}/${slug}`], years: CLIMATE && CLIMATE.years, name: en, where: TXT[lang].where(en)
+    })}
 
     <section class="info-card">
       <h2>${esc(T.moreIn(k))}</h2>

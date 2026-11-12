@@ -26,7 +26,7 @@ Static site hosted on **GitHub Pages**.
 |--------|--------------|
 | `vremeto/`, `vremeto/<city>/`, `praznici/` | `build-pages.js`: hub, 35 city pages and holidays page (texts in `text-pages.js`) |
 | `contacts/` | `build-pages.js`: data sources page (text in `sources-text.js`, 5 languages) |
-| `europe/`, `europe/<country>/`, `europe/<country>/<city>/` | `build-europe.js`: data in `europe-data.js`, texts in `text-europe.js`; English at the root |
+| `europe/`, `europe/<country>/`, `europe/<country>/<city>/` | `build-europe.js`: data in `europe-data.js`, texts in `text-europe.js`, time zones in `europe-zones.js`, monthly climate in `climate-europe.json`; English at the root. Each city page has a sunrise and sunset table (local time) and a climate table, as the Bulgarian city pages do |
 | `luna/`, `luna/<year>/`, `luna/<year>/<month>/` | `build-luna.js`: Moon calendar for this and next year; phases from `js/moon.js`, texts in `text-luna.js` |
 | `nebeto/` | `build-nebeto.js`: meteor showers, eclipses, supermoons, northern lights; events in `sky-events.json` (kept by hand, with sources, texts in 5 languages), page texts in `text-nebeto.js` |
 | `za-saita/`, `poveritelnost/` | `build-static.js`: About and Privacy (texts in `text-static.js`) |
@@ -69,7 +69,7 @@ All scripts are in `.github/scripts/` and are run from the repository root with 
 | `node .github/scripts/build-nebeto.js [--sitemap]` | Writes `/nebeto/` from `sky-events.json`; add next year's events there every autumn (IMO calendar for meteors) |
 | `node .github/scripts/test-moon.js` | Checks `js/moon.js` against USNO phase times (`moon-reference.json`) |
 | `node .github/scripts/test-sun.js` | Checks `sun.js` (sunrise/sunset on the city pages) against Open-Meteo (`sun-reference.json`) |
-| `node .github/scripts/build-climate.js` | Refreshes `climate.json` (monthly climate from the ERA5 archive); rarely needed |
+| `node .github/scripts/build-climate.js [--europe]` | Refreshes `climate.json` (monthly climate from the ERA5 archive); rarely needed. `--europe` does the cities of the Europe pages into `climate-europe.json` (about 25 minutes; an interrupted run continues) |
 | `node .github/scripts/build-destinations.js [GR,CZ]` | Refreshes `js/destinations.json`, the one-tap city buttons under the search |
 | `node .github/scripts/check-site.js` | Checks for missing local files, JavaScript/JSON syntax errors (the generators too), that every page's canonical and og:url are its own address, that the translations of a page list each other in `hreflang`, and that `sitemap.xml` lists exactly the pages that exist |
 | `node .github/scripts/indexnow.js` | Sends the pages in `sitemap.xml` to IndexNow search engines |
