@@ -25,8 +25,13 @@ jobs:
         with:
           node-version: 20
       - name: Record temperatures, Bulgaria
+        continue-on-error: true
         run: node .github/scripts/build-climate.js --records
+      # The free archive API stops answering after about 50 ten-year requests an hour; what was
+      # fetched is kept (climate-europe.json is saved city by city) and the next run goes on
       - name: Climate and record temperatures, Europe
+        continue-on-error: true
+        timeout-minutes: 60
         run: node .github/scripts/build-climate.js --europe --records
       - name: Pages
         run: |
