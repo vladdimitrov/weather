@@ -498,6 +498,7 @@ h1,
   text-align: center;
 }
 
+.kp-forecast h2,
 .kp-forecast h3 {
   margin: 0 0 10px;
   color: var(--gold);
