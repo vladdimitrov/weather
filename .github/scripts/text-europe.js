@@ -1,15 +1,15 @@
 // Texts of the /europe/ pages (build-europe.js) in the five languages. Country names come from
-// Intl.DisplayNames (build-europe.js); city names stay as in europe-data.js.
+// Intl.DisplayNames (build-europe.js), city names from europe-names.js.
 // c = city, k = country, t = how people search for the weather in the local language, link(text) = link to the forecast page.
 const bgIn = name => (/^[ВФвф]/.test(name) ? 'във ' : 'в ') + name;
 
 const EUROPE = {
   bg: {
     and: ' и ',
-    cityH1: c => `Времето в ${c}`,
-    cityTitle: (c, t) => (t ? `${t} – Времето в ${c}, прогноза за 7 дни` : `Времето в ${c} днес – прогноза за 7 дни`),
-    cityDescription: (c, k, t) => `Времето в ${c}, ${k} днес: прогноза за утре и следващите 7 дни с температура, валежи и вятър.${t ? ` ${t}.` : ''} Обновява се на всеки час (данни: Open-Meteo).`,
-    cityIntro: (c, k, t, local) => `Прогноза за времето в ${c}, ${k}, за днес, утре и следващите 7 дни: температура, валежи, вятър и вероятност за валеж.${t ? ` Местно име: ${local} (${t}).` : ''} Данните са от Open-Meteo и се обновяват на всеки час.`,
+    cityH1: c => `Времето ${bgIn(c)}`,
+    cityTitle: (c, t) => (t ? `${t} – Времето ${bgIn(c)}, прогноза за 7 дни` : `Времето ${bgIn(c)} днес – прогноза за 7 дни`),
+    cityDescription: (c, k, t) => `Времето ${bgIn(c)}, ${k} днес: прогноза за утре и следващите 7 дни с температура, валежи и вятър.${t ? ` ${t}.` : ''} Обновява се на всеки час (данни: Open-Meteo).`,
+    cityIntro: (c, k, t, local) => `Прогноза за времето ${bgIn(c)}, ${k}, за днес, утре и следващите 7 дни: температура, валежи, вятър и вероятност за валеж.${t ? ` Местно име: ${local} (${t}).` : ''} Данните са от Open-Meteo и се обновяват на всеки час.`,
     loading: 'Зареждане…', hourly: 'Прогноза по часове →', storms: 'Геомагнитни бури днес →',
     moreIn: k => `Още градове ${bgIn(k)}`, otherCountries: 'Времето в други държави',
     countryH1: k => `Времето ${bgIn(k)} по градове`,

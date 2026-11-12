@@ -1,4 +1,4 @@
-// Text of the /contacts/ (data sources) page in the five languages of the site.
+// Text of the /iztochnici/ (data sources) page in the five languages of the site (/iztochnici/, /en/iztochnici/ ...).
 // build-pages.js renders Bulgarian into the page and embeds the others; the
 // page script swaps them in when the visitor's language is not Bulgarian.
 // Each entry is a function of link(url, text) so every language shares the same links.
@@ -6,6 +6,7 @@ module.exports = {
   bg: link => ({
     title: 'Източници на данни',
     pageTitle: 'Източници на данни и как се правят прогнозите',
+    description: 'Откъде са данните на Weather Pulse: прогнозата идва от Open-Meteo (модели ECMWF, ICON, GFS и др.), магнитните бури от NOAA, празниците от Nager.Date. Как се смята надеждността и какви са ограниченията.',
     intro: 'Weather Pulse не изчислява прогнозите сам и няма собствен метеорологичен модел. Сайтът показва данни от открити източници, подрежда ги и добавя оценка колко може да им се вярва. Тук е описано откъде идва всяко число.',
     hForecast: 'Прогнозата за времето',
     forecast1: `Всички прогнози (текущо време, 7 и 16 дни, по часове и на 15 минути) са от ${link('https://open-meteo.com/', 'Open-Meteo')}. Open-Meteo събира резултатите от числените модели на националните метеорологични служби и ги предоставя чрез API. Сайтът ги иска в режима по подразбиране („най-добра комбинация“): за всяко място и час Open-Meteo сам избира или комбинира най-подходящите модели, например ICON на германската служба DWD, IFS на ECMWF, GFS на американската NOAA и модели на Météo-France. Кой точно модел е дал дадено число, Weather Pulse не определя и не показва.`,
@@ -42,6 +43,7 @@ module.exports = {
   en: link => ({
     title: 'Data sources',
     pageTitle: 'Data sources and how the forecasts are made',
+    description: 'Where the data of Weather Pulse come from: the forecast from Open-Meteo (ECMWF, ICON, GFS and other models), magnetic storms from NOAA, holidays from Nager.Date. How reliability is estimated and what the limits are.',
     intro: 'Weather Pulse does not calculate the forecasts itself and has no weather model of its own. The site shows data from open sources, arranges it and adds an estimate of how far it can be trusted. This page describes where every number comes from.',
     hForecast: 'The weather forecast',
     forecast1: `All forecasts (current weather, 7 and 16 days, hourly and 15-minute) come from ${link('https://open-meteo.com/', 'Open-Meteo')}. Open-Meteo collects the output of the numerical models of national weather services and serves it through an API. The site asks for it in the default “best match” mode: for each place and hour Open-Meteo itself chooses or combines the most suitable models, for example ICON from the German service DWD, IFS from ECMWF, GFS from the American NOAA and models from Météo-France. Weather Pulse does not decide or show which exact model produced a given number.`,
@@ -78,6 +80,7 @@ module.exports = {
   de: link => ({
     title: 'Datenquellen',
     pageTitle: 'Datenquellen und wie die Vorhersagen entstehen',
+    description: 'Woher die Daten von Weather Pulse stammen: die Vorhersage von Open-Meteo (Modelle ECMWF, ICON, GFS u. a.), Magnetstürme von der NOAA, Feiertage von Nager.Date. Wie die Zuverlässigkeit berechnet wird und wo die Grenzen liegen.',
     intro: 'Weather Pulse berechnet die Vorhersagen nicht selbst und hat kein eigenes Wettermodell. Die Seite zeigt Daten aus offenen Quellen, ordnet sie und fügt eine Einschätzung hinzu, wie verlässlich sie sind. Hier steht, woher jede Zahl kommt.',
     hForecast: 'Die Wettervorhersage',
     forecast1: `Alle Vorhersagen (aktuelles Wetter, 7 und 16 Tage, stündlich und im 15-Minuten-Takt) stammen von ${link('https://open-meteo.com/', 'Open-Meteo')}. Open-Meteo sammelt die Ergebnisse der numerischen Modelle nationaler Wetterdienste und stellt sie über eine API bereit. Die Seite ruft sie im Standardmodus („best match“) ab: Für jeden Ort und jede Stunde wählt Open-Meteo selbst die passendsten Modelle aus oder kombiniert sie, zum Beispiel ICON des Deutschen Wetterdienstes DWD, IFS des ECMWF, GFS der amerikanischen NOAA und Modelle von Météo-France. Welches Modell genau einen Wert geliefert hat, bestimmt und zeigt Weather Pulse nicht.`,
@@ -114,6 +117,7 @@ module.exports = {
   it: link => ({
     title: 'Fonti dei dati',
     pageTitle: 'Fonti dei dati e come si fanno le previsioni',
+    description: 'Da dove vengono i dati di Weather Pulse: le previsioni da Open-Meteo (modelli ECMWF, ICON, GFS e altri), le tempeste magnetiche dalla NOAA, le festività da Nager.Date. Come si stima l’affidabilità e quali sono i limiti.',
     intro: 'Weather Pulse non calcola le previsioni da sé e non ha un proprio modello meteorologico. Il sito mostra dati da fonti aperte, li ordina e aggiunge una stima di quanto ci si può fidare. Qui è descritto da dove viene ogni numero.',
     hForecast: 'La previsione del tempo',
     forecast1: `Tutte le previsioni (tempo attuale, 7 e 16 giorni, orarie e ogni 15 minuti) provengono da ${link('https://open-meteo.com/', 'Open-Meteo')}. Open-Meteo raccoglie i risultati dei modelli numerici dei servizi meteorologici nazionali e li offre tramite API. Il sito li richiede nella modalità predefinita („best match“): per ogni luogo e ora Open-Meteo sceglie o combina da sé i modelli più adatti, per esempio ICON del servizio tedesco DWD, IFS dell'ECMWF, GFS dell'americana NOAA e modelli di Météo-France. Quale modello abbia prodotto un dato valore, Weather Pulse non lo stabilisce né lo mostra.`.replace('„best match“', '“best match”'),
@@ -150,6 +154,7 @@ module.exports = {
   es: link => ({
     title: 'Fuentes de datos',
     pageTitle: 'Fuentes de datos y cómo se hacen las previsiones',
+    description: 'De dónde vienen los datos de Weather Pulse: la previsión de Open-Meteo (modelos ECMWF, ICON, GFS y otros), las tormentas magnéticas de la NOAA y los festivos de Nager.Date. Cómo se calcula la fiabilidad y cuáles son los límites.',
     intro: 'Weather Pulse no calcula las previsiones por sí mismo y no tiene un modelo meteorológico propio. El sitio muestra datos de fuentes abiertas, los ordena y añade una estimación de cuánto se puede confiar en ellos. Aquí se describe de dónde viene cada cifra.',
     hForecast: 'La previsión del tiempo',
     forecast1: `Todas las previsiones (tiempo actual, 7 y 16 días, por horas y cada 15 minutos) proceden de ${link('https://open-meteo.com/', 'Open-Meteo')}. Open-Meteo reúne los resultados de los modelos numéricos de los servicios meteorológicos nacionales y los ofrece mediante una API. El sitio los pide en el modo predeterminado («best match»): para cada lugar y hora, Open-Meteo elige o combina por sí mismo los modelos más adecuados, por ejemplo ICON del servicio alemán DWD, IFS del ECMWF, GFS de la estadounidense NOAA y modelos de Météo-France. Qué modelo concreto ha dado una cifra, Weather Pulse no lo determina ni lo muestra.`,

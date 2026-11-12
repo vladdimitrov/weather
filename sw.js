@@ -5,11 +5,11 @@
 //  - Scripts and styles with a version in the address (theme.css?v=58): cache first. A new
 //    version is a new address, so nothing stale is ever served; repeat visits do not wait for
 //    the network for them. Change such a file => raise its ?v= (see README).
-const CACHE = 'weatherpulse-v15';
+const CACHE = 'weatherpulse-v16';
 // Visited pages kept for offline use (the pages in PAGES are always kept)
 const MAX_PAGES = 60;
 
-const PAGES = ['/', '/weather/', '/maps/', '/holliday_calendar/', '/contacts/', '/magnitni-buri/', '/za-saita/', '/poveritelnost/', '/luna/', '/nebeto/'];
+const PAGES = ['/', '/weather/', '/maps/', '/holliday_calendar/', '/iztochnici/', '/magnitni-buri/', '/za-saita/', '/poveritelnost/', '/luna/', '/nebeto/', '/gradove/'];
 
 // Data sources whose last answer is kept for offline use
 const DATA_HOSTS = ['api.open-meteo.com', 'geocoding-api.open-meteo.com', 'services.swpc.noaa.gov', 'date.nager.at'];

@@ -1,0 +1,211 @@
+// Names of the /europe/ cities in the languages of the site other than English (the English
+// name and the local name are in europe-data.js). Keyed by the city slug:
+//   slug: [Bulgarian, German, Italian, Spanish]
+// Every city of europe-data.js must be here; check-site.js does not check it, build-europe.js does.
+module.exports = {
+  // Albania
+  tirana: ['Тирана', 'Tirana', 'Tirana', 'Tirana'],
+  durres: ['Дуръс', 'Durrës', 'Durazzo', 'Durrës'],
+  vlore: ['Вльора', 'Vlora', 'Valona', 'Vlorë'],
+  shkoder: ['Шкодра', 'Shkodra', 'Scutari', 'Shkodër'],
+  // Austria
+  vienna: ['Виена', 'Wien', 'Vienna', 'Viena'],
+  graz: ['Грац', 'Graz', 'Graz', 'Graz'],
+  linz: ['Линц', 'Linz', 'Linz', 'Linz'],
+  salzburg: ['Залцбург', 'Salzburg', 'Salisburgo', 'Salzburgo'],
+  innsbruck: ['Инсбрук', 'Innsbruck', 'Innsbruck', 'Innsbruck'],
+  // Belgium
+  brussels: ['Брюксел', 'Brüssel', 'Bruxelles', 'Bruselas'],
+  antwerp: ['Антверпен', 'Antwerpen', 'Anversa', 'Amberes'],
+  ghent: ['Гент', 'Gent', 'Gand', 'Gante'],
+  bruges: ['Брюж', 'Brügge', 'Bruges', 'Brujas'],
+  liege: ['Лиеж', 'Lüttich', 'Liegi', 'Lieja'],
+  // Bosnia and Herzegovina
+  sarajevo: ['Сараево', 'Sarajevo', 'Sarajevo', 'Sarajevo'],
+  'banja-luka': ['Баня Лука', 'Banja Luka', 'Banja Luka', 'Banja Luka'],
+  mostar: ['Мостар', 'Mostar', 'Mostar', 'Mostar'],
+  tuzla: ['Тузла', 'Tuzla', 'Tuzla', 'Tuzla'],
+  // Croatia
+  zagreb: ['Загреб', 'Zagreb', 'Zagabria', 'Zagreb'],
+  split: ['Сплит', 'Split', 'Spalato', 'Split'],
+  dubrovnik: ['Дубровник', 'Dubrovnik', 'Dubrovnik', 'Dubrovnik'],
+  rijeka: ['Риека', 'Rijeka', 'Fiume', 'Rijeka'],
+  zadar: ['Задар', 'Zadar', 'Zara', 'Zadar'],
+  // Cyprus
+  nicosia: ['Никозия', 'Nikosia', 'Nicosia', 'Nicosia'],
+  limassol: ['Лимасол', 'Limassol', 'Limassol', 'Limasol'],
+  paphos: ['Пафос', 'Paphos', 'Pafo', 'Pafos'],
+  larnaca: ['Ларнака', 'Larnaka', 'Larnaca', 'Lárnaca'],
+  // Czechia
+  prague: ['Прага', 'Prag', 'Praga', 'Praga'],
+  brno: ['Бърно', 'Brünn', 'Brno', 'Brno'],
+  ostrava: ['Острава', 'Ostrava', 'Ostrava', 'Ostrava'],
+  plzen: ['Пилзен', 'Pilsen', 'Plzeň', 'Pilsen'],
+  olomouc: ['Оломоуц', 'Olmütz', 'Olomouc', 'Olomouc'],
+  // Denmark
+  copenhagen: ['Копенхаген', 'Kopenhagen', 'Copenaghen', 'Copenhague'],
+  aarhus: ['Орхус', 'Aarhus', 'Aarhus', 'Aarhus'],
+  odense: ['Оденсе', 'Odense', 'Odense', 'Odense'],
+  aalborg: ['Олборг', 'Aalborg', 'Aalborg', 'Aalborg'],
+  // Estonia
+  tallinn: ['Талин', 'Tallinn', 'Tallinn', 'Tallin'],
+  tartu: ['Тарту', 'Tartu', 'Tartu', 'Tartu'],
+  parnu: ['Пярну', 'Pärnu', 'Pärnu', 'Pärnu'],
+  // Finland
+  helsinki: ['Хелзинки', 'Helsinki', 'Helsinki', 'Helsinki'],
+  espoo: ['Еспоо', 'Espoo', 'Espoo', 'Espoo'],
+  tampere: ['Тампере', 'Tampere', 'Tampere', 'Tampere'],
+  turku: ['Турку', 'Turku', 'Turku', 'Turku'],
+  rovaniemi: ['Рованиеми', 'Rovaniemi', 'Rovaniemi', 'Rovaniemi'],
+  // France
+  paris: ['Париж', 'Paris', 'Parigi', 'París'],
+  marseille: ['Марсилия', 'Marseille', 'Marsiglia', 'Marsella'],
+  lyon: ['Лион', 'Lyon', 'Lione', 'Lyon'],
+  toulouse: ['Тулуза', 'Toulouse', 'Tolosa', 'Toulouse'],
+  nice: ['Ница', 'Nizza', 'Nizza', 'Niza'],
+  bordeaux: ['Бордо', 'Bordeaux', 'Bordeaux', 'Burdeos'],
+  // Germany
+  berlin: ['Берлин', 'Berlin', 'Berlino', 'Berlín'],
+  hamburg: ['Хамбург', 'Hamburg', 'Amburgo', 'Hamburgo'],
+  munich: ['Мюнхен', 'München', 'Monaco di Baviera', 'Múnich'],
+  cologne: ['Кьолн', 'Köln', 'Colonia', 'Colonia'],
+  frankfurt: ['Франкфурт', 'Frankfurt', 'Francoforte', 'Fráncfort'],
+  stuttgart: ['Щутгарт', 'Stuttgart', 'Stoccarda', 'Stuttgart'],
+  dresden: ['Дрезден', 'Dresden', 'Dresda', 'Dresde'],
+  // Greece
+  athens: ['Атина', 'Athen', 'Atene', 'Atenas'],
+  thessaloniki: ['Солун', 'Thessaloniki', 'Salonicco', 'Salónica'],
+  patras: ['Патра', 'Patras', 'Patrasso', 'Patras'],
+  heraklion: ['Ираклион', 'Heraklion', 'Heraklion', 'Heraclión'],
+  rhodes: ['Родос', 'Rhodos', 'Rodi', 'Rodas'],
+  // Hungary
+  budapest: ['Будапеща', 'Budapest', 'Budapest', 'Budapest'],
+  debrecen: ['Дебрецен', 'Debrecen', 'Debrecen', 'Debrecen'],
+  szeged: ['Сегед', 'Szeged', 'Seghedino', 'Szeged'],
+  pecs: ['Печ', 'Pécs', 'Pécs', 'Pécs'],
+  // Iceland
+  reykjavik: ['Рейкявик', 'Reykjavík', 'Reykjavík', 'Reikiavik'],
+  akureyri: ['Акюрейри', 'Akureyri', 'Akureyri', 'Akureyri'],
+  keflavik: ['Кефлавик', 'Keflavík', 'Keflavík', 'Keflavík'],
+  // Ireland
+  dublin: ['Дъблин', 'Dublin', 'Dublino', 'Dublín'],
+  cork: ['Корк', 'Cork', 'Cork', 'Cork'],
+  galway: ['Голуей', 'Galway', 'Galway', 'Galway'],
+  limerick: ['Лимерик', 'Limerick', 'Limerick', 'Limerick'],
+  // Italy
+  rome: ['Рим', 'Rom', 'Roma', 'Roma'],
+  milan: ['Милано', 'Mailand', 'Milano', 'Milán'],
+  naples: ['Неапол', 'Neapel', 'Napoli', 'Nápoles'],
+  turin: ['Торино', 'Turin', 'Torino', 'Turín'],
+  florence: ['Флоренция', 'Florenz', 'Firenze', 'Florencia'],
+  venice: ['Венеция', 'Venedig', 'Venezia', 'Venecia'],
+  palermo: ['Палермо', 'Palermo', 'Palermo', 'Palermo'],
+  // Latvia
+  riga: ['Рига', 'Riga', 'Riga', 'Riga'],
+  daugavpils: ['Даугавпилс', 'Daugavpils', 'Daugavpils', 'Daugavpils'],
+  liepaja: ['Лиепая', 'Liepāja', 'Liepāja', 'Liepāja'],
+  // Lithuania
+  vilnius: ['Вилнюс', 'Vilnius', 'Vilnius', 'Vilna'],
+  kaunas: ['Каунас', 'Kaunas', 'Kaunas', 'Kaunas'],
+  klaipeda: ['Клайпеда', 'Klaipėda', 'Klaipėda', 'Klaipėda'],
+  // Luxembourg
+  luxembourg: ['Люксембург', 'Luxemburg', 'Lussemburgo', 'Luxemburgo'],
+  'esch-sur-alzette': ['Еш сюр Алзет', 'Esch an der Alzette', 'Esch-sur-Alzette', 'Esch-sur-Alzette'],
+  // Malta
+  valletta: ['Валета', 'Valletta', 'La Valletta', 'La Valeta'],
+  sliema: ['Слийма', 'Sliema', 'Sliema', 'Sliema'],
+  mosta: ['Моста', 'Mosta', 'Mosta', 'Mosta'],
+  // Moldova
+  chisinau: ['Кишинев', 'Chișinău', 'Chișinău', 'Chisináu'],
+  balti: ['Белци', 'Bălți', 'Bălți', 'Bălți'],
+  tiraspol: ['Тираспол', 'Tiraspol', 'Tiraspol', 'Tiráspol'],
+  // Montenegro
+  podgorica: ['Подгорица', 'Podgorica', 'Podgorica', 'Podgorica'],
+  budva: ['Будва', 'Budva', 'Budua', 'Budva'],
+  kotor: ['Котор', 'Kotor', 'Cattaro', 'Kotor'],
+  // Netherlands
+  amsterdam: ['Амстердам', 'Amsterdam', 'Amsterdam', 'Ámsterdam'],
+  rotterdam: ['Ротердам', 'Rotterdam', 'Rotterdam', 'Róterdam'],
+  'the-hague': ['Хага', 'Den Haag', "L'Aia", 'La Haya'],
+  utrecht: ['Утрехт', 'Utrecht', 'Utrecht', 'Utrecht'],
+  eindhoven: ['Айндховен', 'Eindhoven', 'Eindhoven', 'Eindhoven'],
+  // North Macedonia
+  skopje: ['Скопие', 'Skopje', 'Skopje', 'Skopie'],
+  bitola: ['Битоля', 'Bitola', 'Bitola', 'Bitola'],
+  ohrid: ['Охрид', 'Ohrid', 'Ocrida', 'Ohrid'],
+  // Norway
+  oslo: ['Осло', 'Oslo', 'Oslo', 'Oslo'],
+  bergen: ['Берген', 'Bergen', 'Bergen', 'Bergen'],
+  trondheim: ['Трондхайм', 'Trondheim', 'Trondheim', 'Trondheim'],
+  stavanger: ['Ставангер', 'Stavanger', 'Stavanger', 'Stavanger'],
+  tromso: ['Тромсьо', 'Tromsø', 'Tromsø', 'Tromsø'],
+  // Poland
+  warsaw: ['Варшава', 'Warschau', 'Varsavia', 'Varsovia'],
+  krakow: ['Краков', 'Krakau', 'Cracovia', 'Cracovia'],
+  lodz: ['Лодз', 'Łódź', 'Łódź', 'Lodz'],
+  wroclaw: ['Вроцлав', 'Breslau', 'Breslavia', 'Breslavia'],
+  gdansk: ['Гданск', 'Danzig', 'Danzica', 'Gdansk'],
+  poznan: ['Познан', 'Posen', 'Poznań', 'Poznan'],
+  // Portugal
+  lisbon: ['Лисабон', 'Lissabon', 'Lisbona', 'Lisboa'],
+  porto: ['Порто', 'Porto', 'Porto', 'Oporto'],
+  faro: ['Фаро', 'Faro', 'Faro', 'Faro'],
+  braga: ['Брага', 'Braga', 'Braga', 'Braga'],
+  funchal: ['Фуншал', 'Funchal', 'Funchal', 'Funchal'],
+  // Romania
+  bucharest: ['Букурещ', 'Bukarest', 'Bucarest', 'Bucarest'],
+  'cluj-napoca': ['Клуж-Напока', 'Cluj-Napoca', 'Cluj-Napoca', 'Cluj-Napoca'],
+  timisoara: ['Тимишоара', 'Timișoara', 'Timișoara', 'Timișoara'],
+  iasi: ['Яш', 'Iași', 'Iași', 'Iași'],
+  constanta: ['Констанца', 'Constanța', 'Costanza', 'Constanza'],
+  brasov: ['Брашов', 'Brașov', 'Brașov', 'Brașov'],
+  // Serbia
+  belgrade: ['Белград', 'Belgrad', 'Belgrado', 'Belgrado'],
+  'novi-sad': ['Нови Сад', 'Novi Sad', 'Novi Sad', 'Novi Sad'],
+  nis: ['Ниш', 'Niš', 'Niš', 'Niš'],
+  kragujevac: ['Крагуевац', 'Kragujevac', 'Kragujevac', 'Kragujevac'],
+  // Slovakia
+  bratislava: ['Братислава', 'Bratislava', 'Bratislava', 'Bratislava'],
+  kosice: ['Кошице', 'Košice', 'Košice', 'Košice'],
+  zilina: ['Жилина', 'Žilina', 'Žilina', 'Žilina'],
+  poprad: ['Попрад', 'Poprad', 'Poprad', 'Poprad'],
+  // Slovenia
+  ljubljana: ['Любляна', 'Ljubljana', 'Lubiana', 'Liubliana'],
+  maribor: ['Марибор', 'Maribor', 'Maribor', 'Maribor'],
+  bled: ['Блед', 'Bled', 'Bled', 'Bled'],
+  koper: ['Копер', 'Koper', 'Capodistria', 'Koper'],
+  // Spain
+  madrid: ['Мадрид', 'Madrid', 'Madrid', 'Madrid'],
+  barcelona: ['Барселона', 'Barcelona', 'Barcellona', 'Barcelona'],
+  valencia: ['Валенсия', 'Valencia', 'Valencia', 'Valencia'],
+  seville: ['Севиля', 'Sevilla', 'Siviglia', 'Sevilla'],
+  malaga: ['Малага', 'Málaga', 'Malaga', 'Málaga'],
+  bilbao: ['Билбао', 'Bilbao', 'Bilbao', 'Bilbao'],
+  palma: ['Палма де Майорка', 'Palma', 'Palma di Maiorca', 'Palma'],
+  // Sweden
+  stockholm: ['Стокхолм', 'Stockholm', 'Stoccolma', 'Estocolmo'],
+  gothenburg: ['Гьотеборг', 'Göteborg', 'Göteborg', 'Gotemburgo'],
+  malmo: ['Малмьо', 'Malmö', 'Malmö', 'Malmö'],
+  uppsala: ['Упсала', 'Uppsala', 'Uppsala', 'Upsala'],
+  kiruna: ['Кируна', 'Kiruna', 'Kiruna', 'Kiruna'],
+  // Switzerland
+  zurich: ['Цюрих', 'Zürich', 'Zurigo', 'Zúrich'],
+  geneva: ['Женева', 'Genf', 'Ginevra', 'Ginebra'],
+  basel: ['Базел', 'Basel', 'Basilea', 'Basilea'],
+  bern: ['Берн', 'Bern', 'Berna', 'Berna'],
+  lucerne: ['Люцерн', 'Luzern', 'Lucerna', 'Lucerna'],
+  // Ukraine
+  kyiv: ['Киев', 'Kyjiw', 'Kiev', 'Kiev'],
+  lviv: ['Лвов', 'Lwiw', 'Leopoli', 'Leópolis'],
+  odesa: ['Одеса', 'Odessa', 'Odessa', 'Odesa'],
+  kharkiv: ['Харков', 'Charkiw', 'Charkiv', 'Járkov'],
+  dnipro: ['Днипро', 'Dnipro', 'Dnipro', 'Dnipró'],
+  // United Kingdom
+  london: ['Лондон', 'London', 'Londra', 'Londres'],
+  manchester: ['Манчестър', 'Manchester', 'Manchester', 'Mánchester'],
+  birmingham: ['Бирмингам', 'Birmingham', 'Birmingham', 'Birmingham'],
+  edinburgh: ['Единбург', 'Edinburgh', 'Edimburgo', 'Edimburgo'],
+  glasgow: ['Глазгоу', 'Glasgow', 'Glasgow', 'Glasgow'],
+  cardiff: ['Кардиф', 'Cardiff', 'Cardiff', 'Cardiff'],
+  belfast: ['Белфаст', 'Belfast', 'Belfast', 'Belfast']
+};

@@ -2,55 +2,22 @@
 //   /vremeto/            weather by city (hub) and /vremeto/<city>/ for each city below
 //   /praznici/           official holidays in Bulgaria for this year and next (from Nager.Date)
 // The live forecast on the city pages comes from /js/city-forecast.js.
-// Run from the repository root: node .github/scripts/build-pages.js [first year]
-// Then add new pages to sitemap.xml (the script prints the entries).
+// Run from the repository root: node .github/scripts/build-pages.js [first year], then build-sitemap.js
+//   /iztochnici/         data sources
 const fs = require('fs');
 const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 60, mobileNav: 17, cityForecast: 11, moon: 2, lunaToday: 4, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
+const VERSION = { theme: 60, mobileNav: 18, languageSelector: 7, cityForecast: 12, moon: 2, lunaToday: 4, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
 
-const CITIES = [
-  ['sofia', 'София', 42.6977, 23.3219],
-  ['plovdiv', 'Пловдив', 42.1354, 24.7453],
-  ['varna', 'Варна', 43.2141, 27.9147],
-  ['burgas', 'Бургас', 42.5048, 27.4626],
-  ['ruse', 'Русе', 43.8356, 25.9657],
-  ['stara-zagora', 'Стара Загора', 42.4258, 25.6345],
-  ['pleven', 'Плевен', 43.4170, 24.6067],
-  ['sliven', 'Сливен', 42.6817, 26.3229],
-  ['dobrich', 'Добрич', 43.5726, 27.8273],
-  ['shumen', 'Шумен', 43.2706, 26.9229],
-  ['pernik', 'Перник', 42.6052, 23.0378],
-  ['haskovo', 'Хасково', 41.9344, 25.5554],
-  ['yambol', 'Ямбол', 42.4842, 26.5035],
-  ['pazardzhik', 'Пазарджик', 42.1928, 24.3336],
-  ['blagoevgrad', 'Благоевград', 42.0209, 23.0943],
-  ['veliko-tarnovo', 'Велико Търново', 43.0757, 25.6172],
-  ['vratsa', 'Враца', 43.2102, 23.5529],
-  ['gabrovo', 'Габрово', 42.8742, 25.3187],
-  ['asenovgrad', 'Асеновград', 42.0167, 24.8667],
-  ['vidin', 'Видин', 43.9962, 22.8679],
-  ['kazanlak', 'Казанлък', 42.6194, 25.3930],
-  ['kardzhali', 'Кърджали', 41.6338, 25.3777],
-  ['kyustendil', 'Кюстендил', 42.2839, 22.6911],
-  ['montana', 'Монтана', 43.4085, 23.2257],
-  ['dimitrovgrad', 'Димитровград', 42.0500, 25.6000],
-  ['lovech', 'Ловеч', 43.1370, 24.7142],
-  ['silistra', 'Силистра', 44.1171, 27.2606],
-  ['targovishte', 'Търговище', 43.2512, 26.5722],
-  ['razgrad', 'Разград', 43.5333, 26.5167],
-  ['smolyan', 'Смолян', 41.5774, 24.7011],
-  ['bansko', 'Банско', 41.8383, 23.4885],
-  ['borovets', 'Боровец', 42.2667, 23.6056],
-  ['pamporovo', 'Пампорово', 41.6500, 24.6950],
-  ['sozopol', 'Созопол', 42.4180, 27.6950],
-  ['nesebar', 'Несебър', 42.6597, 27.7360]
-].map(([slug, name, lat, lon]) => ({ slug, name, lat, lon }));
+const CITIES = require('./bg-cities.js');
 
 const { TXT, HOLIDAYS } = require('./text-pages.js');
 const CITY_TEXT = require('./text-cities.js');
+const BG_ONLY = require('./text-extra.js').BG;
+// Bulgarian cities that link to the regional pages (build-extra.js)
+const REGION_OF = { varna: ['chernomorie', 'morska-voda'], burgas: ['chernomorie', 'morska-voda'], sozopol: ['chernomorie', 'morska-voda'], nesebar: ['chernomorie', 'morska-voda'], bansko: ['snyag-kurorti'], borovets: ['snyag-kurorti'], pamporovo: ['snyag-kurorti'] };
 const L = (lang, url) => I18N.localUrl(lang, url);
 const linkTo = (url, text) => `<a href="${url}">${text}</a>`;
 
@@ -87,10 +54,15 @@ function climateSection(city, lang, site = {}) {
     name, elevation, warm: month(warmest), warmHigh: degrees(m[warmest].high), cold: month(coldest), coldLow: degrees(m[coldest].low),
     yearly: Math.round(yearly / 10) * 10, wet: month(wettest), wetMm: m[wettest].precip
   });
+  const recordDate = date => new Date(date + 'T12:00:00Z').toLocaleDateString(I18N.LOCALE[lang], { timeZone: 'UTC', day: 'numeric', month: 'long', year: 'numeric' });
+  const records = climate.records ? ` ${T.recordText({
+    where, years, max: degrees(climate.records.high.t), maxDate: recordDate(climate.records.high.date),
+    min: degrees(climate.records.low.t), minDate: recordDate(climate.records.low.date)
+  })}` : '';
   return `
     <section class="info-card city-climate">
       <h2>${T.climateH(where)}</h2>
-      <p>${text}</p>${!site.name && CITY_TEXT[city.slug] ? `
+      <p>${text}${records}</p>${!site.name && CITY_TEXT[city.slug] ? `
       <p>${CITY_TEXT[city.slug][lang]}</p>` : ''}
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -101,6 +73,59 @@ ${rows}
       </table>
       </div>
       <p class="storm-updated">${T.climateNote(years)}</p>
+    </section>`;
+}
+
+const joinList = (lang, items) => (items.length > 1 ? `${items.slice(0, -1).join(', ')}${TXT[lang].and}${items[items.length - 1]}` : items[0] || '');
+
+// When the weather is most pleasant, from the monthly climate: of the months with average highs
+// of 18–28°C (the three warmest months where fewer get there), the ones closest to 24°C with the
+// fewest days of rain; and the hot and the frosty months
+function bestTimeSection(climate, lang, where) {
+  if (!climate) return '';
+  const T = TXT[lang];
+  const m = climate.months.map((x, i) => ({ ...x, i }));
+  // closest to a 24°C afternoon with few days of rain; at least two months
+  const score = x => Math.abs(x.high - 24) + x.rainDays / 2;
+  let pool = m.filter(x => x.high >= 18 && x.high <= 28);
+  if (pool.length < 2) pool = [...m].sort((a, b) => b.high - a.high).slice(0, 3);
+  pool.sort((a, b) => score(a) - score(b));
+  const best = pool.filter((x, n) => n < 2 || score(x) <= score(pool[0]) + 3).sort((a, b) => a.i - b.i);
+  const names = list => joinList(lang, list.map(x => I18N.monthName(lang, x.i)));
+  const highs = best.map(x => x.high);
+  const text = T.bestText({
+    where,
+    months: names(best),
+    from: degrees(Math.min(...highs)),
+    to: degrees(Math.max(...highs)),
+    rain: Math.max(...best.map(x => x.rainDays)),
+    hot: names(m.filter(x => x.high >= 30)),
+    cold: names(m.filter(x => x.low <= -3))
+  });
+  return `
+    <section class="info-card city-best">
+      <h2>${T.bestH(where)}</h2>
+      <p>${text}</p>
+    </section>`;
+}
+
+// Links to the closest city pages: in the same country and across the border, with the distance
+const PLACES = require('./places.js');
+function nearbySection({ lat, lon, url, country }, lang) {
+  const T = TXT[lang];
+  const { home, abroad } = PLACES.nearby(lat, lon, url, country);
+  const links = list => list.map(({ place, km }) =>
+    `<a href="${I18N.localUrl(lang, place.url)}" class="recent-place">${I18N.esc(place.name[lang])} · ${km} ${T.km}</a>`).join('\n        ');
+  return `
+    <section class="info-card city-near">
+      <h2>${T.nearH}</h2>
+      <div class="city-links">
+        ${links(home)}
+      </div>
+      <p class="storm-updated">${T.abroad}</p>
+      <div class="city-links">
+        ${links(abroad)}
+      </div>
     </section>`;
 }
 
@@ -151,15 +176,16 @@ ${rows}
     </section>`;
 }
 
-let FOOTER_TEXT = { about: 'За сайта', privacy: 'Поверителност' };
+let FOOTER_TEXT = { about: 'За сайта', privacy: 'Поверителност', cities: 'Всички градове' };
 let LOGO = 'Лого';
-let FOOTER_URLS = { about: '/za-saita/', privacy: '/poveritelnost/' };
+let FOOTER_URLS = { about: '/za-saita/', privacy: '/poveritelnost/', cities: '/gradove/' };
 const footer = () => `  <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
     <div class="logo" style="flex-shrink: 0;">
         <a href="/"><img src="/images/logo-64.webp" alt="${LOGO}" class="logo-img" width="30" height="30" style="height: 30px; width: auto;"></a>
     </div>
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">${new Date().getFullYear()}</span> VYZYA
+      · <a href="${FOOTER_URLS.cities}" class="footer-link" data-nav="cityIndex">${FOOTER_TEXT.cities}</a>
       · <a href="${FOOTER_URLS.about}" class="footer-link" data-nav="about">${FOOTER_TEXT.about}</a>
       · <a href="${FOOTER_URLS.privacy}" class="footer-link" data-nav="privacy">${FOOTER_TEXT.privacy}</a>
     </p>
@@ -168,15 +194,24 @@ const footer = () => `  <footer style="background: var(--card-bg); border-top: 1
 const NAV_EN = I18N.NAV.en;
 
 // multi: the page exists in the five languages (/luna/, /en/luna/, /de/luna/ ...); url is the
-// Bulgarian path. A page with lang 'en' and no multi is a fixed-English page (/europe/).
+// Bulgarian path.
+// indexed: the languages in which search engines should index the page (default: all). In the
+// other languages the page is "noindex, follow" and not in the sitemap, and hreflang lists only
+// the indexed ones; the language switcher still finds every translation in data-alt.
 // head: extra lines for the <head>, after the site stylesheets (a stylesheet of one page family)
-function page({ url, title, description, body, scripts = '', jsonLd = '', head = '', lang = 'bg', multi = false, base = 'bg' }) {
+// langs: the languages in which the page exists (default: all five; ['bg'] for Bulgarian-only pages)
+function page({ url, title, description, body, scripts = '', jsonLd = '', head = '', lang = 'bg', multi = false, base = 'bg', langs = I18N.LANGS, indexed = langs }) {
   const fixed = multi || lang === 'en';
   const NAV = I18N.NAV[lang];
   const nav = key => NAV[key];
   const pageUrl = multi ? I18N.localUrl(lang, url, base) : url;
-  const alternates = multi ? I18N.LANGS.map(code => `  <link rel="alternate" hreflang="${code}" href="https://weatherpulse.eu${I18N.localUrl(code, url, base)}" />`).join('\n') + `\n  <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu${url}" />\n` : '';
-  const altPaths = multi ? JSON.stringify(Object.fromEntries(I18N.LANGS.map(code => [code, I18N.localUrl(code, url, base)]))) : '';
+  const noindex = multi && !indexed.includes(lang);
+  const listed = I18N.LANGS.filter(code => indexed.includes(code));
+  const alternates = multi && !noindex && listed.length > 1
+    ? listed.map(code => `  <link rel="alternate" hreflang="${code}" href="https://weatherpulse.eu${I18N.localUrl(code, url, base)}" />`).join('\n') +
+      (listed.includes(base) ? `\n  <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu${url}" />` : '') + '\n'
+    : '';
+  const altPaths = multi ? JSON.stringify(Object.fromEntries(I18N.LANGS.filter(code => langs.includes(code)).map(code => [code, I18N.localUrl(code, url, base)]))) : '';
   let languageScript;
   if (multi) {
     languageScript = `      // The page has its own language. Bulgarian (default) pages send a visitor who chose
@@ -196,7 +231,7 @@ function page({ url, title, description, body, scripts = '', jsonLd = '', head =
       if (savedLanguage !== 'bg') document.documentElement.classList.add('i18n-pending');`;
   }
   const html = `<!DOCTYPE html>
-<html lang="${lang}"${fixed ? ` data-page-lang="${lang}"` : ''}>
+<html lang="${lang}"${fixed ? ` data-page-lang="${lang}"` : ''}${multi ? ` data-alt='${altPaths}'` : ''}>
 <head>
   <!-- Generated by .github/scripts/build-pages.js; edit the script, not this file -->
   <script src="/cookie-consent.js" defer></script>
@@ -207,7 +242,7 @@ function page({ url, title, description, body, scripts = '', jsonLd = '', head =
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title} | Weather Pulse</title>
   <link rel="canonical" href="https://weatherpulse.eu${pageUrl}" />
-${alternates}  <meta name="description" content="${description}">
+${alternates}${noindex ? '  <meta name="robots" content="noindex, follow">\n' : ''}  <meta name="description" content="${description}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Weather Pulse">
   <meta property="og:locale" content="${I18N.OG_LOCALE[lang]}">
@@ -242,7 +277,7 @@ ${head}</head>
       <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">${nav('holidays')}</a>
       <a href="/magnitni-buri/" class="nav-link" data-nav="storms">${nav('storms')}</a>
       <a href="${multi ? I18N.localUrl(lang, '/nebeto/') : '/nebeto/'}" class="nav-link" data-nav="sky">${nav('sky')}</a>
-      <a href="/contacts/" class="nav-link" data-nav="sources">${nav('sources')}</a>
+      <a href="${multi ? I18N.localUrl(lang, '/iztochnici/') : '/iztochnici/'}" class="nav-link" data-nav="sources">${nav('sources')}</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -253,10 +288,10 @@ ${head}</head>
 ${body}
   </div>
 
-${(FOOTER_TEXT = { about: NAV.about, privacy: NAV.privacy }, LOGO = I18N.LOGO_ALT[lang], FOOTER_URLS = multi ? { about: I18N.localUrl(lang, '/za-saita/'), privacy: I18N.localUrl(lang, '/poveritelnost/') } : { about: '/za-saita/', privacy: '/poveritelnost/' }, footer())}
+${(FOOTER_TEXT = { about: NAV.about, privacy: NAV.privacy, cities: NAV.cities }, LOGO = I18N.LOGO_ALT[lang], FOOTER_URLS = Object.fromEntries(Object.entries({ about: '/za-saita/', privacy: '/poveritelnost/', cities: '/gradove/' }).map(([key, to]) => [key, multi ? I18N.localUrl(lang, to) : to])), footer())}
 
 <script src="/js/mobile-nav.js?v=${VERSION.mobileNav}" defer></script>
-<script src="/js/language-selector.js?v=6" defer></script>
+<script src="/js/language-selector.js?v=${VERSION.languageSelector}" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 ${scripts}</body>
 </html>
@@ -266,10 +301,48 @@ ${scripts}</body>
   return lang === 'bg' ? html : html.replace(/href="\/(weather\/|maps\/|holliday_calendar\/|magnitni-buri\/)?(["#?])/g, (m, page = '', end) => `href="/${lang}/${page}${end}`);
 }
 
+// The forecast build-forecast.js wrote into a city page stays when the page is written again
+// (the generators write a "Loading…" line), as long as the place is the same
+const FORECAST_BLOCK = /(<div class="city-forecast" id="cityForecast"[^>]*>\n)([\s\S]*?)(\n    <\/div>\n)/;
+function keepForecast(file, html) {
+  if (!fs.existsSync(file)) return html;
+  const old = fs.readFileSync(file, 'utf8');
+  const before = old.match(FORECAST_BLOCK);
+  const after = html.match(FORECAST_BLOCK);
+  const language = text => (text.match(/<html lang="(\w+)"/) || [])[1];
+  if (!before || !after || before[1] !== after[1] || language(old) !== language(html) || before[2].includes('storm-loading')) return html;
+  return html.replace(FORECAST_BLOCK, (m, open, inner, close) => open + before[2] + close);
+}
+
 function write(relativeDir, html) {
   const dir = path.join(ROOT, relativeDir);
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.html'), html);
+  const file = path.join(dir, 'index.html');
+  fs.writeFileSync(file, keepForecast(file, html));
+}
+
+// A page that has moved: GitHub Pages cannot answer 301, so the old address gets a page with
+// the canonical address of the new one and an immediate meta refresh, which search engines treat
+// as a permanent redirect (no noindex: it would contradict the canonical)
+function redirect(relativeDir, to, lang = 'bg') {
+  const target = `https://weatherpulse.eu${to}`;
+  const dir = path.join(ROOT, relativeDir);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, 'index.html'), `<!DOCTYPE html>
+<html lang="${lang}">
+<head>
+  <!-- Generated by .github/scripts/build-redirects.js: this address has moved -->
+  <meta charset="UTF-8">
+  <title>Weather Pulse</title>
+  <link rel="canonical" href="${target}" />
+  <meta http-equiv="refresh" content="0; url=${to}">
+  <script>location.replace(${JSON.stringify(to)} + location.search + location.hash);</script>
+</head>
+<body>
+  <p><a href="${to}">${target}</a></p>
+</body>
+</html>
+`);
 }
 
 const cityLinks = (current, lang) => CITIES
@@ -316,6 +389,7 @@ function cityPage(city, lang) {
     url: `/vremeto/${city.slug}/`,
     lang,
     multi: true,
+    indexed: PLACES.bgIndexed(city.slug),
     // page() adds " | Weather Pulse"
     title: T.title(where),
     description: T.description(where),
@@ -330,13 +404,19 @@ function cityPage(city, lang) {
     </div>
 
     <p class="city-actions">
-      <a class="btn" href="/weather/?${params}">${T.hourly}</a>
+      <a class="btn" href="/weather/?${params}">${T.hourly}</a>${lang === 'bg' ? `
+      <a class="btn" href="/vremeto/${city.slug}/10-dni/">${BG_ONLY.tenDaysLink}</a>${PLACES.TOURIST_BG.includes(city.slug) ? `
+      <a class="btn" href="/vremeto/${city.slug}/uikend/">${BG_ONLY.weekendLink}</a>` : ''}${(REGION_OF[city.slug] || []).map(region => `
+      <a class="btn" href="/vremeto/${region}/">${BG_ONLY.regionLinks[region]} →</a>`).join('')}` : ''}
       <a class="btn" href="/magnitni-buri/">${T.storms}</a>
       <a class="btn" href="${L(lang, '/luna/')}">${T.moon}</a>
     </p>
 
 ${sunSection(city, lang)}
 ${climateSection(city, lang)}
+${bestTimeSection(CLIMATE && CLIMATE.cities[city.slug], lang, where)}
+${nearbySection({ lat: city.lat, lon: city.lon, url: `/vremeto/${city.slug}/`, country: 'BG' }, lang)}${lang === 'bg' ? `
+    <p class="city-actions"><a href="/uidzhet/?grad=${city.slug}">${BG_ONLY.widgetLink(city.name)}</a></p>` : ''}
 
     <section class="info-card">
       <h2>${T.others}</h2>
@@ -361,26 +441,43 @@ function hubPage(lang) {
     body: `    <h1>${T.hubTitle}</h1>
     <p class="storm-intro">${T.hubIntro(text => linkTo('/weather/', text))}</p>
 
-    <p class="city-actions"><a class="btn" href="${I18N.localUrl(lang, '/europe/', 'en')}">${T.europe}</a></p>
+    <p class="city-actions"><a class="btn" href="${L(lang, '/europe/')}">${T.europe}</a> <a class="btn" href="${L(lang, '/gradove/')}">${I18N.NAV[lang].cities} →</a></p>
 
     <div class="city-grid" id="cityList">
       ${CITIES.map(city => `<a href="${L(lang, `/vremeto/${city.slug}/`)}" class="city-tile" data-lat="${city.lat}" data-lon="${city.lon}"><span class="city-tile-name">${cityName(city, lang)}</span><span class="city-tile-temp"></span></a>`).join('\n      ')}
-    </div>`,
+    </div>${lang === 'bg' ? `
+
+    <section class="info-card">
+      <h2>${BG_ONLY.regionLinksH}</h2>
+      <div class="city-links">
+        ${Object.entries(BG_ONLY.regionLinks).map(([slug, text]) => `<a href="/vremeto/${slug}/" class="recent-place">${text}</a>`).join('\n        ')}
+      </div>
+    </section>` : ''}`,
     scripts: `<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`
   });
 }
 
 
-// /contacts/: where every number on the site comes from (sources, models, limits).
-// Text in sources-text.js: Bulgarian is the page itself, the other languages are
-// embedded as JSON and swapped in by a small script when the visitor's language differs.
+// /iztochnici/: where every number on the site comes from (sources, models, limits), in the five
+// languages (/iztochnici/, /en/iztochnici/ ...). Text in sources-text.js. The old address /contacts/
+// is a redirect (build-redirects.js).
 const SOURCES_TEXT = require('./sources-text.js');
 
-function sourcesContent(language) {
-  const link = (url, text, internal) => `<a href="${url}"${internal ? '' : ' target="_blank" rel="noopener"'}>${text}</a>`;
-  const t = SOURCES_TEXT[language](link);
-  return `    <h1>${t.title}</h1>
+function sourcesPage(lang) {
+  const link = (url, text, internal) => `<a href="${internal ? L(lang, url) : url}"${internal ? '' : ' target="_blank" rel="noopener"'}>${text}</a>`;
+  const t = SOURCES_TEXT[lang](link);
+  return page({
+    url: '/iztochnici/',
+    lang,
+    multi: true,
+    title: t.pageTitle,
+    description: t.description,
+    jsonLd: `  <script type="application/ld+json">
+  ${JSON.stringify({ '@context': 'https://schema.org', '@type': 'WebPage', name: t.pageTitle, url: `https://weatherpulse.eu${L(lang, '/iztochnici/')}`, inLanguage: lang, publisher: { '@type': 'Organization', name: 'Weather Pulse', url: 'https://weatherpulse.eu/' } })}
+  </script>
+`,
+    body: `    <h1>${t.title}</h1>
     <p class="storm-intro">${t.intro}</p>
 
     <section class="info-card">
@@ -420,40 +517,7 @@ ${t.limits.map(item => `        <li>${item}</li>`).join('\n')}
     <section class="info-card">
       <h2>${t.hContact}</h2>
       <p>${t.contact}</p>
-    </section>`;
-}
-
-function sourcesPage() {
-  const others = {};
-  const titles = { bg: SOURCES_TEXT.bg(() => '').pageTitle };
-  ['en', 'de', 'it', 'es'].forEach(language => {
-    others[language] = sourcesContent(language);
-    titles[language] = SOURCES_TEXT[language](() => '').pageTitle;
-  });
-  const data = JSON.stringify({ html: others, titles }).replace(/</g, '\u003c');
-  return page({
-    url: '/contacts/',
-    title: titles.bg,
-    description: 'Откъде са данните на Weather Pulse: прогнозата идва от Open-Meteo (модели ECMWF, ICON, GFS и др.), магнитните бури от NOAA, празниците от Nager.Date. Как се смята надеждността и какви са ограниченията.',
-    body: `<div id="sourcesContent">
-${sourcesContent('bg')}
-    </div>`,
-    scripts: `<script>
-  // Shows the page in the visitor's language (Bulgarian is the page itself)
-  (function () {
-    const box = document.getElementById('sourcesContent');
-    const texts = ${data};
-    const original = { html: box.innerHTML, title: document.title };
-    function show() {
-      const language = document.documentElement.lang;
-      const html = texts.html[language];
-      box.innerHTML = html || original.html;
-      document.title = (html ? texts.titles[language] + ' | Weather Pulse' : original.title);
-    }
-    show();
-    document.addEventListener('change', event => { if (event.target && event.target.id === 'language') show(); });
-  })();
-</script>\n`
+    </section>`
   });
 }
 
@@ -471,6 +535,24 @@ const FIXED = {
   'Christmas Day': '12-25',
   'Second day of Christmas': '12-26'
 };
+
+// The days off as the Labour Code has them (art. 154): a fixed-date holiday that falls on a
+// Saturday or Sunday gives the first working day after it (Easter days are not moved). Nager.Date
+// moves only some of them (in 2027 it keeps 1 May on a Saturday), so the dates are worked out
+// here from the nominal ones.
+function daysOff(holidays, year) {
+  const iso = d => d.toISOString().slice(0, 10);
+  const weekend = date => [0, 6].includes(new Date(date + 'T12:00:00Z').getUTCDay());
+  const list = holidays.map(h => ({ ...h, date: FIXED[h.name] ? `${year}-${FIXED[h.name]}` : h.date }));
+  const taken = new Set(list.filter(h => !weekend(h.date)).map(h => h.date));
+  return list.sort((a, b) => a.date.localeCompare(b.date)).map(h => {
+    if (!FIXED[h.name] || !weekend(h.date)) return h;
+    const d = new Date(h.date + 'T12:00:00Z');
+    do d.setUTCDate(d.getUTCDate() + 1); while (weekend(iso(d)) || taken.has(iso(d)));
+    taken.add(iso(d));
+    return { ...h, date: iso(d) };
+  }).sort((a, b) => a.date.localeCompare(b.date));
+}
 
 const localDate = (lang, date, options) => new Date(date + 'T12:00:00Z').toLocaleDateString(I18N.LOCALE[lang], { timeZone: 'UTC', ...options });
 
@@ -497,12 +579,22 @@ function holidayRows(holidays, year, lang) {
   }).join('\n');
 }
 
+// The answers of Nager.Date are kept in holidays-BG.json, so the pages can be built without it
+const HOLIDAY_FILE = path.join(__dirname, 'holidays-BG.json');
 async function fetchHolidays(years) {
-  return Promise.all(years.map(year =>
+  const saved = fs.existsSync(HOLIDAY_FILE) ? JSON.parse(fs.readFileSync(HOLIDAY_FILE, 'utf8')) : {};
+  const result = await Promise.all(years.map(year =>
     fetch(`https://date.nager.at/api/v3/PublicHolidays/${year}/BG`).then(response => {
       if (!response.ok) throw new Error(`Nager.Date ${year}: ${response.status}`);
       return response.json();
+    }).then(list => list.map(({ date, localName, name }) => ({ date, localName, name }))).catch(error => {
+      if (!saved[year]) throw error;
+      console.warn(`${error.message}; using holidays-BG.json for ${year}`);
+      return saved[year];
     })));
+  years.forEach((year, i) => { saved[year] = result[i]; });
+  fs.writeFileSync(HOLIDAY_FILE, JSON.stringify(saved, null, 1) + '\n');
+  return result;
 }
 
 function holidaysPage(years, data, lang) {
@@ -513,7 +605,7 @@ function holidaysPage(years, data, lang) {
       <table class="kp-table holiday-table">
         <thead><tr>${T.holidaysHead.map(h => `<th>${h}</th>`).join('')}</tr></thead>
         <tbody>
-${holidayRows(data[i], year, lang)}
+${holidayRows(daysOff(data[i], year), year, lang)}
         </tbody>
       </table>
     </section>`).join('\n');
@@ -533,7 +625,7 @@ ${tables}
 }
 
 // Used by build-climate.js (the city list); the pages are built only when run directly
-module.exports = { CITIES, page, write, VERSION, placeJson, climateSection, sunSection };
+module.exports = { CITIES, daysOff, page, write, redirect, VERSION, placeJson, climateSection, sunSection, bestTimeSection, nearbySection, joinList };
 if (require.main === module) (async function main() {
   const firstYear = Number(process.argv[2]) || new Date().getFullYear();
   const years = [firstYear, firstYear + 1];
@@ -543,22 +635,11 @@ if (require.main === module) (async function main() {
     CITIES.forEach(city => write(dir(`/vremeto/${city.slug}/`), cityPage(city, lang)));
     write(dir('/vremeto/'), hubPage(lang));
     write(dir('/praznici/'), holidaysPage(years, data, lang));
+    write(dir('/iztochnici/'), sourcesPage(lang));
   });
-  write('contacts', sourcesPage());
   console.log(`Wrote ${CITIES.length} city pages, /vremeto/ and /praznici/ (${years.join('–')}) in ${I18N.LANGS.length} languages.`);
 
-  if (process.argv.includes('--sitemap')) {
-    const today = new Date().toISOString().slice(0, 10);
-    const urls = I18N.LANGS.flatMap(lang => ['/vremeto/', '/praznici/', ...CITIES.map(city => `/vremeto/${city.slug}/`)].map(url => L(lang, url)));
-    const file = path.join(ROOT, 'sitemap.xml');
-    let sitemap = fs.readFileSync(file, 'utf8');
-    const nl = sitemap.includes('\r\n') ? '\r\n' : '\n';
-    const missing = urls.filter(url => !sitemap.includes(`https://weatherpulse.eu${url}<`));
-    const entries = missing.map(url => ['  <url>', `    <loc>https://weatherpulse.eu${url}</loc>`, `    <lastmod>${today}</lastmod>`, `    <priority>${url.replace(/^\/(en|de|it|es)\//, '/').split('/').length > 3 ? '0.6' : '0.7'}</priority>`, '  </url>', ''].join(nl)).join(nl);
-    sitemap = sitemap.replace('</urlset>', entries + '</urlset>');
-    fs.writeFileSync(file, sitemap);
-    console.log(`Added ${missing.length} URLs to sitemap.xml.`);
-  }
+  // The sitemap: node .github/scripts/build-sitemap.js
 })().catch(error => {
   console.error(error);
   process.exit(1);

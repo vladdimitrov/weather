@@ -1,16 +1,16 @@
 // Generates /za-saita/ (About) and /poveritelnost/ (Privacy) in the five languages
 // (/za-saita/, /en/za-saita/, /de/za-saita/ ...). Texts: text-static.js.
-// Run from the repository root: node .github/scripts/build-static.js [--sitemap]
+// Run from the repository root: node .github/scripts/build-static.js, then build-sitemap.js
 const fs = require('fs');
 const path = require('path');
 const I18N = require('./i18n.js');
-const { ABOUT, PRIVACY } = require('./text-static.js');
+const { ABOUT, PRIVACY, MAIL } = require('./text-static.js');
 const { page, write } = require('./build-pages.js');
 
 const ROOT = process.cwd();
 const L = (lang, url) => I18N.localUrl(lang, url);
 // Pages that exist per language; every other internal link goes to the page at the root (translated in the browser)
-const LOCALIZED = ['/luna/', '/nebeto/', '/za-saita/', '/poveritelnost/'];
+const LOCALIZED = ['/luna/', '/nebeto/', '/za-saita/', '/poveritelnost/', '/iztochnici/', '/gradove/'];
 const links = lang => ({
   i: (url, text) => `<a href="${LOCALIZED.includes(url) ? L(lang, url) : url}">${text}</a>`,
   x: (url, text) => `<a href="${url}" target="_blank" rel="noopener">${text}</a>`
@@ -26,6 +26,22 @@ function aboutPage(lang) {
     multi: true,
     title: T.title,
     description: T.description,
+    // Who is behind the site, as structured data (search engines look for a clear owner)
+    jsonLd: `  <script type="application/ld+json">
+  ${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'AboutPage', name: T.title, url: `https://weatherpulse.eu${L(lang, '/za-saita/')}`, inLanguage: lang, about: { '@id': 'https://weatherpulse.eu/#organization' } },
+      {
+        '@type': 'Organization', '@id': 'https://weatherpulse.eu/#organization', name: 'Weather Pulse', url: 'https://weatherpulse.eu/',
+        logo: 'https://weatherpulse.eu/images/icons/icon-512.png', email: MAIL,
+        parentOrganization: { '@type': 'Organization', name: 'VYZYA' },
+        contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: MAIL, availableLanguage: ['bg', 'en'] }
+      }
+    ]
+  })}
+  </script>
+`,
     body: `    <h1>${T.h1}</h1>
     <section class="info-card">
       <p>${T.lead}</p>
@@ -104,14 +120,4 @@ I18N.LANGS.forEach(lang => {
 });
 console.log(`Wrote /za-saita/ and /poveritelnost/ in ${I18N.LANGS.length} languages.`);
 
-if (process.argv.includes('--sitemap')) {
-  const today = new Date().toISOString().slice(0, 10);
-  const file = path.join(ROOT, 'sitemap.xml');
-  let sitemap = fs.readFileSync(file, 'utf8');
-  const nl = sitemap.includes('\r\n') ? '\r\n' : '\n';
-  const urls = I18N.LANGS.flatMap(lang => ['/za-saita/', '/poveritelnost/'].map(url => L(lang, url)));
-  const missing = urls.filter(url => !sitemap.includes(`https://weatherpulse.eu${url}<`));
-  const entries = missing.map(url => ['  <url>', `    <loc>https://weatherpulse.eu${url}</loc>`, `    <lastmod>${today}</lastmod>`, '    <priority>0.3</priority>', '  </url>', ''].join(nl)).join(nl);
-  fs.writeFileSync(file, sitemap.replace('</urlset>', entries + '</urlset>'));
-  console.log(`Added ${missing.length} URLs to sitemap.xml.`);
-}
+// The sitemap: node .github/scripts/build-sitemap.js

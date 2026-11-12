@@ -13,7 +13,7 @@
 // dictionaries of their scripts); the rest of the page is translated by its scripts when it
 // opens, as before.
 // Run after changing any of these pages or texts:
-//   node .github/scripts/build-main.js [--sitemap]
+//   node .github/scripts/build-main.js, then build-sitemap.js
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
@@ -210,6 +210,15 @@ function apps() {
       const title = `${T.title} | Weather Pulse`;
       let html = common(template, lang, url, { title, ogTitle: title, description: T.description, source: `${url}index.html`, pending: true });
       html = once(html, /(<h1\b[^>]*>)[^<]*(<\/h1>)/, (m, open, close) => open + esc(HEADING[url](lang)) + close, 'h1');
+      // The page and its place in the site as structured data, in the language of the page
+      html = once(html, /<script type="application\/ld\+json">[^<]*<\/script>/, () => {
+        const data = JSON.parse(template.match(/<script type="application\/ld\+json">([^<]*)<\/script>/)[1]);
+        const [web, crumbs] = data['@graph'];
+        Object.assign(web, { name: T.title, url: `${SITE}/${lang}${url}`, inLanguage: lang });
+        crumbs.itemListElement[0].item = `${SITE}/${lang}/`;
+        Object.assign(crumbs.itemListElement[1], { name: T.title, item: `${SITE}/${lang}${url}` });
+        return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
+      }, 'JSON-LD');
       write(url, lang, html, false);
     });
   });
@@ -220,14 +229,4 @@ storms();
 apps();
 console.log(`Wrote /, /magnitni-buri/, /weather/, /maps/ and /holliday_calendar/ in ${TARGETS.join(', ')}.`);
 
-if (process.argv.includes('--sitemap')) {
-  const today = new Date().toISOString().slice(0, 10);
-  const file = path.join(ROOT, 'sitemap.xml');
-  const sitemap = fs.readFileSync(file, 'utf8');
-  const nl = sitemap.includes('\r\n') ? '\r\n' : '\n';
-  const urls = OWN.flatMap(url => TARGETS.map(lang => `/${lang}${url}`));
-  const missing = urls.filter(url => !sitemap.includes(`${SITE}${url}<`));
-  const entries = missing.map(url => ['  <url>', `    <loc>${SITE}${url}</loc>`, `    <lastmod>${today}</lastmod>`, '    <priority>0.8</priority>', '  </url>', ''].join(nl)).join(nl);
-  fs.writeFileSync(file, sitemap.replace('</urlset>', entries + '</urlset>'));
-  console.log(`Added ${missing.length} URLs to sitemap.xml.`);
-}
+// The sitemap: node .github/scripts/build-sitemap.js
