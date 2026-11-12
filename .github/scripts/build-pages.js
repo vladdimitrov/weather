@@ -65,9 +65,14 @@ const CLIMATE = fs.existsSync(CLIMATE_FILE) ? JSON.parse(fs.readFileSync(CLIMATE
 const degrees = t => { const r = Math.round(t); return (r < 0 ? '−' : '') + Math.abs(r) + '°'; };
 const dayMonth = (lang, month, day) => new Intl.DateTimeFormat(I18N.LOCALE[lang], { timeZone: 'UTC', day: 'numeric', month: 'long' }).format(new Date(Date.UTC(2026, month, day, 12)));
 
-function climateSection(city, lang) {
-  const climate = CLIMATE && CLIMATE.cities[city.slug];
+// site: for pages other than the Bulgarian city pages (build-europe.js):
+//   { climate, years, name, where }   climate of the place, its years, its name and "in <name>"
+function climateSection(city, lang, site = {}) {
+  const climate = site.climate || (CLIMATE && CLIMATE.cities[city.slug]);
   if (!climate) return '';
+  const name = site.name || cityName(city, lang);
+  const where = site.where || cityWhere(city, lang);
+  const years = site.years || CLIMATE.years;
   const T = TXT[lang];
   const month = i => I18N.monthName(lang, i);
   const m = climate.months;
@@ -79,13 +84,13 @@ function climateSection(city, lang) {
   const rows = m.map((x, i) =>
     `          <tr><td>${month(i)}</td><td>${degrees(x.high)}</td><td>${degrees(x.low)}</td><td>${x.precip} ${T.mm}</td><td>${x.rainDays}</td></tr>`).join('\n');
   const text = T.climateText({
-    name: cityName(city, lang), elevation, warm: month(warmest), warmHigh: degrees(m[warmest].high), cold: month(coldest), coldLow: degrees(m[coldest].low),
+    name, elevation, warm: month(warmest), warmHigh: degrees(m[warmest].high), cold: month(coldest), coldLow: degrees(m[coldest].low),
     yearly: Math.round(yearly / 10) * 10, wet: month(wettest), wetMm: m[wettest].precip
   });
   return `
     <section class="info-card city-climate">
-      <h2>${T.climateH(cityWhere(city, lang))}</h2>
-      <p>${text}</p>${CITY_TEXT[city.slug] ? `
+      <h2>${T.climateH(where)}</h2>
+      <p>${text}</p>${!site.name && CITY_TEXT[city.slug] ? `
       <p>${CITY_TEXT[city.slug][lang]}</p>` : ''}
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -95,23 +100,29 @@ ${rows}
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">${T.climateNote(CLIMATE.years)}</p>
+      <p class="storm-updated">${T.climateNote(years)}</p>
     </section>`;
 }
 
 // Sunrise and sunset on the 15th of every month (computed locally, sun.js; Sofia time,
 // summer time included) and the longest and shortest day: text for searches like "изгрев София"
 const { sunTimes } = require('./sun.js');
-const sunClock = lang => new Intl.DateTimeFormat(I18N.LOCALE[lang], { timeZone: 'Europe/Sofia', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+const sunClock = (lang, zone = 'Europe/Sofia') => new Intl.DateTimeFormat(I18N.LOCALE[lang], { timeZone: zone, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
 const dayLength = (lang, sunrise, sunset) => {
   const minutes = Math.round((sunset - sunrise) / 60000);
   return TXT[lang].dayLength(Math.floor(minutes / 60), String(minutes % 60).padStart(2, '0'));
 };
 
-function sunSection(city, lang) {
+// site: for pages other than the Bulgarian city pages (build-europe.js):
+//   { zone, where, note }   time zone of the place, "in <name>" and the note under the table
+//                           (a function (year, link) -> text; the default says Bulgarian time)
+// Returns '' where the Sun does not rise or set on some of the days (the formulas are good to
+// about a minute up to latitude 65° only)
+function sunSection(city, lang, site = {}) {
   const T = TXT[lang];
-  const where = cityWhere(city, lang);
-  const clock = sunClock(lang);
+  const where = site.where || cityWhere(city, lang);
+  if (Math.abs(city.lat) > 65) return '';
+  const clock = sunClock(lang, site.zone);
   const year = new Date().getFullYear();
   const at = (month, day) => sunTimes(year, month, day, city.lat, city.lon);
   const rows = Array.from({ length: 12 }, (_, month) => {
@@ -136,7 +147,7 @@ ${rows}
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">${T.sunNote(year, text => linkTo(L(lang, '/luna/'), text))}</p>
+      <p class="storm-updated">${(site.note || T.sunNote)(year, text => linkTo(L(lang, '/luna/'), text))}</p>
     </section>`;
 }
 
@@ -521,7 +532,7 @@ ${tables}
 }
 
 // Used by build-climate.js (the city list); the pages are built only when run directly
-module.exports = { CITIES, page, write, VERSION, placeJson };
+module.exports = { CITIES, page, write, VERSION, placeJson, climateSection, sunSection };
 if (require.main === module) (async function main() {
   const firstYear = Number(process.argv[2]) || new Date().getFullYear();
   const years = [firstYear, firstYear + 1];

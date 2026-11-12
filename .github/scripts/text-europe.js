@@ -96,4 +96,13 @@ const EUROPE = {
   }
 };
 
-module.exports = { EUROPE };
+// Note under the sunrise and sunset table of a city page: local time of the place
+const SUN_NOTE = {
+  bg: (year, link) => `Часовете са по местно време (през лятото – лятно часово време) за ${year} г. Изчислени са по астрономически формули (Meeus, NOAA) и са проверени спрямо Open-Meteo с точност до около минута. Фазата на Луната: ${link('лунен календар')}.`,
+  en: (year, link) => `Times are local time (summer time in summer) for ${year}. Calculated with astronomical formulas (Meeus, NOAA) and checked against Open-Meteo to within about a minute. Moon phase: ${link('Moon calendar')}.`,
+  de: (year, link) => `Die Zeiten gelten in Ortszeit (im Sommer Sommerzeit) für ${year}. Berechnet mit astronomischen Formeln (Meeus, NOAA) und auf etwa eine Minute genau mit Open-Meteo abgeglichen. Mondphase: ${link('Mondkalender')}.`,
+  it: (year, link) => `Gli orari sono in ora locale (in estate ora legale) per il ${year}. Calcolati con formule astronomiche (Meeus, NOAA) e confrontati con Open-Meteo con una precisione di circa un minuto. Fase lunare: ${link('calendario lunare')}.`,
+  es: (year, link) => `Las horas son locales (horario de verano en verano) para ${year}. Calculadas con fórmulas astronómicas (Meeus, NOAA) y contrastadas con Open-Meteo con una precisión de aproximadamente un minuto. Fase lunar: ${link('calendario lunar')}.`
+};
+
+module.exports = { EUROPE, SUN_NOTE };
