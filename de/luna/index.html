@@ -23,7 +23,7 @@
   <meta property="og:title" content="Mondkalender – Mondphase heute">
   <meta property="og:description" content="Mondphase heute, beleuchteter Anteil und Termin des nächsten Voll- und Neumonds. Mondkalender nach Monaten für 2026 und 2027, in bulgarischer Zeit.">
   <meta property="og:url" content="https://weatherpulse.eu/de/luna/">
-  <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
+  <meta property="og:image" content="https://weatherpulse.eu/images/og-luna-de.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
@@ -43,6 +43,55 @@
         "position": 2,
         "name": "Mondkalender",
         "item": "https://weatherpulse.eu/de/luna/"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "de",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wann ist der nächste Vollmond und Neumond?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Der nächste Vollmond ist am 24. November 2026, 16:53, der nächste Neumond am 9. Dezember 2026, 02:51 (bulgarische Zeit)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie lange dauert der Mondzyklus?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Von einem Neumond zum nächsten vergehen im Mittel 29 Tage, 12 Stunden und 44 Minuten. Das ist der synodische Monat. Der Abstand zwischen zwei Neumonden kann einige Stunden kürzer oder länger sein, weil die Bahn des Mondes eine Ellipse ist."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Warum hat der Mond Phasen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Der Mond leuchtet nicht selbst, er reflektiert Sonnenlicht. Während er die Erde umkreist, ist von hier aus ein anderer Teil seiner beleuchteten Hälfte zu sehen: von einer schmalen Sichel über das erste Viertel und den Vollmond bis zum letzten Viertel und wieder zum Neumond."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was ist ein Supermond?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ein Supermond ist ein Vollmond, der mit dem Perigäum zusammenfällt, dem erdnächsten Punkt der Mondbahn (etwa 356.000 km, gegenüber 406.000 km im Apogäum). Er wirkt bis zu etwa 14 % größer und 30 % heller als der fernste Vollmond."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Was ist ein Blauer Mond?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ein Blauer Mond ist der zweite Vollmond in einem Kalendermonat. Er ist nicht blau gefärbt. In diesen zwei Jahren gibt es keinen Blauen Mond."
+        }
       }
     ]
   }
@@ -67,7 +116,7 @@
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
-  <link rel="stylesheet" href="/css/luna.css?v=3">
+  <link rel="stylesheet" href="/css/luna.css?v=4">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
@@ -92,7 +141,7 @@
 
     <section class="info-card moon-today" id="moonToday">
       <div class="moon-hero">
-        <div class="moon-hero-disc"><svg class="moon-svg" viewBox="0 0 100 100" width="190" height="190" role="img" aria-label="Zunehmende Sichel"><title>Zunehmende Sichel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A36.94 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg></div>
+        <div class="moon-hero-disc"><svg class="moon-svg" viewBox="0 0 100 100" width="190" height="190" role="img" aria-label="Zunehmende Sichel"><title>Zunehmende Sichel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A36.86 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg></div>
         <div class="moon-hero-text">
           <h2>Zunehmende Sichel</h2>
           <p class="moon-hero-sub">Donnerstag, 12. November 2026 · Der Mond nimmt zu</p>
@@ -116,24 +165,24 @@
       </div>
       <h3 class="moon-sub">Der Mond in den nächsten 14 Tagen</h3>
       <div class="moon-strip">
-        <div class="moon-strip-day is-today"><span>Do</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Zunehmende Sichel"><title>Zunehmende Sichel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A36.94 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>12</strong><em>12%</em></div>
-        <div class="moon-strip-day"><span>Fr</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Zunehmende Sichel"><title>Zunehmende Sichel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A30.51 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>13</strong><em>18%</em></div>
-        <div class="moon-strip-day"><span>Sa</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Zunehmende Sichel"><title>Zunehmende Sichel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A23.02 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>14</strong><em>26%</em></div>
-        <div class="moon-strip-day"><span>So</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Erstes Viertel"><title>Erstes Viertel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A14.69 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>15</strong><em>35%</em></div>
-        <div class="moon-strip-day"><span>Mo</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Erstes Viertel"><title>Erstes Viertel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A5.74 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>16</strong><em>44%</em></div>
-        <div class="moon-strip-day"><span>Di</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Erstes Viertel"><title>Erstes Viertel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A3.59 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>17</strong><em>54%</em></div>
-        <div class="moon-strip-day"><span>Mi</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Erstes Viertel"><title>Erstes Viertel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A13.03 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>18</strong><em>64%</em></div>
-        <div class="moon-strip-day"><span>Do</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Zunehmender Mond"><title>Zunehmender Mond</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A22.23 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>19</strong><em>73%</em></div>
-        <div class="moon-strip-day"><span>Fr</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Zunehmender Mond"><title>Zunehmender Mond</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A30.77 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>20</strong><em>82%</em></div>
-        <div class="moon-strip-day"><span>Sa</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Zunehmender Mond"><title>Zunehmender Mond</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A38.14 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>21</strong><em>90%</em></div>
-        <div class="moon-strip-day"><span>So</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Zunehmender Mond"><title>Zunehmender Mond</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A43.77 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>22</strong><em>96%</em></div>
-        <div class="moon-strip-day"><span>Mo</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Vollmond"><title>Vollmond</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A47.17 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>23</strong><em>99%</em></div>
-        <div class="moon-strip-day"><span>Di</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Vollmond"><title>Vollmond</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A47.93 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>24</strong><em>100%</em></div>
-        <div class="moon-strip-day"><span>Mi</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Vollmond"><title>Vollmond</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A45.88 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>25</strong><em>98%</em></div>
+        <div class="moon-strip-day is-today"><span>Do</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Zunehmende Sichel"><title>Zunehmende Sichel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A36.86 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>12</strong><em>12%</em></div>
+        <div class="moon-strip-day"><span>Fr</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Zunehmende Sichel"><title>Zunehmende Sichel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A30.41 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>13</strong><em>18%</em></div>
+        <div class="moon-strip-day"><span>Sa</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Zunehmende Sichel"><title>Zunehmende Sichel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A22.91 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>14</strong><em>26%</em></div>
+        <div class="moon-strip-day"><span>So</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Erstes Viertel"><title>Erstes Viertel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A14.57 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>15</strong><em>35%</em></div>
+        <div class="moon-strip-day"><span>Mo</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Erstes Viertel"><title>Erstes Viertel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A5.61 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>16</strong><em>44%</em></div>
+        <div class="moon-strip-day"><span>Di</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Erstes Viertel"><title>Erstes Viertel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A3.72 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>17</strong><em>54%</em></div>
+        <div class="moon-strip-day"><span>Mi</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Erstes Viertel"><title>Erstes Viertel</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A13.16 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>18</strong><em>64%</em></div>
+        <div class="moon-strip-day"><span>Do</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Zunehmender Mond"><title>Zunehmender Mond</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A22.36 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>19</strong><em>73%</em></div>
+        <div class="moon-strip-day"><span>Fr</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Zunehmender Mond"><title>Zunehmender Mond</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A30.89 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>20</strong><em>82%</em></div>
+        <div class="moon-strip-day"><span>Sa</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Zunehmender Mond"><title>Zunehmender Mond</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A38.23 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>21</strong><em>90%</em></div>
+        <div class="moon-strip-day"><span>So</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Zunehmender Mond"><title>Zunehmender Mond</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A43.84 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>22</strong><em>96%</em></div>
+        <div class="moon-strip-day"><span>Mo</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Vollmond"><title>Vollmond</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A47.20 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>23</strong><em>99%</em></div>
+        <div class="moon-strip-day"><span>Di</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Vollmond"><title>Vollmond</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A47.92 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>24</strong><em>100%</em></div>
+        <div class="moon-strip-day"><span>Mi</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Vollmond"><title>Vollmond</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A45.83 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>25</strong><em>98%</em></div>
       </div>
     </section>
 
-    <p class="city-actions"><a class="btn" href="/de/luna/2026/noemvri/">Dieser Monat</a> <a class="btn" href="/de/luna/2026/">Mondkalender 2026</a> <a class="btn" href="/de/luna/2027/">Mondkalender 2027</a></p>
+    <p class="city-actions"><a class="btn" href="/de/luna/2026/noemvri/">Dieser Monat</a> <a class="btn" href="/de/luna/2026/">Mondkalender 2026</a> <a class="btn" href="/de/luna/2027/">Mondkalender 2027</a> <a class="btn" href="/de/luna/2026/pylnolunie/">Vollmond 2026</a> <a class="btn" href="/de/luna/2026/novolunie/">Neumond 2026</a> <button type="button" class="btn" id="moonShare" data-copied="✓ Link kopiert">📤 Teilen</button></p>
 
     <section class="info-card">
       <h2>Mondkalender 2026 nach Monaten</h2>
@@ -171,6 +220,13 @@
       </div>
     </section>
 
+    <section class="info-card moon-subscribe">
+      <h2>Der Mondkalender in Ihrem Kalender</h2>
+      <p>Abonnieren Sie ihn, und alle Mondphasen für 2026–2027 erscheinen in Ihrem Google-, Apple- oder Outlook-Kalender, zur genauen Uhrzeit in Ihrer Zeitzone. Der Kalender wird jedes Jahr erweitert.</p>
+      <p class="city-actions"><a class="btn" href="webcal://weatherpulse.eu/de/luna/moon-phases.ics">📅 Abonnieren</a> <a class="btn" href="/de/luna/moon-phases.ics" download>.ics herunterladen</a></p>
+      <p class="storm-updated">Google Kalender: „Weitere Kalender“ → „Per URL“ und die Adresse einfügen: <code>https://weatherpulse.eu/de/luna/moon-phases.ics</code></p>
+    </section>
+
     <section class="info-card moon-sky">
       <h2>Der Himmel</h2>
       <p>Kommende Ereignisse am Himmel: Meteorströme, Finsternisse und Supermonde.</p>
@@ -186,6 +242,15 @@
       <p>Der Mond leuchtet nicht selbst: Wir sehen den Teil, der von der Sonne beleuchtet wird. Während er die Erde umkreist, ändert sich der Winkel zwischen Sonne, Erde und Mond, und von der Erde aus ist ein anderer Anteil seiner beleuchteten Hälfte zu sehen. Das sind die Mondphasen.</p>
       <p>Der ganze Zyklus von Neumond zu Neumond (der synodische Monat) dauert im Mittel 29 Tage, 12 Stunden und 44 Minuten. Nach dem Neumond nimmt der Mond zu: eine schmale Sichel am westlichen Abendhimmel, nach etwa einer Woche das erste Viertel und nach etwa zwei Wochen der Vollmond. Danach nimmt er über das letzte Viertel bis zum nächsten Neumond ab. Von der Nordhalbkugel aus ist der zunehmende Mond rechts beleuchtet, der abnehmende links.</p>
       <p>Auch die Entfernung zum Mond ändert sich, denn seine Bahn ist eine Ellipse: von etwa 356.000 km im Perigäum bis etwa 406.000 km im Apogäum. Fällt ein Vollmond in die Nähe des Perigäums, erscheint der Mond etwas größer und heller – man spricht von einem „Supermond“.</p>
+    </section>
+
+    <section class="info-card moon-faq">
+      <h2>Häufige Fragen zum Mond</h2>
+      <details class="moon-q"><summary>Wann ist der nächste Vollmond und Neumond?</summary><p>Der nächste Vollmond ist am 24. November 2026, 16:53, der nächste Neumond am 9. Dezember 2026, 02:51 (bulgarische Zeit).</p></details>
+      <details class="moon-q"><summary>Wie lange dauert der Mondzyklus?</summary><p>Von einem Neumond zum nächsten vergehen im Mittel 29 Tage, 12 Stunden und 44 Minuten. Das ist der synodische Monat. Der Abstand zwischen zwei Neumonden kann einige Stunden kürzer oder länger sein, weil die Bahn des Mondes eine Ellipse ist.</p></details>
+      <details class="moon-q"><summary>Warum hat der Mond Phasen?</summary><p>Der Mond leuchtet nicht selbst, er reflektiert Sonnenlicht. Während er die Erde umkreist, ist von hier aus ein anderer Teil seiner beleuchteten Hälfte zu sehen: von einer schmalen Sichel über das erste Viertel und den Vollmond bis zum letzten Viertel und wieder zum Neumond.</p></details>
+      <details class="moon-q"><summary>Was ist ein Supermond?</summary><p>Ein Supermond ist ein Vollmond, der mit dem Perigäum zusammenfällt, dem erdnächsten Punkt der Mondbahn (etwa 356.000 km, gegenüber 406.000 km im Apogäum). Er wirkt bis zu etwa 14 % größer und 30 % heller als der fernste Vollmond.</p></details>
+      <details class="moon-q"><summary>Was ist ein Blauer Mond?</summary><p>Ein Blauer Mond ist der zweite Vollmond in einem Kalendermonat. Er ist nicht blau gefärbt. In diesen zwei Jahren gibt es keinen Blauen Mond.</p></details>
     </section>
 
     <section class="info-card">
@@ -218,7 +283,7 @@
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/moon-view.js?v=1" defer></script>
 <script src="/js/place-context.js?v=1" defer></script>
-<script src="/js/luna-today.js?v=4" defer></script>
+<script src="/js/luna-today.js?v=5" defer></script>
 <script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

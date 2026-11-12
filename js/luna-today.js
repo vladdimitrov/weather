@@ -20,6 +20,26 @@
     PlaceContext.timeZone(place).then(value => { zone = value; render(); });
   }
 
+  // Share: the system share sheet where there is one, else the link is copied
+  const share = document.getElementById('moonShare');
+  if (share) {
+    const label = share.textContent;
+    share.addEventListener('click', async () => {
+      const url = location.origin + location.pathname;
+      if (navigator.share) {
+        try { await navigator.share({ title: document.title, url }); } catch (e) { /* cancelled */ }
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(url);
+        share.textContent = share.dataset.copied || '✓';
+        setTimeout(() => { share.textContent = label; }, 2000);
+      } catch (e) {
+        window.prompt('', url);
+      }
+    });
+  }
+
   render();
   useZone();
   document.addEventListener('placechange', useZone);

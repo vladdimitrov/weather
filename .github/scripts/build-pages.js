@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 61, mobileNav: 19, languageSelector: 7, cityForecast: 12, moon: 2, lunaToday: 4, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
+const VERSION = { theme: 61, mobileNav: 19, languageSelector: 7, cityForecast: 12, moon: 2, lunaToday: 5, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
 
 const CITIES = require('./bg-cities.js');
 
@@ -200,8 +200,9 @@ const NAV_EN = I18N.NAV.en;
 // other languages the page is "noindex, follow" and not in the sitemap, and hreflang lists only
 // the indexed ones; the language switcher still finds every translation in data-alt.
 // head: extra lines for the <head>, after the site stylesheets (a stylesheet of one page family)
+// image: the share image of the page (1200x630), default /images/og-image.png
 // langs: the languages in which the page exists (default: all five; ['bg'] for Bulgarian-only pages)
-function page({ url, title, description, body, scripts = '', jsonLd = '', head = '', lang = 'bg', multi = false, base = 'bg', langs = I18N.LANGS, indexed = langs }) {
+function page({ url, title, description, body, scripts = '', jsonLd = '', head = '', image = '/images/og-image.png', lang = 'bg', multi = false, base = 'bg', langs = I18N.LANGS, indexed = langs }) {
   const fixed = multi || lang === 'en';
   const NAV = I18N.NAV[lang];
   const nav = key => NAV[key];
@@ -250,7 +251,7 @@ ${alternates}${noindex ? '  <meta name="robots" content="noindex, follow">\n' : 
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
   <meta property="og:url" content="https://weatherpulse.eu${pageUrl}">
-  <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
+  <meta property="og:image" content="https://weatherpulse.eu${image}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">

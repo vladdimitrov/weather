@@ -23,7 +23,7 @@
   <meta property="og:title" content="Moon calendar – today's Moon phase">
   <meta property="og:description" content="Today's Moon phase, illuminated part, and when the next full moon and new moon are. Moon calendar by month for 2026 and 2027, in Bulgarian time.">
   <meta property="og:url" content="https://weatherpulse.eu/en/luna/">
-  <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
+  <meta property="og:image" content="https://weatherpulse.eu/images/og-luna-en.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
@@ -43,6 +43,55 @@
         "position": 2,
         "name": "Moon calendar",
         "item": "https://weatherpulse.eu/en/luna/"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "en",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "When is the next full moon and new moon?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The next full moon is on 24 November 2026, 16:53 and the next new moon on 9 December 2026, 02:51 (Bulgarian time)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long is the lunar cycle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "From one new moon to the next takes 29 days, 12 hours and 44 minutes on average. This is called the synodic month. The time between two new moons can be a few hours shorter or longer, because the Moon's orbit is an ellipse."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the Moon have phases?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Moon does not shine by itself, it reflects sunlight. As it goes around the Earth, a different part of its lit half is seen from here: from a thin crescent through the first quarter and the full moon to the last quarter and the new moon again."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a supermoon?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A supermoon is a full moon that coincides with perigee, the closest point of the Moon's orbit (about 356,000 km, against 406,000 km at apogee). It looks up to about 14% larger and 30% brighter than the farthest full moon."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a blue moon?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A blue moon is the second full moon in one calendar month. It is not blue in colour. There is no blue moon in these two years."
+        }
       }
     ]
   }
@@ -67,7 +116,7 @@
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
-  <link rel="stylesheet" href="/css/luna.css?v=3">
+  <link rel="stylesheet" href="/css/luna.css?v=4">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
@@ -92,7 +141,7 @@
 
     <section class="info-card moon-today" id="moonToday">
       <div class="moon-hero">
-        <div class="moon-hero-disc"><svg class="moon-svg" viewBox="0 0 100 100" width="190" height="190" role="img" aria-label="Waxing crescent"><title>Waxing crescent</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A36.94 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg></div>
+        <div class="moon-hero-disc"><svg class="moon-svg" viewBox="0 0 100 100" width="190" height="190" role="img" aria-label="Waxing crescent"><title>Waxing crescent</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A36.86 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg></div>
         <div class="moon-hero-text">
           <h2>Waxing crescent</h2>
           <p class="moon-hero-sub">Thursday, 12 November 2026 · The Moon is waxing</p>
@@ -116,24 +165,24 @@
       </div>
       <h3 class="moon-sub">The Moon in the next 14 days</h3>
       <div class="moon-strip">
-        <div class="moon-strip-day is-today"><span>Thu</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Waxing crescent"><title>Waxing crescent</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A36.94 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>12</strong><em>12%</em></div>
-        <div class="moon-strip-day"><span>Fri</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Waxing crescent"><title>Waxing crescent</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A30.51 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>13</strong><em>18%</em></div>
-        <div class="moon-strip-day"><span>Sat</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Waxing crescent"><title>Waxing crescent</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A23.02 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>14</strong><em>26%</em></div>
-        <div class="moon-strip-day"><span>Sun</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="First quarter"><title>First quarter</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A14.69 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>15</strong><em>35%</em></div>
-        <div class="moon-strip-day"><span>Mon</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="First quarter"><title>First quarter</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A5.74 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>16</strong><em>44%</em></div>
-        <div class="moon-strip-day"><span>Tue</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="First quarter"><title>First quarter</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A3.59 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>17</strong><em>54%</em></div>
-        <div class="moon-strip-day"><span>Wed</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="First quarter"><title>First quarter</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A13.03 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>18</strong><em>64%</em></div>
-        <div class="moon-strip-day"><span>Thu</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Waxing gibbous"><title>Waxing gibbous</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A22.23 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>19</strong><em>73%</em></div>
-        <div class="moon-strip-day"><span>Fri</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Waxing gibbous"><title>Waxing gibbous</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A30.77 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>20</strong><em>82%</em></div>
-        <div class="moon-strip-day"><span>Sat</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Waxing gibbous"><title>Waxing gibbous</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A38.14 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>21</strong><em>90%</em></div>
-        <div class="moon-strip-day"><span>Sun</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Waxing gibbous"><title>Waxing gibbous</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A43.77 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>22</strong><em>96%</em></div>
-        <div class="moon-strip-day"><span>Mon</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Full moon"><title>Full moon</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A47.17 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>23</strong><em>99%</em></div>
-        <div class="moon-strip-day"><span>Tue</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Full moon"><title>Full moon</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A47.93 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>24</strong><em>100%</em></div>
-        <div class="moon-strip-day"><span>Wed</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Full moon"><title>Full moon</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A45.88 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>25</strong><em>98%</em></div>
+        <div class="moon-strip-day is-today"><span>Thu</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Waxing crescent"><title>Waxing crescent</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A36.86 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>12</strong><em>12%</em></div>
+        <div class="moon-strip-day"><span>Fri</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Waxing crescent"><title>Waxing crescent</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A30.41 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>13</strong><em>18%</em></div>
+        <div class="moon-strip-day"><span>Sat</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Waxing crescent"><title>Waxing crescent</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A22.91 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>14</strong><em>26%</em></div>
+        <div class="moon-strip-day"><span>Sun</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="First quarter"><title>First quarter</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A14.57 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>15</strong><em>35%</em></div>
+        <div class="moon-strip-day"><span>Mon</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="First quarter"><title>First quarter</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A5.61 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>16</strong><em>44%</em></div>
+        <div class="moon-strip-day"><span>Tue</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="First quarter"><title>First quarter</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A3.72 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>17</strong><em>54%</em></div>
+        <div class="moon-strip-day"><span>Wed</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="First quarter"><title>First quarter</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A13.16 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>18</strong><em>64%</em></div>
+        <div class="moon-strip-day"><span>Thu</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Waxing gibbous"><title>Waxing gibbous</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A22.36 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>19</strong><em>73%</em></div>
+        <div class="moon-strip-day"><span>Fri</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Waxing gibbous"><title>Waxing gibbous</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A30.89 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>20</strong><em>82%</em></div>
+        <div class="moon-strip-day"><span>Sat</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Waxing gibbous"><title>Waxing gibbous</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A38.23 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>21</strong><em>90%</em></div>
+        <div class="moon-strip-day"><span>Sun</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Waxing gibbous"><title>Waxing gibbous</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A43.84 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>22</strong><em>96%</em></div>
+        <div class="moon-strip-day"><span>Mon</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Full moon"><title>Full moon</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A47.20 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>23</strong><em>99%</em></div>
+        <div class="moon-strip-day"><span>Tue</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Full moon"><title>Full moon</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A47.92 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>24</strong><em>100%</em></div>
+        <div class="moon-strip-day"><span>Wed</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Full moon"><title>Full moon</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A45.83 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>25</strong><em>98%</em></div>
       </div>
     </section>
 
-    <p class="city-actions"><a class="btn" href="/en/luna/2026/noemvri/">This month</a> <a class="btn" href="/en/luna/2026/">Moon calendar 2026</a> <a class="btn" href="/en/luna/2027/">Moon calendar 2027</a></p>
+    <p class="city-actions"><a class="btn" href="/en/luna/2026/noemvri/">This month</a> <a class="btn" href="/en/luna/2026/">Moon calendar 2026</a> <a class="btn" href="/en/luna/2027/">Moon calendar 2027</a> <a class="btn" href="/en/luna/2026/pylnolunie/">Full moons 2026</a> <a class="btn" href="/en/luna/2026/novolunie/">New moons 2026</a> <button type="button" class="btn" id="moonShare" data-copied="✓ Link copied">📤 Share</button></p>
 
     <section class="info-card">
       <h2>Moon calendar 2026 by month</h2>
@@ -171,6 +220,13 @@
       </div>
     </section>
 
+    <section class="info-card moon-subscribe">
+      <h2>The Moon calendar in your calendar</h2>
+      <p>Subscribe and all phases of the Moon for 2026–2027 will be in your Google, Apple or Outlook calendar, at the exact time in your time zone. The calendar is extended every year.</p>
+      <p class="city-actions"><a class="btn" href="webcal://weatherpulse.eu/en/luna/moon-phases.ics">📅 Subscribe</a> <a class="btn" href="/en/luna/moon-phases.ics" download>Download .ics</a></p>
+      <p class="storm-updated">Google Calendar: "Other calendars" → "From URL" and paste the address: <code>https://weatherpulse.eu/en/luna/moon-phases.ics</code></p>
+    </section>
+
     <section class="info-card moon-sky">
       <h2>The sky</h2>
       <p>Coming events in the sky: meteor showers, eclipses and supermoons.</p>
@@ -186,6 +242,15 @@
       <p>The Moon does not shine by itself: we see the part of it that is lit by the Sun. As it goes around the Earth, the angle between the Sun, the Earth and the Moon changes, and a different share of its lit half is seen from the Earth. Those are the phases.</p>
       <p>The full cycle from one new moon to the next (the synodic month) lasts 29 days, 12 hours and 44 minutes on average. After the new moon the Moon waxes: a thin crescent in the western evening sky, the first quarter after about a week and the full moon after about two. Then it wanes through the last quarter to the next new moon. From the northern hemisphere the waxing Moon is lit on the right and the waning Moon on the left.</p>
       <p>The distance to the Moon changes too, because its orbit is an ellipse: from about 356,000 km at perigee to about 406,000 km at apogee. When a full moon falls near perigee the Moon looks a little larger and brighter, which is called a "supermoon".</p>
+    </section>
+
+    <section class="info-card moon-faq">
+      <h2>Frequently asked questions about the Moon</h2>
+      <details class="moon-q"><summary>When is the next full moon and new moon?</summary><p>The next full moon is on 24 November 2026, 16:53 and the next new moon on 9 December 2026, 02:51 (Bulgarian time).</p></details>
+      <details class="moon-q"><summary>How long is the lunar cycle?</summary><p>From one new moon to the next takes 29 days, 12 hours and 44 minutes on average. This is called the synodic month. The time between two new moons can be a few hours shorter or longer, because the Moon's orbit is an ellipse.</p></details>
+      <details class="moon-q"><summary>Why does the Moon have phases?</summary><p>The Moon does not shine by itself, it reflects sunlight. As it goes around the Earth, a different part of its lit half is seen from here: from a thin crescent through the first quarter and the full moon to the last quarter and the new moon again.</p></details>
+      <details class="moon-q"><summary>What is a supermoon?</summary><p>A supermoon is a full moon that coincides with perigee, the closest point of the Moon's orbit (about 356,000 km, against 406,000 km at apogee). It looks up to about 14% larger and 30% brighter than the farthest full moon.</p></details>
+      <details class="moon-q"><summary>What is a blue moon?</summary><p>A blue moon is the second full moon in one calendar month. It is not blue in colour. There is no blue moon in these two years.</p></details>
     </section>
 
     <section class="info-card">
@@ -218,7 +283,7 @@
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/moon-view.js?v=1" defer></script>
 <script src="/js/place-context.js?v=1" defer></script>
-<script src="/js/luna-today.js?v=4" defer></script>
+<script src="/js/luna-today.js?v=5" defer></script>
 <script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

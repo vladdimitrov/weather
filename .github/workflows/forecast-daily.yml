@@ -46,13 +46,16 @@ jobs:
       - name: Write the storm forecast
         continue-on-error: true
         run: node .github/scripts/build-storms.js
+      # the Moon calendar hub: today's Moon and the next phases in the HTML (and the .ics file)
+      - name: Write the Moon calendar
+        run: node .github/scripts/build-luna.js
       - name: Update the sitemap
         run: node .github/scripts/build-sitemap.js
       - run: node .github/scripts/check-site.js
       - name: Commit
         id: commit
         run: |
-          git add vremeto en/vremeto de/vremeto it/vremeto es/vremeto europe en/europe de/europe it/europe es/europe magnitni-buri en/magnitni-buri de/magnitni-buri it/magnitni-buri es/magnitni-buri sitemap.xml .github/scripts/sitemap-hashes.json .github/scripts/storms-data.json
+          git add vremeto en/vremeto de/vremeto it/vremeto es/vremeto europe en/europe de/europe it/europe es/europe magnitni-buri en/magnitni-buri de/magnitni-buri it/magnitni-buri es/magnitni-buri luna en/luna de/luna it/luna es/luna sitemap.xml .github/scripts/sitemap-hashes.json .github/scripts/storms-data.json
           if git diff --cached --quiet; then
             echo "Nothing changed."; exit 0
           fi
