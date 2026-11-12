@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 60, mobileNav: 18, languageSelector: 7, cityForecast: 12, moon: 2, lunaToday: 3, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
+const VERSION = { theme: 60, mobileNav: 18, languageSelector: 7, cityForecast: 12, moon: 2, lunaToday: 4, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
 
 const CITIES = require('./bg-cities.js');
 
@@ -198,8 +198,9 @@ const NAV_EN = I18N.NAV.en;
 // indexed: the languages in which search engines should index the page (default: all). In the
 // other languages the page is "noindex, follow" and not in the sitemap, and hreflang lists only
 // the indexed ones; the language switcher still finds every translation in data-alt.
+// head: extra lines for the <head>, after the site stylesheets (a stylesheet of one page family)
 // langs: the languages in which the page exists (default: all five; ['bg'] for Bulgarian-only pages)
-function page({ url, title, description, body, scripts = '', jsonLd = '', lang = 'bg', multi = false, base = 'bg', langs = I18N.LANGS, indexed = langs }) {
+function page({ url, title, description, body, scripts = '', jsonLd = '', head = '', lang = 'bg', multi = false, base = 'bg', langs = I18N.LANGS, indexed = langs }) {
   const fixed = multi || lang === 'en';
   const NAV = I18N.NAV[lang];
   const nav = key => NAV[key];
@@ -265,7 +266,7 @@ ${languageScript}
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/theme.css?v=${VERSION.theme}">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
-</head>
+${head}</head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
   <div class="nav-header" tabindex="-1" id="header">
