@@ -33,9 +33,11 @@
   }
 
   // First visit (nothing chosen yet): the language of the browser, English when the site does not
-  // have it. Search engines and other robots keep the Bulgarian original.
+  // have it. Search engines and other robots keep the Bulgarian original, and so does a device in
+  // the Bulgarian time zone: many people in Bulgaria use an English phone.
   function browserLanguage() {
     if (/bot|crawl|spider|slurp|lighthouse|headless|preview/i.test(navigator.userAgent || '')) return null;
+    try { if (Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Sofia') return null; } catch (e) { /* no Intl: go on */ }
     const wanted = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || '']).map(code => String(code).slice(0, 2).toLowerCase());
     const match = wanted.find(code => languages.some(lang => lang.value === code));
     return match || (wanted[0] ? 'en' : null);

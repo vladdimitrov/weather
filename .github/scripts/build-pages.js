@@ -255,7 +255,7 @@ ${body}
 ${(FOOTER_TEXT = { about: NAV.about, privacy: NAV.privacy }, LOGO = I18N.LOGO_ALT[lang], FOOTER_URLS = multi ? { about: I18N.localUrl(lang, '/za-saita/'), privacy: I18N.localUrl(lang, '/poveritelnost/') } : { about: '/za-saita/', privacy: '/poveritelnost/' }, footer())}
 
 <script src="/js/mobile-nav.js?v=${VERSION.mobileNav}" defer></script>
-<script src="/js/language-selector.js?v=5" defer></script>
+<script src="/js/language-selector.js?v=6" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 ${scripts}</body>
 </html>

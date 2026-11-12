@@ -67,8 +67,10 @@
         const languages = ['en', 'de', 'it', 'es'];
         let wanted = localStorage.getItem('selectedLanguage');
         // First visit: the language of the browser (English if the site does not have it), as
-        // /js/language-selector.js does on the other pages. Robots keep the Bulgarian page.
-        if (wanted === null && !/bot|crawl|spider|slurp|lighthouse|headless|preview/i.test(navigator.userAgent || '')) {
+        // /js/language-selector.js does on the other pages. Robots keep the Bulgarian page, and so
+        // does a device in the Bulgarian time zone: many people in Bulgaria use an English phone.
+        const inBulgaria = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Sofia';
+        if (wanted === null && !inBulgaria && !/bot|crawl|spider|slurp|lighthouse|headless|preview/i.test(navigator.userAgent || '')) {
           const browser = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || '']).map(code => String(code).slice(0, 2).toLowerCase());
           wanted = browser.find(code => code === 'bg' || languages.includes(code)) || (browser[0] ? 'en' : null);
         }
@@ -198,7 +200,7 @@
   </footer>
 
 <script src="/js/mobile-nav.js?v=17"></script>
-<script src="/js/language-selector.js?v=5"></script>
+<script src="/js/language-selector.js?v=6"></script>
 <script src="/js/background-selector.js?v=3"></script>
 <script src="/js/storm-page.js?v=4"></script>
 </body>
