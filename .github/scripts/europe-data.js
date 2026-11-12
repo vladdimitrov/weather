@@ -28,7 +28,16 @@ module.exports = [
   { slug: 'germany', en: 'Germany', code: 'DE', word: 'Wetter', cities: [
     ['berlin', 'Berlin', 'Berlin', 52.5200, 13.4050], ['hamburg', 'Hamburg', 'Hamburg', 53.5511, 9.9937], ['munich', 'Munich', 'München', 48.1351, 11.5820], ['cologne', 'Cologne', 'Köln', 50.9375, 6.9603], ['frankfurt', 'Frankfurt', 'Frankfurt', 50.1109, 8.6821], ['stuttgart', 'Stuttgart', 'Stuttgart', 48.7758, 9.1829], ['dresden', 'Dresden', 'Dresden', 51.0504, 13.7373] ] },
   { slug: 'greece', en: 'Greece', code: 'GR', word: 'Καιρός', cities: [
-    ['athens', 'Athens', 'Αθήνα', 37.9838, 23.7275], ['thessaloniki', 'Thessaloniki', 'Θεσσαλονίκη', 40.6401, 22.9444], ['patras', 'Patras', 'Πάτρα', 38.2466, 21.7346], ['heraklion', 'Heraklion', 'Ηράκλειο', 35.3387, 25.1442], ['rhodes', 'Rhodes', 'Ρόδος', 36.4341, 28.2176] ] },
+    ['athens', 'Athens', 'Αθήνα', 37.9838, 23.7275], ['thessaloniki', 'Thessaloniki', 'Θεσσαλονίκη', 40.6401, 22.9444], ['patras', 'Patras', 'Πάτρα', 38.2466, 21.7346], ['heraklion', 'Heraklion', 'Ηράκλειο', 35.3387, 25.1442], ['rhodes', 'Rhodes', 'Ρόδος', 36.4341, 28.2176],
+    // resorts: Northern Greece (most visited from Bulgaria), the islands and the mainland
+    ['kavala', 'Kavala', 'Καβάλα', 40.9396, 24.4069], ['thassos', 'Thassos', 'Θάσος', 40.7790, 24.7090], ['keramoti', 'Keramoti', 'Κεραμωτή', 40.8560, 24.7040],
+    ['alexandroupoli', 'Alexandroupoli', 'Αλεξανδρούπολη', 40.8457, 25.8730], ['asprovalta', 'Asprovalta', 'Ασπροβάλτα', 40.7240, 23.7110], ['stavros', 'Stavros', 'Σταυρός', 40.6640, 23.6970],
+    ['olympiada', 'Olympiada', 'Ολυμπιάδα', 40.5940, 23.7920], ['ouranoupoli', 'Ouranoupoli', 'Ουρανούπολη', 40.3270, 23.9830], ['nikiti', 'Nikiti', 'Νικήτη', 40.2240, 23.6670],
+    ['neos-marmaras', 'Neos Marmaras', 'Νέος Μαρμαράς', 40.0950, 23.7830], ['hanioti', 'Hanioti', 'Χανιώτη', 39.9990, 23.5950], ['kallithea', 'Kallithea', 'Καλλιθέα', 40.0790, 23.4460],
+    ['paralia-katerinis', 'Paralia Katerinis', 'Παραλία Κατερίνης', 40.2680, 22.5970], ['kalambaka', 'Kalambaka', 'Καλαμπάκα', 39.7060, 21.6290], ['parga', 'Parga', 'Πάργα', 39.2840, 20.4000],
+    ['corfu', 'Corfu', 'Κέρκυρα', 39.6243, 19.9217], ['lefkada', 'Lefkada', 'Λευκάδα', 38.8300, 20.7060], ['kefalonia', 'Kefalonia', 'Κεφαλονιά', 38.1760, 20.4890],
+    ['zakynthos', 'Zakynthos', 'Ζάκυνθος', 37.7870, 20.8990], ['nafplio', 'Nafplio', 'Ναύπλιο', 37.5673, 22.8015], ['santorini', 'Santorini', 'Σαντορίνη', 36.4167, 25.4320],
+    ['mykonos', 'Mykonos', 'Μύκονος', 37.4467, 25.3289], ['chania', 'Chania', 'Χανιά', 35.5138, 24.0180], ['kos', 'Kos', 'Κως', 36.8930, 27.2880] ] },
   { slug: 'hungary', en: 'Hungary', code: 'HU', word: 'Időjárás', cities: [
     ['budapest', 'Budapest', 'Budapest', 47.4979, 19.0402], ['debrecen', 'Debrecen', 'Debrecen', 47.5316, 21.6273], ['szeged', 'Szeged', 'Szeged', 46.2530, 20.1414], ['pecs', 'Pécs', 'Pécs', 46.0727, 18.2323] ] },
   { slug: 'iceland', en: 'Iceland', code: 'IS', word: 'Veður', cities: [
@@ -73,6 +82,13 @@ module.exports = [
     ['stockholm', 'Stockholm', 'Stockholm', 59.3293, 18.0686], ['gothenburg', 'Gothenburg', 'Göteborg', 57.7089, 11.9746], ['malmo', 'Malmö', 'Malmö', 55.6050, 13.0038], ['uppsala', 'Uppsala', 'Uppsala', 59.8586, 17.6389], ['kiruna', 'Kiruna', 'Kiruna', 67.8558, 20.2253] ] },
   { slug: 'switzerland', en: 'Switzerland', code: 'CH', word: 'Wetter', cities: [
     ['zurich', 'Zurich', 'Zürich', 47.3769, 8.5417], ['geneva', 'Geneva', 'Genève', 46.2044, 6.1432], ['basel', 'Basel', 'Basel', 47.5596, 7.5886], ['bern', 'Bern', 'Bern', 46.9480, 7.4474], ['lucerne', 'Lucerne', 'Luzern', 47.0502, 8.3093] ] },
+  { slug: 'turkey', en: 'Turkey', code: 'TR', word: 'Hava durumu', cities: [
+    ['istanbul', 'Istanbul', 'İstanbul', 41.0082, 28.9784], ['ankara', 'Ankara', 'Ankara', 39.9334, 32.8597], ['edirne', 'Edirne', 'Edirne', 41.6771, 26.5557],
+    ['bursa', 'Bursa', 'Bursa', 40.1885, 29.0610], ['canakkale', 'Çanakkale', 'Çanakkale', 40.1553, 26.4142], ['izmir', 'Izmir', 'İzmir', 38.4237, 27.1428],
+    ['kusadasi', 'Kuşadası', 'Kuşadası', 37.8579, 27.2610], ['didim', 'Didim', 'Didim', 37.3750, 27.2670], ['bodrum', 'Bodrum', 'Bodrum', 37.0344, 27.4305],
+    ['marmaris', 'Marmaris', 'Marmaris', 36.8550, 28.2740], ['fethiye', 'Fethiye', 'Fethiye', 36.6210, 29.1160], ['kemer', 'Kemer', 'Kemer', 36.6000, 30.5590],
+    ['antalya', 'Antalya', 'Antalya', 36.8969, 30.7133], ['belek', 'Belek', 'Belek', 36.8620, 31.0560], ['side', 'Side', 'Side', 36.7670, 31.3890],
+    ['alanya', 'Alanya', 'Alanya', 36.5440, 31.9990], ['goreme', 'Göreme (Cappadocia)', 'Göreme', 38.6431, 34.8289] ] },
   { slug: 'ukraine', en: 'Ukraine', code: 'UA', word: 'Погода', cities: [
     ['kyiv', 'Kyiv', 'Київ', 50.4501, 30.5234], ['lviv', 'Lviv', 'Львів', 49.8397, 24.0297], ['odesa', 'Odesa', 'Одеса', 46.4825, 30.7233], ['kharkiv', 'Kharkiv', 'Харків', 49.9935, 36.2304], ['dnipro', 'Dnipro', 'Дніпро', 48.4647, 35.0462] ] },
   { slug: 'united-kingdom', en: 'United Kingdom', code: 'GB', word: '', cities: [

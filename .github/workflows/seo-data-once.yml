@@ -54,4 +54,6 @@ jobs:
           git add -A
           git diff --cached --quiet && { echo "Nothing changed."; exit 0; }
           git commit -m "Climate records, forecast and storm data for the new pages"
+          # someone may have pushed meanwhile: put this commit on top (data files: ours)
+          git pull --rebase -X theirs origin seo-priorities || { git rebase --abort; exit 1; }
           git push origin HEAD:seo-priorities

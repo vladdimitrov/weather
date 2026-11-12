@@ -9,5 +9,5 @@ module.exports = {
   LT: 'Europe/Vilnius', LU: 'Europe/Luxembourg', LV: 'Europe/Riga', MD: 'Europe/Chisinau', ME: 'Europe/Podgorica',
   MK: 'Europe/Skopje', MT: 'Europe/Malta', NL: 'Europe/Amsterdam', NO: 'Europe/Oslo', PL: 'Europe/Warsaw',
   PT: 'Europe/Lisbon', RO: 'Europe/Bucharest', RS: 'Europe/Belgrade', SE: 'Europe/Stockholm', SI: 'Europe/Ljubljana',
-  SK: 'Europe/Bratislava', UA: 'Europe/Kyiv'
+  SK: 'Europe/Bratislava', TR: 'Europe/Istanbul', UA: 'Europe/Kyiv'
 };
