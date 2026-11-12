@@ -122,3 +122,23 @@
   .moon-stats dd { font-size: 1.1rem; }
   .mg-icon .moon-svg { width: 22px; height: 22px; }
 }
+
+/* ---- the sky section of the hub ---- */
+.sky-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 6px 0 4px; }
+.sky-card {
+  display: grid;
+  gap: 4px;
+  align-content: start;
+  padding: 14px 14px 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.sky-card:hover { border-color: rgba(255, 215, 0, 0.55); transform: translateY(-2px); }
+.sky-card-icon { font-size: 1.7rem; line-height: 1.1; }
+.sky-card strong { font-size: 1rem; }
+.sky-card span:last-child { font-size: 0.84rem; color: var(--ink-soft); }
+@media (max-width: 700px) { .sky-cards { grid-template-columns: 1fr; } }

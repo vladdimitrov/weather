@@ -99,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -111,8 +111,7 @@
       <a href="/en/maps/" class="nav-link" data-nav="maps">Weather Maps</a>
       <a href="/en/holliday_calendar/" class="nav-link" data-nav="holidays">Holiday Calendar</a>
       <a href="/en/magnitni-buri/" class="nav-link" data-nav="storms">Magnetic Storms</a>
-      <a href="/en/nebeto/" class="nav-link" data-nav="sky">The Sky</a>
-      <a href="/en/iztochnici/" class="nav-link" data-nav="sources">Data Sources</a>
+      <a href="/en/luna/" class="nav-link" data-nav="moon">Moon Calendar</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -126,14 +125,14 @@
 
     <div class="city-forecast" id="cityForecast" data-name="Heraklion" data-lat="35.3387" data-lon="25.1442" data-query="city=Heraklion&lat=35.3387&lon=25.1442&cc=GR">
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Heraklion: Thursday 12 November</h2>
+        <h2>Heraklion: Thursday, 12 November</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">16° / 24°</span>
         <p class="storm-now-status">Cloudy · chance of rain 0%</p>
         <p class="storm-updated">Forecast issued on 12 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Wednesday 18 November (up to 25°) and the coldest Tuesday 17 November (down to 13°). No significant precipitation is expected. Daytime temperatures are above normal for November (average high 21°).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Wednesday, 18 November (up to 26°) and the coldest Tuesday, 17 November (down to 13°). No significant precipitation is expected. Daytime temperatures are above normal for November (average high 21°).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Heraklion&lat=35.3387&lon=25.1442&cc=GR&date=2026-11-12" title="Hourly forecast →">
             <span class="kp-day-name">Thu 12</span>
@@ -157,7 +156,7 @@
             <span class="kp-day-name">Sat 14</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">18° / 25°</span>
+            <span class="city-day-temp">18° / 26°</span>
             <span class="kp-day-status">Cloudy</span>
             <span class="city-day-rain" title="chance of rain">5%</span>
             <span class="city-day-wind">Wind 34 km/h</span>
@@ -166,7 +165,7 @@
             <span class="kp-day-name">Sun 15</span>
             <span class="city-day-icon" aria-hidden="true">🌫️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">15° / 23°</span>
+            <span class="city-day-temp">16° / 23°</span>
             <span class="kp-day-status">Fog</span>
             <span class="city-day-rain" title="chance of rain">4%</span>
             <span class="city-day-wind">Wind 15 km/h</span>
@@ -178,7 +177,7 @@
             <span class="city-day-temp">15° / 21°</span>
             <span class="kp-day-status">Fog</span>
             <span class="city-day-rain" title="chance of rain">10%</span>
-            <span class="city-day-wind">Wind 9 km/h</span>
+            <span class="city-day-wind">Wind 10 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Heraklion&lat=35.3387&lon=25.1442&cc=GR&date=2026-11-17" title="Hourly forecast →">
             <span class="kp-day-name">Tue 17</span>
@@ -187,13 +186,13 @@
             <span class="city-day-temp">13° / 23°</span>
             <span class="kp-day-status">Cloudy</span>
             <span class="city-day-rain" title="chance of rain">0%</span>
-            <span class="city-day-wind">Wind 12 km/h</span>
+            <span class="city-day-wind">Wind 16 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Heraklion&lat=35.3387&lon=25.1442&cc=GR&date=2026-11-18" title="Hourly forecast →">
             <span class="kp-day-name">Wed 18</span>
             <span class="city-day-icon" aria-hidden="true">⛅</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">15° / 25°</span>
+            <span class="city-day-temp">16° / 26°</span>
             <span class="kp-day-status">Partly cloudy</span>
             <span class="city-day-rain" title="chance of rain">8%</span>
             <span class="city-day-wind">Wind 17 km/h</span>
@@ -340,12 +339,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/en/gradove/" class="footer-link" data-nav="cityIndex">All cities</a>
+      · <a href="/en/iztochnici/" class="footer-link" data-nav="sourcesShort">Sources</a>
       · <a href="/en/za-saita/" class="footer-link" data-nav="about">About</a>
       · <a href="/en/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>

@@ -96,7 +96,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -108,8 +108,7 @@
       <a href="/en/maps/" class="nav-link" data-nav="maps">Weather Maps</a>
       <a href="/en/holliday_calendar/" class="nav-link" data-nav="holidays">Holiday Calendar</a>
       <a href="/en/magnitni-buri/" class="nav-link" data-nav="storms">Magnetic Storms</a>
-      <a href="/en/nebeto/" class="nav-link" data-nav="sky">The Sky</a>
-      <a href="/en/iztochnici/" class="nav-link" data-nav="sources">Data Sources</a>
+      <a href="/en/luna/" class="nav-link" data-nav="moon">Moon Calendar</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -123,23 +122,23 @@
 
     <div class="city-forecast" id="cityForecast" data-name="Durrës" data-lat="41.3246" data-lon="19.4565" data-query="city=Durr%C3%ABs&lat=41.3246&lon=19.4565&cc=AL">
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Durrës: Thursday 12 November</h2>
+        <h2>Durrës: Thursday, 12 November</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">17° / 23°</span>
-        <p class="storm-now-status">Rain · chance of rain 70%</p>
+        <p class="storm-now-status">Drizzle · chance of rain 70%</p>
         <p class="storm-updated">Forecast issued on 12 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Thursday 12 November (up to 23°) and the coldest Wednesday 18 November (down to 11°). Rain or snow is expected on 7 of the days. Daytime temperatures are above normal for November (average high 18°).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Thursday, 12 November (up to 23°) and the coldest Sunday, 15 November (down to 12°). Rain or snow is expected on 7 of the days. Daytime temperatures are above normal for November (average high 18°).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Durr%C3%ABs&lat=41.3246&lon=19.4565&cc=AL&date=2026-11-12" title="Hourly forecast →">
             <span class="kp-day-name">Thu 12</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">12.11</span>
             <span class="city-day-temp">17° / 23°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">70% · 1.6 mm</span>
-            <span class="city-day-wind">Wind 35 km/h</span>
+            <span class="kp-day-status">Drizzle</span>
+            <span class="city-day-rain" title="chance of rain">70% · 0.5 mm</span>
+            <span class="city-day-wind">Wind 37 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Durr%C3%ABs&lat=41.3246&lon=19.4565&cc=AL&date=2026-11-13" title="Hourly forecast →">
             <span class="kp-day-name">Fri 13</span>
@@ -147,17 +146,17 @@
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">18° / 22°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">98% · 4.7 mm</span>
-            <span class="city-day-wind">Wind 39 km/h</span>
+            <span class="city-day-rain" title="chance of rain">98% · 7.0 mm</span>
+            <span class="city-day-wind">Wind 43 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Durr%C3%ABs&lat=41.3246&lon=19.4565&cc=AL&date=2026-11-14" title="Hourly forecast →">
             <span class="kp-day-name">Sat 14</span>
             <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">12° / 19°</span>
+            <span class="city-day-temp">13° / 19°</span>
             <span class="kp-day-status">Thunderstorm</span>
-            <span class="city-day-rain" title="chance of rain">94% · 12.6 mm</span>
-            <span class="city-day-wind">Wind 27 km/h</span>
+            <span class="city-day-rain" title="chance of rain">94% · 13.1 mm</span>
+            <span class="city-day-wind">Wind 30 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Durr%C3%ABs&lat=41.3246&lon=19.4565&cc=AL&date=2026-11-15" title="Hourly forecast →">
             <span class="kp-day-name">Sun 15</span>
@@ -174,8 +173,8 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">14° / 20°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">84% · 3.7 mm</span>
-            <span class="city-day-wind">Wind 22 km/h</span>
+            <span class="city-day-rain" title="chance of rain">84% · 9.0 mm</span>
+            <span class="city-day-wind">Wind 24 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Durr%C3%ABs&lat=41.3246&lon=19.4565&cc=AL&date=2026-11-17" title="Hourly forecast →">
             <span class="kp-day-name">Tue 17</span>
@@ -190,10 +189,10 @@
             <span class="kp-day-name">Wed 18</span>
             <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">11° / 19°</span>
+            <span class="city-day-temp">14° / 20°</span>
             <span class="kp-day-status">Thunderstorm</span>
-            <span class="city-day-rain" title="chance of rain">74% · 24.4 mm</span>
-            <span class="city-day-wind">Wind 38 km/h</span>
+            <span class="city-day-rain" title="chance of rain">74% · 11.7 mm</span>
+            <span class="city-day-wind">Wind 36 km/h</span>
           </a>
         </div>
         <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 3 m</p>
@@ -335,12 +334,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/en/gradove/" class="footer-link" data-nav="cityIndex">All cities</a>
+      · <a href="/en/iztochnici/" class="footer-link" data-nav="sourcesShort">Sources</a>
       · <a href="/en/za-saita/" class="footer-link" data-nav="about">About</a>
       · <a href="/en/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>

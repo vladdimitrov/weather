@@ -288,19 +288,6 @@
       animation-play-state: paused;
     }
     
-    #contacts-orbit-btn {
-      box-shadow: 0 0 25px rgba(100, 255, 150, 0.8), 0 0 50px rgba(100, 255, 150, 0.5), 0 0 75px rgba(100, 255, 150, 0.3);
-      animation: orbit 60s linear infinite, contactsAura 2.5s ease-in-out infinite;
-      animation-delay: -36s, 0s;
-    }
-    
-    #contacts-orbit-btn:hover {
-      background: rgba(100, 255, 150, 0.2);
-      border-color: #64FF96;
-      box-shadow: 0 0 40px rgba(100, 255, 150, 1), 0 0 80px rgba(100, 255, 150, 0.6);
-      animation-play-state: paused;
-    }
-    
     #maps-orbit-btn {
       box-shadow: 0 0 25px rgba(255, 165, 0, 0.8), 0 0 50px rgba(255, 165, 0, 0.5), 0 0 75px rgba(255, 165, 0, 0.3);
       animation: orbit 60s linear infinite, mapsAura 2.3s ease-in-out infinite;
@@ -332,9 +319,6 @@
       font-size: 15.21px; /* 9px + 30% + 30% */
     }
     #magnetic-orbit-label {
-      font-size: 15.21px; /* Same as weather-orbit-label */
-    }
-    #contacts-orbit-label {
       font-size: 15.21px; /* Same as weather-orbit-label */
     }
     
@@ -567,18 +551,6 @@
      }
    }
    
-   @keyframes contactsAura {
-     0% {
-       box-shadow: 0 0 20px rgba(100, 255, 150, 0.6), 0 0 40px rgba(100, 255, 150, 0.4), 0 0 60px rgba(100, 255, 150, 0.2);
-     }
-     50% {
-       box-shadow: 0 0 35px rgba(100, 255, 150, 1), 0 0 70px rgba(100, 255, 150, 0.7), 0 0 100px rgba(100, 255, 150, 0.4);
-     }
-     100% {
-       box-shadow: 0 0 20px rgba(100, 255, 150, 0.6), 0 0 40px rgba(100, 255, 150, 0.4), 0 0 60px rgba(100, 255, 150, 0.2);
-     }
-   }
-   
    @keyframes mapsAura {
      0% {
        box-shadow: 0 0 20px rgba(255, 165, 0, 0.6), 0 0 40px rgba(255, 165, 0, 0.4), 0 0 60px rgba(255, 165, 0, 0.2);
@@ -781,7 +753,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -792,8 +764,7 @@
       <a href="/it/maps/" class="nav-link" data-nav="maps">Mappe meteorologiche</a>
       <a href="/it/holliday_calendar/" class="nav-link" data-nav="holidays">Calendario delle festività</a>
       <a href="/it/magnitni-buri/" class="nav-link" data-nav="storms">Tempeste magnetiche</a>
-      <a href="/it/nebeto/" class="nav-link" data-nav="sky">Il cielo</a>
-      <a href="/it/iztochnici/" class="nav-link" data-nav="sources">Fonti dei dati</a>
+      <a href="/it/luna/" class="nav-link" data-nav="moon">Calendario lunare</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -826,16 +797,13 @@
 		<a href="/it/holliday_calendar/" class="orbit-button" id="holliday-calendar-btn" title="Calendario delle festività">
           <span class="label" id="holiday-calendar-label">FESTIVITÀ</span>
         </a>
-        <a href="/it/nebeto/" class="orbit-button" id="sky-orbit-btn" title="Il cielo: Luna, meteore, eclissi">
-          <span class="label" id="sky-orbit-label">CIELO</span>
+        <a href="/it/luna/" class="orbit-button" id="moon-orbit-btn" title="Calendario lunare: la fase lunare di oggi">
+          <span class="label" id="moon-orbit-label">LUNA</span>
         </a>
         <a href="/it/maps/" class="orbit-button" id="maps-orbit-btn" title="Mappe meteorologiche">
           <span class="label" id="maps-orbit-label">MAPPE</span>
         </a>
         
-        <a href="/it/iztochnici/" class="orbit-button" id="contacts-orbit-btn" title="Fonti dei dati e contatti">
-          <span class="label" id="contacts-orbit-label">FONTI</span>
-        </a>
         
         
       </div>
@@ -846,9 +814,9 @@
       <a href="/it/weather/" data-nav="weather">Previsioni del tempo</a>
       <a href="/it/maps/" data-nav="maps">Mappe meteorologiche</a>
       <a href="/it/magnitni-buri/" data-nav="storms">Tempeste magnetiche</a>
-      <a href="/it/nebeto/" data-nav="sky">Il cielo</a>
+      <a href="/it/luna/" data-nav="moon">Calendario lunare</a>
       <a href="/it/holliday_calendar/" data-nav="holidays">Calendario delle festività</a>
-      <a href="/it/iztochnici/" data-nav="sources">Fonti dei dati</a>
+      <a href="/it/nebeto/" data-nav="sky">Il cielo</a>
     </nav>
 
     <!-- Features Section -->
@@ -886,6 +854,7 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/it/gradove/" class="footer-link" data-nav="cityIndex">Tutte le città</a>
+      · <a href="/it/iztochnici/" class="footer-link" data-nav="sourcesShort">Fonti</a>
       · <a href="/it/za-saita/" class="footer-link" data-nav="about">Chi siamo</a>
       · <a href="/it/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
     </p>
@@ -905,12 +874,11 @@
       magneticOrbitTitle: "Magnetic Storms",
 
       holidayOrbitTitle: "Holiday Calendar",
-      skyOrbitTitle: "The sky: Moon, meteors, eclipses",
-      skyOrbitLabel: "SKY",
+      moonOrbitTitle: "Moon Calendar: today's Moon phase",
+      moonOrbitLabel: "MOON",
 
       mapsOrbitTitle: "Weather Maps",
 
-      contactsOrbitTitle: "Data Sources & Contacts",
       heroTitle: "Weather Forecast and Magnetic Storms",
       heroSubtitle: "Track weather, moon phases, magnetic storms, and holidays in real time for any location worldwide. Plan your day with accuracy and confidence.",
       featuresTitle: "Everything about the weather in one place",
@@ -918,7 +886,6 @@
       weatherOrbitLabel: "WEATHER",
       magneticOrbitLabel: "STORMS",
       mapsOrbitLabel: "MAPS",
-      contactsOrbitLabel: "SOURCES",
       locationOrbitLabel: "LOCATION",
 	  contactsLink:       "Contacts",
       holidayCalendarLinkNav: "HOLIDAY",
@@ -932,19 +899,17 @@
       magneticOrbitTitle: "Магнитни бури",
 
       holidayOrbitTitle: "Календар на празниците",
-      skyOrbitTitle: "Небето: Луна, метеори, затъмнения",
-      skyOrbitLabel: "НЕБЕТО",
+      moonOrbitTitle: "Лунен календар: фаза на Луната днес",
+      moonOrbitLabel: "ЛУНА",
 
       mapsOrbitTitle: "Карти за времето",
 
-      contactsOrbitTitle: "Източници на данни и контакти",
       heroTitle: "Прогноза за времето и магнитни бури",
       heroSubtitle: "Следете времето, фазите на Луната, магнитните бури и празничните дни в реално време за всяка точка по света. Планирайте деня си с точност и увереност.",
       featuresTitle: "Всичко за времето на едно място",
       featuresDescription:  	"Прогноза за 16 дни и по часове за всяко място по света, магнитни бури с известия на телефона, карти на валежите и вятъра, официални празници и времето в градовете на България. Безплатно и без регистрация.",
       weatherOrbitLabel:  		"ВРЕМЕ",
       mapsOrbitLabel:     		"КАРТИ",
-      contactsOrbitLabel: 		"ИЗТОЧНИЦИ",
       locationOrbitLabel: 		"МЕСТОПОЛОЖЕНИЕ",
       magneticOrbitLabel: 		"БУРИ",
 	  holidayCalendarLabel: 	"ПРАЗНИЦИ",
@@ -963,12 +928,11 @@
       magneticOrbitTitle: "Magnetstürme",
 
       holidayOrbitTitle: "Feiertagskalender",
-      skyOrbitTitle: "Der Himmel: Mond, Meteore, Finsternisse",
-      skyOrbitLabel: "HIMMEL",
+      moonOrbitTitle: "Mondkalender: die Mondphase heute",
+      moonOrbitLabel: "MOND",
 
       mapsOrbitTitle: "Wetterkarten",
 
-      contactsOrbitTitle: "Datenquellen und Kontakt",
       heroTitle: 				"Wettervorhersage und Magnetstürme",
       heroSubtitle: 			"Verfolgen Sie Wetter, Mondphasen, magnetische Stürme und Feiertage in Echtzeit für jeden Ort weltweit. Planen Sie Ihren Tag mit Genauigkeit und Zuversicht.",
       featuresTitle: 			"Alles rund ums Wetter an einem Ort",
@@ -976,7 +940,6 @@
       weatherOrbitLabel: 		"WETTER",
       magneticOrbitLabel: 		"STÜRME",
       mapsOrbitLabel: 			"KARTEN",
-      contactsOrbitLabel: 		"QUELLEN",
       locationOrbitLabel: 		"STANDORT",
       weatherForecast: 			"Wettervorhersage",
       holidayCalendarLabel: 	"FEIERTAGE",
@@ -994,12 +957,11 @@
       magneticOrbitTitle: "Tempeste magnetiche",
 
       holidayOrbitTitle: "Calendario delle festività",
-      skyOrbitTitle: "Il cielo: Luna, meteore, eclissi",
-      skyOrbitLabel: "CIELO",
+      moonOrbitTitle: "Calendario lunare: la fase lunare di oggi",
+      moonOrbitLabel: "LUNA",
 
       mapsOrbitTitle: "Mappe meteorologiche",
 
-      contactsOrbitTitle: "Fonti dei dati e contatti",
       heroTitle: "Previsioni del Tempo e Tempeste Magnetiche",
       heroSubtitle: "Monitora il tempo, le fasi lunari, le tempeste magnetiche e le festività in tempo reale per qualsiasi località nel mondo. Pianifica la tua giornata con precisione e fiducia.",
       featuresTitle: "Tutto sul meteo in un unico posto",
@@ -1007,7 +969,6 @@
       weatherOrbitLabel: 		"TEMPO",
       magneticOrbitLabel: 		"TEMPESTE",
       mapsOrbitLabel: 			"MAPPE",
-      contactsOrbitLabel: 		"FONTI",
       locationOrbitLabel: 		"POSIZIONE",
       weatherForecast: 			"Previsioni del tempo",
       contactsLink: 			"Fonti di dati",
@@ -1025,12 +986,11 @@
       magneticOrbitTitle: "Tormentas magnéticas",
 
       holidayOrbitTitle: "Calendario de días festivos",
-      skyOrbitTitle: "El cielo: Luna, meteoros, eclipses",
-      skyOrbitLabel: "CIELO",
+      moonOrbitTitle: "Calendario lunar: la fase de la Luna hoy",
+      moonOrbitLabel: "LUNA",
 
       mapsOrbitTitle: "Mapas del tiempo",
 
-      contactsOrbitTitle: "Fuentes de datos y contacto",
       heroTitle: "Pronóstico del Tiempo y Tormentas Magnéticas",
       heroSubtitle: "Rastrea el clima, fases lunares, tormentas magnéticas y días festivos en tiempo real para cualquier ubicación mundial. Planifica tu día con precisión y confianza.",
       featuresTitle: "Todo sobre el tiempo en un solo lugar",
@@ -1038,7 +998,6 @@
       weatherOrbitLabel:  		"CLIMA",
       magneticOrbitLabel: 		"TORMENTAS",
       mapsOrbitLabel: 	  		"MAPAS",
-      contactsOrbitLabel: 		"FUENTES",
       locationOrbitLabel: 		"UBICACIÓN",
       weatherForecast: 	  		"Pronóstico del tiempo",
       holidayCalendarLabel: 	"FESTIVOS",
@@ -1057,10 +1016,9 @@
       'features-description': 'featuresDescription',
       'weather-orbit-label': 'weatherOrbitLabel',
       'magnetic-orbit-label': 'magneticOrbitLabel',
-      'contacts-orbit-label': 'contactsOrbitLabel',
       'location-orbit-label': 'locationOrbitLabel',
       'maps-orbit-label': 'mapsOrbitLabel',
-      'sky-orbit-label': 'skyOrbitLabel',
+      'moon-orbit-label': 'moonOrbitLabel',
       'weather-forecast': 'weatherForecast',
       'contacts-link': 'contactsLink',
       'holiday-calendar-label': 'holidayCalendarLabel'
@@ -1080,8 +1038,7 @@
       '#magnetic-orbit-btn': 'magneticOrbitTitle',
       '#holliday-calendar-btn': 'holidayOrbitTitle',
       '#maps-orbit-btn': 'mapsOrbitTitle',
-      '#sky-orbit-btn': 'skyOrbitTitle',
-      '#contacts-orbit-btn': 'contactsOrbitTitle'
+      '#moon-orbit-btn': 'moonOrbitTitle'
     };
     Object.entries(titles).forEach(([selector, translationKey]) => {
       const element = document.querySelector(selector);
@@ -1112,7 +1069,7 @@
   }
 </script>
 
-<script src="/js/mobile-nav.js?v=18"></script>
+<script src="/js/mobile-nav.js?v=19"></script>
 <script src="/js/language-selector.js?v=7"></script>
 <script src="/language-switcher.js?v=3"></script>
 <script src="/js/background-selector.js?v=3"></script>

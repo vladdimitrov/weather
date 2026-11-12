@@ -96,7 +96,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -108,8 +108,7 @@
       <a href="/en/maps/" class="nav-link" data-nav="maps">Weather Maps</a>
       <a href="/en/holliday_calendar/" class="nav-link" data-nav="holidays">Holiday Calendar</a>
       <a href="/en/magnitni-buri/" class="nav-link" data-nav="storms">Magnetic Storms</a>
-      <a href="/en/nebeto/" class="nav-link" data-nav="sky">The Sky</a>
-      <a href="/en/iztochnici/" class="nav-link" data-nav="sources">Data Sources</a>
+      <a href="/en/luna/" class="nav-link" data-nav="moon">Moon Calendar</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -123,14 +122,14 @@
 
     <div class="city-forecast" id="cityForecast" data-name="Olomouc" data-lat="49.5938" data-lon="17.2509" data-query="city=Olomouc&lat=49.5938&lon=17.2509&cc=CZ">
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Olomouc: Thursday 12 November</h2>
+        <h2>Olomouc: Thursday, 12 November</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">4° / 9°</span>
         <p class="storm-now-status">Drizzle · chance of rain 95%</p>
         <p class="storm-updated">Forecast issued on 12 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Tuesday 17 November (up to 11°) and the coldest Sunday 15 November (down to 0°). Rain or snow is expected on 3 of the days. Daytime temperatures are close to normal for November (average high 8°).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Wednesday, 18 November (up to 11°) and the coldest Sunday, 15 November (down to 0°). Rain or snow is expected on 3 of the days. Daytime temperatures are close to normal for November (average high 8°).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Olomouc&lat=49.5938&lon=17.2509&cc=CZ&date=2026-11-12" title="Hourly forecast →">
             <span class="kp-day-name">Thu 12</span>
@@ -138,17 +137,17 @@
             <span class="city-day-date">12.11</span>
             <span class="city-day-temp">4° / 9°</span>
             <span class="kp-day-status">Drizzle</span>
-            <span class="city-day-rain" title="chance of rain">95% · 4.3 mm</span>
+            <span class="city-day-rain" title="chance of rain">95% · 4.9 mm</span>
             <span class="city-day-wind">Wind 14 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Olomouc&lat=49.5938&lon=17.2509&cc=CZ&date=2026-11-13" title="Hourly forecast →">
             <span class="kp-day-name">Fri 13</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">1° / 7°</span>
+            <span class="city-day-temp">2° / 7°</span>
             <span class="kp-day-status">Drizzle</span>
-            <span class="city-day-rain" title="chance of rain">100% · 1.9 mm</span>
-            <span class="city-day-wind">Wind 20 km/h</span>
+            <span class="city-day-rain" title="chance of rain">100% · 3.3 mm</span>
+            <span class="city-day-wind">Wind 22 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Olomouc&lat=49.5938&lon=17.2509&cc=CZ&date=2026-11-14" title="Hourly forecast →">
             <span class="kp-day-name">Sat 14</span>
@@ -157,14 +156,14 @@
             <span class="city-day-temp">0° / 7°</span>
             <span class="kp-day-status">Partly cloudy</span>
             <span class="city-day-rain" title="chance of rain">0%</span>
-            <span class="city-day-wind">Wind 11 km/h</span>
+            <span class="city-day-wind">Wind 12 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Olomouc&lat=49.5938&lon=17.2509&cc=CZ&date=2026-11-15" title="Hourly forecast →">
             <span class="kp-day-name">Sun 15</span>
-            <span class="city-day-icon" aria-hidden="true">⛅</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
             <span class="city-day-temp">0° / 7°</span>
-            <span class="kp-day-status">Partly cloudy</span>
+            <span class="kp-day-status">Cloudy</span>
             <span class="city-day-rain" title="chance of rain">0%</span>
             <span class="city-day-wind">Wind 24 km/h</span>
           </a>
@@ -174,26 +173,26 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">2° / 8°</span>
             <span class="kp-day-status">Drizzle</span>
-            <span class="city-day-rain" title="chance of rain">32% · 0.5 mm</span>
+            <span class="city-day-rain" title="chance of rain">32% · 0.3 mm</span>
             <span class="city-day-wind">Wind 14 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Olomouc&lat=49.5938&lon=17.2509&cc=CZ&date=2026-11-17" title="Hourly forecast →">
             <span class="kp-day-name">Tue 17</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">2° / 11°</span>
+            <span class="city-day-temp">2° / 10°</span>
             <span class="kp-day-status">Drizzle</span>
             <span class="city-day-rain" title="chance of rain">36% · 0.9 mm</span>
-            <span class="city-day-wind">Wind 28 km/h</span>
+            <span class="city-day-wind">Wind 15 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Olomouc&lat=49.5938&lon=17.2509&cc=CZ&date=2026-11-18" title="Hourly forecast →">
             <span class="kp-day-name">Wed 18</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">6° / 10°</span>
+            <span class="city-day-temp">6° / 11°</span>
             <span class="kp-day-status">Drizzle</span>
-            <span class="city-day-rain" title="chance of rain">39% · 2.9 mm</span>
-            <span class="city-day-wind">Wind 16 km/h</span>
+            <span class="city-day-rain" title="chance of rain">39% · 5.3 mm</span>
+            <span class="city-day-wind">Wind 17 km/h</span>
           </a>
         </div>
         <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 224 m</p>
@@ -337,12 +336,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/en/gradove/" class="footer-link" data-nav="cityIndex">All cities</a>
+      · <a href="/en/iztochnici/" class="footer-link" data-nav="sourcesShort">Sources</a>
       · <a href="/en/za-saita/" class="footer-link" data-nav="about">About</a>
       · <a href="/en/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>

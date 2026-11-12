@@ -73,7 +73,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -85,8 +85,7 @@
       <a href="/de/maps/" class="nav-link" data-nav="maps">Wetterkarten</a>
       <a href="/de/holliday_calendar/" class="nav-link" data-nav="holidays">Feiertagskalender</a>
       <a href="/de/magnitni-buri/" class="nav-link" data-nav="storms">Magnetstürme</a>
-      <a href="/de/nebeto/" class="nav-link" data-nav="sky">Himmel</a>
-      <a href="/de/iztochnici/" class="nav-link" data-nav="sources">Datenquellen</a>
+      <a href="/de/luna/" class="nav-link" data-nav="moon">Mondkalender</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -107,7 +106,7 @@
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-Tage-Vorhersage</h3>
-        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 25°) und Sonntag, 15. November am kältesten (bis 4°). An 3 der Tage wird Niederschlag erwartet. Tagsüber ist es wärmer als üblich im November (im Mittel 12°).</p>
+        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 24°) und Sonntag, 15. November am kältesten (bis 3°). An 3 der Tage wird Niederschlag erwartet. Tagsüber ist es wärmer als üblich im November (im Mittel 12°).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Montana&lat=43.4085&lon=23.2257&cc=BG&date=2026-11-12" title="Stündlich →">
             <span class="kp-day-name">Do., 12.</span>
@@ -116,31 +115,31 @@
             <span class="city-day-temp">9° / 23°</span>
             <span class="kp-day-status">Nebel</span>
             <span class="city-day-rain" title="Regenwahrscheinlichkeit">3%</span>
-            <span class="city-day-wind">Wind 17 km/h</span>
+            <span class="city-day-wind">Wind 14 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Montana&lat=43.4085&lon=23.2257&cc=BG&date=2026-11-13" title="Stündlich →">
             <span class="kp-day-name">Fr., 13.</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">11° / 25°</span>
-            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-temp">11° / 24°</span>
+            <span class="kp-day-status">Regen</span>
             <span class="city-day-rain" title="Regenwahrscheinlichkeit">71% · 1.1 mm</span>
             <span class="city-day-wind">Wind 20 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Montana&lat=43.4085&lon=23.2257&cc=BG&date=2026-11-14" title="Stündlich →">
             <span class="kp-day-name">Sa., 14.</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">6° / 11°</span>
-            <span class="kp-day-status">Nieselregen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">69% · 1.7 mm</span>
+            <span class="city-day-temp">5° / 11°</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">69% · 4.6 mm</span>
             <span class="city-day-wind">Wind 16 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Montana&lat=43.4085&lon=23.2257&cc=BG&date=2026-11-15" title="Stündlich →">
             <span class="kp-day-name">So., 15.</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">4° / 10°</span>
+            <span class="city-day-temp">3° / 10°</span>
             <span class="kp-day-status">Bewölkt</span>
             <span class="city-day-rain" title="Regenwahrscheinlichkeit">6%</span>
             <span class="city-day-wind">Wind 7 km/h</span>
@@ -149,25 +148,25 @@
             <span class="kp-day-name">Mo., 16.</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">5° / 10°</span>
+            <span class="city-day-temp">5° / 9°</span>
             <span class="kp-day-status">Bewölkt</span>
             <span class="city-day-rain" title="Regenwahrscheinlichkeit">16%</span>
             <span class="city-day-wind">Wind 5 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Montana&lat=43.4085&lon=23.2257&cc=BG&date=2026-11-17" title="Stündlich →">
             <span class="kp-day-name">Di., 17.</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">7° / 11°</span>
-            <span class="kp-day-status">Regen</span>
+            <span class="city-day-temp">7° / 15°</span>
+            <span class="kp-day-status">Nieselregen</span>
             <span class="city-day-rain" title="Regenwahrscheinlichkeit">27% · 0.9 mm</span>
-            <span class="city-day-wind">Wind 8 km/h</span>
+            <span class="city-day-wind">Wind 9 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Montana&lat=43.4085&lon=23.2257&cc=BG&date=2026-11-18" title="Stündlich →">
             <span class="kp-day-name">Mi., 18.</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">7° / 17°</span>
+            <span class="city-day-temp">6° / 17°</span>
             <span class="kp-day-status">Regen</span>
             <span class="city-day-rain" title="Regenwahrscheinlichkeit">49% · 2.7 mm</span>
             <span class="city-day-wind">Wind 13 km/h</span>
@@ -305,12 +304,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/de/gradove/" class="footer-link" data-nav="cityIndex">Alle Städte</a>
+      · <a href="/de/iztochnici/" class="footer-link" data-nav="sourcesShort">Quellen</a>
       · <a href="/de/za-saita/" class="footer-link" data-nav="about">Über uns</a>
       · <a href="/de/poveritelnost/" class="footer-link" data-nav="privacy">Datenschutz</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>

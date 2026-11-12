@@ -28,6 +28,7 @@ const LUNA = {
     hubH1: 'Лунен календар: фаза на Луната днес',
     hubIntro: 'Каква е фазата на Луната днес, колко от нея е осветена и кога е следващото пълнолуние. Календарите по месеци показват фазата за всеки ден; всички данни се изчисляват, без хороскопи и астрология.',
     hubYearH: y => `Лунен календар ${y} по месеци`,
+    sky: {"h":"Небето","intro":"Следващите събития на небето: метеорни потоци, затъмнения и суперлуни.","btn":"Всичко за небето →","meteor":"Метеорен поток","eclipse":"Затъмнение","supermoon":"Суперлуна","peak":"максимум","km":"км"},
     aboutH: "Как се сменят фазите на Луната",
     about: [
       "Луната не свети сама – виждаме онази част от нея, която е осветена от Слънцето. Докато обикаля около Земята, ъгълът между Слънцето, Земята и Луната се променя и от Земята се вижда различна част от осветената ѝ половина. Това са фазите.",
@@ -62,6 +63,7 @@ const LUNA = {
     hubH1: "Moon calendar: today's Moon phase",
     hubIntro: 'What the phase of the Moon is today, how much of it is lit and when the next full moon is. The monthly calendars show the phase for every day; all data are calculated, with no horoscopes or astrology.',
     hubYearH: y => `Moon calendar ${y} by month`,
+    sky: {"h":"The sky","intro":"Coming events in the sky: meteor showers, eclipses and supermoons.","btn":"Everything about the sky →","meteor":"Meteor shower","eclipse":"Eclipse","supermoon":"Supermoon","peak":"peak","km":"km"},
     aboutH: "How the phases of the Moon change",
     about: [
       "The Moon does not shine by itself: we see the part of it that is lit by the Sun. As it goes around the Earth, the angle between the Sun, the Earth and the Moon changes, and a different share of its lit half is seen from the Earth. Those are the phases.",
@@ -96,6 +98,7 @@ const LUNA = {
     hubH1: 'Mondkalender: Mondphase heute',
     hubIntro: 'Welche Mondphase heute ist, wie viel davon beleuchtet ist und wann der nächste Vollmond ist. Die Monatskalender zeigen die Phase für jeden Tag; alle Daten werden berechnet, ohne Horoskope und Astrologie.',
     hubYearH: y => `Mondkalender ${y} nach Monaten`,
+    sky: {"h":"Der Himmel","intro":"Kommende Ereignisse am Himmel: Meteorströme, Finsternisse und Supermonde.","btn":"Alles über den Himmel →","meteor":"Meteorstrom","eclipse":"Finsternis","supermoon":"Supermond","peak":"Maximum","km":"km"},
     aboutH: "Wie die Mondphasen entstehen",
     about: [
       "Der Mond leuchtet nicht selbst: Wir sehen den Teil, der von der Sonne beleuchtet wird. Während er die Erde umkreist, ändert sich der Winkel zwischen Sonne, Erde und Mond, und von der Erde aus ist ein anderer Anteil seiner beleuchteten Hälfte zu sehen. Das sind die Mondphasen.",
@@ -130,6 +133,7 @@ const LUNA = {
     hubH1: 'Calendario lunare: la fase lunare di oggi',
     hubIntro: 'Qual è la fase lunare di oggi, quanta parte è illuminata e quando sarà la prossima luna piena. I calendari mensili mostrano la fase di ogni giorno; tutti i dati sono calcolati, senza oroscopi né astrologia.',
     hubYearH: y => `Calendario lunare ${y} per mese`,
+    sky: {"h":"Il cielo","intro":"Prossimi eventi nel cielo: sciami meteorici, eclissi e superlune.","btn":"Tutto sul cielo →","meteor":"Sciame meteorico","eclipse":"Eclissi","supermoon":"Superluna","peak":"massimo","km":"km"},
     aboutH: "Come cambiano le fasi della Luna",
     about: [
       "La Luna non brilla di luce propria: vediamo la parte illuminata dal Sole. Mentre gira intorno alla Terra, l'angolo tra Sole, Terra e Luna cambia e dalla Terra si vede una porzione diversa della sua metà illuminata. Queste sono le fasi.",
@@ -164,6 +168,7 @@ const LUNA = {
     hubH1: 'Calendario lunar: la fase de la Luna hoy',
     hubIntro: 'Cuál es la fase de la Luna hoy, cuánta parte está iluminada y cuándo es la próxima luna llena. Los calendarios mensuales muestran la fase de cada día; todos los datos se calculan, sin horóscopos ni astrología.',
     hubYearH: y => `Calendario lunar ${y} por meses`,
+    sky: {"h":"El cielo","intro":"Próximos eventos en el cielo: lluvias de meteoros, eclipses y superlunas.","btn":"Todo sobre el cielo →","meteor":"Lluvia de meteoros","eclipse":"Eclipse","supermoon":"Superluna","peak":"máximo","km":"km"},
     aboutH: "Cómo cambian las fases de la Luna",
     about: [
       "La Luna no brilla por sí misma: vemos la parte que ilumina el Sol. Mientras gira alrededor de la Tierra, el ángulo entre el Sol, la Tierra y la Luna cambia, y desde la Tierra se ve una porción distinta de su mitad iluminada. Esas son las fases.",

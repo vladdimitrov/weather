@@ -94,7 +94,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -106,8 +106,7 @@
       <a href="/de/maps/" class="nav-link" data-nav="maps">Wetterkarten</a>
       <a href="/de/holliday_calendar/" class="nav-link" data-nav="holidays">Feiertagskalender</a>
       <a href="/de/magnitni-buri/" class="nav-link" data-nav="storms">Magnetstürme</a>
-      <a href="/de/nebeto/" class="nav-link" data-nav="sky">Himmel</a>
-      <a href="/de/iztochnici/" class="nav-link" data-nav="sources">Datenquellen</a>
+      <a href="/de/luna/" class="nav-link" data-nav="moon">Mondkalender</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -141,12 +140,12 @@
           </a>
           <a class="kp-day city-day" href="/weather/?city=Kragujevac&lat=44.0128&lon=20.9114&cc=RS&date=2026-11-13" title="Stündlich →">
             <span class="kp-day-name">Fr., 13.</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">6° / 23°</span>
-            <span class="kp-day-status">Nieselregen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">90% · 3.9 mm</span>
-            <span class="city-day-wind">Wind 27 km/h</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">90% · 5.8 mm</span>
+            <span class="city-day-wind">Wind 26 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Kragujevac&lat=44.0128&lon=20.9114&cc=RS&date=2026-11-14" title="Stündlich →">
             <span class="kp-day-name">Sa., 14.</span>
@@ -170,10 +169,10 @@
             <span class="kp-day-name">Mo., 16.</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">6° / 14°</span>
+            <span class="city-day-temp">7° / 14°</span>
             <span class="kp-day-status">Bewölkt</span>
             <span class="city-day-rain" title="Regenwahrscheinlichkeit">23% · 0.6 mm</span>
-            <span class="city-day-wind">Wind 15 km/h</span>
+            <span class="city-day-wind">Wind 19 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Kragujevac&lat=44.0128&lon=20.9114&cc=RS&date=2026-11-17" title="Stündlich →">
             <span class="kp-day-name">Di., 17.</span>
@@ -182,16 +181,16 @@
             <span class="city-day-temp">9° / 17°</span>
             <span class="kp-day-status">Nieselregen</span>
             <span class="city-day-rain" title="Regenwahrscheinlichkeit">41% · 1.9 mm</span>
-            <span class="city-day-wind">Wind 21 km/h</span>
+            <span class="city-day-wind">Wind 15 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Kragujevac&lat=44.0128&lon=20.9114&cc=RS&date=2026-11-18" title="Stündlich →">
             <span class="kp-day-name">Mi., 18.</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">6° / 17°</span>
+            <span class="city-day-temp">9° / 17°</span>
             <span class="kp-day-status">Nieselregen</span>
             <span class="city-day-rain" title="Regenwahrscheinlichkeit">61% · 2.4 mm</span>
-            <span class="city-day-wind">Wind 28 km/h</span>
+            <span class="city-day-wind">Wind 27 km/h</span>
           </a>
         </div>
         <p class="forecast-note">Median der Modelle ECMWF, ICON und GFS · Höhe 194 m</p>
@@ -333,12 +332,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/de/gradove/" class="footer-link" data-nav="cityIndex">Alle Städte</a>
+      · <a href="/de/iztochnici/" class="footer-link" data-nav="sourcesShort">Quellen</a>
       · <a href="/de/za-saita/" class="footer-link" data-nav="about">Über uns</a>
       · <a href="/de/poveritelnost/" class="footer-link" data-nav="privacy">Datenschutz</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>

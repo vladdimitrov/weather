@@ -94,7 +94,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -106,8 +106,7 @@
       <a href="/de/maps/" class="nav-link" data-nav="maps">Wetterkarten</a>
       <a href="/de/holliday_calendar/" class="nav-link" data-nav="holidays">Feiertagskalender</a>
       <a href="/de/magnitni-buri/" class="nav-link" data-nav="storms">Magnetstürme</a>
-      <a href="/de/nebeto/" class="nav-link" data-nav="sky">Himmel</a>
-      <a href="/de/iztochnici/" class="nav-link" data-nav="sources">Datenquellen</a>
+      <a href="/de/luna/" class="nav-link" data-nav="moon">Mondkalender</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -123,7 +122,7 @@
       <div class="kp-forecast city-now" id="cityNow">
         <h2>Banja Luka: Donnerstag, 12. November</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">14° / 21°</span>
-        <p class="storm-now-status">Nieselregen · Regenwahrscheinlichkeit 50%</p>
+        <p class="storm-now-status">Regen · Regenwahrscheinlichkeit 75%</p>
         <p class="storm-updated">Vorhersage vom 12. November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
@@ -132,21 +131,21 @@
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Banja+Luka&lat=44.7722&lon=17.1910&cc=BA&date=2026-11-12" title="Stündlich →">
             <span class="kp-day-name">Do., 12.</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">12.11</span>
             <span class="city-day-temp">14° / 21°</span>
-            <span class="kp-day-status">Nieselregen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">50% · 0.9 mm</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">75% · 0.9 mm</span>
             <span class="city-day-wind">Wind 23 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Banja+Luka&lat=44.7722&lon=17.1910&cc=BA&date=2026-11-13" title="Stündlich →">
             <span class="kp-day-name">Fr., 13.</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">4° / 20°</span>
-            <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 26.4 mm</span>
-            <span class="city-day-wind">Wind 31 km/h</span>
+            <span class="city-day-temp">5° / 20°</span>
+            <span class="kp-day-status">Gewitter</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 23.5 mm</span>
+            <span class="city-day-wind">Wind 34 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Banja+Luka&lat=44.7722&lon=17.1910&cc=BA&date=2026-11-14" title="Stündlich →">
             <span class="kp-day-name">Sa., 14.</span>
@@ -154,7 +153,7 @@
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">2° / 9°</span>
             <span class="kp-day-status">Nieselregen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">83% · 2.0 mm</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">83% · 0.7 mm</span>
             <span class="city-day-wind">Wind 11 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Banja+Luka&lat=44.7722&lon=17.1910&cc=BA&date=2026-11-15" title="Stündlich →">
@@ -172,7 +171,7 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">6° / 15°</span>
             <span class="kp-day-status">Nebel</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">23% · 0.5 mm</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">23% · 0.2 mm</span>
             <span class="city-day-wind">Wind 12 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Banja+Luka&lat=44.7722&lon=17.1910&cc=BA&date=2026-11-17" title="Stündlich →">
@@ -181,17 +180,17 @@
             <span class="city-day-date">17.11</span>
             <span class="city-day-temp">10° / 17°</span>
             <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">39% · 0.7 mm</span>
-            <span class="city-day-wind">Wind 27 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">39% · 0.5 mm</span>
+            <span class="city-day-wind">Wind 18 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Banja+Luka&lat=44.7722&lon=17.1910&cc=BA&date=2026-11-18" title="Stündlich →">
             <span class="kp-day-name">Mi., 18.</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">8° / 18°</span>
+            <span class="city-day-temp">9° / 18°</span>
             <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">56% · 9.5 mm</span>
-            <span class="city-day-wind">Wind 35 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">56% · 13.0 mm</span>
+            <span class="city-day-wind">Wind 25 km/h</span>
           </a>
         </div>
         <p class="forecast-note">Median der Modelle ECMWF, ICON und GFS · Höhe 168 m</p>
@@ -333,12 +332,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/de/gradove/" class="footer-link" data-nav="cityIndex">Alle Städte</a>
+      · <a href="/de/iztochnici/" class="footer-link" data-nav="sourcesShort">Quellen</a>
       · <a href="/de/za-saita/" class="footer-link" data-nav="about">Über uns</a>
       · <a href="/de/poveritelnost/" class="footer-link" data-nav="privacy">Datenschutz</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>

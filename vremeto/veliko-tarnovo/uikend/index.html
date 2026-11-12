@@ -64,7 +64,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -76,8 +76,7 @@
       <a href="/maps/" class="nav-link" data-nav="maps">Карти за времето</a>
       <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Календар на празниците</a>
       <a href="/magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
-      <a href="/nebeto/" class="nav-link" data-nav="sky">Небето</a>
-      <a href="/iztochnici/" class="nav-link" data-nav="sources">Източници на данни</a>
+      <a href="/luna/" class="nav-link" data-nav="moon">Лунен календар</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -102,12 +101,12 @@
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE+%D0%A2%D1%8A%D1%80%D0%BD%D0%BE%D0%B2%D0%BE&lat=43.0757&lon=25.6172&cc=BG&date=2026-11-13" title="По часове →">
             <span class="kp-day-name">пт, 13</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">15° / 23°</span>
-            <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">43% · 0.2 mm</span>
-            <span class="city-day-wind">Вятър 31 km/h</span>
+            <span class="kp-day-status">Облачно</span>
+            <span class="city-day-rain" title="вероятност за валеж">43%</span>
+            <span class="city-day-wind">Вятър 30 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE+%D0%A2%D1%8A%D1%80%D0%BD%D0%BE%D0%B2%D0%BE&lat=43.0757&lon=25.6172&cc=BG&date=2026-11-14" title="По часове →">
             <span class="kp-day-name">сб, 14</span>
@@ -116,7 +115,7 @@
             <span class="city-day-temp">6° / 15°</span>
             <span class="kp-day-status">Дъжд</span>
             <span class="city-day-rain" title="вероятност за валеж">79% · 4.2 mm</span>
-            <span class="city-day-wind">Вятър 15 km/h</span>
+            <span class="city-day-wind">Вятър 17 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%92%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE+%D0%A2%D1%8A%D1%80%D0%BD%D0%BE%D0%B2%D0%BE&lat=43.0757&lon=25.6172&cc=BG&date=2026-11-15" title="По часове →">
             <span class="kp-day-name">нд, 15</span>
@@ -161,12 +160,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/gradove/" class="footer-link" data-nav="cityIndex">Всички градове</a>
+      · <a href="/iztochnici/" class="footer-link" data-nav="sourcesShort">Източници</a>
       · <a href="/za-saita/" class="footer-link" data-nav="about">За сайта</a>
       · <a href="/poveritelnost/" class="footer-link" data-nav="privacy">Поверителност</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
