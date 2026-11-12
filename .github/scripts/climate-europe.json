@@ -4,6 +4,16 @@
  "cities": {
   "albania/tirana": {
    "elevation": 110,
+   "records": {
+    "high": {
+     "t": 39.9,
+     "date": "2023-07-25"
+    },
+    "low": {
+     "t": -9.3,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 11,
@@ -81,6 +91,16 @@
   },
   "albania/durres": {
    "elevation": 3,
+   "records": {
+    "high": {
+     "t": 37.4,
+     "date": "2023-08-22"
+    },
+    "low": {
+     "t": -7.8,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 11.3,
@@ -158,6 +178,16 @@
   },
   "albania/vlore": {
    "elevation": 5,
+   "records": {
+    "high": {
+     "t": 41.6,
+     "date": "2023-07-25"
+    },
+    "low": {
+     "t": -5.6,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 12.6,
@@ -235,6 +265,16 @@
   },
   "albania/shkoder": {
    "elevation": 16,
+   "records": {
+    "high": {
+     "t": 40.8,
+     "date": "2017-08-04"
+    },
+    "low": {
+     "t": -9.1,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 9.6,
@@ -312,6 +352,16 @@
   },
   "austria/vienna": {
    "elevation": 179,
+   "records": {
+    "high": {
+     "t": 36.5,
+     "date": "2015-07-22"
+    },
+    "low": {
+     "t": -15.2,
+     "date": "2017-01-11"
+    }
+   },
    "months": [
     {
      "high": 4.3,
@@ -389,6 +439,16 @@
   },
   "austria/graz": {
    "elevation": 363,
+   "records": {
+    "high": {
+     "t": 34,
+     "date": "2015-07-07"
+    },
+    "low": {
+     "t": -18.6,
+     "date": "2018-02-26"
+    }
+   },
    "months": [
     {
      "high": 4.3,
@@ -466,6 +526,16 @@
   },
   "austria/linz": {
    "elevation": 250,
+   "records": {
+    "high": {
+     "t": 36.2,
+     "date": "2019-06-30"
+    },
+    "low": {
+     "t": -15.3,
+     "date": "2016-01-19"
+    }
+   },
    "months": [
     {
      "high": 4.1,
@@ -543,6 +613,16 @@
   },
   "austria/salzburg": {
    "elevation": 430,
+   "records": {
+    "high": {
+     "t": 36.4,
+     "date": "2023-07-15"
+    },
+    "low": {
+     "t": -22.7,
+     "date": "2017-01-07"
+    }
+   },
    "months": [
     {
      "high": 4.9,
@@ -620,6 +700,16 @@
   },
   "austria/innsbruck": {
    "elevation": 580,
+   "records": {
+    "high": {
+     "t": 35.5,
+     "date": "2019-06-26"
+    },
+    "low": {
+     "t": -18.8,
+     "date": "2016-01-19"
+    }
+   },
    "months": [
     {
      "high": 5.3,
@@ -697,6 +787,16 @@
   },
   "belgium/brussels": {
    "elevation": 26,
+   "records": {
+    "high": {
+     "t": 38.5,
+     "date": "2019-07-25"
+    },
+    "low": {
+     "t": -8.5,
+     "date": "2021-02-10"
+    }
+   },
    "months": [
     {
      "high": 6.3,
@@ -774,6 +874,16 @@
   },
   "belgium/antwerp": {
    "elevation": 12,
+   "records": {
+    "high": {
+     "t": 38.6,
+     "date": "2019-07-25"
+    },
+    "low": {
+     "t": -9.1,
+     "date": "2021-02-09"
+    }
+   },
    "months": [
     {
      "high": 6.6,
@@ -851,6 +961,16 @@
   },
   "belgium/ghent": {
    "elevation": 12,
+   "records": {
+    "high": {
+     "t": 38.6,
+     "date": "2019-07-25"
+    },
+    "low": {
+     "t": -8.3,
+     "date": "2021-02-09"
+    }
+   },
    "months": [
     {
      "high": 6.8,
@@ -928,6 +1048,16 @@
   },
   "belgium/bruges": {
    "elevation": 13,
+   "records": {
+    "high": {
+     "t": 37.5,
+     "date": "2019-07-25"
+    },
+    "low": {
+     "t": -7.5,
+     "date": "2021-02-09"
+    }
+   },
    "months": [
     {
      "high": 7,
@@ -1005,6 +1135,16 @@
   },
   "belgium/liege": {
    "elevation": 65,
+   "records": {
+    "high": {
+     "t": 38.3,
+     "date": "2019-07-25"
+    },
+    "low": {
+     "t": -12.5,
+     "date": "2016-01-19"
+    }
+   },
    "months": [
     {
      "high": 5.5,
@@ -1082,6 +1222,16 @@
   },
   "bosnia-and-herzegovina/sarajevo": {
    "elevation": 543,
+   "records": {
+    "high": {
+     "t": 37.3,
+     "date": "2024-08-14"
+    },
+    "low": {
+     "t": -26.3,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 5.1,
@@ -1159,6 +1309,16 @@
   },
   "bosnia-and-herzegovina/banja-luka": {
    "elevation": 168,
+   "records": {
+    "high": {
+     "t": 38.9,
+     "date": "2023-08-27"
+    },
+    "low": {
+     "t": -18.6,
+     "date": "2017-01-07"
+    }
+   },
    "months": [
     {
      "high": 6.9,
@@ -1236,6 +1396,16 @@
   },
   "bosnia-and-herzegovina/mostar": {
    "elevation": 64,
+   "records": {
+    "high": {
+     "t": 40.3,
+     "date": "2017-08-05"
+    },
+    "low": {
+     "t": -12.2,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 9.3,
@@ -1313,6 +1483,16 @@
   },
   "bosnia-and-herzegovina/tuzla": {
    "elevation": 227,
+   "records": {
+    "high": {
+     "t": 37.7,
+     "date": "2024-08-14"
+    },
+    "low": {
+     "t": -23.4,
+     "date": "2015-01-01"
+    }
+   },
    "months": [
     {
      "high": 5.8,
@@ -1390,6 +1570,16 @@
   },
   "croatia/zagreb": {
    "elevation": 142,
+   "records": {
+    "high": {
+     "t": 37.9,
+     "date": "2017-08-04"
+    },
+    "low": {
+     "t": -19.3,
+     "date": "2015-01-01"
+    }
+   },
    "months": [
     {
      "high": 5.3,
@@ -1467,6 +1657,16 @@
   },
   "croatia/split": {
    "elevation": 17,
+   "records": {
+    "high": {
+     "t": 39.9,
+     "date": "2017-08-02"
+    },
+    "low": {
+     "t": -7.6,
+     "date": "2017-01-07"
+    }
+   },
    "months": [
     {
      "high": 10.8,
@@ -1544,6 +1744,16 @@
   },
   "croatia/dubrovnik": {
    "elevation": 32,
+   "records": {
+    "high": {
+     "t": 36.6,
+     "date": "2024-07-29"
+    },
+    "low": {
+     "t": -8.2,
+     "date": "2017-01-07"
+    }
+   },
    "months": [
     {
      "high": 10.9,
@@ -1621,6 +1831,16 @@
   },
   "croatia/rijeka": {
    "elevation": 12,
+   "records": {
+    "high": {
+     "t": 36.4,
+     "date": "2015-07-21"
+    },
+    "low": {
+     "t": -10.3,
+     "date": "2015-01-01"
+    }
+   },
    "months": [
     {
      "high": 9.1,
@@ -1698,6 +1918,16 @@
   },
   "croatia/zadar": {
    "elevation": 2,
+   "records": {
+    "high": {
+     "t": 37.3,
+     "date": "2022-08-06"
+    },
+    "low": {
+     "t": -6,
+     "date": "2017-01-07"
+    }
+   },
    "months": [
     {
      "high": 10.1,
@@ -1775,6 +2005,16 @@
   },
   "cyprus/nicosia": {
    "elevation": 130,
+   "records": {
+    "high": {
+     "t": 44.6,
+     "date": "2020-09-04"
+    },
+    "low": {
+     "t": -0.5,
+     "date": "2022-03-21"
+    }
+   },
    "months": [
     {
      "high": 15.4,
@@ -1852,6 +2092,16 @@
   },
   "cyprus/limassol": {
    "elevation": 25,
+   "records": {
+    "high": {
+     "t": 40.8,
+     "date": "2020-05-19"
+    },
+    "low": {
+     "t": 2.6,
+     "date": "2022-01-20"
+    }
+   },
    "months": [
     {
      "high": 15.9,
@@ -1929,6 +2179,16 @@
   },
   "cyprus/paphos": {
    "elevation": 71,
+   "records": {
+    "high": {
+     "t": 40.5,
+     "date": "2020-05-17"
+    },
+    "low": {
+     "t": 2.3,
+     "date": "2017-01-29"
+    }
+   },
    "months": [
     {
      "high": 15.6,
@@ -2006,6 +2266,16 @@
   },
   "cyprus/larnaca": {
    "elevation": 9,
+   "records": {
+    "high": {
+     "t": 40.9,
+     "date": "2024-06-15"
+    },
+    "low": {
+     "t": 2.6,
+     "date": "2020-02-10"
+    }
+   },
    "months": [
     {
      "high": 15.9,
@@ -2083,6 +2353,16 @@
   },
   "czechia/prague": {
    "elevation": 251,
+   "records": {
+    "high": {
+     "t": 38.1,
+     "date": "2019-06-26"
+    },
+    "low": {
+     "t": -19.5,
+     "date": "2021-02-15"
+    }
+   },
    "months": [
     {
      "high": 3.8,
@@ -2160,6 +2440,16 @@
   },
   "czechia/brno": {
    "elevation": 231,
+   "records": {
+    "high": {
+     "t": 35.7,
+     "date": "2015-07-22"
+    },
+    "low": {
+     "t": -16.6,
+     "date": "2017-01-20"
+    }
+   },
    "months": [
     {
      "high": 3.1,
@@ -2237,6 +2527,16 @@
   },
   "czechia/ostrava": {
    "elevation": 230,
+   "records": {
+    "high": {
+     "t": 34.2,
+     "date": "2015-08-11"
+    },
+    "low": {
+     "t": -17.5,
+     "date": "2018-03-01"
+    }
+   },
    "months": [
     {
      "high": 2.8,
@@ -2314,6 +2614,16 @@
   },
   "czechia/plzen": {
    "elevation": 329,
+   "records": {
+    "high": {
+     "t": 36,
+     "date": "2015-08-08"
+    },
+    "low": {
+     "t": -21.7,
+     "date": "2017-01-07"
+    }
+   },
    "months": [
     {
      "high": 3.4,
@@ -2391,6 +2701,16 @@
   },
   "czechia/olomouc": {
    "elevation": 224,
+   "records": {
+    "high": {
+     "t": 36.2,
+     "date": "2022-07-21"
+    },
+    "low": {
+     "t": -15.4,
+     "date": "2017-01-09"
+    }
+   },
    "months": [
     {
      "high": 2.8,
@@ -2468,6 +2788,16 @@
   },
   "denmark/copenhagen": {
    "elevation": 10,
+   "records": {
+    "high": {
+     "t": 29.3,
+     "date": "2015-07-05"
+    },
+    "low": {
+     "t": -9,
+     "date": "2017-01-06"
+    }
+   },
    "months": [
     {
      "high": 4,
@@ -2545,6 +2875,16 @@
   },
   "denmark/aarhus": {
    "elevation": 27,
+   "records": {
+    "high": {
+     "t": 28.8,
+     "date": "2018-08-03"
+    },
+    "low": {
+     "t": -12.7,
+     "date": "2022-12-16"
+    }
+   },
    "months": [
     {
      "high": 4.2,
@@ -2622,6 +2962,16 @@
   },
   "denmark/odense": {
    "elevation": 14,
+   "records": {
+    "high": {
+     "t": 31.9,
+     "date": "2022-07-20"
+    },
+    "low": {
+     "t": -14.4,
+     "date": "2021-02-14"
+    }
+   },
    "months": [
     {
      "high": 4.5,
@@ -2699,6 +3049,16 @@
   },
   "denmark/aalborg": {
    "elevation": 10,
+   "records": {
+    "high": {
+     "t": 32.4,
+     "date": "2022-07-20"
+    },
+    "low": {
+     "t": -12.6,
+     "date": "2022-12-16"
+    }
+   },
    "months": [
     {
      "high": 4.2,
@@ -2776,6 +3136,16 @@
   },
   "estonia/tallinn": {
    "elevation": 10,
+   "records": {
+    "high": {
+     "t": 32.4,
+     "date": "2018-07-29"
+    },
+    "low": {
+     "t": -23.8,
+     "date": "2016-01-08"
+    }
+   },
    "months": [
     {
      "high": -0.8,
@@ -2853,6 +3223,16 @@
   },
   "estonia/tartu": {
    "elevation": 36,
+   "records": {
+    "high": {
+     "t": 31.8,
+     "date": "2021-07-10"
+    },
+    "low": {
+     "t": -26,
+     "date": "2018-02-23"
+    }
+   },
    "months": [
     {
      "high": -1.5,
@@ -2930,6 +3310,16 @@
   },
   "estonia/parnu": {
    "elevation": 7,
+   "records": {
+    "high": {
+     "t": 30.8,
+     "date": "2018-07-29"
+    },
+    "low": {
+     "t": -26.9,
+     "date": "2016-01-08"
+    }
+   },
    "months": [
     {
      "high": -0.5,
@@ -3007,6 +3397,16 @@
   },
   "finland/helsinki": {
    "elevation": 8,
+   "records": {
+    "high": {
+     "t": 31.3,
+     "date": "2019-07-28"
+    },
+    "low": {
+     "t": -25.8,
+     "date": "2024-01-07"
+    }
+   },
    "months": [
     {
      "high": -1.1,
@@ -3084,6 +3484,16 @@
   },
   "finland/espoo": {
    "elevation": 13,
+   "records": {
+    "high": {
+     "t": 30.6,
+     "date": "2019-07-28"
+    },
+    "low": {
+     "t": -27,
+     "date": "2024-01-07"
+    }
+   },
    "months": [
     {
      "high": -1.3,
@@ -3161,6 +3571,16 @@
   },
   "finland/tampere": {
    "elevation": 93,
+   "records": {
+    "high": {
+     "t": 31,
+     "date": "2020-06-25"
+    },
+    "low": {
+     "t": -22.8,
+     "date": "2016-01-20"
+    }
+   },
    "months": [
     {
      "high": -2.6,
@@ -3238,6 +3658,16 @@
   },
   "finland/turku": {
    "elevation": 19,
+   "records": {
+    "high": {
+     "t": 33.4,
+     "date": "2019-07-28"
+    },
+    "low": {
+     "t": -23.6,
+     "date": "2021-02-18"
+    }
+   },
    "months": [
     {
      "high": -0.7,
@@ -3315,6 +3745,16 @@
   },
   "finland/rovaniemi": {
    "elevation": 97,
+   "records": {
+    "high": {
+     "t": 30.7,
+     "date": "2022-07-01"
+    },
+    "low": {
+     "t": -35.1,
+     "date": "2017-01-05"
+    }
+   },
    "months": [
     {
      "high": -7,
@@ -3392,6 +3832,16 @@
   },
   "france/paris": {
    "elevation": 36,
+   "records": {
+    "high": {
+     "t": 40.7,
+     "date": "2019-07-25"
+    },
+    "low": {
+     "t": -8.6,
+     "date": "2018-02-07"
+    }
+   },
    "months": [
     {
      "high": 7.4,
@@ -3469,6 +3919,16 @@
   },
   "france/marseille": {
    "elevation": 6,
+   "records": {
+    "high": {
+     "t": 34.4,
+     "date": "2018-08-02"
+    },
+    "low": {
+     "t": -1.6,
+     "date": "2018-02-27"
+    }
+   },
    "months": [
     {
      "high": 11.4,
@@ -3546,6 +4006,16 @@
   },
   "france/lyon": {
    "elevation": 184,
+   "records": {
+    "high": {
+     "t": 41.1,
+     "date": "2023-08-24"
+    },
+    "low": {
+     "t": -8.7,
+     "date": "2018-02-28"
+    }
+   },
    "months": [
     {
      "high": 6.8,
@@ -3623,6 +4093,16 @@
   },
   "france/toulouse": {
    "elevation": 153,
+   "records": {
+    "high": {
+     "t": 40.9,
+     "date": "2023-08-23"
+    },
+    "low": {
+     "t": -6.9,
+     "date": "2018-02-27"
+    }
+   },
    "months": [
     {
      "high": 9.2,
@@ -3700,6 +4180,16 @@
   },
   "france/nice": {
    "elevation": 29,
+   "records": {
+    "high": {
+     "t": 34.9,
+     "date": "2020-06-29"
+    },
+    "low": {
+     "t": -1.1,
+     "date": "2018-02-26"
+    }
+   },
    "months": [
     {
      "high": 12.6,
@@ -3777,6 +4267,16 @@
   },
   "france/bordeaux": {
    "elevation": 16,
+   "records": {
+    "high": {
+     "t": 40.6,
+     "date": "2022-06-18"
+    },
+    "low": {
+     "t": -5.7,
+     "date": "2017-01-20"
+    }
+   },
    "months": [
     {
      "high": 10.1,
@@ -3854,6 +4354,16 @@
   },
   "germany/berlin": {
    "elevation": 37,
+   "records": {
+    "high": {
+     "t": 37.7,
+     "date": "2022-07-20"
+    },
+    "low": {
+     "t": -15,
+     "date": "2021-02-10"
+    }
+   },
    "months": [
     {
      "high": 4.2,
@@ -3931,6 +4441,16 @@
   },
   "germany/hamburg": {
    "elevation": 3,
+   "records": {
+    "high": {
+     "t": 39.3,
+     "date": "2022-07-20"
+    },
+    "low": {
+     "t": -14.2,
+     "date": "2018-02-28"
+    }
+   },
    "months": [
     {
      "high": 4.9,
@@ -4008,6 +4528,16 @@
   },
   "germany/munich": {
    "elevation": 521,
+   "records": {
+    "high": {
+     "t": 35.2,
+     "date": "2022-07-20"
+    },
+    "low": {
+     "t": -20.8,
+     "date": "2017-01-07"
+    }
+   },
    "months": [
     {
      "high": 4.1,
@@ -4085,6 +4615,16 @@
   },
   "germany/cologne": {
    "elevation": 55,
+   "records": {
+    "high": {
+     "t": 38.8,
+     "date": "2019-07-25"
+    },
+    "low": {
+     "t": -9.6,
+     "date": "2024-01-20"
+    }
+   },
    "months": [
     {
      "high": 6,
@@ -4162,6 +4702,16 @@
   },
   "germany/frankfurt": {
    "elevation": 103,
+   "records": {
+    "high": {
+     "t": 39.4,
+     "date": "2019-06-30"
+    },
+    "low": {
+     "t": -10.4,
+     "date": "2021-02-10"
+    }
+   },
    "months": [
     {
      "high": 5.3,
@@ -4239,6 +4789,16 @@
   },
   "germany/stuttgart": {
    "elevation": 249,
+   "records": {
+    "high": {
+     "t": 36.3,
+     "date": "2019-07-25"
+    },
+    "low": {
+     "t": -16.4,
+     "date": "2017-01-07"
+    }
+   },
    "months": [
     {
      "high": 5.7,
@@ -4316,6 +4876,16 @@
   },
   "germany/dresden": {
    "elevation": 115,
+   "records": {
+    "high": {
+     "t": 36.8,
+     "date": "2022-06-19"
+    },
+    "low": {
+     "t": -18.3,
+     "date": "2021-02-10"
+    }
+   },
    "months": [
     {
      "high": 4.2,
@@ -4393,6 +4963,16 @@
   },
   "greece/athens": {
    "elevation": 92,
+   "records": {
+    "high": {
+     "t": 43.8,
+     "date": "2017-06-30"
+    },
+    "low": {
+     "t": -3.2,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 12.2,
@@ -4470,6 +5050,16 @@
   },
   "greece/thessaloniki": {
    "elevation": 42,
+   "records": {
+    "high": {
+     "t": 39.9,
+     "date": "2021-08-03"
+    },
+    "low": {
+     "t": -10.8,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 9.4,
@@ -4547,6 +5137,16 @@
   },
   "greece/patras": {
    "elevation": 13,
+   "records": {
+    "high": {
+     "t": 39.5,
+     "date": "2024-07-17"
+    },
+    "low": {
+     "t": -1,
+     "date": "2015-01-08"
+    }
+   },
    "months": [
     {
      "high": 12.6,
@@ -4624,6 +5224,16 @@
   },
   "greece/heraklion": {
    "elevation": 17,
+   "records": {
+    "high": {
+     "t": 44.8,
+     "date": "2024-06-14"
+    },
+    "low": {
+     "t": 0,
+     "date": "2017-01-09"
+    }
+   },
    "months": [
     {
      "high": 15.2,
@@ -4701,6 +5311,16 @@
   },
   "greece/rhodes": {
    "elevation": 53,
+   "records": {
+    "high": {
+     "t": 40.9,
+     "date": "2023-07-15"
+    },
+    "low": {
+     "t": 2.4,
+     "date": "2015-01-08"
+    }
+   },
    "months": [
     {
      "high": 14.7,
@@ -4778,6 +5398,16 @@
   },
   "hungary/budapest": {
    "elevation": 113,
+   "records": {
+    "high": {
+     "t": 37.9,
+     "date": "2022-07-21"
+    },
+    "low": {
+     "t": -16,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 4.1,
@@ -4855,6 +5485,16 @@
   },
   "hungary/debrecen": {
    "elevation": 128,
+   "records": {
+    "high": {
+     "t": 38.4,
+     "date": "2022-07-23"
+    },
+    "low": {
+     "t": -15.4,
+     "date": "2022-01-13"
+    }
+   },
    "months": [
     {
      "high": 3.5,
@@ -4932,6 +5572,16 @@
   },
   "hungary/szeged": {
    "elevation": 89,
+   "records": {
+    "high": {
+     "t": 39.4,
+     "date": "2022-07-23"
+    },
+    "low": {
+     "t": -15,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 4.9,
@@ -5009,6 +5659,16 @@
   },
   "hungary/pecs": {
    "elevation": 141,
+   "records": {
+    "high": {
+     "t": 35.5,
+     "date": "2022-07-23"
+    },
+    "low": {
+     "t": -17.2,
+     "date": "2018-03-01"
+    }
+   },
    "months": [
     {
      "high": 4.7,
@@ -5086,6 +5746,16 @@
   },
   "iceland/reykjavik": {
    "elevation": 7,
+   "records": {
+    "high": {
+     "t": 21.3,
+     "date": "2018-07-29"
+    },
+    "low": {
+     "t": -16.6,
+     "date": "2016-01-31"
+    }
+   },
    "months": [
     {
      "high": 1.7,
@@ -5163,6 +5833,16 @@
   },
   "iceland/akureyri": {
    "elevation": 47,
+   "records": {
+    "high": {
+     "t": 24.7,
+     "date": "2021-08-25"
+    },
+    "low": {
+     "t": -22.5,
+     "date": "2024-12-30"
+    }
+   },
    "months": [
     {
      "high": -0.1,
@@ -5240,6 +5920,16 @@
   },
   "iceland/keflavik": {
    "elevation": 10,
+   "records": {
+    "high": {
+     "t": 20.1,
+     "date": "2017-07-27"
+    },
+    "low": {
+     "t": -14.9,
+     "date": "2023-01-15"
+    }
+   },
    "months": [
     {
      "high": 2.7,
@@ -5317,6 +6007,16 @@
   },
   "ireland/dublin": {
    "elevation": 11,
+   "records": {
+    "high": {
+     "t": 27.3,
+     "date": "2022-07-18"
+    },
+    "low": {
+     "t": -2.9,
+     "date": "2021-01-09"
+    }
+   },
    "months": [
     {
      "high": 8.4,
@@ -5394,6 +6094,16 @@
   },
   "ireland/cork": {
    "elevation": 9,
+   "records": {
+    "high": {
+     "t": 29,
+     "date": "2022-08-13"
+    },
+    "low": {
+     "t": -5.6,
+     "date": "2018-03-01"
+    }
+   },
    "months": [
     {
      "high": 8.6,
@@ -5466,4395 +6176,6 @@
      "low": 5,
      "precip": 130,
      "rainDays": 17
-    }
-   ]
-  },
-  "ireland/galway": {
-   "elevation": 7,
-   "months": [
-    {
-     "high": 8.5,
-     "low": 4,
-     "precip": 111,
-     "rainDays": 16
-    },
-    {
-     "high": 9,
-     "low": 4.2,
-     "precip": 116,
-     "rainDays": 17
-    },
-    {
-     "high": 10.2,
-     "low": 4.1,
-     "precip": 117,
-     "rainDays": 16
-    },
-    {
-     "high": 12.6,
-     "low": 5.4,
-     "precip": 70,
-     "rainDays": 13
-    },
-    {
-     "high": 15.4,
-     "low": 8.3,
-     "precip": 79,
-     "rainDays": 15
-    },
-    {
-     "high": 17.4,
-     "low": 10.9,
-     "precip": 87,
-     "rainDays": 16
-    },
-    {
-     "high": 18.3,
-     "low": 12.2,
-     "precip": 116,
-     "rainDays": 17
-    },
-    {
-     "high": 18.1,
-     "low": 12.5,
-     "precip": 142,
-     "rainDays": 19
-    },
-    {
-     "high": 16.6,
-     "low": 10.8,
-     "precip": 105,
-     "rainDays": 16
-    },
-    {
-     "high": 13.7,
-     "low": 8.8,
-     "precip": 132,
-     "rainDays": 18
-    },
-    {
-     "high": 10.7,
-     "low": 6.1,
-     "precip": 121,
-     "rainDays": 16
-    },
-    {
-     "high": 9.3,
-     "low": 5.2,
-     "precip": 146,
-     "rainDays": 19
-    }
-   ]
-  },
-  "ireland/limerick": {
-   "elevation": 11,
-   "months": [
-    {
-     "high": 8.2,
-     "low": 3,
-     "precip": 117,
-     "rainDays": 17
-    },
-    {
-     "high": 9,
-     "low": 3.5,
-     "precip": 119,
-     "rainDays": 18
-    },
-    {
-     "high": 10.3,
-     "low": 3.6,
-     "precip": 122,
-     "rainDays": 17
-    },
-    {
-     "high": 12.7,
-     "low": 5,
-     "precip": 70,
-     "rainDays": 13
-    },
-    {
-     "high": 15.6,
-     "low": 7.9,
-     "precip": 77,
-     "rainDays": 14
-    },
-    {
-     "high": 18,
-     "low": 10.6,
-     "precip": 87,
-     "rainDays": 16
-    },
-    {
-     "high": 18.9,
-     "low": 12.2,
-     "precip": 102,
-     "rainDays": 17
-    },
-    {
-     "high": 18.6,
-     "low": 11.9,
-     "precip": 124,
-     "rainDays": 19
-    },
-    {
-     "high": 16.7,
-     "low": 10.4,
-     "precip": 113,
-     "rainDays": 16
-    },
-    {
-     "high": 13.8,
-     "low": 8.1,
-     "precip": 121,
-     "rainDays": 17
-    },
-    {
-     "high": 10.5,
-     "low": 5.5,
-     "precip": 115,
-     "rainDays": 16
-    },
-    {
-     "high": 9.2,
-     "low": 4.4,
-     "precip": 141,
-     "rainDays": 19
-    }
-   ]
-  },
-  "italy/rome": {
-   "elevation": 58,
-   "months": [
-    {
-     "high": 12.3,
-     "low": 3.7,
-     "precip": 66,
-     "rainDays": 10
-    },
-    {
-     "high": 14.3,
-     "low": 4.9,
-     "precip": 73,
-     "rainDays": 8
-    },
-    {
-     "high": 16.3,
-     "low": 6.3,
-     "precip": 89,
-     "rainDays": 11
-    },
-    {
-     "high": 19.5,
-     "low": 8.8,
-     "precip": 60,
-     "rainDays": 9
-    },
-    {
-     "high": 23.4,
-     "low": 13,
-     "precip": 77,
-     "rainDays": 12
-    },
-    {
-     "high": 29.2,
-     "low": 17.6,
-     "precip": 34,
-     "rainDays": 5
-    },
-    {
-     "high": 33.1,
-     "low": 21,
-     "precip": 16,
-     "rainDays": 4
-    },
-    {
-     "high": 32.5,
-     "low": 21.1,
-     "precip": 30,
-     "rainDays": 5
-    },
-    {
-     "high": 27.2,
-     "low": 17.1,
-     "precip": 90,
-     "rainDays": 9
-    },
-    {
-     "high": 22.5,
-     "low": 13.3,
-     "precip": 105,
-     "rainDays": 11
-    },
-    {
-     "high": 17.2,
-     "low": 9.2,
-     "precip": 140,
-     "rainDays": 13
-    },
-    {
-     "high": 13.7,
-     "low": 5.2,
-     "precip": 94,
-     "rainDays": 9
-    }
-   ]
-  },
-  "italy/milan": {
-   "elevation": 147,
-   "months": [
-    {
-     "high": 7.8,
-     "low": -0.7,
-     "precip": 50,
-     "rainDays": 6
-    },
-    {
-     "high": 10.9,
-     "low": 1.7,
-     "precip": 81,
-     "rainDays": 8
-    },
-    {
-     "high": 14.5,
-     "low": 4.1,
-     "precip": 76,
-     "rainDays": 9
-    },
-    {
-     "high": 18.5,
-     "low": 8,
-     "precip": 88,
-     "rainDays": 9
-    },
-    {
-     "high": 21.9,
-     "low": 12.5,
-     "precip": 163,
-     "rainDays": 16
-    },
-    {
-     "high": 27.4,
-     "low": 17.4,
-     "precip": 115,
-     "rainDays": 11
-    },
-    {
-     "high": 29.9,
-     "low": 20,
-     "precip": 100,
-     "rainDays": 12
-    },
-    {
-     "high": 29.5,
-     "low": 19.6,
-     "precip": 107,
-     "rainDays": 10
-    },
-    {
-     "high": 24.3,
-     "low": 15.3,
-     "precip": 122,
-     "rainDays": 10
-    },
-    {
-     "high": 19,
-     "low": 11,
-     "precip": 142,
-     "rainDays": 11
-    },
-    {
-     "high": 12.4,
-     "low": 5.1,
-     "precip": 111,
-     "rainDays": 11
-    },
-    {
-     "high": 7.9,
-     "low": 0.7,
-     "precip": 64,
-     "rainDays": 7
-    }
-   ]
-  },
-  "italy/naples": {
-   "elevation": 19,
-   "months": [
-    {
-     "high": 12.5,
-     "low": 5.1,
-     "precip": 97,
-     "rainDays": 12
-    },
-    {
-     "high": 13.8,
-     "low": 6,
-     "precip": 102,
-     "rainDays": 11
-    },
-    {
-     "high": 15.3,
-     "low": 7.1,
-     "precip": 90,
-     "rainDays": 13
-    },
-    {
-     "high": 18.2,
-     "low": 9.5,
-     "precip": 66,
-     "rainDays": 9
-    },
-    {
-     "high": 21.8,
-     "low": 13.4,
-     "precip": 80,
-     "rainDays": 12
-    },
-    {
-     "high": 27,
-     "low": 17.9,
-     "precip": 38,
-     "rainDays": 6
-    },
-    {
-     "high": 30.4,
-     "low": 21.2,
-     "precip": 16,
-     "rainDays": 3
-    },
-    {
-     "high": 30.6,
-     "low": 21.3,
-     "precip": 27,
-     "rainDays": 6
-    },
-    {
-     "high": 26.5,
-     "low": 18.1,
-     "precip": 102,
-     "rainDays": 10
-    },
-    {
-     "high": 22.1,
-     "low": 14.1,
-     "precip": 122,
-     "rainDays": 12
-    },
-    {
-     "high": 17.6,
-     "low": 10.7,
-     "precip": 195,
-     "rainDays": 15
-    },
-    {
-     "high": 14.2,
-     "low": 6.8,
-     "precip": 101,
-     "rainDays": 10
-    }
-   ]
-  },
-  "italy/turin": {
-   "elevation": 239,
-   "months": [
-    {
-     "high": 7.7,
-     "low": -2,
-     "precip": 40,
-     "rainDays": 5
-    },
-    {
-     "high": 10.4,
-     "low": -0.1,
-     "precip": 68,
-     "rainDays": 7
-    },
-    {
-     "high": 14,
-     "low": 2.6,
-     "precip": 74,
-     "rainDays": 8
-    },
-    {
-     "high": 18,
-     "low": 6.7,
-     "precip": 80,
-     "rainDays": 10
-    },
-    {
-     "high": 21.3,
-     "low": 11.1,
-     "precip": 143,
-     "rainDays": 16
-    },
-    {
-     "high": 26.8,
-     "low": 16.2,
-     "precip": 106,
-     "rainDays": 12
-    },
-    {
-     "high": 30.1,
-     "low": 18.9,
-     "precip": 66,
-     "rainDays": 11
-    },
-    {
-     "high": 29.4,
-     "low": 18.3,
-     "precip": 77,
-     "rainDays": 10
-    },
-    {
-     "high": 23.9,
-     "low": 13.9,
-     "precip": 74,
-     "rainDays": 9
-    },
-    {
-     "high": 18.5,
-     "low": 9.6,
-     "precip": 104,
-     "rainDays": 10
-    },
-    {
-     "high": 11.9,
-     "low": 3.2,
-     "precip": 100,
-     "rainDays": 9
-    },
-    {
-     "high": 7.7,
-     "low": -1.1,
-     "precip": 40,
-     "rainDays": 5
-    }
-   ]
-  },
-  "italy/florence": {
-   "elevation": 65,
-   "months": [
-    {
-     "high": 10.6,
-     "low": 2.1,
-     "precip": 74,
-     "rainDays": 10
-    },
-    {
-     "high": 12.7,
-     "low": 3.2,
-     "precip": 91,
-     "rainDays": 11
-    },
-    {
-     "high": 15.3,
-     "low": 4.7,
-     "precip": 79,
-     "rainDays": 10
-    },
-    {
-     "high": 19,
-     "low": 7.3,
-     "precip": 75,
-     "rainDays": 10
-    },
-    {
-     "high": 22.5,
-     "low": 11.7,
-     "precip": 104,
-     "rainDays": 14
-    },
-    {
-     "high": 28.3,
-     "low": 16.2,
-     "precip": 55,
-     "rainDays": 8
-    },
-    {
-     "high": 32.3,
-     "low": 19.2,
-     "precip": 24,
-     "rainDays": 4
-    },
-    {
-     "high": 32.1,
-     "low": 19.2,
-     "precip": 43,
-     "rainDays": 6
-    },
-    {
-     "high": 26.4,
-     "low": 15.2,
-     "precip": 111,
-     "rainDays": 9
-    },
-    {
-     "high": 21.4,
-     "low": 11.5,
-     "precip": 114,
-     "rainDays": 12
-    },
-    {
-     "high": 15.4,
-     "low": 7.1,
-     "precip": 132,
-     "rainDays": 12
-    },
-    {
-     "high": 11.9,
-     "low": 3.4,
-     "precip": 104,
-     "rainDays": 12
-    }
-   ]
-  },
-  "italy/venice": {
-   "elevation": 4,
-   "months": [
-    {
-     "high": 7.6,
-     "low": 0.7,
-     "precip": 52,
-     "rainDays": 6
-    },
-    {
-     "high": 9.8,
-     "low": 2.8,
-     "precip": 67,
-     "rainDays": 7
-    },
-    {
-     "high": 12.9,
-     "low": 5.2,
-     "precip": 64,
-     "rainDays": 8
-    },
-    {
-     "high": 16.6,
-     "low": 8.9,
-     "precip": 75,
-     "rainDays": 9
-    },
-    {
-     "high": 20.8,
-     "low": 13.7,
-     "precip": 126,
-     "rainDays": 15
-    },
-    {
-     "high": 25.9,
-     "low": 18.5,
-     "precip": 78,
-     "rainDays": 9
-    },
-    {
-     "high": 28.6,
-     "low": 20.8,
-     "precip": 50,
-     "rainDays": 8
-    },
-    {
-     "high": 28.7,
-     "low": 20.8,
-     "precip": 73,
-     "rainDays": 7
-    },
-    {
-     "high": 23.9,
-     "low": 16.6,
-     "precip": 111,
-     "rainDays": 10
-    },
-    {
-     "high": 18.9,
-     "low": 12.1,
-     "precip": 101,
-     "rainDays": 10
-    },
-    {
-     "high": 13.1,
-     "low": 6.7,
-     "precip": 102,
-     "rainDays": 10
-    },
-    {
-     "high": 8.7,
-     "low": 2.2,
-     "precip": 60,
-     "rainDays": 7
-    }
-   ]
-  },
-  "italy/palermo": {
-   "elevation": 32,
-   "months": [
-    {
-     "high": 14.4,
-     "low": 8.6,
-     "precip": 83,
-     "rainDays": 12
-    },
-    {
-     "high": 15.1,
-     "low": 8.7,
-     "precip": 83,
-     "rainDays": 9
-    },
-    {
-     "high": 16.4,
-     "low": 9.7,
-     "precip": 94,
-     "rainDays": 12
-    },
-    {
-     "high": 18.9,
-     "low": 11.7,
-     "precip": 38,
-     "rainDays": 7
-    },
-    {
-     "high": 22.4,
-     "low": 15,
-     "precip": 60,
-     "rainDays": 8
-    },
-    {
-     "high": 27.1,
-     "low": 19.7,
-     "precip": 20,
-     "rainDays": 4
-    },
-    {
-     "high": 30.5,
-     "low": 22.7,
-     "precip": 9,
-     "rainDays": 2
-    },
-    {
-     "high": 30.5,
-     "low": 23.2,
-     "precip": 28,
-     "rainDays": 5
-    },
-    {
-     "high": 27.3,
-     "low": 20.7,
-     "precip": 66,
-     "rainDays": 10
-    },
-    {
-     "high": 23.7,
-     "low": 17.2,
-     "precip": 96,
-     "rainDays": 11
-    },
-    {
-     "high": 19.5,
-     "low": 13.6,
-     "precip": 112,
-     "rainDays": 13
-    },
-    {
-     "high": 16.1,
-     "low": 10.6,
-     "precip": 84,
-     "rainDays": 10
-    }
-   ]
-  },
-  "latvia/riga": {
-   "elevation": 17,
-   "months": [
-    {
-     "high": 0,
-     "low": -4.5,
-     "precip": 55,
-     "rainDays": 14
-    },
-    {
-     "high": 1.7,
-     "low": -3.3,
-     "precip": 47,
-     "rainDays": 11
-    },
-    {
-     "high": 5.7,
-     "low": -1.6,
-     "precip": 43,
-     "rainDays": 11
-    },
-    {
-     "high": 11,
-     "low": 2.2,
-     "precip": 45,
-     "rainDays": 11
-    },
-    {
-     "high": 17,
-     "low": 7,
-     "precip": 53,
-     "rainDays": 10
-    },
-    {
-     "high": 21.9,
-     "low": 12.4,
-     "precip": 69,
-     "rainDays": 11
-    },
-    {
-     "high": 22.4,
-     "low": 14.3,
-     "precip": 88,
-     "rainDays": 15
-    },
-    {
-     "high": 22.4,
-     "low": 13.9,
-     "precip": 89,
-     "rainDays": 13
-    },
-    {
-     "high": 17.8,
-     "low": 10.5,
-     "precip": 64,
-     "rainDays": 12
-    },
-    {
-     "high": 11.1,
-     "low": 5.3,
-     "precip": 74,
-     "rainDays": 14
-    },
-    {
-     "high": 5.5,
-     "low": 1.5,
-     "precip": 58,
-     "rainDays": 13
-    },
-    {
-     "high": 2.1,
-     "low": -1.8,
-     "precip": 51,
-     "rainDays": 14
-    }
-   ]
-  },
-  "latvia/daugavpils": {
-   "elevation": 96,
-   "months": [
-    {
-     "high": -1.2,
-     "low": -5.6,
-     "precip": 56,
-     "rainDays": 13
-    },
-    {
-     "high": 0.8,
-     "low": -4.5,
-     "precip": 44,
-     "rainDays": 11
-    },
-    {
-     "high": 5.4,
-     "low": -2,
-     "precip": 41,
-     "rainDays": 10
-    },
-    {
-     "high": 11.5,
-     "low": 2.2,
-     "precip": 53,
-     "rainDays": 12
-    },
-    {
-     "high": 17.3,
-     "low": 7.2,
-     "precip": 66,
-     "rainDays": 11
-    },
-    {
-     "high": 22.5,
-     "low": 12.6,
-     "precip": 58,
-     "rainDays": 11
-    },
-    {
-     "high": 22.6,
-     "low": 14.1,
-     "precip": 98,
-     "rainDays": 15
-    },
-    {
-     "high": 22.5,
-     "low": 13.9,
-     "precip": 97,
-     "rainDays": 12
-    },
-    {
-     "high": 17.5,
-     "low": 10,
-     "precip": 56,
-     "rainDays": 10
-    },
-    {
-     "high": 10.4,
-     "low": 4.7,
-     "precip": 68,
-     "rainDays": 14
-    },
-    {
-     "high": 4.5,
-     "low": 1,
-     "precip": 60,
-     "rainDays": 13
-    },
-    {
-     "high": 1.1,
-     "low": -2.4,
-     "precip": 50,
-     "rainDays": 14
-    }
-   ]
-  },
-  "latvia/liepaja": {
-   "elevation": 9,
-   "months": [
-    {
-     "high": 1.7,
-     "low": -2.3,
-     "precip": 71,
-     "rainDays": 16
-    },
-    {
-     "high": 2.8,
-     "low": -1.6,
-     "precip": 56,
-     "rainDays": 12
-    },
-    {
-     "high": 5.3,
-     "low": -0.5,
-     "precip": 43,
-     "rainDays": 11
-    },
-    {
-     "high": 10,
-     "low": 2.8,
-     "precip": 41,
-     "rainDays": 9
-    },
-    {
-     "high": 15.8,
-     "low": 7.6,
-     "precip": 40,
-     "rainDays": 9
-    },
-    {
-     "high": 20,
-     "low": 12.6,
-     "precip": 57,
-     "rainDays": 10
-    },
-    {
-     "high": 21,
-     "low": 14.9,
-     "precip": 84,
-     "rainDays": 15
-    },
-    {
-     "high": 21.6,
-     "low": 15.1,
-     "precip": 80,
-     "rainDays": 14
-    },
-    {
-     "high": 17.7,
-     "low": 11.8,
-     "precip": 74,
-     "rainDays": 11
-    },
-    {
-     "high": 11.7,
-     "low": 7.2,
-     "precip": 90,
-     "rainDays": 15
-    },
-    {
-     "high": 6.9,
-     "low": 3.2,
-     "precip": 76,
-     "rainDays": 14
-    },
-    {
-     "high": 3.8,
-     "low": 0.1,
-     "precip": 72,
-     "rainDays": 16
-    }
-   ]
-  },
-  "lithuania/vilnius": {
-   "elevation": 111,
-   "months": [
-    {
-     "high": -0.9,
-     "low": -5.3,
-     "precip": 60,
-     "rainDays": 14
-    },
-    {
-     "high": 1.4,
-     "low": -3.9,
-     "precip": 45,
-     "rainDays": 12
-    },
-    {
-     "high": 6.1,
-     "low": -1.7,
-     "precip": 39,
-     "rainDays": 10
-    },
-    {
-     "high": 11.7,
-     "low": 2.4,
-     "precip": 55,
-     "rainDays": 11
-    },
-    {
-     "high": 17.6,
-     "low": 7.4,
-     "precip": 67,
-     "rainDays": 11
-    },
-    {
-     "high": 22.6,
-     "low": 12.6,
-     "precip": 68,
-     "rainDays": 11
-    },
-    {
-     "high": 22.7,
-     "low": 14.1,
-     "precip": 109,
-     "rainDays": 14
-    },
-    {
-     "high": 23.1,
-     "low": 14,
-     "precip": 90,
-     "rainDays": 12
-    },
-    {
-     "high": 18,
-     "low": 10,
-     "precip": 56,
-     "rainDays": 10
-    },
-    {
-     "high": 11,
-     "low": 5,
-     "precip": 64,
-     "rainDays": 13
-    },
-    {
-     "high": 4.9,
-     "low": 1.1,
-     "precip": 56,
-     "rainDays": 13
-    },
-    {
-     "high": 1.3,
-     "low": -2.4,
-     "precip": 58,
-     "rainDays": 15
-    }
-   ]
-  },
-  "lithuania/kaunas": {
-   "elevation": 40,
-   "months": [
-    {
-     "high": 0.2,
-     "low": -4.3,
-     "precip": 57,
-     "rainDays": 13
-    },
-    {
-     "high": 2.5,
-     "low": -3,
-     "precip": 43,
-     "rainDays": 11
-    },
-    {
-     "high": 6.7,
-     "low": -1.1,
-     "precip": 37,
-     "rainDays": 10
-    },
-    {
-     "high": 12.2,
-     "low": 2.8,
-     "precip": 52,
-     "rainDays": 11
-    },
-    {
-     "high": 18,
-     "low": 7.6,
-     "precip": 61,
-     "rainDays": 11
-    },
-    {
-     "high": 22.9,
-     "low": 13,
-     "precip": 58,
-     "rainDays": 10
-    },
-    {
-     "high": 23.2,
-     "low": 14.7,
-     "precip": 96,
-     "rainDays": 14
-    },
-    {
-     "high": 23.6,
-     "low": 14.5,
-     "precip": 82,
-     "rainDays": 12
-    },
-    {
-     "high": 18.8,
-     "low": 10.7,
-     "precip": 48,
-     "rainDays": 9
-    },
-    {
-     "high": 11.9,
-     "low": 5.8,
-     "precip": 62,
-     "rainDays": 12
-    },
-    {
-     "high": 5.9,
-     "low": 2.1,
-     "precip": 50,
-     "rainDays": 12
-    },
-    {
-     "high": 2.4,
-     "low": -1.3,
-     "precip": 56,
-     "rainDays": 13
-    }
-   ]
-  },
-  "lithuania/klaipeda": {
-   "elevation": 10,
-   "months": [
-    {
-     "high": 2.1,
-     "low": -2,
-     "precip": 82,
-     "rainDays": 16
-    },
-    {
-     "high": 3,
-     "low": -1.3,
-     "precip": 59,
-     "rainDays": 12
-    },
-    {
-     "high": 5.6,
-     "low": 0,
-     "precip": 47,
-     "rainDays": 11
-    },
-    {
-     "high": 10.5,
-     "low": 3.3,
-     "precip": 40,
-     "rainDays": 9
-    },
-    {
-     "high": 16.2,
-     "low": 8.3,
-     "precip": 42,
-     "rainDays": 10
-    },
-    {
-     "high": 20.5,
-     "low": 13.2,
-     "precip": 57,
-     "rainDays": 10
-    },
-    {
-     "high": 21.3,
-     "low": 15.4,
-     "precip": 86,
-     "rainDays": 15
-    },
-    {
-     "high": 22,
-     "low": 15.6,
-     "precip": 96,
-     "rainDays": 14
-    },
-    {
-     "high": 18.1,
-     "low": 12.1,
-     "precip": 77,
-     "rainDays": 10
-    },
-    {
-     "high": 12.1,
-     "low": 7.7,
-     "precip": 102,
-     "rainDays": 14
-    },
-    {
-     "high": 7.1,
-     "low": 3.7,
-     "precip": 90,
-     "rainDays": 15
-    },
-    {
-     "high": 4.1,
-     "low": 0.5,
-     "precip": 83,
-     "rainDays": 16
-    }
-   ]
-  },
-  "luxembourg/luxembourg": {
-   "elevation": 316,
-   "months": [
-    {
-     "high": 4.4,
-     "low": -0.4,
-     "precip": 92,
-     "rainDays": 15
-    },
-    {
-     "high": 6.8,
-     "low": 0.3,
-     "precip": 73,
-     "rainDays": 12
-    },
-    {
-     "high": 9.8,
-     "low": 1.7,
-     "precip": 74,
-     "rainDays": 13
-    },
-    {
-     "high": 13.4,
-     "low": 3.7,
-     "precip": 56,
-     "rainDays": 11
-    },
-    {
-     "high": 17.3,
-     "low": 8.1,
-     "precip": 76,
-     "rainDays": 12
-    },
-    {
-     "high": 21.9,
-     "low": 12.4,
-     "precip": 67,
-     "rainDays": 11
-    },
-    {
-     "high": 23.4,
-     "low": 13.7,
-     "precip": 61,
-     "rainDays": 10
-    },
-    {
-     "high": 23.6,
-     "low": 14,
-     "precip": 60,
-     "rainDays": 11
-    },
-    {
-     "high": 19.5,
-     "low": 10.5,
-     "precip": 70,
-     "rainDays": 10
-    },
-    {
-     "high": 14.5,
-     "low": 7.5,
-     "precip": 82,
-     "rainDays": 12
-    },
-    {
-     "high": 8.5,
-     "low": 3.3,
-     "precip": 82,
-     "rainDays": 13
-    },
-    {
-     "high": 5.9,
-     "low": 1.4,
-     "precip": 83,
-     "rainDays": 15
-    }
-   ]
-  },
-  "luxembourg/esch-sur-alzette": {
-   "elevation": 297,
-   "months": [
-    {
-     "high": 4.5,
-     "low": -0.3,
-     "precip": 97,
-     "rainDays": 14
-    },
-    {
-     "high": 7,
-     "low": 0.5,
-     "precip": 76,
-     "rainDays": 12
-    },
-    {
-     "high": 9.9,
-     "low": 2,
-     "precip": 77,
-     "rainDays": 13
-    },
-    {
-     "high": 13.5,
-     "low": 4,
-     "precip": 56,
-     "rainDays": 11
-    },
-    {
-     "high": 17.5,
-     "low": 8.4,
-     "precip": 79,
-     "rainDays": 13
-    },
-    {
-     "high": 22.1,
-     "low": 12.7,
-     "precip": 69,
-     "rainDays": 12
-    },
-    {
-     "high": 23.6,
-     "low": 14.1,
-     "precip": 62,
-     "rainDays": 10
-    },
-    {
-     "high": 23.8,
-     "low": 14.4,
-     "precip": 60,
-     "rainDays": 11
-    },
-    {
-     "high": 19.7,
-     "low": 10.9,
-     "precip": 69,
-     "rainDays": 10
-    },
-    {
-     "high": 14.7,
-     "low": 7.7,
-     "precip": 83,
-     "rainDays": 11
-    },
-    {
-     "high": 8.6,
-     "low": 3.5,
-     "precip": 81,
-     "rainDays": 13
-    },
-    {
-     "high": 6.1,
-     "low": 1.6,
-     "precip": 90,
-     "rainDays": 15
-    }
-   ]
-  },
-  "malta/valletta": {
-   "elevation": 48,
-   "months": [
-    {
-     "high": 15.2,
-     "low": 11.4,
-     "precip": 36,
-     "rainDays": 8
-    },
-    {
-     "high": 15.6,
-     "low": 11.4,
-     "precip": 45,
-     "rainDays": 6
-    },
-    {
-     "high": 16.5,
-     "low": 12.4,
-     "precip": 33,
-     "rainDays": 7
-    },
-    {
-     "high": 18.5,
-     "low": 14.1,
-     "precip": 14,
-     "rainDays": 3
-    },
-    {
-     "high": 22,
-     "low": 17.1,
-     "precip": 14,
-     "rainDays": 3
-    },
-    {
-     "high": 26.9,
-     "low": 21.2,
-     "precip": 3,
-     "rainDays": 1
-    },
-    {
-     "high": 30.1,
-     "low": 24.1,
-     "precip": 1,
-     "rainDays": 0
-    },
-    {
-     "high": 30.2,
-     "low": 25.2,
-     "precip": 5,
-     "rainDays": 1
-    },
-    {
-     "high": 27.6,
-     "low": 23.3,
-     "precip": 32,
-     "rainDays": 5
-    },
-    {
-     "high": 24.2,
-     "low": 20.1,
-     "precip": 54,
-     "rainDays": 7
-    },
-    {
-     "high": 20.7,
-     "low": 16.8,
-     "precip": 75,
-     "rainDays": 11
-    },
-    {
-     "high": 17.1,
-     "low": 13.5,
-     "precip": 37,
-     "rainDays": 8
-    }
-   ]
-  },
-  "malta/sliema": {
-   "elevation": 35,
-   "months": [
-    {
-     "high": 15.3,
-     "low": 11.4,
-     "precip": 36,
-     "rainDays": 8
-    },
-    {
-     "high": 15.6,
-     "low": 11.4,
-     "precip": 45,
-     "rainDays": 6
-    },
-    {
-     "high": 16.6,
-     "low": 12.4,
-     "precip": 33,
-     "rainDays": 7
-    },
-    {
-     "high": 18.5,
-     "low": 14.1,
-     "precip": 14,
-     "rainDays": 3
-    },
-    {
-     "high": 22,
-     "low": 17.1,
-     "precip": 14,
-     "rainDays": 3
-    },
-    {
-     "high": 26.9,
-     "low": 21.2,
-     "precip": 3,
-     "rainDays": 1
-    },
-    {
-     "high": 30.1,
-     "low": 24.1,
-     "precip": 1,
-     "rainDays": 0
-    },
-    {
-     "high": 30.2,
-     "low": 25.2,
-     "precip": 5,
-     "rainDays": 1
-    },
-    {
-     "high": 27.6,
-     "low": 23.3,
-     "precip": 32,
-     "rainDays": 5
-    },
-    {
-     "high": 24.2,
-     "low": 20.2,
-     "precip": 54,
-     "rainDays": 7
-    },
-    {
-     "high": 20.7,
-     "low": 16.9,
-     "precip": 75,
-     "rainDays": 11
-    },
-    {
-     "high": 17.1,
-     "low": 13.6,
-     "precip": 37,
-     "rainDays": 8
-    }
-   ]
-  },
-  "malta/mosta": {
-   "elevation": 72,
-   "months": [
-    {
-     "high": 15.2,
-     "low": 11.4,
-     "precip": 40,
-     "rainDays": 9
-    },
-    {
-     "high": 15.5,
-     "low": 11.3,
-     "precip": 48,
-     "rainDays": 6
-    },
-    {
-     "high": 16.5,
-     "low": 12.3,
-     "precip": 37,
-     "rainDays": 7
-    },
-    {
-     "high": 18.6,
-     "low": 13.8,
-     "precip": 16,
-     "rainDays": 4
-    },
-    {
-     "high": 22,
-     "low": 16.6,
-     "precip": 17,
-     "rainDays": 3
-    },
-    {
-     "high": 26.9,
-     "low": 20.5,
-     "precip": 3,
-     "rainDays": 1
-    },
-    {
-     "high": 29.8,
-     "low": 23.3,
-     "precip": 1,
-     "rainDays": 0
-    },
-    {
-     "high": 30.2,
-     "low": 24.4,
-     "precip": 5,
-     "rainDays": 1
-    },
-    {
-     "high": 27.7,
-     "low": 22.8,
-     "precip": 34,
-     "rainDays": 4
-    },
-    {
-     "high": 24.3,
-     "low": 19.9,
-     "precip": 55,
-     "rainDays": 7
-    },
-    {
-     "high": 20.7,
-     "low": 16.7,
-     "precip": 80,
-     "rainDays": 11
-    },
-    {
-     "high": 17.1,
-     "low": 13.5,
-     "precip": 43,
-     "rainDays": 8
-    }
-   ]
-  },
-  "moldova/chisinau": {
-   "elevation": 41,
-   "months": [
-    {
-     "high": 2.7,
-     "low": -4.1,
-     "precip": 35,
-     "rainDays": 7
-    },
-    {
-     "high": 6.4,
-     "low": -1.5,
-     "precip": 26,
-     "rainDays": 6
-    },
-    {
-     "high": 10.4,
-     "low": 0.7,
-     "precip": 39,
-     "rainDays": 8
-    },
-    {
-     "high": 16.6,
-     "low": 5.6,
-     "precip": 61,
-     "rainDays": 9
-    },
-    {
-     "high": 21.7,
-     "low": 10.8,
-     "precip": 52,
-     "rainDays": 10
-    },
-    {
-     "high": 26.8,
-     "low": 16.5,
-     "precip": 69,
-     "rainDays": 10
-    },
-    {
-     "high": 28.6,
-     "low": 18.1,
-     "precip": 48,
-     "rainDays": 8
-    },
-    {
-     "high": 29.2,
-     "low": 18.1,
-     "precip": 26,
-     "rainDays": 5
-    },
-    {
-     "high": 23.8,
-     "low": 13.5,
-     "precip": 43,
-     "rainDays": 6
-    },
-    {
-     "high": 16.6,
-     "low": 7.3,
-     "precip": 43,
-     "rainDays": 6
-    },
-    {
-     "high": 9.1,
-     "low": 2.3,
-     "precip": 46,
-     "rainDays": 7
-    },
-    {
-     "high": 5,
-     "low": -0.8,
-     "precip": 36,
-     "rainDays": 8
-    }
-   ]
-  },
-  "moldova/balti": {
-   "elevation": 112,
-   "months": [
-    {
-     "high": 2.1,
-     "low": -4.5,
-     "precip": 27,
-     "rainDays": 8
-    },
-    {
-     "high": 5.7,
-     "low": -2.1,
-     "precip": 34,
-     "rainDays": 8
-    },
-    {
-     "high": 9.9,
-     "low": 0.3,
-     "precip": 36,
-     "rainDays": 8
-    },
-    {
-     "high": 16.3,
-     "low": 5.4,
-     "precip": 48,
-     "rainDays": 10
-    },
-    {
-     "high": 21.4,
-     "low": 10.6,
-     "precip": 61,
-     "rainDays": 11
-    },
-    {
-     "high": 26.4,
-     "low": 16,
-     "precip": 73,
-     "rainDays": 11
-    },
-    {
-     "high": 28,
-     "low": 17.5,
-     "precip": 56,
-     "rainDays": 9
-    },
-    {
-     "high": 28.5,
-     "low": 17.4,
-     "precip": 41,
-     "rainDays": 6
-    },
-    {
-     "high": 23,
-     "low": 12.8,
-     "precip": 49,
-     "rainDays": 7
-    },
-    {
-     "high": 15.9,
-     "low": 6.7,
-     "precip": 42,
-     "rainDays": 7
-    },
-    {
-     "high": 8.4,
-     "low": 1.9,
-     "precip": 43,
-     "rainDays": 7
-    },
-    {
-     "high": 4.2,
-     "low": -1.3,
-     "precip": 37,
-     "rainDays": 9
-    }
-   ]
-  },
-  "moldova/tiraspol": {
-   "elevation": 35,
-   "months": [
-    {
-     "high": 3.1,
-     "low": -4.1,
-     "precip": 39,
-     "rainDays": 7
-    },
-    {
-     "high": 7,
-     "low": -1.3,
-     "precip": 23,
-     "rainDays": 6
-    },
-    {
-     "high": 10.8,
-     "low": 0.8,
-     "precip": 39,
-     "rainDays": 8
-    },
-    {
-     "high": 17.2,
-     "low": 5.9,
-     "precip": 53,
-     "rainDays": 8
-    },
-    {
-     "high": 22.3,
-     "low": 11,
-     "precip": 48,
-     "rainDays": 8
-    },
-    {
-     "high": 27.6,
-     "low": 16.8,
-     "precip": 62,
-     "rainDays": 9
-    },
-    {
-     "high": 29.6,
-     "low": 18.6,
-     "precip": 42,
-     "rainDays": 6
-    },
-    {
-     "high": 30,
-     "low": 18.5,
-     "precip": 29,
-     "rainDays": 4
-    },
-    {
-     "high": 24.5,
-     "low": 13.8,
-     "precip": 35,
-     "rainDays": 6
-    },
-    {
-     "high": 17.2,
-     "low": 7.7,
-     "precip": 38,
-     "rainDays": 5
-    },
-    {
-     "high": 9.7,
-     "low": 2.6,
-     "precip": 40,
-     "rainDays": 7
-    },
-    {
-     "high": 5.6,
-     "low": -0.5,
-     "precip": 34,
-     "rainDays": 8
-    }
-   ]
-  },
-  "montenegro/podgorica": {
-   "elevation": 46,
-   "months": [
-    {
-     "high": 9.4,
-     "low": 1.1,
-     "precip": 223,
-     "rainDays": 13
-    },
-    {
-     "high": 12.2,
-     "low": 3.3,
-     "precip": 204,
-     "rainDays": 11
-    },
-    {
-     "high": 14.9,
-     "low": 5.2,
-     "precip": 179,
-     "rainDays": 12
-    },
-    {
-     "high": 19,
-     "low": 8.6,
-     "precip": 111,
-     "rainDays": 10
-    },
-    {
-     "high": 23.2,
-     "low": 13,
-     "precip": 136,
-     "rainDays": 12
-    },
-    {
-     "high": 28.9,
-     "low": 17.8,
-     "precip": 59,
-     "rainDays": 7
-    },
-    {
-     "high": 33.1,
-     "low": 20.8,
-     "precip": 26,
-     "rainDays": 3
-    },
-    {
-     "high": 33.1,
-     "low": 20.9,
-     "precip": 32,
-     "rainDays": 4
-    },
-    {
-     "high": 26.9,
-     "low": 16.5,
-     "precip": 138,
-     "rainDays": 8
-    },
-    {
-     "high": 21,
-     "low": 11.4,
-     "precip": 178,
-     "rainDays": 9
-    },
-    {
-     "high": 15.8,
-     "low": 7.3,
-     "precip": 299,
-     "rainDays": 12
-    },
-    {
-     "high": 11.4,
-     "low": 3.2,
-     "precip": 234,
-     "rainDays": 11
-    }
-   ]
-  },
-  "montenegro/budva": {
-   "elevation": 8,
-   "months": [
-    {
-     "high": 11.1,
-     "low": 5,
-     "precip": 244,
-     "rainDays": 13
-    },
-    {
-     "high": 13,
-     "low": 6.7,
-     "precip": 222,
-     "rainDays": 12
-    },
-    {
-     "high": 14.7,
-     "low": 8.2,
-     "precip": 236,
-     "rainDays": 14
-    },
-    {
-     "high": 18.1,
-     "low": 11.3,
-     "precip": 148,
-     "rainDays": 12
-    },
-    {
-     "high": 22.2,
-     "low": 15.7,
-     "precip": 172,
-     "rainDays": 15
-    },
-    {
-     "high": 27.1,
-     "low": 20.6,
-     "precip": 81,
-     "rainDays": 9
-    },
-    {
-     "high": 30.5,
-     "low": 23.4,
-     "precip": 45,
-     "rainDays": 5
-    },
-    {
-     "high": 30.6,
-     "low": 23.6,
-     "precip": 68,
-     "rainDays": 7
-    },
-    {
-     "high": 25.7,
-     "low": 19.4,
-     "precip": 175,
-     "rainDays": 11
-    },
-    {
-     "high": 21.4,
-     "low": 15.4,
-     "precip": 225,
-     "rainDays": 11
-    },
-    {
-     "high": 17.2,
-     "low": 11.4,
-     "precip": 373,
-     "rainDays": 14
-    },
-    {
-     "high": 13.2,
-     "low": 7.2,
-     "precip": 276,
-     "rainDays": 12
-    }
-   ]
-  },
-  "montenegro/kotor": {
-   "elevation": 9,
-   "months": [
-    {
-     "high": 11.1,
-     "low": 5,
-     "precip": 254,
-     "rainDays": 13
-    },
-    {
-     "high": 12.9,
-     "low": 6.5,
-     "precip": 230,
-     "rainDays": 11
-    },
-    {
-     "high": 14.5,
-     "low": 7.8,
-     "precip": 223,
-     "rainDays": 13
-    },
-    {
-     "high": 17.8,
-     "low": 10.7,
-     "precip": 155,
-     "rainDays": 11
-    },
-    {
-     "high": 21.9,
-     "low": 15,
-     "precip": 175,
-     "rainDays": 14
-    },
-    {
-     "high": 26.6,
-     "low": 19.9,
-     "precip": 84,
-     "rainDays": 9
-    },
-    {
-     "high": 30,
-     "low": 22.7,
-     "precip": 41,
-     "rainDays": 5
-    },
-    {
-     "high": 30.1,
-     "low": 23,
-     "precip": 66,
-     "rainDays": 7
-    },
-    {
-     "high": 25.6,
-     "low": 19,
-     "precip": 152,
-     "rainDays": 9
-    },
-    {
-     "high": 21.2,
-     "low": 15,
-     "precip": 213,
-     "rainDays": 11
-    },
-    {
-     "high": 17.2,
-     "low": 11.1,
-     "precip": 363,
-     "rainDays": 14
-    },
-    {
-     "high": 13.3,
-     "low": 7.3,
-     "precip": 280,
-     "rainDays": 12
-    }
-   ]
-  },
-  "netherlands/amsterdam": {
-   "elevation": 5,
-   "months": [
-    {
-     "high": 6.7,
-     "low": 2.1,
-     "precip": 80,
-     "rainDays": 15
-    },
-    {
-     "high": 8,
-     "low": 2.4,
-     "precip": 77,
-     "rainDays": 13
-    },
-    {
-     "high": 10,
-     "low": 3.2,
-     "precip": 66,
-     "rainDays": 13
-    },
-    {
-     "high": 12.9,
-     "low": 5.1,
-     "precip": 59,
-     "rainDays": 12
-    },
-    {
-     "high": 17.1,
-     "low": 8.9,
-     "precip": 66,
-     "rainDays": 11
-    },
-    {
-     "high": 20.5,
-     "low": 12.6,
-     "precip": 74,
-     "rainDays": 12
-    },
-    {
-     "high": 21.5,
-     "low": 14,
-     "precip": 83,
-     "rainDays": 15
-    },
-    {
-     "high": 22,
-     "low": 14.4,
-     "precip": 78,
-     "rainDays": 14
-    },
-    {
-     "high": 19.3,
-     "low": 12,
-     "precip": 79,
-     "rainDays": 13
-    },
-    {
-     "high": 15.1,
-     "low": 9.3,
-     "precip": 92,
-     "rainDays": 15
-    },
-    {
-     "high": 10.2,
-     "low": 5.2,
-     "precip": 80,
-     "rainDays": 15
-    },
-    {
-     "high": 8,
-     "low": 3.8,
-     "precip": 81,
-     "rainDays": 15
-    }
-   ]
-  },
-  "netherlands/rotterdam": {
-   "elevation": 2,
-   "months": [
-    {
-     "high": 6.9,
-     "low": 2.2,
-     "precip": 78,
-     "rainDays": 15
-    },
-    {
-     "high": 8.3,
-     "low": 2.4,
-     "precip": 69,
-     "rainDays": 12
-    },
-    {
-     "high": 10.5,
-     "low": 3.3,
-     "precip": 68,
-     "rainDays": 14
-    },
-    {
-     "high": 13.5,
-     "low": 5.1,
-     "precip": 55,
-     "rainDays": 11
-    },
-    {
-     "high": 17.7,
-     "low": 9,
-     "precip": 63,
-     "rainDays": 12
-    },
-    {
-     "high": 21.2,
-     "low": 12.7,
-     "precip": 69,
-     "rainDays": 11
-    },
-    {
-     "high": 22.2,
-     "low": 14.2,
-     "precip": 74,
-     "rainDays": 14
-    },
-    {
-     "high": 22.7,
-     "low": 14.7,
-     "precip": 75,
-     "rainDays": 14
-    },
-    {
-     "high": 19.7,
-     "low": 12.2,
-     "precip": 79,
-     "rainDays": 12
-    },
-    {
-     "high": 15.4,
-     "low": 9.4,
-     "precip": 82,
-     "rainDays": 13
-    },
-    {
-     "high": 10.5,
-     "low": 5.4,
-     "precip": 82,
-     "rainDays": 15
-    },
-    {
-     "high": 8.2,
-     "low": 3.9,
-     "precip": 79,
-     "rainDays": 15
-    }
-   ]
-  },
-  "netherlands/the-hague": {
-   "elevation": 3,
-   "months": [
-    {
-     "high": 7,
-     "low": 2.7,
-     "precip": 84,
-     "rainDays": 15
-    },
-    {
-     "high": 8.1,
-     "low": 2.9,
-     "precip": 71,
-     "rainDays": 12
-    },
-    {
-     "high": 10,
-     "low": 3.7,
-     "precip": 67,
-     "rainDays": 14
-    },
-    {
-     "high": 12.8,
-     "low": 5.6,
-     "precip": 53,
-     "rainDays": 11
-    },
-    {
-     "high": 16.6,
-     "low": 9.3,
-     "precip": 59,
-     "rainDays": 12
-    },
-    {
-     "high": 20,
-     "low": 13,
-     "precip": 65,
-     "rainDays": 11
-    },
-    {
-     "high": 21.1,
-     "low": 14.6,
-     "precip": 78,
-     "rainDays": 15
-    },
-    {
-     "high": 21.9,
-     "low": 15.2,
-     "precip": 83,
-     "rainDays": 14
-    },
-    {
-     "high": 19.3,
-     "low": 12.7,
-     "precip": 91,
-     "rainDays": 12
-    },
-    {
-     "high": 15.2,
-     "low": 9.9,
-     "precip": 92,
-     "rainDays": 15
-    },
-    {
-     "high": 10.6,
-     "low": 6,
-     "precip": 92,
-     "rainDays": 17
-    },
-    {
-     "high": 8.3,
-     "low": 4.4,
-     "precip": 85,
-     "rainDays": 15
-    }
-   ]
-  },
-  "netherlands/utrecht": {
-   "elevation": 10,
-   "months": [
-    {
-     "high": 6.5,
-     "low": 1.7,
-     "precip": 80,
-     "rainDays": 15
-    },
-    {
-     "high": 8.1,
-     "low": 2.1,
-     "precip": 77,
-     "rainDays": 13
-    },
-    {
-     "high": 10.4,
-     "low": 3.1,
-     "precip": 71,
-     "rainDays": 14
-    },
-    {
-     "high": 13.5,
-     "low": 5,
-     "precip": 54,
-     "rainDays": 11
-    },
-    {
-     "high": 17.8,
-     "low": 8.9,
-     "precip": 66,
-     "rainDays": 12
-    },
-    {
-     "high": 21.3,
-     "low": 12.7,
-     "precip": 72,
-     "rainDays": 12
-    },
-    {
-     "high": 22.2,
-     "low": 14.1,
-     "precip": 77,
-     "rainDays": 15
-    },
-    {
-     "high": 22.7,
-     "low": 14.5,
-     "precip": 77,
-     "rainDays": 13
-    },
-    {
-     "high": 19.5,
-     "low": 11.9,
-     "precip": 75,
-     "rainDays": 12
-    },
-    {
-     "high": 15.2,
-     "low": 9.1,
-     "precip": 81,
-     "rainDays": 14
-    },
-    {
-     "high": 10.1,
-     "low": 5,
-     "precip": 80,
-     "rainDays": 14
-    },
-    {
-     "high": 7.8,
-     "low": 3.5,
-     "precip": 79,
-     "rainDays": 15
-    }
-   ]
-  },
-  "netherlands/eindhoven": {
-   "elevation": 15,
-   "months": [
-    {
-     "high": 6.4,
-     "low": 1.5,
-     "precip": 76,
-     "rainDays": 15
-    },
-    {
-     "high": 8.4,
-     "low": 1.9,
-     "precip": 73,
-     "rainDays": 13
-    },
-    {
-     "high": 11,
-     "low": 2.9,
-     "precip": 71,
-     "rainDays": 14
-    },
-    {
-     "high": 14.4,
-     "low": 4.8,
-     "precip": 53,
-     "rainDays": 11
-    },
-    {
-     "high": 18.9,
-     "low": 9,
-     "precip": 65,
-     "rainDays": 12
-    },
-    {
-     "high": 22.8,
-     "low": 13.1,
-     "precip": 76,
-     "rainDays": 11
-    },
-    {
-     "high": 23.4,
-     "low": 14.2,
-     "precip": 74,
-     "rainDays": 13
-    },
-    {
-     "high": 23.8,
-     "low": 14.6,
-     "precip": 67,
-     "rainDays": 12
-    },
-    {
-     "high": 20.4,
-     "low": 11.7,
-     "precip": 63,
-     "rainDays": 11
-    },
-    {
-     "high": 15.7,
-     "low": 9,
-     "precip": 73,
-     "rainDays": 13
-    },
-    {
-     "high": 10.3,
-     "low": 4.7,
-     "precip": 71,
-     "rainDays": 13
-    },
-    {
-     "high": 7.8,
-     "low": 3.3,
-     "precip": 73,
-     "rainDays": 15
-    }
-   ]
-  },
-  "north-macedonia/skopje": {
-   "elevation": 251,
-   "months": [
-    {
-     "high": 5.5,
-     "low": -2.7,
-     "precip": 61,
-     "rainDays": 9
-    },
-    {
-     "high": 10.2,
-     "low": 0.7,
-     "precip": 39,
-     "rainDays": 7
-    },
-    {
-     "high": 13.6,
-     "low": 3.1,
-     "precip": 61,
-     "rainDays": 10
-    },
-    {
-     "high": 19.1,
-     "low": 7.2,
-     "precip": 44,
-     "rainDays": 8
-    },
-    {
-     "high": 23.5,
-     "low": 12,
-     "precip": 56,
-     "rainDays": 10
-    },
-    {
-     "high": 28.8,
-     "low": 16.8,
-     "precip": 41,
-     "rainDays": 7
-    },
-    {
-     "high": 32.3,
-     "low": 19.3,
-     "precip": 21,
-     "rainDays": 4
-    },
-    {
-     "high": 32.2,
-     "low": 19.3,
-     "precip": 20,
-     "rainDays": 4
-    },
-    {
-     "high": 26.4,
-     "low": 14.9,
-     "precip": 39,
-     "rainDays": 6
-    },
-    {
-     "high": 19.7,
-     "low": 9.7,
-     "precip": 47,
-     "rainDays": 6
-    },
-    {
-     "high": 12.8,
-     "low": 4.5,
-     "precip": 66,
-     "rainDays": 8
-    },
-    {
-     "high": 7.5,
-     "low": 0.2,
-     "precip": 50,
-     "rainDays": 7
-    }
-   ]
-  },
-  "north-macedonia/bitola": {
-   "elevation": 624,
-   "months": [
-    {
-     "high": 6,
-     "low": -2.7,
-     "precip": 75,
-     "rainDays": 11
-    },
-    {
-     "high": 9.9,
-     "low": -0.2,
-     "precip": 51,
-     "rainDays": 8
-    },
-    {
-     "high": 12.5,
-     "low": 2.2,
-     "precip": 80,
-     "rainDays": 12
-    },
-    {
-     "high": 17.6,
-     "low": 6.4,
-     "precip": 58,
-     "rainDays": 10
-    },
-    {
-     "high": 22.2,
-     "low": 11.1,
-     "precip": 64,
-     "rainDays": 11
-    },
-    {
-     "high": 27,
-     "low": 15.7,
-     "precip": 39,
-     "rainDays": 7
-    },
-    {
-     "high": 30.6,
-     "low": 18.7,
-     "precip": 30,
-     "rainDays": 5
-    },
-    {
-     "high": 30.2,
-     "low": 18.6,
-     "precip": 30,
-     "rainDays": 5
-    },
-    {
-     "high": 25.1,
-     "low": 14.3,
-     "precip": 55,
-     "rainDays": 6
-    },
-    {
-     "high": 19.3,
-     "low": 9.1,
-     "precip": 53,
-     "rainDays": 6
-    },
-    {
-     "high": 13.3,
-     "low": 4.4,
-     "precip": 88,
-     "rainDays": 9
-    },
-    {
-     "high": 8.4,
-     "low": 0.4,
-     "precip": 66,
-     "rainDays": 9
-    }
-   ]
-  },
-  "north-macedonia/ohrid": {
-   "elevation": 702,
-   "months": [
-    {
-     "high": 5.8,
-     "low": -0.3,
-     "precip": 102,
-     "rainDays": 12
-    },
-    {
-     "high": 8.6,
-     "low": 1.6,
-     "precip": 64,
-     "rainDays": 8
-    },
-    {
-     "high": 10.7,
-     "low": 3.4,
-     "precip": 81,
-     "rainDays": 12
-    },
-    {
-     "high": 15.3,
-     "low": 6.9,
-     "precip": 68,
-     "rainDays": 11
-    },
-    {
-     "high": 19.5,
-     "low": 11.3,
-     "precip": 75,
-     "rainDays": 13
-    },
-    {
-     "high": 24.5,
-     "low": 15.9,
-     "precip": 57,
-     "rainDays": 10
-    },
-    {
-     "high": 28.2,
-     "low": 18.8,
-     "precip": 27,
-     "rainDays": 5
-    },
-    {
-     "high": 28.1,
-     "low": 18.7,
-     "precip": 40,
-     "rainDays": 7
-    },
-    {
-     "high": 23.2,
-     "low": 15,
-     "precip": 64,
-     "rainDays": 9
-    },
-    {
-     "high": 18.1,
-     "low": 10.5,
-     "precip": 56,
-     "rainDays": 7
-    },
-    {
-     "high": 12.8,
-     "low": 6.4,
-     "precip": 112,
-     "rainDays": 10
-    },
-    {
-     "high": 8.3,
-     "low": 2.6,
-     "precip": 76,
-     "rainDays": 9
-    }
-   ]
-  },
-  "norway/oslo": {
-   "elevation": 21,
-   "months": [
-    {
-     "high": -0.5,
-     "low": -6,
-     "precip": 73,
-     "rainDays": 12
-    },
-    {
-     "high": 1.2,
-     "low": -4.8,
-     "precip": 60,
-     "rainDays": 11
-    },
-    {
-     "high": 4.7,
-     "low": -2.8,
-     "precip": 58,
-     "rainDays": 9
-    },
-    {
-     "high": 10.3,
-     "low": 0.9,
-     "precip": 50,
-     "rainDays": 8
-    },
-    {
-     "high": 16,
-     "low": 6.5,
-     "precip": 78,
-     "rainDays": 12
-    },
-    {
-     "high": 20.5,
-     "low": 11.5,
-     "precip": 86,
-     "rainDays": 12
-    },
-    {
-     "high": 21.2,
-     "low": 13,
-     "precip": 112,
-     "rainDays": 13
-    },
-    {
-     "high": 19.8,
-     "low": 12.3,
-     "precip": 94,
-     "rainDays": 13
-    },
-    {
-     "high": 16.1,
-     "low": 9.5,
-     "precip": 101,
-     "rainDays": 11
-    },
-    {
-     "high": 9.6,
-     "low": 4.5,
-     "precip": 83,
-     "rainDays": 12
-    },
-    {
-     "high": 4.2,
-     "low": 0.1,
-     "precip": 80,
-     "rainDays": 12
-    },
-    {
-     "high": 0.7,
-     "low": -3.7,
-     "precip": 67,
-     "rainDays": 13
-    }
-   ]
-  },
-  "norway/bergen": {
-   "elevation": 14,
-   "months": [
-    {
-     "high": 2.8,
-     "low": -1.6,
-     "precip": 264,
-     "rainDays": 21
-    },
-    {
-     "high": 3.7,
-     "low": -1.4,
-     "precip": 233,
-     "rainDays": 19
-    },
-    {
-     "high": 5.8,
-     "low": -0.4,
-     "precip": 183,
-     "rainDays": 18
-    },
-    {
-     "high": 9.3,
-     "low": 1.3,
-     "precip": 108,
-     "rainDays": 15
-    },
-    {
-     "high": 13.5,
-     "low": 5.6,
-     "precip": 116,
-     "rainDays": 15
-    },
-    {
-     "high": 16.6,
-     "low": 9.2,
-     "precip": 133,
-     "rainDays": 15
-    },
-    {
-     "high": 17.2,
-     "low": 10.5,
-     "precip": 193,
-     "rainDays": 19
-    },
-    {
-     "high": 17.2,
-     "low": 10.8,
-     "precip": 257,
-     "rainDays": 20
-    },
-    {
-     "high": 15,
-     "low": 8.9,
-     "precip": 265,
-     "rainDays": 17
-    },
-    {
-     "high": 10.4,
-     "low": 4.9,
-     "precip": 295,
-     "rainDays": 20
-    },
-    {
-     "high": 6.1,
-     "low": 1.7,
-     "precip": 244,
-     "rainDays": 18
-    },
-    {
-     "high": 4.1,
-     "low": -0.3,
-     "precip": 291,
-     "rainDays": 21
-    }
-   ]
-  },
-  "norway/trondheim": {
-   "elevation": 12,
-   "months": [
-    {
-     "high": 0.5,
-     "low": -5,
-     "precip": 109,
-     "rainDays": 17
-    },
-    {
-     "high": 1.5,
-     "low": -4.1,
-     "precip": 86,
-     "rainDays": 15
-    },
-    {
-     "high": 4.1,
-     "low": -2.6,
-     "precip": 91,
-     "rainDays": 16
-    },
-    {
-     "high": 7.7,
-     "low": 0.1,
-     "precip": 80,
-     "rainDays": 15
-    },
-    {
-     "high": 13.1,
-     "low": 4.7,
-     "precip": 74,
-     "rainDays": 15
-    },
-    {
-     "high": 16.7,
-     "low": 9,
-     "precip": 96,
-     "rainDays": 16
-    },
-    {
-     "high": 18.1,
-     "low": 11,
-     "precip": 109,
-     "rainDays": 18
-    },
-    {
-     "high": 17.6,
-     "low": 10.6,
-     "precip": 129,
-     "rainDays": 16
-    },
-    {
-     "high": 14.4,
-     "low": 8.2,
-     "precip": 139,
-     "rainDays": 16
-    },
-    {
-     "high": 8.7,
-     "low": 3.4,
-     "precip": 135,
-     "rainDays": 19
-    },
-    {
-     "high": 3.6,
-     "low": -1,
-     "precip": 95,
-     "rainDays": 14
-    },
-    {
-     "high": 1.5,
-     "low": -3.3,
-     "precip": 124,
-     "rainDays": 17
-    }
-   ]
-  },
-  "norway/stavanger": {
-   "elevation": 15,
-   "months": [
-    {
-     "high": 4.4,
-     "low": 0.4,
-     "precip": 186,
-     "rainDays": 20
-    },
-    {
-     "high": 4.9,
-     "low": 0.5,
-     "precip": 163,
-     "rainDays": 17
-    },
-    {
-     "high": 6.2,
-     "low": 1.3,
-     "precip": 119,
-     "rainDays": 17
-    },
-    {
-     "high": 9.2,
-     "low": 2.8,
-     "precip": 74,
-     "rainDays": 14
-    },
-    {
-     "high": 13,
-     "low": 6.9,
-     "precip": 97,
-     "rainDays": 14
-    },
-    {
-     "high": 16,
-     "low": 10.3,
-     "precip": 105,
-     "rainDays": 15
-    },
-    {
-     "high": 16.9,
-     "low": 11.9,
-     "precip": 155,
-     "rainDays": 19
-    },
-    {
-     "high": 17.5,
-     "low": 12.5,
-     "precip": 181,
-     "rainDays": 20
-    },
-    {
-     "high": 15.6,
-     "low": 10.9,
-     "precip": 207,
-     "rainDays": 18
-    },
-    {
-     "high": 11.6,
-     "low": 7.4,
-     "precip": 197,
-     "rainDays": 19
-    },
-    {
-     "high": 7.8,
-     "low": 4,
-     "precip": 188,
-     "rainDays": 20
-    },
-    {
-     "high": 5.7,
-     "low": 2,
-     "precip": 197,
-     "rainDays": 22
-    }
-   ]
-  },
-  "norway/tromso": {
-   "elevation": 16,
-   "months": [
-    {
-     "high": -4,
-     "low": -8.7,
-     "precip": 134,
-     "rainDays": 16
-    },
-    {
-     "high": -2.6,
-     "low": -7.4,
-     "precip": 117,
-     "rainDays": 15
-    },
-    {
-     "high": -0.8,
-     "low": -5.8,
-     "precip": 126,
-     "rainDays": 18
-    },
-    {
-     "high": 2.8,
-     "low": -2.7,
-     "precip": 100,
-     "rainDays": 16
-    },
-    {
-     "high": 7.8,
-     "low": 1.6,
-     "precip": 109,
-     "rainDays": 18
-    },
-    {
-     "high": 12.8,
-     "low": 6.8,
-     "precip": 112,
-     "rainDays": 19
-    },
-    {
-     "high": 16.8,
-     "low": 10.2,
-     "precip": 102,
-     "rainDays": 15
-    },
-    {
-     "high": 15.7,
-     "low": 9.7,
-     "precip": 124,
-     "rainDays": 18
-    },
-    {
-     "high": 11.5,
-     "low": 6.3,
-     "precip": 116,
-     "rainDays": 17
-    },
-    {
-     "high": 4.6,
-     "low": 0.4,
-     "precip": 112,
-     "rainDays": 17
-    },
-    {
-     "high": 0.4,
-     "low": -3.9,
-     "precip": 107,
-     "rainDays": 16
-    },
-    {
-     "high": -1.8,
-     "low": -6.5,
-     "precip": 114,
-     "rainDays": 16
-    }
-   ]
-  },
-  "poland/warsaw": {
-   "elevation": 113,
-   "months": [
-    {
-     "high": 2,
-     "low": -2.9,
-     "precip": 50,
-     "rainDays": 13
-    },
-    {
-     "high": 4.6,
-     "low": -1.6,
-     "precip": 49,
-     "rainDays": 11
-    },
-    {
-     "high": 8.6,
-     "low": 0.1,
-     "precip": 40,
-     "rainDays": 11
-    },
-    {
-     "high": 13.8,
-     "low": 4.1,
-     "precip": 48,
-     "rainDays": 11
-    },
-    {
-     "high": 19.3,
-     "low": 9,
-     "precip": 69,
-     "rainDays": 12
-    },
-    {
-     "high": 24.3,
-     "low": 14,
-     "precip": 65,
-     "rainDays": 10
-    },
-    {
-     "high": 24.9,
-     "low": 15.3,
-     "precip": 81,
-     "rainDays": 13
-    },
-    {
-     "high": 25.3,
-     "low": 15.4,
-     "precip": 76,
-     "rainDays": 11
-    },
-    {
-     "high": 20.2,
-     "low": 11.2,
-     "precip": 61,
-     "rainDays": 10
-    },
-    {
-     "high": 13.7,
-     "low": 6.7,
-     "precip": 64,
-     "rainDays": 12
-    },
-    {
-     "high": 7.2,
-     "low": 2.4,
-     "precip": 41,
-     "rainDays": 10
-    },
-    {
-     "high": 3.8,
-     "low": -0.4,
-     "precip": 53,
-     "rainDays": 11
-    }
-   ]
-  },
-  "poland/krakow": {
-   "elevation": 215,
-   "months": [
-    {
-     "high": 2.5,
-     "low": -3.5,
-     "precip": 49,
-     "rainDays": 11
-    },
-    {
-     "high": 5.9,
-     "low": -1.6,
-     "precip": 55,
-     "rainDays": 12
-    },
-    {
-     "high": 9.7,
-     "low": -0.2,
-     "precip": 43,
-     "rainDays": 12
-    },
-    {
-     "high": 14.3,
-     "low": 3.8,
-     "precip": 60,
-     "rainDays": 12
-    },
-    {
-     "high": 18.9,
-     "low": 8.7,
-     "precip": 81,
-     "rainDays": 14
-    },
-    {
-     "high": 23.9,
-     "low": 13.8,
-     "precip": 62,
-     "rainDays": 11
-    },
-    {
-     "high": 25.2,
-     "low": 15.2,
-     "precip": 92,
-     "rainDays": 14
-    },
-    {
-     "high": 25.5,
-     "low": 15.4,
-     "precip": 90,
-     "rainDays": 11
-    },
-    {
-     "high": 20.4,
-     "low": 11.1,
-     "precip": 90,
-     "rainDays": 11
-    },
-    {
-     "high": 14.8,
-     "low": 6.2,
-     "precip": 65,
-     "rainDays": 10
-    },
-    {
-     "high": 8.3,
-     "low": 1.7,
-     "precip": 47,
-     "rainDays": 10
-    },
-    {
-     "high": 4.2,
-     "low": -1.2,
-     "precip": 49,
-     "rainDays": 12
-    }
-   ]
-  },
-  "poland/lodz": {
-   "elevation": 211,
-   "months": [
-    {
-     "high": 1.8,
-     "low": -3.2,
-     "precip": 54,
-     "rainDays": 13
-    },
-    {
-     "high": 4.5,
-     "low": -1.8,
-     "precip": 51,
-     "rainDays": 12
-    },
-    {
-     "high": 8.4,
-     "low": -0.2,
-     "precip": 38,
-     "rainDays": 11
-    },
-    {
-     "high": 13.3,
-     "low": 3.6,
-     "precip": 42,
-     "rainDays": 10
-    },
-    {
-     "high": 18.4,
-     "low": 8.4,
-     "precip": 58,
-     "rainDays": 11
-    },
-    {
-     "high": 23.5,
-     "low": 13.3,
-     "precip": 68,
-     "rainDays": 10
-    },
-    {
-     "high": 24.4,
-     "low": 14.7,
-     "precip": 82,
-     "rainDays": 13
-    },
-    {
-     "high": 25,
-     "low": 15.2,
-     "precip": 86,
-     "rainDays": 11
-    },
-    {
-     "high": 19.8,
-     "low": 11,
-     "precip": 61,
-     "rainDays": 10
-    },
-    {
-     "high": 13.7,
-     "low": 6.5,
-     "precip": 60,
-     "rainDays": 11
-    },
-    {
-     "high": 7.3,
-     "low": 2.1,
-     "precip": 39,
-     "rainDays": 9
-    },
-    {
-     "high": 3.7,
-     "low": -0.7,
-     "precip": 51,
-     "rainDays": 13
-    }
-   ]
-  },
-  "poland/wroclaw": {
-   "elevation": 127,
-   "months": [
-    {
-     "high": 3.7,
-     "low": -1.9,
-     "precip": 45,
-     "rainDays": 13
-    },
-    {
-     "high": 6.3,
-     "low": -0.8,
-     "precip": 50,
-     "rainDays": 11
-    },
-    {
-     "high": 9.8,
-     "low": 0.9,
-     "precip": 40,
-     "rainDays": 11
-    },
-    {
-     "high": 14.3,
-     "low": 4.4,
-     "precip": 42,
-     "rainDays": 11
-    },
-    {
-     "high": 19.2,
-     "low": 9.1,
-     "precip": 59,
-     "rainDays": 11
-    },
-    {
-     "high": 24.1,
-     "low": 14.1,
-     "precip": 73,
-     "rainDays": 11
-    },
-    {
-     "high": 25.1,
-     "low": 15.2,
-     "precip": 75,
-     "rainDays": 12
-    },
-    {
-     "high": 25.5,
-     "low": 15.7,
-     "precip": 79,
-     "rainDays": 11
-    },
-    {
-     "high": 20.7,
-     "low": 11.6,
-     "precip": 69,
-     "rainDays": 9
-    },
-    {
-     "high": 15.1,
-     "low": 7.3,
-     "precip": 66,
-     "rainDays": 11
-    },
-    {
-     "high": 8.7,
-     "low": 2.8,
-     "precip": 48,
-     "rainDays": 10
-    },
-    {
-     "high": 5.3,
-     "low": 0.1,
-     "precip": 44,
-     "rainDays": 12
-    }
-   ]
-  },
-  "poland/gdansk": {
-   "elevation": 9,
-   "months": [
-    {
-     "high": 2.8,
-     "low": -1.2,
-     "precip": 49,
-     "rainDays": 14
-    },
-    {
-     "high": 4.4,
-     "low": -0.8,
-     "precip": 42,
-     "rainDays": 11
-    },
-    {
-     "high": 7.6,
-     "low": 0.5,
-     "precip": 37,
-     "rainDays": 10
-    },
-    {
-     "high": 11.6,
-     "low": 3.6,
-     "precip": 35,
-     "rainDays": 9
-    },
-    {
-     "high": 16.8,
-     "low": 8.3,
-     "precip": 48,
-     "rainDays": 11
-    },
-    {
-     "high": 21.6,
-     "low": 13,
-     "precip": 64,
-     "rainDays": 12
-    },
-    {
-     "high": 22.4,
-     "low": 14.8,
-     "precip": 97,
-     "rainDays": 14
-    },
-    {
-     "high": 23.4,
-     "low": 15.3,
-     "precip": 66,
-     "rainDays": 11
-    },
-    {
-     "high": 19.3,
-     "low": 12.1,
-     "precip": 51,
-     "rainDays": 10
-    },
-    {
-     "high": 13.6,
-     "low": 7.6,
-     "precip": 54,
-     "rainDays": 11
-    },
-    {
-     "high": 7.7,
-     "low": 3.6,
-     "precip": 50,
-     "rainDays": 11
-    },
-    {
-     "high": 4.5,
-     "low": 0.8,
-     "precip": 53,
-     "rainDays": 13
-    }
-   ]
-  },
-  "poland/poznan": {
-   "elevation": 83,
-   "months": [
-    {
-     "high": 3.1,
-     "low": -1.8,
-     "precip": 50,
-     "rainDays": 14
-    },
-    {
-     "high": 5.6,
-     "low": -0.9,
-     "precip": 45,
-     "rainDays": 11
-    },
-    {
-     "high": 9.1,
-     "low": 0.7,
-     "precip": 39,
-     "rainDays": 11
-    },
-    {
-     "high": 13.8,
-     "low": 4.1,
-     "precip": 37,
-     "rainDays": 10
-    },
-    {
-     "high": 18.9,
-     "low": 8.9,
-     "precip": 56,
-     "rainDays": 10
-    },
-    {
-     "high": 24.1,
-     "low": 13.8,
-     "precip": 67,
-     "rainDays": 11
-    },
-    {
-     "high": 24.7,
-     "low": 15,
-     "precip": 73,
-     "rainDays": 12
-    },
-    {
-     "high": 25.4,
-     "low": 15.5,
-     "precip": 63,
-     "rainDays": 10
-    },
-    {
-     "high": 20.6,
-     "low": 11.5,
-     "precip": 47,
-     "rainDays": 8
-    },
-    {
-     "high": 14.3,
-     "low": 7.2,
-     "precip": 55,
-     "rainDays": 11
-    },
-    {
-     "high": 7.9,
-     "low": 2.8,
-     "precip": 40,
-     "rainDays": 9
-    },
-    {
-     "high": 4.7,
-     "low": 0.3,
-     "precip": 44,
-     "rainDays": 11
-    }
-   ]
-  },
-  "portugal/lisbon": {
-   "elevation": 66,
-   "months": [
-    {
-     "high": 14.6,
-     "low": 8.7,
-     "precip": 55,
-     "rainDays": 7
-    },
-    {
-     "high": 15.9,
-     "low": 9.3,
-     "precip": 49,
-     "rainDays": 7
-    },
-    {
-     "high": 17.2,
-     "low": 10.2,
-     "precip": 59,
-     "rainDays": 9
-    },
-    {
-     "high": 19.4,
-     "low": 12,
-     "precip": 62,
-     "rainDays": 9
-    },
-    {
-     "high": 22.8,
-     "low": 14.4,
-     "precip": 38,
-     "rainDays": 5
-    },
-    {
-     "high": 24.8,
-     "low": 16.2,
-     "precip": 16,
-     "rainDays": 4
-    },
-    {
-     "high": 27.7,
-     "low": 17.9,
-     "precip": 3,
-     "rainDays": 1
-    },
-    {
-     "high": 28.3,
-     "low": 18.4,
-     "precip": 1,
-     "rainDays": 1
-    },
-    {
-     "high": 26.1,
-     "low": 17.4,
-     "precip": 30,
-     "rainDays": 4
-    },
-    {
-     "high": 22.9,
-     "low": 15.6,
-     "precip": 78,
-     "rainDays": 9
-    },
-    {
-     "high": 18.1,
-     "low": 12.2,
-     "precip": 75,
-     "rainDays": 10
-    },
-    {
-     "high": 15.8,
-     "low": 10.3,
-     "precip": 76,
-     "rainDays": 8
-    }
-   ]
-  },
-  "portugal/porto": {
-   "elevation": 88,
-   "months": [
-    {
-     "high": 13.5,
-     "low": 6.9,
-     "precip": 161,
-     "rainDays": 12
-    },
-    {
-     "high": 14.7,
-     "low": 7.7,
-     "precip": 120,
-     "rainDays": 10
-    },
-    {
-     "high": 15.8,
-     "low": 8.5,
-     "precip": 146,
-     "rainDays": 13
-    },
-    {
-     "high": 17.8,
-     "low": 10.3,
-     "precip": 135,
-     "rainDays": 12
-    },
-    {
-     "high": 20.2,
-     "low": 12.8,
-     "precip": 85,
-     "rainDays": 9
-    },
-    {
-     "high": 21.8,
-     "low": 14.7,
-     "precip": 50,
-     "rainDays": 8
-    },
-    {
-     "high": 24.5,
-     "low": 16.5,
-     "precip": 13,
-     "rainDays": 3
-    },
-    {
-     "high": 24.7,
-     "low": 16.5,
-     "precip": 14,
-     "rainDays": 3
-    },
-    {
-     "high": 23.5,
-     "low": 15.5,
-     "precip": 68,
-     "rainDays": 6
-    },
-    {
-     "high": 20.7,
-     "low": 13.8,
-     "precip": 183,
-     "rainDays": 13
-    },
-    {
-     "high": 16.6,
-     "low": 10.6,
-     "precip": 167,
-     "rainDays": 14
-    },
-    {
-     "high": 14.7,
-     "low": 8.7,
-     "precip": 182,
-     "rainDays": 14
-    }
-   ]
-  },
-  "portugal/faro": {
-   "elevation": 22,
-   "months": [
-    {
-     "high": 16.1,
-     "low": 9.5,
-     "precip": 35,
-     "rainDays": 6
-    },
-    {
-     "high": 16.8,
-     "low": 10.3,
-     "precip": 42,
-     "rainDays": 5
-    },
-    {
-     "high": 18,
-     "low": 11.1,
-     "precip": 71,
-     "rainDays": 9
-    },
-    {
-     "high": 19.8,
-     "low": 12.9,
-     "precip": 42,
-     "rainDays": 8
-    },
-    {
-     "high": 23.2,
-     "low": 15.6,
-     "precip": 29,
-     "rainDays": 4
-    },
-    {
-     "high": 25.6,
-     "low": 18,
-     "precip": 7,
-     "rainDays": 2
-    },
-    {
-     "high": 28.9,
-     "low": 20.2,
-     "precip": 1,
-     "rainDays": 0
-    },
-    {
-     "high": 29.2,
-     "low": 20.9,
-     "precip": 0,
-     "rainDays": 0
-    },
-    {
-     "high": 26.2,
-     "low": 18.9,
-     "precip": 13,
-     "rainDays": 2
-    },
-    {
-     "high": 23.3,
-     "low": 16.8,
-     "precip": 76,
-     "rainDays": 8
-    },
-    {
-     "high": 19.4,
-     "low": 13.2,
-     "precip": 56,
-     "rainDays": 7
-    },
-    {
-     "high": 17.2,
-     "low": 11.3,
-     "precip": 56,
-     "rainDays": 6
-    }
-   ]
-  },
-  "portugal/braga": {
-   "elevation": 180,
-   "months": [
-    {
-     "high": 13.1,
-     "low": 4.7,
-     "precip": 183,
-     "rainDays": 12
-    },
-    {
-     "high": 14.5,
-     "low": 5.8,
-     "precip": 137,
-     "rainDays": 10
-    },
-    {
-     "high": 15.9,
-     "low": 6.5,
-     "precip": 157,
-     "rainDays": 13
-    },
-    {
-     "high": 18.5,
-     "low": 8.7,
-     "precip": 155,
-     "rainDays": 13
-    },
-    {
-     "high": 21.6,
-     "low": 11.3,
-     "precip": 98,
-     "rainDays": 10
-    },
-    {
-     "high": 24,
-     "low": 13.7,
-     "precip": 68,
-     "rainDays": 9
-    },
-    {
-     "high": 27.7,
-     "low": 15.9,
-     "precip": 18,
-     "rainDays": 4
-    },
-    {
-     "high": 28.1,
-     "low": 16,
-     "precip": 20,
-     "rainDays": 3
-    },
-    {
-     "high": 25.1,
-     "low": 14.4,
-     "precip": 82,
-     "rainDays": 7
-    },
-    {
-     "high": 21.2,
-     "low": 12.1,
-     "precip": 225,
-     "rainDays": 13
-    },
-    {
-     "high": 16.3,
-     "low": 8.6,
-     "precip": 192,
-     "rainDays": 14
-    },
-    {
-     "high": 14.2,
-     "low": 6.7,
-     "precip": 203,
-     "rainDays": 15
-    }
-   ]
-  },
-  "portugal/funchal": {
-   "elevation": 323,
-   "months": [
-    {
-     "high": 16.3,
-     "low": 11.9,
-     "precip": 70,
-     "rainDays": 9
-    },
-    {
-     "high": 16.3,
-     "low": 11.4,
-     "precip": 66,
-     "rainDays": 8
-    },
-    {
-     "high": 16.9,
-     "low": 11.6,
-     "precip": 74,
-     "rainDays": 11
-    },
-    {
-     "high": 17.9,
-     "low": 12.2,
-     "precip": 74,
-     "rainDays": 11
-    },
-    {
-     "high": 19.5,
-     "low": 13.9,
-     "precip": 36,
-     "rainDays": 7
-    },
-    {
-     "high": 21.3,
-     "low": 15.7,
-     "precip": 72,
-     "rainDays": 8
-    },
-    {
-     "high": 23.7,
-     "low": 17.4,
-     "precip": 13,
-     "rainDays": 3
-    },
-    {
-     "high": 25.2,
-     "low": 18.6,
-     "precip": 12,
-     "rainDays": 3
-    },
-    {
-     "high": 23.4,
-     "low": 17.7,
-     "precip": 41,
-     "rainDays": 10
-    },
-    {
-     "high": 22.2,
-     "low": 16.7,
-     "precip": 83,
-     "rainDays": 13
-    },
-    {
-     "high": 19.2,
-     "low": 14.3,
-     "precip": 85,
-     "rainDays": 11
-    },
-    {
-     "high": 17.5,
-     "low": 13.1,
-     "precip": 81,
-     "rainDays": 11
-    }
-   ]
-  },
-  "romania/bucharest": {
-   "elevation": 72,
-   "months": [
-    {
-     "high": 4,
-     "low": -3.9,
-     "precip": 47,
-     "rainDays": 8
-    },
-    {
-     "high": 8.5,
-     "low": -0.9,
-     "precip": 31,
-     "rainDays": 7
-    },
-    {
-     "high": 12,
-     "low": 1.6,
-     "precip": 54,
-     "rainDays": 9
-    },
-    {
-     "high": 17.7,
-     "low": 6.5,
-     "precip": 61,
-     "rainDays": 9
-    },
-    {
-     "high": 22.3,
-     "low": 11.8,
-     "precip": 61,
-     "rainDays": 11
-    },
-    {
-     "high": 27.2,
-     "low": 16.9,
-     "precip": 81,
-     "rainDays": 12
-    },
-    {
-     "high": 29.8,
-     "low": 18.9,
-     "precip": 62,
-     "rainDays": 8
-    },
-    {
-     "high": 30.4,
-     "low": 19.2,
-     "precip": 36,
-     "rainDays": 6
-    },
-    {
-     "high": 25.3,
-     "low": 14.3,
-     "precip": 41,
-     "rainDays": 5
-    },
-    {
-     "high": 18.3,
-     "low": 8.4,
-     "precip": 50,
-     "rainDays": 7
-    },
-    {
-     "high": 11.4,
-     "low": 3.7,
-     "precip": 61,
-     "rainDays": 9
-    },
-    {
-     "high": 6.5,
-     "low": -0.4,
-     "precip": 47,
-     "rainDays": 8
-    }
-   ]
-  },
-  "romania/cluj-napoca": {
-   "elevation": 341,
-   "months": [
-    {
-     "high": 2.7,
-     "low": -4.2,
-     "precip": 38,
-     "rainDays": 10
-    },
-    {
-     "high": 6.7,
-     "low": -1.7,
-     "precip": 36,
-     "rainDays": 9
-    },
-    {
-     "high": 10.5,
-     "low": 0.1,
-     "precip": 46,
-     "rainDays": 9
-    },
-    {
-     "high": 16,
-     "low": 4.6,
-     "precip": 54,
-     "rainDays": 11
-    },
-    {
-     "high": 20.3,
-     "low": 9.6,
-     "precip": 82,
-     "rainDays": 13
-    },
-    {
-     "high": 25,
-     "low": 14.5,
-     "precip": 108,
-     "rainDays": 15
-    },
-    {
-     "high": 26.5,
-     "low": 15.8,
-     "precip": 80,
-     "rainDays": 12
-    },
-    {
-     "high": 27.4,
-     "low": 16,
-     "precip": 60,
-     "rainDays": 9
-    },
-    {
-     "high": 22,
-     "low": 11.7,
-     "precip": 68,
-     "rainDays": 9
-    },
-    {
-     "high": 15.9,
-     "low": 6,
-     "precip": 45,
-     "rainDays": 7
-    },
-    {
-     "high": 9.2,
-     "low": 1.7,
-     "precip": 50,
-     "rainDays": 10
-    },
-    {
-     "high": 4.3,
-     "low": -1.6,
-     "precip": 46,
-     "rainDays": 10
-    }
-   ]
-  },
-  "romania/timisoara": {
-   "elevation": 91,
-   "months": [
-    {
-     "high": 4.8,
-     "low": -2.2,
-     "precip": 52,
-     "rainDays": 11
-    },
-    {
-     "high": 9.1,
-     "low": 0.3,
-     "precip": 45,
-     "rainDays": 10
-    },
-    {
-     "high": 12.7,
-     "low": 2.2,
-     "precip": 43,
-     "rainDays": 9
-    },
-    {
-     "high": 17.9,
-     "low": 6.5,
-     "precip": 43,
-     "rainDays": 8
-    },
-    {
-     "high": 22.5,
-     "low": 11.7,
-     "precip": 73,
-     "rainDays": 12
-    },
-    {
-     "high": 27.3,
-     "low": 16.5,
-     "precip": 80,
-     "rainDays": 13
-    },
-    {
-     "high": 29.6,
-     "low": 18.3,
-     "precip": 46,
-     "rainDays": 7
-    },
-    {
-     "high": 30,
-     "low": 18.3,
-     "precip": 45,
-     "rainDays": 6
-    },
-    {
-     "high": 24.3,
-     "low": 13.8,
-     "precip": 54,
-     "rainDays": 8
-    },
-    {
-     "high": 18.3,
-     "low": 8.2,
-     "precip": 41,
-     "rainDays": 8
-    },
-    {
-     "high": 11.4,
-     "low": 3.5,
-     "precip": 53,
-     "rainDays": 10
-    },
-    {
-     "high": 6.5,
-     "low": 0.1,
-     "precip": 52,
-     "rainDays": 10
-    }
-   ]
-  },
-  "romania/iasi": {
-   "elevation": 46,
-   "months": [
-    {
-     "high": 3.1,
-     "low": -4.5,
-     "precip": 32,
-     "rainDays": 8
-    },
-    {
-     "high": 6.6,
-     "low": -1.8,
-     "precip": 33,
-     "rainDays": 8
-    },
-    {
-     "high": 10.7,
-     "low": 0.6,
-     "precip": 35,
-     "rainDays": 8
-    },
-    {
-     "high": 16.8,
-     "low": 5.5,
-     "precip": 53,
-     "rainDays": 9
-    },
-    {
-     "high": 21.7,
-     "low": 10.7,
-     "precip": 65,
-     "rainDays": 10
-    },
-    {
-     "high": 26.6,
-     "low": 16.2,
-     "precip": 88,
-     "rainDays": 11
-    },
-    {
-     "high": 28.3,
-     "low": 17.8,
-     "precip": 64,
-     "rainDays": 9
-    },
-    {
-     "high": 28.8,
-     "low": 17.6,
-     "precip": 36,
-     "rainDays": 6
-    },
-    {
-     "high": 23.5,
-     "low": 13.1,
-     "precip": 47,
-     "rainDays": 8
-    },
-    {
-     "high": 16.7,
-     "low": 7,
-     "precip": 46,
-     "rainDays": 7
-    },
-    {
-     "high": 9.5,
-     "low": 2.4,
-     "precip": 48,
-     "rainDays": 8
-    },
-    {
-     "high": 5.3,
-     "low": -1,
-     "precip": 36,
-     "rainDays": 8
-    }
-   ]
-  },
-  "romania/constanta": {
-   "elevation": 18,
-   "months": [
-    {
-     "high": 5.8,
-     "low": -0.3,
-     "precip": 52,
-     "rainDays": 8
-    },
-    {
-     "high": 8.3,
-     "low": 1.7,
-     "precip": 41,
-     "rainDays": 7
-    },
-    {
-     "high": 10.1,
-     "low": 3.3,
-     "precip": 44,
-     "rainDays": 8
-    },
-    {
-     "high": 14.7,
-     "low": 7.4,
-     "precip": 51,
-     "rainDays": 8
-    },
-    {
-     "high": 19.2,
-     "low": 12.7,
-     "precip": 43,
-     "rainDays": 8
-    },
-    {
-     "high": 24.5,
-     "low": 18.1,
-     "precip": 59,
-     "rainDays": 9
-    },
-    {
-     "high": 27.1,
-     "low": 20,
-     "precip": 38,
-     "rainDays": 6
-    },
-    {
-     "high": 27.4,
-     "low": 20.7,
-     "precip": 28,
-     "rainDays": 4
-    },
-    {
-     "high": 23.5,
-     "low": 16.7,
-     "precip": 36,
-     "rainDays": 4
-    },
-    {
-     "high": 17.8,
-     "low": 11.4,
-     "precip": 49,
-     "rainDays": 6
-    },
-    {
-     "high": 12.7,
-     "low": 6.8,
-     "precip": 61,
-     "rainDays": 8
-    },
-    {
-     "high": 8.4,
-     "low": 2.5,
-     "precip": 49,
-     "rainDays": 9
-    }
-   ]
-  },
-  "romania/brasov": {
-   "elevation": 591,
-   "months": [
-    {
-     "high": 1.8,
-     "low": -5.8,
-     "precip": 51,
-     "rainDays": 11
-    },
-    {
-     "high": 5.5,
-     "low": -3.3,
-     "precip": 44,
-     "rainDays": 10
-    },
-    {
-     "high": 8.9,
-     "low": -1,
-     "precip": 60,
-     "rainDays": 11
-    },
-    {
-     "high": 14.1,
-     "low": 3,
-     "precip": 71,
-     "rainDays": 12
-    },
-    {
-     "high": 18.4,
-     "low": 8,
-     "precip": 102,
-     "rainDays": 15
-    },
-    {
-     "high": 22.7,
-     "low": 13.1,
-     "precip": 122,
-     "rainDays": 15
-    },
-    {
-     "high": 24.5,
-     "low": 14.7,
-     "precip": 100,
-     "rainDays": 14
-    },
-    {
-     "high": 25.3,
-     "low": 14.7,
-     "precip": 69,
-     "rainDays": 9
-    },
-    {
-     "high": 20.5,
-     "low": 10.3,
-     "precip": 58,
-     "rainDays": 9
-    },
-    {
-     "high": 14.6,
-     "low": 5,
-     "precip": 53,
-     "rainDays": 8
-    },
-    {
-     "high": 8.8,
-     "low": 0.8,
-     "precip": 55,
-     "rainDays": 9
-    },
-    {
-     "high": 4.1,
-     "low": -2.6,
-     "precip": 56,
-     "rainDays": 11
-    }
-   ]
-  },
-  "serbia/belgrade": {
-   "elevation": 169,
-   "months": [
-    {
-     "high": 5.1,
-     "low": -2,
-     "precip": 53,
-     "rainDays": 12
-    },
-    {
-     "high": 9.7,
-     "low": 1,
-     "precip": 45,
-     "rainDays": 10
-    },
-    {
-     "high": 12.9,
-     "low": 3.1,
-     "precip": 56,
-     "rainDays": 10
-    },
-    {
-     "high": 17.9,
-     "low": 7.2,
-     "precip": 47,
-     "rainDays": 9
-    },
-    {
-     "high": 22.2,
-     "low": 12.4,
-     "precip": 83,
-     "rainDays": 13
-    },
-    {
-     "high": 26.8,
-     "low": 17.1,
-     "precip": 89,
-     "rainDays": 12
-    },
-    {
-     "high": 29.1,
-     "low": 18.8,
-     "precip": 68,
-     "rainDays": 9
-    },
-    {
-     "high": 29.3,
-     "low": 18.8,
-     "precip": 52,
-     "rainDays": 7
-    },
-    {
-     "high": 24.3,
-     "low": 14.5,
-     "precip": 58,
-     "rainDays": 8
-    },
-    {
-     "high": 18.6,
-     "low": 9.5,
-     "precip": 41,
-     "rainDays": 7
-    },
-    {
-     "high": 12.1,
-     "low": 4.8,
-     "precip": 60,
-     "rainDays": 10
-    },
-    {
-     "high": 7.1,
-     "low": 0.8,
-     "precip": 56,
-     "rainDays": 10
     }
    ]
   }
