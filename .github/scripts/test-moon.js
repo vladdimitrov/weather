@@ -1,7 +1,9 @@
 // Checks js/moon.js against the U.S. Naval Observatory phase times (moon-reference.json).
 // Run from the repository root: node .github/scripts/test-moon.js
-// Fails when any phase is more than 3 minutes off, or when a phase is missing or extra.
+// Fails when any phase is more than 3 minutes off, or when a phase is missing or extra. Also checks
+// the Earth-Moon distance of js/moon-view.js against known perigees and apogees.
 const Moon = require('../../js/moon.js');
+const MoonView = require('../../js/moon-view.js');
 const reference = require('./moon-reference.json');
 
 const TOLERANCE_MINUTES = 3;
@@ -25,6 +27,13 @@ const lit = [0, 0.5, 1, 0.5];
 computed.slice(0, 40).forEach(({ type, time }) => {
   const fraction = Moon.state(time).fraction;
   if (Math.abs(fraction - lit[type]) > 0.02) problems.push(`${time.toISOString()}: illumination ${fraction.toFixed(3)} at type ${type}`);
+});
+
+// Distance to the Moon (km, centre to centre): perigees and apogees from published tables, within 80 km
+[['2023-08-30T15:54:00Z', 357181], ['2024-03-10T07:04:00Z', 356895], ['2024-03-23T15:45:00Z', 406294], ['2024-10-17T00:51:00Z', 357172],
+  ['2025-04-27T16:15:00Z', 357118], ['2025-11-05T22:16:00Z', 356833], ['2024-06-02T07:16:00Z', 368102]].forEach(([iso, km]) => {
+  const mine = MoonView.distance(new Date(iso));
+  if (Math.abs(mine - km) > 80) problems.push(`${iso}: distance ${Math.round(mine)} km, expected about ${km} km`);
 });
 
 if (problems.length) {

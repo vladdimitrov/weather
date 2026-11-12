@@ -1,0 +1,124 @@
+/* Moon calendar pages (/luna/): the drawn Moon, the "Moon today" block, the next phases,
+   the 14-day strip. Loaded only by these pages (build-luna.js), after theme.css. */
+
+.moon-svg { display: block; border-radius: 50%; }
+
+/* ---- the Moon today ---- */
+.moon-today { padding: 22px 20px 20px; }
+.moon-hero {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+}
+.moon-hero-disc .moon-svg {
+  width: 190px;
+  height: 190px;
+  box-shadow: 0 0 46px rgba(241, 236, 217, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+.moon-hero-text h2 { margin: 0; font-size: 1.7rem; line-height: 1.2; }
+.moon-hero-sub { margin: 6px 0 16px; color: var(--ink-soft); }
+.moon-hero-sub::first-letter { text-transform: uppercase; }
+
+.moon-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0 0 16px;
+}
+.moon-stats > div {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+}
+.moon-stats dt { font-size: 0.78rem; color: var(--ink-soft); }
+.moon-stats dd { margin: 2px 0 0; font-size: 1.35rem; font-weight: 700; color: var(--gold); white-space: nowrap; }
+.moon-stats dd small { font-size: 0.8rem; font-weight: 500; color: var(--ink-soft); }
+
+.moon-cycle-bar {
+  position: relative;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+.moon-cycle-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.55), var(--gold));
+}
+.moon-cycle-ends {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
+
+.moon-sub { margin: 24px 0 10px; font-size: 1.05rem; }
+
+/* ---- next phases ---- */
+.moon-next {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.moon-next-card {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  padding: 14px 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+  font-size: 0.86rem;
+}
+.moon-next-card .moon-svg { margin-bottom: 6px; }
+.moon-next-card strong { font-size: 0.95rem; }
+.moon-next-card span { color: var(--ink-soft); }
+.moon-next-card em { margin-top: 4px; font-style: normal; font-weight: 600; color: var(--gold); }
+
+/* ---- 14 days ---- */
+.moon-strip {
+  display: grid;
+  grid-template-columns: repeat(14, minmax(40px, 1fr));
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+}
+.moon-strip-day {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  padding: 8px 2px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font-size: 0.74rem;
+  color: var(--ink-soft);
+}
+.moon-strip-day strong { font-size: 0.9rem; color: var(--ink); }
+.moon-strip-day em { font-style: normal; }
+.moon-strip-day.is-today { border-color: rgba(255, 215, 0, 0.55); background: rgba(255, 215, 0, 0.08); }
+
+/* ---- the month grid with drawn Moons ---- */
+.mg-icon .moon-svg { width: 30px; height: 30px; }
+
+/* ---- how the phases work ---- */
+.moon-about p { max-width: 70ch; }
+
+@media (max-width: 700px) {
+  .moon-hero { grid-template-columns: 1fr; justify-items: center; gap: 18px; text-align: center; }
+  .moon-hero-disc .moon-svg { width: 160px; height: 160px; }
+  .moon-hero-text { width: 100%; }
+  .moon-next { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+  .moon-stats { gap: 6px; }
+  .moon-stats > div { padding: 8px 6px; }
+  .moon-stats dd { font-size: 1.1rem; }
+  .mg-icon .moon-svg { width: 22px; height: 22px; }
+}

@@ -1,50 +1,16 @@
-// /luna/: the Moon today (phase, illuminated part, next full and new moon),
-// computed in the browser with /js/moon.js. The page already contains the same
-// block for the day it was built; this script replaces it with today's values.
+// /luna/: the Moon today (the drawn Moon, illumination, age, distance, the next phases and
+// the next 14 days), computed in the browser with /js/moon.js and drawn by /js/moon-view.js.
+// The page already contains the same block for the day it was built; this script replaces
+// it with the values of now, in the time zone of the visitor or of the picked place.
 (function () {
   const target = document.getElementById('moonToday');
-  if (!target || typeof Moon === 'undefined') return;
-
-  const ICONS = Moon.ICONS;
-  const LOCALES = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES' };
-  const T = {
-    bg: {
-      lit: 'осветена част', nextFull: 'Следващо пълнолуние', nextNew: 'Следващо новолуние', waxing: 'Луната расте', waning: 'Луната намалява'
-    },
-    en: {
-      lit: 'illuminated', nextFull: 'Next full moon', nextNew: 'Next new moon', waxing: 'The Moon is waxing', waning: 'The Moon is waning'
-    },
-    de: {
-      lit: 'beleuchtet', nextFull: 'Nächster Vollmond', nextNew: 'Nächster Neumond', waxing: 'Der Mond nimmt zu', waning: 'Der Mond nimmt ab'
-    },
-    it: {
-      lit: 'illuminata', nextFull: 'Prossima luna piena', nextNew: 'Prossima luna nuova', waxing: 'La Luna è crescente', waning: 'La Luna è calante'
-    },
-    es: {
-      lit: 'iluminada', nextFull: 'Próxima luna llena', nextNew: 'Próxima luna nueva', waxing: 'La Luna está creciente', waning: 'La Luna está menguante'
-    }
-  };
+  if (!target || typeof Moon === 'undefined' || typeof MoonView === 'undefined') return;
 
   // Time zone: the browser's, or that of the place picked on the forecast page (/js/place-context.js)
   let zone;
 
   function render() {
-    const language = T[document.documentElement.lang] ? document.documentElement.lang : 'en';
-    const text = T[language];
-    const names = Moon.NAMES[language];
-    const now = new Date();
-    const state = Moon.state(now);
-    const date = value => value.toLocaleDateString(LOCALES[language], { day: 'numeric', month: 'long', year: 'numeric', timeZone: zone });
-    const time = value => value.toLocaleTimeString(LOCALES[language], { hour: '2-digit', minute: '2-digit', timeZone: zone });
-    const full = Moon.nextPhase(now, 2);
-    const fresh = Moon.nextPhase(now, 0);
-    target.innerHTML = `
-      <div class="moon-today-icon" style="font-size:4rem;line-height:1">${ICONS[state.index]}</div>
-      <div>
-        <h2 style="margin:0">${names[state.index]}</h2>
-        <p>${Math.round(state.fraction * 100)}% ${text.lit} · ${state.waxing ? text.waxing : text.waning}</p>
-        <p>${text.nextFull}: <strong>${date(full)}</strong>, ${time(full)}<br>${text.nextNew}: <strong>${date(fresh)}</strong>, ${time(fresh)}</p>
-      </div>`;
+    target.innerHTML = MoonView.today(document.documentElement.lang, new Date(), zone);
   }
 
   function useZone() {

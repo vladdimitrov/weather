@@ -13,7 +13,7 @@
 
   const grid = document.createElement('div');
   grid.className = 'moon-grid';
-  grid.setAttribute('role', 'grid');
+  grid.setAttribute('role', 'list');
   const heading = card.querySelector('h2');
   (heading || card.firstChild).insertAdjacentElement(heading ? 'afterend' : 'beforebegin', grid);
 
@@ -30,6 +30,7 @@
       const name = new Date(Date.UTC(2024, 0, 1 + i)).toLocaleDateString(locale(), { weekday: 'short', timeZone: 'UTC' });
       const head = document.createElement('div');
       head.className = 'mg-head';
+      head.setAttribute('aria-hidden', 'true'); // the day cells say their weekday in the title
       head.textContent = name;
       cells.push(head);
     }
@@ -50,14 +51,23 @@
       const cell = document.createElement('div');
       cell.className = 'mg-day' + (exact ? ' mg-key' : '');
       if (today.getFullYear() === year && today.getMonth() === month && today.getDate() === i + 1) cell.classList.add('mg-today');
-      cell.setAttribute('role', 'gridcell');
+      cell.setAttribute('role', 'listitem');
       cell.title = `${i + 1} · ${phaseName} · ${lit}`;
       const num = document.createElement('span');
       num.className = 'mg-num';
       num.textContent = String(i + 1);
       const moon = document.createElement('span');
       moon.className = 'mg-icon';
-      moon.textContent = icon;
+      // drawn from the phase of the row: an exact phase that day, otherwise from the lit part
+      const index = typeof Moon !== 'undefined' ? Moon.ICONS.indexOf(icon) : -1;
+      if (typeof MoonView !== 'undefined' && index >= 0) {
+        const fraction = Math.min(1, Math.max(0, parseFloat(lit) / 100 || 0));
+        const elongation = Math.acos(1 - 2 * fraction) * 180 / Math.PI;
+        const angle = exact && index % 2 === 0 ? index * 45 : (index >= 1 && index <= 4 ? elongation : 360 - elongation);
+        moon.innerHTML = MoonView.svg(angle, 30);
+      } else {
+        moon.textContent = icon;
+      }
       const pct = document.createElement('span');
       pct.className = 'mg-pct';
       pct.textContent = lit;

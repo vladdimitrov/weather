@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 60, mobileNav: 17, cityForecast: 11, moon: 2, lunaToday: 3, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
+const VERSION = { theme: 60, mobileNav: 17, cityForecast: 11, moon: 2, lunaToday: 4, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
 
 const CITIES = [
   ['sofia', 'София', 42.6977, 23.3219],
@@ -169,7 +169,8 @@ const NAV_EN = I18N.NAV.en;
 
 // multi: the page exists in the five languages (/luna/, /en/luna/, /de/luna/ ...); url is the
 // Bulgarian path. A page with lang 'en' and no multi is a fixed-English page (/europe/).
-function page({ url, title, description, body, scripts = '', jsonLd = '', lang = 'bg', multi = false, base = 'bg' }) {
+// head: extra lines for the <head>, after the site stylesheets (a stylesheet of one page family)
+function page({ url, title, description, body, scripts = '', jsonLd = '', head = '', lang = 'bg', multi = false, base = 'bg' }) {
   const fixed = multi || lang === 'en';
   const NAV = I18N.NAV[lang];
   const nav = key => NAV[key];
@@ -230,7 +231,7 @@ ${languageScript}
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/theme.css?v=${VERSION.theme}">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
-</head>
+${head}</head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
   <div class="nav-header" tabindex="-1" id="header">

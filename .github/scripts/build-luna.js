@@ -12,6 +12,7 @@
 const fs = require('fs');
 const path = require('path');
 const Moon = require('../../js/moon.js');
+const MoonView = require('../../js/moon-view.js');
 const I18N = require('./i18n.js');
 const { LUNA } = require('./text-luna.js');
 const { page, write, VERSION } = require('./build-pages.js');
@@ -20,7 +21,9 @@ const ROOT = process.cwd();
 const ZONE = 'Europe/Sofia';
 const SLUGS = ['yanuari', 'fevruari', 'mart', 'april', 'may', 'yuni', 'yuli', 'avgust', 'septemvri', 'oktomvri', 'noemvri', 'dekemvri'];
 const ICONS = Moon.ICONS;
+const HEAD = '  <link rel="stylesheet" href="/css/luna.css?v=2">\n';
 const SCRIPTS = `<script src="/js/moon.js?v=${VERSION.moon}" defer></script>
+<script src="/js/moon-view.js?v=1" defer></script>
 <script src="/js/place-context.js?v=${VERSION.placeContext}" defer></script>
 <script src="/js/luna-today.js?v=${VERSION.lunaToday}" defer></script>
 <script src="/js/luna-local.js?v=${VERSION.lunaLocal}" defer></script>\n`;
@@ -106,19 +109,10 @@ function blueMoons(events) {
 }
 
 // --- The block "the Moon today" (same markup as /js/luna-today.js writes) -------
+// The "Moon today" block: the HTML /js/luna-today.js draws in the browser, for the day of the build
 function todayBlock(lang, now) {
-  const T = LUNA[lang];
-  const state = Moon.state(now);
-  const full = Moon.nextPhase(now, 2);
-  const fresh = Moon.nextPhase(now, 0);
-  const when = date => `<strong>${fullDate(lang, date, true)}</strong>, ${hhmm(date)}`;
-  return `<section class="info-card moon-today" id="moonToday" style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
-      <div class="moon-today-icon" style="font-size:4rem;line-height:1">${ICONS[state.index]}</div>
-      <div>
-        <h2 style="margin:0">${Moon.NAMES[lang][state.index]}</h2>
-        <p>${Math.round(state.fraction * 100)}% ${T.lit} · ${state.waxing ? T.waxing : T.waning}</p>
-        <p>${T.nextFull}: ${when(full)}<br>${T.nextNew}: ${when(fresh)}</p>
-      </div>
+  return `<section class="info-card moon-today" id="moonToday">
+      ${MoonView.today(lang, now, ZONE)}
     </section>`;
 }
 
@@ -166,10 +160,11 @@ function monthPage(lang, year, month, years) {
   const noteHtml = noteParts ? `<span id="dayNoteTz">${noteParts[1]}</span> ${noteParts[2]}` : T.daysNote;
   const calUrl = L(lang, '/luna/');
   return page({
+    head: HEAD,
     url,
     lang,
     multi: true,
-    scripts: SCRIPTS + `<script src="/js/moon-grid.js?v=1" defer></script>
+    scripts: SCRIPTS + `<script src="/js/moon-grid.js?v=3" defer></script>
 `,
     title: esc(T.monthTitle(name, year)),
     description: esc(T.monthDescription({ name, year, full, fresh, fullDates: dates(2), freshDates: dates(0) })),
@@ -241,6 +236,7 @@ function yearPage(lang, year, years) {
     return `          <tr><td><a href="${L(lang, monthUrl(year, month))}">${monthName(lang, month)}</a></td><td>${cell(0)}</td><td>${cell(1)}</td><td>${cell(2)}</td><td>${cell(3)}</td></tr>`;
   }).join('\n');
   return page({
+    head: HEAD,
     url,
     lang,
     multi: true,
@@ -280,6 +276,7 @@ function hubPage(lang, years, now) {
   const thisYear = sofia(now).year;
   const current = years.includes(thisYear) ? monthUrl(thisYear, month) : monthUrl(years[0], 0);
   return page({
+    head: HEAD,
     url: '/luna/',
     lang,
     multi: true,
@@ -300,6 +297,11 @@ ${years.map(year => `
         ${monthLinks(lang, year, -1)}
       </div>
     </section>`).join('\n')}
+
+    <section class="info-card moon-about">
+      <h2>${T.aboutH}</h2>
+${T.about.map(paragraph => `      <p>${paragraph}</p>`).join('\n')}
+    </section>
 ${moreLinks(lang, [
     `<a href="${L(lang, '/vremeto/')}" class="recent-place">${T.weather}</a>`,
     `<a href="/magnitni-buri/" class="recent-place">${T.storms}</a>`,
