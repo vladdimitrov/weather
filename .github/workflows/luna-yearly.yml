@@ -30,7 +30,8 @@ jobs:
         run: |
           YEAR=$(( $(date +%Y) + 1 ))
           echo "YEAR=$YEAR" >> "$GITHUB_ENV"
-          node .github/scripts/build-luna.js "$YEAR" --sitemap
+          node .github/scripts/build-luna.js "$YEAR"
+          node .github/scripts/build-sitemap.js
           node .github/scripts/check-site.js
       - name: Open a pull request
         run: |

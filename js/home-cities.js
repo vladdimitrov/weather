@@ -59,7 +59,7 @@
       return `<a href="/weather/?${query}" class="recent-place">${name}</a>`;
     });
     const slug = data.slugs[place.countryCode];
-    if (slug) items.push(`<a href="${lang === 'en' ? '' : '/' + lang}/europe/${slug}/" class="recent-place">${t.all}</a>`);
+    if (slug) items.push(`<a href="${lang === 'bg' ? '' : '/' + lang}/europe/${slug}/" class="recent-place">${t.all}</a>`);
     links.innerHTML = items.join('\n        ');
     if (holidays) {
       holidays.removeAttribute('data-nav');

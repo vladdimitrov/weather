@@ -24,7 +24,7 @@ const ABOUT = {
       `Празниците са от ${x('https://date.nager.at/', 'Nager.Date')}.`,
       `Картите са от ${x('https://www.windy.com/', 'Windy')}.`
     ],
-    moreData: `Повече подробности има на страница ${i('/contacts/', 'Източници на данни')}.`,
+    moreData: `Повече подробности има на страница ${i('/iztochnici/', 'Източници на данни')}.`,
     hHow: 'Как се правят прогнозите',
     how1: 'Прогнозата за времето е изчислена от числени модели, които симулират атмосферата върху мрежа от точки. Освен основната прогноза показваме и диапазон от ансамблови прогнози: моделът се пуска много пъти с малко различни начални условия и колкото по-близки са резултатите, толкова по-сигурна е прогнозата. Обикновено прогнозата е точна за 3–5 дни, а след 7 дни е ориентировъчна.',
     how2: `Прогнозата за магнитните бури е на синоптиците на NOAA, които следят Слънцето със спътници. Повече за това е описано на страница ${i('/magnitni-buri/', 'Магнитни бури')}.`,
@@ -54,7 +54,7 @@ const ABOUT = {
       `Public holidays are from ${x('https://date.nager.at/', 'Nager.Date')}.`,
       `The maps are from ${x('https://www.windy.com/', 'Windy')}.`
     ],
-    moreData: `More details are on the ${i('/contacts/', 'Data Sources')} page.`,
+    moreData: `More details are on the ${i('/iztochnici/', 'Data Sources')} page.`,
     hHow: 'How the forecasts are made',
     how1: 'The weather forecast is calculated by numerical models that simulate the atmosphere on a grid of points. Besides the main forecast we also show a range of ensemble forecasts: the model is run many times with slightly different starting conditions, and the closer the results are, the more certain the forecast. A forecast is usually accurate for 3–5 days and only indicative after 7 days.',
     how2: `The magnetic storm forecast comes from the NOAA forecasters, who watch the Sun with satellites. More about it is on the ${i('/magnitni-buri/', 'Magnetic Storms')} page.`,
@@ -84,7 +84,7 @@ const ABOUT = {
       `Die Feiertage stammen von ${x('https://date.nager.at/', 'Nager.Date')}.`,
       `Die Karten stammen von ${x('https://www.windy.com/', 'Windy')}.`
     ],
-    moreData: `Mehr Einzelheiten stehen auf der Seite ${i('/contacts/', 'Datenquellen')}.`,
+    moreData: `Mehr Einzelheiten stehen auf der Seite ${i('/iztochnici/', 'Datenquellen')}.`,
     hHow: 'Wie die Vorhersagen entstehen',
     how1: 'Die Wettervorhersage wird von numerischen Modellen berechnet, die die Atmosphäre auf einem Gitter von Punkten simulieren. Neben der Hauptvorhersage zeigen wir auch eine Spanne von Ensemble-Vorhersagen: Das Modell wird viele Male mit leicht unterschiedlichen Anfangsbedingungen gerechnet, und je näher die Ergebnisse beieinander liegen, desto sicherer ist die Vorhersage. Meist ist eine Vorhersage für 3–5 Tage genau und nach 7 Tagen nur ein Richtwert.',
     how2: `Die Vorhersage der Magnetstürme stammt von den NOAA-Meteorologen, die die Sonne mit Satelliten beobachten. Mehr dazu steht auf der Seite ${i('/magnitni-buri/', 'Magnetstürme')}.`,
@@ -114,7 +114,7 @@ const ABOUT = {
       `Le festività provengono da ${x('https://date.nager.at/', 'Nager.Date')}.`,
       `Le mappe provengono da ${x('https://www.windy.com/', 'Windy')}.`
     ],
-    moreData: `Altri dettagli sono nella pagina ${i('/contacts/', 'Fonti dei dati')}.`,
+    moreData: `Altri dettagli sono nella pagina ${i('/iztochnici/', 'Fonti dei dati')}.`,
     hHow: 'Come si fanno le previsioni',
     how1: "Le previsioni del tempo sono calcolate da modelli numerici che simulano l'atmosfera su una griglia di punti. Oltre alla previsione principale mostriamo anche un intervallo di previsioni d'insieme: il modello viene eseguito molte volte con condizioni iniziali leggermente diverse e più i risultati sono vicini, più la previsione è affidabile. Di solito la previsione è precisa per 3–5 giorni e dopo 7 giorni è solo indicativa.",
     how2: `La previsione delle tempeste magnetiche è dei meteorologi della NOAA, che osservano il Sole con i satelliti. Maggiori informazioni nella pagina ${i('/magnitni-buri/', 'Tempeste magnetiche')}.`,
@@ -144,7 +144,7 @@ const ABOUT = {
       `Los festivos proceden de ${x('https://date.nager.at/', 'Nager.Date')}.`,
       `Los mapas proceden de ${x('https://www.windy.com/', 'Windy')}.`
     ],
-    moreData: `Hay más detalles en la página ${i('/contacts/', 'Fuentes de datos')}.`,
+    moreData: `Hay más detalles en la página ${i('/iztochnici/', 'Fuentes de datos')}.`,
     hHow: 'Cómo se hacen las previsiones',
     how1: 'La previsión del tiempo la calculan modelos numéricos que simulan la atmósfera sobre una malla de puntos. Además de la previsión principal mostramos un rango de previsiones por conjuntos: el modelo se ejecuta muchas veces con condiciones iniciales ligeramente distintas y, cuanto más próximos son los resultados, más fiable es la previsión. Normalmente la previsión es precisa para 3–5 días y a partir de 7 días es solo orientativa.',
     how2: `La previsión de las tormentas magnéticas es de los meteorólogos de la NOAA, que vigilan el Sol con satélites. Hay más información en la página ${i('/magnitni-buri/', 'Tormentas magnéticas')}.`,
@@ -314,4 +314,4 @@ const PRIVACY = {
   })
 };
 
-module.exports = { ABOUT, PRIVACY };
+module.exports = { ABOUT, PRIVACY, MAIL };

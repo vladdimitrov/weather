@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Времето — Weather Pulse</title>
+  <!-- Embeddable "weather in [city]" card for other sites (the code is made on /uidzhet/):
+       <iframe src="https://weatherpulse.eu/widget/weather.html?lat=42.6977&lon=23.3219&name=София&page=/vremeto/sofia/" width="320" height="230">
+       lat, lon: the place; name: its name; page: the page of the place on weatherpulse.eu the card links to; lang: bg (default) or en.
+       Self-contained (no site scripts, no cookies or analytics); data from Open-Meteo. -->
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: transparent; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: #ffffff; }
+    a.card {
+      display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 12px 14px;
+      border: 1px solid rgba(255, 215, 0, 0.45); border-radius: 14px; background: #162447; color: inherit; text-decoration: none;
+    }
+    .title { color: #FFD700; font-weight: 700; font-size: 15px; }
+    .now { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+    .now b { font-size: 30px; }
+    .now .icon { font-size: 30px; }
+    .days { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; font-size: 12px; text-align: center; }
+    .days div { padding: 5px 2px; border-radius: 8px; background: rgba(255, 255, 255, 0.08); }
+    .days .name { display: block; color: #FFD700; text-transform: capitalize; }
+    .days .icon { display: block; font-size: 18px; }
+    .footer { margin-top: auto; font-size: 11px; color: rgba(255, 255, 255, 0.7); text-align: right; }
+  </style>
+</head>
+<body>
+  <a class="card" id="card" href="https://weatherpulse.eu/" target="_blank" rel="noopener">
+    <span class="title" id="title">Времето</span>
+    <span class="now" id="now">…</span>
+    <span class="days" id="days"></span>
+    <span class="footer" id="footer">weatherpulse.eu</span>
+  </a>
+  <script>
+    (function () {
+      const texts = {
+        bg: { title: name => 'Времето ' + (/^[ВФвф]/.test(name) ? 'във ' : 'в ') + name, feels: 'усеща се', wind: 'вятър', today: 'Днес', tomorrow: 'Утре', error: 'Няма данни в момента', more: 'Прогноза за 7 дни →', locale: 'bg-BG' },
+        en: { title: name => 'Weather in ' + name, feels: 'feels like', wind: 'wind', today: 'Today', tomorrow: 'Tomorrow', error: 'Data unavailable', more: '7-day forecast →', locale: 'en-GB' }
+      };
+      // WMO weather codes, as on the site (js/city-forecast.js)
+      const icon = code => code === 0 ? '☀️' : code <= 2 ? '⛅' : code === 3 ? '☁️' : code <= 48 ? '🌫️' : code <= 57 ? '🌦️' : code <= 67 || (code >= 80 && code <= 82) ? '🌧️' : code <= 86 ? '❄️' : '⛈️';
+      const query = new URLSearchParams(location.search);
+      const language = texts[query.get('lang')] ? query.get('lang') : 'bg';
+      const t = texts[language];
+      const lat = parseFloat(query.get('lat')), lon = parseFloat(query.get('lon'));
+      const name = (query.get('name') || '').slice(0, 60);
+      // only a path on this site, never another address
+      const page = /^\/[a-z0-9\/-]*$/.test(query.get('page') || '') ? query.get('page') : '/weather/?' + new URLSearchParams({ city: name, lat, lon });
+      document.documentElement.lang = language;
+      document.getElementById('card').href = 'https://weatherpulse.eu' + page;
+      document.getElementById('title').textContent = name ? t.title(name) : 'Weather Pulse';
+      document.title = (name ? t.title(name) : 'Weather Pulse') + ' — Weather Pulse';
+      document.getElementById('footer').textContent = t.more + ' weatherpulse.eu';
+      const show = (id, text) => { document.getElementById(id).textContent = text; };
+      if (isNaN(lat) || isNaN(lon)) { show('now', t.error); return; }
+      const round = v => Math.round(v) + '°';
+      fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&forecast_days=3&timezone=auto`)
+        .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(data => {
+          const now = document.getElementById('now');
+          now.replaceChildren();
+          const symbol = document.createElement('span');
+          symbol.className = 'icon';
+          symbol.textContent = icon(data.current.weather_code);
+          const value = document.createElement('b');
+          value.textContent = round(data.current.temperature_2m);
+          const rest = document.createElement('span');
+          rest.textContent = `${t.feels} ${round(data.current.apparent_temperature)} · ${t.wind} ${Math.round(data.current.wind_speed_10m)} km/h`;
+          now.append(symbol, value, rest);
+          const days = document.getElementById('days');
+          days.replaceChildren(...data.daily.time.map((date, i) => {
+            const box = document.createElement('div');
+            const label = document.createElement('span');
+            label.className = 'name';
+            label.textContent = i === 0 ? t.today : i === 1 ? t.tomorrow : new Date(date + 'T12:00:00Z').toLocaleDateString(t.locale, { timeZone: 'UTC', weekday: 'short' });
+            const sign = document.createElement('span');
+            sign.className = 'icon';
+            sign.textContent = icon(data.daily.weather_code[i]);
+            box.append(label, sign, document.createTextNode(`${round(data.daily.temperature_2m_max[i])} / ${round(data.daily.temperature_2m_min[i])}`));
+            return box;
+          }));
+        })
+        .catch(() => show('now', t.error));
+    })();
+  </script>
+</body>
+</html>

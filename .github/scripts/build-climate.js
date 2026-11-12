@@ -6,6 +6,7 @@
 //   --europe   the cities of the /europe/ pages instead (europe-data.js), into climate-europe.json,
 //              keyed "<country>/<city>"; build-europe.js reads it. About 25 minutes for 168 cities:
 //              the free API allows a few of these requests a minute. An interrupted run continues.
+//   --records  fetch again the cities that have no record temperatures yet (files from before they were added)
 const fs = require('fs');
 const path = require('path');
 const EUROPE = process.argv.includes('--europe');
@@ -57,8 +58,17 @@ function summarize(data) {
     }
   });
   const mean = list => list.reduce((sum, n) => sum + n, 0) / list.length;
+  // the highest and the lowest temperature of the whole period, with the day
+  const records = { high: { t: -Infinity, date: '' }, low: { t: Infinity, date: '' } };
+  data.daily.time.forEach((date, i) => {
+    const high = data.daily.temperature_2m_max[i];
+    const low = data.daily.temperature_2m_min[i];
+    if (high !== null && high > records.high.t) records.high = { t: round1(high), date };
+    if (low !== null && low < records.low.t) records.low = { t: round1(low), date };
+  });
   return {
     elevation: Math.round(data.elevation),
+    records,
     months: months.map(m => ({
       high: round1(mean(m.highs)),
       low: round1(mean(m.lows)),
@@ -73,7 +83,7 @@ function summarize(data) {
   const previous = !process.argv.includes('--refresh') && fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')).cities : {};
   const out = { source: 'Open-Meteo historical archive (ERA5)', years: `${FIRST_YEAR}–${LAST_YEAR}`, cities: {} };
   for (const city of CITIES) {
-    if (previous[city.slug]) {
+    if (previous[city.slug] && (previous[city.slug].records || !process.argv.includes('--records'))) {
       out.cities[city.slug] = previous[city.slug];
       continue;
     }

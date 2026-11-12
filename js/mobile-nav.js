@@ -110,13 +110,15 @@
     about: { en: 'About', bg: 'За сайта', de: 'Über uns', it: 'Chi siamo', es: 'Acerca de' },
     privacy: { en: 'Privacy', bg: 'Поверителност', de: 'Datenschutz', it: 'Privacy', es: 'Privacidad' },
     cities: { en: 'Weather in Bulgarian cities', bg: 'Времето в градовете на България', de: 'Wetter in bulgarischen Städten', it: 'Meteo nelle città bulgare', es: 'El tiempo en ciudades de Bulgaria' },
+    europe: { en: 'Weather in Europe →', bg: 'Времето в Европа →', de: 'Wetter in Europa →', it: 'Meteo in Europa →', es: 'El tiempo en Europa →' },
+    cityIndex: { en: 'All cities', bg: 'Всички градове', de: 'Alle Städte', it: 'Tutte le città', es: 'Todas las ciudades' },
     allCities: { en: 'All cities →', bg: 'Всички градове →', de: 'Alle Städte →', it: 'Tutte le città →', es: 'Todas las ciudades →' },
     holidaysBg: { en: 'Public holidays in Bulgaria', bg: 'Официални празници в България', de: 'Feiertage in Bulgarien', it: 'Festività in Bulgaria', es: 'Festivos en Bulgaria' },
     stormsToday: { en: '🧭 Magnetic storms today →', bg: '🧭 Магнитни бури днес →', de: '🧭 Magnetstürme heute →', it: '🧭 Tempeste magnetiche oggi →', es: '🧭 Tormentas magnéticas hoy →' }
   };
 
   // Pages that exist as a translation in /en/, /de/, /it/, /es/: the link follows the language
-  const localPages = { home: '', weather: 'weather/', maps: 'maps/', holidays: 'holliday_calendar/', storms: 'magnitni-buri/', stormsToday: 'magnitni-buri/', allCities: 'vremeto/', holidaysBg: 'praznici/', sky: 'nebeto/', about: 'za-saita/', privacy: 'poveritelnost/' };
+  const localPages = { home: '', weather: 'weather/', maps: 'maps/', holidays: 'holliday_calendar/', storms: 'magnitni-buri/', stormsToday: 'magnitni-buri/', allCities: 'vremeto/', holidaysBg: 'praznici/', sky: 'nebeto/', about: 'za-saita/', privacy: 'poveritelnost/', sources: 'iztochnici/', cityIndex: 'gradove/', europe: 'europe/' };
 
   function translateNav() {
     const lang = document.documentElement.lang;

@@ -805,7 +805,7 @@
       <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Календар на празниците</a>
       <a href="/magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
       <a href="/nebeto/" class="nav-link" data-nav="sky">Небето</a>
-      <a href="/contacts/" class="nav-link" data-nav="sources">Източници на данни</a>
+      <a href="/iztochnici/" class="nav-link" data-nav="sources">Източници на данни</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -847,7 +847,7 @@
           <span class="label" id="maps-orbit-label">КАРТИ</span>
         </a>
         
-        <a href="/contacts/" class="orbit-button" id="contacts-orbit-btn" title="Източници на данни и контакти">
+        <a href="/iztochnici/" class="orbit-button" id="contacts-orbit-btn" title="Източници на данни и контакти">
           <span class="label" id="contacts-orbit-label">ИЗТОЧНИЦИ</span>
         </a>
         
@@ -862,7 +862,7 @@
       <a href="/magnitni-buri/" data-nav="storms">Магнитни бури</a>
       <a href="/nebeto/" data-nav="sky">Небето</a>
       <a href="/holliday_calendar/" data-nav="holidays">Календар на празниците</a>
-      <a href="/contacts/" data-nav="sources">Източници на данни</a>
+      <a href="/iztochnici/" data-nav="sources">Източници на данни</a>
     </nav>
 
     <!-- Features Section -->
@@ -890,7 +890,7 @@
         <a href="vremeto/bansko/" class="recent-place">Банско</a>
         <a href="/vremeto/" class="recent-place" data-nav="allCities">Всички градове →</a>
       </div>
-      <p class="city-actions"><a class="btn" href="/praznici/" data-nav="holidaysBg">Официални празници в България</a> <a class="btn" href="/europe/">Weather in Europe →</a></p>
+      <p class="city-actions"><a class="btn" href="/praznici/" data-nav="holidaysBg">Официални празници в България</a> <a class="btn" href="/europe/" data-nav="europe">Времето в Европа →</a> <a class="btn" href="/gradove/" data-nav="cityIndex">Всички градове</a></p>
     </section>
   </div>
 
@@ -901,6 +901,7 @@
       
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
+      · <a href="/gradove/" class="footer-link" data-nav="cityIndex">Всички градове</a>
       · <a href="/za-saita/" class="footer-link" data-nav="about">За сайта</a>
       · <a href="/poveritelnost/" class="footer-link" data-nav="privacy">Поверителност</a>
     </p>
@@ -913,7 +914,7 @@
     en: {
 
       sunTitle: "Home - Weather & Magnetic Storms",
-      // <meta name="description"> of the translated page (build-main.js)
+      // description of the translated page (build-main.js writes it into its head)
       metaDescription: "Weather forecast for 16 days and by the hour, magnetic storms with alerts, weather maps, public holidays and the weather in Bulgarian cities. Free.",
 
       weatherOrbitTitle: "Weather Forecast",
@@ -971,7 +972,7 @@
     de: {
 
       sunTitle: "Startseite - Wetter und Magnetstürme",
-      // <meta name="description"> of the translated page (build-main.js)
+      // description of the translated page (build-main.js writes it into its head)
       metaDescription: "16-Tage- und Stundenvorhersage, Magnetstürme mit Benachrichtigungen, Wetterkarten, Feiertage und das Wetter in bulgarischen Städten. Kostenlos.",
 
       weatherOrbitTitle: "Wettervorhersage",
@@ -1002,7 +1003,7 @@
     it: {
 
       sunTitle: "Home - Meteo e tempeste magnetiche",
-      // <meta name="description"> of the translated page (build-main.js)
+      // description of the translated page (build-main.js writes it into its head)
       metaDescription: "Previsioni meteo a 16 giorni e ora per ora, tempeste magnetiche con avvisi, mappe, festività e il meteo nelle città bulgare. Gratis.",
 
       weatherOrbitTitle: "Previsioni del tempo",
@@ -1033,7 +1034,7 @@
     es: {
 
       sunTitle: "Inicio - Tiempo y tormentas magnéticas",
-      // <meta name="description"> of the translated page (build-main.js)
+      // description of the translated page (build-main.js writes it into its head)
       metaDescription: "Pronóstico del tiempo de 16 días y por horas, tormentas magnéticas con avisos, mapas, festivos y el tiempo en las ciudades de Bulgaria. Gratis.",
 
       weatherOrbitTitle: "Pronóstico del tiempo",
@@ -1127,8 +1128,8 @@
   }
 </script>
 
-<script src="/js/mobile-nav.js?v=17"></script>
-<script src="/js/language-selector.js?v=6"></script>
+<script src="/js/mobile-nav.js?v=18"></script>
+<script src="/js/language-selector.js?v=7"></script>
 <script src="/language-switcher.js?v=3"></script>
 <script src="/js/background-selector.js?v=3"></script>
 <script src="/js/city-search.js?v=12"></script>
@@ -1136,7 +1137,7 @@
 <script src="/js/forecast-core.js?v=1"></script>
 <script src="/js/home-weather.js?v=8"></script>
 <script src="/js/place-context.js?v=1"></script>
-<script src="/js/home-cities.js?v=2"></script>
+<script src="/js/home-cities.js?v=3"></script>
 
 <script>
   // Listen for language changes from the language-switcher.js
