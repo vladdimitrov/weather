@@ -115,7 +115,7 @@ function snapshot(page, data, today) {
   const note = Core.note({ models: data.models, elevation: data.elevation });
   // Deeper than the closing </div> of #cityForecast (4 spaces), which marks the end of the block
   return `      <div class="kp-forecast city-now" id="cityNow">
-        <h3>${esc(page.name)}: ${esc(date(daily.time[0], { weekday: 'long', day: 'numeric', month: 'long' }))}</h3>
+        <h2>${esc(page.name)}: ${esc(date(daily.time[0], { weekday: 'long', day: 'numeric', month: 'long' }))}</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">${range(0)}</span>
         <p class="storm-now-status">${esc(describe(0))}${typeof rainToday === 'number' ? ` · ${esc(text.rain)} ${Math.round(rainToday)}%` : ''}</p>
         <p class="storm-updated">${ISSUED[lang]} ${esc(date(today, { day: 'numeric', month: 'long', year: 'numeric' }))}</p>
