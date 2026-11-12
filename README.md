@@ -62,6 +62,7 @@ All scripts are in `.github/scripts/` and are run from the repository root with 
 | `node .github/scripts/build-pages.js` | Writes the city, hub and holiday pages (all languages) and the sources page |
 | `node .github/scripts/build-main.js [--sitemap]` | Writes the translated home, storms, forecast, maps and holiday pages (`/en/`, `/de/magnitni-buri/`, `/it/weather/` ...) from the Bulgarian ones; stops if a text is missing or Bulgarian text is left in a fully translated page |
 | `node .github/scripts/build-forecast.js [folder ...]` | Writes today's 7-day forecast (median of the three models, as on the site) into the HTML of the city pages and today's date into their `sitemap.xml` entries. Without arguments: all city pages (`/vremeto/` and `/europe/`) in all languages, 1015 pages. Run it after `build-pages.js`, which writes the pages with a "Loading…" line |
+| `node .github/scripts/build-storms.js` | Writes NOAA's 3-day forecast of magnetic storms (highest Kp and level per day) into `/magnitni-buri/` and its translations, between two comment marks in `#stormForecast`, and today's date into their `sitemap.xml` entries. `build-main.js` keeps the table when it rewrites the translations |
 | `node .github/scripts/build-static.js [--sitemap]` | Writes the About and Privacy pages (all languages) |
 | `node .github/scripts/build-europe.js [--sitemap]` | Writes the Europe pages (all languages); `--sitemap` adds missing URLs to `sitemap.xml` |
 | `node .github/scripts/build-luna.js [year] [--sitemap]` | Writes the Moon calendar pages (the year and the next one) |
@@ -79,7 +80,7 @@ Static assets use a version in the URL (`theme.css?v=N`). When a stylesheet or s
 
 - **Site check** (`check.yml`): runs `check-site.js` on every pull request and push to `main`.
 - **Moon calendar** (`luna-yearly.yml`): on 1 December builds the next year's `/luna/` pages and opens a pull request (an issue if Actions may not open PRs). Pull requests opened by Actions do not start the Site check; run it by hand.
-- **Daily forecast** (`forecast-daily.yml`): every morning (03:20 UTC) runs `build-forecast.js` and commits the city pages and `sitemap.xml` to `main` as `github-actions[bot]`, then asks Pages to publish. Also runs when the city pages change on `main`. In the browser `js/city-forecast.js` replaces the written forecast with the live one. Pull `main` before working: it gets one commit a day.
+- **Daily forecast** (`forecast-daily.yml`): every morning (03:20 UTC) runs `build-forecast.js` and `build-storms.js` and commits the city pages and `sitemap.xml` to `main` as `github-actions[bot]`, then asks Pages to publish. Also runs when the city pages change on `main`. In the browser `js/city-forecast.js` replaces the written forecast with the live one. Pull `main` before working: it gets one commit a day.
 - **IndexNow** (`indexnow.yml`): after pushes to `main` that change HTML or the sitemap, waits for Pages to publish and notifies Bing and others. Do not delete the key file `fd0de53b5adf000adbdcd0dff74d4364.txt` in the root: it proves the site is ours.
 
 ## Data sources

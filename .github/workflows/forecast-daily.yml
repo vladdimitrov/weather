@@ -39,11 +39,15 @@ jobs:
           node-version: 20
       - name: Write the forecast
         run: node .github/scripts/build-forecast.js
+      # NOAA's 3-day forecast in /magnitni-buri/; the city pages are still committed if it fails
+      - name: Write the storm forecast
+        continue-on-error: true
+        run: node .github/scripts/build-storms.js
       - run: node .github/scripts/check-site.js
       - name: Commit
         id: commit
         run: |
-          git add vremeto en/vremeto de/vremeto it/vremeto es/vremeto europe bg/europe de/europe it/europe es/europe sitemap.xml
+          git add vremeto en/vremeto de/vremeto it/vremeto es/vremeto europe bg/europe de/europe it/europe es/europe magnitni-buri en/magnitni-buri de/magnitni-buri it/magnitni-buri es/magnitni-buri sitemap.xml
           if git diff --cached --quiet; then
             echo "Nothing changed."; exit 0
           fi

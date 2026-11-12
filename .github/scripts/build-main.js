@@ -140,8 +140,14 @@ function home() {
 }
 
 // ---- Magnetic storms ----
+// The forecast table written every morning by build-storms.js (between two comment marks in
+// #stormForecast) is in the language of each page: the Bulgarian one is taken out of the
+// template and every translation keeps its own
+const KP_BLOCK = /<div class="kp-forecast" id="stormForecast">(<!-- kp-forecast:start -->[\s\S]*?<!-- kp-forecast:end -->)<\/div>/;
+const KP_EMPTY = '<div class="kp-forecast" id="stormForecast" hidden></div>';
+
 function storms() {
-  const template = read('magnitni-buri/index.html');
+  const template = read('magnitni-buri/index.html').replace(KP_BLOCK, KP_EMPTY);
   const script = read('js/storm-page.js');
   const { PAGE, T } = evaluate(`${declaration(script, 'PAGE', 'js/storm-page.js')}\n${declaration(script, 'T', 'js/storm-page.js')}`, ['PAGE', 'T']);
   const text = (group, key, lang) => {
@@ -174,6 +180,9 @@ function storms() {
       }))
     };
     html = once(html, /<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">\n${JSON.stringify(faq, null, 2)}\n  </script>`, 'JSON-LD');
+    const file = path.join(ROOT, lang, 'magnitni-buri', 'index.html');
+    const written = fs.existsSync(file) ? read(path.join(lang, 'magnitni-buri', 'index.html')).match(KP_BLOCK) : null;
+    if (written) html = once(html, KP_EMPTY, written[0], 'forecast block');
     write('/magnitni-buri/', lang, html);
   });
 }

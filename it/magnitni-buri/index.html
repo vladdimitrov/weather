@@ -91,14 +91,15 @@
   <link rel="stylesheet" href="/css/theme.css?v=59">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
   <style>
-    /* The forecast, solar wind and outlook blocks are filled when the data arrives. They keep
-       their room until then (heights measured on the page), so the blocks below do not jump. */
+    /* The forecast block holds the forecast written every morning (build-storms.js) until the
+       live one arrives; the solar wind and outlook blocks are filled when their data arrives.
+       All three keep their room (heights measured on the page), so the blocks below do not jump. */
     #stormForecast[hidden], #stormWind[hidden], #stormOutlook[hidden] { display: block !important; visibility: hidden; }
-    #stormForecast[hidden] { min-height: 330px; }
+    #stormForecast { min-height: 330px; box-sizing: border-box; }
     #stormWind[hidden] { min-height: 177px; }
     #stormOutlook[hidden] { min-height: 249px; }
     @media (min-width: 700px) {
-      #stormForecast[hidden] { min-height: 390px; }
+      #stormForecast { min-height: 390px; }
       #stormWind[hidden] { min-height: 145px; }
       #stormOutlook[hidden] { min-height: 192px; }
     }
@@ -131,7 +132,18 @@
 
     <p class="city-actions"><a class="btn" href="/it/nebeto/#severno-siyanie" data-nav="auroraLink">🌌 Aurora e cielo →</a></p>
 
-    <div class="kp-forecast" id="stormForecast" hidden></div>
+    <div class="kp-forecast" id="stormForecast"><!-- kp-forecast:start -->
+      <h3>Previsione a 3 giorni</h3>
+      <table class="kp-table">
+        <thead><tr><th>Giorno</th><th>Kp massimo</th><th>Livello</th></tr></thead>
+        <tbody>
+            <tr><td>giovedì 12 novembre</td><td>1.7</td><td>Calmo</td></tr>
+            <tr><td>venerdì 13 novembre</td><td>1.7</td><td>Calmo</td></tr>
+            <tr><td>sabato 14 novembre</td><td>1.7</td><td>Calmo</td></tr>
+        </tbody>
+      </table>
+      <p class="storm-updated">Previsione NOAA del 12 novembre 2026</p>
+    <!-- kp-forecast:end --></div>
     <div class="space-weather" id="stormWind" hidden></div>
     <div class="space-weather" id="stormOutlook" hidden></div>
 
