@@ -251,13 +251,13 @@
   function renderNow() {
     const box = $('stormNow');
     if (data.nowFailed) {
-      box.innerHTML = `<h3>${t('kpNow')}</h3><p>${t('noData')}</p>`;
+      box.innerHTML = `<h2>${t('kpNow')}</h2><p>${t('noData')}</p>`;
       return;
     }
     if (!data.now) return;
     const { kp, time } = data.now;
     box.innerHTML =
-      `<h3>${t('kpNow')}</h3>` +
+      `<h2>${t('kpNow')}</h2>` +
       `<div class="storm-now-value kp-${level(kp)}">${kp}</div>` +
       `<div>${kpScale(kp)}${gBadge(kp)}</div>` +
       `<div class="storm-now-status">${statusText(kp)}</div>` +

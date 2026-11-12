@@ -112,7 +112,7 @@
     const current = condition(now.weather_code);
 
     nowBox.replaceChildren(
-      el('h3', '', `${text.now}: ${box.dataset.name}`),
+      el('h2', '', `${text.now}: ${box.dataset.name}`),
       WeatherIcons.node('now-icon', current.key, pickText(current.text)),
       el('span', 'storm-now-value', `${Math.round(now.temperature_2m)}°`),
       el('p', 'storm-now-status', `${pickText(current.text)} · ${text.feels} ${Math.round(now.apparent_temperature)}°`),
