@@ -73,7 +73,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -85,8 +85,7 @@
       <a href="/es/maps/" class="nav-link" data-nav="maps">Mapas del tiempo</a>
       <a href="/es/holliday_calendar/" class="nav-link" data-nav="holidays">Calendario de festivos</a>
       <a href="/es/magnitni-buri/" class="nav-link" data-nav="storms">Tormentas magnéticas</a>
-      <a href="/es/nebeto/" class="nav-link" data-nav="sky">El cielo</a>
-      <a href="/es/iztochnici/" class="nav-link" data-nav="sources">Fuentes de datos</a>
+      <a href="/es/luna/" class="nav-link" data-nav="moon">Calendario lunar</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -120,11 +119,11 @@
           </a>
           <a class="kp-day city-day" href="/weather/?city=Blagoevgrad&lat=42.0209&lon=23.0943&cc=BG&date=2026-11-13" title="Por horas →">
             <span class="kp-day-name">vie 13</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">13° / 20°</span>
-            <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">43%</span>
+            <span class="kp-day-status">Lluvia</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">43% · 0.5 mm</span>
             <span class="city-day-wind">Viento 20 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Blagoevgrad&lat=42.0209&lon=23.0943&cc=BG&date=2026-11-14" title="Por horas →">
@@ -133,8 +132,8 @@
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">5° / 17°</span>
             <span class="kp-day-status">Tormenta</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">89% · 10.2 mm</span>
-            <span class="city-day-wind">Viento 13 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">89% · 8.3 mm</span>
+            <span class="city-day-wind">Viento 16 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Blagoevgrad&lat=42.0209&lon=23.0943&cc=BG&date=2026-11-15" title="Por horas →">
             <span class="kp-day-name">dom 15</span>
@@ -151,17 +150,17 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">8° / 13°</span>
             <span class="kp-day-status">Llovizna</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">20% · 1.6 mm</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">20% · 2.4 mm</span>
             <span class="city-day-wind">Viento 11 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Blagoevgrad&lat=42.0209&lon=23.0943&cc=BG&date=2026-11-17" title="Por horas →">
             <span class="kp-day-name">mar 17</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">8° / 17°</span>
+            <span class="city-day-temp">9° / 17°</span>
             <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">25%</span>
-            <span class="city-day-wind">Viento 10 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">25% · 0.9 mm</span>
+            <span class="city-day-wind">Viento 14 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Blagoevgrad&lat=42.0209&lon=23.0943&cc=BG&date=2026-11-18" title="Por horas →">
             <span class="kp-day-name">mié 18</span>
@@ -305,12 +304,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/es/gradove/" class="footer-link" data-nav="cityIndex">Todas las ciudades</a>
+      · <a href="/es/iztochnici/" class="footer-link" data-nav="sourcesShort">Fuentes</a>
       · <a href="/es/za-saita/" class="footer-link" data-nav="about">Acerca de</a>
       · <a href="/es/poveritelnost/" class="footer-link" data-nav="privacy">Privacidad</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>

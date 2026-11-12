@@ -94,7 +94,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -106,8 +106,7 @@
       <a href="/es/maps/" class="nav-link" data-nav="maps">Mapas del tiempo</a>
       <a href="/es/holliday_calendar/" class="nav-link" data-nav="holidays">Calendario de festivos</a>
       <a href="/es/magnitni-buri/" class="nav-link" data-nav="storms">Tormentas magnéticas</a>
-      <a href="/es/nebeto/" class="nav-link" data-nav="sky">El cielo</a>
-      <a href="/es/iztochnici/" class="nav-link" data-nav="sources">Fuentes de datos</a>
+      <a href="/es/luna/" class="nav-link" data-nav="moon">Calendario lunar</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -122,40 +121,40 @@
     <div class="city-forecast" id="cityForecast" data-name="Toulouse" data-lat="43.6047" data-lon="1.4442" data-query="city=Toulouse&lat=43.6047&lon=1.4442&cc=FR">
       <div class="kp-forecast city-now" id="cityNow">
         <h2>Toulouse: jueves, 12 de noviembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">13° / 18°</span>
-        <p class="storm-now-status">Lluvia · probabilidad de lluvia 100%</p>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">13° / 17°</span>
+        <p class="storm-now-status">Llovizna · probabilidad de lluvia 100%</p>
         <p class="storm-updated">Previsión del 12 de noviembre de 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsión a 7 días</h3>
-        <p class="city-summary">En los próximos 7 días el día más cálido será el jueves, 12 de noviembre (hasta 18°) y el más frío el sábado, 14 de noviembre (hasta 5°). Se esperan precipitaciones en 5 de los días. Las máximas están cerca de lo normal para noviembre (media de 14°).</p>
+        <p class="city-summary">En los próximos 7 días el día más cálido será el jueves, 12 de noviembre (hasta 17°) y el más frío el sábado, 14 de noviembre (hasta 6°). Se esperan precipitaciones en 5 de los días. Las máximas están cerca de lo normal para noviembre (media de 14°).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Toulouse&lat=43.6047&lon=1.4442&cc=FR&date=2026-11-12" title="Por horas →">
             <span class="kp-day-name">jue 12</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">13° / 18°</span>
-            <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">100% · 2.2 mm</span>
-            <span class="city-day-wind">Viento 21 km/h</span>
+            <span class="city-day-temp">13° / 17°</span>
+            <span class="kp-day-status">Llovizna</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">100% · 2.7 mm</span>
+            <span class="city-day-wind">Viento 22 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Toulouse&lat=43.6047&lon=1.4442&cc=FR&date=2026-11-13" title="Por horas →">
             <span class="kp-day-name">vie 13</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">7° / 13°</span>
+            <span class="city-day-temp">9° / 14°</span>
             <span class="kp-day-status">Llovizna</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">81% · 0.6 mm</span>
-            <span class="city-day-wind">Viento 18 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">81% · 1.6 mm</span>
+            <span class="city-day-wind">Viento 17 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Toulouse&lat=43.6047&lon=1.4442&cc=FR&date=2026-11-14" title="Por horas →">
             <span class="kp-day-name">sáb 14</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">5° / 15°</span>
+            <span class="city-day-temp">6° / 15°</span>
             <span class="kp-day-status">Nublado</span>
             <span class="city-day-rain" title="probabilidad de lluvia">29%</span>
-            <span class="city-day-wind">Viento 18 km/h</span>
+            <span class="city-day-wind">Viento 16 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Toulouse&lat=43.6047&lon=1.4442&cc=FR&date=2026-11-15" title="Por horas →">
             <span class="kp-day-name">dom 15</span>
@@ -163,34 +162,34 @@
             <span class="city-day-date">15.11</span>
             <span class="city-day-temp">9° / 16°</span>
             <span class="kp-day-status">Llovizna</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">40% · 0.5 mm</span>
-            <span class="city-day-wind">Viento 17 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">40% · 0.4 mm</span>
+            <span class="city-day-wind">Viento 19 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Toulouse&lat=43.6047&lon=1.4442&cc=FR&date=2026-11-16" title="Por horas →">
             <span class="kp-day-name">lun 16</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">9° / 15°</span>
-            <span class="kp-day-status">Llovizna</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">60% · 3.3 mm</span>
+            <span class="kp-day-status">Lluvia</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">60% · 8.2 mm</span>
             <span class="city-day-wind">Viento 15 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Toulouse&lat=43.6047&lon=1.4442&cc=FR&date=2026-11-17" title="Por horas →">
             <span class="kp-day-name">mar 17</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">12° / 16°</span>
+            <span class="city-day-temp">9° / 16°</span>
             <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">67% · 13.6 mm</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">67% · 8.7 mm</span>
             <span class="city-day-wind">Viento 24 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Toulouse&lat=43.6047&lon=1.4442&cc=FR&date=2026-11-18" title="Por horas →">
             <span class="kp-day-name">mié 18</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
             <span class="city-day-temp">11° / 15°</span>
-            <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">61% · 7.7 mm</span>
+            <span class="kp-day-status">Llovizna</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">61% · 6.1 mm</span>
             <span class="city-day-wind">Viento 21 km/h</span>
           </a>
         </div>
@@ -336,12 +335,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/es/gradove/" class="footer-link" data-nav="cityIndex">Todas las ciudades</a>
+      · <a href="/es/iztochnici/" class="footer-link" data-nav="sourcesShort">Fuentes</a>
       · <a href="/es/za-saita/" class="footer-link" data-nav="about">Acerca de</a>
       · <a href="/es/poveritelnost/" class="footer-link" data-nav="privacy">Privacidad</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>

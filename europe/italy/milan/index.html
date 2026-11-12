@@ -99,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -111,8 +111,7 @@
       <a href="/maps/" class="nav-link" data-nav="maps">Карти за времето</a>
       <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Календар на празниците</a>
       <a href="/magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
-      <a href="/nebeto/" class="nav-link" data-nav="sky">Небето</a>
-      <a href="/iztochnici/" class="nav-link" data-nav="sources">Източници на данни</a>
+      <a href="/luna/" class="nav-link" data-nav="moon">Лунен календар</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -133,7 +132,7 @@
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Прогноза за 7 дни</h3>
-        <p class="city-summary">През следващите 7 дни най-топло ще е в петък, 13 ноември (до 16°), а най-студено – във вторник, 17 ноември (до 5°). Валежи се очакват в 4 от дните. Дневните температури са близо до обичайните за ноември (средно 12°).</p>
+        <p class="city-summary">През следващите 7 дни най-топло ще е в петък, 13 ноември (до 16°), а най-студено – във вторник, 17 ноември (до 3°). Валежи се очакват в 4 от дните. Дневните температури са близо до обичайните за ноември (средно 12°).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=%D0%9C%D0%B8%D0%BB%D0%B0%D0%BD%D0%BE&lat=45.4642&lon=9.1900&cc=IT&date=2026-11-12" title="По часове →">
             <span class="kp-day-name">чт, 12</span>
@@ -141,23 +140,23 @@
             <span class="city-day-date">12.11</span>
             <span class="city-day-temp">10° / 11°</span>
             <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">100% · 32.0 mm</span>
-            <span class="city-day-wind">Вятър 10 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">100% · 32.5 mm</span>
+            <span class="city-day-wind">Вятър 9 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9C%D0%B8%D0%BB%D0%B0%D0%BD%D0%BE&lat=45.4642&lon=9.1900&cc=IT&date=2026-11-13" title="По часове →">
             <span class="kp-day-name">пт, 13</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">10° / 16°</span>
-            <span class="kp-day-status">Облачно</span>
-            <span class="city-day-rain" title="вероятност за валеж">73% · 0.2 mm</span>
-            <span class="city-day-wind">Вятър 16 km/h</span>
+            <span class="kp-day-status">Ръмеж</span>
+            <span class="city-day-rain" title="вероятност за валеж">73% · 0.8 mm</span>
+            <span class="city-day-wind">Вятър 17 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9C%D0%B8%D0%BB%D0%B0%D0%BD%D0%BE&lat=45.4642&lon=9.1900&cc=IT&date=2026-11-14" title="По часове →">
             <span class="kp-day-name">сб, 14</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">8° / 12°</span>
+            <span class="city-day-temp">8° / 11°</span>
             <span class="kp-day-status">Облачно</span>
             <span class="city-day-rain" title="вероятност за валеж">1%</span>
             <span class="city-day-wind">Вятър 14 km/h</span>
@@ -175,17 +174,17 @@
             <span class="kp-day-name">пн, 16</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">5° / 10°</span>
+            <span class="city-day-temp">5° / 9°</span>
             <span class="kp-day-status">Ръмеж</span>
             <span class="city-day-rain" title="вероятност за валеж">46% · 2.4 mm</span>
             <span class="city-day-wind">Вятър 7 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9C%D0%B8%D0%BB%D0%B0%D0%BD%D0%BE&lat=45.4642&lon=9.1900&cc=IT&date=2026-11-17" title="По часове →">
             <span class="kp-day-name">вт, 17</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">5° / 10°</span>
-            <span class="kp-day-status">Ръмеж</span>
+            <span class="city-day-temp">3° / 10°</span>
+            <span class="kp-day-status">Облачно</span>
             <span class="city-day-rain" title="вероятност за валеж">49% · 2.7 mm</span>
             <span class="city-day-wind">Вятър 8 km/h</span>
           </a>
@@ -195,7 +194,7 @@
             <span class="city-day-date">18.11</span>
             <span class="city-day-temp">7° / 12°</span>
             <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">35% · 0.3 mm</span>
+            <span class="city-day-rain" title="вероятност за валеж">35%</span>
             <span class="city-day-wind">Вятър 9 km/h</span>
           </a>
         </div>
@@ -342,12 +341,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/gradove/" class="footer-link" data-nav="cityIndex">Всички градове</a>
+      · <a href="/iztochnici/" class="footer-link" data-nav="sourcesShort">Източници</a>
       · <a href="/za-saita/" class="footer-link" data-nav="about">За сайта</a>
       · <a href="/poveritelnost/" class="footer-link" data-nav="privacy">Поверителност</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>

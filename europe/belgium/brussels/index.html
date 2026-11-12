@@ -99,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -111,8 +111,7 @@
       <a href="/maps/" class="nav-link" data-nav="maps">Карти за времето</a>
       <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Календар на празниците</a>
       <a href="/magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
-      <a href="/nebeto/" class="nav-link" data-nav="sky">Небето</a>
-      <a href="/iztochnici/" class="nav-link" data-nav="sources">Източници на данни</a>
+      <a href="/luna/" class="nav-link" data-nav="moon">Лунен календар</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -157,7 +156,7 @@
             <span class="kp-day-name">сб, 14</span>
             <span class="city-day-icon" aria-hidden="true">🌫️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">1° / 8°</span>
+            <span class="city-day-temp">1° / 9°</span>
             <span class="kp-day-status">Мъгла</span>
             <span class="city-day-rain" title="вероятност за валеж">0%</span>
             <span class="city-day-wind">Вятър 12 km/h</span>
@@ -168,25 +167,25 @@
             <span class="city-day-date">15.11</span>
             <span class="city-day-temp">4° / 12°</span>
             <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">68% · 3.5 mm</span>
-            <span class="city-day-wind">Вятър 31 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">68% · 6.1 mm</span>
+            <span class="city-day-wind">Вятър 29 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%91%D1%80%D1%8E%D0%BA%D1%81%D0%B5%D0%BB&lat=50.8503&lon=4.3517&cc=BE&date=2026-11-16" title="По часове →">
             <span class="kp-day-name">пн, 16</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">3° / 9°</span>
+            <span class="city-day-temp">3° / 10°</span>
             <span class="kp-day-status">Облачно</span>
-            <span class="city-day-rain" title="вероятност за валеж">50% · 1.5 mm</span>
-            <span class="city-day-wind">Вятър 20 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">50% · 5.3 mm</span>
+            <span class="city-day-wind">Вятър 23 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%91%D1%80%D1%8E%D0%BA%D1%81%D0%B5%D0%BB&lat=50.8503&lon=4.3517&cc=BE&date=2026-11-17" title="По часове →">
             <span class="kp-day-name">вт, 17</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">3° / 11°</span>
+            <span class="city-day-temp">2° / 11°</span>
             <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">71% · 17.9 mm</span>
+            <span class="city-day-rain" title="вероятност за валеж">71% · 9.1 mm</span>
             <span class="city-day-wind">Вятър 24 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%91%D1%80%D1%8E%D0%BA%D1%81%D0%B5%D0%BB&lat=50.8503&lon=4.3517&cc=BE&date=2026-11-18" title="По часове →">
@@ -195,7 +194,7 @@
             <span class="city-day-date">18.11</span>
             <span class="city-day-temp">9° / 12°</span>
             <span class="kp-day-status">Ръмеж</span>
-            <span class="city-day-rain" title="вероятност за валеж">61% · 2.2 mm</span>
+            <span class="city-day-rain" title="вероятност за валеж">61% · 2.5 mm</span>
             <span class="city-day-wind">Вятър 26 km/h</span>
           </a>
         </div>
@@ -340,12 +339,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/gradove/" class="footer-link" data-nav="cityIndex">Всички градове</a>
+      · <a href="/iztochnici/" class="footer-link" data-nav="sourcesShort">Източници</a>
       · <a href="/za-saita/" class="footer-link" data-nav="about">За сайта</a>
       · <a href="/poveritelnost/" class="footer-link" data-nav="privacy">Поверителност</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>

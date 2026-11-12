@@ -12,6 +12,7 @@
 const fs = require('fs');
 const path = require('path');
 const Moon = require('../../js/moon.js');
+const SKY_EVENTS = require('./sky-events.json');
 const MoonView = require('../../js/moon-view.js');
 const I18N = require('./i18n.js');
 const { LUNA } = require('./text-luna.js');
@@ -21,7 +22,7 @@ const ROOT = process.cwd();
 const ZONE = 'Europe/Sofia';
 const SLUGS = ['yanuari', 'fevruari', 'mart', 'april', 'may', 'yuni', 'yuli', 'avgust', 'septemvri', 'oktomvri', 'noemvri', 'dekemvri'];
 const ICONS = Moon.ICONS;
-const HEAD = '  <link rel="stylesheet" href="/css/luna.css?v=2">\n';
+const HEAD = '  <link rel="stylesheet" href="/css/luna.css?v=3">\n';
 const SCRIPTS = `<script src="/js/moon.js?v=${VERSION.moon}" defer></script>
 <script src="/js/moon-view.js?v=1" defer></script>
 <script src="/js/place-context.js?v=${VERSION.placeContext}" defer></script>
@@ -123,6 +124,31 @@ const moreLinks = (lang, items) => `
         ${items.join('\n        ')}
       </div>
     </section>`;
+
+// The sky section of the hub: the next meteor shower, eclipse and supermoon (sky-events.json, the
+// source of /nebeto/), each linking to its place on that page
+function skyCards(lang, now) {
+  const S = LUNA[lang].sky;
+  const date = iso => new Intl.DateTimeFormat(I18N.LOCALE[lang], { timeZone: ZONE, day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso));
+  const next = (list, field) => list.filter(item => new Date(item[field]) >= now).sort((a, b) => new Date(a[field]) - new Date(b[field]))[0];
+  const cards = [];
+  const meteor = next(SKY_EVENTS.meteors, 'max');
+  if (meteor) cards.push({ icon: '☄️', title: meteor.name[lang], sub: `${S.meteor} · ${S.peak} ${date(meteor.max)}`, href: '/nebeto/#meteorni-potoci' });
+  const eclipse = next(SKY_EVENTS.eclipses, 'max');
+  if (eclipse) cards.push({ icon: '🌘', title: eclipse.name[lang], sub: date(eclipse.max), href: '/nebeto/#zatmeniya' });
+  const supermoon = next(SKY_EVENTS.supermoons, 'full');
+  if (supermoon) cards.push({ icon: '🌕', title: S.supermoon, sub: `${date(supermoon.full)}${supermoon.distanceKm ? ` · ${supermoon.distanceKm.toLocaleString(I18N.LOCALE[lang])} ${S.km}` : ''}`, href: '/nebeto/#superluni' });
+  if (!cards.length) return '';
+  return `
+    <section class="info-card moon-sky">
+      <h2>${S.h}</h2>
+      <p>${S.intro}</p>
+      <div class="sky-cards">
+${cards.map(card => `        <a class="sky-card" href="${L(lang, card.href.split('#')[0])}#${card.href.split('#')[1]}"><span class="sky-card-icon" aria-hidden="true">${card.icon}</span><strong>${esc(card.title)}</strong><span>${esc(card.sub)}</span></a>`).join('\n')}
+      </div>
+      <p class="city-actions"><a class="btn" href="${L(lang, '/nebeto/')}">${S.btn}</a></p>
+    </section>`;
+}
 
 // --- Pages --------------------------------------------------------------------
 function monthPage(lang, year, month, years) {
@@ -297,7 +323,7 @@ ${years.map(year => `
         ${monthLinks(lang, year, -1)}
       </div>
     </section>`).join('\n')}
-
+${skyCards(lang, now)}
     <section class="info-card moon-about">
       <h2>${T.aboutH}</h2>
 ${T.about.map(paragraph => `      <p>${paragraph}</p>`).join('\n')}

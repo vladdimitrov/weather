@@ -75,7 +75,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -87,8 +87,7 @@
       <a href="/en/maps/" class="nav-link" data-nav="maps">Weather Maps</a>
       <a href="/en/holliday_calendar/" class="nav-link" data-nav="holidays">Holiday Calendar</a>
       <a href="/en/magnitni-buri/" class="nav-link" data-nav="storms">Magnetic Storms</a>
-      <a href="/en/nebeto/" class="nav-link" data-nav="sky">The Sky</a>
-      <a href="/en/iztochnici/" class="nav-link" data-nav="sources">Data Sources</a>
+      <a href="/en/luna/" class="nav-link" data-nav="moon">Moon Calendar</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -102,14 +101,14 @@
 
     <div class="city-forecast" id="cityForecast" data-name="Smolyan" data-lat="41.5774" data-lon="24.7011" data-query="city=Smolyan&lat=41.5774&lon=24.7011&cc=BG">
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Smolyan: Thursday 12 November</h2>
+        <h2>Smolyan: Thursday, 12 November</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">9° / 16°</span>
         <p class="storm-now-status">Cloudy · chance of rain 0%</p>
         <p class="storm-updated">Forecast issued on 12 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Saturday 14 November (up to 16°) and the coldest Monday 16 November (down to 3°). Rain or snow is expected on 2 of the days. Daytime temperatures are close to normal for November (average high 12°).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Saturday, 14 November (up to 16°) and the coldest Sunday, 15 November (down to 4°). Rain or snow is expected on 2 of the days. Daytime temperatures are close to normal for November (average high 12°).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Smolyan&lat=41.5774&lon=24.7011&cc=BG&date=2026-11-12" title="Hourly forecast →">
             <span class="kp-day-name">Thu 12</span>
@@ -118,24 +117,24 @@
             <span class="city-day-temp">9° / 16°</span>
             <span class="kp-day-status">Cloudy</span>
             <span class="city-day-rain" title="chance of rain">0%</span>
-            <span class="city-day-wind">Wind 17 km/h</span>
+            <span class="city-day-wind">Wind 16 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Smolyan&lat=41.5774&lon=24.7011&cc=BG&date=2026-11-13" title="Hourly forecast →">
             <span class="kp-day-name">Fri 13</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">10° / 15°</span>
+            <span class="city-day-temp">11° / 15°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">39%</span>
+            <span class="city-day-rain" title="chance of rain">16%</span>
             <span class="city-day-wind">Wind 21 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Smolyan&lat=41.5774&lon=24.7011&cc=BG&date=2026-11-14" title="Hourly forecast →">
             <span class="kp-day-name">Sat 14</span>
-            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">7° / 16°</span>
-            <span class="kp-day-status">Thunderstorm</span>
-            <span class="city-day-rain" title="chance of rain">95% · 2.9 mm</span>
+            <span class="kp-day-status">Rain</span>
+            <span class="city-day-rain" title="chance of rain">95% · 4.3 mm</span>
             <span class="city-day-wind">Wind 12 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Smolyan&lat=41.5774&lon=24.7011&cc=BG&date=2026-11-15" title="Hourly forecast →">
@@ -151,7 +150,7 @@
             <span class="kp-day-name">Mon 16</span>
             <span class="city-day-icon" aria-hidden="true">🌫️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">3° / 10°</span>
+            <span class="city-day-temp">4° / 10°</span>
             <span class="kp-day-status">Fog</span>
             <span class="city-day-rain" title="chance of rain">4%</span>
             <span class="city-day-wind">Wind 7 km/h</span>
@@ -169,9 +168,9 @@
             <span class="kp-day-name">Wed 18</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">7° / 13°</span>
+            <span class="city-day-temp">8° / 13°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">39% · 3.3 mm</span>
+            <span class="city-day-rain" title="chance of rain">39% · 4.5 mm</span>
             <span class="city-day-wind">Wind 16 km/h</span>
           </a>
         </div>
@@ -307,12 +306,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/en/gradove/" class="footer-link" data-nav="cityIndex">All cities</a>
+      · <a href="/en/iztochnici/" class="footer-link" data-nav="sourcesShort">Sources</a>
       · <a href="/en/za-saita/" class="footer-link" data-nav="about">About</a>
       · <a href="/en/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>

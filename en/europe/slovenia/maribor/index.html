@@ -96,7 +96,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=61">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -108,8 +108,7 @@
       <a href="/en/maps/" class="nav-link" data-nav="maps">Weather Maps</a>
       <a href="/en/holliday_calendar/" class="nav-link" data-nav="holidays">Holiday Calendar</a>
       <a href="/en/magnitni-buri/" class="nav-link" data-nav="storms">Magnetic Storms</a>
-      <a href="/en/nebeto/" class="nav-link" data-nav="sky">The Sky</a>
-      <a href="/en/iztochnici/" class="nav-link" data-nav="sources">Data Sources</a>
+      <a href="/en/luna/" class="nav-link" data-nav="moon">Moon Calendar</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -123,22 +122,22 @@
 
     <div class="city-forecast" id="cityForecast" data-name="Maribor" data-lat="46.5547" data-lon="15.6459" data-query="city=Maribor&lat=46.5547&lon=15.6459&cc=SI">
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Maribor: Thursday 12 November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">8° / 13°</span>
+        <h2>Maribor: Thursday, 12 November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">8° / 12°</span>
         <p class="storm-now-status">Rain · chance of rain 100%</p>
         <p class="storm-updated">Forecast issued on 12 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Wednesday 18 November (up to 14°) and the coldest Sunday 15 November (down to 0°). Rain or snow is expected on 5 of the days. Daytime temperatures are close to normal for November (average high 11°).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Wednesday, 18 November (up to 14°) and the coldest Sunday, 15 November (down to 0°). Rain or snow is expected on 5 of the days. Daytime temperatures are close to normal for November (average high 11°).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Maribor&lat=46.5547&lon=15.6459&cc=SI&date=2026-11-12" title="Hourly forecast →">
             <span class="kp-day-name">Thu 12</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">8° / 13°</span>
+            <span class="city-day-temp">8° / 12°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">100% · 5.9 mm</span>
+            <span class="city-day-rain" title="chance of rain">100% · 7.2 mm</span>
             <span class="city-day-wind">Wind 8 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Maribor&lat=46.5547&lon=15.6459&cc=SI&date=2026-11-13" title="Hourly forecast →">
@@ -147,7 +146,7 @@
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">3° / 11°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">100% · 26.2 mm</span>
+            <span class="city-day-rain" title="chance of rain">100% · 24.3 mm</span>
             <span class="city-day-wind">Wind 18 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Maribor&lat=46.5547&lon=15.6459&cc=SI&date=2026-11-14" title="Hourly forecast →">
@@ -157,7 +156,7 @@
             <span class="city-day-temp">1° / 8°</span>
             <span class="kp-day-status">Clear</span>
             <span class="city-day-rain" title="chance of rain">0%</span>
-            <span class="city-day-wind">Wind 11 km/h</span>
+            <span class="city-day-wind">Wind 10 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Maribor&lat=46.5547&lon=15.6459&cc=SI&date=2026-11-15" title="Hourly forecast →">
             <span class="kp-day-name">Sun 15</span>
@@ -170,10 +169,10 @@
           </a>
           <a class="kp-day city-day" href="/weather/?city=Maribor&lat=46.5547&lon=15.6459&cc=SI&date=2026-11-16" title="Hourly forecast →">
             <span class="kp-day-name">Mon 16</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">4° / 12°</span>
-            <span class="kp-day-status">Drizzle</span>
+            <span class="kp-day-status">Rain</span>
             <span class="city-day-rain" title="chance of rain">50% · 0.3 mm</span>
             <span class="city-day-wind">Wind 12 km/h</span>
           </a>
@@ -181,10 +180,10 @@
             <span class="kp-day-name">Tue 17</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">6° / 13°</span>
+            <span class="city-day-temp">7° / 12°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">49% · 10.9 mm</span>
-            <span class="city-day-wind">Wind 14 km/h</span>
+            <span class="city-day-rain" title="chance of rain">49% · 6.3 mm</span>
+            <span class="city-day-wind">Wind 11 km/h</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Maribor&lat=46.5547&lon=15.6459&cc=SI&date=2026-11-18" title="Hourly forecast →">
             <span class="kp-day-name">Wed 18</span>
@@ -192,7 +191,7 @@
             <span class="city-day-date">18.11</span>
             <span class="city-day-temp">8° / 14°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">60% · 9.2 mm</span>
+            <span class="city-day-rain" title="chance of rain">60% · 22.4 mm</span>
             <span class="city-day-wind">Wind 13 km/h</span>
           </a>
         </div>
@@ -335,12 +334,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/en/gradove/" class="footer-link" data-nav="cityIndex">All cities</a>
+      · <a href="/en/iztochnici/" class="footer-link" data-nav="sourcesShort">Sources</a>
       · <a href="/en/za-saita/" class="footer-link" data-nav="about">About</a>
       · <a href="/en/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
