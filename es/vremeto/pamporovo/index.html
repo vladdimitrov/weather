@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El tiempo en Pamporovo hoy – previsión a 7 días | Weather Pulse</title>
+  <title>El tiempo en Pamporovo hoy – nieve en las pistas y previsión | Weather Pulse</title>
   <link rel="canonical" href="https://weatherpulse.eu/es/vremeto/pamporovo/" />
   <link rel="alternate" hreflang="bg" href="https://weatherpulse.eu/vremeto/pamporovo/" />
   <link rel="alternate" hreflang="en" href="https://weatherpulse.eu/en/vremeto/pamporovo/" />
@@ -16,12 +16,12 @@
   <link rel="alternate" hreflang="it" href="https://weatherpulse.eu/it/vremeto/pamporovo/" />
   <link rel="alternate" hreflang="es" href="https://weatherpulse.eu/es/vremeto/pamporovo/" />
   <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu/vremeto/pamporovo/" />
-  <meta name="description" content="El tiempo en Pamporovo hoy: previsión para mañana y 7 días, temperatura, lluvia y viento. Salida y puesta del sol. Clima por meses: temperaturas medias y precipitaciones.">
+  <meta name="description" content="El tiempo en Pamporovo hoy y para 7 días: nieve en las pistas (espesor y nieve nueva), temperatura abajo en la estación y arriba en las pistas, viento y precipitación. Clima por meses.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Weather Pulse">
   <meta property="og:locale" content="es_ES">
-  <meta property="og:title" content="El tiempo en Pamporovo hoy – previsión a 7 días">
-  <meta property="og:description" content="El tiempo en Pamporovo hoy: previsión para mañana y 7 días, temperatura, lluvia y viento. Salida y puesta del sol. Clima por meses: temperaturas medias y precipitaciones.">
+  <meta property="og:title" content="El tiempo en Pamporovo hoy – nieve en las pistas y previsión">
+  <meta property="og:description" content="El tiempo en Pamporovo hoy y para 7 días: nieve en las pistas (espesor y nieve nueva), temperatura abajo en la estación y arriba en las pistas, viento y precipitación. Clima por meses.">
   <meta property="og:url" content="https://weatherpulse.eu/es/vremeto/pamporovo/">
   <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -184,6 +184,22 @@
       </div>
     </div>
 
+    <section class="info-card">
+      <h2>Nieve en las pistas de Pamporovo</h2>
+      <p>Espesor de nieve ahora, nieve nueva en los próximos 7 días y la temperatura mínima y máxima abajo en la estación y arriba en las pistas. Los valores son de un modelo para esa altitud, no medidas en la pista.</p>
+      <div class="table-scroll">
+      <table class="kp-table region-table" data-mode="snow">
+        <thead><tr><th>Lugar</th><th>Espesor de nieve</th><th>Nieve nueva 7 días</th><th>Mín. / máx.</th></tr></thead>
+        <tbody>
+          <tr data-lat="41.65" data-lon="24.695" data-elevation="1650"><td>Pamporovo <span class="storm-updated">1650 m</span></td></tr>
+          <tr data-lat="41.645" data-lon="24.68" data-elevation="1900"><td>Snezhanka <span class="storm-updated">1900 m</span></td></tr>
+        </tbody>
+      </table>
+      <p class="storm-updated region-nojs">La tabla se completa al cargar la página.</p>
+      </div>
+      <p class="storm-updated">Datos: Open-Meteo, actualizados cada hora. La nieve real en la pista depende también de la nieve artificial y del pisado.</p>
+    </section>
+
     <p class="city-actions">
       <a class="btn" href="/es/weather/?city=Pamporovo&lat=41.6500&lon=24.6950&cc=BG">Previsión detallada por horas →</a>
       <a class="btn" href="/es/magnitni-buri/">Tormentas magnéticas hoy →</a>
@@ -324,5 +340,6 @@
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/city-forecast.js?v=13" defer></script>
+<script src="/js/region-weather.js?v=2" defer></script>
 </body>
 </html>

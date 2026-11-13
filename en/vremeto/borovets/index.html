@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather in Borovets today – 7-day forecast | Weather Pulse</title>
+  <title>Weather in Borovets today – snow on the slopes and forecast | Weather Pulse</title>
   <link rel="canonical" href="https://weatherpulse.eu/en/vremeto/borovets/" />
   <link rel="alternate" hreflang="bg" href="https://weatherpulse.eu/vremeto/borovets/" />
   <link rel="alternate" hreflang="en" href="https://weatherpulse.eu/en/vremeto/borovets/" />
@@ -16,12 +16,12 @@
   <link rel="alternate" hreflang="it" href="https://weatherpulse.eu/it/vremeto/borovets/" />
   <link rel="alternate" hreflang="es" href="https://weatherpulse.eu/es/vremeto/borovets/" />
   <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu/vremeto/borovets/" />
-  <meta name="description" content="Weather in Borovets today: forecast for tomorrow and 7 days, temperature, rain and wind. Sunrise and sunset. Climate by month: average temperatures and rainfall.">
+  <meta name="description" content="Weather in Borovets today and for 7 days: snow on the slopes (snow depth and new snow), temperature down in the resort and up on the slopes, wind and precipitation. Climate by month.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Weather Pulse">
   <meta property="og:locale" content="en_GB">
-  <meta property="og:title" content="Weather in Borovets today – 7-day forecast">
-  <meta property="og:description" content="Weather in Borovets today: forecast for tomorrow and 7 days, temperature, rain and wind. Sunrise and sunset. Climate by month: average temperatures and rainfall.">
+  <meta property="og:title" content="Weather in Borovets today – snow on the slopes and forecast">
+  <meta property="og:description" content="Weather in Borovets today and for 7 days: snow on the slopes (snow depth and new snow), temperature down in the resort and up on the slopes, wind and precipitation. Climate by month.">
   <meta property="og:url" content="https://weatherpulse.eu/en/vremeto/borovets/">
   <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -184,6 +184,23 @@
       </div>
     </div>
 
+    <section class="info-card">
+      <h2>Snow on the slopes in Borovets</h2>
+      <p>Snow depth now, new snow over the next 7 days and the lowest and highest temperature down in the resort and up on the slopes. The values come from a model for that elevation; they are not measured on the piste.</p>
+      <div class="table-scroll">
+      <table class="kp-table region-table" data-mode="snow">
+        <thead><tr><th>Place</th><th>Snow depth</th><th>New snow, 7 days</th><th>Min / max</th></tr></thead>
+        <tbody>
+          <tr data-lat="42.2667" data-lon="23.6056" data-elevation="1350"><td>Borovets <span class="storm-updated">1350 m</span></td></tr>
+          <tr data-lat="42.242" data-lon="23.575" data-elevation="1750"><td>Sitnyakovo <span class="storm-updated">1750 m</span></td></tr>
+          <tr data-lat="42.23" data-lon="23.56" data-elevation="2300"><td>Yastrebets <span class="storm-updated">2300 m</span></td></tr>
+        </tbody>
+      </table>
+      <p class="storm-updated region-nojs">The table is filled in when the page loads.</p>
+      </div>
+      <p class="storm-updated">Data: Open-Meteo, updated every hour. The real snow on the piste also depends on snowmaking and grooming.</p>
+    </section>
+
     <p class="city-actions">
       <a class="btn" href="/en/weather/?city=Borovets&lat=42.2667&lon=23.6056&cc=BG">Detailed hourly forecast →</a>
       <a class="btn" href="/en/magnitni-buri/">Magnetic storms today →</a>
@@ -324,5 +341,6 @@
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/city-forecast.js?v=13" defer></script>
+<script src="/js/region-weather.js?v=2" defer></script>
 </body>
 </html>

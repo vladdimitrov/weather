@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meteo a Borovets oggi – previsioni a 7 giorni | Weather Pulse</title>
+  <title>Meteo a Borovets oggi – neve sulle piste e previsioni | Weather Pulse</title>
   <link rel="canonical" href="https://weatherpulse.eu/it/vremeto/borovets/" />
   <link rel="alternate" hreflang="bg" href="https://weatherpulse.eu/vremeto/borovets/" />
   <link rel="alternate" hreflang="en" href="https://weatherpulse.eu/en/vremeto/borovets/" />
@@ -16,12 +16,12 @@
   <link rel="alternate" hreflang="it" href="https://weatherpulse.eu/it/vremeto/borovets/" />
   <link rel="alternate" hreflang="es" href="https://weatherpulse.eu/es/vremeto/borovets/" />
   <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu/vremeto/borovets/" />
-  <meta name="description" content="Meteo a Borovets oggi: previsioni per domani e 7 giorni, temperatura, pioggia e vento. Alba e tramonto. Clima mese per mese: temperature medie e precipitazioni.">
+  <meta name="description" content="Meteo a Borovets oggi e per 7 giorni: neve sulle piste (altezza della neve e neve fresca), temperatura in basso nella località e in alto sulle piste, vento e precipitazioni. Clima mese per mese.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Weather Pulse">
   <meta property="og:locale" content="it_IT">
-  <meta property="og:title" content="Meteo a Borovets oggi – previsioni a 7 giorni">
-  <meta property="og:description" content="Meteo a Borovets oggi: previsioni per domani e 7 giorni, temperatura, pioggia e vento. Alba e tramonto. Clima mese per mese: temperature medie e precipitazioni.">
+  <meta property="og:title" content="Meteo a Borovets oggi – neve sulle piste e previsioni">
+  <meta property="og:description" content="Meteo a Borovets oggi e per 7 giorni: neve sulle piste (altezza della neve e neve fresca), temperatura in basso nella località e in alto sulle piste, vento e precipitazioni. Clima mese per mese.">
   <meta property="og:url" content="https://weatherpulse.eu/it/vremeto/borovets/">
   <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -184,6 +184,23 @@
       </div>
     </div>
 
+    <section class="info-card">
+      <h2>Neve sulle piste a Borovets</h2>
+      <p>Altezza della neve ora, neve fresca nei prossimi 7 giorni e temperatura minima e massima in basso nella località e in alto sulle piste. I valori provengono da un modello per quella quota e non sono misure sulla pista.</p>
+      <div class="table-scroll">
+      <table class="kp-table region-table" data-mode="snow">
+        <thead><tr><th>Luogo</th><th>Altezza neve</th><th>Neve fresca 7 giorni</th><th>Min / max</th></tr></thead>
+        <tbody>
+          <tr data-lat="42.2667" data-lon="23.6056" data-elevation="1350"><td>Borovets <span class="storm-updated">1350 m</span></td></tr>
+          <tr data-lat="42.242" data-lon="23.575" data-elevation="1750"><td>Sitnyakovo <span class="storm-updated">1750 m</span></td></tr>
+          <tr data-lat="42.23" data-lon="23.56" data-elevation="2300"><td>Yastrebets <span class="storm-updated">2300 m</span></td></tr>
+        </tbody>
+      </table>
+      <p class="storm-updated region-nojs">La tabella si riempie quando la pagina si carica.</p>
+      </div>
+      <p class="storm-updated">Dati: Open-Meteo, aggiornati ogni ora. La neve reale sulla pista dipende anche dall’innevamento artificiale e dalla battitura.</p>
+    </section>
+
     <p class="city-actions">
       <a class="btn" href="/it/weather/?city=Borovets&lat=42.2667&lon=23.6056&cc=BG">Previsioni dettagliate ora per ora →</a>
       <a class="btn" href="/it/magnitni-buri/">Tempeste magnetiche oggi →</a>
@@ -324,5 +341,6 @@
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/city-forecast.js?v=13" defer></script>
+<script src="/js/region-weather.js?v=2" defer></script>
 </body>
 </html>
