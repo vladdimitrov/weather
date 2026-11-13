@@ -1,7 +1,11 @@
 """Daily forecast for a list of cities from Open-Meteo (free, no API key)."""
+import logging
+import time
 from dataclasses import dataclass
 
 import requests
+
+log = logging.getLogger(__name__)
 
 OPEN_METEO = "https://api.open-meteo.com/v1/forecast"
 
@@ -65,9 +69,18 @@ def fetch_forecast(cities, timezone="Europe/Sofia", day_offset=0):
         "timezone": timezone,
         "forecast_days": day_offset + 1,
     }
-    r = requests.get(OPEN_METEO, params=params, timeout=30)
-    r.raise_for_status()
-    data = r.json()
+    data = None
+    for attempt in range(1, 5):  # Open-Meteo is sometimes slow from CI runners: retry with a pause
+        try:
+            r = requests.get(OPEN_METEO, params=params, timeout=60)
+            r.raise_for_status()
+            data = r.json()
+            break
+        except requests.RequestException as e:
+            if attempt == 4:
+                raise
+            log.warning("Open-Meteo attempt %d failed (%s), retrying in %ds", attempt, e, 20 * attempt)
+            time.sleep(20 * attempt)
     if isinstance(data, dict):  # a single city returns an object, several return a list
         data = [data]
     out = []
