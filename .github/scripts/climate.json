@@ -4,6 +4,16 @@
  "cities": {
   "sofia": {
    "elevation": 548,
+   "records": {
+    "high": {
+     "t": 38.2,
+     "date": "2021-08-05"
+    },
+    "low": {
+     "t": -18.9,
+     "date": "2015-01-01"
+    }
+   },
    "months": [
     {
      "high": 4.6,
@@ -81,6 +91,16 @@
   },
   "plovdiv": {
    "elevation": 163,
+   "records": {
+    "high": {
+     "t": 41.7,
+     "date": "2021-08-02"
+    },
+    "low": {
+     "t": -14.8,
+     "date": "2016-01-24"
+    }
+   },
    "months": [
     {
      "high": 6.9,
@@ -158,6 +178,16 @@
   },
   "varna": {
    "elevation": 50,
+   "records": {
+    "high": {
+     "t": 36.1,
+     "date": "2017-06-30"
+    },
+    "low": {
+     "t": -13.6,
+     "date": "2017-01-09"
+    }
+   },
    "months": [
     {
      "high": 6.7,
@@ -235,6 +265,16 @@
   },
   "burgas": {
    "elevation": 15,
+   "records": {
+    "high": {
+     "t": 40.8,
+     "date": "2023-07-26"
+    },
+    "low": {
+     "t": -14.6,
+     "date": "2018-03-01"
+    }
+   },
    "months": [
     {
      "high": 7.9,
@@ -312,6 +352,16 @@
   },
   "ruse": {
    "elevation": 66,
+   "records": {
+    "high": {
+     "t": 40.4,
+     "date": "2017-07-01"
+    },
+    "low": {
+     "t": -18.8,
+     "date": "2017-01-10"
+    }
+   },
    "months": [
     {
      "high": 5,
@@ -389,6 +439,16 @@
   },
   "stara-zagora": {
    "elevation": 204,
+   "records": {
+    "high": {
+     "t": 40.3,
+     "date": "2017-07-01"
+    },
+    "low": {
+     "t": -17.5,
+     "date": "2017-01-21"
+    }
+   },
    "months": [
     {
      "high": 6.5,
@@ -466,6 +526,16 @@
   },
   "pleven": {
    "elevation": 100,
+   "records": {
+    "high": {
+     "t": 41.6,
+     "date": "2017-07-01"
+    },
+    "low": {
+     "t": -20.6,
+     "date": "2015-01-01"
+    }
+   },
    "months": [
     {
      "high": 5.2,
@@ -543,6 +613,16 @@
   },
   "sliven": {
    "elevation": 266,
+   "records": {
+    "high": {
+     "t": 38.8,
+     "date": "2017-07-01"
+    },
+    "low": {
+     "t": -17.1,
+     "date": "2018-03-01"
+    }
+   },
    "months": [
     {
      "high": 6.1,
@@ -620,6 +700,16 @@
   },
   "dobrich": {
    "elevation": 212,
+   "records": {
+    "high": {
+     "t": 37,
+     "date": "2024-07-17"
+    },
+    "low": {
+     "t": -17.7,
+     "date": "2017-01-09"
+    }
+   },
    "months": [
     {
      "high": 5.3,
@@ -697,6 +787,16 @@
   },
   "shumen": {
    "elevation": 239,
+   "records": {
+    "high": {
+     "t": 37.9,
+     "date": "2023-07-26"
+    },
+    "low": {
+     "t": -19.5,
+     "date": "2017-01-09"
+    }
+   },
    "months": [
     {
      "high": 5.8,
@@ -774,6 +874,16 @@
   },
   "pernik": {
    "elevation": 697,
+   "records": {
+    "high": {
+     "t": 37.4,
+     "date": "2023-07-25"
+    },
+    "low": {
+     "t": -23,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 4.4,
@@ -851,6 +961,16 @@
   },
   "haskovo": {
    "elevation": 195,
+   "records": {
+    "high": {
+     "t": 40.8,
+     "date": "2021-08-02"
+    },
+    "low": {
+     "t": -16.2,
+     "date": "2018-03-01"
+    }
+   },
    "months": [
     {
      "high": 7.1,
@@ -928,6 +1048,16 @@
   },
   "yambol": {
    "elevation": 134,
+   "records": {
+    "high": {
+     "t": 40.6,
+     "date": "2023-07-26"
+    },
+    "low": {
+     "t": -18.3,
+     "date": "2018-03-01"
+    }
+   },
    "months": [
     {
      "high": 7.2,
@@ -1005,6 +1135,16 @@
   },
   "pazardzhik": {
    "elevation": 212,
+   "records": {
+    "high": {
+     "t": 41.8,
+     "date": "2021-08-02"
+    },
+    "low": {
+     "t": -16.7,
+     "date": "2016-01-21"
+    }
+   },
    "months": [
     {
      "high": 6.9,
@@ -1082,6 +1222,16 @@
   },
   "blagoevgrad": {
    "elevation": 387,
+   "records": {
+    "high": {
+     "t": 39.8,
+     "date": "2017-07-01"
+    },
+    "low": {
+     "t": -23.1,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 6.9,
@@ -1159,6 +1309,16 @@
   },
   "veliko-tarnovo": {
    "elevation": 213,
+   "records": {
+    "high": {
+     "t": 40.2,
+     "date": "2017-07-01"
+    },
+    "low": {
+     "t": -21,
+     "date": "2016-01-24"
+    }
+   },
    "months": [
     {
      "high": 6.2,
@@ -1236,6 +1396,16 @@
   },
   "vratsa": {
    "elevation": 357,
+   "records": {
+    "high": {
+     "t": 39.6,
+     "date": "2021-08-05"
+    },
+    "low": {
+     "t": -21.4,
+     "date": "2015-01-01"
+    }
+   },
    "months": [
     {
      "high": 5.1,
@@ -1313,6 +1483,16 @@
   },
   "gabrovo": {
    "elevation": 382,
+   "records": {
+    "high": {
+     "t": 38.5,
+     "date": "2017-07-01"
+    },
+    "low": {
+     "t": -18.9,
+     "date": "2016-01-20"
+    }
+   },
    "months": [
     {
      "high": 5.7,
@@ -1390,6 +1570,16 @@
   },
   "asenovgrad": {
    "elevation": 223,
+   "records": {
+    "high": {
+     "t": 41.3,
+     "date": "2021-08-02"
+    },
+    "low": {
+     "t": -17.7,
+     "date": "2016-01-24"
+    }
+   },
    "months": [
     {
      "high": 6.7,
@@ -1467,6 +1657,16 @@
   },
   "vidin": {
    "elevation": 37,
+   "records": {
+    "high": {
+     "t": 38.9,
+     "date": "2017-06-29"
+    },
+    "low": {
+     "t": -21,
+     "date": "2015-01-01"
+    }
+   },
    "months": [
     {
      "high": 5.1,
@@ -1544,6 +1744,16 @@
   },
   "kazanlak": {
    "elevation": 376,
+   "records": {
+    "high": {
+     "t": 38.8,
+     "date": "2021-08-02"
+    },
+    "low": {
+     "t": -15.8,
+     "date": "2017-01-27"
+    }
+   },
    "months": [
     {
      "high": 6.2,
@@ -1621,6 +1831,16 @@
   },
   "kardzhali": {
    "elevation": 233,
+   "records": {
+    "high": {
+     "t": 39.4,
+     "date": "2024-07-18"
+    },
+    "low": {
+     "t": -16.5,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 7.8,
@@ -1698,6 +1918,16 @@
   },
   "kyustendil": {
    "elevation": 518,
+   "records": {
+    "high": {
+     "t": 38.4,
+     "date": "2023-07-25"
+    },
+    "low": {
+     "t": -23.8,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 6.4,
@@ -1775,6 +2005,16 @@
   },
   "montana": {
    "elevation": 147,
+   "records": {
+    "high": {
+     "t": 40.1,
+     "date": "2023-07-25"
+    },
+    "low": {
+     "t": -17.8,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 5.5,
@@ -1852,6 +2092,16 @@
   },
   "dimitrovgrad": {
    "elevation": 106,
+   "records": {
+    "high": {
+     "t": 42.3,
+     "date": "2023-07-26"
+    },
+    "low": {
+     "t": -15.9,
+     "date": "2018-03-01"
+    }
+   },
    "months": [
     {
      "high": 7.3,
@@ -1929,6 +2179,16 @@
   },
   "lovech": {
    "elevation": 178,
+   "records": {
+    "high": {
+     "t": 41.2,
+     "date": "2021-08-05"
+    },
+    "low": {
+     "t": -20.4,
+     "date": "2015-01-01"
+    }
+   },
    "months": [
     {
      "high": 6.6,
@@ -2006,6 +2266,16 @@
   },
   "silistra": {
    "elevation": 23,
+   "records": {
+    "high": {
+     "t": 40.4,
+     "date": "2023-07-26"
+    },
+    "low": {
+     "t": -20.9,
+     "date": "2015-01-01"
+    }
+   },
    "months": [
     {
      "high": 5.2,
@@ -2083,6 +2353,16 @@
   },
   "targovishte": {
    "elevation": 185,
+   "records": {
+    "high": {
+     "t": 38.9,
+     "date": "2021-08-02"
+    },
+    "low": {
+     "t": -18.4,
+     "date": "2017-01-10"
+    }
+   },
    "months": [
     {
      "high": 6,
@@ -2160,6 +2440,16 @@
   },
   "razgrad": {
    "elevation": 198,
+   "records": {
+    "high": {
+     "t": 39.9,
+     "date": "2023-07-26"
+    },
+    "low": {
+     "t": -16,
+     "date": "2017-01-09"
+    }
+   },
    "months": [
     {
      "high": 5.6,
@@ -2237,6 +2527,16 @@
   },
   "smolyan": {
    "elevation": 947,
+   "records": {
+    "high": {
+     "t": 34.4,
+     "date": "2021-08-02"
+    },
+    "low": {
+     "t": -19.2,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 5.2,
@@ -2314,6 +2614,16 @@
   },
   "bansko": {
    "elevation": 926,
+   "records": {
+    "high": {
+     "t": 34.9,
+     "date": "2021-08-02"
+    },
+    "low": {
+     "t": -23.5,
+     "date": "2017-01-08"
+    }
+   },
    "months": [
     {
      "high": 5.1,
@@ -2391,6 +2701,16 @@
   },
   "borovets": {
    "elevation": 1315,
+   "records": {
+    "high": {
+     "t": 32.3,
+     "date": "2023-07-25"
+    },
+    "low": {
+     "t": -24.2,
+     "date": "2016-01-23"
+    }
+   },
    "months": [
     {
      "high": 1.5,
@@ -2468,6 +2788,16 @@
   },
   "pamporovo": {
    "elevation": 1549,
+   "records": {
+    "high": {
+     "t": 30.4,
+     "date": "2021-08-02"
+    },
+    "low": {
+     "t": -20,
+     "date": "2018-03-01"
+    }
+   },
    "months": [
     {
      "high": 1.4,
@@ -2545,6 +2875,16 @@
   },
   "sozopol": {
    "elevation": 28,
+   "records": {
+    "high": {
+     "t": 39.6,
+     "date": "2023-07-26"
+    },
+    "low": {
+     "t": -8.7,
+     "date": "2017-01-07"
+    }
+   },
    "months": [
     {
      "high": 7.9,
@@ -2622,6 +2962,16 @@
   },
   "nesebar": {
    "elevation": 17,
+   "records": {
+    "high": {
+     "t": 34.8,
+     "date": "2017-08-06"
+    },
+    "low": {
+     "t": -11.8,
+     "date": "2017-01-09"
+    }
+   },
    "months": [
     {
      "high": 7.5,

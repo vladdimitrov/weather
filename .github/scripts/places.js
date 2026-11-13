@@ -16,12 +16,20 @@ const TOURIST_EUROPE = [
   'helsinki', 'rovaniemi', 'paris', 'nice', 'marseille', 'berlin', 'munich', 'athens', 'thessaloniki', 'heraklion', 'rhodes',
   'budapest', 'reykjavik', 'dublin', 'rome', 'milan', 'naples', 'florence', 'venice', 'valletta', 'budva', 'kotor', 'amsterdam',
   'ohrid', 'oslo', 'tromso', 'krakow', 'lisbon', 'porto', 'faro', 'funchal', 'bucharest', 'brasov', 'ljubljana', 'bled',
-  'madrid', 'barcelona', 'seville', 'malaga', 'valencia', 'palma', 'stockholm', 'zurich', 'geneva', 'lucerne', 'london', 'edinburgh'
+  'madrid', 'barcelona', 'seville', 'malaga', 'valencia', 'palma', 'stockholm', 'zurich', 'geneva', 'lucerne', 'london', 'edinburgh',
+  'santorini', 'mykonos', 'istanbul'
+];
+// Resorts that Bulgarians and Germans look for, Italians and Spaniards hardly: Bulgarian, English, German
+const GERMAN_TOURIST = [
+  'kavala', 'thassos', 'keramoti', 'alexandroupoli', 'asprovalta', 'stavros', 'olympiada', 'ouranoupoli', 'nikiti', 'neos-marmaras',
+  'hanioti', 'kallithea', 'paralia-katerinis', 'kalambaka', 'parga', 'corfu', 'lefkada', 'kefalonia', 'zakynthos', 'nafplio', 'chania', 'kos',
+  'edirne', 'canakkale', 'izmir', 'kusadasi', 'didim', 'bodrum', 'marmaris', 'fethiye', 'kemer', 'antalya', 'belek', 'side', 'alanya', 'goreme'
 ];
 const ALL = I18N.LANGS;
 const BASIC = ['bg', 'en'];
 const bgIndexed = slug => (TOURIST_BG.includes(slug) ? ALL : BASIC);
-const europeIndexed = (code, slug) => (TOURIST_EUROPE.includes(slug) ? ALL : [...BASIC, ...(SPEAKERS[code] || [])].sort((a, b) => ALL.indexOf(a) - ALL.indexOf(b)));
+const europeIndexed = (code, slug) => (TOURIST_EUROPE.includes(slug) ? ALL
+  : [...new Set([...BASIC, ...(SPEAKERS[code] || []), ...(GERMAN_TOURIST.includes(slug) ? ['de'] : [])])].sort((a, b) => ALL.indexOf(a) - ALL.indexOf(b)));
 
 const bgName = (city, lang) => (lang === 'bg' ? city.name : I18N.latinName(lang, city.slug));
 function europeName(city, lang) {
