@@ -73,7 +73,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -97,43 +97,37 @@
     <h1>El tiempo en Pernik</h1>
     <p class="storm-intro">Previsión del tiempo en Pernik para hoy, mañana y los próximos 7 días: temperatura, precipitaciones, viento y probabilidad de lluvia. Los datos proceden de Open-Meteo y se actualizan cada hora.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="Pernik" data-lat="42.6052" data-lon="23.0378" data-query="city=Pernik&lat=42.6052&lon=23.0378&cc=BG">
+    <div class="city-forecast" id="cityForecast" data-name="Pernik" data-lat="42.6052" data-lon="23.0378" data-query="city=Pernik&lat=42.6052&lon=23.0378&cc=BG" data-warn="pernik">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Rachas de viento fuertes hoy: hasta 71 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Pernik: jueves, 12 de noviembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">9° / 19°</span>
-        <p class="storm-now-status">Nublado · probabilidad de lluvia 3%</p>
-        <p class="storm-updated">Previsión del 12 de noviembre de 2026</p>
+        <h2>Pernik: viernes, 13 de noviembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">12° / 18°</span>
+        <p class="storm-now-status">Nublado · probabilidad de lluvia 20%</p>
+        <p class="storm-updated">Previsión del 13 de noviembre de 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsión a 7 días</h3>
-        <p class="city-summary">En los próximos 7 días el día más cálido será el jueves, 12 de noviembre (hasta 19°) y el más frío el domingo, 15 de noviembre (hasta 1°). Se esperan precipitaciones en 3 de los días. Las máximas están por encima de lo normal para noviembre (media de 12°).</p>
+        <p class="city-summary">En los próximos 7 días el día más cálido será el viernes, 13 de noviembre (hasta 18°) y el más frío el domingo, 15 de noviembre (hasta 1°). Se esperan precipitaciones en 4 de los días. Las máximas están cerca de lo normal para noviembre (media de 12°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Pernik&lat=42.6052&lon=23.0378&cc=BG&date=2026-11-12" title="Por horas →">
-            <span class="kp-day-name">jue 12</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">9° / 19°</span>
-            <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">3%</span>
-            <span class="city-day-wind">Viento 26 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Pernik&lat=42.6052&lon=23.0378&cc=BG&date=2026-11-13" title="Por horas →">
             <span class="kp-day-name">vie 13</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">12° / 18°</span>
-            <span class="kp-day-status">Llovizna</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">8% · 0.3 mm</span>
-            <span class="city-day-wind">Viento 34 km/h</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">20%</span>
+            <span class="city-day-wind city-day-gusts">Viento 33 km/h · rachas 71</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Pernik&lat=42.6052&lon=23.0378&cc=BG&date=2026-11-14" title="Por horas →">
             <span class="kp-day-name">sáb 14</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">2° / 12°</span>
-            <span class="kp-day-status">Llovizna</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">86% · 3.7 mm</span>
-            <span class="city-day-wind">Viento 14 km/h</span>
+            <span class="city-day-temp">2° / 13°</span>
+            <span class="kp-day-status">Lluvia</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">83% · 2.2 mm</span>
+            <span class="city-day-wind">Viento 15 km/h · rachas 37</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Pernik&lat=42.6052&lon=23.0378&cc=BG&date=2026-11-15" title="Por horas →">
             <span class="kp-day-name">dom 15</span>
@@ -141,35 +135,44 @@
             <span class="city-day-date">15.11</span>
             <span class="city-day-temp">1° / 8°</span>
             <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">10%</span>
-            <span class="city-day-wind">Viento 6 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">15%</span>
+            <span class="city-day-wind">Viento 6 km/h · rachas 17</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Pernik&lat=42.6052&lon=23.0378&cc=BG&date=2026-11-16" title="Por horas →">
             <span class="kp-day-name">lun 16</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">5° / 11°</span>
+            <span class="city-day-temp">5° / 12°</span>
             <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">24% · 0.6 mm</span>
-            <span class="city-day-wind">Viento 11 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">43% · 5.0 mm</span>
+            <span class="city-day-wind">Viento 13 km/h · rachas 37</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Pernik&lat=42.6052&lon=23.0378&cc=BG&date=2026-11-17" title="Por horas →">
             <span class="kp-day-name">mar 17</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">8° / 13°</span>
-            <span class="kp-day-status">Llovizna</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">20% · 1.2 mm</span>
-            <span class="city-day-wind">Viento 14 km/h</span>
+            <span class="city-day-temp">7° / 15°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">18%</span>
+            <span class="city-day-wind">Viento 18 km/h · rachas 41</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Pernik&lat=42.6052&lon=23.0378&cc=BG&date=2026-11-18" title="Por horas →">
             <span class="kp-day-name">mié 18</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
             <span class="city-day-temp">8° / 14°</span>
-            <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">55% · 2.1 mm</span>
-            <span class="city-day-wind">Viento 29 km/h</span>
+            <span class="kp-day-status">Llovizna</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">63% · 9.3 mm</span>
+            <span class="city-day-wind city-day-gusts">Viento 28 km/h · rachas 69</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Pernik&lat=42.6052&lon=23.0378&cc=BG&date=2026-11-19" title="Por horas →">
+            <span class="kp-day-name">jue 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌫️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">5° / 13°</span>
+            <span class="kp-day-status">Niebla</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">59% · 1.5 mm</span>
+            <span class="city-day-wind">Viento 15 km/h · rachas 41</span>
           </a>
         </div>
         <p class="forecast-note">Mediana de los modelos ECMWF, ICON y GFS · altitud 697 m</p>
@@ -210,7 +213,7 @@
 
     <section class="info-card city-climate">
       <h2>El clima en Pernik</h2>
-      <p>Pernik está a unos 700 m sobre el nivel del mar. El mes más cálido es agosto, con una máxima media de 28°C, y el más frío es enero, cuando por la noche la temperatura baja de media hasta −5°C. Al año caen de media unos 610 mm de precipitación, sobre todo en marzo (unos 67 mm).</p>
+      <p>Pernik está a unos 700 m sobre el nivel del mar. El mes más cálido es agosto, con una máxima media de 28°C, y el más frío es enero, cuando por la noche la temperatura baja de media hasta −5°C. Al año caen de media unos 610 mm de precipitación, sobre todo en marzo (unos 67 mm). La temperatura más alta en Pernik en 2015–2024 fue de 37°C (25 de julio de 2023) y la más baja de −23°C (8 de enero de 2017).</p>
       <p>Pernik está en la hoya de Pernik, a unos 700 m, entre el Vitosha y el Golo Bardo, y es una de las capitales de provincia más frescas. Las noches de invierno son más frías que en Sofía porque el aire frío baja a la hoya y se queda allí. Los veranos son cálidos pero rara vez calurosos, y las tardes son agradablemente frescas.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -251,8 +254,8 @@
       <div class="city-links">
         <a href="/es/europe/serbia/nis/" class="recent-place">Niš · 122 km</a>
         <a href="/es/europe/north-macedonia/skopje/" class="recent-place">Skopie · 149 km</a>
-        <a href="/es/europe/greece/thessaloniki/" class="recent-place">Salónica · 219 km</a>
-        <a href="/es/europe/north-macedonia/bitola/" class="recent-place">Bitola · 225 km</a>
+        <a href="/es/europe/greece/kavala/" class="recent-place">Kavala · 217 km</a>
+        <a href="/es/europe/greece/asprovalta/" class="recent-place">Asprovalta · 217 km</a>
       </div>
     </section>
 
@@ -315,6 +318,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

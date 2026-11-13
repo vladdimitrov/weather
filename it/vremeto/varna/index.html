@@ -78,7 +78,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -102,34 +102,28 @@
     <h1>Meteo a Varna</h1>
     <p class="storm-intro">Previsioni del tempo a Varna per oggi, domani e i prossimi 7 giorni: temperatura, precipitazioni, vento e probabilità di pioggia. I dati provengono da Open-Meteo e si aggiornano ogni ora.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="Varna" data-lat="43.2141" data-lon="27.9147" data-query="city=Varna&lat=43.2141&lon=27.9147&cc=BG">
+    <div class="city-forecast" id="cityForecast" data-name="Varna" data-lat="43.2141" data-lon="27.9147" data-query="city=Varna&lat=43.2141&lon=27.9147&cc=BG" data-warn="varna">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Forti raffiche di vento oggi: fino a 78 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Varna: giovedì 12 novembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">11° / 21°</span>
-        <p class="storm-now-status">Nuvoloso · probabilità di pioggia 0%</p>
-        <p class="storm-updated">Previsione del 12 novembre 2026</p>
+        <h2>Varna: venerdì 13 novembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">17° / 22°</span>
+        <p class="storm-now-status">Pioggia · probabilità di pioggia 5%</p>
+        <p class="storm-updated">Previsione del 13 novembre 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsioni a 7 giorni</h3>
-        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà venerdì 13 novembre (fino a 22°) e il più freddo domenica 15 novembre (fino a 3°). Sono previste precipitazioni in 2 dei giorni. Le massime sono sopra la media di novembre (in media 13°).</p>
+        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà venerdì 13 novembre (fino a 22°) e il più freddo domenica 15 novembre (fino a 4°). Sono previste precipitazioni in 3 dei giorni. Le massime sono sopra la media di novembre (in media 13°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG&date=2026-11-12" title="Ora per ora →">
-            <span class="kp-day-name">gio 12</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">11° / 21°</span>
-            <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">0%</span>
-            <span class="city-day-wind">Vento 16 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG&date=2026-11-13" title="Ora per ora →">
             <span class="kp-day-name">ven 13</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">17° / 22°</span>
-            <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">5%</span>
-            <span class="city-day-wind">Vento 29 km/h</span>
+            <span class="kp-day-status">Pioggia</span>
+            <span class="city-day-rain" title="probabilità di pioggia">5% · 0.2 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 28 km/h · raffiche 78</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG&date=2026-11-14" title="Ora per ora →">
             <span class="kp-day-name">sab 14</span>
@@ -137,17 +131,17 @@
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">5° / 17°</span>
             <span class="kp-day-status">Pioggia</span>
-            <span class="city-day-rain" title="probabilità di pioggia">94% · 6.4 mm</span>
-            <span class="city-day-wind">Vento 18 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">95% · 5.1 mm</span>
+            <span class="city-day-wind">Vento 18 km/h · raffiche 53</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG&date=2026-11-15" title="Ora per ora →">
             <span class="kp-day-name">dom 15</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">3° / 10°</span>
+            <span class="city-day-temp">4° / 10°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">3%</span>
-            <span class="city-day-wind">Vento 13 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">2%</span>
+            <span class="city-day-wind">Vento 13 km/h · raffiche 32</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG&date=2026-11-16" title="Ora per ora →">
             <span class="kp-day-name">lun 16</span>
@@ -155,26 +149,35 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">7° / 12°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">9%</span>
-            <span class="city-day-wind">Vento 11 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">3%</span>
+            <span class="city-day-wind">Vento 11 km/h · raffiche 27</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG&date=2026-11-17" title="Ora per ora →">
             <span class="kp-day-name">mar 17</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">9° / 14°</span>
+            <span class="city-day-temp">8° / 16°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">12%</span>
-            <span class="city-day-wind">Vento 14 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">7%</span>
+            <span class="city-day-wind">Vento 11 km/h · raffiche 27</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG&date=2026-11-18" title="Ora per ora →">
             <span class="kp-day-name">mer 18</span>
-            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">10° / 18°</span>
-            <span class="kp-day-status">Temporale</span>
-            <span class="city-day-rain" title="probabilità di pioggia">37% · 6.0 mm</span>
-            <span class="city-day-wind">Vento 20 km/h</span>
+            <span class="city-day-temp">10° / 19°</span>
+            <span class="kp-day-status">Pioviggine</span>
+            <span class="city-day-rain" title="probabilità di pioggia">43% · 4.2 mm</span>
+            <span class="city-day-wind">Vento 26 km/h · raffiche 56</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG&date=2026-11-19" title="Ora per ora →">
+            <span class="kp-day-name">gio 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">11° / 16°</span>
+            <span class="kp-day-status">Pioviggine</span>
+            <span class="city-day-rain" title="probabilità di pioggia">58% · 4.2 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 24 km/h · raffiche 62</span>
           </a>
         </div>
         <p class="forecast-note">Mediana dei modelli ECMWF, ICON e GFS · altitudine 50 m</p>
@@ -215,7 +218,7 @@
 
     <section class="info-card city-climate">
       <h2>Il clima a Varna</h2>
-      <p>Varna si trova a circa 50 m di altitudine. Il mese più caldo è agosto, con una massima media di 29°C; il più freddo è gennaio, quando di notte la temperatura scende in media a 0°C. In un anno cadono in media circa 630 mm di precipitazioni, soprattutto a giugno (circa 84 mm).</p>
+      <p>Varna si trova a circa 50 m di altitudine. Il mese più caldo è agosto, con una massima media di 29°C; il più freddo è gennaio, quando di notte la temperatura scende in media a 0°C. In un anno cadono in media circa 630 mm di precipitazioni, soprattutto a giugno (circa 84 mm). La temperatura più alta a Varna nel periodo 2015–2024 è stata di 36°C (30 giugno 2017), la più bassa di −14°C (9 gennaio 2017).</p>
       <p>Varna si affaccia sul Mar Nero, che ne mitiga il clima: le estati sono meno calde che nell’entroterra e l’autunno è tiepido e lungo. Il mare è di solito abbastanza caldo per fare il bagno da giugno a settembre. Gli inverni sono miti, ma i venti da nord-est provenienti dalla Dobrugia portano a volte gelo intenso, neve e bufere.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -256,8 +259,8 @@
       <div class="city-links">
         <a href="/it/europe/romania/constanta/" class="recent-place">Costanza · 120 km</a>
         <a href="/it/europe/romania/bucharest/" class="recent-place">Bucarest · 198 km</a>
-        <a href="/it/europe/romania/brasov/" class="recent-place">Brașov · 327 km</a>
-        <a href="/it/europe/moldova/tiraspol/" class="recent-place">Tiraspol · 425 km</a>
+        <a href="/it/europe/turkey/edirne/" class="recent-place">Adrianopoli · 204 km</a>
+        <a href="/it/europe/turkey/istanbul/" class="recent-place">Istanbul · 261 km</a>
       </div>
     </section>
 
@@ -320,6 +323,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

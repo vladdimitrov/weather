@@ -78,7 +78,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -102,26 +102,21 @@
     <h1>Meteo a Burgas</h1>
     <p class="storm-intro">Previsioni del tempo a Burgas per oggi, domani e i prossimi 7 giorni: temperatura, precipitazioni, vento e probabilità di pioggia. I dati provengono da Open-Meteo e si aggiornano ogni ora.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="Burgas" data-lat="42.5048" data-lon="27.4626" data-query="city=Burgas&lat=42.5048&lon=27.4626&cc=BG">
+    <div class="city-forecast" id="cityForecast" data-name="Burgas" data-lat="42.5048" data-lon="27.4626" data-query="city=Burgas&lat=42.5048&lon=27.4626&cc=BG" data-warn="burgas">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Forti raffiche di vento oggi: fino a 87 km/h</p>
+        <p class="city-alert city-alert-yellow">Forti raffiche di vento domani: fino a 66 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Burgas: giovedì 12 novembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">11° / 21°</span>
-        <p class="storm-now-status">Nuvoloso · probabilità di pioggia 0%</p>
-        <p class="storm-updated">Previsione del 12 novembre 2026</p>
+        <h2>Burgas: venerdì 13 novembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">17° / 22°</span>
+        <p class="storm-now-status">Nuvoloso · probabilità di pioggia 5%</p>
+        <p class="storm-updated">Previsione del 13 novembre 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsioni a 7 giorni</h3>
-        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà venerdì 13 novembre (fino a 22°) e il più freddo domenica 15 novembre (fino a 5°). Sono previste precipitazioni in 2 dei giorni. Le massime sono nella media di novembre (in media 15°).</p>
+        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà venerdì 13 novembre (fino a 22°) e il più freddo domenica 15 novembre (fino a 6°). Sono previste precipitazioni in 3 dei giorni. Le massime sono nella media di novembre (in media 15°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Burgas&lat=42.5048&lon=27.4626&cc=BG&date=2026-11-12" title="Ora per ora →">
-            <span class="kp-day-name">gio 12</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">11° / 21°</span>
-            <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">0%</span>
-            <span class="city-day-wind">Vento 24 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Burgas&lat=42.5048&lon=27.4626&cc=BG&date=2026-11-13" title="Ora per ora →">
             <span class="kp-day-name">ven 13</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
@@ -129,25 +124,25 @@
             <span class="city-day-temp">17° / 22°</span>
             <span class="kp-day-status">Nuvoloso</span>
             <span class="city-day-rain" title="probabilità di pioggia">5%</span>
-            <span class="city-day-wind">Vento 37 km/h</span>
+            <span class="city-day-wind city-day-gusts">Vento 36 km/h · raffiche 87</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Burgas&lat=42.5048&lon=27.4626&cc=BG&date=2026-11-14" title="Ora per ora →">
             <span class="kp-day-name">sab 14</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">6° / 17°</span>
+            <span class="city-day-temp">7° / 18°</span>
             <span class="kp-day-status">Pioggia</span>
-            <span class="city-day-rain" title="probabilità di pioggia">96% · 10.7 mm</span>
-            <span class="city-day-wind">Vento 20 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">99% · 10.3 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 20 km/h · raffiche 66</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Burgas&lat=42.5048&lon=27.4626&cc=BG&date=2026-11-15" title="Ora per ora →">
             <span class="kp-day-name">dom 15</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">5° / 11°</span>
+            <span class="city-day-temp">6° / 11°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">37%</span>
-            <span class="city-day-wind">Vento 15 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">10%</span>
+            <span class="city-day-wind">Vento 17 km/h · raffiche 36</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Burgas&lat=42.5048&lon=27.4626&cc=BG&date=2026-11-16" title="Ora per ora →">
             <span class="kp-day-name">lun 16</span>
@@ -155,26 +150,35 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">6° / 12°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">3%</span>
-            <span class="city-day-wind">Vento 8 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">2%</span>
+            <span class="city-day-wind">Vento 7 km/h · raffiche 16</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Burgas&lat=42.5048&lon=27.4626&cc=BG&date=2026-11-17" title="Ora per ora →">
             <span class="kp-day-name">mar 17</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">7° / 14°</span>
+            <span class="city-day-temp">8° / 16°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">15%</span>
-            <span class="city-day-wind">Vento 16 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">6%</span>
+            <span class="city-day-wind">Vento 15 km/h · raffiche 33</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Burgas&lat=42.5048&lon=27.4626&cc=BG&date=2026-11-18" title="Ora per ora →">
             <span class="kp-day-name">mer 18</span>
-            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">10° / 19°</span>
-            <span class="kp-day-status">Temporale</span>
-            <span class="city-day-rain" title="probabilità di pioggia">34% · 5.1 mm</span>
-            <span class="city-day-wind">Vento 29 km/h</span>
+            <span class="city-day-temp">10° / 20°</span>
+            <span class="kp-day-status">Pioggia</span>
+            <span class="city-day-rain" title="probabilità di pioggia">42% · 2.1 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 29 km/h · raffiche 67</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Burgas&lat=42.5048&lon=27.4626&cc=BG&date=2026-11-19" title="Ora per ora →">
+            <span class="kp-day-name">gio 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">11° / 16°</span>
+            <span class="kp-day-status">Pioggia</span>
+            <span class="city-day-rain" title="probabilità di pioggia">49% · 16.8 mm</span>
+            <span class="city-day-wind">Vento 20 km/h · raffiche 43</span>
           </a>
         </div>
         <p class="forecast-note">Mediana dei modelli ECMWF, ICON e GFS · altitudine 15 m</p>
@@ -215,7 +219,7 @@
 
     <section class="info-card city-climate">
       <h2>Il clima a Burgas</h2>
-      <p>Burgas si trova a circa 15 m di altitudine. Il mese più caldo è agosto, con una massima media di 30°C; il più freddo è gennaio, quando di notte la temperatura scende in media a 0°C. In un anno cadono in media circa 640 mm di precipitazioni, soprattutto a gennaio (circa 68 mm).</p>
+      <p>Burgas si trova a circa 15 m di altitudine. Il mese più caldo è agosto, con una massima media di 30°C; il più freddo è gennaio, quando di notte la temperatura scende in media a 0°C. In un anno cadono in media circa 640 mm di precipitazioni, soprattutto a gennaio (circa 68 mm). La temperatura più alta a Burgas nel periodo 2015–2024 è stata di 41°C (26 luglio 2023), la più bassa di −15°C (1 marzo 2018).</p>
       <p>Burgas si trova sulla costa meridionale del Mar Nero, tra i laghi di Burgas, e ha alcuni degli inverni più miti della Bulgaria. Le estati sono secche, soleggiate e calde, ma la brezza marina le rende più sopportabili. A differenza della maggior parte delle città bulgare, gran parte delle precipitazioni cade in autunno e in inverno, quando arrivano i cicloni dal Mediterraneo.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -254,10 +258,10 @@
       </div>
       <p class="storm-updated">Oltre confine:</p>
       <div class="city-links">
+        <a href="/it/europe/turkey/edirne/" class="recent-place">Adrianopoli · 119 km</a>
         <a href="/it/europe/romania/constanta/" class="recent-place">Costanza · 207 km</a>
-        <a href="/it/europe/romania/bucharest/" class="recent-place">Bucarest · 240 km</a>
-        <a href="/it/europe/romania/brasov/" class="recent-place">Brașov · 380 km</a>
-        <a href="/it/europe/greece/thessaloniki/" class="recent-place">Salonicco · 429 km</a>
+        <a href="/it/europe/turkey/istanbul/" class="recent-place">Istanbul · 209 km</a>
+        <a href="/it/europe/greece/alexandroupoli/" class="recent-place">Alessandropoli · 227 km</a>
       </div>
     </section>
 
@@ -320,6 +324,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

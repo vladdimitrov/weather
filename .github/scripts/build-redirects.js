@@ -17,5 +17,9 @@ const MOVED = [
     ...country.cities.map(city => [`bg/europe/${country.slug}/${city[0]}`, `/europe/${country.slug}/${city[0]}/`])
   ])
 ];
-MOVED.forEach(([from, to]) => redirect(from, to));
-console.log(`Wrote ${MOVED.length} redirect pages.`);
+// /bg/europe/ had only the cities of the time: pages added later never had a /bg/ address
+const fs = require('fs');
+const path = require('path');
+const existing = MOVED.filter(([from]) => !from.startsWith('bg/europe/') || fs.existsSync(path.resolve(__dirname, '..', '..', from, 'index.html')));
+existing.forEach(([from, to]) => redirect(from, to));
+console.log(`Wrote ${existing.length} redirect pages.`);

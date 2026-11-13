@@ -73,7 +73,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -97,79 +97,82 @@
     <h1>El tiempo en Silistra</h1>
     <p class="storm-intro">Previsión del tiempo en Silistra para hoy, mañana y los próximos 7 días: temperatura, precipitaciones, viento y probabilidad de lluvia. Los datos proceden de Open-Meteo y se actualizan cada hora.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="Silistra" data-lat="44.1171" data-lon="27.2606" data-query="city=Silistra&lat=44.1171&lon=27.2606&cc=BG">
+    <div class="city-forecast" id="cityForecast" data-name="Silistra" data-lat="44.1171" data-lon="27.2606" data-query="city=Silistra&lat=44.1171&lon=27.2606&cc=BG" data-warn="silistra">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Rachas de viento fuertes hoy: hasta 67 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Silistra: jueves, 12 de noviembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">8° / 21°</span>
-        <p class="storm-now-status">Nublado · probabilidad de lluvia 3%</p>
-        <p class="storm-updated">Previsión del 12 de noviembre de 2026</p>
+        <h2>Silistra: viernes, 13 de noviembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">17° / 24°</span>
+        <p class="storm-now-status">Lluvia · probabilidad de lluvia 13%</p>
+        <p class="storm-updated">Previsión del 13 de noviembre de 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsión a 7 días</h3>
-        <p class="city-summary">En los próximos 7 días el día más cálido será el viernes, 13 de noviembre (hasta 24°) y el más frío el domingo, 15 de noviembre (hasta 2°). Se esperan precipitaciones en 1 de los días. Las máximas están por encima de lo normal para noviembre (media de 13°).</p>
+        <p class="city-summary">En los próximos 7 días el día más cálido será el viernes, 13 de noviembre (hasta 24°) y el más frío el domingo, 15 de noviembre (hasta 3°). Se esperan precipitaciones en 2 de los días. Las máximas están por encima de lo normal para noviembre (media de 13°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Silistra&lat=44.1171&lon=27.2606&cc=BG&date=2026-11-12" title="Por horas →">
-            <span class="kp-day-name">jue 12</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">8° / 21°</span>
-            <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">3%</span>
-            <span class="city-day-wind">Viento 15 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Silistra&lat=44.1171&lon=27.2606&cc=BG&date=2026-11-13" title="Por horas →">
             <span class="kp-day-name">vie 13</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">16° / 24°</span>
-            <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">14%</span>
-            <span class="city-day-wind">Viento 29 km/h</span>
+            <span class="city-day-temp">17° / 24°</span>
+            <span class="kp-day-status">Lluvia</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">13%</span>
+            <span class="city-day-wind city-day-gusts">Viento 27 km/h · rachas 67</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Silistra&lat=44.1171&lon=27.2606&cc=BG&date=2026-11-14" title="Por horas →">
             <span class="kp-day-name">sáb 14</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">4° / 16°</span>
+            <span class="city-day-temp">4° / 17°</span>
             <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">100% · 21.9 mm</span>
-            <span class="city-day-wind">Viento 18 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">100% · 17.2 mm</span>
+            <span class="city-day-wind">Viento 17 km/h · rachas 37</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Silistra&lat=44.1171&lon=27.2606&cc=BG&date=2026-11-15" title="Por horas →">
             <span class="kp-day-name">dom 15</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌫️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">2° / 10°</span>
-            <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">2%</span>
-            <span class="city-day-wind">Viento 12 km/h</span>
+            <span class="city-day-temp">3° / 11°</span>
+            <span class="kp-day-status">Niebla</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">0%</span>
+            <span class="city-day-wind">Viento 11 km/h · rachas 32</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Silistra&lat=44.1171&lon=27.2606&cc=BG&date=2026-11-16" title="Por horas →">
             <span class="kp-day-name">lun 16</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">5° / 12°</span>
+            <span class="city-day-temp">5° / 13°</span>
             <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">4%</span>
-            <span class="city-day-wind">Viento 15 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">2%</span>
+            <span class="city-day-wind">Viento 15 km/h · rachas 45</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Silistra&lat=44.1171&lon=27.2606&cc=BG&date=2026-11-17" title="Por horas →">
             <span class="kp-day-name">mar 17</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">8° / 15°</span>
-            <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">12% · 0.2 mm</span>
-            <span class="city-day-wind">Viento 13 km/h</span>
+            <span class="city-day-temp">7° / 16°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">10%</span>
+            <span class="city-day-wind">Viento 16 km/h · rachas 45</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Silistra&lat=44.1171&lon=27.2606&cc=BG&date=2026-11-18" title="Por horas →">
             <span class="kp-day-name">mié 18</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">9° / 19°</span>
-            <span class="kp-day-status">Niebla</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">29% · 0.6 mm</span>
-            <span class="city-day-wind">Viento 14 km/h</span>
+            <span class="city-day-temp">10° / 18°</span>
+            <span class="kp-day-status">Llovizna</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">41% · 0.9 mm</span>
+            <span class="city-day-wind">Viento 23 km/h · rachas 50</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Silistra&lat=44.1171&lon=27.2606&cc=BG&date=2026-11-19" title="Por horas →">
+            <span class="kp-day-name">jue 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">8° / 14°</span>
+            <span class="kp-day-status">Lluvia</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">49% · 3.6 mm</span>
+            <span class="city-day-wind">Viento 19 km/h · rachas 53</span>
           </a>
         </div>
         <p class="forecast-note">Mediana de los modelos ECMWF, ICON y GFS · altitud 23 m</p>
@@ -210,7 +213,7 @@
 
     <section class="info-card city-climate">
       <h2>El clima en Silistra</h2>
-      <p>Silistra está a unos 23 m sobre el nivel del mar. El mes más cálido es agosto, con una máxima media de 30°C, y el más frío es enero, cuando por la noche la temperatura baja de media hasta −2°C. Al año caen de media unos 610 mm de precipitación, sobre todo en junio (unos 75 mm).</p>
+      <p>Silistra está a unos 23 m sobre el nivel del mar. El mes más cálido es agosto, con una máxima media de 30°C, y el más frío es enero, cuando por la noche la temperatura baja de media hasta −2°C. Al año caen de media unos 610 mm de precipitación, sobre todo en junio (unos 75 mm). La temperatura más alta en Silistra en 2015–2024 fue de 40°C (26 de julio de 2023) y la más baja de −21°C (1 de enero de 2015).</p>
       <p>Silistra está a orillas del Danubio, en el extremo noreste de Bulgaria, y tiene un clima marcadamente continental. Los veranos son calurosos y soleados, y por eso la zona es conocida por sus albaricoques, mientras que los inviernos son fríos, con viento que sopla libre sobre la llanura. En los meses fríos es frecuente la niebla sobre el río.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -252,7 +255,7 @@
         <a href="/es/europe/romania/bucharest/" class="recent-place">Bucarest · 98 km</a>
         <a href="/es/europe/romania/constanta/" class="recent-place">Constanza · 110 km</a>
         <a href="/es/europe/romania/brasov/" class="recent-place">Brașov · 215 km</a>
-        <a href="/es/europe/romania/iasi/" class="recent-place">Iași · 339 km</a>
+        <a href="/es/europe/turkey/edirne/" class="recent-place">Edirne · 277 km</a>
       </div>
     </section>
 
@@ -315,6 +318,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

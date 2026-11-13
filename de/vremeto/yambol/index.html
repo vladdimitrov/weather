@@ -73,7 +73,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -97,52 +97,46 @@
     <h1>Wetter in Yambol</h1>
     <p class="storm-intro">Wettervorhersage für Yambol für heute, morgen und die nächsten 7 Tage: Temperatur, Niederschlag, Wind und Regenwahrscheinlichkeit. Die Daten stammen von Open-Meteo und werden stündlich aktualisiert.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="Yambol" data-lat="42.4842" data-lon="26.5035" data-query="city=Yambol&lat=42.4842&lon=26.5035&cc=BG">
+    <div class="city-forecast" id="cityForecast" data-name="Yambol" data-lat="42.4842" data-lon="26.5035" data-query="city=Yambol&lat=42.4842&lon=26.5035&cc=BG" data-warn="yambol">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Starke Windböen heute: bis 70 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Yambol: Donnerstag, 12. November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">9° / 19°</span>
-        <p class="storm-now-status">Nebel · Regenwahrscheinlichkeit 0%</p>
-        <p class="storm-updated">Vorhersage vom 12. November 2026</p>
+        <h2>Yambol: Freitag, 13. November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">13° / 22°</span>
+        <p class="storm-now-status">Nebel · Regenwahrscheinlichkeit 25%</p>
+        <p class="storm-updated">Vorhersage vom 13. November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-Tage-Vorhersage</h3>
-        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 22°) und Sonntag, 15. November am kältesten (bis 4°). An 2 der Tage wird Niederschlag erwartet. Tagsüber ist es etwa so warm wie üblich im November (im Mittel 14°).</p>
+        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 22°) und Sonntag, 15. November am kältesten (bis 4°). An 3 der Tage wird Niederschlag erwartet. Tagsüber ist es etwa so warm wie üblich im November (im Mittel 14°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Yambol&lat=42.4842&lon=26.5035&cc=BG&date=2026-11-12" title="Stündlich →">
-            <span class="kp-day-name">Do., 12.</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">9° / 19°</span>
-            <span class="kp-day-status">Nebel</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">0%</span>
-            <span class="city-day-wind">Wind 9 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Yambol&lat=42.4842&lon=26.5035&cc=BG&date=2026-11-13" title="Stündlich →">
             <span class="kp-day-name">Fr., 13.</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌫️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">13° / 22°</span>
-            <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">20% · 0.2 mm</span>
-            <span class="city-day-wind">Wind 30 km/h</span>
+            <span class="kp-day-status">Nebel</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">25%</span>
+            <span class="city-day-wind city-day-gusts">Wind 31 km/h · Böen 70</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Yambol&lat=42.4842&lon=26.5035&cc=BG&date=2026-11-14" title="Stündlich →">
             <span class="kp-day-name">Sa., 14.</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">7° / 15°</span>
-            <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">75% · 4.9 mm</span>
-            <span class="city-day-wind">Wind 14 km/h</span>
+            <span class="kp-day-status">Gewitter</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">80% · 4.0 mm</span>
+            <span class="city-day-wind">Wind 13 km/h · Böen 30</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Yambol&lat=42.4842&lon=26.5035&cc=BG&date=2026-11-15" title="Stündlich →">
             <span class="kp-day-name">So., 15.</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">4° / 10°</span>
+            <span class="city-day-temp">4° / 12°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">14%</span>
-            <span class="city-day-wind">Wind 13 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">7%</span>
+            <span class="city-day-wind">Wind 13 km/h · Böen 30</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Yambol&lat=42.4842&lon=26.5035&cc=BG&date=2026-11-16" title="Stündlich →">
             <span class="kp-day-name">Mo., 16.</span>
@@ -150,26 +144,35 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">5° / 12°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">3%</span>
-            <span class="city-day-wind">Wind 5 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">2%</span>
+            <span class="city-day-wind">Wind 6 km/h · Böen 17</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Yambol&lat=42.4842&lon=26.5035&cc=BG&date=2026-11-17" title="Stündlich →">
             <span class="kp-day-name">Di., 17.</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">6° / 14°</span>
-            <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">14%</span>
-            <span class="city-day-wind">Wind 14 km/h</span>
+            <span class="city-day-temp">7° / 15°</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">3%</span>
+            <span class="city-day-wind">Wind 13 km/h · Böen 29</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Yambol&lat=42.4842&lon=26.5035&cc=BG&date=2026-11-18" title="Stündlich →">
             <span class="kp-day-name">Mi., 18.</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">9° / 17°</span>
+            <span class="city-day-temp">9° / 18°</span>
             <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">39% · 2.7 mm</span>
-            <span class="city-day-wind">Wind 15 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">52% · 7.2 mm</span>
+            <span class="city-day-wind">Wind 19 km/h · Böen 43</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Yambol&lat=42.4842&lon=26.5035&cc=BG&date=2026-11-19" title="Stündlich →">
+            <span class="kp-day-name">Do., 19.</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">10° / 16°</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">49% · 8.4 mm</span>
+            <span class="city-day-wind">Wind 15 km/h · Böen 42</span>
           </a>
         </div>
         <p class="forecast-note">Median der Modelle ECMWF, ICON und GFS · Höhe 134 m</p>
@@ -210,7 +213,7 @@
 
     <section class="info-card city-climate">
       <h2>Das Klima in Yambol</h2>
-      <p>Yambol liegt auf etwa 130 m Höhe. Der wärmste Monat ist der August mit einer durchschnittlichen Höchsttemperatur von 32°C, der kälteste der Januar, wenn die Nächte im Schnitt auf −1°C abkühlen. Im Jahresmittel fallen etwa 570 mm Niederschlag, am meisten im November (rund 64 mm).</p>
+      <p>Yambol liegt auf etwa 130 m Höhe. Der wärmste Monat ist der August mit einer durchschnittlichen Höchsttemperatur von 32°C, der kälteste der Januar, wenn die Nächte im Schnitt auf −1°C abkühlen. Im Jahresmittel fallen etwa 570 mm Niederschlag, am meisten im November (rund 64 mm). Die höchste Temperatur in Yambol im Zeitraum 2015–2024 lag bei 41°C (26. Juli 2023), die tiefste bei −18°C (1. März 2018).</p>
       <p>Jambol liegt an der Tundscha in der Oberthrakischen Tiefebene und ist eine der trockensten und heißesten Städte Bulgariens. Die Sommer sind lang und sehr sonnig, mit häufigen Tagen über 35°, der Niederschlag ist eher gering. Die Winter sind für das Binnenland mild, bei Nordostwind kann es aber sehr kalt werden.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -249,10 +252,10 @@
       </div>
       <p class="storm-updated">Jenseits der Grenze:</p>
       <div class="city-links">
+        <a href="/de/europe/turkey/edirne/" class="recent-place">Edirne · 90 km</a>
+        <a href="/de/europe/greece/alexandroupoli/" class="recent-place">Alexandroupoli · 190 km</a>
         <a href="/de/europe/romania/bucharest/" class="recent-place">Bukarest · 218 km</a>
-        <a href="/de/europe/romania/constanta/" class="recent-place">Constanța · 254 km</a>
-        <a href="/de/europe/romania/brasov/" class="recent-place">Brașov · 359 km</a>
-        <a href="/de/europe/greece/thessaloniki/" class="recent-place">Thessaloniki · 360 km</a>
+        <a href="/de/europe/greece/keramoti/" class="recent-place">Keramoti · 235 km</a>
       </div>
     </section>
 
@@ -315,6 +318,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

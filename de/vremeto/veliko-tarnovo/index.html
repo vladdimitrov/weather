@@ -78,7 +78,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -102,52 +102,46 @@
     <h1>Wetter in Veliko Tarnovo</h1>
     <p class="storm-intro">Wettervorhersage für Veliko Tarnovo für heute, morgen und die nächsten 7 Tage: Temperatur, Niederschlag, Wind und Regenwahrscheinlichkeit. Die Daten stammen von Open-Meteo und werden stündlich aktualisiert.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="Veliko Tarnovo" data-lat="43.0757" data-lon="25.6172" data-query="city=Veliko+Tarnovo&lat=43.0757&lon=25.6172&cc=BG">
+    <div class="city-forecast" id="cityForecast" data-name="Veliko Tarnovo" data-lat="43.0757" data-lon="25.6172" data-query="city=Veliko+Tarnovo&lat=43.0757&lon=25.6172&cc=BG" data-warn="veliko-tarnovo">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Starke Windböen heute: bis 68 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Veliko Tarnovo: Donnerstag, 12. November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">11° / 23°</span>
-        <p class="storm-now-status">Bewölkt · Regenwahrscheinlichkeit 0%</p>
-        <p class="storm-updated">Vorhersage vom 12. November 2026</p>
+        <h2>Veliko Tarnovo: Freitag, 13. November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">15° / 23°</span>
+        <p class="storm-now-status">Regen · Regenwahrscheinlichkeit 53%</p>
+        <p class="storm-updated">Vorhersage vom 13. November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-Tage-Vorhersage</h3>
-        <p class="city-summary">In den nächsten 7 Tagen ist Donnerstag, 12. November am wärmsten (bis 23°) und Montag, 16. November am kältesten (bis 5°). An 1 der Tage wird Niederschlag erwartet. Tagsüber ist es wärmer als üblich im November (im Mittel 13°).</p>
+        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 23°) und Sonntag, 15. November am kältesten (bis 3°). An 4 der Tage wird Niederschlag erwartet. Tagsüber ist es wärmer als üblich im November (im Mittel 13°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Veliko+Tarnovo&lat=43.0757&lon=25.6172&cc=BG&date=2026-11-12" title="Stündlich →">
-            <span class="kp-day-name">Do., 12.</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">11° / 23°</span>
-            <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">0%</span>
-            <span class="city-day-wind">Wind 13 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Veliko+Tarnovo&lat=43.0757&lon=25.6172&cc=BG&date=2026-11-13" title="Stündlich →">
             <span class="kp-day-name">Fr., 13.</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">15° / 23°</span>
-            <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">43%</span>
-            <span class="city-day-wind">Wind 30 km/h</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">53% · 0.2 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 31 km/h · Böen 68</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Veliko+Tarnovo&lat=43.0757&lon=25.6172&cc=BG&date=2026-11-14" title="Stündlich →">
             <span class="kp-day-name">Sa., 14.</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">6° / 15°</span>
-            <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">79% · 4.2 mm</span>
-            <span class="city-day-wind">Wind 17 km/h</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">78% · 2.1 mm</span>
+            <span class="city-day-wind">Wind 16 km/h · Böen 37</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Veliko+Tarnovo&lat=43.0757&lon=25.6172&cc=BG&date=2026-11-15" title="Stündlich →">
             <span class="kp-day-name">So., 15.</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">5° / 11°</span>
+            <span class="city-day-temp">3° / 11°</span>
             <span class="kp-day-status">Bewölkt</span>
             <span class="city-day-rain" title="Regenwahrscheinlichkeit">4%</span>
-            <span class="city-day-wind">Wind 12 km/h</span>
+            <span class="city-day-wind">Wind 12 km/h · Böen 29</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Veliko+Tarnovo&lat=43.0757&lon=25.6172&cc=BG&date=2026-11-16" title="Stündlich →">
             <span class="kp-day-name">Mo., 16.</span>
@@ -155,26 +149,35 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">5° / 13°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">2%</span>
-            <span class="city-day-wind">Wind 10 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">8%</span>
+            <span class="city-day-wind">Wind 9 km/h · Böen 29</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Veliko+Tarnovo&lat=43.0757&lon=25.6172&cc=BG&date=2026-11-17" title="Stündlich →">
             <span class="kp-day-name">Di., 17.</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">8° / 17°</span>
-            <span class="kp-day-status">Nieselregen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">19% · 0.3 mm</span>
-            <span class="city-day-wind">Wind 10 km/h</span>
+            <span class="city-day-temp">7° / 19°</span>
+            <span class="kp-day-status">Bewölkt</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">6%</span>
+            <span class="city-day-wind">Wind 12 km/h · Böen 39</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Veliko+Tarnovo&lat=43.0757&lon=25.6172&cc=BG&date=2026-11-18" title="Stündlich →">
             <span class="kp-day-name">Mi., 18.</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">8° / 18°</span>
-            <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">44% · 0.9 mm</span>
-            <span class="city-day-wind">Wind 14 km/h</span>
+            <span class="city-day-temp">9° / 17°</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">57% · 1.5 mm</span>
+            <span class="city-day-wind">Wind 20 km/h · Böen 44</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Veliko+Tarnovo&lat=43.0757&lon=25.6172&cc=BG&date=2026-11-19" title="Stündlich →">
+            <span class="kp-day-name">Do., 19.</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">8° / 14°</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">58% · 4.8 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 28 km/h · Böen 62</span>
           </a>
         </div>
         <p class="forecast-note">Median der Modelle ECMWF, ICON und GFS · Höhe 213 m</p>
@@ -215,7 +218,7 @@
 
     <section class="info-card city-climate">
       <h2>Das Klima in Veliko Tarnovo</h2>
-      <p>Veliko Tarnovo liegt auf etwa 210 m Höhe. Der wärmste Monat ist der August mit einer durchschnittlichen Höchsttemperatur von 30°C, der kälteste der Januar, wenn die Nächte im Schnitt auf −2°C abkühlen. Im Jahresmittel fallen etwa 770 mm Niederschlag, am meisten im Juni (rund 100 mm).</p>
+      <p>Veliko Tarnovo liegt auf etwa 210 m Höhe. Der wärmste Monat ist der August mit einer durchschnittlichen Höchsttemperatur von 30°C, der kälteste der Januar, wenn die Nächte im Schnitt auf −2°C abkühlen. Im Jahresmittel fallen etwa 770 mm Niederschlag, am meisten im Juni (rund 100 mm). Die höchste Temperatur in Veliko Tarnovo im Zeitraum 2015–2024 lag bei 40°C (1. Juli 2017), die tiefste bei −21°C (24. Januar 2016).</p>
       <p>Weliko Tarnowo liegt an steilen Hängen über den Mäandern der Jantra im Vorbalkan. Das Klima ist gemäßigt kontinental, doch es fällt mehr Niederschlag als in der Ebene im Norden, und das tiefe Flusstal füllt sich im Herbst und Winter oft mit Nebel. Die Sommer sind warm, der nahe Balkan sorgt für kühlere Nächte.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -255,9 +258,9 @@
       <p class="storm-updated">Jenseits der Grenze:</p>
       <div class="city-links">
         <a href="/de/europe/romania/bucharest/" class="recent-place">Bukarest · 155 km</a>
-        <a href="/de/europe/romania/constanta/" class="recent-place">Constanța · 271 km</a>
-        <a href="/de/europe/romania/brasov/" class="recent-place">Brașov · 285 km</a>
-        <a href="/de/europe/serbia/nis/" class="recent-place">Niš · 303 km</a>
+        <a href="/de/europe/turkey/edirne/" class="recent-place">Edirne · 174 km</a>
+        <a href="/de/europe/greece/alexandroupoli/" class="recent-place">Alexandroupoli · 249 km</a>
+        <a href="/de/europe/greece/kavala/" class="recent-place">Kavala · 258 km</a>
       </div>
     </section>
 
@@ -320,6 +323,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

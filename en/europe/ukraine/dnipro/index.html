@@ -96,7 +96,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -121,42 +121,36 @@
     <p class="storm-intro">Weather forecast for Dnipro, Ukraine, for today, tomorrow and the next 7 days: temperature, rain, wind and chance of precipitation. Local name: Дніпро (Погода Дніпро). Data from Open-Meteo, updated every hour.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Dnipro" data-lat="48.4647" data-lon="35.0462" data-query="city=Dnipro&lat=48.4647&lon=35.0462&cc=UA">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Strong wind gusts today: up to 63 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Dnipro: Thursday 12 November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">4° / 7°</span>
-        <p class="storm-now-status">Rain · chance of rain 100%</p>
-        <p class="storm-updated">Forecast issued on 12 November 2026</p>
+        <h2>Dnipro: Friday 13 November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">6° / 15°</span>
+        <p class="storm-now-status">Drizzle · chance of rain 73%</p>
+        <p class="storm-updated">Forecast issued on 13 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Friday 13 November (up to 15°) and the coldest Tuesday 17 November (down to 0°). Rain or snow is expected on 3 of the days. Daytime temperatures are above normal for November (average high 7°).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Friday 13 November (up to 15°) and the coldest Monday 16 November (down to 1°). Rain or snow is expected on 3 of the days. Daytime temperatures are above normal for November (average high 7°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Dnipro&lat=48.4647&lon=35.0462&cc=UA&date=2026-11-12" title="Hourly forecast →">
-            <span class="kp-day-name">Thu 12</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">4° / 7°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">100% · 4.8 mm</span>
-            <span class="city-day-wind">Wind 15 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Dnipro&lat=48.4647&lon=35.0462&cc=UA&date=2026-11-13" title="Hourly forecast →">
             <span class="kp-day-name">Fri 13</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">6° / 15°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">76% · 1.6 mm</span>
-            <span class="city-day-wind">Wind 24 km/h</span>
+            <span class="kp-day-status">Drizzle</span>
+            <span class="city-day-rain" title="chance of rain">73% · 0.5 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 23 km/h · gusts 63</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Dnipro&lat=48.4647&lon=35.0462&cc=UA&date=2026-11-14" title="Hourly forecast →">
             <span class="kp-day-name">Sat 14</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">4° / 14°</span>
+            <span class="city-day-temp">4° / 13°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">69% · 2.5 mm</span>
-            <span class="city-day-wind">Wind 23 km/h</span>
+            <span class="city-day-rain" title="chance of rain">65% · 2.7 mm</span>
+            <span class="city-day-wind">Wind 20 km/h · gusts 54</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Dnipro&lat=48.4647&lon=35.0462&cc=UA&date=2026-11-15" title="Hourly forecast →">
             <span class="kp-day-name">Sun 15</span>
@@ -165,7 +159,7 @@
             <span class="city-day-temp">2° / 7°</span>
             <span class="kp-day-status">Partly cloudy</span>
             <span class="city-day-rain" title="chance of rain">0%</span>
-            <span class="city-day-wind">Wind 10 km/h</span>
+            <span class="city-day-wind">Wind 12 km/h · gusts 36</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Dnipro&lat=48.4647&lon=35.0462&cc=UA&date=2026-11-16" title="Hourly forecast →">
             <span class="kp-day-name">Mon 16</span>
@@ -174,25 +168,34 @@
             <span class="city-day-temp">1° / 7°</span>
             <span class="kp-day-status">Partly cloudy</span>
             <span class="city-day-rain" title="chance of rain">0%</span>
-            <span class="city-day-wind">Wind 10 km/h</span>
+            <span class="city-day-wind">Wind 11 km/h · gusts 28</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Dnipro&lat=48.4647&lon=35.0462&cc=UA&date=2026-11-17" title="Hourly forecast →">
             <span class="kp-day-name">Tue 17</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">0° / 8°</span>
+            <span class="city-day-temp">1° / 7°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">16%</span>
-            <span class="city-day-wind">Wind 17 km/h</span>
+            <span class="city-day-rain" title="chance of rain">17%</span>
+            <span class="city-day-wind">Wind 18 km/h · gusts 39</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Dnipro&lat=48.4647&lon=35.0462&cc=UA&date=2026-11-18" title="Hourly forecast →">
             <span class="kp-day-name">Wed 18</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">4° / 13°</span>
+            <span class="city-day-temp">7° / 14°</span>
+            <span class="kp-day-status">Cloudy</span>
+            <span class="city-day-rain" title="chance of rain">25%</span>
+            <span class="city-day-wind city-day-gusts">Wind 25 km/h · gusts 67</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Dnipro&lat=48.4647&lon=35.0462&cc=UA&date=2026-11-19" title="Hourly forecast →">
+            <span class="kp-day-name">Thu 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">6° / 13°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">30% · 0.6 mm</span>
-            <span class="city-day-wind">Wind 25 km/h</span>
+            <span class="city-day-rain" title="chance of rain">59% · 18.6 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 30 km/h · gusts 65</span>
           </a>
         </div>
         <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 60 m</p>
@@ -324,6 +327,7 @@
         <a href="/en/europe/spain/" class="recent-place">Spain</a>
         <a href="/en/europe/sweden/" class="recent-place">Sweden</a>
         <a href="/en/europe/switzerland/" class="recent-place">Switzerland</a>
+        <a href="/en/europe/turkey/" class="recent-place">Turkey</a>
         <a href="/en/europe/united-kingdom/" class="recent-place">United Kingdom</a>
       </div>
     </section>
@@ -347,6 +351,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

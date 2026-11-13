@@ -99,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -124,51 +124,45 @@
     <p class="storm-intro">Previsioni del tempo a Atene, Grecia, per oggi, domani e i prossimi 7 giorni: temperatura, pioggia, vento e probabilità di precipitazioni. Nome locale: Αθήνα (Καιρός Αθήνα). Dati di Open-Meteo, aggiornati ogni ora.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Atene" data-lat="37.9838" data-lon="23.7275" data-query="city=Atene&lat=37.9838&lon=23.7275&cc=GR">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Forti raffiche di vento oggi: fino a 62 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Atene: giovedì 12 novembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">15° / 22°</span>
-        <p class="storm-now-status">Nuvoloso · probabilità di pioggia 0%</p>
-        <p class="storm-updated">Previsione del 12 novembre 2026</p>
+        <h2>Atene: venerdì 13 novembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">18° / 21°</span>
+        <p class="storm-now-status">Pioggia · probabilità di pioggia 27%</p>
+        <p class="storm-updated">Previsione del 13 novembre 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsioni a 7 giorni</h3>
-        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà sabato 14 novembre (fino a 23°) e il più freddo domenica 15 novembre (fino a 13°). Non sono previste precipitazioni significative. Le massime sono sopra la media di novembre (in media 19°).</p>
+        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà sabato 14 novembre (fino a 23°) e il più freddo mercoledì 18 novembre (fino a 13°). Non sono previste precipitazioni significative. Le massime sono sopra la media di novembre (in media 19°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Atene&lat=37.9838&lon=23.7275&cc=GR&date=2026-11-12" title="Ora per ora →">
-            <span class="kp-day-name">gio 12</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">15° / 22°</span>
-            <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">0%</span>
-            <span class="city-day-wind">Vento 12 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Atene&lat=37.9838&lon=23.7275&cc=GR&date=2026-11-13" title="Ora per ora →">
             <span class="kp-day-name">ven 13</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">17° / 21°</span>
-            <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">10%</span>
-            <span class="city-day-wind">Vento 23 km/h</span>
+            <span class="city-day-temp">18° / 21°</span>
+            <span class="kp-day-status">Pioggia</span>
+            <span class="city-day-rain" title="probabilità di pioggia">27% · 0.2 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 23 km/h · raffiche 62</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Atene&lat=37.9838&lon=23.7275&cc=GR&date=2026-11-14" title="Ora per ora →">
             <span class="kp-day-name">sab 14</span>
-            <span class="city-day-icon" aria-hidden="true">☀️</span>
+            <span class="city-day-icon" aria-hidden="true">⛅</span>
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">17° / 23°</span>
-            <span class="kp-day-status">Sereno</span>
-            <span class="city-day-rain" title="probabilità di pioggia">1%</span>
-            <span class="city-day-wind">Vento 13 km/h</span>
+            <span class="kp-day-status">Poco nuvoloso</span>
+            <span class="city-day-rain" title="probabilità di pioggia">2%</span>
+            <span class="city-day-wind">Vento 10 km/h · raffiche 29</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Atene&lat=37.9838&lon=23.7275&cc=GR&date=2026-11-15" title="Ora per ora →">
             <span class="kp-day-name">dom 15</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">13° / 20°</span>
+            <span class="city-day-temp">14° / 20°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">7%</span>
-            <span class="city-day-wind">Vento 11 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">3%</span>
+            <span class="city-day-wind">Vento 11 km/h · raffiche 29</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Atene&lat=37.9838&lon=23.7275&cc=GR&date=2026-11-16" title="Ora per ora →">
             <span class="kp-day-name">lun 16</span>
@@ -176,26 +170,35 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">13° / 18°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">8%</span>
-            <span class="city-day-wind">Vento 7 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">10%</span>
+            <span class="city-day-wind">Vento 7 km/h · raffiche 23</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Atene&lat=37.9838&lon=23.7275&cc=GR&date=2026-11-17" title="Ora per ora →">
             <span class="kp-day-name">mar 17</span>
             <span class="city-day-icon" aria-hidden="true">🌫️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">14° / 20°</span>
+            <span class="city-day-temp">14° / 21°</span>
             <span class="kp-day-status">Nebbia</span>
             <span class="city-day-rain" title="probabilità di pioggia">10%</span>
-            <span class="city-day-wind">Vento 8 km/h</span>
+            <span class="city-day-wind">Vento 9 km/h · raffiche 27</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Atene&lat=37.9838&lon=23.7275&cc=GR&date=2026-11-18" title="Ora per ora →">
             <span class="kp-day-name">mer 18</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">15° / 21°</span>
-            <span class="kp-day-status">Pioggia</span>
-            <span class="city-day-rain" title="probabilità di pioggia">8% · 0.3 mm</span>
-            <span class="city-day-wind">Vento 13 km/h</span>
+            <span class="city-day-temp">13° / 21°</span>
+            <span class="kp-day-status">Pioviggine</span>
+            <span class="city-day-rain" title="probabilità di pioggia">13% · 0.1 mm</span>
+            <span class="city-day-wind">Vento 21 km/h · raffiche 51</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Atene&lat=37.9838&lon=23.7275&cc=GR&date=2026-11-19" title="Ora per ora →">
+            <span class="kp-day-name">gio 19</span>
+            <span class="city-day-icon" aria-hidden="true">⛅</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">16° / 22°</span>
+            <span class="kp-day-status">Poco nuvoloso</span>
+            <span class="city-day-rain" title="probabilità di pioggia">10%</span>
+            <span class="city-day-wind">Vento 17 km/h · raffiche 53</span>
           </a>
         </div>
         <p class="forecast-note">Mediana dei modelli ECMWF, ICON e GFS · altitudine 92 m</p>
@@ -234,7 +237,7 @@
 
     <section class="info-card city-climate">
       <h2>Il clima a Atene</h2>
-      <p>Atene si trova a circa 92 m di altitudine. Il mese più caldo è luglio, con una massima media di 34°C; il più freddo è gennaio, quando di notte la temperatura scende in media a 5°C. In un anno cadono in media circa 490 mm di precipitazioni, soprattutto a dicembre (circa 86 mm).</p>
+      <p>Atene si trova a circa 92 m di altitudine. Il mese più caldo è luglio, con una massima media di 34°C; il più freddo è gennaio, quando di notte la temperatura scende in media a 5°C. In un anno cadono in media circa 490 mm di precipitazioni, soprattutto a dicembre (circa 86 mm). La temperatura più alta a Atene nel periodo 2015–2024 è stata di 44°C (30 giugno 2017), la più bassa di −3°C (8 gennaio 2017).</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
         <thead><tr><th>Mese</th><th>Max media</th><th>Min media</th><th>Precipitazioni</th><th>Giorni di pioggia</th></tr></thead>
@@ -265,17 +268,17 @@
     <section class="info-card city-near">
       <h2>Città vicine</h2>
       <div class="city-links">
+        <a href="/it/europe/greece/nafplio/" class="recent-place">Nauplia · 94 km</a>
+        <a href="/it/europe/greece/mykonos/" class="recent-place">Mykonos · 153 km</a>
         <a href="/it/europe/greece/patras/" class="recent-place">Patrasso · 177 km</a>
-        <a href="/it/europe/greece/thessaloniki/" class="recent-place">Salonicco · 303 km</a>
-        <a href="/it/europe/greece/heraklion/" class="recent-place">Heraklion · 320 km</a>
-        <a href="/it/europe/greece/rhodes/" class="recent-place">Rodi · 433 km</a>
+        <a href="/it/europe/greece/hanioti/" class="recent-place">Hanioti · 224 km</a>
       </div>
       <p class="storm-updated">Oltre confine:</p>
       <div class="city-links">
-        <a href="/it/europe/north-macedonia/bitola/" class="recent-place">Bitola · 396 km</a>
-        <a href="/it/vremeto/smolyan/" class="recent-place">Smolyan · 408 km</a>
-        <a href="/it/vremeto/pamporovo/" class="recent-place">Pamporovo · 416 km</a>
-        <a href="/it/vremeto/bansko/" class="recent-place">Bansko · 429 km</a>
+        <a href="/it/europe/turkey/izmir/" class="recent-place">Smirne · 302 km</a>
+        <a href="/it/europe/turkey/kusadasi/" class="recent-place">Kuşadası · 310 km</a>
+        <a href="/it/europe/turkey/didim/" class="recent-place">Didim · 319 km</a>
+        <a href="/it/europe/turkey/canakkale/" class="recent-place">Çanakkale · 335 km</a>
       </div>
     </section>
 
@@ -286,6 +289,30 @@
         <a href="/it/europe/greece/patras/" class="recent-place">Patrasso</a>
         <a href="/it/europe/greece/heraklion/" class="recent-place">Heraklion</a>
         <a href="/it/europe/greece/rhodes/" class="recent-place">Rodi</a>
+        <a href="/it/europe/greece/kavala/" class="recent-place">Kavala</a>
+        <a href="/it/europe/greece/thassos/" class="recent-place">Taso</a>
+        <a href="/it/europe/greece/keramoti/" class="recent-place">Keramoti</a>
+        <a href="/it/europe/greece/alexandroupoli/" class="recent-place">Alessandropoli</a>
+        <a href="/it/europe/greece/asprovalta/" class="recent-place">Asprovalta</a>
+        <a href="/it/europe/greece/stavros/" class="recent-place">Stavros</a>
+        <a href="/it/europe/greece/olympiada/" class="recent-place">Olympiada</a>
+        <a href="/it/europe/greece/ouranoupoli/" class="recent-place">Ouranoupoli</a>
+        <a href="/it/europe/greece/nikiti/" class="recent-place">Nikiti</a>
+        <a href="/it/europe/greece/neos-marmaras/" class="recent-place">Neos Marmaras</a>
+        <a href="/it/europe/greece/hanioti/" class="recent-place">Hanioti</a>
+        <a href="/it/europe/greece/kallithea/" class="recent-place">Kallithea</a>
+        <a href="/it/europe/greece/paralia-katerinis/" class="recent-place">Paralia Katerinis</a>
+        <a href="/it/europe/greece/kalambaka/" class="recent-place">Kalambaka (Meteore)</a>
+        <a href="/it/europe/greece/parga/" class="recent-place">Parga</a>
+        <a href="/it/europe/greece/corfu/" class="recent-place">Corfù</a>
+        <a href="/it/europe/greece/lefkada/" class="recent-place">Leucade</a>
+        <a href="/it/europe/greece/kefalonia/" class="recent-place">Cefalonia</a>
+        <a href="/it/europe/greece/zakynthos/" class="recent-place">Zante</a>
+        <a href="/it/europe/greece/nafplio/" class="recent-place">Nauplia</a>
+        <a href="/it/europe/greece/santorini/" class="recent-place">Santorini</a>
+        <a href="/it/europe/greece/mykonos/" class="recent-place">Mykonos</a>
+        <a href="/it/europe/greece/chania/" class="recent-place">La Canea</a>
+        <a href="/it/europe/greece/kos/" class="recent-place">Coo</a>
       </div>
     </section>
 
@@ -326,6 +353,7 @@
         <a href="/it/europe/spain/" class="recent-place">Spagna</a>
         <a href="/it/europe/sweden/" class="recent-place">Svezia</a>
         <a href="/it/europe/switzerland/" class="recent-place">Svizzera</a>
+        <a href="/it/europe/turkey/" class="recent-place">Turchia</a>
         <a href="/it/europe/ukraine/" class="recent-place">Ucraina</a>
         <a href="/it/europe/united-kingdom/" class="recent-place">Regno Unito</a>
       </div>
@@ -350,6 +378,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

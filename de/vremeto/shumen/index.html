@@ -73,7 +73,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -97,43 +97,37 @@
     <h1>Wetter in Shumen</h1>
     <p class="storm-intro">Wettervorhersage für Shumen für heute, morgen und die nächsten 7 Tage: Temperatur, Niederschlag, Wind und Regenwahrscheinlichkeit. Die Daten stammen von Open-Meteo und werden stündlich aktualisiert.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="Shumen" data-lat="43.2706" data-lon="26.9229" data-query="city=Shumen&lat=43.2706&lon=26.9229&cc=BG">
+    <div class="city-forecast" id="cityForecast" data-name="Shumen" data-lat="43.2706" data-lon="26.9229" data-query="city=Shumen&lat=43.2706&lon=26.9229&cc=BG" data-warn="shumen">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Starke Windböen heute: bis 70 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Shumen: Donnerstag, 12. November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">10° / 21°</span>
-        <p class="storm-now-status">Bewölkt · Regenwahrscheinlichkeit 0%</p>
-        <p class="storm-updated">Vorhersage vom 12. November 2026</p>
+        <h2>Shumen: Freitag, 13. November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">15° / 22°</span>
+        <p class="storm-now-status">Bewölkt · Regenwahrscheinlichkeit 24%</p>
+        <p class="storm-updated">Vorhersage vom 13. November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-Tage-Vorhersage</h3>
-        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 21°) und Sonntag, 15. November am kältesten (bis 2°). An 2 der Tage wird Niederschlag erwartet. Tagsüber ist es wärmer als üblich im November (im Mittel 13°).</p>
+        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 22°) und Sonntag, 15. November am kältesten (bis 2°). An 3 der Tage wird Niederschlag erwartet. Tagsüber ist es wärmer als üblich im November (im Mittel 13°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Shumen&lat=43.2706&lon=26.9229&cc=BG&date=2026-11-12" title="Stündlich →">
-            <span class="kp-day-name">Do., 12.</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">10° / 21°</span>
-            <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">0%</span>
-            <span class="city-day-wind">Wind 9 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Shumen&lat=43.2706&lon=26.9229&cc=BG&date=2026-11-13" title="Stündlich →">
             <span class="kp-day-name">Fr., 13.</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">14° / 21°</span>
+            <span class="city-day-temp">15° / 22°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">25%</span>
-            <span class="city-day-wind">Wind 33 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">24%</span>
+            <span class="city-day-wind city-day-gusts">Wind 32 km/h · Böen 70</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Shumen&lat=43.2706&lon=26.9229&cc=BG&date=2026-11-14" title="Stündlich →">
             <span class="kp-day-name">Sa., 14.</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">4° / 14°</span>
+            <span class="city-day-temp">4° / 15°</span>
             <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">81% · 5.5 mm</span>
-            <span class="city-day-wind">Wind 18 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">82% · 7.0 mm</span>
+            <span class="city-day-wind">Wind 20 km/h · Böen 48</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Shumen&lat=43.2706&lon=26.9229&cc=BG&date=2026-11-15" title="Stündlich →">
             <span class="kp-day-name">So., 15.</span>
@@ -141,35 +135,44 @@
             <span class="city-day-date">15.11</span>
             <span class="city-day-temp">2° / 9°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">3%</span>
-            <span class="city-day-wind">Wind 13 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">0%</span>
+            <span class="city-day-wind">Wind 14 km/h · Böen 32</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Shumen&lat=43.2706&lon=26.9229&cc=BG&date=2026-11-16" title="Stündlich →">
             <span class="kp-day-name">Mo., 16.</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">3° / 12°</span>
+            <span class="city-day-temp">4° / 12°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">3%</span>
-            <span class="city-day-wind">Wind 14 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">0%</span>
+            <span class="city-day-wind">Wind 14 km/h · Böen 34</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Shumen&lat=43.2706&lon=26.9229&cc=BG&date=2026-11-17" title="Stündlich →">
             <span class="kp-day-name">Di., 17.</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">6° / 14°</span>
+            <span class="city-day-temp">5° / 16°</span>
             <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">14%</span>
-            <span class="city-day-wind">Wind 10 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">6%</span>
+            <span class="city-day-wind">Wind 9 km/h · Böen 39</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Shumen&lat=43.2706&lon=26.9229&cc=BG&date=2026-11-18" title="Stündlich →">
             <span class="kp-day-name">Mi., 18.</span>
-            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">7° / 18°</span>
-            <span class="kp-day-status">Gewitter</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">35% · 3.6 mm</span>
-            <span class="city-day-wind">Wind 15 km/h</span>
+            <span class="city-day-temp">8° / 17°</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">43% · 1.2 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 25 km/h · Böen 65</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Shumen&lat=43.2706&lon=26.9229&cc=BG&date=2026-11-19" title="Stündlich →">
+            <span class="kp-day-name">Do., 19.</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">8° / 13°</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">52% · 2.1 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 22 km/h · Böen 69</span>
           </a>
         </div>
         <p class="forecast-note">Median der Modelle ECMWF, ICON und GFS · Höhe 239 m</p>
@@ -210,7 +213,7 @@
 
     <section class="info-card city-climate">
       <h2>Das Klima in Shumen</h2>
-      <p>Shumen liegt auf etwa 240 m Höhe. Der wärmste Monat ist der August mit einer durchschnittlichen Höchsttemperatur von 30°C, der kälteste der Januar, wenn die Nächte im Schnitt auf −3°C abkühlen. Im Jahresmittel fallen etwa 630 mm Niederschlag, am meisten im Juni (rund 82 mm).</p>
+      <p>Shumen liegt auf etwa 240 m Höhe. Der wärmste Monat ist der August mit einer durchschnittlichen Höchsttemperatur von 30°C, der kälteste der Januar, wenn die Nächte im Schnitt auf −3°C abkühlen. Im Jahresmittel fallen etwa 630 mm Niederschlag, am meisten im Juni (rund 82 mm). Die höchste Temperatur in Shumen im Zeitraum 2015–2024 lag bei 38°C (26. Juli 2023), die tiefste bei −19°C (9. Januar 2017).</p>
       <p>Schumen liegt am Fuß des Schumener Plateaus in Nordostbulgarien und hat ein gemäßigt kontinentales Klima mit warmen Sommern und kalten Wintern. Das Plateau über der Stadt ist bewaldet und etwas kühler. Das rund 90 km entfernte Schwarze Meer wirkt sich kaum aus, daher sind die Winter härter als an der Küste.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -251,8 +254,8 @@
       <div class="city-links">
         <a href="/de/europe/romania/bucharest/" class="recent-place">Bukarest · 144 km</a>
         <a href="/de/europe/romania/constanta/" class="recent-place">Constanța · 169 km</a>
-        <a href="/de/europe/romania/brasov/" class="recent-place">Brașov · 284 km</a>
-        <a href="/de/europe/serbia/nis/" class="recent-place">Niš · 407 km</a>
+        <a href="/de/europe/turkey/edirne/" class="recent-place">Edirne · 180 km</a>
+        <a href="/de/europe/greece/alexandroupoli/" class="recent-place">Alexandroupoli · 283 km</a>
       </div>
     </section>
 
@@ -315,6 +318,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

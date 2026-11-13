@@ -75,7 +75,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -99,79 +99,83 @@
     <h1>Weather in Dimitrovgrad</h1>
     <p class="storm-intro">Weather forecast for Dimitrovgrad for today, tomorrow and the next 7 days: temperature, precipitation, wind and chance of rain. The data come from Open-Meteo and are updated every hour.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="Dimitrovgrad" data-lat="42.05" data-lon="25.6" data-query="city=Dimitrovgrad&lat=42.0500&lon=25.6000&cc=BG">
+    <div class="city-forecast" id="cityForecast" data-name="Dimitrovgrad" data-lat="42.05" data-lon="25.6" data-query="city=Dimitrovgrad&lat=42.0500&lon=25.6000&cc=BG" data-warn="haskovo">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Strong wind gusts today: up to 74 km/h</p>
+        <p class="city-alert city-alert-yellow">Strong wind gusts tomorrow: up to 68 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Dimitrovgrad: Thursday 12 November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">7° / 19°</span>
-        <p class="storm-now-status">Fog · chance of rain 0%</p>
-        <p class="storm-updated">Forecast issued on 12 November 2026</p>
+        <h2>Dimitrovgrad: Friday 13 November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">17° / 22°</span>
+        <p class="storm-now-status">Cloudy · chance of rain 10%</p>
+        <p class="storm-updated">Forecast issued on 13 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Friday 13 November (up to 22°) and the coldest Sunday 15 November (down to 5°). Rain or snow is expected on 2 of the days. Daytime temperatures are close to normal for November (average high 14°).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Friday 13 November (up to 22°) and the coldest Monday 16 November (down to 6°). Rain or snow is expected on 2 of the days. Daytime temperatures are close to normal for November (average high 14°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Dimitrovgrad&lat=42.0500&lon=25.6000&cc=BG&date=2026-11-12" title="Hourly forecast →">
-            <span class="kp-day-name">Thu 12</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">7° / 19°</span>
-            <span class="kp-day-status">Fog</span>
-            <span class="city-day-rain" title="chance of rain">0%</span>
-            <span class="city-day-wind">Wind 23 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Dimitrovgrad&lat=42.0500&lon=25.6000&cc=BG&date=2026-11-13" title="Hourly forecast →">
             <span class="kp-day-name">Fri 13</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">17° / 22°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">15%</span>
-            <span class="city-day-wind">Wind 34 km/h</span>
+            <span class="city-day-rain" title="chance of rain">10%</span>
+            <span class="city-day-wind city-day-gusts">Wind 35 km/h · gusts 74</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Dimitrovgrad&lat=42.0500&lon=25.6000&cc=BG&date=2026-11-14" title="Hourly forecast →">
             <span class="kp-day-name">Sat 14</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">9° / 17°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">84% · 5.6 mm</span>
-            <span class="city-day-wind">Wind 22 km/h</span>
+            <span class="city-day-temp">9° / 18°</span>
+            <span class="kp-day-status">Drizzle</span>
+            <span class="city-day-rain" title="chance of rain">93% · 1.5 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 23 km/h · gusts 68</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Dimitrovgrad&lat=42.0500&lon=25.6000&cc=BG&date=2026-11-15" title="Hourly forecast →">
             <span class="kp-day-name">Sun 15</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">5° / 10°</span>
+            <span class="city-day-temp">6° / 11°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">16%</span>
-            <span class="city-day-wind">Wind 10 km/h</span>
+            <span class="city-day-rain" title="chance of rain">12%</span>
+            <span class="city-day-wind">Wind 10 km/h · gusts 24</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Dimitrovgrad&lat=42.0500&lon=25.6000&cc=BG&date=2026-11-16" title="Hourly forecast →">
             <span class="kp-day-name">Mon 16</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">5° / 12°</span>
+            <span class="city-day-temp">6° / 12°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">2%</span>
-            <span class="city-day-wind">Wind 6 km/h</span>
+            <span class="city-day-rain" title="chance of rain">6%</span>
+            <span class="city-day-wind">Wind 8 km/h · gusts 17</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Dimitrovgrad&lat=42.0500&lon=25.6000&cc=BG&date=2026-11-17" title="Hourly forecast →">
             <span class="kp-day-name">Tue 17</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">7° / 15°</span>
+            <span class="city-day-temp">7° / 17°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">12%</span>
-            <span class="city-day-wind">Wind 10 km/h</span>
+            <span class="city-day-rain" title="chance of rain">6%</span>
+            <span class="city-day-wind">Wind 7 km/h · gusts 23</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Dimitrovgrad&lat=42.0500&lon=25.6000&cc=BG&date=2026-11-18" title="Hourly forecast →">
             <span class="kp-day-name">Wed 18</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">9° / 19°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">32% · 1.2 mm</span>
-            <span class="city-day-wind">Wind 19 km/h</span>
+            <span class="city-day-temp">7° / 18°</span>
+            <span class="kp-day-status">Drizzle</span>
+            <span class="city-day-rain" title="chance of rain">41% · 0.6 mm</span>
+            <span class="city-day-wind">Wind 24 km/h · gusts 53</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Dimitrovgrad&lat=42.0500&lon=25.6000&cc=BG&date=2026-11-19" title="Hourly forecast →">
+            <span class="kp-day-name">Thu 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">9° / 16°</span>
+            <span class="kp-day-status">Drizzle</span>
+            <span class="city-day-rain" title="chance of rain">36% · 2.1 mm</span>
+            <span class="city-day-wind">Wind 28 km/h · gusts 55</span>
           </a>
         </div>
         <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 106 m</p>
@@ -212,7 +216,7 @@
 
     <section class="info-card city-climate">
       <h2>The climate in Dimitrovgrad</h2>
-      <p>Dimitrovgrad is about 110 m above sea level. The warmest month is August, with an average high of 33°C; the coldest is January, when nights average −2°C. Around 660 mm of precipitation falls in a year on average, most of it in June (about 76 mm).</p>
+      <p>Dimitrovgrad is about 110 m above sea level. The warmest month is August, with an average high of 33°C; the coldest is January, when nights average −2°C. Around 660 mm of precipitation falls in a year on average, most of it in June (about 76 mm). The highest temperature in Dimitrovgrad in 2015–2024 was 42°C (26 July 2023) and the lowest −16°C (1 March 2018).</p>
       <p>Dimitrovgrad lies on the Maritsa river in the eastern Upper Thracian Plain and is one of the hottest places in Bulgaria: its summer highs are among the highest in the country. Winters are fairly mild, but fog and cold, damp air often linger in the plain. Spring comes early, and autumn is long and warm.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -251,10 +255,10 @@
       </div>
       <p class="storm-updated">Across the border:</p>
       <div class="city-links">
-        <a href="/en/europe/romania/bucharest/" class="recent-place">Bucharest · 267 km</a>
-        <a href="/en/europe/greece/thessaloniki/" class="recent-place">Thessaloniki · 271 km</a>
-        <a href="/en/europe/serbia/nis/" class="recent-place">Niš · 334 km</a>
-        <a href="/en/europe/romania/constanta/" class="recent-place">Constanța · 340 km</a>
+        <a href="/en/europe/turkey/edirne/" class="recent-place">Edirne · 89 km</a>
+        <a href="/en/europe/greece/alexandroupoli/" class="recent-place">Alexandroupoli · 136 km</a>
+        <a href="/en/europe/greece/keramoti/" class="recent-place">Keramoti · 152 km</a>
+        <a href="/en/europe/greece/kavala/" class="recent-place">Kavala · 158 km</a>
       </div>
     </section>
 
@@ -317,6 +321,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

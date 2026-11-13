@@ -15,6 +15,11 @@ const I18N = require('./i18n.js');
 const { EUROPE, SUN_NOTE } = require('./text-europe.js');
 const { page, write, VERSION, placeJson, climateSection, sunSection, bestTimeSection, nearbySection } = require('./build-pages.js');
 const PLACES = require('./places.js');
+const { BG: BG_ONLY } = require('./text-extra.js');
+// Bulgarian regional pages abroad (build-extra.js) of a country, and of the cities in them
+const abroadOf = (countrySlug, citySlug) => Object.keys(BG_ONLY.abroad).filter(key => key.startsWith(countrySlug + '/') &&
+  (!citySlug || BG_ONLY.abroad[key].places.some(place => place[3] === citySlug)));
+const abroadButtons = keys => keys.map(key => ` <a class="btn" href="/europe/${key}/">${BG_ONLY.abroadLinks[key]} →</a>`).join('');
 const { TXT } = require('./text-pages.js');
 const COUNTRIES = require('./europe-data.js');
 const ZONES = require('./europe-zones.js');
@@ -92,7 +97,7 @@ function cityPage(lang, country, city) {
 
     <p class="city-actions">
       <a class="btn" href="/weather/?${params}">${T.hourly}</a>
-      <a class="btn" href="/magnitni-buri/">${T.storms}</a>
+      <a class="btn" href="/magnitni-buri/">${T.storms}</a>${lang === 'bg' ? abroadButtons(abroadOf(country.slug, slug)) : ''}
     </p>
 ${sunSection({ lat, lon }, lang, { where: TXT[lang].where(name), zone: ZONES[country.code], note: SUN_NOTE[lang] })}
 ${climateSection({ slug: `${country.slug}/${slug}` }, lang, {
@@ -134,7 +139,8 @@ function countryPage(lang, country) {
     jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.europeH1, '/europe/'], [k, url]]),
     body: `    <p class="breadcrumbs"><a href="${E(lang, '/europe/')}">${T.europeH1}</a> › ${esc(k)}</p>
     <h1>${esc(T.countryH1(k))}</h1>
-    <p class="storm-intro">${T.countryIntro(text => linkTo('/weather/', text))}</p>
+    <p class="storm-intro">${T.countryIntro(text => linkTo('/weather/', text))}</p>${lang === 'bg' && abroadOf(country.slug).length ? `
+    <p class="city-actions">${abroadButtons(abroadOf(country.slug)).trim()}</p>` : ''}
 
     <div class="city-grid" id="cityList">
       ${country.cities.map(city => `<a href="${E(lang, `/europe/${country.slug}/${city[0]}/`)}" class="city-tile" data-lat="${city[3]}" data-lon="${city[4]}"><span class="city-tile-name">${esc(PLACES.europeName(city, lang))}</span><span class="city-tile-temp"></span></a>`).join('\n      ')}

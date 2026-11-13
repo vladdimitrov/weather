@@ -78,7 +78,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -102,34 +102,29 @@
     <h1>Meteo a Sozopol</h1>
     <p class="storm-intro">Previsioni del tempo a Sozopol per oggi, domani e i prossimi 7 giorni: temperatura, precipitazioni, vento e probabilità di pioggia. I dati provengono da Open-Meteo e si aggiornano ogni ora.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="Sozopol" data-lat="42.418" data-lon="27.695" data-query="city=Sozopol&lat=42.4180&lon=27.6950&cc=BG">
+    <div class="city-forecast" id="cityForecast" data-name="Sozopol" data-lat="42.418" data-lon="27.695" data-query="city=Sozopol&lat=42.4180&lon=27.6950&cc=BG" data-warn="burgas">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-orange">Raffiche di vento molto forti oggi: fino a 91 km/h</p>
+        <p class="city-alert city-alert-yellow">Forti raffiche di vento domani: fino a 81 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Sozopol: giovedì 12 novembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">13° / 22°</span>
-        <p class="storm-now-status">Nuvoloso · probabilità di pioggia 0%</p>
-        <p class="storm-updated">Previsione del 12 novembre 2026</p>
+        <h2>Sozopol: venerdì 13 novembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">18° / 23°</span>
+        <p class="storm-now-status">Nuvoloso · probabilità di pioggia 10%</p>
+        <p class="storm-updated">Previsione del 13 novembre 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsioni a 7 giorni</h3>
-        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà giovedì 12 novembre (fino a 22°) e il più freddo sabato 14 novembre (fino a 8°). Sono previste precipitazioni in 3 dei giorni. Le massime sono sopra la media di novembre (in media 15°).</p>
+        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà venerdì 13 novembre (fino a 23°) e il più freddo lunedì 16 novembre (fino a 8°). Sono previste precipitazioni in 3 dei giorni. Le massime sono sopra la media di novembre (in media 15°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Sozopol&lat=42.4180&lon=27.6950&cc=BG&date=2026-11-12" title="Ora per ora →">
-            <span class="kp-day-name">gio 12</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">13° / 22°</span>
-            <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">0%</span>
-            <span class="city-day-wind">Vento 29 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Sozopol&lat=42.4180&lon=27.6950&cc=BG&date=2026-11-13" title="Ora per ora →">
             <span class="kp-day-name">ven 13</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">18° / 22°</span>
+            <span class="city-day-temp">18° / 23°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">5%</span>
-            <span class="city-day-wind">Vento 49 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">10%</span>
+            <span class="city-day-wind city-day-gusts">Vento 48 km/h · raffiche 91</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Sozopol&lat=42.4180&lon=27.6950&cc=BG&date=2026-11-14" title="Ora per ora →">
             <span class="kp-day-name">sab 14</span>
@@ -137,8 +132,8 @@
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">8° / 19°</span>
             <span class="kp-day-status">Pioggia</span>
-            <span class="city-day-rain" title="probabilità di pioggia">100% · 14.7 mm</span>
-            <span class="city-day-wind">Vento 24 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">100% · 14.2 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 24 km/h · raffiche 81</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Sozopol&lat=42.4180&lon=27.6950&cc=BG&date=2026-11-15" title="Ora per ora →">
             <span class="kp-day-name">dom 15</span>
@@ -146,8 +141,8 @@
             <span class="city-day-date">15.11</span>
             <span class="city-day-temp">8° / 11°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">62%</span>
-            <span class="city-day-wind">Vento 17 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">28%</span>
+            <span class="city-day-wind">Vento 18 km/h · raffiche 41</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Sozopol&lat=42.4180&lon=27.6950&cc=BG&date=2026-11-16" title="Ora per ora →">
             <span class="kp-day-name">lun 16</span>
@@ -155,26 +150,35 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">8° / 12°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">4%</span>
-            <span class="city-day-wind">Vento 10 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">5%</span>
+            <span class="city-day-wind">Vento 10 km/h · raffiche 24</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Sozopol&lat=42.4180&lon=27.6950&cc=BG&date=2026-11-17" title="Ora per ora →">
             <span class="kp-day-name">mar 17</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">8° / 15°</span>
+            <span class="city-day-temp">8° / 17°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">16%</span>
-            <span class="city-day-wind">Vento 13 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">6%</span>
+            <span class="city-day-wind">Vento 11 km/h · raffiche 43</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Sozopol&lat=42.4180&lon=27.6950&cc=BG&date=2026-11-18" title="Ora per ora →">
             <span class="kp-day-name">mer 18</span>
-            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
             <span class="city-day-temp">12° / 20°</span>
-            <span class="kp-day-status">Temporale</span>
-            <span class="city-day-rain" title="probabilità di pioggia">28% · 2.1 mm</span>
-            <span class="city-day-wind">Vento 32 km/h</span>
+            <span class="kp-day-status">Pioggia</span>
+            <span class="city-day-rain" title="probabilità di pioggia">31% · 1.2 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 36 km/h · raffiche 79</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Sozopol&lat=42.4180&lon=27.6950&cc=BG&date=2026-11-19" title="Ora per ora →">
+            <span class="kp-day-name">gio 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">11° / 16°</span>
+            <span class="kp-day-status">Pioggia</span>
+            <span class="city-day-rain" title="probabilità di pioggia">55% · 11.4 mm</span>
+            <span class="city-day-wind">Vento 23 km/h · raffiche 57</span>
           </a>
         </div>
         <p class="forecast-note">Mediana dei modelli ECMWF, ICON e GFS · altitudine 28 m</p>
@@ -215,7 +219,7 @@
 
     <section class="info-card city-climate">
       <h2>Il clima a Sozopol</h2>
-      <p>Sozopol si trova a circa 28 m di altitudine. Il mese più caldo è agosto, con una massima media di 27°C; il più freddo è gennaio, quando di notte la temperatura scende in media a 2°C. In un anno cadono in media circa 740 mm di precipitazioni, soprattutto a novembre (circa 90 mm).</p>
+      <p>Sozopol si trova a circa 28 m di altitudine. Il mese più caldo è agosto, con una massima media di 27°C; il più freddo è gennaio, quando di notte la temperatura scende in media a 2°C. In un anno cadono in media circa 740 mm di precipitazioni, soprattutto a novembre (circa 90 mm). La temperatura più alta a Sozopol nel periodo 2015–2024 è stata di 40°C (26 luglio 2023), la più bassa di −9°C (7 gennaio 2017).</p>
       <p>Sozopol si trova su una piccola penisola della costa meridionale del Mar Nero e ha uno dei climi più miti della Bulgaria: gli inverni sono tiepidi per il Paese e le gelate rare. Le estati sono soleggiate e secche e il mare è di solito abbastanza caldo per fare il bagno da giugno a fine settembre. L’autunno è lungo e tiepido, ma è anche il periodo in cui i cicloni mediterranei portano più pioggia.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -254,10 +258,10 @@
       </div>
       <p class="storm-updated">Oltre confine:</p>
       <div class="city-links">
+        <a href="/it/europe/turkey/edirne/" class="recent-place">Adrianopoli · 125 km</a>
+        <a href="/it/europe/turkey/istanbul/" class="recent-place">Istanbul · 190 km</a>
         <a href="/it/europe/romania/constanta/" class="recent-place">Costanza · 208 km</a>
-        <a href="/it/europe/romania/bucharest/" class="recent-place">Bucarest · 258 km</a>
-        <a href="/it/europe/romania/brasov/" class="recent-place">Brașov · 396 km</a>
-        <a href="/it/europe/greece/thessaloniki/" class="recent-place">Salonicco · 442 km</a>
+        <a href="/it/europe/greece/alexandroupoli/" class="recent-place">Alessandropoli · 231 km</a>
       </div>
     </section>
 
@@ -320,6 +324,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

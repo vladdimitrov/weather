@@ -99,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -124,78 +124,81 @@
     <p class="storm-intro">Wettervorhersage für Berlin, Deutschland, für heute, morgen und die nächsten 7 Tage: Temperatur, Regen, Wind und Niederschlagswahrscheinlichkeit. Daten von Open-Meteo, stündlich aktualisiert.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Berlin" data-lat="52.52" data-lon="13.405" data-query="city=Berlin&lat=52.5200&lon=13.4050&cc=DE">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Starke Windböen heute: bis 63 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Berlin: Donnerstag, 12. November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">3° / 6°</span>
-        <p class="storm-now-status">Bewölkt · Regenwahrscheinlichkeit 8%</p>
-        <p class="storm-updated">Vorhersage vom 12. November 2026</p>
+        <h2>Berlin: Freitag, 13. November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">3° / 8°</span>
+        <p class="storm-now-status">Regen · Regenwahrscheinlichkeit 2%</p>
+        <p class="storm-updated">Vorhersage vom 13. November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-Tage-Vorhersage</h3>
-        <p class="city-summary">In den nächsten 7 Tagen ist Mittwoch, 18. November am wärmsten (bis 12°) und Sonntag, 15. November am kältesten (bis 1°). An 2 der Tage wird Niederschlag erwartet. Tagsüber ist es etwa so warm wie üblich im November (im Mittel 9°).</p>
+        <p class="city-summary">In den nächsten 7 Tagen ist Montag, 16. November am wärmsten (bis 11°) und Sonntag, 15. November am kältesten (bis 1°). An 2 der Tage wird Niederschlag erwartet. Tagsüber ist es etwa so warm wie üblich im November (im Mittel 9°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Berlin&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-12" title="Stündlich →">
-            <span class="kp-day-name">Do., 12.</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">3° / 6°</span>
-            <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">8%</span>
-            <span class="city-day-wind">Wind 14 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Berlin&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-13" title="Stündlich →">
             <span class="kp-day-name">Fr., 13.</span>
-            <span class="city-day-icon" aria-hidden="true">⛅</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">3° / 8°</span>
-            <span class="kp-day-status">Wechselnd bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">5%</span>
-            <span class="city-day-wind">Wind 26 km/h</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">2%</span>
+            <span class="city-day-wind city-day-gusts">Wind 23 km/h · Böen 63</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Berlin&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-14" title="Stündlich →">
             <span class="kp-day-name">Sa., 14.</span>
-            <span class="city-day-icon" aria-hidden="true">⛅</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">3° / 9°</span>
-            <span class="kp-day-status">Wechselnd bewölkt</span>
+            <span class="kp-day-status">Bewölkt</span>
             <span class="city-day-rain" title="Regenwahrscheinlichkeit">0%</span>
-            <span class="city-day-wind">Wind 17 km/h</span>
+            <span class="city-day-wind">Wind 17 km/h · Böen 47</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Berlin&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-15" title="Stündlich →">
             <span class="kp-day-name">So., 15.</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">1° / 9°</span>
+            <span class="city-day-temp">1° / 8°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">6%</span>
-            <span class="city-day-wind">Wind 17 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">10%</span>
+            <span class="city-day-wind">Wind 17 km/h · Böen 53</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Berlin&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-16" title="Stündlich →">
             <span class="kp-day-name">Mo., 16.</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">6° / 11°</span>
+            <span class="city-day-temp">4° / 11°</span>
             <span class="kp-day-status">Nieselregen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">33% · 5.0 mm</span>
-            <span class="city-day-wind">Wind 20 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">42% · 0.8 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 25 km/h · Böen 66</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Berlin&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-17" title="Stündlich →">
             <span class="kp-day-name">Di., 17.</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">2° / 7°</span>
+            <span class="city-day-temp">1° / 11°</span>
             <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">45% · 0.5 mm</span>
-            <span class="city-day-wind">Wind 16 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">53% · 11.7 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 19 km/h · Böen 67</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Berlin&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-18" title="Stündlich →">
             <span class="kp-day-name">Mi., 18.</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">7° / 12°</span>
-            <span class="kp-day-status">Nieselregen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">42% · 1.0 mm</span>
-            <span class="city-day-wind">Wind 17 km/h</span>
+            <span class="city-day-temp">3° / 10°</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">48% · 3.9 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 25 km/h · Böen 62</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Berlin&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-19" title="Stündlich →">
+            <span class="kp-day-name">Do., 19.</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">3° / 6°</span>
+            <span class="kp-day-status">Bewölkt</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">35%</span>
+            <span class="city-day-wind">Wind 14 km/h · Böen 34</span>
           </a>
         </div>
         <p class="forecast-note">Median der Modelle ECMWF, ICON und GFS · Höhe 37 m</p>
@@ -234,7 +237,7 @@
 
     <section class="info-card city-climate">
       <h2>Das Klima in Berlin</h2>
-      <p>Berlin liegt auf etwa 37 m Höhe. Der wärmste Monat ist der August mit einer durchschnittlichen Höchsttemperatur von 26°C, der kälteste der Januar, wenn die Nächte im Schnitt auf −1°C abkühlen. Im Jahresmittel fallen etwa 600 mm Niederschlag, am meisten im Juni (rund 71 mm).</p>
+      <p>Berlin liegt auf etwa 37 m Höhe. Der wärmste Monat ist der August mit einer durchschnittlichen Höchsttemperatur von 26°C, der kälteste der Januar, wenn die Nächte im Schnitt auf −1°C abkühlen. Im Jahresmittel fallen etwa 600 mm Niederschlag, am meisten im Juni (rund 71 mm). Die höchste Temperatur in Berlin im Zeitraum 2015–2024 lag bei 38°C (20. Juli 2022), die tiefste bei −15°C (10. Februar 2021).</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
         <thead><tr><th>Monat</th><th>Ø Max.</th><th>Ø Min.</th><th>Niederschlag</th><th>Regentage</th></tr></thead>
@@ -328,6 +331,7 @@
         <a href="/de/europe/spain/" class="recent-place">Spanien</a>
         <a href="/de/europe/sweden/" class="recent-place">Schweden</a>
         <a href="/de/europe/switzerland/" class="recent-place">Schweiz</a>
+        <a href="/de/europe/turkey/" class="recent-place">Türkei</a>
         <a href="/de/europe/ukraine/" class="recent-place">Ukraine</a>
         <a href="/de/europe/united-kingdom/" class="recent-place">Vereinigtes Königreich</a>
       </div>
@@ -352,6 +356,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

@@ -75,7 +75,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -99,34 +99,28 @@
     <h1>Weather in Targovishte</h1>
     <p class="storm-intro">Weather forecast for Targovishte for today, tomorrow and the next 7 days: temperature, precipitation, wind and chance of rain. The data come from Open-Meteo and are updated every hour.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="Targovishte" data-lat="43.2512" data-lon="26.5722" data-query="city=Targovishte&lat=43.2512&lon=26.5722&cc=BG">
+    <div class="city-forecast" id="cityForecast" data-name="Targovishte" data-lat="43.2512" data-lon="26.5722" data-query="city=Targovishte&lat=43.2512&lon=26.5722&cc=BG" data-warn="targovishte">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Strong wind gusts today: up to 77 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Targovishte: Thursday 12 November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">10° / 23°</span>
-        <p class="storm-now-status">Cloudy · chance of rain 0%</p>
-        <p class="storm-updated">Forecast issued on 12 November 2026</p>
+        <h2>Targovishte: Friday 13 November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">15° / 22°</span>
+        <p class="storm-now-status">Rain · chance of rain 29%</p>
+        <p class="storm-updated">Forecast issued on 13 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Thursday 12 November (up to 23°) and the coldest Sunday 15 November (down to 3°). Rain or snow is expected on 2 of the days. Daytime temperatures are above normal for November (average high 13°).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Friday 13 November (up to 22°) and the coldest Sunday 15 November (down to 2°). Rain or snow is expected on 3 of the days. Daytime temperatures are above normal for November (average high 13°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Targovishte&lat=43.2512&lon=26.5722&cc=BG&date=2026-11-12" title="Hourly forecast →">
-            <span class="kp-day-name">Thu 12</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">10° / 23°</span>
-            <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">0%</span>
-            <span class="city-day-wind">Wind 8 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Targovishte&lat=43.2512&lon=26.5722&cc=BG&date=2026-11-13" title="Hourly forecast →">
             <span class="kp-day-name">Fri 13</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">14° / 21°</span>
-            <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">48%</span>
-            <span class="city-day-wind">Wind 35 km/h</span>
+            <span class="city-day-temp">15° / 22°</span>
+            <span class="kp-day-status">Rain</span>
+            <span class="city-day-rain" title="chance of rain">29% · 0.1 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 32 km/h · gusts 77</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Targovishte&lat=43.2512&lon=26.5722&cc=BG&date=2026-11-14" title="Hourly forecast →">
             <span class="kp-day-name">Sat 14</span>
@@ -134,17 +128,17 @@
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">4° / 15°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">85% · 3.8 mm</span>
-            <span class="city-day-wind">Wind 18 km/h</span>
+            <span class="city-day-rain" title="chance of rain">78% · 7.5 mm</span>
+            <span class="city-day-wind">Wind 22 km/h · gusts 45</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Targovishte&lat=43.2512&lon=26.5722&cc=BG&date=2026-11-15" title="Hourly forecast →">
             <span class="kp-day-name">Sun 15</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌫️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">3° / 10°</span>
-            <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">3%</span>
-            <span class="city-day-wind">Wind 15 km/h</span>
+            <span class="city-day-temp">2° / 10°</span>
+            <span class="kp-day-status">Fog</span>
+            <span class="city-day-rain" title="chance of rain">0%</span>
+            <span class="city-day-wind">Wind 16 km/h · gusts 34</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Targovishte&lat=43.2512&lon=26.5722&cc=BG&date=2026-11-16" title="Hourly forecast →">
             <span class="kp-day-name">Mon 16</span>
@@ -152,26 +146,35 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">4° / 12°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">3%</span>
-            <span class="city-day-wind">Wind 15 km/h</span>
+            <span class="city-day-rain" title="chance of rain">2%</span>
+            <span class="city-day-wind">Wind 14 km/h · gusts 30</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Targovishte&lat=43.2512&lon=26.5722&cc=BG&date=2026-11-17" title="Hourly forecast →">
             <span class="kp-day-name">Tue 17</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">5° / 15°</span>
-            <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">14% · 0.1 mm</span>
-            <span class="city-day-wind">Wind 10 km/h</span>
+            <span class="city-day-temp">6° / 17°</span>
+            <span class="kp-day-status">Rain</span>
+            <span class="city-day-rain" title="chance of rain">8%</span>
+            <span class="city-day-wind">Wind 10 km/h · gusts 35</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Targovishte&lat=43.2512&lon=26.5722&cc=BG&date=2026-11-18" title="Hourly forecast →">
             <span class="kp-day-name">Wed 18</span>
-            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">9° / 18°</span>
-            <span class="kp-day-status">Thunderstorm</span>
-            <span class="city-day-rain" title="chance of rain">34% · 3.0 mm</span>
-            <span class="city-day-wind">Wind 10 km/h</span>
+            <span class="city-day-temp">7° / 17°</span>
+            <span class="kp-day-status">Rain</span>
+            <span class="city-day-rain" title="chance of rain">57% · 0.6 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 26 km/h · gusts 64</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Targovishte&lat=43.2512&lon=26.5722&cc=BG&date=2026-11-19" title="Hourly forecast →">
+            <span class="kp-day-name">Thu 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">9° / 14°</span>
+            <span class="kp-day-status">Rain</span>
+            <span class="city-day-rain" title="chance of rain">55% · 2.4 mm</span>
+            <span class="city-day-wind">Wind 24 km/h · gusts 58</span>
           </a>
         </div>
         <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 185 m</p>
@@ -212,7 +215,7 @@
 
     <section class="info-card city-climate">
       <h2>The climate in Targovishte</h2>
-      <p>Targovishte is about 190 m above sea level. The warmest month is August, with an average high of 30°C; the coldest is January, when nights average −2°C. Around 660 mm of precipitation falls in a year on average, most of it in June (about 89 mm).</p>
+      <p>Targovishte is about 190 m above sea level. The warmest month is August, with an average high of 30°C; the coldest is January, when nights average −2°C. Around 660 mm of precipitation falls in a year on average, most of it in June (about 89 mm). The highest temperature in Targovishte in 2015–2024 was 39°C (2 August 2021) and the lowest −18°C (10 January 2017).</p>
       <p>Targovishte lies in north-eastern Bulgaria, where the Danubian Plain meets the Fore-Balkan. The climate is moderate continental, with warm summers and cold winters, when north-easterly winds bring snow. The hills and forests to the south make summer nights cooler than on the open plain.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -252,9 +255,9 @@
       <p class="storm-updated">Across the border:</p>
       <div class="city-links">
         <a href="/en/europe/romania/bucharest/" class="recent-place">Bucharest · 136 km</a>
+        <a href="/en/europe/turkey/edirne/" class="recent-place">Edirne · 175 km</a>
         <a href="/en/europe/romania/constanta/" class="recent-place">Constanța · 194 km</a>
-        <a href="/en/europe/romania/brasov/" class="recent-place">Brașov · 277 km</a>
-        <a href="/en/europe/serbia/nis/" class="recent-place">Niš · 379 km</a>
+        <a href="/en/europe/greece/alexandroupoli/" class="recent-place">Alexandroupoli · 274 km</a>
       </div>
     </section>
 
@@ -317,6 +320,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

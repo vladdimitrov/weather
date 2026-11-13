@@ -78,7 +78,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -102,84 +102,91 @@
     <h1>El tiempo en Sofía</h1>
     <p class="storm-intro">Previsión del tiempo en Sofía para hoy, mañana y los próximos 7 días: temperatura, precipitaciones, viento y probabilidad de lluvia. Los datos proceden de Open-Meteo y se actualizan cada hora.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="Sofía" data-lat="42.6977" data-lon="23.3219" data-query="city=Sof%C3%ADa&lat=42.6977&lon=23.3219&cc=BG">
+    <div class="city-forecast" id="cityForecast" data-name="Sofía" data-lat="42.6977" data-lon="23.3219" data-query="city=Sof%C3%ADa&lat=42.6977&lon=23.3219&cc=BG" data-warn="sofia-city">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Rachas de viento fuertes hoy: hasta 65 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Sofía: jueves, 12 de noviembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">10° / 20°</span>
-        <p class="storm-now-status">Niebla · probabilidad de lluvia 0%</p>
-        <p class="storm-updated">Previsión del 12 de noviembre de 2026</p>
+        <h2>Sofía: viernes, 13 de noviembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">14° / 21°</span>
+        <p class="storm-now-status">Nublado · probabilidad de lluvia 32%</p>
+        <p class="storm-updated">Previsión del 13 de noviembre de 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsión a 7 días</h3>
-        <p class="city-summary">En los próximos 7 días el día más cálido será el viernes, 13 de noviembre (hasta 20°) y el más frío el domingo, 15 de noviembre (hasta 3°). Se esperan precipitaciones en 2 de los días. Las máximas están por encima de lo normal para noviembre (media de 12°).</p>
+        <p class="city-summary">En los próximos 7 días el día más cálido será el viernes, 13 de noviembre (hasta 21°) y el más frío el domingo, 15 de noviembre (hasta 3°). Se esperan precipitaciones en 4 de los días. Las máximas están por encima de lo normal para noviembre (media de 12°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Sof%C3%ADa&lat=42.6977&lon=23.3219&cc=BG&date=2026-11-12" title="Por horas →">
-            <span class="kp-day-name">jue 12</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">10° / 20°</span>
-            <span class="kp-day-status">Niebla</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">0%</span>
-            <span class="city-day-wind">Viento 11 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Sof%C3%ADa&lat=42.6977&lon=23.3219&cc=BG&date=2026-11-13" title="Por horas →">
             <span class="kp-day-name">vie 13</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">14° / 20°</span>
+            <span class="city-day-temp">14° / 21°</span>
             <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">23% · 0.1 mm</span>
-            <span class="city-day-wind">Viento 24 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">32%</span>
+            <span class="city-day-wind city-day-gusts">Viento 21 km/h · rachas 65</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Sof%C3%ADa&lat=42.6977&lon=23.3219&cc=BG&date=2026-11-14" title="Por horas →">
             <span class="kp-day-name">sáb 14</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">4° / 14°</span>
-            <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">79% · 3.5 mm</span>
-            <span class="city-day-wind">Viento 16 km/h</span>
+            <span class="kp-day-status">Llovizna</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">84% · 3.1 mm</span>
+            <span class="city-day-wind">Viento 17 km/h · rachas 49</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Sof%C3%ADa&lat=42.6977&lon=23.3219&cc=BG&date=2026-11-15" title="Por horas →">
             <span class="kp-day-name">dom 15</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">3° / 8°</span>
-            <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">6%</span>
-            <span class="city-day-wind">Viento 16 km/h</span>
+            <span class="city-day-temp">3° / 9°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">10%</span>
+            <span class="city-day-wind">Viento 17 km/h · rachas 46</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Sof%C3%ADa&lat=42.6977&lon=23.3219&cc=BG&date=2026-11-16" title="Por horas →">
             <span class="kp-day-name">lun 16</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">5° / 11°</span>
-            <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">24%</span>
-            <span class="city-day-wind">Viento 11 km/h</span>
+            <span class="city-day-temp">5° / 12°</span>
+            <span class="kp-day-status">Lluvia</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">41% · 3.9 mm</span>
+            <span class="city-day-wind">Viento 11 km/h · rachas 29</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Sof%C3%ADa&lat=42.6977&lon=23.3219&cc=BG&date=2026-11-17" title="Por horas →">
             <span class="kp-day-name">mar 17</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
             <span class="city-day-temp">7° / 15°</span>
-            <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">27% · 0.6 mm</span>
-            <span class="city-day-wind">Viento 10 km/h</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">24%</span>
+            <span class="city-day-wind">Viento 7 km/h · rachas 25</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Sof%C3%ADa&lat=42.6977&lon=23.3219&cc=BG&date=2026-11-18" title="Por horas →">
             <span class="kp-day-name">mié 18</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">5° / 16°</span>
-            <span class="kp-day-status">Niebla</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">48% · 1.8 mm</span>
-            <span class="city-day-wind">Viento 16 km/h</span>
+            <span class="city-day-temp">7° / 16°</span>
+            <span class="kp-day-status">Llovizna</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">57% · 8.7 mm</span>
+            <span class="city-day-wind">Viento 20 km/h · rachas 54</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Sof%C3%ADa&lat=42.6977&lon=23.3219&cc=BG&date=2026-11-19" title="Por horas →">
+            <span class="kp-day-name">jue 19</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">7° / 13°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">56% · 1.5 mm</span>
+            <span class="city-day-wind">Viento 18 km/h · rachas 46</span>
           </a>
         </div>
         <p class="forecast-note">Mediana de los modelos ECMWF, ICON y GFS · altitud 548 m</p>
       </div>
     </div>
+
+    <section class="info-card city-local-wind">
+      <p>El viento del sur bajo el Vitosha: con viento fuerte del sur, el aire baja por las laderas de la montaña y se acelera. En los barrios a sus pies – Simeonovo, Dragalevtsi, Boyana, Knyazhevo, Darvenitsa – las rachas suelen ser mucho más fuertes que en el centro y que en la previsión para Sofía. Por eso mostramos las rachas del modelo que da las más fuertes y, por encima de 60 km/h o con un aviso del NIMH, un mensaje sobre la previsión.</p>
+    </section>
 
     <p class="city-actions">
       <a class="btn" href="/es/weather/?city=Sof%C3%ADa&lat=42.6977&lon=23.3219&cc=BG">Previsión detallada por horas →</a>
@@ -215,7 +222,7 @@
 
     <section class="info-card city-climate">
       <h2>El clima en Sofía</h2>
-      <p>Sofía está a unos 550 m sobre el nivel del mar. El mes más cálido es agosto, con una máxima media de 28°C, y el más frío es enero, cuando por la noche la temperatura baja de media hasta −4°C. Al año caen de media unos 670 mm de precipitación, sobre todo en junio (unos 76 mm).</p>
+      <p>Sofía está a unos 550 m sobre el nivel del mar. El mes más cálido es agosto, con una máxima media de 28°C, y el más frío es enero, cuando por la noche la temperatura baja de media hasta −4°C. Al año caen de media unos 670 mm de precipitación, sobre todo en junio (unos 76 mm). La temperatura más alta en Sofía en 2015–2024 fue de 38°C (5 de agosto de 2021) y la más baja de −19°C (1 de enero de 2015).</p>
       <p>Sofía se encuentra en la hoya de Sofía, al pie del Vitosha, y tiene un clima continental templado con inviernos bastante fríos. En los días de invierno sin viento el aire frío se queda atrapado en la hoya, por lo que son frecuentes las nieblas y las inversiones térmicas, mientras que en el Vitosha suele haber más sol y menos frío. La mayor parte de la precipitación cae a finales de la primavera y principios del verano, a menudo en forma de tormentas por la tarde.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -256,8 +263,8 @@
       <div class="city-links">
         <a href="/es/europe/serbia/nis/" class="recent-place">Niš · 135 km</a>
         <a href="/es/europe/north-macedonia/skopje/" class="recent-place">Skopie · 174 km</a>
-        <a href="/es/europe/greece/thessaloniki/" class="recent-place">Salónica · 231 km</a>
-        <a href="/es/europe/serbia/kragujevac/" class="recent-place">Kragujevac · 244 km</a>
+        <a href="/es/europe/greece/kavala/" class="recent-place">Kavala · 215 km</a>
+        <a href="/es/europe/greece/asprovalta/" class="recent-place">Asprovalta · 222 km</a>
       </div>
     </section>
 
@@ -320,6 +327,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

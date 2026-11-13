@@ -73,7 +73,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -97,79 +97,82 @@
     <h1>Meteo a Lovech</h1>
     <p class="storm-intro">Previsioni del tempo a Lovech per oggi, domani e i prossimi 7 giorni: temperatura, precipitazioni, vento e probabilità di pioggia. I dati provengono da Open-Meteo e si aggiornano ogni ora.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="Lovech" data-lat="43.137" data-lon="24.7142" data-query="city=Lovech&lat=43.1370&lon=24.7142&cc=BG">
+    <div class="city-forecast" id="cityForecast" data-name="Lovech" data-lat="43.137" data-lon="24.7142" data-query="city=Lovech&lat=43.1370&lon=24.7142&cc=BG" data-warn="lovech">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Forti raffiche di vento oggi: fino a 61 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Lovech: giovedì 12 novembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">12° / 24°</span>
-        <p class="storm-now-status">Nuvoloso · probabilità di pioggia 5%</p>
-        <p class="storm-updated">Previsione del 12 novembre 2026</p>
+        <h2>Lovech: venerdì 13 novembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">13° / 24°</span>
+        <p class="storm-now-status">Pioviggine · probabilità di pioggia 86%</p>
+        <p class="storm-updated">Previsione del 13 novembre 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsioni a 7 giorni</h3>
-        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà giovedì 12 novembre (fino a 24°) e il più freddo domenica 15 novembre (fino a 5°). Sono previste precipitazioni in 3 dei giorni. Le massime sono sopra la media di novembre (in media 13°).</p>
+        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà venerdì 13 novembre (fino a 24°) e il più freddo domenica 15 novembre (fino a 4°). Sono previste precipitazioni in 4 dei giorni. Le massime sono sopra la media di novembre (in media 13°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Lovech&lat=43.1370&lon=24.7142&cc=BG&date=2026-11-12" title="Ora per ora →">
-            <span class="kp-day-name">gio 12</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">12° / 24°</span>
-            <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">5%</span>
-            <span class="city-day-wind">Vento 18 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Lovech&lat=43.1370&lon=24.7142&cc=BG&date=2026-11-13" title="Ora per ora →">
             <span class="kp-day-name">ven 13</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">13° / 24°</span>
             <span class="kp-day-status">Pioviggine</span>
-            <span class="city-day-rain" title="probabilità di pioggia">61% · 0.4 mm</span>
-            <span class="city-day-wind">Vento 25 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">86% · 0.5 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 23 km/h · raffiche 61</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Lovech&lat=43.1370&lon=24.7142&cc=BG&date=2026-11-14" title="Ora per ora →">
             <span class="kp-day-name">sab 14</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">7° / 12°</span>
-            <span class="kp-day-status">Pioggia</span>
-            <span class="city-day-rain" title="probabilità di pioggia">88% · 3.2 mm</span>
-            <span class="city-day-wind">Vento 18 km/h</span>
+            <span class="city-day-temp">7° / 13°</span>
+            <span class="kp-day-status">Pioviggine</span>
+            <span class="city-day-rain" title="probabilità di pioggia">87% · 2.1 mm</span>
+            <span class="city-day-wind">Vento 17 km/h · raffiche 41</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Lovech&lat=43.1370&lon=24.7142&cc=BG&date=2026-11-15" title="Ora per ora →">
             <span class="kp-day-name">dom 15</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">5° / 12°</span>
+            <span class="city-day-temp">4° / 12°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">6%</span>
-            <span class="city-day-wind">Vento 9 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">2%</span>
+            <span class="city-day-wind">Vento 11 km/h · raffiche 24</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Lovech&lat=43.1370&lon=24.7142&cc=BG&date=2026-11-16" title="Ora per ora →">
             <span class="kp-day-name">lun 16</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">5° / 12°</span>
+            <span class="city-day-temp">6° / 12°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">7%</span>
-            <span class="city-day-wind">Vento 10 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">15%</span>
+            <span class="city-day-wind">Vento 9 km/h · raffiche 25</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Lovech&lat=43.1370&lon=24.7142&cc=BG&date=2026-11-17" title="Ora per ora →">
             <span class="kp-day-name">mar 17</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">7° / 18°</span>
-            <span class="kp-day-status">Pioviggine</span>
-            <span class="city-day-rain" title="probabilità di pioggia">20% · 0.9 mm</span>
-            <span class="city-day-wind">Vento 11 km/h</span>
+            <span class="city-day-temp">8° / 18°</span>
+            <span class="kp-day-status">Nuvoloso</span>
+            <span class="city-day-rain" title="probabilità di pioggia">14%</span>
+            <span class="city-day-wind">Vento 11 km/h · raffiche 29</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Lovech&lat=43.1370&lon=24.7142&cc=BG&date=2026-11-18" title="Ora per ora →">
             <span class="kp-day-name">mer 18</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">8° / 20°</span>
+            <span class="city-day-temp">9° / 19°</span>
             <span class="kp-day-status">Pioggia</span>
-            <span class="city-day-rain" title="probabilità di pioggia">47% · 2.1 mm</span>
-            <span class="city-day-wind">Vento 12 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">58% · 3.9 mm</span>
+            <span class="city-day-wind">Vento 16 km/h · raffiche 49</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Lovech&lat=43.1370&lon=24.7142&cc=BG&date=2026-11-19" title="Ora per ora →">
+            <span class="kp-day-name">gio 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">8° / 14°</span>
+            <span class="kp-day-status">Pioggia</span>
+            <span class="city-day-rain" title="probabilità di pioggia">66% · 6.3 mm</span>
+            <span class="city-day-wind">Vento 26 km/h · raffiche 57</span>
           </a>
         </div>
         <p class="forecast-note">Mediana dei modelli ECMWF, ICON e GFS · altitudine 178 m</p>
@@ -210,7 +213,7 @@
 
     <section class="info-card city-climate">
       <h2>Il clima a Lovech</h2>
-      <p>Lovech si trova a circa 180 m di altitudine. Il mese più caldo è agosto, con una massima media di 30°C; il più freddo è gennaio, quando di notte la temperatura scende in media a −2°C. In un anno cadono in media circa 710 mm di precipitazioni, soprattutto a giugno (circa 107 mm).</p>
+      <p>Lovech si trova a circa 180 m di altitudine. Il mese più caldo è agosto, con una massima media di 30°C; il più freddo è gennaio, quando di notte la temperatura scende in media a −2°C. In un anno cadono in media circa 710 mm di precipitazioni, soprattutto a giugno (circa 107 mm). La temperatura più alta a Lovech nel periodo 2015–2024 è stata di 41°C (5 agosto 2021), la più bassa di −20°C (1 gennaio 2015).</p>
       <p>Loveč si trova nella valle del fiume Osăm, nel Prebalcano, tra la pianura danubiana e i Balcani. Il clima è continentale temperato ma più umido che in pianura per via dei pendii montani vicini. Le estati sono calde e gli inverni freddi, e nella stretta gola del fiume aria fredda e nebbia ristagnano più a lungo.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -250,9 +253,9 @@
       <p class="storm-updated">Oltre confine:</p>
       <div class="city-links">
         <a href="/it/europe/romania/bucharest/" class="recent-place">Bucarest · 182 km</a>
+        <a href="/it/europe/turkey/edirne/" class="recent-place">Adrianopoli · 222 km</a>
         <a href="/it/europe/serbia/nis/" class="recent-place">Niš · 229 km</a>
-        <a href="/it/europe/romania/brasov/" class="recent-place">Brașov · 287 km</a>
-        <a href="/it/europe/north-macedonia/skopje/" class="recent-place">Skopje · 298 km</a>
+        <a href="/it/europe/greece/kavala/" class="recent-place">Kavala · 246 km</a>
       </div>
     </section>
 
@@ -315,6 +318,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

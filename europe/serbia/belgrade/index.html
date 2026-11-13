@@ -96,7 +96,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -121,78 +121,81 @@
     <p class="storm-intro">Прогноза за времето в Белград, Сърбия, за днес, утре и следващите 7 дни: температура, валежи, вятър и вероятност за валеж. Местно име: Beograd (Vreme Beograd). Данните са от Open-Meteo и се обновяват на всеки час.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Белград" data-lat="44.7866" data-lon="20.4489" data-query="city=%D0%91%D0%B5%D0%BB%D0%B3%D1%80%D0%B0%D0%B4&lat=44.7866&lon=20.4489&cc=RS">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Силни пориви на вятъра днес: до 64 км/ч</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Белград: четвъртък, 12 ноември</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">13° / 20°</span>
-        <p class="storm-now-status">Дъжд · вероятност за валеж 90%</p>
-        <p class="storm-updated">Прогноза от 12 ноември 2026 г.</p>
+        <h2>Белград: петък, 13 ноември</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">6° / 22°</span>
+        <p class="storm-now-status">Дъжд · вероятност за валеж 98%</p>
+        <p class="storm-updated">Прогноза от 13 ноември 2026 г.</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Прогноза за 7 дни</h3>
-        <p class="city-summary">През следващите 7 дни най-топло ще е в петък, 13 ноември (до 22°), а най-студено – в неделя, 15 ноември (до 3°). Валежи се очакват в 5 от дните. Дневните температури са по-високи от обичайните за ноември (средно 12°).</p>
+        <p class="city-summary">През следващите 7 дни най-топло ще е в петък, 13 ноември (до 22°), а най-студено – в неделя, 15 ноември (до 4°). Валежи се очакват в 6 от дните. Дневните температури са по-високи от обичайните за ноември (средно 12°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=%D0%91%D0%B5%D0%BB%D0%B3%D1%80%D0%B0%D0%B4&lat=44.7866&lon=20.4489&cc=RS&date=2026-11-12" title="По часове →">
-            <span class="kp-day-name">чт, 12</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">13° / 20°</span>
-            <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">90% · 4.0 mm</span>
-            <span class="city-day-wind">Вятър 22 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%91%D0%B5%D0%BB%D0%B3%D1%80%D0%B0%D0%B4&lat=44.7866&lon=20.4489&cc=RS&date=2026-11-13" title="По часове →">
             <span class="kp-day-name">пт, 13</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">7° / 22°</span>
+            <span class="city-day-temp">6° / 22°</span>
             <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">91% · 5.3 mm</span>
-            <span class="city-day-wind">Вятър 25 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">98% · 5.6 mm</span>
+            <span class="city-day-wind city-day-gusts">Вятър 24 km/h · пориви 64</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%91%D0%B5%D0%BB%D0%B3%D1%80%D0%B0%D0%B4&lat=44.7866&lon=20.4489&cc=RS&date=2026-11-14" title="По часове →">
             <span class="kp-day-name">сб, 14</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">5° / 9°</span>
+            <span class="city-day-temp">5° / 10°</span>
             <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">84% · 3.4 mm</span>
-            <span class="city-day-wind">Вятър 13 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">94% · 5.0 mm</span>
+            <span class="city-day-wind">Вятър 14 km/h · пориви 30</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%91%D0%B5%D0%BB%D0%B3%D1%80%D0%B0%D0%B4&lat=44.7866&lon=20.4489&cc=RS&date=2026-11-15" title="По часове →">
             <span class="kp-day-name">нд, 15</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">3° / 10°</span>
+            <span class="city-day-temp">4° / 11°</span>
             <span class="kp-day-status">Облачно</span>
-            <span class="city-day-rain" title="вероятност за валеж">3%</span>
-            <span class="city-day-wind">Вятър 21 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">16%</span>
+            <span class="city-day-wind">Вятър 20 km/h · пориви 53</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%91%D0%B5%D0%BB%D0%B3%D1%80%D0%B0%D0%B4&lat=44.7866&lon=20.4489&cc=RS&date=2026-11-16" title="По часове →">
             <span class="kp-day-name">пн, 16</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">6° / 12°</span>
+            <span class="city-day-temp">7° / 13°</span>
             <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">33% · 0.6 mm</span>
-            <span class="city-day-wind">Вятър 21 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">57% · 5.3 mm</span>
+            <span class="city-day-wind">Вятър 22 km/h · пориви 50</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%91%D0%B5%D0%BB%D0%B3%D1%80%D0%B0%D0%B4&lat=44.7866&lon=20.4489&cc=RS&date=2026-11-17" title="По часове →">
             <span class="kp-day-name">вт, 17</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">9° / 15°</span>
-            <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">46% · 8.0 mm</span>
-            <span class="city-day-wind">Вятър 19 km/h</span>
+            <span class="city-day-temp">7° / 20°</span>
+            <span class="kp-day-status">Ръмеж</span>
+            <span class="city-day-rain" title="вероятност за валеж">58% · 1.9 mm</span>
+            <span class="city-day-wind">Вятър 19 km/h · пориви 55</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%91%D0%B5%D0%BB%D0%B3%D1%80%D0%B0%D0%B4&lat=44.7866&lon=20.4489&cc=RS&date=2026-11-18" title="По часове →">
             <span class="kp-day-name">ср, 18</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">10° / 15°</span>
-            <span class="kp-day-status">Ръмеж</span>
-            <span class="city-day-rain" title="вероятност за валеж">61% · 6.1 mm</span>
-            <span class="city-day-wind">Вятър 24 km/h</span>
+            <span class="city-day-temp">9° / 17°</span>
+            <span class="kp-day-status">Дъжд</span>
+            <span class="city-day-rain" title="вероятност за валеж">78% · 16.5 mm</span>
+            <span class="city-day-wind city-day-gusts">Вятър 18 km/h · пориви 62</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=%D0%91%D0%B5%D0%BB%D0%B3%D1%80%D0%B0%D0%B4&lat=44.7866&lon=20.4489&cc=RS&date=2026-11-19" title="По часове →">
+            <span class="kp-day-name">чт, 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">6° / 12°</span>
+            <span class="kp-day-status">Дъжд</span>
+            <span class="city-day-rain" title="вероятност за валеж">60% · 3.0 mm</span>
+            <span class="city-day-wind">Вятър 11 km/h · пориви 22</span>
           </a>
         </div>
         <p class="forecast-note">Медиана на моделите ECMWF, ICON и GFS · надм. височина 169 м</p>
@@ -206,23 +209,23 @@
 
     <section class="info-card city-sun-table">
       <h2>Изгрев и залез в Белград</h2>
-      <p>Най-дългият ден в Белград е около 21 юни: слънцето изгрява в 04:52 ч., залязва в 20:27 ч. и денят е 15 ч 35 мин. Най-краткият е около 21 декември – от 07:12 ч. до 16:00 ч., общо 8 ч 48 мин. Днешният изгрев и залез са до прогнозата по-горе.</p>
+      <p>Най-дългият ден в Белград е около 21 юни: слънцето изгрява в 04:52, залязва в 20:27 и денят е 15 ч 35 мин. Най-краткият е около 21 декември – от 07:12 до 16:00, общо 8 ч 48 мин. Днешният изгрев и залез са до прогнозата по-горе.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
         <thead><tr><th>Дата</th><th>Изгрев</th><th>Залез</th><th>Дължина на деня</th></tr></thead>
         <tbody>
-          <tr><td>15 януари</td><td>07:12 ч.</td><td>16:23 ч.</td><td>9 ч 11 мин</td></tr>
-          <tr><td>15 февруари</td><td>06:38 ч.</td><td>17:06 ч.</td><td>10 ч 27 мин</td></tr>
-          <tr><td>15 март</td><td>05:50 ч.</td><td>17:44 ч.</td><td>11 ч 53 мин</td></tr>
-          <tr><td>15 април</td><td>05:54 ч.</td><td>19:23 ч.</td><td>13 ч 29 мин</td></tr>
-          <tr><td>15 май</td><td>05:10 ч.</td><td>19:59 ч.</td><td>14 ч 50 мин</td></tr>
-          <tr><td>15 юни</td><td>04:51 ч.</td><td>20:25 ч.</td><td>15 ч 34 мин</td></tr>
-          <tr><td>15 юли</td><td>05:06 ч.</td><td>20:21 ч.</td><td>15 ч 15 мин</td></tr>
-          <tr><td>15 август</td><td>05:40 ч.</td><td>19:44 ч.</td><td>14 ч 04 мин</td></tr>
-          <tr><td>15 септември</td><td>06:16 ч.</td><td>18:49 ч.</td><td>12 ч 33 мин</td></tr>
-          <tr><td>15 октомври</td><td>06:53 ч.</td><td>17:53 ч.</td><td>11 ч 00 мин</td></tr>
-          <tr><td>15 ноември</td><td>06:35 ч.</td><td>16:10 ч.</td><td>9 ч 35 мин</td></tr>
-          <tr><td>15 декември</td><td>07:08 ч.</td><td>15:57 ч.</td><td>8 ч 49 мин</td></tr>
+          <tr><td>15 януари</td><td>07:12</td><td>16:23</td><td>9 ч 11 мин</td></tr>
+          <tr><td>15 февруари</td><td>06:38</td><td>17:06</td><td>10 ч 27 мин</td></tr>
+          <tr><td>15 март</td><td>05:50</td><td>17:44</td><td>11 ч 53 мин</td></tr>
+          <tr><td>15 април</td><td>05:54</td><td>19:23</td><td>13 ч 29 мин</td></tr>
+          <tr><td>15 май</td><td>05:10</td><td>19:59</td><td>14 ч 50 мин</td></tr>
+          <tr><td>15 юни</td><td>04:51</td><td>20:25</td><td>15 ч 34 мин</td></tr>
+          <tr><td>15 юли</td><td>05:06</td><td>20:21</td><td>15 ч 15 мин</td></tr>
+          <tr><td>15 август</td><td>05:40</td><td>19:44</td><td>14 ч 04 мин</td></tr>
+          <tr><td>15 септември</td><td>06:16</td><td>18:49</td><td>12 ч 33 мин</td></tr>
+          <tr><td>15 октомври</td><td>06:53</td><td>17:53</td><td>11 ч 00 мин</td></tr>
+          <tr><td>15 ноември</td><td>06:35</td><td>16:10</td><td>9 ч 35 мин</td></tr>
+          <tr><td>15 декември</td><td>07:08</td><td>15:57</td><td>8 ч 49 мин</td></tr>
         </tbody>
       </table>
       </div>
@@ -231,7 +234,7 @@
 
     <section class="info-card city-climate">
       <h2>Климатът в Белград</h2>
-      <p>Белград е на около 170 м надморска височина. Най-топлият месец е август със средна максимална температура 29°C, а най-студеният е януари, когато нощем температурата пада средно до −2°C. Средно за година падат около 710 мм валежи, най-много през юни (около 89 мм).</p>
+      <p>Белград е на около 170 м надморска височина. Най-топлият месец е август със средна максимална температура 29°C, а най-студеният е януари, когато нощем температурата пада средно до −2°C. Средно за година падат около 710 мм валежи, най-много през юни (около 89 мм). Най-високата температура в Белград за 2015–2024 г. е 38°C (16 юли 2024 г.), а най-ниската – −18°C (1 януари 2015 г.).</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
         <thead><tr><th>Месец</th><th>Ср. макс.</th><th>Ср. мин.</th><th>Валежи</th><th>Дни с валеж</th></tr></thead>
@@ -321,6 +324,7 @@
         <a href="/europe/spain/" class="recent-place">Испания</a>
         <a href="/europe/sweden/" class="recent-place">Швеция</a>
         <a href="/europe/switzerland/" class="recent-place">Швейцария</a>
+        <a href="/europe/turkey/" class="recent-place">Турция</a>
         <a href="/europe/ukraine/" class="recent-place">Украйна</a>
         <a href="/europe/united-kingdom/" class="recent-place">Обединеното кралство</a>
       </div>
@@ -345,6 +349,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

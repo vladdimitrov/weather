@@ -4,6 +4,8 @@
 //   /vremeto/<city>/uikend/          "времето в Банско през уикенда" (Bulgarian only, the tourist places)
 //   /vremeto/chernomorie/, /vremeto/morska-voda/, /vremeto/snyag-kurorti/, /vremeto/zhegi/,
 //   /vremeto/parvi-snyag/            regional and seasonal pages (Bulgarian only); live tables: /js/region-weather.js
+//   /europe/greece/belomorie/, /europe/greece/halkidiki/, /europe/greece/more/, /europe/turkey/more/
+//                                    resorts abroad: 7 days and sea water (Bulgarian only)
 //   /praznici/pochivni-dni-<year>/   long weekends and working days (Bulgarian only), from holidays-BG.json
 //   /uidzhet/                        the free "weather in [city]" widget (/widget/weather.html) for other sites
 // Texts: text-extra.js. Run from the repository root after build-pages.js (it refreshes
@@ -15,6 +17,7 @@ const { page, write, VERSION, placeJson, daysOff } = require('./build-pages.js')
 const CITIES = require('./bg-cities.js');
 const COUNTRIES = require('./europe-data.js');
 const PLACES = require('./places.js');
+const { provinceOf } = require('./bg-provinces.js');
 const { BG, CITIES_PAGE, bgIn } = require('./text-extra.js');
 const { TXT } = require('./text-pages.js');
 
@@ -73,6 +76,7 @@ ${group(T.bulgaria, '/vremeto/', bulgaria)}${lang === 'bg' ? `
       <h2>${T.seasons}</h2>
       <div class="city-links">
         ${Object.entries(BG.regionLinks).map(([slug, text]) => `<a href="/vremeto/${slug}/" class="recent-place">${text}</a>`).join('\n        ')}
+        ${Object.entries(BG.abroadLinks).map(([key, text]) => `<a href="/europe/${key}/" class="recent-place">${text}</a>`).join('\n        ')}
       </div>
     </section>` : ''}
 ${countries.map(({ country, name }) => group(name, `/europe/${country.slug}/`, PLACES.PLACES.filter(place => place.countrySlug === country.slug))).join('\n')}`
@@ -107,7 +111,7 @@ function forecastPage(city, kind) {
     <h1>${T.h1(city.name)}</h1>
     <p class="storm-intro">${T.intro(city.name)}</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="${esc(city.name)}" data-lat="${city.lat}" data-lon="${city.lon}" data-query="${params}"${extra}>
+    <div class="city-forecast" id="cityForecast" data-name="${esc(city.name)}" data-lat="${city.lat}" data-lon="${city.lon}" data-query="${params}" data-warn="${provinceOf(city.slug)}"${extra}>
       <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">${TXT.bg.loading}</p></div>
       <div class="kp-forecast" id="cityDays" hidden></div>
     </div>
@@ -283,7 +287,63 @@ ${extra}
       <h2>${BG.regionLinksH}</h2>
       <div class="city-links">
         ${others}
+        ${Object.entries(BG.abroadLinks).map(([key, text]) => `<a href="/europe/${key}/" class="recent-place">${text}</a>`).join('\n        ')}
         <a href="/gradove/" class="recent-place">${I18N.NAV.bg.cities}</a>
+      </div>
+    </section>`,
+    scripts: REGION_SCRIPTS
+  });
+}
+
+// ---- Regional pages abroad: /europe/greece/belomorie/, /halkidiki/, /more/, /europe/turkey/more/ ----
+function abroadPage(key) {
+  const R = BG.abroad[key];
+  const [countrySlug] = key.split('/');
+  const country = COUNTRIES.find(c => c.slug === countrySlug);
+  const countryName = new Intl.DisplayNames(['bg-BG'], { type: 'region' }).of(country.code);
+  const url = `/europe/${key}/`;
+  const link = ([name, lat, lon, city]) => (city
+    ? `<a href="/europe/${countrySlug}/${city}/">${esc(name)}</a>`
+    : `<a href="/weather/?${new URLSearchParams({ city: name, lat: lat.toFixed(4), lon: lon.toFixed(4), cc: country.code })}">${esc(name)}</a>`);
+  const days = R.seaOnly ? '' : `
+    <section class="info-card">
+      <h2>${BG.abroadTableDays}</h2>
+${liveTable('days', [], R.places.map(place => row(link(place), place[1], place[2])), BG.regions.chernomorie.tableNote)}
+    </section>`;
+  const sea = `
+    <section class="info-card">
+      <h2>${BG.abroadTableSea}</h2>
+${liveTable('sea', BG.tableHead.sea, R.places.map(place => row(link(place), place[4][0], place[4][1])), BG.abroadSeaNote)}
+    </section>`;
+  const tiles = R.seaOnly ? '' : `
+    <div class="city-grid" id="cityList">
+      ${R.places.map(([name, lat, lon, city]) => `<a href="${city ? `/europe/${countrySlug}/${city}/` : `/weather/?${new URLSearchParams({ city: name, lat: lat.toFixed(4), lon: lon.toFixed(4), cc: country.code })}`}" class="city-tile" data-lat="${lat}" data-lon="${lon}"><span class="city-tile-name">${esc(name)}</span><span class="city-tile-temp"></span></a>`).join('\n      ')}
+    </div>`;
+  const others = Object.entries(BG.abroadLinks).filter(([other]) => other !== key)
+    .map(([other, text]) => `<a href="/europe/${other}/" class="recent-place">${text}</a>`).join('\n        ');
+  return page({
+    ...ONLY_BG,
+    url,
+    title: R.title,
+    description: R.description,
+    jsonLd: breadcrumbs('bg', [['Weather Pulse', '/'], ['Времето в Европа', '/europe/'], [countryName, `/europe/${countrySlug}/`], [R.h1, url]]),
+    body: `    ${REGION_STYLE}
+    <p class="breadcrumbs"><a href="/europe/">Времето в Европа</a> › <a href="/europe/${countrySlug}/">${esc(countryName)}</a> › ${R.h1}</p>
+    <h1>${R.h1}</h1>
+    <p class="storm-intro">${R.intro}</p>
+${tiles}${days}${sea}
+${R.sections.map(([h, p]) => `
+    <section class="info-card">
+      <h2>${h}</h2>
+      <p>${p}</p>
+    </section>`).join('')}
+
+    <section class="info-card">
+      <h2>${BG.abroadLinksH}</h2>
+      <div class="city-links">
+        ${others}
+        <a href="/vremeto/morska-voda/" class="recent-place">${BG.regionLinks['morska-voda']} в България</a>
+        <a href="/europe/${countrySlug}/" class="recent-place">${esc(countryName)}: всички градове</a>
       </div>
     </section>`,
     scripts: REGION_SCRIPTS
@@ -428,6 +488,7 @@ CITIES.forEach(city => {
   if (PLACES.TOURIST_BG.includes(city.slug)) write(`vremeto/${city.slug}/uikend`, forecastPage(city, 'weekend'));
 });
 Object.keys(BG.regions).forEach(slug => write(`vremeto/${slug}`, regionPage(slug)));
+Object.keys(BG.abroad).forEach(key => write(`europe/${key}`, abroadPage(key)));
 const years = Object.keys(HOLIDAYS).map(Number).sort().slice(-2);
 years.forEach(year => write(`praznici/pochivni-dni-${year}`, daysOffPage(year, years)));
 write('uidzhet', widgetPage());

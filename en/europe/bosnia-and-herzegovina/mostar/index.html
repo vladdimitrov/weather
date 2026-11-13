@@ -96,7 +96,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -121,78 +121,81 @@
     <p class="storm-intro">Weather forecast for Mostar, Bosnia and Herzegovina, for today, tomorrow and the next 7 days: temperature, rain, wind and chance of precipitation. Data from Open-Meteo, updated every hour.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Mostar" data-lat="43.3438" data-lon="17.8078" data-query="city=Mostar&lat=43.3438&lon=17.8078&cc=BA">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Strong wind gusts today: up to 69 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Mostar: Thursday 12 November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">16° / 19°</span>
-        <p class="storm-now-status">Rain · chance of rain 100%</p>
-        <p class="storm-updated">Forecast issued on 12 November 2026</p>
+        <h2>Mostar: Friday 13 November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">10° / 19°</span>
+        <p class="storm-now-status">Thunderstorm · chance of rain 100%</p>
+        <p class="storm-updated">Forecast issued on 13 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Thursday 12 November (up to 19°) and the coldest Saturday 14 November (down to 8°). Rain or snow is expected on 6 of the days. Daytime temperatures are close to normal for November (average high 16°).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Friday 13 November (up to 19°) and the coldest Saturday 14 November (down to 8°). Rain or snow is expected on 7 of the days. Daytime temperatures are close to normal for November (average high 16°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA&date=2026-11-12" title="Hourly forecast →">
-            <span class="kp-day-name">Thu 12</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">16° / 19°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">100% · 24.9 mm</span>
-            <span class="city-day-wind">Wind 33 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA&date=2026-11-13" title="Hourly forecast →">
             <span class="kp-day-name">Fri 13</span>
             <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">9° / 18°</span>
+            <span class="city-day-temp">10° / 19°</span>
             <span class="kp-day-status">Thunderstorm</span>
-            <span class="city-day-rain" title="chance of rain">100% · 87.5 mm</span>
-            <span class="city-day-wind">Wind 34 km/h</span>
+            <span class="city-day-rain" title="chance of rain">100% · 82.8 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 28 km/h · gusts 69</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA&date=2026-11-14" title="Hourly forecast →">
             <span class="kp-day-name">Sat 14</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">8° / 12°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">96% · 5.8 mm</span>
-            <span class="city-day-wind">Wind 21 km/h</span>
+            <span class="city-day-temp">8° / 13°</span>
+            <span class="kp-day-status">Drizzle</span>
+            <span class="city-day-rain" title="chance of rain">94% · 2.4 mm</span>
+            <span class="city-day-wind">Wind 22 km/h · gusts 60</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA&date=2026-11-15" title="Hourly forecast →">
             <span class="kp-day-name">Sun 15</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">9° / 15°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">44% · 0.1 mm</span>
-            <span class="city-day-wind">Wind 7 km/h</span>
+            <span class="city-day-temp">9° / 14°</span>
+            <span class="kp-day-status">Drizzle</span>
+            <span class="city-day-rain" title="chance of rain">63% · 6.2 mm</span>
+            <span class="city-day-wind">Wind 8 km/h · gusts 17</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA&date=2026-11-16" title="Hourly forecast →">
             <span class="kp-day-name">Mon 16</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">13° / 16°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">97% · 12.6 mm</span>
-            <span class="city-day-wind">Wind 14 km/h</span>
+            <span class="city-day-temp">12° / 16°</span>
+            <span class="kp-day-status">Thunderstorm</span>
+            <span class="city-day-rain" title="chance of rain">100% · 25.0 mm</span>
+            <span class="city-day-wind">Wind 17 km/h · gusts 49</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA&date=2026-11-17" title="Hourly forecast →">
             <span class="kp-day-name">Tue 17</span>
-            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">12° / 18°</span>
-            <span class="kp-day-status">Thunderstorm</span>
-            <span class="city-day-rain" title="chance of rain">90% · 37.5 mm</span>
-            <span class="city-day-wind">Wind 18 km/h</span>
+            <span class="city-day-temp">11° / 17°</span>
+            <span class="kp-day-status">Rain</span>
+            <span class="city-day-rain" title="chance of rain">89% · 6.5 mm</span>
+            <span class="city-day-wind">Wind 15 km/h · gusts 52</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA&date=2026-11-18" title="Hourly forecast →">
             <span class="kp-day-name">Wed 18</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">12° / 17°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">87% · 34.5 mm</span>
-            <span class="city-day-wind">Wind 28 km/h</span>
+            <span class="city-day-temp">11° / 17°</span>
+            <span class="kp-day-status">Thunderstorm</span>
+            <span class="city-day-rain" title="chance of rain">97% · 56.6 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 23 km/h · gusts 79</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Mostar&lat=43.3438&lon=17.8078&cc=BA&date=2026-11-19" title="Hourly forecast →">
+            <span class="kp-day-name">Thu 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">11° / 16°</span>
+            <span class="kp-day-status">Drizzle</span>
+            <span class="city-day-rain" title="chance of rain">76% · 6.2 mm</span>
+            <span class="city-day-wind">Wind 7 km/h · gusts 44</span>
           </a>
         </div>
         <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 64 m</p>
@@ -231,7 +234,7 @@
 
     <section class="info-card city-climate">
       <h2>The climate in Mostar</h2>
-      <p>Mostar is about 64 m above sea level. The warmest month is July, with an average high of 32°C; the coldest is January, when nights average 1°C. Around 1940 mm of precipitation falls in a year on average, most of it in November (about 297 mm).</p>
+      <p>Mostar is about 64 m above sea level. The warmest month is July, with an average high of 32°C; the coldest is January, when nights average 1°C. Around 1940 mm of precipitation falls in a year on average, most of it in November (about 297 mm). The highest temperature in Mostar in 2015–2024 was 40°C (5 August 2017) and the lowest −12°C (8 January 2017).</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
         <thead><tr><th>Month</th><th>Avg. high</th><th>Avg. low</th><th>Precipitation</th><th>Rain days</th></tr></thead>
@@ -321,6 +324,7 @@
         <a href="/en/europe/spain/" class="recent-place">Spain</a>
         <a href="/en/europe/sweden/" class="recent-place">Sweden</a>
         <a href="/en/europe/switzerland/" class="recent-place">Switzerland</a>
+        <a href="/en/europe/turkey/" class="recent-place">Turkey</a>
         <a href="/en/europe/ukraine/" class="recent-place">Ukraine</a>
         <a href="/en/europe/united-kingdom/" class="recent-place">United Kingdom</a>
       </div>
@@ -345,6 +349,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

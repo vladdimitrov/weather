@@ -94,7 +94,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -119,78 +119,82 @@
     <p class="storm-intro">Previsión del tiempo en Akureyri, Islandia, para hoy, mañana y los próximos 7 días: temperatura, lluvia, viento y probabilidad de precipitación. Datos de Open-Meteo, actualizados cada hora.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Akureyri" data-lat="65.6835" data-lon="-18.1105" data-query="city=Akureyri&lat=65.6835&lon=-18.1105&cc=IS">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-orange">Rachas de viento muy fuertes hoy: hasta 103 km/h</p>
+        <p class="city-alert city-alert-orange">Rachas de viento muy fuertes mañana: hasta 97 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Akureyri: jueves, 12 de noviembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">−7° / 0°</span>
-        <p class="storm-now-status">Nieve · probabilidad de lluvia 94%</p>
-        <p class="storm-updated">Previsión del 12 de noviembre de 2026</p>
+        <h2>Akureyri: viernes, 13 de noviembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">−5° / 2°</span>
+        <p class="storm-now-status">Nieve · probabilidad de lluvia 100%</p>
+        <p class="storm-updated">Previsión del 13 de noviembre de 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsión a 7 días</h3>
-        <p class="city-summary">En los próximos 7 días el día más cálido será el viernes, 13 de noviembre (hasta 2°) y el más frío el domingo, 15 de noviembre (hasta −16°). Se esperan precipitaciones en 4 de los días. Las máximas están por debajo de lo normal para noviembre (media de 2°).</p>
+        <p class="city-summary">En los próximos 7 días el día más cálido será el viernes, 13 de noviembre (hasta 2°) y el más frío el lunes, 16 de noviembre (hasta −15°). Se esperan precipitaciones en 3 de los días. Las máximas están por debajo de lo normal para noviembre (media de 2°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Akureyri&lat=65.6835&lon=-18.1105&cc=IS&date=2026-11-12" title="Por horas →">
-            <span class="kp-day-name">jue 12</span>
-            <span class="city-day-icon" aria-hidden="true">❄️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">−7° / 0°</span>
-            <span class="kp-day-status">Nieve</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">94% · 1.6 mm</span>
-            <span class="city-day-wind">Viento 15 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Akureyri&lat=65.6835&lon=-18.1105&cc=IS&date=2026-11-13" title="Por horas →">
             <span class="kp-day-name">vie 13</span>
             <span class="city-day-icon" aria-hidden="true">❄️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">−5° / 2°</span>
             <span class="kp-day-status">Nieve</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">100% · 24.4 mm</span>
-            <span class="city-day-wind">Viento 34 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">100% · 18.6 mm</span>
+            <span class="city-day-wind city-day-gusts">Viento 57 km/h · rachas 103</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Akureyri&lat=65.6835&lon=-18.1105&cc=IS&date=2026-11-14" title="Por horas →">
             <span class="kp-day-name">sáb 14</span>
             <span class="city-day-icon" aria-hidden="true">❄️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">−12° / 0°</span>
+            <span class="city-day-temp">−11° / −1°</span>
             <span class="kp-day-status">Nieve</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">100% · 12.2 mm</span>
-            <span class="city-day-wind">Viento 38 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">100% · 9.4 mm</span>
+            <span class="city-day-wind city-day-gusts">Viento 53 km/h · rachas 97</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Akureyri&lat=65.6835&lon=-18.1105&cc=IS&date=2026-11-15" title="Por horas →">
             <span class="kp-day-name">dom 15</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">❄️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">−16° / −9°</span>
-            <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">52%</span>
-            <span class="city-day-wind">Viento 17 km/h</span>
+            <span class="city-day-temp">−12° / −10°</span>
+            <span class="kp-day-status">Nieve</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">65% · 0.8 mm</span>
+            <span class="city-day-wind">Viento 13 km/h · rachas 31</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Akureyri&lat=65.6835&lon=-18.1105&cc=IS&date=2026-11-16" title="Por horas →">
             <span class="kp-day-name">lun 16</span>
-            <span class="city-day-icon" aria-hidden="true">⛅</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">−15° / −9°</span>
-            <span class="kp-day-status">Parcialmente nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">6%</span>
-            <span class="city-day-wind">Viento 10 km/h</span>
+            <span class="city-day-temp">−15° / −10°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">3%</span>
+            <span class="city-day-wind">Viento 12 km/h · rachas 18</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Akureyri&lat=65.6835&lon=-18.1105&cc=IS&date=2026-11-17" title="Por horas →">
             <span class="kp-day-name">mar 17</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">−14° / −9°</span>
+            <span class="city-day-temp">−14° / −7°</span>
             <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">8%</span>
-            <span class="city-day-wind">Viento 7 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">5%</span>
+            <span class="city-day-wind">Viento 12 km/h · rachas 18</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Akureyri&lat=65.6835&lon=-18.1105&cc=IS&date=2026-11-18" title="Por horas →">
             <span class="kp-day-name">mié 18</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">−9° / −2°</span>
+            <span class="city-day-temp">−12° / −1°</span>
             <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">13%</span>
-            <span class="city-day-wind">Viento 9 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">17%</span>
+            <span class="city-day-wind">Viento 13 km/h · rachas 27</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Akureyri&lat=65.6835&lon=-18.1105&cc=IS&date=2026-11-19" title="Por horas →">
+            <span class="kp-day-name">jue 19</span>
+            <span class="city-day-icon" aria-hidden="true">❄️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">−5° / 1°</span>
+            <span class="kp-day-status">Nieve</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">17% · 0.8 mm</span>
+            <span class="city-day-wind">Viento 16 km/h · rachas 25</span>
           </a>
         </div>
         <p class="forecast-note">Mediana de los modelos ECMWF, ICON y GFS · altitud 47 m</p>
@@ -205,7 +209,7 @@
 
     <section class="info-card city-climate">
       <h2>El clima en Akureyri</h2>
-      <p>Akureyri está a unos 47 m sobre el nivel del mar. El mes más cálido es julio, con una máxima media de 14°C, y el más frío es diciembre, cuando por la noche la temperatura baja de media hasta −6°C. Al año caen de media unos 1220 mm de precipitación, sobre todo en diciembre (unos 144 mm).</p>
+      <p>Akureyri está a unos 47 m sobre el nivel del mar. El mes más cálido es julio, con una máxima media de 14°C, y el más frío es diciembre, cuando por la noche la temperatura baja de media hasta −6°C. Al año caen de media unos 1220 mm de precipitación, sobre todo en diciembre (unos 144 mm). La temperatura más alta en Akureyri en 2015–2024 fue de 25°C (25 de agosto de 2021) y la más baja de −22°C (30 de diciembre de 2024).</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
         <thead><tr><th>Mes</th><th>Máx. media</th><th>Mín. media</th><th>Precipitación</th><th>Días de lluvia</th></tr></thead>
@@ -293,6 +297,7 @@
         <a href="/es/europe/spain/" class="recent-place">España</a>
         <a href="/es/europe/sweden/" class="recent-place">Suecia</a>
         <a href="/es/europe/switzerland/" class="recent-place">Suiza</a>
+        <a href="/es/europe/turkey/" class="recent-place">Turquía</a>
         <a href="/es/europe/ukraine/" class="recent-place">Ucrania</a>
         <a href="/es/europe/united-kingdom/" class="recent-place">Reino Unido</a>
       </div>
@@ -317,6 +322,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

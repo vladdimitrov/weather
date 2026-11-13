@@ -73,7 +73,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -97,34 +97,28 @@
     <h1>Wetter in Vratsa</h1>
     <p class="storm-intro">Wettervorhersage für Vratsa für heute, morgen und die nächsten 7 Tage: Temperatur, Niederschlag, Wind und Regenwahrscheinlichkeit. Die Daten stammen von Open-Meteo und werden stündlich aktualisiert.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="Vratsa" data-lat="43.2102" data-lon="23.5529" data-query="city=Vratsa&lat=43.2102&lon=23.5529&cc=BG">
+    <div class="city-forecast" id="cityForecast" data-name="Vratsa" data-lat="43.2102" data-lon="23.5529" data-query="city=Vratsa&lat=43.2102&lon=23.5529&cc=BG" data-warn="vratsa">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Starke Windböen heute: bis 70 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Vratsa: Donnerstag, 12. November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">13° / 22°</span>
-        <p class="storm-now-status">Bewölkt · Regenwahrscheinlichkeit 3%</p>
-        <p class="storm-updated">Vorhersage vom 12. November 2026</p>
+        <h2>Vratsa: Freitag, 13. November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">11° / 22°</span>
+        <p class="storm-now-status">Nieselregen · Regenwahrscheinlichkeit 74%</p>
+        <p class="storm-updated">Vorhersage vom 13. November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-Tage-Vorhersage</h3>
-        <p class="city-summary">In den nächsten 7 Tagen ist Donnerstag, 12. November am wärmsten (bis 22°) und Sonntag, 15. November am kältesten (bis 2°). An 3 der Tage wird Niederschlag erwartet. Tagsüber ist es wärmer als üblich im November (im Mittel 12°).</p>
+        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 22°) und Sonntag, 15. November am kältesten (bis 3°). An 5 der Tage wird Niederschlag erwartet. Tagsüber ist es wärmer als üblich im November (im Mittel 12°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Vratsa&lat=43.2102&lon=23.5529&cc=BG&date=2026-11-12" title="Stündlich →">
-            <span class="kp-day-name">Do., 12.</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">13° / 22°</span>
-            <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">3%</span>
-            <span class="city-day-wind">Wind 17 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Vratsa&lat=43.2102&lon=23.5529&cc=BG&date=2026-11-13" title="Stündlich →">
             <span class="kp-day-name">Fr., 13.</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">11° / 22°</span>
             <span class="kp-day-status">Nieselregen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">55% · 0.7 mm</span>
-            <span class="city-day-wind">Wind 24 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">74% · 0.6 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 23 km/h · Böen 70</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Vratsa&lat=43.2102&lon=23.5529&cc=BG&date=2026-11-14" title="Stündlich →">
             <span class="kp-day-name">Sa., 14.</span>
@@ -132,44 +126,53 @@
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">4° / 11°</span>
             <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">85% · 6.3 mm</span>
-            <span class="city-day-wind">Wind 12 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">94% · 5.7 mm</span>
+            <span class="city-day-wind">Wind 13 km/h · Böen 36</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Vratsa&lat=43.2102&lon=23.5529&cc=BG&date=2026-11-15" title="Stündlich →">
             <span class="kp-day-name">So., 15.</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">2° / 10°</span>
+            <span class="city-day-temp">3° / 10°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">6%</span>
-            <span class="city-day-wind">Wind 8 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">8%</span>
+            <span class="city-day-wind">Wind 8 km/h · Böen 21</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Vratsa&lat=43.2102&lon=23.5529&cc=BG&date=2026-11-16" title="Stündlich →">
             <span class="kp-day-name">Mo., 16.</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">4° / 11°</span>
-            <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">18%</span>
-            <span class="city-day-wind">Wind 6 km/h</span>
+            <span class="city-day-temp">4° / 12°</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">39% · 1.2 mm</span>
+            <span class="city-day-wind">Wind 6 km/h · Böen 18</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Vratsa&lat=43.2102&lon=23.5529&cc=BG&date=2026-11-17" title="Stündlich →">
             <span class="kp-day-name">Di., 17.</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">6° / 17°</span>
-            <span class="kp-day-status">Nieselregen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">27% · 0.3 mm</span>
-            <span class="city-day-wind">Wind 9 km/h</span>
+            <span class="city-day-temp">6° / 18°</span>
+            <span class="kp-day-status">Bewölkt</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">20%</span>
+            <span class="city-day-wind">Wind 14 km/h · Böen 46</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Vratsa&lat=43.2102&lon=23.5529&cc=BG&date=2026-11-18" title="Stündlich →">
             <span class="kp-day-name">Mi., 18.</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">8° / 17°</span>
-            <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">52% · 1.8 mm</span>
-            <span class="city-day-wind">Wind 20 km/h</span>
+            <span class="city-day-temp">11° / 18°</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">65% · 9.9 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 23 km/h · Böen 62</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Vratsa&lat=43.2102&lon=23.5529&cc=BG&date=2026-11-19" title="Stündlich →">
+            <span class="kp-day-name">Do., 19.</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">7° / 14°</span>
+            <span class="kp-day-status">Bewölkt</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">64% · 0.3 mm</span>
+            <span class="city-day-wind">Wind 20 km/h · Böen 54</span>
           </a>
         </div>
         <p class="forecast-note">Median der Modelle ECMWF, ICON und GFS · Höhe 357 m</p>
@@ -210,7 +213,7 @@
 
     <section class="info-card city-climate">
       <h2>Das Klima in Vratsa</h2>
-      <p>Vratsa liegt auf etwa 360 m Höhe. Der wärmste Monat ist der August mit einer durchschnittlichen Höchsttemperatur von 28°C, der kälteste der Januar, wenn die Nächte im Schnitt auf −3°C abkühlen. Im Jahresmittel fallen etwa 870 mm Niederschlag, am meisten im Juni (rund 116 mm).</p>
+      <p>Vratsa liegt auf etwa 360 m Höhe. Der wärmste Monat ist der August mit einer durchschnittlichen Höchsttemperatur von 28°C, der kälteste der Januar, wenn die Nächte im Schnitt auf −3°C abkühlen. Im Jahresmittel fallen etwa 870 mm Niederschlag, am meisten im Juni (rund 116 mm). Die höchste Temperatur in Vratsa im Zeitraum 2015–2024 lag bei 40°C (5. August 2021), die tiefste bei −21°C (1. Januar 2015).</p>
       <p>Wraza liegt am Fuß des Wraza-Balkans, wo das Gebirge steil über der Donauebene aufsteigt. Wolken aus Nordwesten stauen sich an den Hängen, deshalb regnet es hier deutlich mehr als in den Städten der Ebene. Die Winter sind kalt, die Sommer warm, abends fließt kühle Luft aus den Bergen herab.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -315,6 +318,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

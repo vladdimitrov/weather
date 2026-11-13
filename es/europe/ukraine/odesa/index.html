@@ -94,7 +94,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -119,42 +119,36 @@
     <p class="storm-intro">Previsión del tiempo en Odesa, Ucrania, para hoy, mañana y los próximos 7 días: temperatura, lluvia, viento y probabilidad de precipitación. Nombre local: Одеса (Погода Одеса). Datos de Open-Meteo, actualizados cada hora.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Odesa" data-lat="46.4825" data-lon="30.7233" data-query="city=Odesa&lat=46.4825&lon=30.7233&cc=UA">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Rachas de viento fuertes hoy: hasta 61 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Odesa: jueves, 12 de noviembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">6° / 13°</span>
-        <p class="storm-now-status">Lluvia · probabilidad de lluvia 100%</p>
-        <p class="storm-updated">Previsión del 12 de noviembre de 2026</p>
+        <h2>Odesa: viernes, 13 de noviembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">10° / 18°</span>
+        <p class="storm-now-status">Lluvia · probabilidad de lluvia 20%</p>
+        <p class="storm-updated">Previsión del 13 de noviembre de 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsión a 7 días</h3>
-        <p class="city-summary">En los próximos 7 días el día más cálido será el viernes, 13 de noviembre (hasta 17°) y el más frío el domingo, 15 de noviembre (hasta 2°). Se esperan precipitaciones en 3 de los días. Las máximas están cerca de lo normal para noviembre (media de 10°).</p>
+        <p class="city-summary">En los próximos 7 días el día más cálido será el viernes, 13 de noviembre (hasta 18°) y el más frío el domingo, 15 de noviembre (hasta 2°). Se esperan precipitaciones en 3 de los días. Las máximas están por encima de lo normal para noviembre (media de 10°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Odesa&lat=46.4825&lon=30.7233&cc=UA&date=2026-11-12" title="Por horas →">
-            <span class="kp-day-name">jue 12</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">6° / 13°</span>
-            <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">100% · 8.4 mm</span>
-            <span class="city-day-wind">Viento 18 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Odesa&lat=46.4825&lon=30.7233&cc=UA&date=2026-11-13" title="Por horas →">
             <span class="kp-day-name">vie 13</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">11° / 17°</span>
-            <span class="kp-day-status">Niebla</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">20%</span>
-            <span class="city-day-wind">Viento 24 km/h</span>
+            <span class="city-day-temp">10° / 18°</span>
+            <span class="kp-day-status">Lluvia</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">20% · 0.8 mm</span>
+            <span class="city-day-wind city-day-gusts">Viento 23 km/h · rachas 61</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Odesa&lat=46.4825&lon=30.7233&cc=UA&date=2026-11-14" title="Por horas →">
             <span class="kp-day-name">sáb 14</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">4° / 10°</span>
-            <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">52% · 0.2 mm</span>
-            <span class="city-day-wind">Viento 23 km/h</span>
+            <span class="kp-day-status">Llovizna</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">54% · 1.1 mm</span>
+            <span class="city-day-wind">Viento 20 km/h · rachas 49</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Odesa&lat=46.4825&lon=30.7233&cc=UA&date=2026-11-15" title="Por horas →">
             <span class="kp-day-name">dom 15</span>
@@ -163,7 +157,7 @@
             <span class="city-day-temp">2° / 7°</span>
             <span class="kp-day-status">Parcialmente nublado</span>
             <span class="city-day-rain" title="probabilidad de lluvia">0%</span>
-            <span class="city-day-wind">Viento 11 km/h</span>
+            <span class="city-day-wind">Viento 12 km/h · rachas 35</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Odesa&lat=46.4825&lon=30.7233&cc=UA&date=2026-11-16" title="Por horas →">
             <span class="kp-day-name">lun 16</span>
@@ -171,26 +165,35 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">7° / 10°</span>
             <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">3%</span>
-            <span class="city-day-wind">Viento 20 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">0%</span>
+            <span class="city-day-wind">Viento 20 km/h · rachas 45</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Odesa&lat=46.4825&lon=30.7233&cc=UA&date=2026-11-17" title="Por horas →">
             <span class="kp-day-name">mar 17</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">17.11</span>
             <span class="city-day-temp">9° / 12°</span>
-            <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">19%</span>
-            <span class="city-day-wind">Viento 27 km/h</span>
+            <span class="kp-day-status">Lluvia</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">24% · 2.7 mm</span>
+            <span class="city-day-wind">Viento 20 km/h · rachas 44</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Odesa&lat=46.4825&lon=30.7233&cc=UA&date=2026-11-18" title="Por horas →">
             <span class="kp-day-name">mié 18</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">9° / 14°</span>
+            <span class="city-day-temp">11° / 14°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">35%</span>
+            <span class="city-day-wind city-day-gusts">Viento 28 km/h · rachas 66</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Odesa&lat=46.4825&lon=30.7233&cc=UA&date=2026-11-19" title="Por horas →">
+            <span class="kp-day-name">jue 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">6° / 13°</span>
             <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">44% · 3.9 mm</span>
-            <span class="city-day-wind">Viento 31 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">66% · 5.4 mm</span>
+            <span class="city-day-wind city-day-gusts">Viento 27 km/h · rachas 70</span>
           </a>
         </div>
         <p class="forecast-note">Mediana de los modelos ECMWF, ICON y GFS · altitud 61 m</p>
@@ -322,6 +325,7 @@
         <a href="/es/europe/spain/" class="recent-place">España</a>
         <a href="/es/europe/sweden/" class="recent-place">Suecia</a>
         <a href="/es/europe/switzerland/" class="recent-place">Suiza</a>
+        <a href="/es/europe/turkey/" class="recent-place">Turquía</a>
         <a href="/es/europe/united-kingdom/" class="recent-place">Reino Unido</a>
       </div>
     </section>
@@ -345,6 +349,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

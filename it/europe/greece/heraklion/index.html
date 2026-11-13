@@ -99,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -124,25 +124,20 @@
     <p class="storm-intro">Previsioni del tempo a Heraklion, Grecia, per oggi, domani e i prossimi 7 giorni: temperatura, pioggia, vento e probabilità di precipitazioni. Nome locale: Ηράκλειο (Καιρός Ηράκλειο). Dati di Open-Meteo, aggiornati ogni ora.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Heraklion" data-lat="35.3387" data-lon="25.1442" data-query="city=Heraklion&lat=35.3387&lon=25.1442&cc=GR">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Forti raffiche di vento oggi: fino a 77 km/h</p>
+        <p class="city-alert city-alert-yellow">Forti raffiche di vento domani: fino a 72 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Heraklion: giovedì 12 novembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">16° / 24°</span>
+        <h2>Heraklion: venerdì 13 novembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">18° / 24°</span>
         <p class="storm-now-status">Nuvoloso · probabilità di pioggia 0%</p>
-        <p class="storm-updated">Previsione del 12 novembre 2026</p>
+        <p class="storm-updated">Previsione del 13 novembre 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsioni a 7 giorni</h3>
-        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà mercoledì 18 novembre (fino a 26°) e il più freddo martedì 17 novembre (fino a 13°). Non sono previste precipitazioni significative. Le massime sono sopra la media di novembre (in media 21°).</p>
+        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà mercoledì 18 novembre (fino a 26°) e il più freddo martedì 17 novembre (fino a 12°). Non sono previste precipitazioni significative. Le massime sono sopra la media di novembre (in media 21°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Heraklion&lat=35.3387&lon=25.1442&cc=GR&date=2026-11-12" title="Ora per ora →">
-            <span class="kp-day-name">gio 12</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">16° / 24°</span>
-            <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">0%</span>
-            <span class="city-day-wind">Vento 25 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Heraklion&lat=35.3387&lon=25.1442&cc=GR&date=2026-11-13" title="Ora per ora →">
             <span class="kp-day-name">ven 13</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
@@ -150,52 +145,61 @@
             <span class="city-day-temp">18° / 24°</span>
             <span class="kp-day-status">Nuvoloso</span>
             <span class="city-day-rain" title="probabilità di pioggia">0%</span>
-            <span class="city-day-wind">Vento 37 km/h</span>
+            <span class="city-day-wind city-day-gusts">Vento 37 km/h · raffiche 77</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Heraklion&lat=35.3387&lon=25.1442&cc=GR&date=2026-11-14" title="Ora per ora →">
             <span class="kp-day-name">sab 14</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">18° / 26°</span>
+            <span class="city-day-temp">17° / 25°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">5%</span>
-            <span class="city-day-wind">Vento 34 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">3%</span>
+            <span class="city-day-wind city-day-gusts">Vento 35 km/h · raffiche 72</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Heraklion&lat=35.3387&lon=25.1442&cc=GR&date=2026-11-15" title="Ora per ora →">
             <span class="kp-day-name">dom 15</span>
             <span class="city-day-icon" aria-hidden="true">🌫️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">16° / 23°</span>
+            <span class="city-day-temp">15° / 23°</span>
             <span class="kp-day-status">Nebbia</span>
-            <span class="city-day-rain" title="probabilità di pioggia">4%</span>
-            <span class="city-day-wind">Vento 15 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">6%</span>
+            <span class="city-day-wind">Vento 14 km/h · raffiche 27</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Heraklion&lat=35.3387&lon=25.1442&cc=GR&date=2026-11-16" title="Ora per ora →">
             <span class="kp-day-name">lun 16</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">15° / 21°</span>
-            <span class="kp-day-status">Nebbia</span>
-            <span class="city-day-rain" title="probabilità di pioggia">10%</span>
-            <span class="city-day-wind">Vento 10 km/h</span>
+            <span class="city-day-temp">14° / 21°</span>
+            <span class="kp-day-status">Pioggia</span>
+            <span class="city-day-rain" title="probabilità di pioggia">7%</span>
+            <span class="city-day-wind">Vento 9 km/h · raffiche 21</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Heraklion&lat=35.3387&lon=25.1442&cc=GR&date=2026-11-17" title="Ora per ora →">
             <span class="kp-day-name">mar 17</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">13° / 23°</span>
+            <span class="city-day-temp">12° / 23°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">0%</span>
-            <span class="city-day-wind">Vento 16 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">2%</span>
+            <span class="city-day-wind">Vento 12 km/h · raffiche 29</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Heraklion&lat=35.3387&lon=25.1442&cc=GR&date=2026-11-18" title="Ora per ora →">
             <span class="kp-day-name">mer 18</span>
-            <span class="city-day-icon" aria-hidden="true">⛅</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">16° / 26°</span>
-            <span class="kp-day-status">Poco nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">8%</span>
-            <span class="city-day-wind">Vento 17 km/h</span>
+            <span class="city-day-temp">15° / 26°</span>
+            <span class="kp-day-status">Nuvoloso</span>
+            <span class="city-day-rain" title="probabilità di pioggia">12%</span>
+            <span class="city-day-wind">Vento 28 km/h · raffiche 58</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Heraklion&lat=35.3387&lon=25.1442&cc=GR&date=2026-11-19" title="Ora per ora →">
+            <span class="kp-day-name">gio 19</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">17° / 24°</span>
+            <span class="kp-day-status">Nuvoloso</span>
+            <span class="city-day-rain" title="probabilità di pioggia">10%</span>
+            <span class="city-day-wind city-day-gusts">Vento 20 km/h · raffiche 69</span>
           </a>
         </div>
         <p class="forecast-note">Mediana dei modelli ECMWF, ICON e GFS · altitudine 17 m</p>
@@ -234,7 +238,7 @@
 
     <section class="info-card city-climate">
       <h2>Il clima a Heraklion</h2>
-      <p>Heraklion si trova a circa 17 m di altitudine. Il mese più caldo è luglio, con una massima media di 31°C; il più freddo è gennaio, quando di notte la temperatura scende in media a 9°C. In un anno cadono in media circa 450 mm di precipitazioni, soprattutto a marzo (circa 70 mm).</p>
+      <p>Heraklion si trova a circa 17 m di altitudine. Il mese più caldo è luglio, con una massima media di 31°C; il più freddo è gennaio, quando di notte la temperatura scende in media a 9°C. In un anno cadono in media circa 450 mm di precipitazioni, soprattutto a marzo (circa 70 mm). La temperatura più alta a Heraklion nel periodo 2015–2024 è stata di 45°C (14 giugno 2024), la più bassa di 0°C (9 gennaio 2017).</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
         <thead><tr><th>Mese</th><th>Max media</th><th>Min media</th><th>Precipitazioni</th><th>Giorni di pioggia</th></tr></thead>
@@ -265,17 +269,17 @@
     <section class="info-card city-near">
       <h2>Città vicine</h2>
       <div class="city-links">
-        <a href="/it/europe/greece/rhodes/" class="recent-place">Rodi · 302 km</a>
-        <a href="/it/europe/greece/athens/" class="recent-place">Atene · 320 km</a>
-        <a href="/it/europe/greece/patras/" class="recent-place">Patrasso · 443 km</a>
-        <a href="/it/europe/greece/thessaloniki/" class="recent-place">Salonicco · 620 km</a>
+        <a href="/it/europe/greece/chania/" class="recent-place">La Canea · 104 km</a>
+        <a href="/it/europe/greece/santorini/" class="recent-place">Santorini · 123 km</a>
+        <a href="/it/europe/greece/mykonos/" class="recent-place">Mykonos · 235 km</a>
+        <a href="/it/europe/greece/kos/" class="recent-place">Coo · 259 km</a>
       </div>
       <p class="storm-updated">Oltre confine:</p>
       <div class="city-links">
-        <a href="/it/europe/cyprus/paphos/" class="recent-place">Pafo · 665 km</a>
-        <a href="/it/vremeto/smolyan/" class="recent-place">Smolyan · 695 km</a>
-        <a href="/it/vremeto/kardzhali/" class="recent-place">Kardzhali · 700 km</a>
-        <a href="/it/vremeto/pamporovo/" class="recent-place">Pamporovo · 703 km</a>
+        <a href="/it/europe/turkey/bodrum/" class="recent-place">Bodrum · 279 km</a>
+        <a href="/it/europe/turkey/didim/" class="recent-place">Didim · 296 km</a>
+        <a href="/it/europe/turkey/marmaris/" class="recent-place">Marmaris · 328 km</a>
+        <a href="/it/europe/turkey/kusadasi/" class="recent-place">Kuşadası · 338 km</a>
       </div>
     </section>
 
@@ -286,6 +290,30 @@
         <a href="/it/europe/greece/thessaloniki/" class="recent-place">Salonicco</a>
         <a href="/it/europe/greece/patras/" class="recent-place">Patrasso</a>
         <a href="/it/europe/greece/rhodes/" class="recent-place">Rodi</a>
+        <a href="/it/europe/greece/kavala/" class="recent-place">Kavala</a>
+        <a href="/it/europe/greece/thassos/" class="recent-place">Taso</a>
+        <a href="/it/europe/greece/keramoti/" class="recent-place">Keramoti</a>
+        <a href="/it/europe/greece/alexandroupoli/" class="recent-place">Alessandropoli</a>
+        <a href="/it/europe/greece/asprovalta/" class="recent-place">Asprovalta</a>
+        <a href="/it/europe/greece/stavros/" class="recent-place">Stavros</a>
+        <a href="/it/europe/greece/olympiada/" class="recent-place">Olympiada</a>
+        <a href="/it/europe/greece/ouranoupoli/" class="recent-place">Ouranoupoli</a>
+        <a href="/it/europe/greece/nikiti/" class="recent-place">Nikiti</a>
+        <a href="/it/europe/greece/neos-marmaras/" class="recent-place">Neos Marmaras</a>
+        <a href="/it/europe/greece/hanioti/" class="recent-place">Hanioti</a>
+        <a href="/it/europe/greece/kallithea/" class="recent-place">Kallithea</a>
+        <a href="/it/europe/greece/paralia-katerinis/" class="recent-place">Paralia Katerinis</a>
+        <a href="/it/europe/greece/kalambaka/" class="recent-place">Kalambaka (Meteore)</a>
+        <a href="/it/europe/greece/parga/" class="recent-place">Parga</a>
+        <a href="/it/europe/greece/corfu/" class="recent-place">Corfù</a>
+        <a href="/it/europe/greece/lefkada/" class="recent-place">Leucade</a>
+        <a href="/it/europe/greece/kefalonia/" class="recent-place">Cefalonia</a>
+        <a href="/it/europe/greece/zakynthos/" class="recent-place">Zante</a>
+        <a href="/it/europe/greece/nafplio/" class="recent-place">Nauplia</a>
+        <a href="/it/europe/greece/santorini/" class="recent-place">Santorini</a>
+        <a href="/it/europe/greece/mykonos/" class="recent-place">Mykonos</a>
+        <a href="/it/europe/greece/chania/" class="recent-place">La Canea</a>
+        <a href="/it/europe/greece/kos/" class="recent-place">Coo</a>
       </div>
     </section>
 
@@ -326,6 +354,7 @@
         <a href="/it/europe/spain/" class="recent-place">Spagna</a>
         <a href="/it/europe/sweden/" class="recent-place">Svezia</a>
         <a href="/it/europe/switzerland/" class="recent-place">Svizzera</a>
+        <a href="/it/europe/turkey/" class="recent-place">Turchia</a>
         <a href="/it/europe/ukraine/" class="recent-place">Ucraina</a>
         <a href="/it/europe/united-kingdom/" class="recent-place">Regno Unito</a>
       </div>
@@ -350,6 +379,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

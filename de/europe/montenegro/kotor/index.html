@@ -99,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -124,42 +124,37 @@
     <p class="storm-intro">Wettervorhersage für Kotor, Montenegro, für heute, morgen und die nächsten 7 Tage: Temperatur, Regen, Wind und Niederschlagswahrscheinlichkeit. Daten von Open-Meteo, stündlich aktualisiert.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Kotor" data-lat="42.4247" data-lon="18.7712" data-query="city=Kotor&lat=42.4247&lon=18.7712&cc=ME">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-orange">Sehr starke Windböen heute: bis 121 km/h</p>
+        <p class="city-alert city-alert-yellow">Starke Windböen morgen: bis 65 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Kotor: Donnerstag, 12. November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">17° / 19°</span>
+        <h2>Kotor: Freitag, 13. November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">17° / 20°</span>
         <p class="storm-now-status">Gewitter · Regenwahrscheinlichkeit 100%</p>
-        <p class="storm-updated">Vorhersage vom 12. November 2026</p>
+        <p class="storm-updated">Vorhersage vom 13. November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-Tage-Vorhersage</h3>
-        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 20°) und Sonntag, 15. November am kältesten (bis 12°). An 7 der Tage wird Niederschlag erwartet. Tagsüber ist es etwa so warm wie üblich im November (im Mittel 17°).</p>
+        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 20°) und Donnerstag, 19. November am kältesten (bis 12°). An 7 der Tage wird Niederschlag erwartet. Tagsüber ist es etwa so warm wie üblich im November (im Mittel 17°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Kotor&lat=42.4247&lon=18.7712&cc=ME&date=2026-11-12" title="Stündlich →">
-            <span class="kp-day-name">Do., 12.</span>
-            <span class="city-day-icon" aria-hidden="true">⛈️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">17° / 19°</span>
-            <span class="kp-day-status">Gewitter</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 41.0 mm</span>
-            <span class="city-day-wind">Wind 31 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Kotor&lat=42.4247&lon=18.7712&cc=ME&date=2026-11-13" title="Stündlich →">
             <span class="kp-day-name">Fr., 13.</span>
             <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">17° / 20°</span>
             <span class="kp-day-status">Gewitter</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 68.9 mm</span>
-            <span class="city-day-wind">Wind 33 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 67.7 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 31 km/h · Böen 121</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Kotor&lat=42.4247&lon=18.7712&cc=ME&date=2026-11-14" title="Stündlich →">
             <span class="kp-day-name">Sa., 14.</span>
             <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">13° / 17°</span>
+            <span class="city-day-temp">13° / 18°</span>
             <span class="kp-day-status">Gewitter</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 25.0 mm</span>
-            <span class="city-day-wind">Wind 11 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 31.1 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 12 km/h · Böen 65</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Kotor&lat=42.4247&lon=18.7712&cc=ME&date=2026-11-15" title="Stündlich →">
             <span class="kp-day-name">So., 15.</span>
@@ -167,35 +162,44 @@
             <span class="city-day-date">15.11</span>
             <span class="city-day-temp">12° / 16°</span>
             <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">52% · 0.8 mm</span>
-            <span class="city-day-wind">Wind 7 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">82% · 8.0 mm</span>
+            <span class="city-day-wind">Wind 8 km/h · Böen 26</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Kotor&lat=42.4247&lon=18.7712&cc=ME&date=2026-11-16" title="Stündlich →">
             <span class="kp-day-name">Mo., 16.</span>
             <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">13° / 16°</span>
+            <span class="city-day-temp">14° / 17°</span>
             <span class="kp-day-status">Gewitter</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">98% · 18.6 mm</span>
-            <span class="city-day-wind">Wind 13 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 47.0 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 18 km/h · Böen 73</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Kotor&lat=42.4247&lon=18.7712&cc=ME&date=2026-11-17" title="Stündlich →">
             <span class="kp-day-name">Di., 17.</span>
-            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">17.11</span>
             <span class="city-day-temp">15° / 18°</span>
-            <span class="kp-day-status">Gewitter</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">98% · 74.5 mm</span>
-            <span class="city-day-wind">Wind 19 km/h</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">94% · 21.4 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 19 km/h · Böen 67</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Kotor&lat=42.4247&lon=18.7712&cc=ME&date=2026-11-18" title="Stündlich →">
             <span class="kp-day-name">Mi., 18.</span>
             <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">13° / 18°</span>
+            <span class="city-day-temp">14° / 18°</span>
             <span class="kp-day-status">Gewitter</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">91% · 54.1 mm</span>
-            <span class="city-day-wind">Wind 28 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 65.9 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 30 km/h · Böen 125</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Kotor&lat=42.4247&lon=18.7712&cc=ME&date=2026-11-19" title="Stündlich →">
+            <span class="kp-day-name">Do., 19.</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">12° / 16°</span>
+            <span class="kp-day-status">Gewitter</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">77% · 4.6 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 12 km/h · Böen 77</span>
           </a>
         </div>
         <p class="forecast-note">Median der Modelle ECMWF, ICON und GFS · Höhe 9 m</p>
@@ -234,7 +238,7 @@
 
     <section class="info-card city-climate">
       <h2>Das Klima in Kotor</h2>
-      <p>Kotor liegt auf etwa 9 m Höhe. Der wärmste Monat ist der August mit einer durchschnittlichen Höchsttemperatur von 30°C, der kälteste der Januar, wenn die Nächte im Schnitt auf 5°C abkühlen. Im Jahresmittel fallen etwa 2240 mm Niederschlag, am meisten im November (rund 363 mm).</p>
+      <p>Kotor liegt auf etwa 9 m Höhe. Der wärmste Monat ist der August mit einer durchschnittlichen Höchsttemperatur von 30°C, der kälteste der Januar, wenn die Nächte im Schnitt auf 5°C abkühlen. Im Jahresmittel fallen etwa 2240 mm Niederschlag, am meisten im November (rund 363 mm). Die höchste Temperatur in Kotor im Zeitraum 2015–2024 lag bei 37°C (21. Juli 2015), die tiefste bei −7°C (7. Januar 2017).</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
         <thead><tr><th>Monat</th><th>Ø Max.</th><th>Ø Min.</th><th>Niederschlag</th><th>Regentage</th></tr></thead>
@@ -322,6 +326,7 @@
         <a href="/de/europe/spain/" class="recent-place">Spanien</a>
         <a href="/de/europe/sweden/" class="recent-place">Schweden</a>
         <a href="/de/europe/switzerland/" class="recent-place">Schweiz</a>
+        <a href="/de/europe/turkey/" class="recent-place">Türkei</a>
         <a href="/de/europe/ukraine/" class="recent-place">Ukraine</a>
         <a href="/de/europe/united-kingdom/" class="recent-place">Vereinigtes Königreich</a>
       </div>
@@ -346,6 +351,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

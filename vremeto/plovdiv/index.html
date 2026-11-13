@@ -78,7 +78,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -102,26 +102,17 @@
     <h1>Времето в Пловдив</h1>
     <p class="storm-intro">Прогноза за времето в Пловдив за днес, утре и следващите 7 дни: температура, валежи, вятър и вероятност за дъжд. Данните са от Open-Meteo и се обновяват на всеки час.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="Пловдив" data-lat="42.1354" data-lon="24.7453" data-query="city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2&lat=42.1354&lon=24.7453&cc=BG">
+    <div class="city-forecast" id="cityForecast" data-name="Пловдив" data-lat="42.1354" data-lon="24.7453" data-query="city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2&lat=42.1354&lon=24.7453&cc=BG" data-warn="plovdiv">
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Пловдив: четвъртък, 12 ноември</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">8° / 17°</span>
-        <p class="storm-now-status">Мъгла · вероятност за валеж 0%</p>
-        <p class="storm-updated">Прогноза от 12 ноември 2026 г.</p>
+        <h2>Пловдив: петък, 13 ноември</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">11° / 25°</span>
+        <p class="storm-now-status">Облачно · вероятност за валеж 0%</p>
+        <p class="storm-updated">Прогноза от 13 ноември 2026 г.</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Прогноза за 7 дни</h3>
-        <p class="city-summary">През следващите 7 дни най-топло ще е в петък, 13 ноември (до 25°), а най-студено – в понеделник, 16 ноември (до 5°). Валежи се очакват в 1 от дните. Дневните температури са по-високи от обичайните за ноември (средно 13°).</p>
+        <p class="city-summary">През следващите 7 дни най-топло ще е в петък, 13 ноември (до 25°), а най-студено – в понеделник, 16 ноември (до 6°). Валежи се очакват в 2 от дните. Дневните температури са по-високи от обичайните за ноември (средно 13°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2&lat=42.1354&lon=24.7453&cc=BG&date=2026-11-12" title="По часове →">
-            <span class="kp-day-name">чт, 12</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">8° / 17°</span>
-            <span class="kp-day-status">Мъгла</span>
-            <span class="city-day-rain" title="вероятност за валеж">0%</span>
-            <span class="city-day-wind">Вятър 7 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2&lat=42.1354&lon=24.7453&cc=BG&date=2026-11-13" title="По часове →">
             <span class="kp-day-name">пт, 13</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
@@ -129,52 +120,61 @@
             <span class="city-day-temp">11° / 25°</span>
             <span class="kp-day-status">Облачно</span>
             <span class="city-day-rain" title="вероятност за валеж">0%</span>
-            <span class="city-day-wind">Вятър 16 km/h</span>
+            <span class="city-day-wind">Вятър 17 km/h · пориви 43</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2&lat=42.1354&lon=24.7453&cc=BG&date=2026-11-14" title="По часове →">
             <span class="kp-day-name">сб, 14</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">9° / 17°</span>
-            <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">78% · 2.5 mm</span>
-            <span class="city-day-wind">Вятър 22 km/h</span>
+            <span class="city-day-temp">7° / 18°</span>
+            <span class="kp-day-status">Ръмеж</span>
+            <span class="city-day-rain" title="вероятност за валеж">58% · 0.7 mm</span>
+            <span class="city-day-wind">Вятър 26 km/h · пориви 51</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2&lat=42.1354&lon=24.7453&cc=BG&date=2026-11-15" title="По часове →">
             <span class="kp-day-name">нд, 15</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
             <span class="city-day-temp">6° / 10°</span>
-            <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">16% · 0.6 mm</span>
-            <span class="city-day-wind">Вятър 18 km/h</span>
+            <span class="kp-day-status">Облачно</span>
+            <span class="city-day-rain" title="вероятност за валеж">8%</span>
+            <span class="city-day-wind">Вятър 18 km/h · пориви 35</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2&lat=42.1354&lon=24.7453&cc=BG&date=2026-11-16" title="По часове →">
             <span class="kp-day-name">пн, 16</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">5° / 12°</span>
-            <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">6% · 0.3 mm</span>
-            <span class="city-day-wind">Вятър 4 km/h</span>
+            <span class="city-day-temp">6° / 11°</span>
+            <span class="kp-day-status">Облачно</span>
+            <span class="city-day-rain" title="вероятност за валеж">14%</span>
+            <span class="city-day-wind">Вятър 5 km/h · пориви 18</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2&lat=42.1354&lon=24.7453&cc=BG&date=2026-11-17" title="По часове →">
             <span class="kp-day-name">вт, 17</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
             <span class="city-day-temp">6° / 14°</span>
-            <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">10% · 0.9 mm</span>
-            <span class="city-day-wind">Вятър 7 km/h</span>
+            <span class="kp-day-status">Облачно</span>
+            <span class="city-day-rain" title="вероятност за валеж">6%</span>
+            <span class="city-day-wind">Вятър 10 km/h · пориви 23</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2&lat=42.1354&lon=24.7453&cc=BG&date=2026-11-18" title="По часове →">
             <span class="kp-day-name">ср, 18</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
             <span class="city-day-temp">8° / 15°</span>
-            <span class="kp-day-status">Облачно</span>
-            <span class="city-day-rain" title="вероятност за валеж">19%</span>
-            <span class="city-day-wind">Вятър 8 km/h</span>
+            <span class="kp-day-status">Ръмеж</span>
+            <span class="city-day-rain" title="вероятност за валеж">33% · 0.6 mm</span>
+            <span class="city-day-wind city-day-gusts">Вятър 14 km/h · пориви 85</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%BB%D0%BE%D0%B2%D0%B4%D0%B8%D0%B2&lat=42.1354&lon=24.7453&cc=BG&date=2026-11-19" title="По часове →">
+            <span class="kp-day-name">чт, 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">9° / 16°</span>
+            <span class="kp-day-status">Ръмеж</span>
+            <span class="city-day-rain" title="вероятност за валеж">39% · 1.8 mm</span>
+            <span class="city-day-wind city-day-gusts">Вятър 23 km/h · пориви 66</span>
           </a>
         </div>
         <p class="forecast-note">Медиана на моделите ECMWF, ICON и GFS · надм. височина 163 м</p>
@@ -192,23 +192,23 @@
 
     <section class="info-card city-sun-table">
       <h2>Изгрев и залез в Пловдив</h2>
-      <p>Най-дългият ден в Пловдив е около 21 юни: слънцето изгрява в 05:45 ч., залязва в 21:00 ч. и денят е 15 ч 16 мин. Най-краткият е около 21 декември – от 07:46 ч. до 16:52 ч., общо 9 ч 06 мин. Днешният изгрев и залез са до прогнозата по-горе.</p>
+      <p>Най-дългият ден в Пловдив е около 21 юни: слънцето изгрява в 05:45, залязва в 21:00 и денят е 15 ч 16 мин. Най-краткият е около 21 декември – от 07:46 до 16:52, общо 9 ч 06 мин. Днешният изгрев и залез са до прогнозата по-горе.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
         <thead><tr><th>Дата</th><th>Изгрев</th><th>Залез</th><th>Дължина на деня</th></tr></thead>
         <tbody>
-          <tr><td>15 януари</td><td>07:47 ч.</td><td>17:14 ч.</td><td>9 ч 27 мин</td></tr>
-          <tr><td>15 февруари</td><td>07:17 ч.</td><td>17:53 ч.</td><td>10 ч 36 мин</td></tr>
-          <tr><td>15 март</td><td>06:33 ч.</td><td>18:27 ч.</td><td>11 ч 54 мин</td></tr>
-          <tr><td>15 април</td><td>06:40 ч.</td><td>20:02 ч.</td><td>13 ч 21 мин</td></tr>
-          <tr><td>15 май</td><td>06:00 ч.</td><td>20:34 ч.</td><td>14 ч 35 мин</td></tr>
-          <tr><td>15 юни</td><td>05:44 ч.</td><td>20:58 ч.</td><td>15 ч 14 мин</td></tr>
-          <tr><td>15 юли</td><td>05:58 ч.</td><td>20:55 ч.</td><td>14 ч 57 мин</td></tr>
-          <tr><td>15 август</td><td>06:28 ч.</td><td>20:21 ч.</td><td>13 ч 53 мин</td></tr>
-          <tr><td>15 септември</td><td>07:00 ч.</td><td>19:30 ч.</td><td>12 ч 30 мин</td></tr>
-          <tr><td>15 октомври</td><td>07:33 ч.</td><td>18:39 ч.</td><td>11 ч 06 мин</td></tr>
-          <tr><td>15 ноември</td><td>07:10 ч.</td><td>16:59 ч.</td><td>9 ч 49 мин</td></tr>
-          <tr><td>15 декември</td><td>07:42 ч.</td><td>16:49 ч.</td><td>9 ч 08 мин</td></tr>
+          <tr><td>15 януари</td><td>07:47</td><td>17:14</td><td>9 ч 27 мин</td></tr>
+          <tr><td>15 февруари</td><td>07:17</td><td>17:53</td><td>10 ч 36 мин</td></tr>
+          <tr><td>15 март</td><td>06:33</td><td>18:27</td><td>11 ч 54 мин</td></tr>
+          <tr><td>15 април</td><td>06:40</td><td>20:02</td><td>13 ч 21 мин</td></tr>
+          <tr><td>15 май</td><td>06:00</td><td>20:34</td><td>14 ч 35 мин</td></tr>
+          <tr><td>15 юни</td><td>05:44</td><td>20:58</td><td>15 ч 14 мин</td></tr>
+          <tr><td>15 юли</td><td>05:58</td><td>20:55</td><td>14 ч 57 мин</td></tr>
+          <tr><td>15 август</td><td>06:28</td><td>20:21</td><td>13 ч 53 мин</td></tr>
+          <tr><td>15 септември</td><td>07:00</td><td>19:30</td><td>12 ч 30 мин</td></tr>
+          <tr><td>15 октомври</td><td>07:33</td><td>18:39</td><td>11 ч 06 мин</td></tr>
+          <tr><td>15 ноември</td><td>07:10</td><td>16:59</td><td>9 ч 49 мин</td></tr>
+          <tr><td>15 декември</td><td>07:42</td><td>16:49</td><td>9 ч 08 мин</td></tr>
         </tbody>
       </table>
       </div>
@@ -217,7 +217,7 @@
 
     <section class="info-card city-climate">
       <h2>Климатът в Пловдив</h2>
-      <p>Пловдив е на около 160 м надморска височина. Най-топлият месец е август със средна максимална температура 31°C, а най-студеният е януари, когато нощем температурата пада средно до −1°C. Средно за година падат около 620 мм валежи, най-много през юни (около 71 мм).</p>
+      <p>Пловдив е на около 160 м надморска височина. Най-топлият месец е август със средна максимална температура 31°C, а най-студеният е януари, когато нощем температурата пада средно до −1°C. Средно за година падат около 620 мм валежи, най-много през юни (около 71 мм). Най-високата температура в Пловдив за 2015–2024 г. е 42°C (2 август 2021 г.), а най-ниската – −15°C (24 януари 2016 г.).</p>
       <p>Пловдив е в Горнотракийската низина на река Марица и е сред най-горещите градове в България: през юли и август температурите над 35° не са рядкост. Зимите са по-меки, отколкото в Северна България, защото Стара планина спира голяма част от студените северни нахлувания, но в низината често се задържат мъгли. Родопите на юг са близо и дават прохлада в горещите дни.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
@@ -256,10 +256,10 @@
       </div>
       <p class="storm-updated">Отвъд границата:</p>
       <div class="city-links">
-        <a href="/europe/greece/thessaloniki/" class="recent-place">Солун · 224 км</a>
-        <a href="/europe/serbia/nis/" class="recent-place">Ниш · 267 км</a>
-        <a href="/europe/north-macedonia/skopje/" class="recent-place">Скопие · 274 км</a>
-        <a href="/europe/romania/bucharest/" class="recent-place">Букурещ · 277 км</a>
+        <a href="/europe/greece/kavala/" class="recent-place">Кавала · 136 км</a>
+        <a href="/europe/greece/keramoti/" class="recent-place">Керамоти · 142 км</a>
+        <a href="/europe/greece/thassos/" class="recent-place">Тасос · 151 км</a>
+        <a href="/europe/turkey/edirne/" class="recent-place">Одрин · 158 км</a>
       </div>
     </section>
     <p class="city-actions"><a href="/uidzhet/?grad=plovdiv">Уиджет с времето в Пловдив за вашия сайт →</a></p>
@@ -323,6 +323,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

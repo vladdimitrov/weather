@@ -77,7 +77,8 @@
     if (!current) { block.hidden = true; return; }
     const condition = conditionOf(current.weather_code) || conditions[2];
     const place = placeName();
-    const meta = `💨 ${pick(T.wind)} ${Math.round(current.wind_speed_10m)} km/h · 💧 ${pick(T.humidity)} ${Math.round(current.relative_humidity_2m)}%`;
+    const gust = typeof current.wind_gusts_10m === 'number' ? `, ${window.ForecastExtras ? ForecastExtras.gustLabel() : 'gusts'} ${Math.round(current.wind_gusts_10m)} km/h` : '';
+    const meta = `💨 ${pick(T.wind)} ${Math.round(current.wind_speed_10m)} km/h${gust} · 💧 ${pick(T.humidity)} ${Math.round(current.relative_humidity_2m)}%`;
     const nodes = [];
     if (place) nodes.push(span('now-place', pick(T.now).replace('{place}', place)));
     nodes.push(
@@ -92,7 +93,7 @@
 
   async function loadNow(lat, lon) {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
-      '&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,relative_humidity_2m&timezone=auto';
+      '&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,relative_humidity_2m&timezone=auto';
     try {
       const response = await fetch(url);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);

@@ -96,7 +96,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=61">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -121,33 +121,27 @@
     <p class="storm-intro">Weather forecast for Košice, Slovakia, for today, tomorrow and the next 7 days: temperature, rain, wind and chance of precipitation. Data from Open-Meteo, updated every hour.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Košice" data-lat="48.7164" data-lon="21.2611" data-query="city=Ko%C5%A1ice&lat=48.7164&lon=21.2611&cc=SK">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Strong wind gusts today: up to 79 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Košice: Thursday 12 November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">4° / 8°</span>
+        <h2>Košice: Friday 13 November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">0° / 9°</span>
         <p class="storm-now-status">Rain · chance of rain 100%</p>
-        <p class="storm-updated">Forecast issued on 12 November 2026</p>
+        <p class="storm-updated">Forecast issued on 13 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Tuesday 17 November (up to 10°) and the coldest Sunday 15 November (down to −1°). Rain or snow is expected on 5 of the days. Daytime temperatures are close to normal for November (average high 8°).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Wednesday 18 November (up to 12°) and the coldest Saturday 14 November (down to −1°). Rain or snow is expected on 4 of the days. Daytime temperatures are close to normal for November (average high 8°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Ko%C5%A1ice&lat=48.7164&lon=21.2611&cc=SK&date=2026-11-12" title="Hourly forecast →">
-            <span class="kp-day-name">Thu 12</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">4° / 8°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">100% · 6.1 mm</span>
-            <span class="city-day-wind">Wind 8 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Ko%C5%A1ice&lat=48.7164&lon=21.2611&cc=SK&date=2026-11-13" title="Hourly forecast →">
             <span class="kp-day-name">Fri 13</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">−1° / 9°</span>
+            <span class="city-day-temp">0° / 9°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">100% · 34.3 mm</span>
-            <span class="city-day-wind">Wind 33 km/h</span>
+            <span class="city-day-rain" title="chance of rain">100% · 35.9 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 33 km/h · gusts 79</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Ko%C5%A1ice&lat=48.7164&lon=21.2611&cc=SK&date=2026-11-14" title="Hourly forecast →">
             <span class="kp-day-name">Sat 14</span>
@@ -156,25 +150,25 @@
             <span class="city-day-temp">−1° / 7°</span>
             <span class="kp-day-status">Cloudy</span>
             <span class="city-day-rain" title="chance of rain">0%</span>
-            <span class="city-day-wind">Wind 6 km/h</span>
+            <span class="city-day-wind">Wind 7 km/h · gusts 13</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Ko%C5%A1ice&lat=48.7164&lon=21.2611&cc=SK&date=2026-11-15" title="Hourly forecast →">
             <span class="kp-day-name">Sun 15</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
             <span class="city-day-temp">−1° / 7°</span>
-            <span class="kp-day-status">Fog</span>
-            <span class="city-day-rain" title="chance of rain">1%</span>
-            <span class="city-day-wind">Wind 10 km/h</span>
+            <span class="kp-day-status">Cloudy</span>
+            <span class="city-day-rain" title="chance of rain">2%</span>
+            <span class="city-day-wind">Wind 8 km/h · gusts 23</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Ko%C5%A1ice&lat=48.7164&lon=21.2611&cc=SK&date=2026-11-16" title="Hourly forecast →">
             <span class="kp-day-name">Mon 16</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">1° / 7°</span>
+            <span class="city-day-temp">2° / 6°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">68% · 8.6 mm</span>
-            <span class="city-day-wind">Wind 6 km/h</span>
+            <span class="city-day-rain" title="chance of rain">75% · 13.4 mm</span>
+            <span class="city-day-wind">Wind 8 km/h · gusts 28</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Ko%C5%A1ice&lat=48.7164&lon=21.2611&cc=SK&date=2026-11-17" title="Hourly forecast →">
             <span class="kp-day-name">Tue 17</span>
@@ -182,17 +176,26 @@
             <span class="city-day-date">17.11</span>
             <span class="city-day-temp">4° / 10°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">68% · 7.6 mm</span>
-            <span class="city-day-wind">Wind 18 km/h</span>
+            <span class="city-day-rain" title="chance of rain">74% · 5.2 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 17 km/h · gusts 76</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Ko%C5%A1ice&lat=48.7164&lon=21.2611&cc=SK&date=2026-11-18" title="Hourly forecast →">
             <span class="kp-day-name">Wed 18</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">8° / 10°</span>
+            <span class="city-day-temp">4° / 12°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">68% · 12.3 mm</span>
-            <span class="city-day-wind">Wind 13 km/h</span>
+            <span class="city-day-rain" title="chance of rain">75% · 22.8 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 16 km/h · gusts 64</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Ko%C5%A1ice&lat=48.7164&lon=21.2611&cc=SK&date=2026-11-19" title="Hourly forecast →">
+            <span class="kp-day-name">Thu 19</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">2° / 9°</span>
+            <span class="kp-day-status">Cloudy</span>
+            <span class="city-day-rain" title="chance of rain">41%</span>
+            <span class="city-day-wind">Wind 10 km/h · gusts 28</span>
           </a>
         </div>
         <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 207 m</p>
@@ -321,6 +324,7 @@
         <a href="/en/europe/spain/" class="recent-place">Spain</a>
         <a href="/en/europe/sweden/" class="recent-place">Sweden</a>
         <a href="/en/europe/switzerland/" class="recent-place">Switzerland</a>
+        <a href="/en/europe/turkey/" class="recent-place">Turkey</a>
         <a href="/en/europe/ukraine/" class="recent-place">Ukraine</a>
         <a href="/en/europe/united-kingdom/" class="recent-place">United Kingdom</a>
       </div>
@@ -345,6 +349,6 @@
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>
