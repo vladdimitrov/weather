@@ -1,6 +1,7 @@
 """The two jobs: daily forecast post and the media queue post."""
 import json
 import logging
+import re
 import shutil
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -61,9 +62,25 @@ def run_forecast(cfg, dry_run=False, sample=False, tomorrow=False):
 
 
 # ---------------- queue ----------------
+def _caption_from_name(item: Path) -> str:
+    """'003-Залез над Витоша.jpg' -> 'Залез над Витоша' (number prefix and _ - separators removed)."""
+    name = re.sub(r"^[\d\s._-]+", "", item.stem)
+    name = re.sub(r"[_]+", " ", name).strip(" -")
+    if re.match(r"(?i)(img|dsc|dscn|dcim|pxl|vid|mvimg|photo|screenshot|whatsapp|signal|received)\b", name):
+        return ""  # camera / phone default names are not captions
+    return name if re.search(r"[^\W\d_]{2,}", name) else ""
+
+
 def _caption_for(item: Path, qcfg):
+    """Caption = text from <name>.txt, or else from the file name, then the default line and hashtags."""
     txt = item.with_suffix(".txt")
-    text = txt.read_text(encoding="utf-8").strip() if txt.exists() else qcfg.get("default_caption", "")
+    if txt.exists():
+        text = txt.read_text(encoding="utf-8-sig").strip()
+    else:
+        text = _caption_from_name(item)
+    default = qcfg.get("default_caption", "")
+    if default and default not in text:
+        text = f"{text}\n\n{default}" if text else default
     tags = qcfg.get("hashtags", "")
     return f"{text}\n\n{tags}".strip() if tags and tags not in text else text
 
