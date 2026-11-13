@@ -118,6 +118,21 @@ function cityPages(folders) {
   }).filter(Boolean);
 }
 
+// Open-Meteo limits the requests per minute for all runs from the same address (the runner of this
+// workflow shares it with others) and answers 429. Wait and ask again; any other answer stops the run.
+async function fetchWithRetry(url) {
+  const WAITS = [20000, 65000, 65000, 65000];
+  for (let attempt = 0; ; attempt++) {
+    const response = await fetch(url);
+    if (response.ok) return response;
+    const body = (await response.text()).slice(0, 200);
+    const retryable = response.status === 429 || response.status >= 500;
+    if (!retryable || attempt >= WAITS.length) throw new Error(`Open-Meteo answered ${response.status} ${body}`);
+    console.log(`Open-Meteo answered ${response.status}; trying again in ${WAITS[attempt] / 1000} s`);
+    await new Promise(resolve => setTimeout(resolve, WAITS[attempt]));
+  }
+}
+
 async function forecasts(places) {
   const result = new Map();
   const chunks = [];
@@ -128,8 +143,7 @@ async function forecasts(places) {
   for (const chunk of chunks) {
     const url = `${API}?latitude=${chunk.map(p => p.lat).join(',')}&longitude=${chunk.map(p => p.lon).join(',')}` +
       `&daily=${DAILY}&forecast_days=${chunk[0].days}&timezone=auto&models=${Core.MODELS.join(',')}`;
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`Open-Meteo answered ${response.status} ${(await response.text()).slice(0, 200)}`);
+    const response = await fetchWithRetry(url);
     const json = await response.json();
     const answers = Array.isArray(json) ? json : [json];
     if (answers.length !== chunk.length) throw new Error(`Open-Meteo: ${answers.length} answers for ${chunk.length} places`);
