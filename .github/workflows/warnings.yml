@@ -1,0 +1,47 @@
+name: Weather warnings of NIMH
+
+# Every 30 minutes: the official warnings for Bulgaria (yellow, orange, red code) from MeteoAlarm
+# into /data/warnings-bg.json (.github/scripts/build-warnings.js), which the city pages read.
+# The file changes, and is committed, only when the warnings change. If MeteoAlarm does not
+# answer, the run fails and the file stays as it is (the pages ignore warnings that have expired).
+on:
+  schedule:
+    - cron: '7,37 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: warnings
+  cancel-in-progress: false
+
+jobs:
+  warnings:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node .github/scripts/build-warnings.js
+      - name: Commit
+        id: commit
+        run: |
+          git add data/warnings-bg.json
+          if git diff --cached --quiet; then
+            echo "Nothing changed."; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Weather warnings of $(date -u '+%F %H:%M')"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+      # A push made by Actions may not start the Pages build by itself: ask for it
+      - name: Publish
+        if: steps.commit.outputs.pushed == 'true'
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"

@@ -25,6 +25,18 @@
     es: { now: 'Ahora', feels: 'sensación', wind: 'Viento', humidity: 'Humedad', days: 'Previsión a 7 días', hourly: 'Por horas →', today: 'Hoy', tomorrow: 'Mañana', rain: 'probabilidad de lluvia', error: 'No se pudo cargar la previsión. Inténtalo de nuevo más tarde.', locale: 'es-ES' }
   };
   const t = () => T[document.documentElement.lang] || T.en;
+  // Gusts and warnings: our own (gusts of the strongest model) and the official ones of NIMH
+  // (/data/warnings-bg.json, written by .github/scripts/build-warnings.js, Bulgarian cities only)
+  const STRONG = 60; // km/h: gusts that break branches; 90 and more: very strong
+  const WIND = {
+    en: { gusts: 'gusts', strong: (g, when) => `Strong wind gusts ${when}: up to ${g} km/h`, very: (g, when) => `Very strong wind gusts ${when}: up to ${g} km/h`, today: 'today', tomorrow: 'tomorrow', official: 'Warning of NIMH', levels: { yellow: 'yellow', orange: 'orange', red: 'red' }, code: 'code' },
+    bg: { gusts: 'пориви', strong: (g, when) => `Силни пориви на вятъра ${when}: до ${g} км/ч`, very: (g, when) => `Много силни пориви на вятъра ${when}: до ${g} км/ч`, today: 'днес', tomorrow: 'утре', official: 'Предупреждение на НИМХ', levels: { yellow: 'жълт', orange: 'оранжев', red: 'червен' }, code: 'код' },
+    de: { gusts: 'Böen', strong: (g, when) => `Starke Windböen ${when}: bis ${g} km/h`, very: (g, when) => `Sehr starke Windböen ${when}: bis ${g} km/h`, today: 'heute', tomorrow: 'morgen', official: 'Warnung des NIMH', levels: { yellow: 'gelb', orange: 'orange', red: 'rot' }, code: 'Stufe' },
+    it: { gusts: 'raffiche', strong: (g, when) => `Forti raffiche di vento ${when}: fino a ${g} km/h`, very: (g, when) => `Raffiche di vento molto forti ${when}: fino a ${g} km/h`, today: 'oggi', tomorrow: 'domani', official: 'Allerta del NIMH', levels: { yellow: 'gialla', orange: 'arancione', red: 'rossa' }, code: 'allerta' },
+    es: { gusts: 'rachas', strong: (g, when) => `Rachas de viento fuertes ${when}: hasta ${g} km/h`, very: (g, when) => `Rachas de viento muy fuertes ${when}: hasta ${g} km/h`, today: 'hoy', tomorrow: 'mañana', official: 'Aviso del NIMH', levels: { yellow: 'amarillo', orange: 'naranja', red: 'rojo' }, code: 'aviso' }
+  };
+  const wind = () => WIND[document.documentElement.lang] || WIND.en;
+  const isBg = () => document.documentElement.lang === 'bg';
   // Pages with more days (data-days="10") or only the coming weekend (data-weekend)
   const PERIOD = {
     en: { days: n => `${n}-day forecast`, weekend: 'The weekend' },
@@ -87,7 +99,7 @@
     if (!corePromise) {
       corePromise = new Promise(resolve => {
         const script = document.createElement('script');
-        script.src = '/js/forecast-core.js?v=1';
+        script.src = '/js/forecast-core.js?v=2';
         script.onload = script.onerror = () => resolve();
         document.head.appendChild(script);
       });
@@ -134,9 +146,10 @@
       WeatherIcons.node('now-icon', current.key, pickText(current.text)),
       el('span', 'storm-now-value', `${Math.round(now.temperature_2m)}°`),
       el('p', 'storm-now-status', `${pickText(current.text)} · ${text.feels} ${Math.round(now.apparent_temperature)}°`),
-      el('p', 'storm-updated', `${text.wind}: ${Math.round(now.wind_speed_10m)} km/h · ${text.humidity}: ${now.relative_humidity_2m}%`),
+      el('p', 'storm-updated', `${text.wind}: ${Math.round(now.wind_speed_10m)} km/h${typeof now.wind_gusts_10m === 'number' ? `, ${wind().gusts} ${Math.round(now.wind_gusts_10m)} km/h` : ''} · ${text.humidity}: ${now.relative_humidity_2m}%`),
       ...sunLines()
     );
+    showAlerts();
 
     const lows = forecast.daily.temperature_2m_min, highs = forecast.daily.temperature_2m_max;
     const lowest = Math.min(...lows), highest = Math.max(...highs);
@@ -179,9 +192,11 @@
         rainText.title = text.rain;
         day.appendChild(rainText);
       }
-      const wind = el('span', 'city-day-wind', `${Math.round(forecast.daily.wind_speed_10m_max[i])} km/h`);
-      wind.prepend(WeatherIcons.node('', 'wind', text.wind, 'sm'));
-      day.appendChild(wind);
+      const gust = forecast.daily.wind_gusts_10m_max ? forecast.daily.wind_gusts_10m_max[i] : null;
+      const windText = el('span', 'city-day-wind' + (gust >= STRONG ? ' city-day-gusts' : ''),
+        `${Math.round(forecast.daily.wind_speed_10m_max[i])} km/h${typeof gust === 'number' ? ` · ${wind().gusts} ${Math.round(gust)}` : ''}`);
+      windText.prepend(WeatherIcons.node('', 'wind', text.wind, 'sm'));
+      day.appendChild(windText);
       day.appendChild(el('span', 'city-day-hourly', text.hourly));
       return day;
     });
@@ -193,10 +208,53 @@
     daysBox.hidden = false;
   }
 
+  // The warnings above the forecast: the official ones of NIMH for the province of a Bulgarian
+  // city (data-warn on #cityForecast), then ours when the gusts today or tomorrow reach STRONG
+  let official = [];
+  function showAlerts() {
+    const nowBox = document.getElementById('cityNow');
+    if (!forecast || !nowBox) return;
+    let list = document.getElementById('cityAlerts');
+    if (!list) {
+      list = el('div', 'city-alerts');
+      list.id = 'cityAlerts';
+      list.setAttribute('role', 'status');
+      box.insertBefore(list, nowBox);
+    }
+    const W = wind();
+    const items = official.map(w => {
+      const item = el('p', `city-alert city-alert-${w.level}`);
+      const time = iso => new Date(iso).toLocaleString(t().locale, { weekday: 'short', hour: '2-digit', minute: '2-digit' });
+      item.textContent = `${W.official} (${W.levels[w.level] || w.level} ${W.code}): ${(isBg() ? w.event.bg : w.event.en) || w.event.bg || w.event.en}, ${time(w.onset)} – ${time(w.expires)}`;
+      return item;
+    });
+    const gusts = forecast.daily.wind_gusts_10m_max || [];
+    [0, 1].forEach(i => {
+      const g = gusts[i];
+      if (typeof g !== 'number' || g < STRONG) return;
+      if (official.some(w => w.type === 'wind')) return; // the official warning says it better
+      items.push(el('p', `city-alert city-alert-${g >= 90 ? 'orange' : 'yellow'}`, (g >= 90 ? W.very : W.strong)(Math.round(g), i === 0 ? W.today : W.tomorrow)));
+    });
+    list.replaceChildren(...items);
+    list.hidden = !items.length;
+  }
+  async function loadWarnings() {
+    if (!box.dataset.warn) return;
+    try {
+      const response = await fetch('/data/warnings-bg.json', { cache: 'no-store' });
+      if (!response.ok) return;
+      const data = await response.json();
+      const now = Date.now();
+      official = ((data.provinces || {})[box.dataset.warn] || []).filter(w => new Date(w.expires).getTime() > now);
+      showAlerts();
+    } catch (error) { /* no warnings file: only ours */ }
+  }
+
   async function loadCity() {
+    loadWarnings();
     const url = `${API}?latitude=${box.dataset.lat}&longitude=${box.dataset.lon}` +
-      '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m' +
-      '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,sunrise,sunset,daylight_duration' +
+      '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,wind_gusts_10m' +
+      '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max,sunrise,sunset,daylight_duration' +
       `&forecast_days=${Math.min(Math.max(+box.dataset.days || 7, 7), 16)}&timezone=auto`;
     try {
       forecast = await getJson(url, true);
