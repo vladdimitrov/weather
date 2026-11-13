@@ -113,7 +113,7 @@ function home() {
   TARGETS.forEach(lang => {
     const T = texts.homepageTranslations[lang];
     if (!T || !T.metaDescription) throw new Error(`index.html: homepageTranslations.${lang}.metaDescription is missing`);
-    const title = `${T.heroTitle} | Weather Pulse`;
+    const title = `Weather Pulse – ${T.heroTitle}`;
     let html = common(template, lang, '/', { title, ogTitle: title, description: T.metaDescription, source: '/index.html' });
 
     // the same elements updateHomepageContent() fills in the browser
@@ -131,7 +131,7 @@ function home() {
       `<script type="application/ld+json">${JSON.stringify({
         '@context': 'https://schema.org',
         '@graph': [
-          { '@type': 'WebSite', '@id': `${SITE}/#website`, name: 'Weather Pulse', url: `${SITE}/${lang}/`, inLanguage: lang, publisher: { '@id': `${SITE}/#organization` } },
+          { '@type': 'WebSite', '@id': `${SITE}/#website`, name: 'Weather Pulse', alternateName: ['WeatherPulse', 'weatherpulse.eu'], url: `${SITE}/${lang}/`, inLanguage: lang, publisher: { '@id': `${SITE}/#organization` } },
           { '@type': 'Organization', '@id': `${SITE}/#organization`, name: 'Weather Pulse', url: `${SITE}/`, logo: `${SITE}/images/icons/icon-512.png` }
         ]
       })}</script>`, 'JSON-LD');
@@ -219,6 +219,10 @@ function apps() {
         Object.assign(crumbs.itemListElement[1], { name: T.title, item: `${SITE}/${lang}${url}` });
         return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
       }, 'JSON-LD');
+      // the city links of /weather/: names in the Latin alphabet, as on the translated city pages
+      if (url === '/weather/') {
+        html = html.replace(/(<a href="\/[a-z]{2}\/vremeto\/([a-z-]+)\/" class="recent-place">)[^<]*(<\/a>)/g, (m, open, slug, close) => open + esc(I18N.latinName(lang, slug)) + close);
+      }
       write(url, lang, html, false);
     });
   });

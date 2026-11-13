@@ -83,23 +83,27 @@ ${countries.map(({ country, name }) => group(name, `/europe/${country.slug}/`, P
   });
 }
 
-// ---- /vremeto/<city>/10-dni/ and /uikend/ ----
+// ---- /vremeto/<city>/10-dni/, /14-dni/ and /uikend/ ----
+const FORECAST_SLUG = { tenDays: '10-dni', fourteenDays: '14-dni', weekend: 'uikend' };
 function forecastPage(city, kind) {
   const T = BG[kind];
-  const url = `/vremeto/${city.slug}/${kind === 'tenDays' ? '10-dni' : 'uikend'}/`;
+  const url = `/vremeto/${city.slug}/${FORECAST_SLUG[kind]}/`;
   const params = new URLSearchParams({ city: city.name, lat: city.lat.toFixed(4), lon: city.lon.toFixed(4), cc: 'BG' });
-  const extra = kind === 'tenDays' ? ' data-days="10"' : ' data-days="10" data-weekend="1"';
+  const extra = kind === 'tenDays' ? ' data-days="10"' : kind === 'fourteenDays' ? ' data-days="14"' : ' data-days="10" data-weekend="1"';
   const tip = kind === 'weekend' && T.tips[city.slug] ? `
     <section class="info-card">
       <p>${T.tips[city.slug]}</p>
     </section>` : '';
-  const other = kind === 'tenDays'
-    ? (PLACES.TOURIST_BG.includes(city.slug) ? `<a class="btn" href="/vremeto/${city.slug}/uikend/">${BG.weekendLink}</a>` : '')
-    : `<a class="btn" href="/vremeto/${city.slug}/10-dni/">${BG.tenDaysLink}</a>`;
+  const weekendButton = PLACES.TOURIST_BG.includes(city.slug) ? `<a class="btn" href="/vremeto/${city.slug}/uikend/">${BG.weekendLink}</a>` : '';
+  const tenButton = `<a class="btn" href="/vremeto/${city.slug}/10-dni/">${BG.tenDaysLink}</a>`;
+  const fourteenButton = `<a class="btn" href="/vremeto/${city.slug}/14-dni/">${BG.fourteenDaysLink}</a>`;
+  const other = kind === 'tenDays' ? [fourteenButton, weekendButton].join('\n      ')
+    : kind === 'fourteenDays' ? [tenButton, weekendButton].join('\n      ')
+    : [tenButton, fourteenButton].join('\n      ');
   const nearby = CITIES.filter(other => other !== city)
     .map(other => ({ other, km: PLACES.distanceKm(city.lat, city.lon, other.lat, other.lon) }))
     .sort((a, b) => a.km - b.km).slice(0, 6)
-    .map(({ other }) => `<a href="/vremeto/${other.slug}/${kind === 'tenDays' ? '10-dni' : PLACES.TOURIST_BG.includes(other.slug) ? 'uikend' : '10-dni'}/" class="recent-place">${esc(other.name)}</a>`).join('\n        ');
+    .map(({ other }) => `<a href="/vremeto/${other.slug}/${kind !== 'weekend' ? FORECAST_SLUG[kind] : PLACES.TOURIST_BG.includes(other.slug) ? 'uikend' : '10-dni'}/" class="recent-place">${esc(other.name)}</a>`).join('\n        ');
   return page({
     ...ONLY_BG,
     url,
@@ -485,6 +489,7 @@ function widgetPage() {
 I18N.LANGS.forEach(lang => write(L(lang, '/gradove/').slice(1), citiesPage(lang)));
 CITIES.forEach(city => {
   write(`vremeto/${city.slug}/10-dni`, forecastPage(city, 'tenDays'));
+  write(`vremeto/${city.slug}/14-dni`, forecastPage(city, 'fourteenDays'));
   if (PLACES.TOURIST_BG.includes(city.slug)) write(`vremeto/${city.slug}/uikend`, forecastPage(city, 'weekend'));
 });
 Object.keys(BG.regions).forEach(slug => write(`vremeto/${slug}`, regionPage(slug)));
