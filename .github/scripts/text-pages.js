@@ -41,7 +41,16 @@ const TXT = {
     nearH: 'Близки градове', abroad: 'Отвъд границата:',
     bestH: where => `Кога е най-приятно времето ${where}`,
     bestText: b => `Най-приятното време ${b.where} обикновено е през ${b.months}: средната максимална температура е ${b.from === b.to ? `около ${b.from}C` : `между ${b.from}C и ${b.to}C`}, а дните с валеж са до ${b.rain} в месеца.${b.hot ? ` През ${b.hot} е горещо – следобед средно над 30°C.` : ''}${b.cold ? ` През ${b.cold} нощите са мразовити (средно под −3°C) и често вали сняг.` : ''}`,
-    recordText: r => `Най-високата температура ${r.where} за ${r.years} г. е ${r.max}C (${r.maxDate}), а най-ниската – ${r.min}C (${r.minDate}).`
+    recordText: r => `Най-високата температура ${r.where} за ${r.years} г. е ${r.max}C (${r.maxDate}), а най-ниската – ${r.min}C (${r.minDate}).`,
+    // ski resorts (SKI_POINTS in build-pages.js): title, description and the live snow table
+    skiTitle: where => `Времето ${where} днес – сняг на пистите и прогноза`,
+    skiDescription: where => `Времето ${where} днес и за 7 дни: сняг на пистите (снежна покривка и нов сняг), температура долу в курорта и горе на пистите, вятър и валежи. Климат по месеци.`,
+    snowH: where => `Сняг на пистите ${where}`,
+    snowIntro: 'Снежна покривка сега, нов сняг през следващите 7 дни и най-ниската и най-високата температура долу в курорта и горе на пистите. Стойностите са от модел за съответната надморска височина, не са измерване на пистата.',
+    snowHead: ['Място', 'Снежна покривка', 'Нов сняг 7 дни', 'Мин. / макс.'],
+    snowNote: 'Данни: Open-Meteo, обновяват се на всеки час. Реалната покривка на пистата зависи и от изкуствения сняг и обработката.',
+    snowNoJs: 'Таблицата се попълва, когато страницата се зареди.',
+    m: 'м'
   },
   en: {
     where: name => name,
@@ -83,7 +92,15 @@ const TXT = {
     nearH: 'Nearby cities', abroad: 'Across the border:',
     bestH: where => `Best time to visit ${where}`,
     bestText: b => `The most pleasant weather in ${b.where} is usually in ${b.months}: average highs are ${b.from === b.to ? `around ${b.from}C` : `between ${b.from}C and ${b.to}C`}, with up to ${b.rain} days of rain a month.${b.hot ? ` In ${b.hot} it is hot, over 30°C in the afternoon on average.` : ''}${b.cold ? ` In ${b.cold} nights are frosty (below −3°C on average) and snow is common.` : ''}`,
-    recordText: r => `The highest temperature in ${r.where} in ${r.years} was ${r.max}C (${r.maxDate}) and the lowest ${r.min}C (${r.minDate}).`
+    recordText: r => `The highest temperature in ${r.where} in ${r.years} was ${r.max}C (${r.maxDate}) and the lowest ${r.min}C (${r.minDate}).`,
+    skiTitle: where => `Weather in ${where} today – snow on the slopes and forecast`,
+    skiDescription: where => `Weather in ${where} today and for 7 days: snow on the slopes (snow depth and new snow), temperature down in the resort and up on the slopes, wind and precipitation. Climate by month.`,
+    snowH: where => `Snow on the slopes in ${where}`,
+    snowIntro: 'Snow depth now, new snow over the next 7 days and the lowest and highest temperature down in the resort and up on the slopes. The values come from a model for that elevation; they are not measured on the piste.',
+    snowHead: ['Place', 'Snow depth', 'New snow, 7 days', 'Min / max'],
+    snowNote: 'Data: Open-Meteo, updated every hour. The real snow on the piste also depends on snowmaking and grooming.',
+    snowNoJs: 'The table is filled in when the page loads.',
+    m: 'm'
   },
   de: {
     where: name => name,
@@ -125,7 +142,15 @@ const TXT = {
     nearH: 'Städte in der Nähe', abroad: 'Jenseits der Grenze:',
     bestH: where => `Beste Reisezeit für ${where}`,
     bestText: b => `Das angenehmste Wetter in ${b.where} herrscht meist im ${b.months}: Die Höchstwerte liegen im Mittel ${b.from === b.to ? `bei ${b.from}C` : `zwischen ${b.from}C und ${b.to}C`}, mit höchstens ${b.rain} Regentagen im Monat.${b.hot ? ` Im ${b.hot} ist es heiß, nachmittags im Mittel über 30 °C.` : ''}${b.cold ? ` Im ${b.cold} sind die Nächte frostig (im Mittel unter −3 °C), Schnee ist häufig.` : ''}`,
-    recordText: r => `Die höchste Temperatur in ${r.where} im Zeitraum ${r.years} lag bei ${r.max}C (${r.maxDate}), die tiefste bei ${r.min}C (${r.minDate}).`
+    recordText: r => `Die höchste Temperatur in ${r.where} im Zeitraum ${r.years} lag bei ${r.max}C (${r.maxDate}), die tiefste bei ${r.min}C (${r.minDate}).`,
+    skiTitle: where => `Wetter in ${where} heute – Schnee auf den Pisten und Vorhersage`,
+    skiDescription: where => `Wetter in ${where} heute und für 7 Tage: Schnee auf den Pisten (Schneehöhe und Neuschnee), Temperatur unten im Ort und oben auf den Pisten, Wind und Niederschlag. Klima nach Monaten.`,
+    snowH: where => `Schnee auf den Pisten in ${where}`,
+    snowIntro: 'Schneehöhe jetzt, Neuschnee in den nächsten 7 Tagen und die tiefste und höchste Temperatur unten im Ort und oben auf den Pisten. Die Werte stammen aus einem Modell für die jeweilige Höhe und sind keine Messung auf der Piste.',
+    snowHead: ['Ort', 'Schneehöhe', 'Neuschnee 7 Tage', 'Min. / max.'],
+    snowNote: 'Daten: Open-Meteo, stündlich aktualisiert. Der tatsächliche Schnee auf der Piste hängt auch von Beschneiung und Präparierung ab.',
+    snowNoJs: 'Die Tabelle wird beim Laden der Seite gefüllt.',
+    m: 'm'
   },
   it: {
     where: name => name,
@@ -167,7 +192,15 @@ const TXT = {
     nearH: 'Città vicine', abroad: 'Oltre confine:',
     bestH: where => `Quando andare a ${where}`,
     bestText: b => `Il clima più piacevole a ${b.where} è di solito a ${b.months}: le massime medie sono ${b.from === b.to ? `intorno a ${b.from}C` : `tra ${b.from}C e ${b.to}C`}, con al massimo ${b.rain} giorni di pioggia al mese.${b.hot ? ` A ${b.hot} fa caldo, nel pomeriggio in media oltre 30 °C.` : ''}${b.cold ? ` A ${b.cold} le notti sono gelide (in media sotto −3 °C) e la neve è frequente.` : ''}`,
-    recordText: r => `La temperatura più alta a ${r.where} nel periodo ${r.years} è stata di ${r.max}C (${r.maxDate}), la più bassa di ${r.min}C (${r.minDate}).`
+    recordText: r => `La temperatura più alta a ${r.where} nel periodo ${r.years} è stata di ${r.max}C (${r.maxDate}), la più bassa di ${r.min}C (${r.minDate}).`,
+    skiTitle: where => `Meteo a ${where} oggi – neve sulle piste e previsioni`,
+    skiDescription: where => `Meteo a ${where} oggi e per 7 giorni: neve sulle piste (altezza della neve e neve fresca), temperatura in basso nella località e in alto sulle piste, vento e precipitazioni. Clima mese per mese.`,
+    snowH: where => `Neve sulle piste a ${where}`,
+    snowIntro: 'Altezza della neve ora, neve fresca nei prossimi 7 giorni e temperatura minima e massima in basso nella località e in alto sulle piste. I valori provengono da un modello per quella quota e non sono misure sulla pista.',
+    snowHead: ['Luogo', 'Altezza neve', 'Neve fresca 7 giorni', 'Min / max'],
+    snowNote: 'Dati: Open-Meteo, aggiornati ogni ora. La neve reale sulla pista dipende anche dall’innevamento artificiale e dalla battitura.',
+    snowNoJs: 'La tabella si riempie quando la pagina si carica.',
+    m: 'm'
   },
   es: {
     where: name => name,
@@ -209,7 +242,15 @@ const TXT = {
     nearH: 'Ciudades cercanas', abroad: 'Al otro lado de la frontera:',
     bestH: where => `Cuándo ir a ${where}`,
     bestText: b => `El tiempo más agradable en ${b.where} suele darse en ${b.months}: las máximas medias están ${b.from === b.to ? `en torno a ${b.from}C` : `entre ${b.from}C y ${b.to}C`}, con un máximo de ${b.rain} días de lluvia al mes.${b.hot ? ` En ${b.hot} hace calor, por la tarde de media más de 30 °C.` : ''}${b.cold ? ` En ${b.cold} las noches son frías (de media bajo −3 °C) y suele nevar.` : ''}`,
-    recordText: r => `La temperatura más alta en ${r.where} en ${r.years} fue de ${r.max}C (${r.maxDate}) y la más baja de ${r.min}C (${r.minDate}).`
+    recordText: r => `La temperatura más alta en ${r.where} en ${r.years} fue de ${r.max}C (${r.maxDate}) y la más baja de ${r.min}C (${r.minDate}).`,
+    skiTitle: where => `El tiempo en ${where} hoy – nieve en las pistas y previsión`,
+    skiDescription: where => `El tiempo en ${where} hoy y para 7 días: nieve en las pistas (espesor y nieve nueva), temperatura abajo en la estación y arriba en las pistas, viento y precipitación. Clima por meses.`,
+    snowH: where => `Nieve en las pistas de ${where}`,
+    snowIntro: 'Espesor de nieve ahora, nieve nueva en los próximos 7 días y la temperatura mínima y máxima abajo en la estación y arriba en las pistas. Los valores son de un modelo para esa altitud, no medidas en la pista.',
+    snowHead: ['Lugar', 'Espesor de nieve', 'Nieve nueva 7 días', 'Mín. / máx.'],
+    snowNote: 'Datos: Open-Meteo, actualizados cada hora. La nieve real en la pista depende también de la nieve artificial y del pisado.',
+    snowNoJs: 'La tabla se completa al cargar la página.',
+    m: 'm'
   }
 };
 

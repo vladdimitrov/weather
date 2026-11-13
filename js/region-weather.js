@@ -1,5 +1,6 @@
 // Regional pages (/vremeto/chernomorie/, /vremeto/morska-voda/, /vremeto/snyag-kurorti/,
-// /vremeto/zhegi/, /vremeto/parvi-snyag/, written by build-extra.js): fills every
+// /vremeto/zhegi/, /vremeto/parvi-snyag/, written by build-extra.js; the snow table of the ski resort
+// city pages /vremeto/bansko/ ..., written by build-pages.js): fills every
 // table.region-table with live data from Open-Meteo, one request per table.
 // The rows are in the HTML (name, link, data-lat, data-lon, data-elevation); data-mode says what to show:
 //   days       max / min temperature and chance of rain for 7 days
@@ -12,7 +13,11 @@
   const MARINE = 'https://marine-api.open-meteo.com/v1/marine';
   const T = {
     bg: { today: 'Днес', none: 'не се очаква', error: 'Данните не могат да се заредят. Опитайте отново по-късно.', cm: 'см', m: 'м', locale: 'bg-BG' },
-    en: { today: 'Today', none: 'not expected', error: 'The data could not be loaded. Please try again later.', cm: 'cm', m: 'm', locale: 'en-GB' }
+    en: { today: 'Today', none: 'not expected', error: 'The data could not be loaded. Please try again later.', cm: 'cm', m: 'm', locale: 'en-GB' },
+    // the ski resort city pages (snow table) exist in every language
+    de: { today: 'Heute', none: 'nicht erwartet', error: 'Die Daten konnten nicht geladen werden. Bitte später erneut versuchen.', cm: 'cm', m: 'm', locale: 'de-DE' },
+    it: { today: 'Oggi', none: 'non previsto', error: 'Impossibile caricare i dati. Riprova più tardi.', cm: 'cm', m: 'm', locale: 'it-IT' },
+    es: { today: 'Hoy', none: 'no se espera', error: 'No se pudieron cargar los datos. Inténtalo de nuevo más tarde.', cm: 'cm', m: 'm', locale: 'es-ES' }
   };
   const t = () => T[document.documentElement.lang] || T.en;
   const deg = v => (typeof v === 'number' ? `${Math.round(v) < 0 ? '−' : ''}${Math.abs(Math.round(v))}°` : '—');

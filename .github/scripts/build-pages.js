@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 62, mobileNav: 19, languageSelector: 7, cityForecast: 13, moon: 2, lunaToday: 5, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
+const VERSION = { theme: 62, mobileNav: 19, languageSelector: 7, cityForecast: 13, moon: 2, lunaToday: 5, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1, regionWeather: 2 };
 
 const CITIES = require('./bg-cities.js');
 
@@ -28,6 +28,34 @@ const LOCAL_WIND = {
   }
 };
 // Bulgarian cities that link to the regional pages (build-extra.js)
+// Ski resorts: their pages get a ski title and description and a live snow table (/js/region-weather.js,
+// data-mode="snow"): the resort and points up on the slopes, [Bulgarian name, Latin name, latitude, longitude, elevation]
+const SKI_POINTS = {
+  bansko: [['Банско', 'Bansko', 41.8383, 23.4885, 930], ['Шилигарника', 'Shiligarnika', 41.8050, 23.4330, 1700], ['Тодорка', 'Todorka', 41.7835, 23.4200, 2500]],
+  borovets: [['Боровец', 'Borovets', 42.2667, 23.6056, 1350], ['Ситняково', 'Sitnyakovo', 42.2420, 23.5750, 1750], ['Ястребец', 'Yastrebets', 42.2300, 23.5600, 2300]],
+  pamporovo: [['Пампорово', 'Pamporovo', 41.6500, 24.6950, 1650], ['Снежанка', 'Snezhanka', 41.6450, 24.6800, 1900]]
+};
+function snowSection(city, lang) {
+  const points = SKI_POINTS[city.slug];
+  if (!points) return '';
+  const T = TXT[lang];
+  return `
+    <section class="info-card">
+      <h2>${T.snowH(cityWhere(city, lang))}</h2>
+      <p>${T.snowIntro}</p>
+      <div class="table-scroll">
+      <table class="kp-table region-table" data-mode="snow">
+        <thead><tr>${T.snowHead.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+        <tbody>
+${points.map(([bg, latin, lat, lon, elevation]) => `          <tr data-lat="${lat}" data-lon="${lon}" data-elevation="${elevation}"><td>${lang === 'bg' ? bg : latin} <span class="storm-updated">${elevation} ${T.m}</span></td></tr>`).join('\n')}
+        </tbody>
+      </table>
+      <p class="storm-updated region-nojs">${T.snowNoJs}</p>
+      </div>
+      <p class="storm-updated">${T.snowNote}</p>
+    </section>
+`;
+}
 const REGION_OF = { varna: ['chernomorie', 'morska-voda'], burgas: ['chernomorie', 'morska-voda'], sozopol: ['chernomorie', 'morska-voda'], nesebar: ['chernomorie', 'morska-voda'], bansko: ['snyag-kurorti'], borovets: ['snyag-kurorti'], pamporovo: ['snyag-kurorti'] };
 const L = (lang, url) => I18N.localUrl(lang, url);
 const linkTo = (url, text) => `<a href="${url}">${text}</a>`;
@@ -403,8 +431,8 @@ function cityPage(city, lang) {
     multi: true,
     indexed: PLACES.bgIndexed(city.slug),
     // page() adds " | Weather Pulse"
-    title: T.title(where),
-    description: T.description(where),
+    title: SKI_POINTS[city.slug] ? T.skiTitle(where) : T.title(where),
+    description: SKI_POINTS[city.slug] ? T.skiDescription(where) : T.description(where),
     jsonLd: breadcrumbs + placeJson({ title: T.cityName(where), name, country: 'BG', lat: city.lat, lon: city.lon, url: L(lang, `/vremeto/${city.slug}/`), lang }),
     body: `    <p class="breadcrumbs"><a href="${L(lang, '/vremeto/')}">${T.hubName}</a> › ${name}</p>
     <h1>${T.cityName(where)}</h1>
@@ -414,7 +442,7 @@ function cityPage(city, lang) {
       <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">${T.loading}</p></div>
       <div class="kp-forecast" id="cityDays" hidden></div>
     </div>
-${LOCAL_WIND[city.slug] ? `
+${snowSection(city, lang)}${LOCAL_WIND[city.slug] ? `
     <section class="info-card city-local-wind">
       <p>${LOCAL_WIND[city.slug][lang]}</p>
     </section>
@@ -443,7 +471,7 @@ ${nearbySection({ lat: city.lat, lon: city.lon, url: `/vremeto/${city.slug}/`, c
     </section>`,
     scripts: `<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=${VERSION.moon}" defer></script>
-<script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`
+<script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n${SKI_POINTS[city.slug] ? `<script src="/js/region-weather.js?v=${VERSION.regionWeather}" defer></script>\n` : ''}`
   });
 }
 
