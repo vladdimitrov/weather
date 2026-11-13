@@ -5,7 +5,7 @@
 //  - Scripts and styles with a version in the address (theme.css?v=58): cache first. A new
 //    version is a new address, so nothing stale is ever served; repeat visits do not wait for
 //    the network for them. Change such a file => raise its ?v= (see README).
-const CACHE = 'weatherpulse-v17';
+const CACHE = 'weatherpulse-v18';
 // Visited pages kept for offline use (the pages in PAGES are always kept)
 const MAX_PAGES = 60;
 
