@@ -142,3 +142,11 @@
 .sky-card strong { font-size: 1rem; }
 .sky-card span:last-child { font-size: 0.84rem; color: var(--ink-soft); }
 @media (max-width: 700px) { .sky-cards { grid-template-columns: 1fr; } }
+
+/* ---- questions, subscription ---- */
+.moon-faq details { border: 1px solid var(--line); border-radius: 12px; background: rgba(255, 255, 255, 0.04); margin: 8px 0; }
+.moon-faq summary { cursor: pointer; padding: 12px 14px; font-weight: 600; list-style-position: inside; }
+.moon-faq summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 12px; }
+.moon-faq details[open] summary { color: var(--gold); }
+.moon-faq details p { margin: 0; padding: 0 14px 14px; color: var(--ink-soft); max-width: 70ch; }
+.moon-subscribe code { display: inline-block; max-width: 100%; overflow-wrap: anywhere; padding: 2px 8px; border-radius: 6px; background: rgba(255, 255, 255, 0.08); color: var(--ink); user-select: all; }

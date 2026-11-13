@@ -23,7 +23,7 @@
   <meta property="og:title" content="Лунен календар – фаза на Луната днес">
   <meta property="og:description" content="Фаза на Луната днес, осветена част, кога е следващото пълнолуние и новолуние. Лунен календар по месеци за 2026 и 2027 г., по българско време.">
   <meta property="og:url" content="https://weatherpulse.eu/luna/">
-  <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
+  <meta property="og:image" content="https://weatherpulse.eu/images/og-luna-bg.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
@@ -43,6 +43,55 @@
         "position": 2,
         "name": "Лунен календар",
         "item": "https://weatherpulse.eu/luna/"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "bg",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Кога е следващото пълнолуние и новолуние?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Следващото пълнолуние е на 24 ноември 2026 г., 16:53, а следващото новолуние – на 9 декември 2026 г., 02:51 (българско време)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Колко трае лунният цикъл?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "От едно новолуние до следващото минават средно 29 дни, 12 часа и 44 минути. Това се нарича синодичен месец. Времето между две новолуния може да е с до няколко часа по-кратко или по-дълго, защото орбитата на Луната е елипса."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Защо Луната има фази?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Луната не свети сама, а отразява слънчева светлина. Докато обикаля около Земята, от нас се вижда различна част от осветената ѝ половина: от тънък сърп през първа четвърт и пълнолуние до последна четвърт и пак новолуние."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Какво е суперлуна?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Суперлуна е пълнолуние, което съвпада с перигея – най-близката точка от орбитата на Луната (около 356 000 км, срещу 406 000 км в апогея). Тя изглежда до около 14% по-голяма и 30% по-ярка от най-далечното пълнолуние."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Какво е синя луна?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Синя луна е второто пълнолуние в един календарен месец. Не е синя на цвят. В тези две години няма синя луна."
+        }
       }
     ]
   }
@@ -67,7 +116,7 @@
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
-  <link rel="stylesheet" href="/css/luna.css?v=3">
+  <link rel="stylesheet" href="/css/luna.css?v=4">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
@@ -92,48 +141,48 @@
 
     <section class="info-card moon-today" id="moonToday">
       <div class="moon-hero">
-        <div class="moon-hero-disc"><svg class="moon-svg" viewBox="0 0 100 100" width="190" height="190" role="img" aria-label="Растящ сърп"><title>Растящ сърп</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A34.66 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg></div>
+        <div class="moon-hero-disc"><svg class="moon-svg" viewBox="0 0 100 100" width="190" height="190" role="img" aria-label="Растящ сърп"><title>Растящ сърп</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A33.84 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg></div>
         <div class="moon-hero-text">
           <h2>Растящ сърп</h2>
           <p class="moon-hero-sub">петък, 13 ноември 2026 г. · Луната расте</p>
           <dl class="moon-stats">
-            <div><dt>Осветеност</dt><dd>14%</dd></div>
-            <div><dt>Възраст</dt><dd>3,9 <small>дни</small></dd></div>
+            <div><dt>Осветеност</dt><dd>15%</dd></div>
+            <div><dt>Възраст</dt><dd>4,1 <small>дни</small></dd></div>
             <div><dt>Разстояние</dt><dd>405 500 <small>км</small></dd></div>
           </dl>
-          <div class="moon-cycle" role="img" aria-label="Лунен цикъл: 13%">
-            <div class="moon-cycle-bar"><i style="width:13.4%"></i></div>
+          <div class="moon-cycle" role="img" aria-label="Лунен цикъл: 14%">
+            <div class="moon-cycle-bar"><i style="width:13.8%"></i></div>
             <div class="moon-cycle-ends"><span>Новолуние</span><span>Пълнолуние</span><span>Новолуние</span></div>
           </div>
         </div>
       </div>
       <h3 class="moon-sub">Следващи фази</h3>
       <div class="moon-next">
-        <div class="moon-next-card"><svg class="moon-svg" viewBox="0 0 100 100" width="44" height="44" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A0.01 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>Първа четвърт</strong><span>вт, 17 ноември</span><span>13:47 ч.</span><em>след 4 дни</em></div>
-        <div class="moon-next-card"><svg class="moon-svg" viewBox="0 0 100 100" width="44" height="44" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A48.00 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>Пълнолуние</strong><span>вт, 24 ноември</span><span>16:53 ч.</span><em>след 11 дни</em></div>
-        <div class="moon-next-card"><svg class="moon-svg" viewBox="0 0 100 100" width="44" height="44" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A0.01 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>Последна четвърт</strong><span>вт, 1 декември</span><span>08:08 ч.</span><em>след 18 дни</em></div>
-        <div class="moon-next-card"><svg class="moon-svg" viewBox="0 0 100 100" width="44" height="44" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A48.00 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>Новолуние</strong><span>ср, 9 декември</span><span>02:51 ч.</span><em>след 26 дни</em></div>
+        <div class="moon-next-card"><svg class="moon-svg" viewBox="0 0 100 100" width="44" height="44" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A0.01 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>Първа четвърт</strong><span>вт, 17 ноември</span><span>13:47 ч. ч.</span><em>след 4 дни</em></div>
+        <div class="moon-next-card"><svg class="moon-svg" viewBox="0 0 100 100" width="44" height="44" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A48.00 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>Пълнолуние</strong><span>вт, 24 ноември</span><span>16:53 ч. ч.</span><em>след 11 дни</em></div>
+        <div class="moon-next-card"><svg class="moon-svg" viewBox="0 0 100 100" width="44" height="44" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A0.01 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>Последна четвърт</strong><span>вт, 1 декември</span><span>08:08 ч. ч.</span><em>след 18 дни</em></div>
+        <div class="moon-next-card"><svg class="moon-svg" viewBox="0 0 100 100" width="44" height="44" role="img" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A48.00 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>Новолуние</strong><span>ср, 9 декември</span><span>02:51 ч. ч.</span><em>след 26 дни</em></div>
       </div>
       <h3 class="moon-sub">Луната през следващите 14 дни</h3>
       <div class="moon-strip">
-        <div class="moon-strip-day is-today"><span>пт</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Растящ сърп"><title>Растящ сърп</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A34.66 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>13</strong><em>14%</em></div>
-        <div class="moon-strip-day"><span>сб</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Растящ сърп"><title>Растящ сърп</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A27.81 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>14</strong><em>21%</em></div>
-        <div class="moon-strip-day"><span>нд</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Растящ сърп"><title>Растящ сърп</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A19.98 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>15</strong><em>29%</em></div>
-        <div class="moon-strip-day"><span>пн</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Първа четвърт"><title>Първа четвърт</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A11.39 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>16</strong><em>38%</em></div>
-        <div class="moon-strip-day"><span>вт</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Първа четвърт"><title>Първа четвърт</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A2.27 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>17</strong><em>48%</em></div>
-        <div class="moon-strip-day"><span>ср</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Първа четвърт"><title>Първа четвърт</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A7.14 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>18</strong><em>57%</em></div>
-        <div class="moon-strip-day"><span>чт</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Първа четвърт"><title>Първа четвърт</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A16.54 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>19</strong><em>67%</em></div>
-        <div class="moon-strip-day"><span>пт</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Растяща луна"><title>Растяща луна</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A25.55 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>20</strong><em>77%</em></div>
-        <div class="moon-strip-day"><span>сб</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Растяща луна"><title>Растяща луна</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A33.71 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>21</strong><em>85%</em></div>
-        <div class="moon-strip-day"><span>нд</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Растяща луна"><title>Растяща луна</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A40.49 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>22</strong><em>92%</em></div>
-        <div class="moon-strip-day"><span>пн</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Пълнолуние"><title>Пълнолуние</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A45.34 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>23</strong><em>97%</em></div>
-        <div class="moon-strip-day"><span>вт</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Пълнолуние"><title>Пълнолуние</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A47.78 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>24</strong><em>100%</em></div>
-        <div class="moon-strip-day"><span>ср</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Пълнолуние"><title>Пълнолуние</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A47.49 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>25</strong><em>99%</em></div>
-        <div class="moon-strip-day"><span>чт</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Пълнолуние"><title>Пълнолуние</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A44.40 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>26</strong><em>96%</em></div>
+        <div class="moon-strip-day is-today"><span>пт</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Растящ сърп"><title>Растящ сърп</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A33.84 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>13</strong><em>15%</em></div>
+        <div class="moon-strip-day"><span>сб</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Растящ сърп"><title>Растящ сърп</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A26.85 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>14</strong><em>22%</em></div>
+        <div class="moon-strip-day"><span>нд</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Растящ сърп"><title>Растящ сърп</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A18.90 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>15</strong><em>30%</em></div>
+        <div class="moon-strip-day"><span>пн</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Първа четвърт"><title>Първа четвърт</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A10.23 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>16</strong><em>39%</em></div>
+        <div class="moon-strip-day"><span>вт</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Първа четвърт"><title>Първа четвърт</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A1.06 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>17</strong><em>49%</em></div>
+        <div class="moon-strip-day"><span>ср</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Първа четвърт"><title>Първа четвърт</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A8.36 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>18</strong><em>59%</em></div>
+        <div class="moon-strip-day"><span>чт</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Първа четвърт"><title>Първа четвърт</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A17.73 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>19</strong><em>68%</em></div>
+        <div class="moon-strip-day"><span>пт</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Растяща луна"><title>Растяща луна</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A26.66 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>20</strong><em>78%</em></div>
+        <div class="moon-strip-day"><span>сб</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Растяща луна"><title>Растяща луна</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A34.67 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>21</strong><em>86%</em></div>
+        <div class="moon-strip-day"><span>нд</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Растяща луна"><title>Растяща луна</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A41.23 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>22</strong><em>93%</em></div>
+        <div class="moon-strip-day"><span>пн</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Пълнолуние"><title>Пълнолуние</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A45.80 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>23</strong><em>98%</em></div>
+        <div class="moon-strip-day"><span>вт</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Пълнолуние"><title>Пълнолуние</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A47.90 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>24</strong><em>100%</em></div>
+        <div class="moon-strip-day"><span>ср</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Пълнолуние"><title>Пълнолуние</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A47.25 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>25</strong><em>99%</em></div>
+        <div class="moon-strip-day"><span>чт</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Намаляваща луна"><title>Намаляваща луна</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A43.80 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>26</strong><em>96%</em></div>
       </div>
     </section>
 
-    <p class="city-actions"><a class="btn" href="/luna/2026/noemvri/">Този месец</a> <a class="btn" href="/luna/2026/">Лунен календар 2026</a> <a class="btn" href="/luna/2027/">Лунен календар 2027</a></p>
+    <p class="city-actions"><a class="btn" href="/luna/2026/noemvri/">Този месец</a> <a class="btn" href="/luna/2026/">Лунен календар 2026</a> <a class="btn" href="/luna/2027/">Лунен календар 2027</a> <a class="btn" href="/luna/2026/pylnolunie/">Пълнолуния 2026</a> <a class="btn" href="/luna/2026/novolunie/">Новолуния 2026</a> <button type="button" class="btn" id="moonShare" data-copied="✓ Линкът е копиран">📤 Сподели</button></p>
 
     <section class="info-card">
       <h2>Лунен календар 2026 по месеци</h2>
@@ -171,6 +220,13 @@
       </div>
     </section>
 
+    <section class="info-card moon-subscribe">
+      <h2>Лунният календар във вашия календар</h2>
+      <p>Абонирайте се и всички фази на Луната за 2026–2027 ще са във вашия Google, Apple или Outlook календар – с точния час във вашата часова зона. Календарът се допълва всяка година.</p>
+      <p class="city-actions"><a class="btn" href="webcal://weatherpulse.eu/luna/moon-phases.ics">📅 Абонирай се</a> <a class="btn" href="/luna/moon-phases.ics" download>Изтегли .ics</a></p>
+      <p class="storm-updated">Google Календар: „Други календари“ → „От URL“ и поставете адреса: <code>https://weatherpulse.eu/luna/moon-phases.ics</code></p>
+    </section>
+
     <section class="info-card moon-sky">
       <h2>Небето</h2>
       <p>Следващите събития на небето: метеорни потоци, затъмнения и суперлуни.</p>
@@ -186,6 +242,15 @@
       <p>Луната не свети сама – виждаме онази част от нея, която е осветена от Слънцето. Докато обикаля около Земята, ъгълът между Слънцето, Земята и Луната се променя и от Земята се вижда различна част от осветената ѝ половина. Това са фазите.</p>
       <p>Пълният цикъл от новолуние до следващото новолуние (синодичен месец) трае средно 29 дни, 12 часа и 44 минути. След новолунието Луната расте: тънък сърп вечер на запад, първа четвърт след около седмица и пълнолуние след около две. После намалява през последна четвърт до следващото новолуние. От Северното полукълбо растящата Луна е осветена отдясно, а намаляващата – отляво.</p>
       <p>Разстоянието до Луната също се променя, защото орбитата ѝ е елипса: от около 356 000 км в перигей до около 406 000 км в апогей. Когато пълнолунието съвпадне с перигея, Луната изглежда малко по-голяма и по-ярка – това наричат „суперлуна“.</p>
+    </section>
+
+    <section class="info-card moon-faq">
+      <h2>Често задавани въпроси за Луната</h2>
+      <details class="moon-q"><summary>Кога е следващото пълнолуние и новолуние?</summary><p>Следващото пълнолуние е на 24 ноември 2026 г., 16:53, а следващото новолуние – на 9 декември 2026 г., 02:51 (българско време).</p></details>
+      <details class="moon-q"><summary>Колко трае лунният цикъл?</summary><p>От едно новолуние до следващото минават средно 29 дни, 12 часа и 44 минути. Това се нарича синодичен месец. Времето между две новолуния може да е с до няколко часа по-кратко или по-дълго, защото орбитата на Луната е елипса.</p></details>
+      <details class="moon-q"><summary>Защо Луната има фази?</summary><p>Луната не свети сама, а отразява слънчева светлина. Докато обикаля около Земята, от нас се вижда различна част от осветената ѝ половина: от тънък сърп през първа четвърт и пълнолуние до последна четвърт и пак новолуние.</p></details>
+      <details class="moon-q"><summary>Какво е суперлуна?</summary><p>Суперлуна е пълнолуние, което съвпада с перигея – най-близката точка от орбитата на Луната (около 356 000 км, срещу 406 000 км в апогея). Тя изглежда до около 14% по-голяма и 30% по-ярка от най-далечното пълнолуние.</p></details>
+      <details class="moon-q"><summary>Какво е синя луна?</summary><p>Синя луна е второто пълнолуние в един календарен месец. Не е синя на цвят. В тези две години няма синя луна.</p></details>
     </section>
 
     <section class="info-card">
@@ -218,7 +283,7 @@
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/moon-view.js?v=1" defer></script>
 <script src="/js/place-context.js?v=1" defer></script>
-<script src="/js/luna-today.js?v=4" defer></script>
+<script src="/js/luna-today.js?v=5" defer></script>
 <script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

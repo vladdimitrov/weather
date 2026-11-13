@@ -60,6 +60,11 @@
       "url": "/maps/"
     },
     {
+      "name": "Лунен календар",
+      "short_name": "Луна",
+      "url": "/luna/"
+    },
+    {
       "name": "Календар на празниците",
       "short_name": "Празници",
       "url": "/holliday_calendar/"
