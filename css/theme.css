@@ -1115,9 +1115,8 @@ body {
   #weather-orbit-btn,
   #magnetic-orbit-btn,
   #maps-orbit-btn,
-  #sky-orbit-btn,
-  #holliday-calendar-btn,
-  #contacts-orbit-btn {
+  #moon-orbit-btn,
+  #holliday-calendar-btn {
     animation-name: orbit !important;
   }
 
@@ -1435,9 +1434,8 @@ html.i18n-pending body {
 #weather-orbit-btn,
 #magnetic-orbit-btn,
 #maps-orbit-btn,
-#sky-orbit-btn,
-#holliday-calendar-btn,
-#contacts-orbit-btn {
+#moon-orbit-btn,
+#holliday-calendar-btn {
   width: 88px;
   height: 88px;
   margin-left: -44px;
@@ -1449,29 +1447,27 @@ html.i18n-pending body {
 #weather-orbit-btn { border-color: rgba(0, 170, 255, 0.9); }
 #maps-orbit-btn { border-color: rgba(255, 165, 0, 0.9); }
 #holliday-calendar-btn { border-color: rgba(255, 100, 150, 0.9); }
-#contacts-orbit-btn { border-color: rgba(100, 255, 150, 0.9); }
 #magnetic-orbit-btn { border-color: rgba(180, 110, 255, 0.95); }
-#sky-orbit-btn { border-color: rgba(120, 150, 255, 0.95); }
+#moon-orbit-btn { border-color: rgba(120, 150, 255, 0.95); }
 
-/* Six planets evenly around the 60 s orbit */
+/* Five planets evenly around the 60 s orbit (every 12 s) */
 #weather-orbit-btn { animation-delay: 0s, 0s !important; }
 #magnetic-orbit-btn {
   animation: orbit 60s linear infinite, stormAura 2.4s ease-in-out infinite;
-  animation-delay: -10s, 0s;
+  animation-delay: -12s, 0s;
   box-shadow: 0 0 25px rgba(180, 110, 255, 0.8), 0 0 50px rgba(180, 110, 255, 0.4);
 }
 #magnetic-orbit-btn:hover { animation-play-state: paused; }
-#holliday-calendar-btn { animation-delay: -20s, 0s !important; }
-#sky-orbit-btn {
-  animation: orbit 60s linear infinite, skyAura 2.8s ease-in-out infinite;
-  animation-delay: -30s, 0s;
+#holliday-calendar-btn { animation-delay: -24s, 0s !important; }
+#moon-orbit-btn {
+  animation: orbit 60s linear infinite, moonAura 2.8s ease-in-out infinite;
+  animation-delay: -36s, 0s;
   box-shadow: 0 0 25px rgba(110, 140, 255, 0.8), 0 0 50px rgba(110, 140, 255, 0.4);
 }
-#sky-orbit-btn:hover { animation-play-state: paused; }
-#maps-orbit-btn { animation-delay: -40s, 0s !important; }
-#contacts-orbit-btn { animation-delay: -50s, 0s !important; }
+#moon-orbit-btn:hover { animation-play-state: paused; }
+#maps-orbit-btn { animation-delay: -48s, 0s !important; }
 
-@keyframes skyAura {
+@keyframes moonAura {
   0%, 100% { box-shadow: 0 0 20px rgba(110, 140, 255, 0.6), 0 0 40px rgba(110, 140, 255, 0.3); }
   50% { box-shadow: 0 0 35px rgba(110, 140, 255, 1), 0 0 70px rgba(110, 140, 255, 0.5); }
 }
@@ -1484,9 +1480,8 @@ html.i18n-pending body {
 #weather-orbit-label,
 #magnetic-orbit-label,
 #maps-orbit-label,
-#sky-orbit-label,
-#holiday-calendar-label,
-#contacts-orbit-label {
+#moon-orbit-label,
+#holiday-calendar-label {
   font-family: var(--font-text) !important;
   font-size: 12px !important;
   font-weight: 700;
@@ -1501,9 +1496,8 @@ html.i18n-pending body {
   #weather-orbit-btn,
   #magnetic-orbit-btn,
   #maps-orbit-btn,
-  #sky-orbit-btn,
-  #holliday-calendar-btn,
-  #contacts-orbit-btn {
+  #moon-orbit-btn,
+  #holliday-calendar-btn {
     width: 74px;
     height: 74px;
     margin-left: -37px;
@@ -1513,9 +1507,8 @@ html.i18n-pending body {
   #weather-orbit-label,
   #magnetic-orbit-label,
   #maps-orbit-label,
-  #sky-orbit-label,
-  #holiday-calendar-label,
-  #contacts-orbit-label {
+  #moon-orbit-label,
+  #holiday-calendar-label {
     font-size: 10.5px !important;
     letter-spacing: 0;
   }
@@ -2280,3 +2273,14 @@ html body .day-details-toggle { min-height: 40px; }
 @media (max-width: 600px) { #nowCard[hidden] { min-height: 155px; } }
 /* storms: the Kp gauge */
 #stormNow { min-height: 245px; }
+
+/* Wind warnings above the city forecast (js/city-forecast.js, build-forecast.js) */
+.city-alerts { display: flex; flex-direction: column; gap: 8px; max-width: 794px; margin: 12px auto 0; box-sizing: border-box; }
+.city-alerts[hidden] { display: none; }
+.city-alert { margin: 0; padding: 10px 14px; border-radius: 10px; font-weight: 600; color: #1a1a2e; text-align: left; }
+.city-alert-yellow { background: #ffd54f; }
+.city-alert-orange { background: #ff9800; }
+.city-alert-red { background: #e53935; color: #ffffff; }
+.city-day-gusts { color: #ffb74d; opacity: 1; font-weight: 600; }
+.wind-gust { opacity: 0.75; font-size: 0.9em; }
+.wind-gust-strong { color: #ffb74d; opacity: 1; font-weight: 600; }

@@ -9,13 +9,24 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 60, mobileNav: 18, languageSelector: 7, cityForecast: 12, moon: 2, lunaToday: 3, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
+const VERSION = { theme: 62, mobileNav: 19, languageSelector: 7, cityForecast: 13, moon: 2, lunaToday: 5, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
 
 const CITIES = require('./bg-cities.js');
 
 const { TXT, HOLIDAYS } = require('./text-pages.js');
 const CITY_TEXT = require('./text-cities.js');
 const BG_ONLY = require('./text-extra.js').BG;
+const { provinceOf } = require('./bg-provinces.js');
+// What the forecast of a city cannot show: a local wind the models with a 7–25 km grid miss
+const LOCAL_WIND = {
+  sofia: {
+    bg: 'Южняк под Витоша: при силен южен вятър въздухът се спуска по склоновете на планината и се ускорява. В кварталите под Витоша – Симеоново, Драгалевци, Бояна, Княжево, Дървеница – поривите често са много по-силни, отколкото в центъра и в прогнозата за София. Затова показваме поривите по модела, който дава най-силните, а при пориви над 60 км/ч и при предупреждение на НИМХ – съобщение над прогнозата.',
+    en: 'The south wind under Vitosha: in a strong southerly wind the air comes down the slopes of the mountain and speeds up. In the districts at its foot – Simeonovo, Dragalevtsi, Boyana, Knyazhevo, Darvenitsa – the gusts are often much stronger than in the centre and in the forecast for Sofia. That is why we show the gusts of the model that gives the strongest, and a notice above the forecast for gusts over 60 km/h and for warnings of NIMH.',
+    de: 'Südwind am Witoscha: Bei starkem Südwind strömt die Luft die Hänge des Gebirges hinab und wird schneller. In den Vierteln am Fuß des Witoscha – Simeonowo, Dragalewzi, Bojana, Knjaschewo, Darweniza – sind die Böen oft viel stärker als im Zentrum und in der Vorhersage für Sofia. Deshalb zeigen wir die Böen des Modells mit den stärksten Werten und ab 60 km/h sowie bei Warnungen des NIMH einen Hinweis über der Vorhersage.',
+    it: 'Il vento da sud sotto il Vitosha: con un forte vento da sud l’aria scende lungo i pendii della montagna e accelera. Nei quartieri ai suoi piedi – Simeonovo, Dragalevtsi, Boyana, Knyazhevo, Darvenitsa – le raffiche sono spesso molto più forti che in centro e nelle previsioni per Sofia. Per questo mostriamo le raffiche del modello che dà le più forti e, oltre i 60 km/h o con un’allerta del NIMH, un avviso sopra le previsioni.',
+    es: 'El viento del sur bajo el Vitosha: con viento fuerte del sur, el aire baja por las laderas de la montaña y se acelera. En los barrios a sus pies – Simeonovo, Dragalevtsi, Boyana, Knyazhevo, Darvenitsa – las rachas suelen ser mucho más fuertes que en el centro y que en la previsión para Sofía. Por eso mostramos las rachas del modelo que da las más fuertes y, por encima de 60 km/h o con un aviso del NIMH, un mensaje sobre la previsión.'
+  }
+};
 // Bulgarian cities that link to the regional pages (build-extra.js)
 const REGION_OF = { varna: ['chernomorie', 'morska-voda'], burgas: ['chernomorie', 'morska-voda'], sozopol: ['chernomorie', 'morska-voda'], nesebar: ['chernomorie', 'morska-voda'], bansko: ['snyag-kurorti'], borovets: ['snyag-kurorti'], pamporovo: ['snyag-kurorti'] };
 const L = (lang, url) => I18N.localUrl(lang, url);
@@ -176,9 +187,9 @@ ${rows}
     </section>`;
 }
 
-let FOOTER_TEXT = { about: 'За сайта', privacy: 'Поверителност', cities: 'Всички градове' };
+let FOOTER_TEXT = { about: 'За сайта', privacy: 'Поверителност', cities: 'Всички градове', sources: 'Източници' };
 let LOGO = 'Лого';
-let FOOTER_URLS = { about: '/za-saita/', privacy: '/poveritelnost/', cities: '/gradove/' };
+let FOOTER_URLS = { about: '/za-saita/', privacy: '/poveritelnost/', cities: '/gradove/', sources: '/iztochnici/' };
 const footer = () => `  <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
     <div class="logo" style="flex-shrink: 0;">
         <a href="/"><img src="/images/logo-64.webp" alt="${LOGO}" class="logo-img" width="30" height="30" style="height: 30px; width: auto;"></a>
@@ -186,6 +197,7 @@ const footer = () => `  <footer style="background: var(--card-bg); border-top: 1
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">${new Date().getFullYear()}</span> VYZYA
       · <a href="${FOOTER_URLS.cities}" class="footer-link" data-nav="cityIndex">${FOOTER_TEXT.cities}</a>
+      · <a href="${FOOTER_URLS.sources}" class="footer-link" data-nav="sourcesShort">${FOOTER_TEXT.sources}</a>
       · <a href="${FOOTER_URLS.about}" class="footer-link" data-nav="about">${FOOTER_TEXT.about}</a>
       · <a href="${FOOTER_URLS.privacy}" class="footer-link" data-nav="privacy">${FOOTER_TEXT.privacy}</a>
     </p>
@@ -198,8 +210,10 @@ const NAV_EN = I18N.NAV.en;
 // indexed: the languages in which search engines should index the page (default: all). In the
 // other languages the page is "noindex, follow" and not in the sitemap, and hreflang lists only
 // the indexed ones; the language switcher still finds every translation in data-alt.
+// head: extra lines for the <head>, after the site stylesheets (a stylesheet of one page family)
+// image: the share image of the page (1200x630), default /images/og-image.png
 // langs: the languages in which the page exists (default: all five; ['bg'] for Bulgarian-only pages)
-function page({ url, title, description, body, scripts = '', jsonLd = '', lang = 'bg', multi = false, base = 'bg', langs = I18N.LANGS, indexed = langs }) {
+function page({ url, title, description, body, scripts = '', jsonLd = '', head = '', image = '/images/og-image.png', lang = 'bg', multi = false, base = 'bg', langs = I18N.LANGS, indexed = langs }) {
   const fixed = multi || lang === 'en';
   const NAV = I18N.NAV[lang];
   const nav = key => NAV[key];
@@ -248,7 +262,7 @@ ${alternates}${noindex ? '  <meta name="robots" content="noindex, follow">\n' : 
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
   <meta property="og:url" content="https://weatherpulse.eu${pageUrl}">
-  <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
+  <meta property="og:image" content="https://weatherpulse.eu${image}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
@@ -265,7 +279,7 @@ ${languageScript}
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/theme.css?v=${VERSION.theme}">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
-</head>
+${head}</head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
   <div class="nav-header" tabindex="-1" id="header">
@@ -275,8 +289,7 @@ ${languageScript}
       <a href="/maps/" class="nav-link" data-nav="maps">${nav('maps')}</a>
       <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">${nav('holidays')}</a>
       <a href="/magnitni-buri/" class="nav-link" data-nav="storms">${nav('storms')}</a>
-      <a href="${multi ? I18N.localUrl(lang, '/nebeto/') : '/nebeto/'}" class="nav-link" data-nav="sky">${nav('sky')}</a>
-      <a href="${multi ? I18N.localUrl(lang, '/iztochnici/') : '/iztochnici/'}" class="nav-link" data-nav="sources">${nav('sources')}</a>
+      <a href="${multi ? I18N.localUrl(lang, '/luna/') : '/luna/'}" class="nav-link" data-nav="moon">${nav('moon')}</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -287,7 +300,7 @@ ${languageScript}
 ${body}
   </div>
 
-${(FOOTER_TEXT = { about: NAV.about, privacy: NAV.privacy, cities: NAV.cities }, LOGO = I18N.LOGO_ALT[lang], FOOTER_URLS = Object.fromEntries(Object.entries({ about: '/za-saita/', privacy: '/poveritelnost/', cities: '/gradove/' }).map(([key, to]) => [key, multi ? I18N.localUrl(lang, to) : to])), footer())}
+${(FOOTER_TEXT = { about: NAV.about, privacy: NAV.privacy, cities: NAV.cities, sources: NAV.sourcesShort }, LOGO = I18N.LOGO_ALT[lang], FOOTER_URLS = Object.fromEntries(Object.entries({ about: '/za-saita/', privacy: '/poveritelnost/', cities: '/gradove/', sources: '/iztochnici/' }).map(([key, to]) => [key, multi ? I18N.localUrl(lang, to) : to])), footer())}
 
 <script src="/js/mobile-nav.js?v=${VERSION.mobileNav}" defer></script>
 <script src="/js/language-selector.js?v=${VERSION.languageSelector}" defer></script>
@@ -397,14 +410,19 @@ function cityPage(city, lang) {
     <h1>${T.cityName(where)}</h1>
     <p class="storm-intro">${T.intro(where)}</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="${name}" data-lat="${city.lat}" data-lon="${city.lon}" data-query="${params}">
+    <div class="city-forecast" id="cityForecast" data-name="${name}" data-lat="${city.lat}" data-lon="${city.lon}" data-query="${params}" data-warn="${provinceOf(city.slug)}">
       <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">${T.loading}</p></div>
       <div class="kp-forecast" id="cityDays" hidden></div>
     </div>
-
+${LOCAL_WIND[city.slug] ? `
+    <section class="info-card city-local-wind">
+      <p>${LOCAL_WIND[city.slug][lang]}</p>
+    </section>
+` : ''}
     <p class="city-actions">
       <a class="btn" href="/weather/?${params}">${T.hourly}</a>${lang === 'bg' ? `
-      <a class="btn" href="/vremeto/${city.slug}/10-dni/">${BG_ONLY.tenDaysLink}</a>${PLACES.TOURIST_BG.includes(city.slug) ? `
+      <a class="btn" href="/vremeto/${city.slug}/10-dni/">${BG_ONLY.tenDaysLink}</a>
+      <a class="btn" href="/vremeto/${city.slug}/14-dni/">${BG_ONLY.fourteenDaysLink}</a>${PLACES.TOURIST_BG.includes(city.slug) ? `
       <a class="btn" href="/vremeto/${city.slug}/uikend/">${BG_ONLY.weekendLink}</a>` : ''}${(REGION_OF[city.slug] || []).map(region => `
       <a class="btn" href="/vremeto/${region}/">${BG_ONLY.regionLinks[region]} →</a>`).join('')}` : ''}
       <a class="btn" href="/magnitni-buri/">${T.storms}</a>

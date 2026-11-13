@@ -64,7 +64,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -76,8 +76,7 @@
       <a href="/maps/" class="nav-link" data-nav="maps">Карти за времето</a>
       <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Календар на празниците</a>
       <a href="/magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
-      <a href="/nebeto/" class="nav-link" data-nav="sky">Небето</a>
-      <a href="/iztochnici/" class="nav-link" data-nav="sources">Източници на данни</a>
+      <a href="/luna/" class="nav-link" data-nav="moon">Лунен календар</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -89,106 +88,109 @@
     <h1>Времето в Русе за 10 дни</h1>
     <p class="storm-intro">Прогноза за времето в Русе за следващите 10 дни. Тя е медиана от три метеорологични модела (ICON, ECMWF и GFS чрез Open-Meteo) и се обновява всяка сутрин, а когато отворите страницата – с най-новите данни. Първите 3–4 дни са най-сигурни. За дните след седмия гледайте тенденцията – дали се затопля, застудява или идват валежи, – а не точния градус.</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="Русе" data-lat="43.8356" data-lon="25.9657" data-query="city=%D0%A0%D1%83%D1%81%D0%B5&lat=43.8356&lon=25.9657&cc=BG" data-days="10">
+    <div class="city-forecast" id="cityForecast" data-name="Русе" data-lat="43.8356" data-lon="25.9657" data-query="city=%D0%A0%D1%83%D1%81%D0%B5&lat=43.8356&lon=25.9657&cc=BG" data-warn="ruse" data-days="10">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Силни пориви на вятъра днес: до 63 км/ч</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Русе: четвъртък, 12 ноември</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">8° / 21°</span>
-        <p class="storm-now-status">Облачно · вероятност за валеж 2%</p>
-        <p class="storm-updated">Прогноза от 12 ноември 2026 г.</p>
+        <h2>Русе: петък, 13 ноември</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">15° / 25°</span>
+        <p class="storm-now-status">Ръмеж · вероятност за валеж 57%</p>
+        <p class="storm-updated">Прогноза от 13 ноември 2026 г.</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Прогноза за 10 дни</h3>
-        <p class="city-summary">През следващите 10 дни най-топло ще е в петък, 13 ноември (до 24°), а най-студено – в неделя, 15 ноември (до 3°). Валежи се очакват в 3 от дните. Дневните температури са по-високи от обичайните за ноември (средно 13°).</p>
+        <p class="city-summary">През следващите 10 дни най-топло ще е в петък, 13 ноември (до 25°), а най-студено – в неделя, 15 ноември (до 2°). Валежи се очакват в 5 от дните. Дневните температури са по-високи от обичайните за ноември (средно 13°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=%D0%A0%D1%83%D1%81%D0%B5&lat=43.8356&lon=25.9657&cc=BG&date=2026-11-12" title="По часове →">
-            <span class="kp-day-name">чт, 12</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">8° / 21°</span>
-            <span class="kp-day-status">Облачно</span>
-            <span class="city-day-rain" title="вероятност за валеж">2%</span>
-            <span class="city-day-wind">Вятър 12 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%A0%D1%83%D1%81%D0%B5&lat=43.8356&lon=25.9657&cc=BG&date=2026-11-13" title="По часове →">
             <span class="kp-day-name">пт, 13</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">15° / 24°</span>
+            <span class="city-day-temp">15° / 25°</span>
             <span class="kp-day-status">Ръмеж</span>
-            <span class="city-day-rain" title="вероятност за валеж">44% · 0.8 mm</span>
-            <span class="city-day-wind">Вятър 28 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">57% · 0.5 mm</span>
+            <span class="city-day-wind city-day-gusts">Вятър 27 km/h · пориви 63</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%A0%D1%83%D1%81%D0%B5&lat=43.8356&lon=25.9657&cc=BG&date=2026-11-14" title="По часове →">
             <span class="kp-day-name">сб, 14</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">5° / 15°</span>
+            <span class="city-day-temp">4° / 15°</span>
             <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">99% · 15.9 mm</span>
-            <span class="city-day-wind">Вятър 17 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">100% · 14.0 mm</span>
+            <span class="city-day-wind">Вятър 17 km/h · пориви 37</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%A0%D1%83%D1%81%D0%B5&lat=43.8356&lon=25.9657&cc=BG&date=2026-11-15" title="По часове →">
             <span class="kp-day-name">нд, 15</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">3° / 11°</span>
+            <span class="city-day-temp">2° / 12°</span>
             <span class="kp-day-status">Облачно</span>
-            <span class="city-day-rain" title="вероятност за валеж">3%</span>
-            <span class="city-day-wind">Вятър 14 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">0%</span>
+            <span class="city-day-wind">Вятър 16 km/h · пориви 35</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%A0%D1%83%D1%81%D0%B5&lat=43.8356&lon=25.9657&cc=BG&date=2026-11-16" title="По часове →">
             <span class="kp-day-name">пн, 16</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">5° / 13°</span>
+            <span class="city-day-temp">6° / 13°</span>
             <span class="kp-day-status">Облачно</span>
-            <span class="city-day-rain" title="вероятност за валеж">6%</span>
-            <span class="city-day-wind">Вятър 11 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">3%</span>
+            <span class="city-day-wind">Вятър 11 km/h · пориви 25</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%A0%D1%83%D1%81%D0%B5&lat=43.8356&lon=25.9657&cc=BG&date=2026-11-17" title="По часове →">
             <span class="kp-day-name">вт, 17</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">7° / 13°</span>
+            <span class="city-day-temp">8° / 15°</span>
             <span class="kp-day-status">Облачно</span>
-            <span class="city-day-rain" title="вероятност за валеж">16% · 0.6 mm</span>
-            <span class="city-day-wind">Вятър 9 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">25%</span>
+            <span class="city-day-wind">Вятър 16 km/h · пориви 39</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%A0%D1%83%D1%81%D0%B5&lat=43.8356&lon=25.9657&cc=BG&date=2026-11-18" title="По часове →">
             <span class="kp-day-name">ср, 18</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">9° / 17°</span>
+            <span class="city-day-temp">10° / 18°</span>
             <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">36% · 0.9 mm</span>
-            <span class="city-day-wind">Вятър 11 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">50% · 1.5 mm</span>
+            <span class="city-day-wind">Вятър 20 km/h · пориви 41</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%A0%D1%83%D1%81%D0%B5&lat=43.8356&lon=25.9657&cc=BG&date=2026-11-19" title="По часове →">
             <span class="kp-day-name">чт, 19</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">19.11</span>
-            <span class="city-day-temp">10° / 17°</span>
-            <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">40% · 3.0 mm</span>
-            <span class="city-day-wind">Вятър 19 km/h</span>
+            <span class="city-day-temp">8° / 15°</span>
+            <span class="kp-day-status">Ръмеж</span>
+            <span class="city-day-rain" title="вероятност за валеж">42% · 0.6 mm</span>
+            <span class="city-day-wind">Вятър 27 km/h · пориви 53</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%A0%D1%83%D1%81%D0%B5&lat=43.8356&lon=25.9657&cc=BG&date=2026-11-20" title="По часове →">
             <span class="kp-day-name">пт, 20</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">20.11</span>
-            <span class="city-day-temp">9° / 16°</span>
-            <span class="kp-day-status">Облачно</span>
-            <span class="city-day-rain" title="вероятност за валеж">29% · 1.6 mm</span>
-            <span class="city-day-wind">Вятър 19 km/h</span>
+            <span class="city-day-temp">6° / 13°</span>
+            <span class="kp-day-status">Ръмеж</span>
+            <span class="city-day-rain" title="вероятност за валеж">22% · 0.6 mm</span>
+            <span class="city-day-wind">Вятър 19 km/h · пориви 55</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%A0%D1%83%D1%81%D0%B5&lat=43.8356&lon=25.9657&cc=BG&date=2026-11-21" title="По часове →">
             <span class="kp-day-name">сб, 21</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">21.11</span>
-            <span class="city-day-temp">6° / 13°</span>
-            <span class="kp-day-status">Облачно</span>
-            <span class="city-day-rain" title="вероятност за валеж">17% · 0.6 mm</span>
-            <span class="city-day-wind">Вятър 23 km/h</span>
+            <span class="city-day-temp">8° / 10°</span>
+            <span class="kp-day-status">Ръмеж</span>
+            <span class="city-day-rain" title="вероятност за валеж">17% · 3.3 mm</span>
+            <span class="city-day-wind">Вятър 9 km/h · пориви 21</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=%D0%A0%D1%83%D1%81%D0%B5&lat=43.8356&lon=25.9657&cc=BG&date=2026-11-22" title="По часове →">
+            <span class="kp-day-name">нд, 22</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">22.11</span>
+            <span class="city-day-temp">6° / 10°</span>
+            <span class="kp-day-status">Ръмеж</span>
+            <span class="city-day-rain" title="вероятност за валеж">13% · 3.6 mm</span>
+            <span class="city-day-wind">Вятър 12 km/h · пориви 30</span>
           </a>
         </div>
         <p class="forecast-note">Медиана на моделите ECMWF, ICON и GFS · надм. височина 66 м</p>
@@ -197,6 +199,7 @@
 
     <p class="city-actions">
       <a class="btn" href="/vremeto/ruse/">Времето в Русе днес и климатът →</a>
+      <a class="btn" href="/vremeto/ruse/14-dni/">Прогноза за 14 дни →</a>
       
       <a class="btn" href="/weather/?city=%D0%A0%D1%83%D1%81%D0%B5&lat=43.8356&lon=25.9657&cc=BG">Подробна прогноза по часове →</a>
     </p>
@@ -221,16 +224,17 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/gradove/" class="footer-link" data-nav="cityIndex">Всички градове</a>
+      · <a href="/iztochnici/" class="footer-link" data-nav="sourcesShort">Източници</a>
       · <a href="/za-saita/" class="footer-link" data-nav="about">За сайта</a>
       · <a href="/poveritelnost/" class="footer-link" data-nav="privacy">Поверителност</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

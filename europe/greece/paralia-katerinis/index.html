@@ -97,7 +97,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -109,8 +109,7 @@
       <a href="/maps/" class="nav-link" data-nav="maps">Карти за времето</a>
       <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Календар на празниците</a>
       <a href="/magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
-      <a href="/nebeto/" class="nav-link" data-nav="sky">Небето</a>
-      <a href="/iztochnici/" class="nav-link" data-nav="sources">Източници на данни</a>
+      <a href="/luna/" class="nav-link" data-nav="moon">Лунен календар</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -124,68 +123,59 @@
 
     <div class="city-forecast" id="cityForecast" data-name="Паралия Катерини" data-lat="40.268" data-lon="22.597" data-query="city=%D0%9F%D0%B0%D1%80%D0%B0%D0%BB%D0%B8%D1%8F+%D0%9A%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B8&lat=40.2680&lon=22.5970&cc=GR">
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Паралия Катерини: четвъртък, 12 ноември</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">14° / 18°</span>
-        <p class="storm-now-status">Мъгла · вероятност за валеж 0%</p>
-        <p class="storm-updated">Прогноза от 12 ноември 2026 г.</p>
+        <h2>Паралия Катерини: петък, 13 ноември</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">15° / 23°</span>
+        <p class="storm-now-status">Облачно · вероятност за валеж 0%</p>
+        <p class="storm-updated">Прогноза от 13 ноември 2026 г.</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Прогноза за 7 дни</h3>
-        <p class="city-summary">През следващите 7 дни най-топло ще е в петък, 13 ноември (до 23°), а най-студено – в сряда, 18 ноември (до 12°). Валежи се очакват в 2 от дните. Дневните температури са по-високи от обичайните за ноември (средно 16°).</p>
+        <p class="city-summary">През следващите 7 дни най-топло ще е в петък, 13 ноември (до 23°), а най-студено – в неделя, 15 ноември (до 12°). Валежи се очакват в 1 от дните. Дневните температури са по-високи от обичайните за ноември (средно 16°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%B0%D1%80%D0%B0%D0%BB%D0%B8%D1%8F+%D0%9A%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B8&lat=40.2680&lon=22.5970&cc=GR&date=2026-11-12" title="По часове →">
-            <span class="kp-day-name">чт, 12</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">14° / 18°</span>
-            <span class="kp-day-status">Мъгла</span>
-            <span class="city-day-rain" title="вероятност за валеж">0%</span>
-            <span class="city-day-wind">Вятър 8 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%B0%D1%80%D0%B0%D0%BB%D0%B8%D1%8F+%D0%9A%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B8&lat=40.2680&lon=22.5970&cc=GR&date=2026-11-13" title="По часове →">
             <span class="kp-day-name">пт, 13</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">14° / 23°</span>
+            <span class="city-day-temp">15° / 23°</span>
             <span class="kp-day-status">Облачно</span>
-            <span class="city-day-rain" title="вероятност за валеж">3%</span>
-            <span class="city-day-wind">Вятър 15 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">0%</span>
+            <span class="city-day-wind">Вятър 21 km/h · пориви 39</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%B0%D1%80%D0%B0%D0%BB%D0%B8%D1%8F+%D0%9A%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B8&lat=40.2680&lon=22.5970&cc=GR&date=2026-11-14" title="По часове →">
             <span class="kp-day-name">сб, 14</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">12° / 21°</span>
+            <span class="city-day-temp">13° / 21°</span>
             <span class="kp-day-status">Ръмеж</span>
-            <span class="city-day-rain" title="вероятност за валеж">24% · 0.5 mm</span>
-            <span class="city-day-wind">Вятър 24 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">19% · 0.3 mm</span>
+            <span class="city-day-wind">Вятър 21 km/h · пориви 37</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%B0%D1%80%D0%B0%D0%BB%D0%B8%D1%8F+%D0%9A%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B8&lat=40.2680&lon=22.5970&cc=GR&date=2026-11-15" title="По часове →">
             <span class="kp-day-name">нд, 15</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">12° / 15°</span>
+            <span class="city-day-temp">12° / 14°</span>
             <span class="kp-day-status">Ръмеж</span>
-            <span class="city-day-rain" title="вероятност за валеж">26% · 2.1 mm</span>
-            <span class="city-day-wind">Вятър 29 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">33% · 2.5 mm</span>
+            <span class="city-day-wind">Вятър 27 km/h · пориви 46</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%B0%D1%80%D0%B0%D0%BB%D0%B8%D1%8F+%D0%9A%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B8&lat=40.2680&lon=22.5970&cc=GR&date=2026-11-16" title="По часове →">
             <span class="kp-day-name">пн, 16</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">13° / 15°</span>
+            <span class="city-day-temp">14° / 16°</span>
             <span class="kp-day-status">Ръмеж</span>
-            <span class="city-day-rain" title="вероятност за валеж">33% · 1.5 mm</span>
-            <span class="city-day-wind">Вятър 20 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">45% · 0.5 mm</span>
+            <span class="city-day-wind">Вятър 21 km/h · пориви 39</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%B0%D1%80%D0%B0%D0%BB%D0%B8%D1%8F+%D0%9A%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B8&lat=40.2680&lon=22.5970&cc=GR&date=2026-11-17" title="По часове →">
             <span class="kp-day-name">вт, 17</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌫️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">14° / 17°</span>
-            <span class="kp-day-status">Облачно</span>
-            <span class="city-day-rain" title="вероятност за валеж">15%</span>
-            <span class="city-day-wind">Вятър 12 km/h</span>
+            <span class="city-day-temp">13° / 17°</span>
+            <span class="kp-day-status">Мъгла</span>
+            <span class="city-day-rain" title="вероятност за валеж">11%</span>
+            <span class="city-day-wind">Вятър 8 km/h · пориви 22</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%B0%D1%80%D0%B0%D0%BB%D0%B8%D1%8F+%D0%9A%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B8&lat=40.2680&lon=22.5970&cc=GR&date=2026-11-18" title="По часове →">
             <span class="kp-day-name">ср, 18</span>
@@ -193,8 +183,17 @@
             <span class="city-day-date">18.11</span>
             <span class="city-day-temp">12° / 19°</span>
             <span class="kp-day-status">Мъгла</span>
-            <span class="city-day-rain" title="вероятност за валеж">16%</span>
-            <span class="city-day-wind">Вятър 11 km/h</span>
+            <span class="city-day-rain" title="вероятност за валеж">17%</span>
+            <span class="city-day-wind">Вятър 10 km/h · пориви 21</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%B0%D1%80%D0%B0%D0%BB%D0%B8%D1%8F+%D0%9A%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B8&lat=40.2680&lon=22.5970&cc=GR&date=2026-11-19" title="По часове →">
+            <span class="kp-day-name">чт, 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">14° / 19°</span>
+            <span class="kp-day-status">Ръмеж</span>
+            <span class="city-day-rain" title="вероятност за валеж">20% · 0.3 mm</span>
+            <span class="city-day-wind">Вятър 12 km/h · пориви 29</span>
           </a>
         </div>
         <p class="forecast-note">Медиана на моделите ECMWF, ICON и GFS · надм. височина 6 м</p>
@@ -208,23 +207,23 @@
 
     <section class="info-card city-sun-table">
       <h2>Изгрев и залез в Паралия Катерини</h2>
-      <p>Най-дългият ден в Паралия Катерини е около 21 юни: слънцето изгрява в 06:00, залязва в 21:02 и денят е 15 ч 03 мин. Най-краткият е около 21 декември – от 07:48 до 17:06, общо 9 ч 18 мин. Днешният изгрев и залез са до прогнозата по-горе.</p>
+      <p>Най-дългият ден в Паралия Катерини е около 21 юни: слънцето изгрява в 06:00 ч., залязва в 21:02 ч. и денят е 15 ч 03 мин. Най-краткият е около 21 декември – от 07:48 ч. до 17:06 ч., общо 9 ч 18 мин. Днешният изгрев и залез са до прогнозата по-горе.</p>
       <div class="table-scroll">
       <table class="kp-table climate-table">
         <thead><tr><th>Дата</th><th>Изгрев</th><th>Залез</th><th>Дължина на деня</th></tr></thead>
         <tbody>
-          <tr><td>15 януари</td><td>07:50</td><td>17:27</td><td>9 ч 38 мин</td></tr>
-          <tr><td>15 февруари</td><td>07:23</td><td>18:04</td><td>10 ч 42 мин</td></tr>
-          <tr><td>15 март</td><td>06:41</td><td>18:36</td><td>11 ч 55 мин</td></tr>
-          <tr><td>15 април</td><td>06:51</td><td>20:08</td><td>13 ч 17 мин</td></tr>
-          <tr><td>15 май</td><td>06:13</td><td>20:38</td><td>14 ч 25 мин</td></tr>
-          <tr><td>15 юни</td><td>05:59</td><td>21:01</td><td>15 ч 02 мин</td></tr>
-          <tr><td>15 юли</td><td>06:12</td><td>20:58</td><td>14 ч 46 мин</td></tr>
-          <tr><td>15 август</td><td>06:40</td><td>20:27</td><td>13 ч 46 мин</td></tr>
-          <tr><td>15 септември</td><td>07:10</td><td>19:38</td><td>12 ч 28 мин</td></tr>
-          <tr><td>15 октомври</td><td>07:40</td><td>18:50</td><td>11 ч 10 мин</td></tr>
-          <tr><td>15 ноември</td><td>07:15</td><td>17:12</td><td>9 ч 58 мин</td></tr>
-          <tr><td>15 декември</td><td>07:44</td><td>17:04</td><td>9 ч 19 мин</td></tr>
+          <tr><td>15 януари</td><td>07:50 ч.</td><td>17:27 ч.</td><td>9 ч 38 мин</td></tr>
+          <tr><td>15 февруари</td><td>07:23 ч.</td><td>18:04 ч.</td><td>10 ч 42 мин</td></tr>
+          <tr><td>15 март</td><td>06:41 ч.</td><td>18:36 ч.</td><td>11 ч 55 мин</td></tr>
+          <tr><td>15 април</td><td>06:51 ч.</td><td>20:08 ч.</td><td>13 ч 17 мин</td></tr>
+          <tr><td>15 май</td><td>06:13 ч.</td><td>20:38 ч.</td><td>14 ч 25 мин</td></tr>
+          <tr><td>15 юни</td><td>05:59 ч.</td><td>21:01 ч.</td><td>15 ч 02 мин</td></tr>
+          <tr><td>15 юли</td><td>06:12 ч.</td><td>20:58 ч.</td><td>14 ч 46 мин</td></tr>
+          <tr><td>15 август</td><td>06:40 ч.</td><td>20:27 ч.</td><td>13 ч 46 мин</td></tr>
+          <tr><td>15 септември</td><td>07:10 ч.</td><td>19:38 ч.</td><td>12 ч 28 мин</td></tr>
+          <tr><td>15 октомври</td><td>07:40 ч.</td><td>18:50 ч.</td><td>11 ч 10 мин</td></tr>
+          <tr><td>15 ноември</td><td>07:15 ч.</td><td>17:12 ч.</td><td>9 ч 58 мин</td></tr>
+          <tr><td>15 декември</td><td>07:44 ч.</td><td>17:04 ч.</td><td>9 ч 19 мин</td></tr>
         </tbody>
       </table>
       </div>
@@ -363,16 +362,17 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/gradove/" class="footer-link" data-nav="cityIndex">Всички градове</a>
+      · <a href="/iztochnici/" class="footer-link" data-nav="sourcesShort">Източници</a>
       · <a href="/za-saita/" class="footer-link" data-nav="about">За сайта</a>
       · <a href="/poveritelnost/" class="footer-link" data-nav="privacy">Поверителност</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

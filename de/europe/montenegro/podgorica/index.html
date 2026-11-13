@@ -94,7 +94,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -106,8 +106,7 @@
       <a href="/de/maps/" class="nav-link" data-nav="maps">Wetterkarten</a>
       <a href="/de/holliday_calendar/" class="nav-link" data-nav="holidays">Feiertagskalender</a>
       <a href="/de/magnitni-buri/" class="nav-link" data-nav="storms">Magnetstürme</a>
-      <a href="/de/nebeto/" class="nav-link" data-nav="sky">Himmel</a>
-      <a href="/de/iztochnici/" class="nav-link" data-nav="sources">Datenquellen</a>
+      <a href="/de/luna/" class="nav-link" data-nav="moon">Mondkalender</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -120,78 +119,81 @@
     <p class="storm-intro">Wettervorhersage für Podgorica, Montenegro, für heute, morgen und die nächsten 7 Tage: Temperatur, Regen, Wind und Niederschlagswahrscheinlichkeit. Daten von Open-Meteo, stündlich aktualisiert.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Podgorica" data-lat="42.4304" data-lon="19.2594" data-query="city=Podgorica&lat=42.4304&lon=19.2594&cc=ME">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Starke Windböen heute: bis 68 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Podgorica: Donnerstag, 12. November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">15° / 18°</span>
+        <h2>Podgorica: Freitag, 13. November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">15° / 19°</span>
         <p class="storm-now-status">Gewitter · Regenwahrscheinlichkeit 100%</p>
-        <p class="storm-updated">Vorhersage vom 12. November 2026</p>
+        <p class="storm-updated">Vorhersage vom 13. November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-Tage-Vorhersage</h3>
-        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 19°) und Sonntag, 15. November am kältesten (bis 9°). An 6 der Tage wird Niederschlag erwartet. Tagsüber ist es etwa so warm wie üblich im November (im Mittel 16°).</p>
+        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 19°) und Donnerstag, 19. November am kältesten (bis 10°). An 7 der Tage wird Niederschlag erwartet. Tagsüber ist es etwa so warm wie üblich im November (im Mittel 16°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Podgorica&lat=42.4304&lon=19.2594&cc=ME&date=2026-11-12" title="Stündlich →">
-            <span class="kp-day-name">Do., 12.</span>
-            <span class="city-day-icon" aria-hidden="true">⛈️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">15° / 18°</span>
-            <span class="kp-day-status">Gewitter</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 47.6 mm</span>
-            <span class="city-day-wind">Wind 23 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Podgorica&lat=42.4304&lon=19.2594&cc=ME&date=2026-11-13" title="Stündlich →">
             <span class="kp-day-name">Fr., 13.</span>
             <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">16° / 19°</span>
+            <span class="city-day-temp">15° / 19°</span>
             <span class="kp-day-status">Gewitter</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 115.6 mm</span>
-            <span class="city-day-wind">Wind 32 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 107.9 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 31 km/h · Böen 68</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Podgorica&lat=42.4304&lon=19.2594&cc=ME&date=2026-11-14" title="Stündlich →">
             <span class="kp-day-name">Sa., 14.</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">12° / 16°</span>
-            <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 31.7 mm</span>
-            <span class="city-day-wind">Wind 13 km/h</span>
+            <span class="city-day-temp">11° / 16°</span>
+            <span class="kp-day-status">Gewitter</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 33.8 mm</span>
+            <span class="city-day-wind">Wind 14 km/h · Böen 39</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Podgorica&lat=42.4304&lon=19.2594&cc=ME&date=2026-11-15" title="Stündlich →">
             <span class="kp-day-name">So., 15.</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">9° / 16°</span>
+            <span class="city-day-temp">10° / 15°</span>
             <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">43% · 0.5 mm</span>
-            <span class="city-day-wind">Wind 6 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">91% · 11.9 mm</span>
+            <span class="city-day-wind">Wind 6 km/h · Böen 19</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Podgorica&lat=42.4304&lon=19.2594&cc=ME&date=2026-11-16" title="Stündlich →">
             <span class="kp-day-name">Mo., 16.</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">12° / 15°</span>
-            <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">97% · 10.5 mm</span>
-            <span class="city-day-wind">Wind 6 km/h</span>
+            <span class="city-day-temp">12° / 16°</span>
+            <span class="kp-day-status">Gewitter</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 41.6 mm</span>
+            <span class="city-day-wind">Wind 8 km/h · Böen 32</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Podgorica&lat=42.4304&lon=19.2594&cc=ME&date=2026-11-17" title="Stündlich →">
             <span class="kp-day-name">Di., 17.</span>
-            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">12° / 18°</span>
-            <span class="kp-day-status">Gewitter</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">98% · 49.6 mm</span>
-            <span class="city-day-wind">Wind 19 km/h</span>
+            <span class="city-day-temp">13° / 17°</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">90% · 11.7 mm</span>
+            <span class="city-day-wind">Wind 10 km/h · Böen 35</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Podgorica&lat=42.4304&lon=19.2594&cc=ME&date=2026-11-18" title="Stündlich →">
             <span class="kp-day-name">Mi., 18.</span>
             <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">12° / 17°</span>
+            <span class="city-day-temp">13° / 16°</span>
             <span class="kp-day-status">Gewitter</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">90% · 45.6 mm</span>
-            <span class="city-day-wind">Wind 19 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 60.5 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 22 km/h · Böen 61</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Podgorica&lat=42.4304&lon=19.2594&cc=ME&date=2026-11-19" title="Stündlich →">
+            <span class="kp-day-name">Do., 19.</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">10° / 15°</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">75% · 6.5 mm</span>
+            <span class="city-day-wind">Wind 7 km/h · Böen 30</span>
           </a>
         </div>
         <p class="forecast-note">Median der Modelle ECMWF, ICON und GFS · Höhe 46 m</p>
@@ -332,16 +334,17 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/de/gradove/" class="footer-link" data-nav="cityIndex">Alle Städte</a>
+      · <a href="/de/iztochnici/" class="footer-link" data-nav="sourcesShort">Quellen</a>
       · <a href="/de/za-saita/" class="footer-link" data-nav="about">Über uns</a>
       · <a href="/de/poveritelnost/" class="footer-link" data-nav="privacy">Datenschutz</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

@@ -94,7 +94,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -106,8 +106,7 @@
       <a href="/it/maps/" class="nav-link" data-nav="maps">Mappe meteorologiche</a>
       <a href="/it/holliday_calendar/" class="nav-link" data-nav="holidays">Calendario delle festività</a>
       <a href="/it/magnitni-buri/" class="nav-link" data-nav="storms">Tempeste magnetiche</a>
-      <a href="/it/nebeto/" class="nav-link" data-nav="sky">Il cielo</a>
-      <a href="/it/iztochnici/" class="nav-link" data-nav="sources">Fonti dei dati</a>
+      <a href="/it/luna/" class="nav-link" data-nav="moon">Calendario lunare</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -120,15 +119,19 @@
     <p class="storm-intro">Previsioni del tempo a Didim, Turchia, per oggi, domani e i prossimi 7 giorni: temperatura, pioggia, vento e probabilità di precipitazioni. Dati di Open-Meteo, aggiornati ogni ora.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Didim" data-lat="37.375" data-lon="27.267" data-query="city=Didim&lat=37.3750&lon=27.2670&cc=TR">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Forti raffiche di vento oggi: fino a 69 km/h</p>
+        <p class="city-alert city-alert-yellow">Forti raffiche di vento domani: fino a 68 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
         <h2>Didim: venerdì 13 novembre</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">19° / 22°</span>
-        <p class="storm-now-status">Pioviggine · probabilità di pioggia 25%</p>
-        <p class="storm-updated">Previsione del 12 novembre 2026</p>
+        <p class="storm-now-status">Pioviggine · probabilità di pioggia 35%</p>
+        <p class="storm-updated">Previsione del 13 novembre 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsioni a 7 giorni</h3>
-        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà sabato 14 novembre (fino a 22°) e il più freddo martedì 17 novembre (fino a 13°). Non sono previste precipitazioni significative. Le massime sono nella media di novembre (in media 20°).</p>
+        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà sabato 14 novembre (fino a 22°) e il più freddo martedì 17 novembre (fino a 14°). Sono previste precipitazioni in 1 dei giorni. Le massime sono nella media di novembre (in media 20°).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Didim&lat=37.3750&lon=27.2670&cc=TR&date=2026-11-13" title="Ora per ora →">
             <span class="kp-day-name">ven 13</span>
@@ -136,26 +139,26 @@
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">19° / 22°</span>
             <span class="kp-day-status">Pioviggine</span>
-            <span class="city-day-rain" title="probabilità di pioggia">25% · 0.9 mm</span>
-            <span class="city-day-wind">Vento 36 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">35% · 0.6 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 35 km/h · raffiche 69</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Didim&lat=37.3750&lon=27.2670&cc=TR&date=2026-11-14" title="Ora per ora →">
             <span class="kp-day-name">sab 14</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">19° / 22°</span>
-            <span class="kp-day-status">Pioggia</span>
-            <span class="city-day-rain" title="probabilità di pioggia">26% · 0.4 mm</span>
-            <span class="city-day-wind">Vento 35 km/h</span>
+            <span class="kp-day-status">Nuvoloso</span>
+            <span class="city-day-rain" title="probabilità di pioggia">20%</span>
+            <span class="city-day-wind city-day-gusts">Vento 35 km/h · raffiche 68</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Didim&lat=37.3750&lon=27.2670&cc=TR&date=2026-11-15" title="Ora per ora →">
             <span class="kp-day-name">dom 15</span>
-            <span class="city-day-icon" aria-hidden="true">⛅</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">15.11</span>
             <span class="city-day-temp">17° / 22°</span>
-            <span class="kp-day-status">Poco nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">10%</span>
-            <span class="city-day-wind">Vento 14 km/h</span>
+            <span class="kp-day-status">Nuvoloso</span>
+            <span class="city-day-rain" title="probabilità di pioggia">5%</span>
+            <span class="city-day-wind">Vento 14 km/h · raffiche 43</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Didim&lat=37.3750&lon=27.2670&cc=TR&date=2026-11-16" title="Ora per ora →">
             <span class="kp-day-name">lun 16</span>
@@ -163,35 +166,35 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">15° / 20°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">10%</span>
-            <span class="city-day-wind">Vento 15 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">3%</span>
+            <span class="city-day-wind">Vento 15 km/h · raffiche 32</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Didim&lat=37.3750&lon=27.2670&cc=TR&date=2026-11-17" title="Ora per ora →">
             <span class="kp-day-name">mar 17</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">13° / 19°</span>
+            <span class="city-day-temp">14° / 20°</span>
             <span class="kp-day-status">Nuvoloso</span>
             <span class="city-day-rain" title="probabilità di pioggia">17%</span>
-            <span class="city-day-wind">Vento 11 km/h</span>
+            <span class="city-day-wind">Vento 12 km/h · raffiche 22</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Didim&lat=37.3750&lon=27.2670&cc=TR&date=2026-11-18" title="Ora per ora →">
             <span class="kp-day-name">mer 18</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
             <span class="city-day-temp">17° / 21°</span>
-            <span class="kp-day-status">Pioggia</span>
-            <span class="city-day-rain" title="probabilità di pioggia">32% · 0.9 mm</span>
-            <span class="city-day-wind">Vento 25 km/h</span>
+            <span class="kp-day-status">Pioviggine</span>
+            <span class="city-day-rain" title="probabilità di pioggia">32% · 0.8 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 30 km/h · raffiche 62</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Didim&lat=37.3750&lon=27.2670&cc=TR&date=2026-11-19" title="Ora per ora →">
             <span class="kp-day-name">gio 19</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">19.11</span>
-            <span class="city-day-temp">16° / 22°</span>
-            <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">38% · 0.3 mm</span>
-            <span class="city-day-wind">Vento 32 km/h</span>
+            <span class="city-day-temp">16° / 21°</span>
+            <span class="kp-day-status">Pioviggine</span>
+            <span class="city-day-rain" title="probabilità di pioggia">52% · 3.0 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 34 km/h · raffiche 74</span>
           </a>
         </div>
         <p class="forecast-note">Mediana dei modelli ECMWF, ICON e GFS · altitudine 47 m</p>
@@ -348,16 +351,17 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/it/gradove/" class="footer-link" data-nav="cityIndex">Tutte le città</a>
+      · <a href="/it/iztochnici/" class="footer-link" data-nav="sourcesShort">Fonti</a>
       · <a href="/it/za-saita/" class="footer-link" data-nav="about">Chi siamo</a>
       · <a href="/it/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

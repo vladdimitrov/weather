@@ -97,7 +97,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -109,8 +109,7 @@
       <a href="/en/maps/" class="nav-link" data-nav="maps">Weather Maps</a>
       <a href="/en/holliday_calendar/" class="nav-link" data-nav="holidays">Holiday Calendar</a>
       <a href="/en/magnitni-buri/" class="nav-link" data-nav="storms">Magnetic Storms</a>
-      <a href="/en/nebeto/" class="nav-link" data-nav="sky">The Sky</a>
-      <a href="/en/iztochnici/" class="nav-link" data-nav="sources">Data Sources</a>
+      <a href="/en/luna/" class="nav-link" data-nav="moon">Moon Calendar</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -123,33 +122,36 @@
     <p class="storm-intro">Weather forecast for Kuşadası, Turkey, for today, tomorrow and the next 7 days: temperature, rain, wind and chance of precipitation. Data from Open-Meteo, updated every hour.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Kuşadası" data-lat="37.8579" data-lon="27.261" data-query="city=Ku%C5%9Fadas%C4%B1&lat=37.8579&lon=27.2610&cc=TR">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Strong wind gusts tomorrow: up to 60 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Kuşadası: Friday 13 November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">17° / 22°</span>
-        <p class="storm-now-status">Cloudy · chance of rain 27%</p>
-        <p class="storm-updated">Forecast issued on 12 November 2026</p>
+        <h2>Kuşadası: Friday, 13 November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">18° / 22°</span>
+        <p class="storm-now-status">Rain · chance of rain 39%</p>
+        <p class="storm-updated">Forecast issued on 13 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Saturday 14 November (up to 23°) and the coldest Tuesday 17 November (down to 12°). No significant precipitation is expected. Daytime temperatures are close to normal for November (average high 20°).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Saturday, 14 November (up to 23°) and the coldest Tuesday, 17 November (down to 13°). Rain or snow is expected on 1 of the days. Daytime temperatures are close to normal for November (average high 20°).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Ku%C5%9Fadas%C4%B1&lat=37.8579&lon=27.2610&cc=TR&date=2026-11-13" title="Hourly forecast →">
             <span class="kp-day-name">Fri 13</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">17° / 22°</span>
-            <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">27%</span>
-            <span class="city-day-wind">Wind 26 km/h</span>
+            <span class="city-day-temp">18° / 22°</span>
+            <span class="kp-day-status">Rain</span>
+            <span class="city-day-rain" title="chance of rain">39% · 0.3 mm</span>
+            <span class="city-day-wind">Wind 29 km/h · gusts 56</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Ku%C5%9Fadas%C4%B1&lat=37.8579&lon=27.2610&cc=TR&date=2026-11-14" title="Hourly forecast →">
             <span class="kp-day-name">Sat 14</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">17° / 23°</span>
+            <span class="city-day-temp">18° / 23°</span>
             <span class="kp-day-status">Drizzle</span>
-            <span class="city-day-rain" title="chance of rain">31% · 0.7 mm</span>
-            <span class="city-day-wind">Wind 23 km/h</span>
+            <span class="city-day-rain" title="chance of rain">43% · 0.3 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 26 km/h · gusts 60</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Ku%C5%9Fadas%C4%B1&lat=37.8579&lon=27.2610&cc=TR&date=2026-11-15" title="Hourly forecast →">
             <span class="kp-day-name">Sun 15</span>
@@ -157,26 +159,26 @@
             <span class="city-day-date">15.11</span>
             <span class="city-day-temp">15° / 22°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">37%</span>
-            <span class="city-day-wind">Wind 10 km/h</span>
+            <span class="city-day-rain" title="chance of rain">13%</span>
+            <span class="city-day-wind">Wind 10 km/h · gusts 29</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Ku%C5%9Fadas%C4%B1&lat=37.8579&lon=27.2610&cc=TR&date=2026-11-16" title="Hourly forecast →">
             <span class="kp-day-name">Mon 16</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">13° / 18°</span>
+            <span class="city-day-temp">14° / 19°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">11%</span>
-            <span class="city-day-wind">Wind 11 km/h</span>
+            <span class="city-day-rain" title="chance of rain">3%</span>
+            <span class="city-day-wind">Wind 11 km/h · gusts 23</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Ku%C5%9Fadas%C4%B1&lat=37.8579&lon=27.2610&cc=TR&date=2026-11-17" title="Hourly forecast →">
             <span class="kp-day-name">Tue 17</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">12° / 20°</span>
-            <span class="kp-day-status">Fog</span>
-            <span class="city-day-rain" title="chance of rain">13%</span>
-            <span class="city-day-wind">Wind 7 km/h</span>
+            <span class="city-day-temp">13° / 21°</span>
+            <span class="kp-day-status">Cloudy</span>
+            <span class="city-day-rain" title="chance of rain">10%</span>
+            <span class="city-day-wind">Wind 7 km/h · gusts 20</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Ku%C5%9Fadas%C4%B1&lat=37.8579&lon=27.2610&cc=TR&date=2026-11-18" title="Hourly forecast →">
             <span class="kp-day-name">Wed 18</span>
@@ -184,17 +186,17 @@
             <span class="city-day-date">18.11</span>
             <span class="city-day-temp">14° / 21°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">33%</span>
-            <span class="city-day-wind">Wind 18 km/h</span>
+            <span class="city-day-rain" title="chance of rain">32%</span>
+            <span class="city-day-wind">Wind 23 km/h · gusts 57</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Ku%C5%9Fadas%C4%B1&lat=37.8579&lon=27.2610&cc=TR&date=2026-11-19" title="Hourly forecast →">
             <span class="kp-day-name">Thu 19</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">19.11</span>
-            <span class="city-day-temp">15° / 23°</span>
-            <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">40%</span>
-            <span class="city-day-wind">Wind 22 km/h</span>
+            <span class="city-day-temp">16° / 21°</span>
+            <span class="kp-day-status">Drizzle</span>
+            <span class="city-day-rain" title="chance of rain">53% · 3.4 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 27 km/h · gusts 71</span>
           </a>
         </div>
         <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 10 m</p>
@@ -351,16 +353,17 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/en/gradove/" class="footer-link" data-nav="cityIndex">All cities</a>
+      · <a href="/en/iztochnici/" class="footer-link" data-nav="sourcesShort">Sources</a>
       · <a href="/en/za-saita/" class="footer-link" data-nav="about">About</a>
       · <a href="/en/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

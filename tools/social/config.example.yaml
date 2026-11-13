@@ -1,0 +1,66 @@
+# Копирайте този файл като config.yaml и попълнете стойностите.
+# ${ИМЕ} се взима от променлива на средата – дръжте токени и пароли там, не във файла.
+
+site_url: "https://weatherpulse.eu"
+timezone: "Europe/Sofia"
+
+# До 8 града на картинката. url е по желание (за бъдещи постове по градове).
+cities:
+  - {name: "София",          lat: 42.6977, lon: 23.3219, url: "/vremeto/sofia/"}
+  - {name: "Пловдив",        lat: 42.1354, lon: 24.7453}
+  - {name: "Варна",          lat: 43.2141, lon: 27.9147}
+  - {name: "Бургас",         lat: 42.5048, lon: 27.4626}
+  - {name: "Русе",           lat: 43.8356, lon: 25.9657}
+  - {name: "Стара Загора",   lat: 42.4258, lon: 25.6345}
+  - {name: "Велико Търново", lat: 43.0757, lon: 25.6172, url: "/vremeto/veliko-tarnovo/"}
+  - {name: "Враца",          lat: 43.2102, lon: 23.5529, url: "/vremeto/vratsa/"}
+
+forecast:
+  title: "ВРЕМЕТО В БЪЛГАРИЯ"
+  site_label: "weatherpulse.eu"
+  link_path: "/weather/"            # линк в текста на поста
+  hashtags: "#времето #прогноза #България #weatherpulse"
+  # caption_template: "{date}\n\n{lines}\n\n{site}\n\n{hashtags}"   # по желание
+
+meta:
+  graph_version: "v23.0"
+  page_id: "${WP_PAGE_ID}"
+  page_access_token: "${WP_PAGE_TOKEN}"
+  ig_user_id: "${WP_IG_USER_ID}"
+  post_to_facebook: true
+  post_to_instagram: true
+
+# Instagram изисква публичен https адрес на снимката/клипа.
+#   github – качва файла в хранилището на сайта (GitHub Pages) и изчаква да се публикува
+#   local  – услугата работи на сървъра на сайта и копира файла в публична папка
+#   ftp    – качва файла на хостинга по FTP(S)
+#   none   – без Instagram
+hosting:
+  mode: "github"
+  public_base_url: "https://weatherpulse.eu/social/"
+  github:
+    repo: "vladdimitrov/weather"
+    branch: "main"
+    path: "social"                  # папка в хранилището -> https://weatherpulse.eu/social/
+    # токен: WP_GITHUB_TOKEN (на компютъра) или GITHUB_TOKEN (в GitHub Actions – автоматично)
+  wait_public_seconds: 600          # колко да чака GitHub Pages да публикува файла
+  local_dir: "/var/www/weatherpulse.eu/social"
+  ftp:
+    host: "ftp.weatherpulse.eu"
+    user: "${WP_FTP_USER}"
+    password: "${WP_FTP_PASSWORD}"
+    remote_dir: "/public_html/social"
+    tls: true
+
+# Папка за снимки и клипове. Пуснете файл (напр. 001-zalez.jpg) и до него
+# 001-zalez.txt с текста на поста. Публикува се най-малкото по име.
+queue:
+  dir: "queue"
+  default_caption: "Следете времето на weatherpulse.eu 🌦"
+  hashtags: "#времето #България #weatherpulse"
+
+# За командата `serve` (вграден график). Ако ползвате cron/Task Scheduler, не ви трябва.
+schedule:
+  forecast_time: "07:30"
+  forecast_tomorrow: false          # true = вечерен пост с прогноза за утре
+  queue_times: ["12:30", "18:30"]

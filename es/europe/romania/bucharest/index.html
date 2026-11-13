@@ -99,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -111,8 +111,7 @@
       <a href="/es/maps/" class="nav-link" data-nav="maps">Mapas del tiempo</a>
       <a href="/es/holliday_calendar/" class="nav-link" data-nav="holidays">Calendario de festivos</a>
       <a href="/es/magnitni-buri/" class="nav-link" data-nav="storms">Tormentas magnéticas</a>
-      <a href="/es/nebeto/" class="nav-link" data-nav="sky">El cielo</a>
-      <a href="/es/iztochnici/" class="nav-link" data-nav="sources">Fuentes de datos</a>
+      <a href="/es/luna/" class="nav-link" data-nav="moon">Calendario lunar</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -126,41 +125,32 @@
 
     <div class="city-forecast" id="cityForecast" data-name="Bucarest" data-lat="44.4268" data-lon="26.1025" data-query="city=Bucarest&lat=44.4268&lon=26.1025&cc=RO">
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Bucarest: jueves, 12 de noviembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">8° / 17°</span>
-        <p class="storm-now-status">Lluvia · probabilidad de lluvia 35%</p>
-        <p class="storm-updated">Previsión del 12 de noviembre de 2026</p>
+        <h2>Bucarest: viernes, 13 de noviembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">13° / 24°</span>
+        <p class="storm-now-status">Lluvia · probabilidad de lluvia 65%</p>
+        <p class="storm-updated">Previsión del 13 de noviembre de 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsión a 7 días</h3>
-        <p class="city-summary">En los próximos 7 días el día más cálido será el viernes, 13 de noviembre (hasta 23°) y el más frío el domingo, 15 de noviembre (hasta 1°). Se esperan precipitaciones en 3 de los días. Las máximas están por encima de lo normal para noviembre (media de 11°).</p>
+        <p class="city-summary">En los próximos 7 días el día más cálido será el viernes, 13 de noviembre (hasta 24°) y el más frío el domingo, 15 de noviembre (hasta 1°). Se esperan precipitaciones en 4 de los días. Las máximas están por encima de lo normal para noviembre (media de 11°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Bucarest&lat=44.4268&lon=26.1025&cc=RO&date=2026-11-12" title="Por horas →">
-            <span class="kp-day-name">jue 12</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">8° / 17°</span>
-            <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">35%</span>
-            <span class="city-day-wind">Viento 11 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Bucarest&lat=44.4268&lon=26.1025&cc=RO&date=2026-11-13" title="Por horas →">
             <span class="kp-day-name">vie 13</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">14° / 23°</span>
+            <span class="city-day-temp">13° / 24°</span>
             <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">68% · 0.3 mm</span>
-            <span class="city-day-wind">Viento 17 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">65% · 0.5 mm</span>
+            <span class="city-day-wind">Viento 22 km/h · rachas 57</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Bucarest&lat=44.4268&lon=26.1025&cc=RO&date=2026-11-14" title="Por horas →">
             <span class="kp-day-name">sáb 14</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">4° / 15°</span>
+            <span class="city-day-temp">3° / 15°</span>
             <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">100% · 32.6 mm</span>
-            <span class="city-day-wind">Viento 20 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">100% · 26.4 mm</span>
+            <span class="city-day-wind">Viento 19 km/h · rachas 52</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Bucarest&lat=44.4268&lon=26.1025&cc=RO&date=2026-11-15" title="Por horas →">
             <span class="kp-day-name">dom 15</span>
@@ -168,8 +158,8 @@
             <span class="city-day-date">15.11</span>
             <span class="city-day-temp">1° / 9°</span>
             <span class="kp-day-status">Niebla</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">1%</span>
-            <span class="city-day-wind">Viento 9 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">0%</span>
+            <span class="city-day-wind">Viento 10 km/h · rachas 30</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Bucarest&lat=44.4268&lon=26.1025&cc=RO&date=2026-11-16" title="Por horas →">
             <span class="kp-day-name">lun 16</span>
@@ -177,26 +167,35 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">4° / 11°</span>
             <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">10%</span>
-            <span class="city-day-wind">Viento 9 km/h</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">8%</span>
+            <span class="city-day-wind">Viento 9 km/h · rachas 24</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Bucarest&lat=44.4268&lon=26.1025&cc=RO&date=2026-11-17" title="Por horas →">
             <span class="kp-day-name">mar 17</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">6° / 12°</span>
-            <span class="kp-day-status">Llovizna</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">13% · 1.0 mm</span>
-            <span class="city-day-wind">Viento 7 km/h</span>
+            <span class="city-day-temp">6° / 14°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">17%</span>
+            <span class="city-day-wind">Viento 11 km/h · rachas 40</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Bucarest&lat=44.4268&lon=26.1025&cc=RO&date=2026-11-18" title="Por horas →">
             <span class="kp-day-name">mié 18</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">7° / 14°</span>
-            <span class="kp-day-status">Niebla</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">37%</span>
-            <span class="city-day-wind">Viento 11 km/h</span>
+            <span class="city-day-temp">7° / 18°</span>
+            <span class="kp-day-status">Lluvia</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">51% · 3.8 mm</span>
+            <span class="city-day-wind">Viento 14 km/h · rachas 31</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Bucarest&lat=44.4268&lon=26.1025&cc=RO&date=2026-11-19" title="Por horas →">
+            <span class="kp-day-name">jue 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">9° / 15°</span>
+            <span class="kp-day-status">Lluvia</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">43% · 3.3 mm</span>
+            <span class="city-day-wind">Viento 21 km/h · rachas 46</span>
           </a>
         </div>
         <p class="forecast-note">Mediana de los modelos ECMWF, ICON y GFS · altitud 72 m</p>
@@ -342,16 +341,17 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/es/gradove/" class="footer-link" data-nav="cityIndex">Todas las ciudades</a>
+      · <a href="/es/iztochnici/" class="footer-link" data-nav="sourcesShort">Fuentes</a>
       · <a href="/es/za-saita/" class="footer-link" data-nav="about">Acerca de</a>
       · <a href="/es/poveritelnost/" class="footer-link" data-nav="privacy">Privacidad</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

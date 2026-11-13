@@ -12,15 +12,20 @@
 const fs = require('fs');
 const path = require('path');
 const Moon = require('../../js/moon.js');
+const SKY_EVENTS = require('./sky-events.json');
+const MoonView = require('../../js/moon-view.js');
 const I18N = require('./i18n.js');
 const { LUNA } = require('./text-luna.js');
+const { PROMO } = require('./text-luna-promo.js');
 const { page, write, VERSION } = require('./build-pages.js');
 
 const ROOT = process.cwd();
 const ZONE = 'Europe/Sofia';
 const SLUGS = ['yanuari', 'fevruari', 'mart', 'april', 'may', 'yuni', 'yuli', 'avgust', 'septemvri', 'oktomvri', 'noemvri', 'dekemvri'];
 const ICONS = Moon.ICONS;
+const HEAD = '  <link rel="stylesheet" href="/css/luna.css?v=4">\n';
 const SCRIPTS = `<script src="/js/moon.js?v=${VERSION.moon}" defer></script>
+<script src="/js/moon-view.js?v=1" defer></script>
 <script src="/js/place-context.js?v=${VERSION.placeContext}" defer></script>
 <script src="/js/luna-today.js?v=${VERSION.lunaToday}" defer></script>
 <script src="/js/luna-local.js?v=${VERSION.lunaLocal}" defer></script>\n`;
@@ -106,19 +111,10 @@ function blueMoons(events) {
 }
 
 // --- The block "the Moon today" (same markup as /js/luna-today.js writes) -------
+// The "Moon today" block: the HTML /js/luna-today.js draws in the browser, for the day of the build
 function todayBlock(lang, now) {
-  const T = LUNA[lang];
-  const state = Moon.state(now);
-  const full = Moon.nextPhase(now, 2);
-  const fresh = Moon.nextPhase(now, 0);
-  const when = date => `<strong>${fullDate(lang, date, true)}</strong>, ${hhmm(date)}`;
-  return `<section class="info-card moon-today" id="moonToday" style="display:flex;gap:20px;align-items:center;flex-wrap:wrap">
-      <div class="moon-today-icon" style="font-size:4rem;line-height:1">${ICONS[state.index]}</div>
-      <div>
-        <h2 style="margin:0">${Moon.NAMES[lang][state.index]}</h2>
-        <p>${Math.round(state.fraction * 100)}% ${T.lit} · ${state.waxing ? T.waxing : T.waning}</p>
-        <p>${T.nextFull}: ${when(full)}<br>${T.nextNew}: ${when(fresh)}</p>
-      </div>
+  return `<section class="info-card moon-today" id="moonToday">
+      ${MoonView.today(lang, now, ZONE)}
     </section>`;
 }
 
@@ -129,6 +125,149 @@ const moreLinks = (lang, items) => `
         ${items.join('\n        ')}
       </div>
     </section>`;
+
+// The sky section of the hub: the next meteor shower, eclipse and supermoon (sky-events.json, the
+// source of /nebeto/), each linking to its place on that page
+function skyCards(lang, now) {
+  const S = LUNA[lang].sky;
+  const date = iso => new Intl.DateTimeFormat(I18N.LOCALE[lang], { timeZone: ZONE, day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(iso));
+  const next = (list, field) => list.filter(item => new Date(item[field]) >= now).sort((a, b) => new Date(a[field]) - new Date(b[field]))[0];
+  const cards = [];
+  const meteor = next(SKY_EVENTS.meteors, 'max');
+  if (meteor) cards.push({ icon: '☄️', title: meteor.name[lang], sub: `${S.meteor} · ${S.peak} ${date(meteor.max)}`, href: '/nebeto/#meteorni-potoci' });
+  const eclipse = next(SKY_EVENTS.eclipses, 'max');
+  if (eclipse) cards.push({ icon: '🌘', title: eclipse.name[lang], sub: date(eclipse.max), href: '/nebeto/#zatmeniya' });
+  const supermoon = next(SKY_EVENTS.supermoons, 'full');
+  if (supermoon) cards.push({ icon: '🌕', title: S.supermoon, sub: `${date(supermoon.full)}${supermoon.distanceKm ? ` · ${supermoon.distanceKm.toLocaleString(I18N.LOCALE[lang])} ${S.km}` : ''}`, href: '/nebeto/#superluni' });
+  if (!cards.length) return '';
+  return `
+    <section class="info-card moon-sky">
+      <h2>${S.h}</h2>
+      <p>${S.intro}</p>
+      <div class="sky-cards">
+${cards.map(card => `        <a class="sky-card" href="${L(lang, card.href.split('#')[0])}#${card.href.split('#')[1]}"><span class="sky-card-icon" aria-hidden="true">${card.icon}</span><strong>${esc(card.title)}</strong><span>${esc(card.sub)}</span></a>`).join('\n')}
+      </div>
+      <p class="city-actions"><a class="btn" href="${L(lang, '/nebeto/')}">${S.btn}</a></p>
+    </section>`;
+}
+
+// The hub page's share image, one per language (images/og-luna-<lang>.png)
+const ogImage = lang => `/images/og-luna-${lang}.png`;
+const ICS_URL = lang => L(lang, '/luna/moon-phases.ics');
+
+// A supermoon: a full moon closer than 363,400 km. There is no single definition; this one gives the
+// same dates as the list of /nebeto/ (sky-events.json, with its sources: 24 Nov 2026 to 20 Feb 2027)
+// and also finds 3 Jan 2026. Computed, so every year is judged the same way.
+const SUPERMOON_KM = 363400;
+const isSuperMoon = event => event.type === 2 && MoonView.distance(event.time) <= SUPERMOON_KM;
+
+// The calendar file to subscribe to: every phase of the years as an event at its exact UTC time,
+// so each calendar shows it in the time zone of its owner
+function icsFile(lang, years) {
+  const P = PROMO[lang];
+  const names = Moon.NAMES[lang];
+  const stamp = `${years[0]}0101T000000Z`;
+  // to the minute, cut like hhmm() on the pages, so a page and the calendar show the same minute
+  const utc = date => new Date(Math.floor(date.getTime() / 60000) * 60000).toISOString().replace(/[-:]|\.\d{3}/g, '');
+  const events = years.flatMap(year => yearEvents(year));
+  const blue = new Set(years.flatMap(year => blueMoons(yearEvents(year))).map(event => event.time.getTime()));
+  const lines = [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Weather Pulse//Moon phases//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+    `X-WR-CALNAME:${P.ics.name} – Weather Pulse`, `X-WR-CALDESC:${L(lang, '/luna/')}`.replace(/^X-WR-CALDESC:/, 'X-WR-CALDESC:https://weatherpulse.eu'),
+    'REFRESH-INTERVAL;VALUE=DURATION:P1D', 'X-PUBLISHED-TTL:P1D'
+  ];
+  events.forEach(event => {
+    const extra = [event.type === 2 && isSuperMoon(event) ? P.ics.super : '', event.type === 2 && blue.has(event.time.getTime()) ? P.ics.blue : ''].filter(Boolean);
+    lines.push('BEGIN:VEVENT', `UID:moon-${utc(event.time)}-${event.type}@weatherpulse.eu`, `DTSTAMP:${stamp}`,
+      `DTSTART:${utc(event.time)}`, `DTEND:${utc(new Date(event.time.getTime() + 15 * 60000))}`,
+      `SUMMARY:${ICONS[event.type * 2]} ${names[event.type * 2]}${extra.length ? ' · ' + extra.join(' · ') : ''}`,
+      `URL:https://weatherpulse.eu${L(lang, '/luna/')}`, 'TRANSP:TRANSPARENT', 'END:VEVENT');
+  });
+  lines.push('END:VCALENDAR');
+  return lines.join('\r\n') + '\r\n';
+}
+
+// The questions and answers of the hub, also as FAQPage data. Written at the build; the daily
+// workflow rebuilds the hub, so "the next full moon" is never more than a day old.
+function faqBlock(lang, now, years) {
+  const P = PROMO[lang];
+  const fullMoon = Moon.nextPhase(now, 2);
+  const newMoon = Moon.nextPhase(now, 0);
+  const when = date => `${fullDate(lang, date, true)}, ${hhmm(date)}`;
+  const nextBlue = years.flatMap(year => blueMoons(yearEvents(year))).filter(event => event.time > now)[0];
+  const items = P.faq({ full: when(fullMoon), fresh: when(newMoon), blue: nextBlue ? fullDate(lang, nextBlue.time, true) : '' });
+  const data = { '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: lang,
+    mainEntity: items.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })) };
+  return {
+    json: `  <script type="application/ld+json">\n  ${JSON.stringify(data, null, 2).replace(/\n/g, '\n  ').replace(/<\//g, '<\\/')}\n  </script>\n`,
+    html: `
+    <section class="info-card moon-faq">
+      <h2>${P.faqH}</h2>
+${items.map(([q, a]) => `      <details class="moon-q"><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('\n')}
+    </section>`
+  };
+}
+
+// "Full moons <year>" and "New moons <year>": every date with the day, the exact time, the
+// distance to the Moon and a note for supermoons and blue moons
+function listPage(lang, year, kind, years) {
+  const T = LUNA[lang];
+  const P = PROMO[lang];
+  const L2 = kind === 'full' ? P.listFull : P.listNew;
+  const type = kind === 'full' ? 2 : 0;
+  const events = yearEvents(year).filter(event => event.type === type);
+  const blue = kind === 'full' ? blueMoons(yearEvents(year)) : [];
+  const supers = kind === 'full' ? events.filter(isSuperMoon) : [];
+  const url = `/luna/${year}/${kind === 'full' ? 'pylnolunie' : 'novolunie'}/`;
+  const otherKind = kind === 'full' ? 'new' : 'full';
+  const otherUrl = `/luna/${year}/${otherKind === 'full' ? 'pylnolunie' : 'novolunie'}/`;
+  const rows = events.map((event, i) => {
+    const s = sofia(event.time);
+    const notes = [supers.includes(event) ? P.superMoon : '', blue.includes(event) ? P.blueMoon : ''].filter(Boolean).join(', ');
+    const km = Math.round(MoonView.distance(event.time) / 100) * 100;
+    return `          <tr><td>${i + 1}</td><td><a href="${L(lang, monthUrl(year, s.month))}">${dayMonth(lang, s.year, s.month, s.day)}</a></td><td>${weekdayOf(lang, s.year, s.month, s.day)}</td><td>${hhmm(event.time)}</td><td>${km.toLocaleString(I18N.LOCALE[lang])} ${P.km}</td><td>${notes || '–'}</td></tr>`;
+  }).join('\n');
+  const first = fullDate(lang, events[0].time, true);
+  const last = fullDate(lang, events[events.length - 1].time, true);
+  const prev = years.includes(year - 1) ? year - 1 : null;
+  const next = years.includes(year + 1) ? year + 1 : null;
+  const listUrl = y => `/luna/${y}/${kind === 'full' ? 'pylnolunie' : 'novolunie'}/`;
+  const listName = kind === 'full' ? P.otherKind.new : P.otherKind.full;
+  return page({
+    head: HEAD,
+    url,
+    lang,
+    multi: true,
+    scripts: SCRIPTS,
+    image: ogImage(lang),
+    title: esc(L2.title(year)),
+    description: esc(L2.description(year, events.length, first)),
+    jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.cal, '/luna/'], [`${T.cal} ${year}`, `/luna/${year}/`], [listName + ' ' + year, url]]),
+    body: `    <p class="breadcrumbs"><a href="${L(lang, '/luna/')}">${T.cal}</a> › <a href="${L(lang, `/luna/${year}/`)}">${year}</a> › ${listName}</p>
+    <h1>${L2.h1(year)}</h1>
+    <p class="storm-intro">${L2.intro({ year, n: events.length, first, last, blue: blue.length ? fullDate(lang, blue[0].time, true) : '', super: supers.map(event => fullDate(lang, event.time, true)).join(', ') })}</p>
+
+    <section class="info-card">
+      <h2>${L2.sub} ${year}</h2>
+      <div class="table-scroll">
+      <table class="kp-table holiday-table">
+        <thead><tr>${['n', 'date', 'day', 'time', 'distance', 'note'].map(key => `<th>${P.cols[key]}</th>`).join('')}</tr></thead>
+        <tbody>
+${rows}
+        </tbody>
+      </table>
+      </div>
+      <p class="storm-updated">${P.listNote}</p>
+    </section>
+
+    <p class="city-actions">
+      ${prev ? `<a class="btn" href="${L(lang, listUrl(prev))}">← ${listName} ${prev}</a>` : ''}
+      ${next ? `<a class="btn" href="${L(lang, listUrl(next))}">${listName} ${next} →</a>` : ''}
+      <a class="btn" href="${L(lang, otherUrl)}">${P.otherKind[kind]} ${year}</a>
+      <a class="btn" href="${L(lang, `/luna/${year}/`)}">${T.cal} ${year}</a>
+    </p>`
+  });
+}
 
 // --- Pages --------------------------------------------------------------------
 function monthPage(lang, year, month, years) {
@@ -166,10 +305,11 @@ function monthPage(lang, year, month, years) {
   const noteHtml = noteParts ? `<span id="dayNoteTz">${noteParts[1]}</span> ${noteParts[2]}` : T.daysNote;
   const calUrl = L(lang, '/luna/');
   return page({
+    head: HEAD,
     url,
     lang,
     multi: true,
-    scripts: SCRIPTS + `<script src="/js/moon-grid.js?v=1" defer></script>
+    scripts: SCRIPTS + `<script src="/js/moon-grid.js?v=3" defer></script>
 `,
     title: esc(T.monthTitle(name, year, Boolean(full))),
     description: esc(T.monthDescription({ name, year, full, fresh, fullDates: dates(2), freshDates: dates(0) })),
@@ -241,6 +381,7 @@ function yearPage(lang, year, years) {
     return `          <tr><td><a href="${L(lang, monthUrl(year, month))}">${monthName(lang, month)}</a></td><td>${cell(0)}</td><td>${cell(1)}</td><td>${cell(2)}</td><td>${cell(3)}</td></tr>`;
   }).join('\n');
   return page({
+    head: HEAD,
     url,
     lang,
     multi: true,
@@ -268,6 +409,8 @@ ${rows}
     </section>
 
     <p class="city-actions">
+      <a class="btn" href="${L(lang, `/luna/${year}/pylnolunie/`)}">${PROMO[lang].otherKind.new} ${year}</a>
+      <a class="btn" href="${L(lang, `/luna/${year}/novolunie/`)}">${PROMO[lang].otherKind.full} ${year}</a>
       ${years.filter(y => y !== year).map(y => `<a class="btn" href="${L(lang, `/luna/${y}/`)}">${T.cal} ${y}</a>`).join('\n      ')}
       <a class="btn" href="${L(lang, '/luna/')}">${T.today} →</a>
     </p>`
@@ -276,23 +419,28 @@ ${rows}
 
 function hubPage(lang, years, now) {
   const T = LUNA[lang];
+  const P = PROMO[lang];
+  const faq = faqBlock(lang, now, years);
+  const listYear = years.includes(sofia(now).year) ? sofia(now).year : years[0];
   const month = sofia(now).month;
   const thisYear = sofia(now).year;
   const current = years.includes(thisYear) ? monthUrl(thisYear, month) : monthUrl(years[0], 0);
   return page({
+    head: HEAD,
     url: '/luna/',
     lang,
     multi: true,
     title: T.hubTitle,
     description: esc(T.hubDescription(years.join(T.joiner))),
-    jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.cal, '/luna/']]),
+    image: ogImage(lang),
+    jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.cal, '/luna/']]) + faq.json,
     body: `    <h1>${T.hubH1}</h1>
     <p class="storm-intro">${T.hubIntro}</p>
     <p id="lunaPlace" class="storm-updated" style="margin:6px auto 14px;max-width:900px;padding:0 16px;text-align:center"></p>
 
     ${todayBlock(lang, now)}
 
-    <p class="city-actions"><a class="btn" href="${L(lang, current)}">${T.thisMonth}</a>${years.map(year => ` <a class="btn" href="${L(lang, `/luna/${year}/`)}">${T.cal} ${year}</a>`).join('')}</p>
+    <p class="city-actions"><a class="btn" href="${L(lang, current)}">${T.thisMonth}</a>${years.map(year => ` <a class="btn" href="${L(lang, `/luna/${year}/`)}">${T.cal} ${year}</a>`).join('')} <a class="btn" href="${L(lang, `/luna/${listYear}/pylnolunie/`)}">${P.otherKind.new} ${listYear}</a> <a class="btn" href="${L(lang, `/luna/${listYear}/novolunie/`)}">${P.otherKind.full} ${listYear}</a> <button type="button" class="btn" id="moonShare" data-copied="${P.share.copied}">${P.share.btn}</button></p>
 ${years.map(year => `
     <section class="info-card">
       <h2>${T.hubYearH(year)}</h2>
@@ -300,6 +448,19 @@ ${years.map(year => `
         ${monthLinks(lang, year, -1)}
       </div>
     </section>`).join('\n')}
+${`
+    <section class="info-card moon-subscribe">
+      <h2>${P.subscribe.h}</h2>
+      <p>${P.subscribe.text(years.join('–'))}</p>
+      <p class="city-actions"><a class="btn" href="webcal://weatherpulse.eu${ICS_URL(lang)}">${P.subscribe.btn}</a> <a class="btn" href="${ICS_URL(lang)}" download>${P.subscribe.download}</a></p>
+      <p class="storm-updated">${P.subscribe.how} <code>https://weatherpulse.eu${ICS_URL(lang)}</code></p>
+    </section>`}
+${skyCards(lang, now)}
+    <section class="info-card moon-about">
+      <h2>${T.aboutH}</h2>
+${T.about.map(paragraph => `      <p>${paragraph}</p>`).join('\n')}
+    </section>
+${faq.html}
 ${moreLinks(lang, [
     `<a href="${L(lang, '/vremeto/')}" class="recent-place">${T.weather}</a>`,
     `<a href="/magnitni-buri/" class="recent-place">${T.storms}</a>`,
@@ -321,9 +482,12 @@ I18N.LANGS.forEach(lang => {
   years.forEach(year => {
     write(dir(lang, `/luna/${year}/`), yearPage(lang, year, years));
     for (let month = 0; month < 12; month++) write(dir(lang, monthUrl(year, month)), monthPage(lang, year, month, years));
+    write(dir(lang, `/luna/${year}/pylnolunie/`), listPage(lang, year, 'full', years));
+    write(dir(lang, `/luna/${year}/novolunie/`), listPage(lang, year, 'new', years));
   });
+  fs.writeFileSync(path.join(ROOT, dir(lang, '/luna/moon-phases.ics')), icsFile(lang, years));
 });
-console.log(`Wrote /luna/, ${years.length} year pages and ${years.length * 12} month pages (${years.join(', ')}) in ${I18N.LANGS.length} languages.`);
+console.log(`Wrote /luna/, ${years.length} year pages and ${years.length * 12} month pages (${years.join(', ')}) in ${I18N.LANGS.length} languages, the lists of full and new moons and the calendar file (moon-phases.ics).`);
 
 if (process.argv.includes('--sitemap')) {
   const today = now.toISOString().slice(0, 10);

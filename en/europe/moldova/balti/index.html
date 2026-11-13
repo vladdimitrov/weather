@@ -96,7 +96,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -108,8 +108,7 @@
       <a href="/en/maps/" class="nav-link" data-nav="maps">Weather Maps</a>
       <a href="/en/holliday_calendar/" class="nav-link" data-nav="holidays">Holiday Calendar</a>
       <a href="/en/magnitni-buri/" class="nav-link" data-nav="storms">Magnetic Storms</a>
-      <a href="/en/nebeto/" class="nav-link" data-nav="sky">The Sky</a>
-      <a href="/en/iztochnici/" class="nav-link" data-nav="sources">Data Sources</a>
+      <a href="/en/luna/" class="nav-link" data-nav="moon">Moon Calendar</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -122,78 +121,81 @@
     <p class="storm-intro">Weather forecast for Bălți, Moldova, for today, tomorrow and the next 7 days: temperature, rain, wind and chance of precipitation. Data from Open-Meteo, updated every hour.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Bălți" data-lat="47.754" data-lon="27.9184" data-query="city=B%C4%83l%C8%9Bi&lat=47.7540&lon=27.9184&cc=MD">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Strong wind gusts today: up to 69 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Bălți: Thursday 12 November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">2° / 9°</span>
-        <p class="storm-now-status">Drizzle · chance of rain 77%</p>
-        <p class="storm-updated">Forecast issued on 12 November 2026</p>
+        <h2>Bălți: Friday, 13 November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">5° / 21°</span>
+        <p class="storm-now-status">Rain · chance of rain 83%</p>
+        <p class="storm-updated">Forecast issued on 13 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Friday 13 November (up to 20°) and the coldest Sunday 15 November (down to 1°). Rain or snow is expected on 2 of the days. Daytime temperatures are above normal for November (average high 8°).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Friday, 13 November (up to 21°) and the coldest Sunday, 15 November (down to −1°). Rain or snow is expected on 3 of the days. Daytime temperatures are above normal for November (average high 8°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=B%C4%83l%C8%9Bi&lat=47.7540&lon=27.9184&cc=MD&date=2026-11-12" title="Hourly forecast →">
-            <span class="kp-day-name">Thu 12</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">2° / 9°</span>
-            <span class="kp-day-status">Drizzle</span>
-            <span class="city-day-rain" title="chance of rain">77% · 1.9 mm</span>
-            <span class="city-day-wind">Wind 16 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=B%C4%83l%C8%9Bi&lat=47.7540&lon=27.9184&cc=MD&date=2026-11-13" title="Hourly forecast →">
             <span class="kp-day-name">Fri 13</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">5° / 20°</span>
-            <span class="kp-day-status">Drizzle</span>
-            <span class="city-day-rain" title="chance of rain">63% · 1.3 mm</span>
-            <span class="city-day-wind">Wind 32 km/h</span>
+            <span class="city-day-temp">5° / 21°</span>
+            <span class="kp-day-status">Rain</span>
+            <span class="city-day-rain" title="chance of rain">83% · 2.8 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 28 km/h · gusts 69</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=B%C4%83l%C8%9Bi&lat=47.7540&lon=27.9184&cc=MD&date=2026-11-14" title="Hourly forecast →">
             <span class="kp-day-name">Sat 14</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">3° / 8°</span>
+            <span class="city-day-temp">1° / 7°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">10%</span>
-            <span class="city-day-wind">Wind 22 km/h</span>
+            <span class="city-day-rain" title="chance of rain">6%</span>
+            <span class="city-day-wind">Wind 22 km/h · gusts 48</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=B%C4%83l%C8%9Bi&lat=47.7540&lon=27.9184&cc=MD&date=2026-11-15" title="Hourly forecast →">
             <span class="kp-day-name">Sun 15</span>
-            <span class="city-day-icon" aria-hidden="true">☀️</span>
+            <span class="city-day-icon" aria-hidden="true">⛅</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">1° / 8°</span>
-            <span class="kp-day-status">Clear</span>
+            <span class="city-day-temp">−1° / 8°</span>
+            <span class="kp-day-status">Partly cloudy</span>
             <span class="city-day-rain" title="chance of rain">0%</span>
-            <span class="city-day-wind">Wind 19 km/h</span>
+            <span class="city-day-wind">Wind 19 km/h · gusts 54</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=B%C4%83l%C8%9Bi&lat=47.7540&lon=27.9184&cc=MD&date=2026-11-16" title="Hourly forecast →">
             <span class="kp-day-name">Mon 16</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">2° / 10°</span>
+            <span class="city-day-temp">1° / 11°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">1%</span>
-            <span class="city-day-wind">Wind 27 km/h</span>
+            <span class="city-day-rain" title="chance of rain">3%</span>
+            <span class="city-day-wind">Wind 27 km/h · gusts 58</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=B%C4%83l%C8%9Bi&lat=47.7540&lon=27.9184&cc=MD&date=2026-11-17" title="Hourly forecast →">
             <span class="kp-day-name">Tue 17</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">6° / 11°</span>
-            <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">16%</span>
-            <span class="city-day-wind">Wind 25 km/h</span>
+            <span class="city-day-temp">6° / 13°</span>
+            <span class="kp-day-status">Drizzle</span>
+            <span class="city-day-rain" title="chance of rain">23% · 0.7 mm</span>
+            <span class="city-day-wind">Wind 24 km/h · gusts 53</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=B%C4%83l%C8%9Bi&lat=47.7540&lon=27.9184&cc=MD&date=2026-11-18" title="Hourly forecast →">
             <span class="kp-day-name">Wed 18</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">6° / 13°</span>
+            <span class="city-day-temp">8° / 15°</span>
+            <span class="kp-day-status">Rain</span>
+            <span class="city-day-rain" title="chance of rain">37% · 1.5 mm</span>
+            <span class="city-day-wind">Wind 20 km/h · gusts 48</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=B%C4%83l%C8%9Bi&lat=47.7540&lon=27.9184&cc=MD&date=2026-11-19" title="Hourly forecast →">
+            <span class="kp-day-name">Thu 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">7° / 12°</span>
             <span class="kp-day-status">Drizzle</span>
-            <span class="city-day-rain" title="chance of rain">36% · 0.9 mm</span>
-            <span class="city-day-wind">Wind 20 km/h</span>
+            <span class="city-day-rain" title="chance of rain">48% · 2.1 mm</span>
+            <span class="city-day-wind">Wind 28 km/h · gusts 55</span>
           </a>
         </div>
         <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 112 m</p>
@@ -334,16 +336,17 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/en/gradove/" class="footer-link" data-nav="cityIndex">All cities</a>
+      · <a href="/en/iztochnici/" class="footer-link" data-nav="sourcesShort">Sources</a>
       · <a href="/en/za-saita/" class="footer-link" data-nav="about">About</a>
       · <a href="/en/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

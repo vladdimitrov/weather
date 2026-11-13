@@ -88,7 +88,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
   <style>
     /* The forecast block holds the forecast written every morning (build-storms.js) until the
@@ -113,8 +113,7 @@
       <a href="/es/weather/" class="nav-link" data-nav="weather">Pronóstico del tiempo</a>
       <a href="/es/maps/" class="nav-link" data-nav="maps">Mapas del tiempo</a>
       <a href="/es/holliday_calendar/" class="nav-link" data-nav="holidays">Calendario de festivos</a>
-      <a href="/es/nebeto/" class="nav-link" data-nav="sky">El cielo</a>
-      <a href="/es/iztochnici/" class="nav-link" data-nav="sources">Fuentes de datos</a>
+      <a href="/es/luna/" class="nav-link" data-nav="moon">Calendario lunar</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -137,12 +136,12 @@
       <table class="kp-table">
         <thead><tr><th>Día</th><th>Kp máximo</th><th>Nivel</th></tr></thead>
         <tbody>
-            <tr><td>jueves, 12 de noviembre</td><td>1.7</td><td>Tranquilo</td></tr>
             <tr><td>viernes, 13 de noviembre</td><td>1.7</td><td>Tranquilo</td></tr>
             <tr><td>sábado, 14 de noviembre</td><td>1.7</td><td>Tranquilo</td></tr>
+            <tr><td>domingo, 15 de noviembre</td><td>1.7</td><td>Tranquilo</td></tr>
         </tbody>
       </table>
-      <p class="storm-updated">Pronóstico de la NOAA del 12 de noviembre de 2026</p>
+      <p class="storm-updated">Pronóstico de la NOAA del 13 de noviembre de 2026</p>
     <!-- kp-forecast:end --></div>
     <div class="space-weather" id="stormWind" hidden></div>
     <div class="space-weather" id="stormOutlook" hidden></div>
@@ -199,12 +198,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/es/gradove/" class="footer-link" data-nav="cityIndex">Todas las ciudades</a>
+      · <a href="/es/iztochnici/" class="footer-link" data-nav="sourcesShort">Fuentes</a>
       · <a href="/es/za-saita/" class="footer-link" data-nav="about">Acerca de</a>
       · <a href="/es/poveritelnost/" class="footer-link" data-nav="privacy">Privacidad</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18"></script>
+<script src="/js/mobile-nav.js?v=19"></script>
 <script src="/js/language-selector.js?v=7"></script>
 <script src="/js/background-selector.js?v=3"></script>
 <script src="/js/storm-page.js?v=5"></script>

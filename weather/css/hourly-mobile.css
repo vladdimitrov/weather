@@ -76,12 +76,18 @@
     font-weight: 700;
   }
 
-  #hourlyTable tbody td:nth-child(2) {
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-  }
+  /* the forecast cell dissolves so its parts can be ordered: icon under the time, the
+     warning badge ("Strong wind") at the very bottom, so the temperatures of all cards line up
+     (as in the day cards) */
+  #hourlyTable tbody td:nth-child(1) { order: 1; }
+  #hourlyTable tbody td:nth-child(2) { display: contents !important; }
+  #hourlyTable tbody td:nth-child(2) > :not(.wx-warnings) { order: 2; }
+  #hourlyTable tbody td:nth-child(3) { order: 3; }
+  #hourlyTable tbody td:nth-child(4) { order: 4; }
+  #hourlyTable tbody td:nth-child(5) { order: 5; }
+  #hourlyTable tbody td:nth-child(6) { order: 6; }
+  #hourlyTable tbody td:nth-child(7) { order: 7; }
+  #hourlyTable tbody td:nth-child(2) > .wx-warnings { order: 8; margin-top: auto; }
 
   #hourlyTable tbody td:nth-child(3) {
     font-size: 1.45rem;

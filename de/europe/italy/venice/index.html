@@ -99,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -111,8 +111,7 @@
       <a href="/de/maps/" class="nav-link" data-nav="maps">Wetterkarten</a>
       <a href="/de/holliday_calendar/" class="nav-link" data-nav="holidays">Feiertagskalender</a>
       <a href="/de/magnitni-buri/" class="nav-link" data-nav="storms">Magnetstürme</a>
-      <a href="/de/nebeto/" class="nav-link" data-nav="sky">Himmel</a>
-      <a href="/de/iztochnici/" class="nav-link" data-nav="sources">Datenquellen</a>
+      <a href="/de/luna/" class="nav-link" data-nav="moon">Mondkalender</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -126,32 +125,23 @@
 
     <div class="city-forecast" id="cityForecast" data-name="Venedig" data-lat="45.4408" data-lon="12.3155" data-query="city=Venedig&lat=45.4408&lon=12.3155&cc=IT">
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Venedig: Donnerstag, 12. November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">11° / 14°</span>
-        <p class="storm-now-status">Regen · Regenwahrscheinlichkeit 100%</p>
-        <p class="storm-updated">Vorhersage vom 12. November 2026</p>
+        <h2>Venedig: Freitag, 13. November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">8° / 14°</span>
+        <p class="storm-now-status">Regen · Regenwahrscheinlichkeit 96%</p>
+        <p class="storm-updated">Vorhersage vom 13. November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-Tage-Vorhersage</h3>
-        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 14°) und Sonntag, 15. November am kältesten (bis 5°). An 5 der Tage wird Niederschlag erwartet. Tagsüber ist es etwa so warm wie üblich im November (im Mittel 13°).</p>
+        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 14°) und Sonntag, 15. November am kältesten (bis 6°). An 4 der Tage wird Niederschlag erwartet. Tagsüber ist es etwa so warm wie üblich im November (im Mittel 13°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Venedig&lat=45.4408&lon=12.3155&cc=IT&date=2026-11-12" title="Stündlich →">
-            <span class="kp-day-name">Do., 12.</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">11° / 14°</span>
-            <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 39.2 mm</span>
-            <span class="city-day-wind">Wind 23 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Venedig&lat=45.4408&lon=12.3155&cc=IT&date=2026-11-13" title="Stündlich →">
             <span class="kp-day-name">Fr., 13.</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">8° / 14°</span>
             <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">93% · 7.0 mm</span>
-            <span class="city-day-wind">Wind 37 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">96% · 9.0 mm</span>
+            <span class="city-day-wind">Wind 34 km/h · Böen 58</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Venedig&lat=45.4408&lon=12.3155&cc=IT&date=2026-11-14" title="Stündlich →">
             <span class="kp-day-name">Sa., 14.</span>
@@ -160,43 +150,52 @@
             <span class="city-day-temp">6° / 12°</span>
             <span class="kp-day-status">Bewölkt</span>
             <span class="city-day-rain" title="Regenwahrscheinlichkeit">0%</span>
-            <span class="city-day-wind">Wind 15 km/h</span>
+            <span class="city-day-wind">Wind 14 km/h · Böen 35</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Venedig&lat=45.4408&lon=12.3155&cc=IT&date=2026-11-15" title="Stündlich →">
             <span class="kp-day-name">So., 15.</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">5° / 11°</span>
-            <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">9%</span>
-            <span class="city-day-wind">Wind 11 km/h</span>
+            <span class="city-day-temp">6° / 9°</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">20% · 0.2 mm</span>
+            <span class="city-day-wind">Wind 15 km/h · Böen 27</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Venedig&lat=45.4408&lon=12.3155&cc=IT&date=2026-11-16" title="Stündlich →">
             <span class="kp-day-name">Mo., 16.</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">7° / 10°</span>
-            <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">53% · 12.0 mm</span>
-            <span class="city-day-wind">Wind 10 km/h</span>
+            <span class="city-day-temp">7° / 11°</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">69% · 1.8 mm</span>
+            <span class="city-day-wind">Wind 9 km/h · Böen 18</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Venedig&lat=45.4408&lon=12.3155&cc=IT&date=2026-11-17" title="Stündlich →">
             <span class="kp-day-name">Di., 17.</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">7° / 11°</span>
+            <span class="city-day-temp">8° / 10°</span>
             <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">58% · 19.3 mm</span>
-            <span class="city-day-wind">Wind 16 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">78% · 5.8 mm</span>
+            <span class="city-day-wind">Wind 11 km/h · Böen 30</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Venedig&lat=45.4408&lon=12.3155&cc=IT&date=2026-11-18" title="Stündlich →">
             <span class="kp-day-name">Mi., 18.</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">9° / 13°</span>
+            <span class="city-day-temp">8° / 13°</span>
             <span class="kp-day-status">Nieselregen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">58% · 2.9 mm</span>
-            <span class="city-day-wind">Wind 10 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">55% · 0.2 mm</span>
+            <span class="city-day-wind">Wind 13 km/h · Böen 27</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Venedig&lat=45.4408&lon=12.3155&cc=IT&date=2026-11-19" title="Stündlich →">
+            <span class="kp-day-name">Do., 19.</span>
+            <span class="city-day-icon" aria-hidden="true">🌫️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">8° / 13°</span>
+            <span class="kp-day-status">Nebel</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">10%</span>
+            <span class="city-day-wind">Wind 10 km/h · Böen 23</span>
           </a>
         </div>
         <p class="forecast-note">Median der Modelle ECMWF, ICON und GFS · Höhe 4 m</p>
@@ -343,16 +342,17 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/de/gradove/" class="footer-link" data-nav="cityIndex">Alle Städte</a>
+      · <a href="/de/iztochnici/" class="footer-link" data-nav="sourcesShort">Quellen</a>
       · <a href="/de/za-saita/" class="footer-link" data-nav="about">Über uns</a>
       · <a href="/de/poveritelnost/" class="footer-link" data-nav="privacy">Datenschutz</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

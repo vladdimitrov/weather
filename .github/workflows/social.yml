@@ -1,0 +1,82 @@
+# Сложете този файл в хранилището на сайта като .github/workflows/social.yml,
+# а проекта – в папка tools/social/ на същото хранилище.
+name: Social posts
+
+on:
+  schedule:
+    # Часовете са в UTC. София = UTC+2 през зимата, UTC+3 през лятото.
+    - cron: "30 5 * * *"        # 07:30 зимно време -> прогноза
+    - cron: "30 10,16 * * *"    # 12:30 и 18:30 зимно време -> следващ файл от queue/
+  workflow_dispatch:            # ръчно пускане от таб Actions
+    inputs:
+      job:
+        description: "forecast или queue"
+        required: true
+        default: forecast
+        type: choice
+        options: [forecast, queue]
+
+permissions:
+  contents: write               # качва картинките в social/ и мести публикуваните файлове
+  pages: write                  # пуска обновяване на GitHub Pages след качване
+
+concurrency:
+  group: social
+  cancel-in-progress: false
+
+defaults:
+  run:
+    working-directory: tools/social
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Choose job
+        id: pick
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "job=${{ inputs.job }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "30 5 * * *" ]; then
+            echo "job=forecast" >> "$GITHUB_OUTPUT"
+          else
+            echo "job=queue" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run
+        run: python main.py ${{ steps.pick.outputs.job }}
+        env:
+          WP_PAGE_ID: ${{ secrets.WP_PAGE_ID }}
+          WP_PAGE_TOKEN: ${{ secrets.WP_PAGE_TOKEN }}
+          WP_IG_USER_ID: ${{ secrets.WP_IG_USER_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Save queue progress
+        if: always() && steps.pick.outputs.job == 'queue'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A queue
+          if ! git diff --cached --quiet; then
+            git commit -m "social: queue item published"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Upload log and image
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: run-${{ github.run_id }}
+          path: |
+            tools/social/logs/
+            tools/social/output/
+          retention-days: 7

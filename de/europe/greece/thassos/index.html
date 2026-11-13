@@ -97,7 +97,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -109,8 +109,7 @@
       <a href="/de/maps/" class="nav-link" data-nav="maps">Wetterkarten</a>
       <a href="/de/holliday_calendar/" class="nav-link" data-nav="holidays">Feiertagskalender</a>
       <a href="/de/magnitni-buri/" class="nav-link" data-nav="storms">Magnetstürme</a>
-      <a href="/de/nebeto/" class="nav-link" data-nav="sky">Himmel</a>
-      <a href="/de/iztochnici/" class="nav-link" data-nav="sources">Datenquellen</a>
+      <a href="/de/luna/" class="nav-link" data-nav="moon">Mondkalender</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -124,41 +123,32 @@
 
     <div class="city-forecast" id="cityForecast" data-name="Thassos" data-lat="40.779" data-lon="24.709" data-query="city=Thassos&lat=40.7790&lon=24.7090&cc=GR">
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Thassos: Donnerstag, 12. November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">13° / 19°</span>
-        <p class="storm-now-status">Nebel · Regenwahrscheinlichkeit 0%</p>
-        <p class="storm-updated">Vorhersage vom 12. November 2026</p>
+        <h2>Thassos: Freitag, 13. November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">14° / 22°</span>
+        <p class="storm-now-status">Bewölkt · Regenwahrscheinlichkeit 16%</p>
+        <p class="storm-updated">Vorhersage vom 13. November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-Tage-Vorhersage</h3>
-        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 21°) und Montag, 16. November am kältesten (bis 8°). An 3 der Tage wird Niederschlag erwartet. Tagsüber ist es etwa so warm wie üblich im November (im Mittel 16°).</p>
+        <p class="city-summary">In den nächsten 7 Tagen ist Freitag, 13. November am wärmsten (bis 22°) und Montag, 16. November am kältesten (bis 9°). An 2 der Tage wird Niederschlag erwartet. Tagsüber ist es wärmer als üblich im November (im Mittel 16°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Thassos&lat=40.7790&lon=24.7090&cc=GR&date=2026-11-12" title="Stündlich →">
-            <span class="kp-day-name">Do., 12.</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">13° / 19°</span>
-            <span class="kp-day-status">Nebel</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">0%</span>
-            <span class="city-day-wind">Wind 11 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Thassos&lat=40.7790&lon=24.7090&cc=GR&date=2026-11-13" title="Stündlich →">
             <span class="kp-day-name">Fr., 13.</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">14° / 21°</span>
+            <span class="city-day-temp">14° / 22°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">6%</span>
-            <span class="city-day-wind">Wind 13 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">16%</span>
+            <span class="city-day-wind">Wind 13 km/h · Böen 41</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Thassos&lat=40.7790&lon=24.7090&cc=GR&date=2026-11-14" title="Stündlich →">
             <span class="kp-day-name">Sa., 14.</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">12° / 21°</span>
-            <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">87% · 5.5 mm</span>
-            <span class="city-day-wind">Wind 23 km/h</span>
+            <span class="city-day-temp">13° / 22°</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">84% · 1.3 mm</span>
+            <span class="city-day-wind">Wind 23 km/h · Böen 43</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Thassos&lat=40.7790&lon=24.7090&cc=GR&date=2026-11-15" title="Stündlich →">
             <span class="kp-day-name">So., 15.</span>
@@ -166,35 +156,44 @@
             <span class="city-day-date">15.11</span>
             <span class="city-day-temp">10° / 13°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">62%</span>
-            <span class="city-day-wind">Wind 19 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">48%</span>
+            <span class="city-day-wind">Wind 18 km/h · Böen 43</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Thassos&lat=40.7790&lon=24.7090&cc=GR&date=2026-11-16" title="Stündlich →">
             <span class="kp-day-name">Mo., 16.</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">8° / 13°</span>
+            <span class="city-day-temp">9° / 14°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">4%</span>
-            <span class="city-day-wind">Wind 7 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">3%</span>
+            <span class="city-day-wind">Wind 9 km/h · Böen 18</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Thassos&lat=40.7790&lon=24.7090&cc=GR&date=2026-11-17" title="Stündlich →">
             <span class="kp-day-name">Di., 17.</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">11° / 16°</span>
-            <span class="kp-day-status">Nebel</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">16%</span>
-            <span class="city-day-wind">Wind 12 km/h</span>
+            <span class="city-day-temp">11° / 17°</span>
+            <span class="kp-day-status">Bewölkt</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">6%</span>
+            <span class="city-day-wind">Wind 9 km/h · Böen 32</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Thassos&lat=40.7790&lon=24.7090&cc=GR&date=2026-11-18" title="Stündlich →">
             <span class="kp-day-name">Mi., 18.</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">11° / 18°</span>
+            <span class="city-day-temp">11° / 17°</span>
             <span class="kp-day-status">Regen</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">34% · 2.1 mm</span>
-            <span class="city-day-wind">Wind 7 km/h</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">46%</span>
+            <span class="city-day-wind">Wind 13 km/h · Böen 47</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Thassos&lat=40.7790&lon=24.7090&cc=GR&date=2026-11-19" title="Stündlich →">
+            <span class="kp-day-name">Do., 19.</span>
+            <span class="city-day-icon" aria-hidden="true">⛅</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">13° / 21°</span>
+            <span class="kp-day-status">Wechselnd bewölkt</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">50% · 0.3 mm</span>
+            <span class="city-day-wind">Wind 18 km/h · Böen 51</span>
           </a>
         </div>
         <p class="forecast-note">Median der Modelle ECMWF, ICON und GFS · Höhe 6 m</p>
@@ -363,16 +362,17 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/de/gradove/" class="footer-link" data-nav="cityIndex">Alle Städte</a>
+      · <a href="/de/iztochnici/" class="footer-link" data-nav="sourcesShort">Quellen</a>
       · <a href="/de/za-saita/" class="footer-link" data-nav="about">Über uns</a>
       · <a href="/de/poveritelnost/" class="footer-link" data-nav="privacy">Datenschutz</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

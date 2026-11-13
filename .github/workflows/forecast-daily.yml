@@ -9,8 +9,10 @@ name: Daily forecast in the city pages
 # fails and the pages keep the forecast of the day before.
 on:
   schedule:
-    # 03:20 UTC = 05:20 in Sofia in winter, 06:20 in summer
-    - cron: '20 3 * * *'
+    # 02:47 UTC = 04:47 in Sofia in winter, 05:47 in summer. GitHub starts scheduled runs late when
+    # many are due at once: the run of 12 November planned for 03:20 started at 11:29. An odd
+    # minute is less busy than the usual ones.
+    - cron: '47 2 * * *'
   push:
     branches: [main]
     paths:
@@ -44,13 +46,16 @@ jobs:
       - name: Write the storm forecast
         continue-on-error: true
         run: node .github/scripts/build-storms.js
+      # the Moon calendar hub: today's Moon and the next phases in the HTML (and the .ics file)
+      - name: Write the Moon calendar
+        run: node .github/scripts/build-luna.js
       - name: Update the sitemap
         run: node .github/scripts/build-sitemap.js
       - run: node .github/scripts/check-site.js
       - name: Commit
         id: commit
         run: |
-          git add vremeto en/vremeto de/vremeto it/vremeto es/vremeto europe en/europe de/europe it/europe es/europe magnitni-buri en/magnitni-buri de/magnitni-buri it/magnitni-buri es/magnitni-buri sitemap.xml .github/scripts/sitemap-hashes.json .github/scripts/storms-data.json
+          git add vremeto en/vremeto de/vremeto it/vremeto es/vremeto europe en/europe de/europe it/europe es/europe magnitni-buri en/magnitni-buri de/magnitni-buri it/magnitni-buri es/magnitni-buri luna en/luna de/luna it/luna es/luna sitemap.xml .github/scripts/sitemap-hashes.json .github/scripts/storms-data.json
           if git diff --cached --quiet; then
             echo "Nothing changed."; exit 0
           fi

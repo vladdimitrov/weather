@@ -84,7 +84,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
   <style>
     /* The forecast block holds the forecast written every morning (build-storms.js) until the
@@ -109,8 +109,7 @@
       <a href="/weather/" class="nav-link" data-nav="weather">Прогноза за времето</a>
       <a href="/maps/" class="nav-link" data-nav="maps">Карти за времето</a>
       <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Календар на празниците</a>
-      <a href="/nebeto/" class="nav-link" data-nav="sky">Небето</a>
-      <a href="/iztochnici/" class="nav-link" data-nav="sources">Източници на данни</a>
+      <a href="/luna/" class="nav-link" data-nav="moon">Лунен календар</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -133,12 +132,12 @@
       <table class="kp-table">
         <thead><tr><th>Ден</th><th>Най-висок Kp</th><th>Ниво</th></tr></thead>
         <tbody>
-            <tr><td>четвъртък, 12 ноември</td><td>1.7</td><td>Спокойно</td></tr>
             <tr><td>петък, 13 ноември</td><td>1.7</td><td>Спокойно</td></tr>
             <tr><td>събота, 14 ноември</td><td>1.7</td><td>Спокойно</td></tr>
+            <tr><td>неделя, 15 ноември</td><td>1.7</td><td>Спокойно</td></tr>
         </tbody>
       </table>
-      <p class="storm-updated">Прогноза на NOAA от 12 ноември 2026 г.</p>
+      <p class="storm-updated">Прогноза на NOAA от 13 ноември 2026 г.</p>
       <p class="city-actions"><a class="btn" href="/magnitni-buri/dnes/">Днес по часове →</a> <a class="btn" href="/magnitni-buri/utre/">Утре →</a> <a class="btn" href="/magnitni-buri/noemvri-2026/">През ноември 2026 →</a> <a class="btn" href="/magnitni-buri/kp-indeks/">Какво е Kp индекс →</a></p>
     <!-- kp-forecast:end --></div>
     <div class="space-weather" id="stormWind" hidden></div>
@@ -196,12 +195,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/gradove/" class="footer-link" data-nav="cityIndex">Всички градове</a>
+      · <a href="/iztochnici/" class="footer-link" data-nav="sourcesShort">Източници</a>
       · <a href="/za-saita/" class="footer-link" data-nav="about">За сайта</a>
       · <a href="/poveritelnost/" class="footer-link" data-nav="privacy">Поверителност</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18"></script>
+<script src="/js/mobile-nav.js?v=19"></script>
 <script src="/js/language-selector.js?v=7"></script>
 <script src="/js/background-selector.js?v=3"></script>
 <script src="/js/storm-page.js?v=5"></script>

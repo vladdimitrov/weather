@@ -110,6 +110,7 @@ function updateHourlyForecast(selectedDate) {
       let allPrecipitations = [];
       let allPrecipitationProbabilities = [];
       let allWindspeeds = [];
+      let allGusts = [];
 
       let currentHour = now.getHours();
       let totalHours = 0;
@@ -136,9 +137,9 @@ function updateHourlyForecast(selectedDate) {
         parsedInterval = parseInt(document.getElementById("interval").value);
         let hourlyURL;
         if (parsedInterval <= 30) {
-          hourlyURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&minutely_15=temperature_2m,cloudcover,precipitation,precipitation_probability,windspeed_10m,weather_code&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${startDate}&end_date=${endDateString}&interval=${parsedInterval}`;
+          hourlyURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&minutely_15=temperature_2m,cloudcover,precipitation,precipitation_probability,windspeed_10m,wind_gusts_10m,weather_code&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${startDate}&end_date=${endDateString}&interval=${parsedInterval}`;
         } else {
-          hourlyURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,cloudcover,precipitation,precipitation_probability,windspeed_10m,weather_code&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${startDate}&end_date=${endDateString}&interval=${parsedInterval}`;
+          hourlyURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,cloudcover,precipitation,precipitation_probability,windspeed_10m,wind_gusts_10m,weather_code&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${startDate}&end_date=${endDateString}&interval=${parsedInterval}`;
         }
         
         const hourlyRes = null;
@@ -148,7 +149,7 @@ function updateHourlyForecast(selectedDate) {
         // The 30- and 15-minute tables come from the 15-minute data (4 points an hour)
         const dataPointsPerDay = 24 * (parsedInterval <= 30 ? 4 : 1);
         const totalDataPoints = days * dataPointsPerDay;
-        let times, temperatures, cloudcovers, precipitations, precipitationProbabilities, windspeeds;
+        let times, temperatures, cloudcovers, precipitations, precipitationProbabilities, windspeeds, gusts;
         let weatherCodes; // Declare weatherCodes here
         if (parsedInterval <= 30) {
           times = hourlyData.minutely_15.time.slice(0, Math.min(totalDataPoints, hourlyData.minutely_15.time.length));
@@ -157,6 +158,7 @@ function updateHourlyForecast(selectedDate) {
           precipitations = hourlyData.minutely_15.precipitation.slice(0, Math.min(totalDataPoints, hourlyData.minutely_15.precipitation.length));
           precipitationProbabilities = hourlyData.minutely_15.precipitation_probability ? hourlyData.minutely_15.precipitation_probability.slice(0, Math.min(totalDataPoints, hourlyData.minutely_15.precipitation_probability.length)) : Array(times.length).fill(0);
           windspeeds = hourlyData.minutely_15.windspeed_10m.slice(0, Math.min(totalDataPoints, hourlyData.minutely_15.windspeed_10m.length));
+          gusts = hourlyData.minutely_15.wind_gusts_10m ? hourlyData.minutely_15.wind_gusts_10m.slice(0, totalDataPoints) : Array(times.length).fill(null);
           weatherCodes = hourlyData.minutely_15.weather_code ? hourlyData.minutely_15.weather_code.slice(0, Math.min(totalDataPoints, hourlyData.minutely_15.weather_code.length)) : Array(times.length).fill(0);
         } else {
           times = hourlyData.hourly.time.slice(0, Math.min(totalDataPoints, hourlyData.hourly.time.length));
@@ -165,6 +167,7 @@ function updateHourlyForecast(selectedDate) {
           precipitations = hourlyData.hourly.precipitation.slice(0, Math.min(totalDataPoints, hourlyData.hourly.precipitation.length));
           precipitationProbabilities = hourlyData.hourly.precipitation_probability ? hourlyData.hourly.precipitation_probability.slice(0, Math.min(totalDataPoints, hourlyData.hourly.precipitation_probability.length)) : Array(times.length).fill(0);
           windspeeds = hourlyData.hourly.windspeed_10m.slice(0, Math.min(totalDataPoints, hourlyData.hourly.windspeed_10m.length));
+          gusts = hourlyData.hourly.wind_gusts_10m ? hourlyData.hourly.wind_gusts_10m.slice(0, totalDataPoints) : Array(times.length).fill(null);
           weatherCodes = hourlyData.hourly.weather_code ? hourlyData.hourly.weather_code.slice(0, Math.min(totalDataPoints, hourlyData.hourly.weather_code.length)) : Array(times.length).fill(0);
         }
         
@@ -180,6 +183,7 @@ function updateHourlyForecast(selectedDate) {
             allPrecipitations.push(precipitations[j]);
             allPrecipitationProbabilities.push(precipitationProbabilities[j]);
             allWindspeeds.push(windspeeds[j]);
+            allGusts.push(gusts[j]);
             allWeatherCodes.push(weatherCodes[j]); // Corrected: push to allWeatherCodes
             totalHours++;
           }
@@ -206,6 +210,7 @@ function updateHourlyForecast(selectedDate) {
         // Set precipitation probability to 0 if cloudcover is 0
         const precipitationProbability = cloudcover === 0 ? 0 : allPrecipitationProbabilities[i] || 0;
         const windspeed = allWindspeeds[i];
+        const gust = allGusts[i];
         const temperature = allTemperatures[i]; // Get temperature for hourly forecast
         const weatherCode = allWeatherCodes[i]; // Use allWeatherCodes here
         const weatherIcon = getWeatherIcon(cloudcover, precipitation, temperature);
@@ -215,12 +220,12 @@ function updateHourlyForecast(selectedDate) {
         return `
           <tr>
             <td>${timePart}</td>
-            <td>${weatherIcon}${window.ForecastExtras ? ForecastExtras.hourWarnings({ weatherCode, windspeed, precipitation, temperature }) : ''}</td>
+            <td>${weatherIcon}${window.ForecastExtras ? ForecastExtras.hourWarnings({ weatherCode, windspeed, gust, precipitation, temperature }) : ''}</td>
             <td>${temperature}</td>
             <td>${cloudcover}</td>
             <td>${precipitation}</td>
             <td>${precipitationProbability}%${precipProbBar}</td>
-            <td><span class="wind-value">${windspeed}</span></td>
+            <td><span class="wind-value">${windspeed}</span>${typeof gust === 'number' ? `<span class="wind-gust${gust >= 60 ? ' wind-gust-strong' : ''}" title="${window.ForecastExtras ? ForecastExtras.gustLabel() : ''}"> (${Math.round(gust)})</span>` : ''}</td>
           </tr>
         `;
       });

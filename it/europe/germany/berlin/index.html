@@ -99,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -111,8 +111,7 @@
       <a href="/it/maps/" class="nav-link" data-nav="maps">Mappe meteorologiche</a>
       <a href="/it/holliday_calendar/" class="nav-link" data-nav="holidays">Calendario delle festività</a>
       <a href="/it/magnitni-buri/" class="nav-link" data-nav="storms">Tempeste magnetiche</a>
-      <a href="/it/nebeto/" class="nav-link" data-nav="sky">Il cielo</a>
-      <a href="/it/iztochnici/" class="nav-link" data-nav="sources">Fonti dei dati</a>
+      <a href="/it/luna/" class="nav-link" data-nav="moon">Calendario lunare</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -125,33 +124,27 @@
     <p class="storm-intro">Previsioni del tempo a Berlino, Germania, per oggi, domani e i prossimi 7 giorni: temperatura, pioggia, vento e probabilità di precipitazioni. Nome locale: Berlin (Wetter Berlin). Dati di Open-Meteo, aggiornati ogni ora.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Berlino" data-lat="52.52" data-lon="13.405" data-query="city=Berlino&lat=52.5200&lon=13.4050&cc=DE">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Forti raffiche di vento oggi: fino a 63 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Berlino: giovedì 12 novembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">3° / 6°</span>
-        <p class="storm-now-status">Nuvoloso · probabilità di pioggia 8%</p>
-        <p class="storm-updated">Previsione del 12 novembre 2026</p>
+        <h2>Berlino: venerdì 13 novembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">3° / 9°</span>
+        <p class="storm-now-status">Poco nuvoloso · probabilità di pioggia 0%</p>
+        <p class="storm-updated">Previsione del 13 novembre 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsioni a 7 giorni</h3>
-        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà mercoledì 18 novembre (fino a 12°) e il più freddo domenica 15 novembre (fino a 1°). Sono previste precipitazioni in 3 dei giorni. Le massime sono nella media di novembre (in media 9°).</p>
+        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà martedì 17 novembre (fino a 14°) e il più freddo domenica 15 novembre (fino a 1°). Sono previste precipitazioni in 3 dei giorni. Le massime sono nella media di novembre (in media 9°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Berlino&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-12" title="Ora per ora →">
-            <span class="kp-day-name">gio 12</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">3° / 6°</span>
-            <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">8%</span>
-            <span class="city-day-wind">Vento 14 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Berlino&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-13" title="Ora per ora →">
             <span class="kp-day-name">ven 13</span>
             <span class="city-day-icon" aria-hidden="true">⛅</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">3° / 8°</span>
+            <span class="city-day-temp">3° / 9°</span>
             <span class="kp-day-status">Poco nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">5%</span>
-            <span class="city-day-wind">Vento 26 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">0%</span>
+            <span class="city-day-wind city-day-gusts">Vento 23 km/h · raffiche 63</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Berlino&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-14" title="Ora per ora →">
             <span class="kp-day-name">sab 14</span>
@@ -160,43 +153,52 @@
             <span class="city-day-temp">3° / 9°</span>
             <span class="kp-day-status">Poco nuvoloso</span>
             <span class="city-day-rain" title="probabilità di pioggia">0%</span>
-            <span class="city-day-wind">Vento 17 km/h</span>
+            <span class="city-day-wind">Vento 16 km/h · raffiche 47</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Berlino&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-15" title="Ora per ora →">
             <span class="kp-day-name">dom 15</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">1° / 9°</span>
-            <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">6%</span>
-            <span class="city-day-wind">Vento 17 km/h</span>
+            <span class="city-day-temp">1° / 8°</span>
+            <span class="kp-day-status">Pioggia</span>
+            <span class="city-day-rain" title="probabilità di pioggia">14% · 0.1 mm</span>
+            <span class="city-day-wind">Vento 16 km/h · raffiche 53</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Berlino&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-16" title="Ora per ora →">
             <span class="kp-day-name">lun 16</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">6° / 11°</span>
+            <span class="city-day-temp">4° / 11°</span>
             <span class="kp-day-status">Pioviggine</span>
-            <span class="city-day-rain" title="probabilità di pioggia">33% · 5.0 mm</span>
-            <span class="city-day-wind">Vento 20 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">48% · 2.0 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 22 km/h · raffiche 61</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Berlino&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-17" title="Ora per ora →">
             <span class="kp-day-name">mar 17</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">2° / 9°</span>
+            <span class="city-day-temp">2° / 14°</span>
             <span class="kp-day-status">Pioggia</span>
-            <span class="city-day-rain" title="probabilità di pioggia">45% · 5.1 mm</span>
-            <span class="city-day-wind">Vento 17 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">65% · 10.5 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 32 km/h · raffiche 93</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Berlino&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-18" title="Ora per ora →">
             <span class="kp-day-name">mer 18</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">7° / 12°</span>
+            <span class="city-day-temp">1° / 9°</span>
             <span class="kp-day-status">Pioviggine</span>
-            <span class="city-day-rain" title="probabilità di pioggia">42% · 1.0 mm</span>
-            <span class="city-day-wind">Vento 17 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">45% · 3.6 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 23 km/h · raffiche 91</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Berlino&lat=52.5200&lon=13.4050&cc=DE&date=2026-11-19" title="Ora per ora →">
+            <span class="kp-day-name">gio 19</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">3° / 6°</span>
+            <span class="kp-day-status">Nuvoloso</span>
+            <span class="city-day-rain" title="probabilità di pioggia">39%</span>
+            <span class="city-day-wind">Vento 12 km/h · raffiche 44</span>
           </a>
         </div>
         <p class="forecast-note">Mediana dei modelli ECMWF, ICON e GFS · altitudine 37 m</p>
@@ -343,16 +345,17 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/it/gradove/" class="footer-link" data-nav="cityIndex">Tutte le città</a>
+      · <a href="/it/iztochnici/" class="footer-link" data-nav="sourcesShort">Fonti</a>
       · <a href="/it/za-saita/" class="footer-link" data-nav="about">Chi siamo</a>
       · <a href="/it/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

@@ -27,7 +27,14 @@ const LUNA = {
     hubDescription: years => `Фаза на Луната днес, осветена част, кога е следващото пълнолуние и новолуние. Лунен календар по месеци за ${years} г., по българско време.`,
     hubH1: 'Лунен календар: фаза на Луната днес',
     hubIntro: 'Каква е фазата на Луната днес, колко от нея е осветена и кога е следващото пълнолуние. Календарите по месеци показват фазата за всеки ден; всички данни се изчисляват, без хороскопи и астрология.',
-    hubYearH: y => `Лунен календар ${y} по месеци`
+    hubYearH: y => `Лунен календар ${y} по месеци`,
+    sky: {"h":"Небето","intro":"Следващите събития на небето: метеорни потоци, затъмнения и суперлуни.","btn":"Всичко за небето →","meteor":"Метеорен поток","eclipse":"Затъмнение","supermoon":"Суперлуна","peak":"максимум","km":"км"},
+    aboutH: "Как се сменят фазите на Луната",
+    about: [
+      "Луната не свети сама – виждаме онази част от нея, която е осветена от Слънцето. Докато обикаля около Земята, ъгълът между Слънцето, Земята и Луната се променя и от Земята се вижда различна част от осветената ѝ половина. Това са фазите.",
+      "Пълният цикъл от новолуние до следващото новолуние (синодичен месец) трае средно 29 дни, 12 часа и 44 минути. След новолунието Луната расте: тънък сърп вечер на запад, първа четвърт след около седмица и пълнолуние след около две. После намалява през последна четвърт до следващото новолуние. От Северното полукълбо растящата Луна е осветена отдясно, а намаляващата – отляво.",
+      "Разстоянието до Луната също се променя, защото орбитата ѝ е елипса: от около 356 000 км в перигей до около 406 000 км в апогей. Когато пълнолунието съвпадне с перигея, Луната изглежда малко по-голяма и по-ярка – това наричат „суперлуна“."
+    ]
   },
   en: {
     cal: 'Moon calendar', today: 'The Moon today', thisMonth: 'This month', wholeYear: y => `The whole of ${y}`, joiner: ' and ',
@@ -55,7 +62,14 @@ const LUNA = {
     hubDescription: years => `Today's Moon phase, illuminated part, and when the next full moon and new moon are. Moon calendar by month for ${years}, in Bulgarian time.`,
     hubH1: "Moon calendar: today's Moon phase",
     hubIntro: 'What the phase of the Moon is today, how much of it is lit and when the next full moon is. The monthly calendars show the phase for every day; all data are calculated, with no horoscopes or astrology.',
-    hubYearH: y => `Moon calendar ${y} by month`
+    hubYearH: y => `Moon calendar ${y} by month`,
+    sky: {"h":"The sky","intro":"Coming events in the sky: meteor showers, eclipses and supermoons.","btn":"Everything about the sky →","meteor":"Meteor shower","eclipse":"Eclipse","supermoon":"Supermoon","peak":"peak","km":"km"},
+    aboutH: "How the phases of the Moon change",
+    about: [
+      "The Moon does not shine by itself: we see the part of it that is lit by the Sun. As it goes around the Earth, the angle between the Sun, the Earth and the Moon changes, and a different share of its lit half is seen from the Earth. Those are the phases.",
+      "The full cycle from one new moon to the next (the synodic month) lasts 29 days, 12 hours and 44 minutes on average. After the new moon the Moon waxes: a thin crescent in the western evening sky, the first quarter after about a week and the full moon after about two. Then it wanes through the last quarter to the next new moon. From the northern hemisphere the waxing Moon is lit on the right and the waning Moon on the left.",
+      "The distance to the Moon changes too, because its orbit is an ellipse: from about 356,000 km at perigee to about 406,000 km at apogee. When a full moon falls near perigee the Moon looks a little larger and brighter, which is called a \"supermoon\"."
+    ]
   },
   de: {
     cal: 'Mondkalender', today: 'Der Mond heute', thisMonth: 'Dieser Monat', wholeYear: y => `Das ganze Jahr ${y}`, joiner: ' und ',
@@ -83,7 +97,14 @@ const LUNA = {
     hubDescription: years => `Mondphase heute, beleuchteter Anteil und Termin des nächsten Voll- und Neumonds. Mondkalender nach Monaten für ${years}, in bulgarischer Zeit.`,
     hubH1: 'Mondkalender: Mondphase heute',
     hubIntro: 'Welche Mondphase heute ist, wie viel davon beleuchtet ist und wann der nächste Vollmond ist. Die Monatskalender zeigen die Phase für jeden Tag; alle Daten werden berechnet, ohne Horoskope und Astrologie.',
-    hubYearH: y => `Mondkalender ${y} nach Monaten`
+    hubYearH: y => `Mondkalender ${y} nach Monaten`,
+    sky: {"h":"Der Himmel","intro":"Kommende Ereignisse am Himmel: Meteorströme, Finsternisse und Supermonde.","btn":"Alles über den Himmel →","meteor":"Meteorstrom","eclipse":"Finsternis","supermoon":"Supermond","peak":"Maximum","km":"km"},
+    aboutH: "Wie die Mondphasen entstehen",
+    about: [
+      "Der Mond leuchtet nicht selbst: Wir sehen den Teil, der von der Sonne beleuchtet wird. Während er die Erde umkreist, ändert sich der Winkel zwischen Sonne, Erde und Mond, und von der Erde aus ist ein anderer Anteil seiner beleuchteten Hälfte zu sehen. Das sind die Mondphasen.",
+      "Der ganze Zyklus von Neumond zu Neumond (der synodische Monat) dauert im Mittel 29 Tage, 12 Stunden und 44 Minuten. Nach dem Neumond nimmt der Mond zu: eine schmale Sichel am westlichen Abendhimmel, nach etwa einer Woche das erste Viertel und nach etwa zwei Wochen der Vollmond. Danach nimmt er über das letzte Viertel bis zum nächsten Neumond ab. Von der Nordhalbkugel aus ist der zunehmende Mond rechts beleuchtet, der abnehmende links.",
+      "Auch die Entfernung zum Mond ändert sich, denn seine Bahn ist eine Ellipse: von etwa 356.000 km im Perigäum bis etwa 406.000 km im Apogäum. Fällt ein Vollmond in die Nähe des Perigäums, erscheint der Mond etwas größer und heller – man spricht von einem „Supermond“."
+    ]
   },
   it: {
     cal: 'Calendario lunare', today: 'La Luna oggi', thisMonth: 'Questo mese', wholeYear: y => `Tutto il ${y}`, joiner: ' e ',
@@ -111,7 +132,14 @@ const LUNA = {
     hubDescription: years => `Fase lunare di oggi, parte illuminata e date della prossima luna piena e luna nuova. Calendario lunare mese per mese per il ${years}, in ora bulgara.`,
     hubH1: 'Calendario lunare: la fase lunare di oggi',
     hubIntro: 'Qual è la fase lunare di oggi, quanta parte è illuminata e quando sarà la prossima luna piena. I calendari mensili mostrano la fase di ogni giorno; tutti i dati sono calcolati, senza oroscopi né astrologia.',
-    hubYearH: y => `Calendario lunare ${y} per mese`
+    hubYearH: y => `Calendario lunare ${y} per mese`,
+    sky: {"h":"Il cielo","intro":"Prossimi eventi nel cielo: sciami meteorici, eclissi e superlune.","btn":"Tutto sul cielo →","meteor":"Sciame meteorico","eclipse":"Eclissi","supermoon":"Superluna","peak":"massimo","km":"km"},
+    aboutH: "Come cambiano le fasi della Luna",
+    about: [
+      "La Luna non brilla di luce propria: vediamo la parte illuminata dal Sole. Mentre gira intorno alla Terra, l'angolo tra Sole, Terra e Luna cambia e dalla Terra si vede una porzione diversa della sua metà illuminata. Queste sono le fasi.",
+      "Il ciclo completo da una luna nuova alla successiva (il mese sinodico) dura in media 29 giorni, 12 ore e 44 minuti. Dopo la luna nuova la Luna cresce: una falce sottile la sera a ovest, il primo quarto dopo circa una settimana e la luna piena dopo circa due. Poi cala, passando per l'ultimo quarto, fino alla luna nuova seguente. Dall'emisfero nord la Luna crescente è illuminata a destra, quella calante a sinistra.",
+      "Anche la distanza dalla Luna cambia, perché la sua orbita è un'ellisse: da circa 356.000 km al perigeo a circa 406.000 km all'apogeo. Quando la luna piena cade vicino al perigeo, la Luna appare un po' più grande e luminosa: è la cosiddetta «superluna»."
+    ]
   },
   es: {
     cal: 'Calendario lunar', today: 'La Luna hoy', thisMonth: 'Este mes', wholeYear: y => `Todo ${y}`, joiner: ' y ',
@@ -139,7 +167,14 @@ const LUNA = {
     hubDescription: years => `Fase de la Luna hoy, parte iluminada y fechas de la próxima luna llena y luna nueva. Calendario lunar por meses de ${years}, en hora de Bulgaria.`,
     hubH1: 'Calendario lunar: la fase de la Luna hoy',
     hubIntro: 'Cuál es la fase de la Luna hoy, cuánta parte está iluminada y cuándo es la próxima luna llena. Los calendarios mensuales muestran la fase de cada día; todos los datos se calculan, sin horóscopos ni astrología.',
-    hubYearH: y => `Calendario lunar ${y} por meses`
+    hubYearH: y => `Calendario lunar ${y} por meses`,
+    sky: {"h":"El cielo","intro":"Próximos eventos en el cielo: lluvias de meteoros, eclipses y superlunas.","btn":"Todo sobre el cielo →","meteor":"Lluvia de meteoros","eclipse":"Eclipse","supermoon":"Superluna","peak":"máximo","km":"km"},
+    aboutH: "Cómo cambian las fases de la Luna",
+    about: [
+      "La Luna no brilla por sí misma: vemos la parte que ilumina el Sol. Mientras gira alrededor de la Tierra, el ángulo entre el Sol, la Tierra y la Luna cambia, y desde la Tierra se ve una porción distinta de su mitad iluminada. Esas son las fases.",
+      "El ciclo completo de una luna nueva a la siguiente (el mes sinódico) dura de media 29 días, 12 horas y 44 minutos. Después de la luna nueva la Luna crece: una fina hoz al atardecer hacia el oeste, el cuarto creciente al cabo de una semana aproximadamente y la luna llena al cabo de dos. Luego mengua, pasando por el cuarto menguante, hasta la siguiente luna nueva. Desde el hemisferio norte la Luna creciente está iluminada por la derecha y la menguante por la izquierda.",
+      "La distancia a la Luna también cambia, porque su órbita es una elipse: de unos 356.000 km en el perigeo a unos 406.000 km en el apogeo. Cuando la luna llena coincide con el perigeo, la Luna se ve algo más grande y brillante: es lo que se llama «superluna»."
+    ]
   }
 };
 

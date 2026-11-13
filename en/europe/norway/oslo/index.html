@@ -99,7 +99,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -111,8 +111,7 @@
       <a href="/en/maps/" class="nav-link" data-nav="maps">Weather Maps</a>
       <a href="/en/holliday_calendar/" class="nav-link" data-nav="holidays">Holiday Calendar</a>
       <a href="/en/magnitni-buri/" class="nav-link" data-nav="storms">Magnetic Storms</a>
-      <a href="/en/nebeto/" class="nav-link" data-nav="sky">The Sky</a>
-      <a href="/en/iztochnici/" class="nav-link" data-nav="sources">Data Sources</a>
+      <a href="/en/luna/" class="nav-link" data-nav="moon">Moon Calendar</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -126,32 +125,23 @@
 
     <div class="city-forecast" id="cityForecast" data-name="Oslo" data-lat="59.9139" data-lon="10.7522" data-query="city=Oslo&lat=59.9139&lon=10.7522&cc=NO">
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Oslo: Thursday 12 November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">1° / 2°</span>
-        <p class="storm-now-status">Snow · chance of rain 100%</p>
-        <p class="storm-updated">Forecast issued on 12 November 2026</p>
+        <h2>Oslo: Friday, 13 November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">−1° / 4°</span>
+        <p class="storm-now-status">Snow · chance of rain 64%</p>
+        <p class="storm-updated">Forecast issued on 13 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Monday 16 November (up to 8°) and the coldest Saturday 14 November (down to −3°). Rain or snow is expected on 6 of the days. Daytime temperatures are close to normal for November (average high 4°).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Sunday, 15 November (up to 7°) and the coldest Saturday, 14 November (down to −3°). Rain or snow is expected on 2 of the days. Daytime temperatures are close to normal for November (average high 4°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Oslo&lat=59.9139&lon=10.7522&cc=NO&date=2026-11-12" title="Hourly forecast →">
-            <span class="kp-day-name">Thu 12</span>
-            <span class="city-day-icon" aria-hidden="true">❄️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">1° / 2°</span>
-            <span class="kp-day-status">Snow</span>
-            <span class="city-day-rain" title="chance of rain">100% · 13.3 mm</span>
-            <span class="city-day-wind">Wind 20 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Oslo&lat=59.9139&lon=10.7522&cc=NO&date=2026-11-13" title="Hourly forecast →">
             <span class="kp-day-name">Fri 13</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">❄️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">−2° / 3°</span>
-            <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">69% · 0.1 mm</span>
-            <span class="city-day-wind">Wind 21 km/h</span>
+            <span class="city-day-temp">−1° / 4°</span>
+            <span class="kp-day-status">Snow</span>
+            <span class="city-day-rain" title="chance of rain">64% · 0.1 mm</span>
+            <span class="city-day-wind">Wind 18 km/h · gusts 51</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Oslo&lat=59.9139&lon=10.7522&cc=NO&date=2026-11-14" title="Hourly forecast →">
             <span class="kp-day-name">Sat 14</span>
@@ -160,7 +150,7 @@
             <span class="city-day-temp">−3° / 3°</span>
             <span class="kp-day-status">Cloudy</span>
             <span class="city-day-rain" title="chance of rain">0%</span>
-            <span class="city-day-wind">Wind 19 km/h</span>
+            <span class="city-day-wind">Wind 18 km/h · gusts 50</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Oslo&lat=59.9139&lon=10.7522&cc=NO&date=2026-11-15" title="Hourly forecast →">
             <span class="kp-day-name">Sun 15</span>
@@ -168,35 +158,44 @@
             <span class="city-day-date">15.11</span>
             <span class="city-day-temp">3° / 7°</span>
             <span class="kp-day-status">Drizzle</span>
-            <span class="city-day-rain" title="chance of rain">50% · 0.4 mm</span>
-            <span class="city-day-wind">Wind 24 km/h</span>
+            <span class="city-day-rain" title="chance of rain">28% · 0.4 mm</span>
+            <span class="city-day-wind">Wind 23 km/h · gusts 57</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Oslo&lat=59.9139&lon=10.7522&cc=NO&date=2026-11-16" title="Hourly forecast →">
             <span class="kp-day-name">Mon 16</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">3° / 8°</span>
+            <span class="city-day-temp">1° / 5°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">75% · 10.1 mm</span>
-            <span class="city-day-wind">Wind 20 km/h</span>
+            <span class="city-day-rain" title="chance of rain">94% · 10.3 mm</span>
+            <span class="city-day-wind">Wind 16 km/h · gusts 41</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Oslo&lat=59.9139&lon=10.7522&cc=NO&date=2026-11-17" title="Hourly forecast →">
             <span class="kp-day-name">Tue 17</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">1° / 6°</span>
+            <span class="city-day-temp">0° / 3°</span>
             <span class="kp-day-status">Drizzle</span>
-            <span class="city-day-rain" title="chance of rain">43% · 3.6 mm</span>
-            <span class="city-day-wind">Wind 18 km/h</span>
+            <span class="city-day-rain" title="chance of rain">49%</span>
+            <span class="city-day-wind">Wind 8 km/h · gusts 32</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Oslo&lat=59.9139&lon=10.7522&cc=NO&date=2026-11-18" title="Hourly forecast →">
             <span class="kp-day-name">Wed 18</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">1° / 3°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">39% · 2.1 mm</span>
-            <span class="city-day-wind">Wind 14 km/h</span>
+            <span class="city-day-temp">−1° / 2°</span>
+            <span class="kp-day-status">Cloudy</span>
+            <span class="city-day-rain" title="chance of rain">38%</span>
+            <span class="city-day-wind">Wind 10 km/h · gusts 39</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Oslo&lat=59.9139&lon=10.7522&cc=NO&date=2026-11-19" title="Hourly forecast →">
+            <span class="kp-day-name">Thu 19</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">−1° / 2°</span>
+            <span class="kp-day-status">Cloudy</span>
+            <span class="city-day-rain" title="chance of rain">21%</span>
+            <span class="city-day-wind">Wind 9 km/h · gusts 29</span>
           </a>
         </div>
         <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 21 m</p>
@@ -341,16 +340,17 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/en/gradove/" class="footer-link" data-nav="cityIndex">All cities</a>
+      · <a href="/en/iztochnici/" class="footer-link" data-nav="sourcesShort">Sources</a>
       · <a href="/en/za-saita/" class="footer-link" data-nav="about">About</a>
       · <a href="/en/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

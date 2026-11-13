@@ -94,7 +94,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -106,8 +106,7 @@
       <a href="/it/maps/" class="nav-link" data-nav="maps">Mappe meteorologiche</a>
       <a href="/it/holliday_calendar/" class="nav-link" data-nav="holidays">Calendario delle festività</a>
       <a href="/it/magnitni-buri/" class="nav-link" data-nav="storms">Tempeste magnetiche</a>
-      <a href="/it/nebeto/" class="nav-link" data-nav="sky">Il cielo</a>
-      <a href="/it/iztochnici/" class="nav-link" data-nav="sources">Fonti dei dati</a>
+      <a href="/it/luna/" class="nav-link" data-nav="moon">Calendario lunare</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -120,78 +119,81 @@
     <p class="storm-intro">Previsioni del tempo a Valona, Albania, per oggi, domani e i prossimi 7 giorni: temperatura, pioggia, vento e probabilità di precipitazioni. Nome locale: Vlorë (Moti Vlorë). Dati di Open-Meteo, aggiornati ogni ora.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Valona" data-lat="40.466" data-lon="19.4914" data-query="city=Valona&lat=40.4660&lon=19.4914&cc=AL">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Forti raffiche di vento oggi: fino a 77 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Valona: giovedì 12 novembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">19° / 24°</span>
-        <p class="storm-now-status">Pioviggine · probabilità di pioggia 32%</p>
-        <p class="storm-updated">Previsione del 12 novembre 2026</p>
+        <h2>Valona: venerdì 13 novembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">19° / 23°</span>
+        <p class="storm-now-status">Pioviggine · probabilità di pioggia 97%</p>
+        <p class="storm-updated">Previsione del 13 novembre 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsioni a 7 giorni</h3>
-        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà giovedì 12 novembre (fino a 24°) e il più freddo domenica 15 novembre (fino a 12°). Sono previste precipitazioni in 5 dei giorni. Le massime sono sopra la media di novembre (in media 19°).</p>
+        <p class="city-summary">Nei prossimi 7 giorni il giorno più caldo sarà venerdì 13 novembre (fino a 23°) e il più freddo domenica 15 novembre (fino a 13°). Sono previste precipitazioni in 6 dei giorni. Le massime sono sopra la media di novembre (in media 19°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Valona&lat=40.4660&lon=19.4914&cc=AL&date=2026-11-12" title="Ora per ora →">
-            <span class="kp-day-name">gio 12</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">19° / 24°</span>
-            <span class="kp-day-status">Pioviggine</span>
-            <span class="city-day-rain" title="probabilità di pioggia">32% · 0.2 mm</span>
-            <span class="city-day-wind">Vento 40 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Valona&lat=40.4660&lon=19.4914&cc=AL&date=2026-11-13" title="Ora per ora →">
             <span class="kp-day-name">ven 13</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">13.11</span>
             <span class="city-day-temp">19° / 23°</span>
             <span class="kp-day-status">Pioviggine</span>
-            <span class="city-day-rain" title="probabilità di pioggia">87% · 1.3 mm</span>
-            <span class="city-day-wind">Vento 43 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">97% · 0.8 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 41 km/h · raffiche 77</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Valona&lat=40.4660&lon=19.4914&cc=AL&date=2026-11-14" title="Ora per ora →">
             <span class="kp-day-name">sab 14</span>
-            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">14.11</span>
-            <span class="city-day-temp">13° / 20°</span>
-            <span class="kp-day-status">Temporale</span>
-            <span class="city-day-rain" title="probabilità di pioggia">87% · 5.9 mm</span>
-            <span class="city-day-wind">Vento 22 km/h</span>
+            <span class="city-day-temp">14° / 20°</span>
+            <span class="kp-day-status">Pioviggine</span>
+            <span class="city-day-rain" title="probabilità di pioggia">98% · 1.6 mm</span>
+            <span class="city-day-wind">Vento 20 km/h · raffiche 43</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Valona&lat=40.4660&lon=19.4914&cc=AL&date=2026-11-15" title="Ora per ora →">
             <span class="kp-day-name">dom 15</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">15.11</span>
-            <span class="city-day-temp">12° / 18°</span>
+            <span class="city-day-temp">13° / 20°</span>
             <span class="kp-day-status">Pioggia</span>
-            <span class="city-day-rain" title="probabilità di pioggia">52% · 6.6 mm</span>
-            <span class="city-day-wind">Vento 11 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">75% · 4.4 mm</span>
+            <span class="city-day-wind">Vento 22 km/h · raffiche 45</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Valona&lat=40.4660&lon=19.4914&cc=AL&date=2026-11-16" title="Ora per ora →">
             <span class="kp-day-name">lun 16</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">16.11</span>
-            <span class="city-day-temp">14° / 21°</span>
+            <span class="city-day-temp">14° / 22°</span>
             <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">52% · 1.2 mm</span>
-            <span class="city-day-wind">Vento 21 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">58% · 0.2 mm</span>
+            <span class="city-day-wind">Vento 21 km/h · raffiche 39</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Valona&lat=40.4660&lon=19.4914&cc=AL&date=2026-11-17" title="Ora per ora →">
             <span class="kp-day-name">mar 17</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">16° / 21°</span>
-            <span class="kp-day-status">Pioviggine</span>
-            <span class="city-day-rain" title="probabilità di pioggia">41% · 0.6 mm</span>
-            <span class="city-day-wind">Vento 27 km/h</span>
+            <span class="city-day-temp">15° / 22°</span>
+            <span class="kp-day-status">Nuvoloso</span>
+            <span class="city-day-rain" title="probabilità di pioggia">24%</span>
+            <span class="city-day-wind">Vento 23 km/h · raffiche 45</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Valona&lat=40.4660&lon=19.4914&cc=AL&date=2026-11-18" title="Ora per ora →">
             <span class="kp-day-name">mer 18</span>
             <span class="city-day-icon" aria-hidden="true">⛈️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">16° / 20°</span>
+            <span class="city-day-temp">17° / 20°</span>
             <span class="kp-day-status">Temporale</span>
-            <span class="city-day-rain" title="probabilità di pioggia">62% · 4.7 mm</span>
-            <span class="city-day-wind">Vento 46 km/h</span>
+            <span class="city-day-rain" title="probabilità di pioggia">80% · 3.6 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 43 km/h · raffiche 77</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Valona&lat=40.4660&lon=19.4914&cc=AL&date=2026-11-19" title="Ora per ora →">
+            <span class="kp-day-name">gio 19</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">17° / 20°</span>
+            <span class="kp-day-status">Nuvoloso</span>
+            <span class="city-day-rain" title="probabilità di pioggia">62% · 0.4 mm</span>
+            <span class="city-day-wind">Vento 23 km/h · raffiche 45</span>
           </a>
         </div>
         <p class="forecast-note">Mediana dei modelli ECMWF, ICON e GFS · altitudine 5 m</p>
@@ -334,16 +336,17 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/it/gradove/" class="footer-link" data-nav="cityIndex">Tutte le città</a>
+      · <a href="/it/iztochnici/" class="footer-link" data-nav="sourcesShort">Fonti</a>
       · <a href="/it/za-saita/" class="footer-link" data-nav="about">Chi siamo</a>
       · <a href="/it/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
-<script src="/js/city-forecast.js?v=12" defer></script>
+<script src="/js/city-forecast.js?v=13" defer></script>
 </body>
 </html>

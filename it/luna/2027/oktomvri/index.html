@@ -77,8 +77,9 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
+  <link rel="stylesheet" href="/css/luna.css?v=4">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
@@ -89,8 +90,7 @@
       <a href="/it/maps/" class="nav-link" data-nav="maps">Mappe meteorologiche</a>
       <a href="/it/holliday_calendar/" class="nav-link" data-nav="holidays">Calendario delle festività</a>
       <a href="/it/magnitni-buri/" class="nav-link" data-nav="storms">Tempeste magnetiche</a>
-      <a href="/it/nebeto/" class="nav-link" data-nav="sky">Il cielo</a>
-      <a href="/it/iztochnici/" class="nav-link" data-nav="sources">Fonti dei dati</a>
+      <a href="/it/luna/" class="nav-link" data-nav="moon">Calendario lunare</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -192,7 +192,7 @@
         <a href="/it/luna/" class="recent-place">La Luna oggi</a>
         <a href="/it/vremeto/" class="recent-place">Meteo in Bulgaria</a>
         <a href="/it/magnitni-buri/" class="recent-place">Tempeste magnetiche oggi</a>
-        <a href="/it/nebeto/" class="recent-place">Il cielo: meteore, eclissi, superlune</a>
+        <a href="/it/nebeto/" class="recent-place">[object Object]</a>
       </div>
     </section>
   </div>
@@ -204,18 +204,20 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/it/gradove/" class="footer-link" data-nav="cityIndex">Tutte le città</a>
+      · <a href="/it/iztochnici/" class="footer-link" data-nav="sourcesShort">Fonti</a>
       · <a href="/it/za-saita/" class="footer-link" data-nav="about">Chi siamo</a>
       · <a href="/it/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
+<script src="/js/moon-view.js?v=1" defer></script>
 <script src="/js/place-context.js?v=1" defer></script>
-<script src="/js/luna-today.js?v=3" defer></script>
+<script src="/js/luna-today.js?v=5" defer></script>
 <script src="/js/luna-local.js?v=1" defer></script>
-<script src="/js/moon-grid.js?v=1" defer></script>
+<script src="/js/moon-grid.js?v=3" defer></script>
 </body>
 </html>

@@ -88,7 +88,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
   <style>
     /* The forecast block holds the forecast written every morning (build-storms.js) until the
@@ -113,8 +113,7 @@
       <a href="/de/weather/" class="nav-link" data-nav="weather">Wettervorhersage</a>
       <a href="/de/maps/" class="nav-link" data-nav="maps">Wetterkarten</a>
       <a href="/de/holliday_calendar/" class="nav-link" data-nav="holidays">Feiertagskalender</a>
-      <a href="/de/nebeto/" class="nav-link" data-nav="sky">Himmel</a>
-      <a href="/de/iztochnici/" class="nav-link" data-nav="sources">Datenquellen</a>
+      <a href="/de/luna/" class="nav-link" data-nav="moon">Mondkalender</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -137,12 +136,12 @@
       <table class="kp-table">
         <thead><tr><th>Tag</th><th>Höchster Kp</th><th>Stufe</th></tr></thead>
         <tbody>
-            <tr><td>Donnerstag, 12. November</td><td>1.7</td><td>Ruhig</td></tr>
             <tr><td>Freitag, 13. November</td><td>1.7</td><td>Ruhig</td></tr>
             <tr><td>Samstag, 14. November</td><td>1.7</td><td>Ruhig</td></tr>
+            <tr><td>Sonntag, 15. November</td><td>1.7</td><td>Ruhig</td></tr>
         </tbody>
       </table>
-      <p class="storm-updated">NOAA-Vorhersage vom 12. November 2026</p>
+      <p class="storm-updated">NOAA-Vorhersage vom 13. November 2026</p>
     <!-- kp-forecast:end --></div>
     <div class="space-weather" id="stormWind" hidden></div>
     <div class="space-weather" id="stormOutlook" hidden></div>
@@ -199,12 +198,13 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/de/gradove/" class="footer-link" data-nav="cityIndex">Alle Städte</a>
+      · <a href="/de/iztochnici/" class="footer-link" data-nav="sourcesShort">Quellen</a>
       · <a href="/de/za-saita/" class="footer-link" data-nav="about">Über uns</a>
       · <a href="/de/poveritelnost/" class="footer-link" data-nav="privacy">Datenschutz</a>
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=18"></script>
+<script src="/js/mobile-nav.js?v=19"></script>
 <script src="/js/language-selector.js?v=7"></script>
 <script src="/js/background-selector.js?v=3"></script>
 <script src="/js/storm-page.js?v=5"></script>

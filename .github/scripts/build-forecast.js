@@ -19,7 +19,7 @@ const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
 const API = 'https://api.open-meteo.com/v1/forecast';
-const DAILY = 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max';
+const DAILY = 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max';
 const CHUNK = 20; // places in one request
 
 const ISSUED = { bg: 'Прогноза от', en: 'Forecast issued on', de: 'Vorhersage vom', it: 'Previsione del', es: 'Previsión del' };
@@ -87,8 +87,10 @@ function declaration(source, name, file) {
 
 // The texts and weather groups of the live forecast, and the median of the models
 const cityScript = read(path.join(ROOT, 'js/city-forecast.js'));
-const { conditions, T, PERIOD } = vm.runInNewContext(
-  `${['conditions', 'T', 'PERIOD'].map(name => declaration(cityScript, name, 'js/city-forecast.js')).join('\n')}\n({ conditions, T, PERIOD })`);
+const { conditions, T, PERIOD, WIND } = vm.runInNewContext(
+  `${['conditions', 'T', 'PERIOD', 'WIND'].map(name => declaration(cityScript, name, 'js/city-forecast.js')).join('\n')}\n({ conditions, T, PERIOD, WIND })`);
+const STRONG = Number((cityScript.match(/const STRONG = (\d+);/) || [])[1]);
+if (!STRONG) throw new Error('js/city-forecast.js: "const STRONG" not found');
 const condition = code => conditions.find(c => c.codes.includes(code)) || conditions[2];
 const browser = { window: {}, console, document: { documentElement: { lang: 'en' } } };
 vm.runInNewContext(read(path.join(ROOT, 'js/forecast-core.js')), browser);
@@ -116,6 +118,21 @@ function cityPages(folders) {
   }).filter(Boolean);
 }
 
+// Open-Meteo limits the requests per minute for all runs from the same address (the runner of this
+// workflow shares it with others) and answers 429. Wait and ask again; any other answer stops the run.
+async function fetchWithRetry(url) {
+  const WAITS = [20000, 65000, 65000, 65000];
+  for (let attempt = 0; ; attempt++) {
+    const response = await fetch(url);
+    if (response.ok) return response;
+    const body = (await response.text()).slice(0, 200);
+    const retryable = response.status === 429 || response.status >= 500;
+    if (!retryable || attempt >= WAITS.length) throw new Error(`Open-Meteo answered ${response.status} ${body}`);
+    console.log(`Open-Meteo answered ${response.status}; trying again in ${WAITS[attempt] / 1000} s`);
+    await new Promise(resolve => setTimeout(resolve, WAITS[attempt]));
+  }
+}
+
 async function forecasts(places) {
   const result = new Map();
   const chunks = [];
@@ -126,8 +143,7 @@ async function forecasts(places) {
   for (const chunk of chunks) {
     const url = `${API}?latitude=${chunk.map(p => p.lat).join(',')}&longitude=${chunk.map(p => p.lon).join(',')}` +
       `&daily=${DAILY}&forecast_days=${chunk[0].days}&timezone=auto&models=${Core.MODELS.join(',')}`;
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`Open-Meteo answered ${response.status} ${(await response.text()).slice(0, 200)}`);
+    const response = await fetchWithRetry(url);
     const json = await response.json();
     const answers = Array.isArray(json) ? json : [json];
     if (answers.length !== chunk.length) throw new Error(`Open-Meteo: ${answers.length} answers for ${chunk.length} places`);
@@ -160,6 +176,7 @@ function snapshot(page, data, today) {
     const rain = chance(i);
     const amount = daily.precipitation_sum ? daily.precipitation_sum[i] : null;
     const wind = daily.wind_speed_10m_max ? daily.wind_speed_10m_max[i] : null;
+    const gust = daily.wind_gusts_10m_max ? daily.wind_gusts_10m_max[i] : null;
     return `          <a class="kp-day city-day" href="/weather/?${page.query}&date=${iso}" title="${esc(text.hourly)}">
             <span class="kp-day-name">${esc(date(iso, { weekday: 'short', day: 'numeric' }))}</span>
             <span class="city-day-icon" aria-hidden="true">${condition(daily.weather_code[i]).icon}</span>
@@ -167,7 +184,7 @@ function snapshot(page, data, today) {
             <span class="city-day-temp">${range(i)}</span>
             <span class="kp-day-status">${esc(describe(i))}</span>${typeof rain === 'number' ? `
             <span class="city-day-rain" title="${esc(text.rain)}">${Math.round(rain)}%${typeof amount === 'number' && amount >= 0.1 ? ` · ${amount.toFixed(1)} mm` : ''}</span>` : ''}${typeof wind === 'number' ? `
-            <span class="city-day-wind">${esc(text.wind)} ${Math.round(wind)} km/h</span>` : ''}
+            <span class="city-day-wind${gust >= STRONG ? ' city-day-gusts' : ''}">${esc(text.wind)} ${Math.round(wind)} km/h${typeof gust === 'number' ? ` · ${esc(WIND[lang].gusts)} ${Math.round(gust)}` : ''}</span>` : ''}
           </a>`;
   }).join('\n');
 
@@ -192,8 +209,12 @@ function snapshot(page, data, today) {
   }
   browser.document.documentElement.lang = lang;
   const note = Core.note({ models: data.models, elevation: data.elevation });
+  // Strong gusts today or tomorrow (the page adds the official warnings of NIMH when it opens)
+  const W = WIND[lang];
+  const alerts = [0, 1].map(i => (daily.wind_gusts_10m_max || [])[i]).map((g, i) => (typeof g === 'number' && g >= STRONG
+    ? `        <p class="city-alert city-alert-${g >= 90 ? 'orange' : 'yellow'}">${esc((g >= 90 ? W.very : W.strong)(Math.round(g), i === 0 ? W.today : W.tomorrow))}</p>\n` : '')).join('');
   // Deeper than the closing </div> of #cityForecast (4 spaces), which marks the end of the block
-  return `      <div class="kp-forecast city-now" id="cityNow">
+  return `${alerts ? `      <div class="city-alerts" id="cityAlerts" role="status">\n${alerts}      </div>\n` : ''}      <div class="kp-forecast city-now" id="cityNow">
         <h2>${esc(page.name)}: ${esc(date(daily.time[0], { weekday: 'long', day: 'numeric', month: 'long' }))}</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">${range(0)}</span>
         <p class="storm-now-status">${esc(describe(0))}${typeof rainToday === 'number' ? ` · ${esc(text.rain)} ${Math.round(rainToday)}%` : ''}</p>

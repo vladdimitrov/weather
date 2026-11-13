@@ -88,9 +88,9 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=60">
+  <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
-  <link rel="stylesheet" href="/weather/css/hourly-mobile.css?v=7">
+  <link rel="stylesheet" href="/weather/css/hourly-mobile.css?v=8">
   <link rel="stylesheet" href="/weather/css/ui-extras.css?v=4">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -101,8 +101,7 @@
       <a href="/maps/" class="nav-link" data-nav="maps">Карти за времето</a>
       <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Календар на празниците</a>
       <a href="/magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
-      <a href="/nebeto/" class="nav-link" data-nav="sky">Небето</a>
-      <a href="/iztochnici/" class="nav-link" data-nav="sources">Източници на данни</a>
+      <a href="/luna/" class="nav-link" data-nav="moon">Лунен календар</a>
      </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -179,7 +178,7 @@
         <table id="hourlyTable">
           <thead>
             <tr>
-              <th>Дата и час</th>
+              <th>Час</th>
               <th>Прогноза</th>
               <th>Темп. (°C)</th>
               <th>Облачност (%)</th>
@@ -195,6 +194,49 @@
 
     <div class="container">
     </div>
+
+    <!-- the cities of the list in .github/scripts/build-pages.js; translated by build-main.js -->
+    <section class="home-cities weather-cities">
+      <h2 data-nav="cities">Времето в градовете на България</h2>
+      <div class="city-links">
+        <a href="/vremeto/sofia/" class="recent-place">София</a>
+        <a href="/vremeto/plovdiv/" class="recent-place">Пловдив</a>
+        <a href="/vremeto/varna/" class="recent-place">Варна</a>
+        <a href="/vremeto/burgas/" class="recent-place">Бургас</a>
+        <a href="/vremeto/ruse/" class="recent-place">Русе</a>
+        <a href="/vremeto/stara-zagora/" class="recent-place">Стара Загора</a>
+        <a href="/vremeto/pleven/" class="recent-place">Плевен</a>
+        <a href="/vremeto/sliven/" class="recent-place">Сливен</a>
+        <a href="/vremeto/dobrich/" class="recent-place">Добрич</a>
+        <a href="/vremeto/shumen/" class="recent-place">Шумен</a>
+        <a href="/vremeto/pernik/" class="recent-place">Перник</a>
+        <a href="/vremeto/haskovo/" class="recent-place">Хасково</a>
+        <a href="/vremeto/yambol/" class="recent-place">Ямбол</a>
+        <a href="/vremeto/pazardzhik/" class="recent-place">Пазарджик</a>
+        <a href="/vremeto/blagoevgrad/" class="recent-place">Благоевград</a>
+        <a href="/vremeto/veliko-tarnovo/" class="recent-place">Велико Търново</a>
+        <a href="/vremeto/vratsa/" class="recent-place">Враца</a>
+        <a href="/vremeto/gabrovo/" class="recent-place">Габрово</a>
+        <a href="/vremeto/asenovgrad/" class="recent-place">Асеновград</a>
+        <a href="/vremeto/vidin/" class="recent-place">Видин</a>
+        <a href="/vremeto/kazanlak/" class="recent-place">Казанлък</a>
+        <a href="/vremeto/kardzhali/" class="recent-place">Кърджали</a>
+        <a href="/vremeto/kyustendil/" class="recent-place">Кюстендил</a>
+        <a href="/vremeto/montana/" class="recent-place">Монтана</a>
+        <a href="/vremeto/dimitrovgrad/" class="recent-place">Димитровград</a>
+        <a href="/vremeto/lovech/" class="recent-place">Ловеч</a>
+        <a href="/vremeto/silistra/" class="recent-place">Силистра</a>
+        <a href="/vremeto/targovishte/" class="recent-place">Търговище</a>
+        <a href="/vremeto/razgrad/" class="recent-place">Разград</a>
+        <a href="/vremeto/smolyan/" class="recent-place">Смолян</a>
+        <a href="/vremeto/bansko/" class="recent-place">Банско</a>
+        <a href="/vremeto/borovets/" class="recent-place">Боровец</a>
+        <a href="/vremeto/pamporovo/" class="recent-place">Пампорово</a>
+        <a href="/vremeto/sozopol/" class="recent-place">Созопол</a>
+        <a href="/vremeto/nesebar/" class="recent-place">Несебър</a>
+        <a href="/gradove/" class="recent-place" data-nav="allCities">Всички градове →</a>
+      </div>
+    </section>
 
     <div style="text-align: center; margin-top: 20px;">
       <button onclick="window.print()" class="btn">🖨️ Печат</button>
@@ -308,18 +350,18 @@
   // and triggers the loadData button click
 </script>
 
-<script src="/js/mobile-nav.js?v=18" defer></script>
+<script src="/js/mobile-nav.js?v=19" defer></script>
 <script src="/js/language-selector.js?v=7" defer></script>
-<script src="/js/forecast-core.js?v=1" defer></script>
+<script src="/js/forecast-core.js?v=2" defer></script>
 <script src="/js/city-search.js?v=12" defer></script>
 <script src="/js/weather-icons.js?v=11" defer></script>
-<script src="/weather/forecast-extras.js?v=10" defer></script>
+<script src="/weather/forecast-extras.js?v=11" defer></script>
 <script src="/weather/forecast-precision.js?v=8" defer></script>
 <script src="/weather/map-autocomplete.js?v=5" defer></script>
 
-<script src="/weather/ui-extras.js?v=6" defer></script>
-<script src="/weather/weather-fixed.js?v=23" defer></script>
-<script src="/weather/weather-hourly.js?v=8" defer></script>
+<script src="/weather/ui-extras.js?v=7" defer></script>
+<script src="/weather/weather-fixed.js?v=24" defer></script>
+<script src="/weather/weather-hourly.js?v=9" defer></script>
 <script src="/weather/hourly-interval.js?v=1" defer></script>
 
   <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
@@ -330,6 +372,7 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> VYZYA
       · <a href="/gradove/" class="footer-link" data-nav="cityIndex">Всички градове</a>
+      · <a href="/iztochnici/" class="footer-link" data-nav="sourcesShort">Източници</a>
       · <a href="/za-saita/" class="footer-link" data-nav="about">За сайта</a>
       · <a href="/poveritelnost/" class="footer-link" data-nav="privacy">Поверителност</a>
     </p>
