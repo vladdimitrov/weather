@@ -420,7 +420,8 @@ ${LOCAL_WIND[city.slug] ? `
 ` : ''}
     <p class="city-actions">
       <a class="btn" href="/weather/?${params}">${T.hourly}</a>${lang === 'bg' ? `
-      <a class="btn" href="/vremeto/${city.slug}/10-dni/">${BG_ONLY.tenDaysLink}</a>${PLACES.TOURIST_BG.includes(city.slug) ? `
+      <a class="btn" href="/vremeto/${city.slug}/10-dni/">${BG_ONLY.tenDaysLink}</a>
+      <a class="btn" href="/vremeto/${city.slug}/14-dni/">${BG_ONLY.fourteenDaysLink}</a>${PLACES.TOURIST_BG.includes(city.slug) ? `
       <a class="btn" href="/vremeto/${city.slug}/uikend/">${BG_ONLY.weekendLink}</a>` : ''}${(REGION_OF[city.slug] || []).map(region => `
       <a class="btn" href="/vremeto/${region}/">${BG_ONLY.regionLinks[region]} →</a>`).join('')}` : ''}
       <a class="btn" href="/magnitni-buri/">${T.storms}</a>
