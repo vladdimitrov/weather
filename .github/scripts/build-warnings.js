@@ -31,16 +31,22 @@ const type = info => (param(info, 'awareness_type').split(';')[1] || '').trim().
   const now = Date.now();
   const provinces = {};
   const unknown = new Set();
+  // what came and what was kept, for the log of the workflow
+  const seen = { total: data.warnings.length, cancelled: 0, noInfo: 0, noLevel: 0, expired: 0, kept: 0 };
+  const levels = new Set();
   for (const warning of data.warnings) {
     const alert = warning.alert || warning;
-    if (!alert || /cancel/i.test(alert.msgType || '')) continue;
+    if (!alert || /cancel/i.test(alert.msgType || '')) { seen.cancelled++; continue; }
     const infos = Array.isArray(alert.info) ? alert.info : [alert.info].filter(Boolean);
     const bg = infos.find(i => /^bg/i.test(i.language || '')) || infos[0];
     const en = infos.find(i => /^en/i.test(i.language || '')) || null;
-    if (!bg) continue;
+    if (!bg) { seen.noInfo++; continue; }
+    levels.add(`${param(bg, 'awareness_level') || '?'} / ${param(bg, 'awareness_type') || '?'}`);
     const color = level(bg);
     const expires = bg.expires || (en && en.expires);
-    if (!color || !expires || new Date(expires).getTime() <= now) continue;
+    if (!color) { seen.noLevel++; continue; }
+    if (!expires || new Date(expires).getTime() <= now) { seen.expired++; continue; }
+    seen.kept++;
     const item = {
       level: color,
       type: type(bg),
@@ -56,6 +62,10 @@ const type = info => (param(info, 'awareness_type').split(';')[1] || '').trim().
     }
   }
   Object.values(provinces).forEach(list => list.sort((a, b) => String(a.onset).localeCompare(String(b.onset))));
+  console.log(`Feed: ${seen.total} warnings; cancelled ${seen.cancelled}, without text ${seen.noInfo}, green or unknown level ${seen.noLevel}, expired ${seen.expired}, kept ${seen.kept}.`);
+  if (levels.size) console.log(`Levels / types in the feed: ${[...levels].slice(0, 20).join('; ')}`);
+  if (!data.warnings.length) console.log(`Keys of the answer: ${Object.keys(data).join(', ')}`);
+  else console.log(`Keys of a warning: ${Object.keys(data.warnings[0]).join(', ')}; of its alert: ${Object.keys(data.warnings[0].alert || {}).join(', ')}`);
   if (unknown.size) console.warn(`Areas without a province: ${[...unknown].join(', ')}`);
   const json = JSON.stringify({ provinces: Object.fromEntries(Object.keys(provinces).sort().map(id => [id, provinces[id]])) }, null, 1) + '\n';
   const before = fs.existsSync(FILE) ? fs.readFileSync(FILE, 'utf8') : '';
