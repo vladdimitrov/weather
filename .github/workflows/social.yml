@@ -12,7 +12,7 @@ on:
       job:
         description: "forecast или queue"
         required: true
-        default: forecast
+        default: queue
         type: choice
         options: [forecast, queue]
 
