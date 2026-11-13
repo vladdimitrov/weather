@@ -23,7 +23,7 @@
   <meta property="og:title" content="Calendario lunar – fase de la Luna hoy">
   <meta property="og:description" content="Fase de la Luna hoy, parte iluminada y fechas de la próxima luna llena y luna nueva. Calendario lunar por meses de 2026 y 2027, en hora de Bulgaria.">
   <meta property="og:url" content="https://weatherpulse.eu/es/luna/">
-  <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
+  <meta property="og:image" content="https://weatherpulse.eu/images/og-luna-es.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
@@ -43,6 +43,55 @@
         "position": 2,
         "name": "Calendario lunar",
         "item": "https://weatherpulse.eu/es/luna/"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "inLanguage": "es",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuándo es la próxima luna llena y luna nueva?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La próxima luna llena es el 24 de noviembre de 2026, 16:53 y la próxima luna nueva el 9 de diciembre de 2026, 02:51 (hora de Bulgaria)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto dura el ciclo lunar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "De una luna nueva a la siguiente pasan de media 29 días, 12 horas y 44 minutos. Es el mes sinódico. El tiempo entre dos lunas nuevas puede ser unas horas más corto o más largo, porque la órbita de la Luna es una elipse."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Por qué la Luna tiene fases?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La Luna no brilla por sí misma, refleja la luz del Sol. Mientras gira alrededor de la Tierra, desde aquí se ve una parte distinta de su mitad iluminada: de una fina hoz, pasando por el cuarto creciente y la luna llena, hasta el cuarto menguante y otra vez la luna nueva."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué es una superluna?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Una superluna es una luna llena que coincide con el perigeo, el punto más cercano de la órbita lunar (unos 356.000 km, frente a 406.000 km en el apogeo). Se ve hasta un 14 % más grande y un 30 % más brillante que la luna llena más lejana."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué es una luna azul?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Una luna azul es la segunda luna llena de un mismo mes del calendario. No es de color azul. En estos dos años no hay ninguna luna azul."
+        }
       }
     ]
   }
@@ -67,7 +116,7 @@
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
   <link rel="stylesheet" href="/css/theme.css?v=62">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
-  <link rel="stylesheet" href="/css/luna.css?v=3">
+  <link rel="stylesheet" href="/css/luna.css?v=4">
 </head>
 <body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
@@ -92,17 +141,17 @@
 
     <section class="info-card moon-today" id="moonToday">
       <div class="moon-hero">
-        <div class="moon-hero-disc"><svg class="moon-svg" viewBox="0 0 100 100" width="190" height="190" role="img" aria-label="Luna creciente"><title>Luna creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A34.66 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg></div>
+        <div class="moon-hero-disc"><svg class="moon-svg" viewBox="0 0 100 100" width="190" height="190" role="img" aria-label="Luna creciente"><title>Luna creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A33.84 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg></div>
         <div class="moon-hero-text">
           <h2>Luna creciente</h2>
           <p class="moon-hero-sub">viernes, 13 de noviembre de 2026 · La Luna está creciente</p>
           <dl class="moon-stats">
-            <div><dt>Iluminación</dt><dd>14%</dd></div>
-            <div><dt>Edad</dt><dd>3,9 <small>días</small></dd></div>
+            <div><dt>Iluminación</dt><dd>15%</dd></div>
+            <div><dt>Edad</dt><dd>4,1 <small>días</small></dd></div>
             <div><dt>Distancia</dt><dd>405.500 <small>km</small></dd></div>
           </dl>
-          <div class="moon-cycle" role="img" aria-label="Ciclo lunar: 13%">
-            <div class="moon-cycle-bar"><i style="width:13.4%"></i></div>
+          <div class="moon-cycle" role="img" aria-label="Ciclo lunar: 14%">
+            <div class="moon-cycle-bar"><i style="width:13.8%"></i></div>
             <div class="moon-cycle-ends"><span>Luna nueva</span><span>Luna llena</span><span>Luna nueva</span></div>
           </div>
         </div>
@@ -116,24 +165,24 @@
       </div>
       <h3 class="moon-sub">La Luna en los próximos 14 días</h3>
       <div class="moon-strip">
-        <div class="moon-strip-day is-today"><span>vie</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Luna creciente"><title>Luna creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A34.66 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>13</strong><em>14%</em></div>
-        <div class="moon-strip-day"><span>sáb</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Luna creciente"><title>Luna creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A27.81 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>14</strong><em>21%</em></div>
-        <div class="moon-strip-day"><span>dom</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Luna creciente"><title>Luna creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A19.98 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>15</strong><em>29%</em></div>
-        <div class="moon-strip-day"><span>lun</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Cuarto creciente"><title>Cuarto creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A11.39 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>16</strong><em>38%</em></div>
-        <div class="moon-strip-day"><span>mar</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Cuarto creciente"><title>Cuarto creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A2.27 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>17</strong><em>48%</em></div>
-        <div class="moon-strip-day"><span>mié</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Cuarto creciente"><title>Cuarto creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A7.14 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>18</strong><em>57%</em></div>
-        <div class="moon-strip-day"><span>jue</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Cuarto creciente"><title>Cuarto creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A16.54 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>19</strong><em>67%</em></div>
-        <div class="moon-strip-day"><span>vie</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Gibosa creciente"><title>Gibosa creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A25.55 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>20</strong><em>77%</em></div>
-        <div class="moon-strip-day"><span>sáb</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Gibosa creciente"><title>Gibosa creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A33.71 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>21</strong><em>85%</em></div>
-        <div class="moon-strip-day"><span>dom</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Gibosa creciente"><title>Gibosa creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A40.49 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>22</strong><em>92%</em></div>
-        <div class="moon-strip-day"><span>lun</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Luna llena"><title>Luna llena</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A45.34 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>23</strong><em>97%</em></div>
-        <div class="moon-strip-day"><span>mar</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Luna llena"><title>Luna llena</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A47.78 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>24</strong><em>100%</em></div>
-        <div class="moon-strip-day"><span>mié</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Luna llena"><title>Luna llena</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A47.49 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>25</strong><em>99%</em></div>
-        <div class="moon-strip-day"><span>jue</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Luna llena"><title>Luna llena</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A44.40 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>26</strong><em>96%</em></div>
+        <div class="moon-strip-day is-today"><span>vie</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Luna creciente"><title>Luna creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A33.84 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>13</strong><em>15%</em></div>
+        <div class="moon-strip-day"><span>sáb</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Luna creciente"><title>Luna creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A26.85 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>14</strong><em>22%</em></div>
+        <div class="moon-strip-day"><span>dom</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Luna creciente"><title>Luna creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A18.90 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>15</strong><em>30%</em></div>
+        <div class="moon-strip-day"><span>lun</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Cuarto creciente"><title>Cuarto creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A10.23 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>16</strong><em>39%</em></div>
+        <div class="moon-strip-day"><span>mar</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Cuarto creciente"><title>Cuarto creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A1.06 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>17</strong><em>49%</em></div>
+        <div class="moon-strip-day"><span>mié</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Cuarto creciente"><title>Cuarto creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A8.36 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>18</strong><em>59%</em></div>
+        <div class="moon-strip-day"><span>jue</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Cuarto creciente"><title>Cuarto creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A17.73 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>19</strong><em>68%</em></div>
+        <div class="moon-strip-day"><span>vie</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Gibosa creciente"><title>Gibosa creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A26.66 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>20</strong><em>78%</em></div>
+        <div class="moon-strip-day"><span>sáb</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Gibosa creciente"><title>Gibosa creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A34.67 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>21</strong><em>86%</em></div>
+        <div class="moon-strip-day"><span>dom</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Gibosa creciente"><title>Gibosa creciente</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A41.23 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>22</strong><em>93%</em></div>
+        <div class="moon-strip-day"><span>lun</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Luna llena"><title>Luna llena</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A45.80 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>23</strong><em>98%</em></div>
+        <div class="moon-strip-day"><span>mar</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Luna llena"><title>Luna llena</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 1 50 98A47.90 48 0 0 1 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>24</strong><em>100%</em></div>
+        <div class="moon-strip-day"><span>mié</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Luna llena"><title>Luna llena</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A47.25 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>25</strong><em>99%</em></div>
+        <div class="moon-strip-day"><span>jue</span><svg class="moon-svg" viewBox="0 0 100 100" width="34" height="34" role="img" aria-label="Gibosa menguante"><title>Gibosa menguante</title><circle cx="50" cy="50" r="48" fill="#1a2036"/><path d="M50 2A48 48 0 0 0 50 98A43.80 48 0 0 0 50 2Z" fill="#f1ecd9"/><g fill="#3d4663" fill-opacity="0.2"><circle cx="34.6" cy="31.8" r="12.5"/><circle cx="59.6" cy="29.8" r="9.6"/><circle cx="70.2" cy="45.2" r="8.2"/><circle cx="26.0" cy="52.4" r="9.6"/><circle cx="44.2" cy="51.0" r="7.2"/><circle cx="55.8" cy="64.4" r="6.2"/><circle cx="35.6" cy="70.2" r="4.8"/></g><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg><strong>26</strong><em>96%</em></div>
       </div>
     </section>
 
-    <p class="city-actions"><a class="btn" href="/es/luna/2026/noemvri/">Este mes</a> <a class="btn" href="/es/luna/2026/">Calendario lunar 2026</a> <a class="btn" href="/es/luna/2027/">Calendario lunar 2027</a></p>
+    <p class="city-actions"><a class="btn" href="/es/luna/2026/noemvri/">Este mes</a> <a class="btn" href="/es/luna/2026/">Calendario lunar 2026</a> <a class="btn" href="/es/luna/2027/">Calendario lunar 2027</a> <a class="btn" href="/es/luna/2026/pylnolunie/">Luna llena 2026</a> <a class="btn" href="/es/luna/2026/novolunie/">Luna nueva 2026</a> <button type="button" class="btn" id="moonShare" data-copied="✓ Enlace copiado">📤 Compartir</button></p>
 
     <section class="info-card">
       <h2>Calendario lunar 2026 por meses</h2>
@@ -171,6 +220,13 @@
       </div>
     </section>
 
+    <section class="info-card moon-subscribe">
+      <h2>El calendario lunar en tu calendario</h2>
+      <p>Suscríbete y todas las fases de la Luna de 2026–2027 estarán en tu calendario de Google, Apple u Outlook, a la hora exacta de tu zona horaria. El calendario se amplía cada año.</p>
+      <p class="city-actions"><a class="btn" href="webcal://weatherpulse.eu/es/luna/moon-phases.ics">📅 Suscribirse</a> <a class="btn" href="/es/luna/moon-phases.ics" download>Descargar .ics</a></p>
+      <p class="storm-updated">Google Calendar: «Otros calendarios» → «Desde URL» y pega la dirección: <code>https://weatherpulse.eu/es/luna/moon-phases.ics</code></p>
+    </section>
+
     <section class="info-card moon-sky">
       <h2>El cielo</h2>
       <p>Próximos eventos en el cielo: lluvias de meteoros, eclipses y superlunas.</p>
@@ -186,6 +242,15 @@
       <p>La Luna no brilla por sí misma: vemos la parte que ilumina el Sol. Mientras gira alrededor de la Tierra, el ángulo entre el Sol, la Tierra y la Luna cambia, y desde la Tierra se ve una porción distinta de su mitad iluminada. Esas son las fases.</p>
       <p>El ciclo completo de una luna nueva a la siguiente (el mes sinódico) dura de media 29 días, 12 horas y 44 minutos. Después de la luna nueva la Luna crece: una fina hoz al atardecer hacia el oeste, el cuarto creciente al cabo de una semana aproximadamente y la luna llena al cabo de dos. Luego mengua, pasando por el cuarto menguante, hasta la siguiente luna nueva. Desde el hemisferio norte la Luna creciente está iluminada por la derecha y la menguante por la izquierda.</p>
       <p>La distancia a la Luna también cambia, porque su órbita es una elipse: de unos 356.000 km en el perigeo a unos 406.000 km en el apogeo. Cuando la luna llena coincide con el perigeo, la Luna se ve algo más grande y brillante: es lo que se llama «superluna».</p>
+    </section>
+
+    <section class="info-card moon-faq">
+      <h2>Preguntas frecuentes sobre la Luna</h2>
+      <details class="moon-q"><summary>¿Cuándo es la próxima luna llena y luna nueva?</summary><p>La próxima luna llena es el 24 de noviembre de 2026, 16:53 y la próxima luna nueva el 9 de diciembre de 2026, 02:51 (hora de Bulgaria).</p></details>
+      <details class="moon-q"><summary>¿Cuánto dura el ciclo lunar?</summary><p>De una luna nueva a la siguiente pasan de media 29 días, 12 horas y 44 minutos. Es el mes sinódico. El tiempo entre dos lunas nuevas puede ser unas horas más corto o más largo, porque la órbita de la Luna es una elipse.</p></details>
+      <details class="moon-q"><summary>¿Por qué la Luna tiene fases?</summary><p>La Luna no brilla por sí misma, refleja la luz del Sol. Mientras gira alrededor de la Tierra, desde aquí se ve una parte distinta de su mitad iluminada: de una fina hoz, pasando por el cuarto creciente y la luna llena, hasta el cuarto menguante y otra vez la luna nueva.</p></details>
+      <details class="moon-q"><summary>¿Qué es una superluna?</summary><p>Una superluna es una luna llena que coincide con el perigeo, el punto más cercano de la órbita lunar (unos 356.000 km, frente a 406.000 km en el apogeo). Se ve hasta un 14 % más grande y un 30 % más brillante que la luna llena más lejana.</p></details>
+      <details class="moon-q"><summary>¿Qué es una luna azul?</summary><p>Una luna azul es la segunda luna llena de un mismo mes del calendario. No es de color azul. En estos dos años no hay ninguna luna azul.</p></details>
     </section>
 
     <section class="info-card">
@@ -218,7 +283,7 @@
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/moon-view.js?v=1" defer></script>
 <script src="/js/place-context.js?v=1" defer></script>
-<script src="/js/luna-today.js?v=4" defer></script>
+<script src="/js/luna-today.js?v=5" defer></script>
 <script src="/js/luna-local.js?v=1" defer></script>
 </body>
 </html>

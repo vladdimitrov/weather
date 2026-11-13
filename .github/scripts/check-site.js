@@ -35,7 +35,7 @@ const relative = file => path.relative(root, file).split(path.sep).join('/');
 // external and special links
 function resolveReference(fromFile, reference) {
   const ref = reference.trim();
-  if (!ref || /^(https?:|mailto:|tel:|data:|javascript:|#|\/\/)/i.test(ref) || ref.includes('${')) return null;
+  if (!ref || /^(https?:|webcal:|mailto:|tel:|data:|javascript:|#|\/\/)/i.test(ref) || ref.includes('${')) return null;
   const clean = decodeURIComponent(ref.split(/[?#]/)[0]);
   if (!clean) return null;
   const target = clean.startsWith('/') ? path.join(root, clean) : path.join(path.dirname(fromFile), clean);
