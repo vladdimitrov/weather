@@ -83,7 +83,7 @@ function updateForecast() {
       const endDate = end.toISOString().split("T")[0];
 
       await delay(500); // Delay for 500 milliseconds
-      const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_min,temperature_2m_max,cloudcover_mean,precipitation_sum,windspeed_10m_max,temperature_2m_mean,weather_code,sunrise,sunset,precipitation_probability_max&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${today}&end_date=${endDate}`;
+      const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_min,temperature_2m_max,cloudcover_mean,precipitation_sum,windspeed_10m_max,wind_gusts_10m_max,temperature_2m_mean,weather_code,sunrise,sunset,precipitation_probability_max&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${today}&end_date=${endDate}`;
       // the median of three models (js/forecast-core.js), the default forecast if that fails
       const weatherData = window.ForecastCore ? await ForecastCore.load(weatherURL) : await (await fetch(weatherURL)).json();
 
@@ -167,7 +167,8 @@ function renderDayCards() {
     const amount = daily.precipitation_sum[i];
     const rain = typeof chance === "number"
       ? `<span class="dc-line" title="${pickText({ en: "Chance of rain", bg: "Вероятност за валеж", de: "Regenwahrscheinlichkeit", it: "Probabilità di pioggia", es: "Probabilidad de lluvia" })}">${window.WeatherIcons ? WeatherIcons.medal("rain", "", "sm") : "☔"} ${chance}%${amount >= 0.1 ? ` · ${amount.toFixed(1)} mm` : ""}</span>` : "";
-    const wind = `<span class="dc-line">${window.WeatherIcons ? WeatherIcons.medal("wind", "", "sm") : "💨"} ${Math.round(daily.windspeed_10m_max[i])} km/h</span>`;
+    const gust = daily.wind_gusts_10m_max ? daily.wind_gusts_10m_max[i] : null;
+    const wind = `<span class="dc-line${gust >= 60 ? " city-day-gusts" : ""}">${window.WeatherIcons ? WeatherIcons.medal("wind", "", "sm") : "💨"} ${Math.round(daily.windspeed_10m_max[i])} km/h${typeof gust === "number" ? ` · ${window.ForecastExtras ? ForecastExtras.gustLabel() : "gusts"} ${Math.round(gust)}` : ""}</span>`;
     const sunMoon = window.ForecastExtras ? ForecastExtras.sunMoonCell(date, daily.sunrise[i], daily.sunset[i]) : "";
     return `<button type="button" class="kp-day city-day day-card${date === selectedDate ? " selected" : ""}" data-date="${date}" onclick="selectDay('${date}')">
       <span class="kp-day-name">${name}</span>
@@ -272,6 +273,7 @@ function dayWarningsHtml(daily, i) {
   const badges = ForecastExtras.dayWarnings({
     weatherCode: daily.weather_code[i],
     windMax: daily.windspeed_10m_max[i],
+    gustMax: daily.wind_gusts_10m_max ? daily.wind_gusts_10m_max[i] : null,
     precipitation: daily.precipitation_sum[i],
     tempMin: daily.temperature_2m_min[i],
     tempMax: daily.temperature_2m_max[i]

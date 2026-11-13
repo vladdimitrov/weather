@@ -80,11 +80,12 @@ window.ForecastExtras = (function () {
   }
 
   // Shown in the "Forecast" column of the daily table
-  function dayWarnings({ weatherCode, windMax, precipitation, tempMin, tempMax }) {
+  // Wind: a mean wind of 50 km/h, or gusts of 60 km/h (the strongest of the models, js/forecast-core.js)
+  function dayWarnings({ weatherCode, windMax, gustMax, precipitation, tempMin, tempMax }) {
     const found = [];
     if (THUNDER_CODES.includes(weatherCode)) found.push('thunder');
     if (FOG_CODES.includes(weatherCode)) found.push('fog');
-    if (windMax >= 50) found.push('wind');
+    if (windMax >= 50 || gustMax >= 60) found.push('wind');
     if (precipitation >= 20) found.push('rain');
     if (SNOW_CODES.includes(weatherCode)) found.push('snow');
     if (tempMin <= 0) found.push('frost');
@@ -94,14 +95,14 @@ window.ForecastExtras = (function () {
 
   // Phenomena of one hour, shown in the "Forecast" column of the hourly table.
   // Frost is taken as a temperature at or below 0 °C without precipitation.
-  function hourWarnings({ weatherCode, windspeed, precipitation, temperature }) {
+  function hourWarnings({ weatherCode, windspeed, gust, precipitation, temperature }) {
     const found = [];
     if (THUNDER_CODES.includes(weatherCode)) found.push('thunder');
     if (FOG_CODES.includes(weatherCode)) found.push('fog');
     if (DRIZZLE_CODES.includes(weatherCode)) found.push('drizzle');
     if (SNOW_CODES.includes(weatherCode)) found.push('snow');
     if (temperature <= 0 && !(precipitation > 0)) found.push('frost');
-    if (windspeed >= 50) found.push('wind');
+    if (windspeed >= 50 || gust >= 60) found.push('wind');
     if (temperature >= 35) found.push('heat');
     const badges = badgesFor(found);
     return badges ? `<div class="wx-warnings">${badges}</div>` : '';
@@ -258,5 +259,13 @@ window.ForecastExtras = (function () {
     if (languageSelect) languageSelect.addEventListener('change', onLanguageChange);
   });
 
-  return { sunMoonCell, dayWarnings, hourWarnings, renderHourlyChart, startLocalClock };
+  // "gusts" in the language of the page (hourly table, day cards)
+  const GUSTS = { en: 'gusts', bg: 'пориви', de: 'Böen', it: 'raffiche', es: 'rachas' };
+  function gustLabel() {
+    let lang = document.documentElement.dataset.pageLang;
+    if (!lang) { try { lang = localStorage.getItem('selectedLanguage'); } catch (e) { /* no storage */ } }
+    return GUSTS[lang] || GUSTS[document.documentElement.lang] || GUSTS.en;
+  }
+
+  return { sunMoonCell, dayWarnings, hourWarnings, renderHourlyChart, startLocalClock, gustLabel };
 })();

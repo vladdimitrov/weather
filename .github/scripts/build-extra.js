@@ -17,6 +17,7 @@ const { page, write, VERSION, placeJson, daysOff } = require('./build-pages.js')
 const CITIES = require('./bg-cities.js');
 const COUNTRIES = require('./europe-data.js');
 const PLACES = require('./places.js');
+const { provinceOf } = require('./bg-provinces.js');
 const { BG, CITIES_PAGE, bgIn } = require('./text-extra.js');
 const { TXT } = require('./text-pages.js');
 
@@ -110,7 +111,7 @@ function forecastPage(city, kind) {
     <h1>${T.h1(city.name)}</h1>
     <p class="storm-intro">${T.intro(city.name)}</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="${esc(city.name)}" data-lat="${city.lat}" data-lon="${city.lon}" data-query="${params}"${extra}>
+    <div class="city-forecast" id="cityForecast" data-name="${esc(city.name)}" data-lat="${city.lat}" data-lon="${city.lon}" data-query="${params}" data-warn="${provinceOf(city.slug)}"${extra}>
       <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">${TXT.bg.loading}</p></div>
       <div class="kp-forecast" id="cityDays" hidden></div>
     </div>

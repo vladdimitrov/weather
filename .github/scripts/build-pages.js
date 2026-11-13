@@ -9,13 +9,24 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 61, mobileNav: 19, languageSelector: 7, cityForecast: 12, moon: 2, lunaToday: 4, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
+const VERSION = { theme: 62, mobileNav: 19, languageSelector: 7, cityForecast: 13, moon: 2, lunaToday: 4, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1 };
 
 const CITIES = require('./bg-cities.js');
 
 const { TXT, HOLIDAYS } = require('./text-pages.js');
 const CITY_TEXT = require('./text-cities.js');
 const BG_ONLY = require('./text-extra.js').BG;
+const { provinceOf } = require('./bg-provinces.js');
+// What the forecast of a city cannot show: a local wind the models with a 7–25 km grid miss
+const LOCAL_WIND = {
+  sofia: {
+    bg: 'Южняк под Витоша: при силен южен вятър въздухът се спуска по склоновете на планината и се ускорява. В кварталите под Витоша – Симеоново, Драгалевци, Бояна, Княжево, Дървеница – поривите често са много по-силни, отколкото в центъра и в прогнозата за София. Затова показваме поривите по модела, който дава най-силните, а при пориви над 60 км/ч и при предупреждение на НИМХ – съобщение над прогнозата.',
+    en: 'The south wind under Vitosha: in a strong southerly wind the air comes down the slopes of the mountain and speeds up. In the districts at its foot – Simeonovo, Dragalevtsi, Boyana, Knyazhevo, Darvenitsa – the gusts are often much stronger than in the centre and in the forecast for Sofia. That is why we show the gusts of the model that gives the strongest, and a notice above the forecast for gusts over 60 km/h and for warnings of NIMH.',
+    de: 'Südwind am Witoscha: Bei starkem Südwind strömt die Luft die Hänge des Gebirges hinab und wird schneller. In den Vierteln am Fuß des Witoscha – Simeonowo, Dragalewzi, Bojana, Knjaschewo, Darweniza – sind die Böen oft viel stärker als im Zentrum und in der Vorhersage für Sofia. Deshalb zeigen wir die Böen des Modells mit den stärksten Werten und ab 60 km/h sowie bei Warnungen des NIMH einen Hinweis über der Vorhersage.',
+    it: 'Il vento da sud sotto il Vitosha: con un forte vento da sud l’aria scende lungo i pendii della montagna e accelera. Nei quartieri ai suoi piedi – Simeonovo, Dragalevtsi, Boyana, Knyazhevo, Darvenitsa – le raffiche sono spesso molto più forti che in centro e nelle previsioni per Sofia. Per questo mostriamo le raffiche del modello che dà le più forti e, oltre i 60 km/h o con un’allerta del NIMH, un avviso sopra le previsioni.',
+    es: 'El viento del sur bajo el Vitosha: con viento fuerte del sur, el aire baja por las laderas de la montaña y se acelera. En los barrios a sus pies – Simeonovo, Dragalevtsi, Boyana, Knyazhevo, Darvenitsa – las rachas suelen ser mucho más fuertes que en el centro y que en la previsión para Sofía. Por eso mostramos las rachas del modelo que da las más fuertes y, por encima de 60 km/h o con un aviso del NIMH, un mensaje sobre la previsión.'
+  }
+};
 // Bulgarian cities that link to the regional pages (build-extra.js)
 const REGION_OF = { varna: ['chernomorie', 'morska-voda'], burgas: ['chernomorie', 'morska-voda'], sozopol: ['chernomorie', 'morska-voda'], nesebar: ['chernomorie', 'morska-voda'], bansko: ['snyag-kurorti'], borovets: ['snyag-kurorti'], pamporovo: ['snyag-kurorti'] };
 const L = (lang, url) => I18N.localUrl(lang, url);
@@ -398,11 +409,15 @@ function cityPage(city, lang) {
     <h1>${T.cityName(where)}</h1>
     <p class="storm-intro">${T.intro(where)}</p>
 
-    <div class="city-forecast" id="cityForecast" data-name="${name}" data-lat="${city.lat}" data-lon="${city.lon}" data-query="${params}">
+    <div class="city-forecast" id="cityForecast" data-name="${name}" data-lat="${city.lat}" data-lon="${city.lon}" data-query="${params}" data-warn="${provinceOf(city.slug)}">
       <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">${T.loading}</p></div>
       <div class="kp-forecast" id="cityDays" hidden></div>
     </div>
-
+${LOCAL_WIND[city.slug] ? `
+    <section class="info-card city-local-wind">
+      <p>${LOCAL_WIND[city.slug][lang]}</p>
+    </section>
+` : ''}
     <p class="city-actions">
       <a class="btn" href="/weather/?${params}">${T.hourly}</a>${lang === 'bg' ? `
       <a class="btn" href="/vremeto/${city.slug}/10-dni/">${BG_ONLY.tenDaysLink}</a>${PLACES.TOURIST_BG.includes(city.slug) ? `

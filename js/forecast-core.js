@@ -1,7 +1,7 @@
 // One forecast from three weather models instead of one blended guess.
 // ForecastCore.load(url) asks Open-Meteo for the same data from ECMWF (IFS, 9 km), ICON
 // (DWD: 2 km over Central Europe, 6.5 km over Europe) and GFS (NOAA), and gives back the
-// usual Open-Meteo answer where every number is the MEDIAN of the models. The median is
+// usual Open-Meteo answer where every number is the MEDIAN of the models (gusts: the MAXIMUM). The median is
 // not pulled by one model that is off, and the day's weather symbol is the one most models
 // agree on. The height correction of the temperature (about 0.65 degrees per 100 m) is made
 // by Open-Meteo for the height of the place, which comes back as "elevation".
@@ -57,6 +57,12 @@
   function pick(base, values) {
     if (/^(weather_?code)/.test(base)) return consensusCode(values);
     if (/^(sunrise|sunset)/.test(base)) return values.find(v => v) || null;
+    // gusts: the strongest model. A median hides the one model that sees a local storm
+    // (downslope wind under Vitosha, a front): for a warning, missing it is worse than a false alarm
+    if (/^wind_gusts/.test(base)) {
+      const list = values.filter(v => typeof v === 'number' && !isNaN(v));
+      return list.length ? Math.max(...list) : null;
+    }
     return median(values);
   }
 
