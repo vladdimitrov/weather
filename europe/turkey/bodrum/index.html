@@ -122,8 +122,86 @@
     <p class="storm-intro">Прогноза за времето в Бодрум, Турция, за днес, утре и следващите 7 дни: температура, валежи, вятър и вероятност за валеж. Местно име: Bodrum (Hava durumu Bodrum). Данните са от Open-Meteo и се обновяват на всеки час.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Бодрум" data-lat="37.0344" data-lon="27.4305" data-query="city=%D0%91%D0%BE%D0%B4%D1%80%D1%83%D0%BC&lat=37.0344&lon=27.4305&cc=TR">
-      <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">Зареждане…</p></div>
-      <div class="kp-forecast" id="cityDays" hidden></div>
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Силни пориви на вятъра днес: до 62 км/ч</p>
+        <p class="city-alert city-alert-yellow">Силни пориви на вятъра утре: до 66 км/ч</p>
+      </div>
+      <div class="kp-forecast city-now" id="cityNow">
+        <h2>Бодрум: петък, 13 ноември</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">19° / 22°</span>
+        <p class="storm-now-status">Дъжд · вероятност за валеж 28%</p>
+        <p class="storm-updated">Прогноза от 13 ноември 2026 г.</p>
+      </div>
+      <div class="kp-forecast" id="cityDays">
+        <h3>Прогноза за 7 дни</h3>
+        <p class="city-summary">През следващите 7 дни най-топло ще е в неделя, 15 ноември (до 23°), а най-студено – във вторник, 17 ноември (до 14°). Валежи се очакват в 1 от дните. Дневните температури са близо до обичайните за ноември (средно 20°).</p>
+        <div class="city-days">
+          <a class="kp-day city-day" href="/weather/?city=%D0%91%D0%BE%D0%B4%D1%80%D1%83%D0%BC&lat=37.0344&lon=27.4305&cc=TR&date=2026-11-13" title="По часове →">
+            <span class="kp-day-name">пт, 13</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">13.11</span>
+            <span class="city-day-temp">19° / 22°</span>
+            <span class="kp-day-status">Дъжд</span>
+            <span class="city-day-rain" title="вероятност за валеж">28% · 0.3 mm</span>
+            <span class="city-day-wind city-day-gusts">Вятър 27 km/h · пориви 62</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=%D0%91%D0%BE%D0%B4%D1%80%D1%83%D0%BC&lat=37.0344&lon=27.4305&cc=TR&date=2026-11-14" title="По часове →">
+            <span class="kp-day-name">сб, 14</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">14.11</span>
+            <span class="city-day-temp">19° / 22°</span>
+            <span class="kp-day-status">Облачно</span>
+            <span class="city-day-rain" title="вероятност за валеж">25%</span>
+            <span class="city-day-wind city-day-gusts">Вятър 29 km/h · пориви 66</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=%D0%91%D0%BE%D0%B4%D1%80%D1%83%D0%BC&lat=37.0344&lon=27.4305&cc=TR&date=2026-11-15" title="По часове →">
+            <span class="kp-day-name">нд, 15</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">15.11</span>
+            <span class="city-day-temp">18° / 23°</span>
+            <span class="kp-day-status">Облачно</span>
+            <span class="city-day-rain" title="вероятност за валеж">3%</span>
+            <span class="city-day-wind">Вятър 17 km/h · пориви 48</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=%D0%91%D0%BE%D0%B4%D1%80%D1%83%D0%BC&lat=37.0344&lon=27.4305&cc=TR&date=2026-11-16" title="По часове →">
+            <span class="kp-day-name">пн, 16</span>
+            <span class="city-day-icon" aria-hidden="true">🌫️</span>
+            <span class="city-day-date">16.11</span>
+            <span class="city-day-temp">16° / 20°</span>
+            <span class="kp-day-status">Мъгла</span>
+            <span class="city-day-rain" title="вероятност за валеж">5%</span>
+            <span class="city-day-wind">Вятър 18 km/h · пориви 43</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=%D0%91%D0%BE%D0%B4%D1%80%D1%83%D0%BC&lat=37.0344&lon=27.4305&cc=TR&date=2026-11-17" title="По часове →">
+            <span class="kp-day-name">вт, 17</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">17.11</span>
+            <span class="city-day-temp">14° / 20°</span>
+            <span class="kp-day-status">Облачно</span>
+            <span class="city-day-rain" title="вероятност за валеж">8%</span>
+            <span class="city-day-wind">Вятър 10 km/h · пориви 32</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=%D0%91%D0%BE%D0%B4%D1%80%D1%83%D0%BC&lat=37.0344&lon=27.4305&cc=TR&date=2026-11-18" title="По часове →">
+            <span class="kp-day-name">ср, 18</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">18.11</span>
+            <span class="city-day-temp">16° / 21°</span>
+            <span class="kp-day-status">Ръмеж</span>
+            <span class="city-day-rain" title="вероятност за валеж">44% · 0.8 mm</span>
+            <span class="city-day-wind">Вятър 26 km/h · пориви 56</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=%D0%91%D0%BE%D0%B4%D1%80%D1%83%D0%BC&lat=37.0344&lon=27.4305&cc=TR&date=2026-11-19" title="По часове →">
+            <span class="kp-day-name">чт, 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">16° / 21°</span>
+            <span class="kp-day-status">Ръмеж</span>
+            <span class="city-day-rain" title="вероятност за валеж">52% · 5.5 mm</span>
+            <span class="city-day-wind city-day-gusts">Вятър 27 km/h · пориви 72</span>
+          </a>
+        </div>
+        <p class="forecast-note">Медиана на моделите ECMWF, ICON и GFS · надм. височина 6 м</p>
+      </div>
     </div>
 
     <p class="city-actions">

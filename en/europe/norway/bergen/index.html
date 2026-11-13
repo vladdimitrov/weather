@@ -121,33 +121,27 @@
     <p class="storm-intro">Weather forecast for Bergen, Norway, for today, tomorrow and the next 7 days: temperature, rain, wind and chance of precipitation. Data from Open-Meteo, updated every hour.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Bergen" data-lat="60.3913" data-lon="5.3221" data-query="city=Bergen&lat=60.3913&lon=5.3221&cc=NO">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Strong wind gusts tomorrow: up to 76 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Bergen: Thursday 12 November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">−1° / 3°</span>
-        <p class="storm-now-status">Rain · chance of rain 74%</p>
-        <p class="storm-updated">Forecast issued on 12 November 2026</p>
+        <h2>Bergen: Friday 13 November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">1° / 4°</span>
+        <p class="storm-now-status">Drizzle · chance of rain 23%</p>
+        <p class="storm-updated">Forecast issued on 13 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Sunday 15 November (up to 8°) and the coldest Thursday 12 November (down to −1°). Rain or snow is expected on 5 of the days. Daytime temperatures are close to normal for November (average high 6°).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Saturday 14 November (up to 8°) and the coldest Thursday 19 November (down to 0°). Rain or snow is expected on 4 of the days. Daytime temperatures are close to normal for November (average high 6°).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Bergen&lat=60.3913&lon=5.3221&cc=NO&date=2026-11-12" title="Hourly forecast →">
-            <span class="kp-day-name">Thu 12</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
-            <span class="city-day-date">12.11</span>
-            <span class="city-day-temp">−1° / 3°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">74% · 0.1 mm</span>
-            <span class="city-day-wind">Wind 15 km/h</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Bergen&lat=60.3913&lon=5.3221&cc=NO&date=2026-11-13" title="Hourly forecast →">
             <span class="kp-day-name">Fri 13</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">13.11</span>
-            <span class="city-day-temp">1° / 5°</span>
+            <span class="city-day-temp">1° / 4°</span>
             <span class="kp-day-status">Drizzle</span>
-            <span class="city-day-rain" title="chance of rain">16% · 0.1 mm</span>
-            <span class="city-day-wind">Wind 15 km/h</span>
+            <span class="city-day-rain" title="chance of rain">23% · 0.2 mm</span>
+            <span class="city-day-wind">Wind 14 km/h · gusts 54</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Bergen&lat=60.3913&lon=5.3221&cc=NO&date=2026-11-14" title="Hourly forecast →">
             <span class="kp-day-name">Sat 14</span>
@@ -155,8 +149,8 @@
             <span class="city-day-date">14.11</span>
             <span class="city-day-temp">2° / 8°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">100% · 14.3 mm</span>
-            <span class="city-day-wind">Wind 24 km/h</span>
+            <span class="city-day-rain" title="chance of rain">100% · 13.5 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 24 km/h · gusts 76</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Bergen&lat=60.3913&lon=5.3221&cc=NO&date=2026-11-15" title="Hourly forecast →">
             <span class="kp-day-name">Sun 15</span>
@@ -164,8 +158,8 @@
             <span class="city-day-date">15.11</span>
             <span class="city-day-temp">5° / 8°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">98% · 24.2 mm</span>
-            <span class="city-day-wind">Wind 33 km/h</span>
+            <span class="city-day-rain" title="chance of rain">100% · 28.7 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 30 km/h · gusts 79</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Bergen&lat=60.3913&lon=5.3221&cc=NO&date=2026-11-16" title="Hourly forecast →">
             <span class="kp-day-name">Mon 16</span>
@@ -173,26 +167,35 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">4° / 7°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">83% · 14.3 mm</span>
-            <span class="city-day-wind">Wind 24 km/h</span>
+            <span class="city-day-rain" title="chance of rain">85% · 13.3 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 19 km/h · gusts 60</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Bergen&lat=60.3913&lon=5.3221&cc=NO&date=2026-11-17" title="Hourly forecast →">
             <span class="kp-day-name">Tue 17</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">17.11</span>
-            <span class="city-day-temp">3° / 5°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">46% · 5.3 mm</span>
-            <span class="city-day-wind">Wind 8 km/h</span>
+            <span class="city-day-temp">1° / 5°</span>
+            <span class="kp-day-status">Cloudy</span>
+            <span class="city-day-rain" title="chance of rain">46% · 2.7 mm</span>
+            <span class="city-day-wind">Wind 16 km/h · gusts 48</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Bergen&lat=60.3913&lon=5.3221&cc=NO&date=2026-11-18" title="Hourly forecast →">
             <span class="kp-day-name">Wed 18</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">☀️</span>
             <span class="city-day-date">18.11</span>
-            <span class="city-day-temp">1° / 4°</span>
-            <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">26%</span>
-            <span class="city-day-wind">Wind 9 km/h</span>
+            <span class="city-day-temp">0° / 3°</span>
+            <span class="kp-day-status">Clear</span>
+            <span class="city-day-rain" title="chance of rain">15%</span>
+            <span class="city-day-wind">Wind 9 km/h · gusts 39</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Bergen&lat=60.3913&lon=5.3221&cc=NO&date=2026-11-19" title="Hourly forecast →">
+            <span class="kp-day-name">Thu 19</span>
+            <span class="city-day-icon" aria-hidden="true">☀️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">0° / 3°</span>
+            <span class="kp-day-status">Clear</span>
+            <span class="city-day-rain" title="chance of rain">10%</span>
+            <span class="city-day-wind">Wind 10 km/h · gusts 32</span>
           </a>
         </div>
         <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 14 m</p>

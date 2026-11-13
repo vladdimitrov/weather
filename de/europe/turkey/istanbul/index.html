@@ -124,8 +124,86 @@
     <p class="storm-intro">Wettervorhersage für Istanbul, Türkei, für heute, morgen und die nächsten 7 Tage: Temperatur, Regen, Wind und Niederschlagswahrscheinlichkeit. Ortsname: İstanbul (Hava durumu İstanbul). Daten von Open-Meteo, stündlich aktualisiert.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Istanbul" data-lat="41.0082" data-lon="28.9784" data-query="city=Istanbul&lat=41.0082&lon=28.9784&cc=TR">
-      <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">Wird geladen…</p></div>
-      <div class="kp-forecast" id="cityDays" hidden></div>
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Starke Windböen heute: bis 77 km/h</p>
+        <p class="city-alert city-alert-yellow">Starke Windböen morgen: bis 70 km/h</p>
+      </div>
+      <div class="kp-forecast city-now" id="cityNow">
+        <h2>Istanbul: Freitag, 13. November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">18° / 21°</span>
+        <p class="storm-now-status">Bewölkt · Regenwahrscheinlichkeit 2%</p>
+        <p class="storm-updated">Vorhersage vom 13. November 2026</p>
+      </div>
+      <div class="kp-forecast" id="cityDays">
+        <h3>7-Tage-Vorhersage</h3>
+        <p class="city-summary">In den nächsten 7 Tagen ist Samstag, 14. November am wärmsten (bis 21°) und Montag, 16. November am kältesten (bis 10°). An 4 der Tage wird Niederschlag erwartet. Tagsüber ist es etwa so warm wie üblich im November (im Mittel 16°).</p>
+        <div class="city-days">
+          <a class="kp-day city-day" href="/weather/?city=Istanbul&lat=41.0082&lon=28.9784&cc=TR&date=2026-11-13" title="Stündlich →">
+            <span class="kp-day-name">Fr., 13.</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">13.11</span>
+            <span class="city-day-temp">18° / 21°</span>
+            <span class="kp-day-status">Bewölkt</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">2%</span>
+            <span class="city-day-wind city-day-gusts">Wind 35 km/h · Böen 77</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Istanbul&lat=41.0082&lon=28.9784&cc=TR&date=2026-11-14" title="Stündlich →">
+            <span class="kp-day-name">Sa., 14.</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">14.11</span>
+            <span class="city-day-temp">11° / 21°</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">100% · 14.7 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 31 km/h · Böen 70</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Istanbul&lat=41.0082&lon=28.9784&cc=TR&date=2026-11-15" title="Stündlich →">
+            <span class="kp-day-name">So., 15.</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">15.11</span>
+            <span class="city-day-temp">11° / 13°</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">88% · 2.6 mm</span>
+            <span class="city-day-wind">Wind 22 km/h · Böen 40</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Istanbul&lat=41.0082&lon=28.9784&cc=TR&date=2026-11-16" title="Stündlich →">
+            <span class="kp-day-name">Mo., 16.</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">16.11</span>
+            <span class="city-day-temp">10° / 14°</span>
+            <span class="kp-day-status">Bewölkt</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">3%</span>
+            <span class="city-day-wind">Wind 13 km/h · Böen 30</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Istanbul&lat=41.0082&lon=28.9784&cc=TR&date=2026-11-17" title="Stündlich →">
+            <span class="kp-day-name">Di., 17.</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">17.11</span>
+            <span class="city-day-temp">10° / 16°</span>
+            <span class="kp-day-status">Bewölkt</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">12%</span>
+            <span class="city-day-wind">Wind 18 km/h · Böen 38</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Istanbul&lat=41.0082&lon=28.9784&cc=TR&date=2026-11-18" title="Stündlich →">
+            <span class="kp-day-name">Mi., 18.</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">18.11</span>
+            <span class="city-day-temp">14° / 19°</span>
+            <span class="kp-day-status">Nieselregen</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">30% · 2.7 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 29 km/h · Böen 80</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Istanbul&lat=41.0082&lon=28.9784&cc=TR&date=2026-11-19" title="Stündlich →">
+            <span class="kp-day-name">Do., 19.</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">13° / 18°</span>
+            <span class="kp-day-status">Gewitter</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">62% · 19.8 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 31 km/h · Böen 83</span>
+          </a>
+        </div>
+        <p class="forecast-note">Median der Modelle ECMWF, ICON und GFS · Höhe 36 m</p>
+      </div>
     </div>
 
     <p class="city-actions">

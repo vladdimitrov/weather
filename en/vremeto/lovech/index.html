@@ -100,8 +100,85 @@
     <p class="storm-intro">Weather forecast for Lovech for today, tomorrow and the next 7 days: temperature, precipitation, wind and chance of rain. The data come from Open-Meteo and are updated every hour.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Lovech" data-lat="43.137" data-lon="24.7142" data-query="city=Lovech&lat=43.1370&lon=24.7142&cc=BG" data-warn="lovech">
-      <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">Loading…</p></div>
-      <div class="kp-forecast" id="cityDays" hidden></div>
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Strong wind gusts today: up to 61 km/h</p>
+      </div>
+      <div class="kp-forecast city-now" id="cityNow">
+        <h2>Lovech: Friday 13 November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">13° / 24°</span>
+        <p class="storm-now-status">Drizzle · chance of rain 86%</p>
+        <p class="storm-updated">Forecast issued on 13 November 2026</p>
+      </div>
+      <div class="kp-forecast" id="cityDays">
+        <h3>7-day forecast</h3>
+        <p class="city-summary">Over the next 7 days the warmest day is Friday 13 November (up to 24°) and the coldest Sunday 15 November (down to 4°). Rain or snow is expected on 4 of the days. Daytime temperatures are above normal for November (average high 13°).</p>
+        <div class="city-days">
+          <a class="kp-day city-day" href="/weather/?city=Lovech&lat=43.1370&lon=24.7142&cc=BG&date=2026-11-13" title="Hourly forecast →">
+            <span class="kp-day-name">Fri 13</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">13.11</span>
+            <span class="city-day-temp">13° / 24°</span>
+            <span class="kp-day-status">Drizzle</span>
+            <span class="city-day-rain" title="chance of rain">86% · 0.5 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 23 km/h · gusts 61</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Lovech&lat=43.1370&lon=24.7142&cc=BG&date=2026-11-14" title="Hourly forecast →">
+            <span class="kp-day-name">Sat 14</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">14.11</span>
+            <span class="city-day-temp">7° / 13°</span>
+            <span class="kp-day-status">Drizzle</span>
+            <span class="city-day-rain" title="chance of rain">87% · 2.1 mm</span>
+            <span class="city-day-wind">Wind 17 km/h · gusts 41</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Lovech&lat=43.1370&lon=24.7142&cc=BG&date=2026-11-15" title="Hourly forecast →">
+            <span class="kp-day-name">Sun 15</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">15.11</span>
+            <span class="city-day-temp">4° / 12°</span>
+            <span class="kp-day-status">Cloudy</span>
+            <span class="city-day-rain" title="chance of rain">2%</span>
+            <span class="city-day-wind">Wind 11 km/h · gusts 24</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Lovech&lat=43.1370&lon=24.7142&cc=BG&date=2026-11-16" title="Hourly forecast →">
+            <span class="kp-day-name">Mon 16</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">16.11</span>
+            <span class="city-day-temp">6° / 12°</span>
+            <span class="kp-day-status">Cloudy</span>
+            <span class="city-day-rain" title="chance of rain">15%</span>
+            <span class="city-day-wind">Wind 9 km/h · gusts 25</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Lovech&lat=43.1370&lon=24.7142&cc=BG&date=2026-11-17" title="Hourly forecast →">
+            <span class="kp-day-name">Tue 17</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">17.11</span>
+            <span class="city-day-temp">8° / 18°</span>
+            <span class="kp-day-status">Cloudy</span>
+            <span class="city-day-rain" title="chance of rain">14%</span>
+            <span class="city-day-wind">Wind 11 km/h · gusts 29</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Lovech&lat=43.1370&lon=24.7142&cc=BG&date=2026-11-18" title="Hourly forecast →">
+            <span class="kp-day-name">Wed 18</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">18.11</span>
+            <span class="city-day-temp">9° / 19°</span>
+            <span class="kp-day-status">Rain</span>
+            <span class="city-day-rain" title="chance of rain">58% · 3.9 mm</span>
+            <span class="city-day-wind">Wind 16 km/h · gusts 49</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Lovech&lat=43.1370&lon=24.7142&cc=BG&date=2026-11-19" title="Hourly forecast →">
+            <span class="kp-day-name">Thu 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">8° / 14°</span>
+            <span class="kp-day-status">Rain</span>
+            <span class="city-day-rain" title="chance of rain">66% · 6.3 mm</span>
+            <span class="city-day-wind">Wind 26 km/h · gusts 57</span>
+          </a>
+        </div>
+        <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 178 m</p>
+      </div>
     </div>
 
     <p class="city-actions">

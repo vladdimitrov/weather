@@ -119,8 +119,86 @@
     <p class="storm-intro">Previsión del tiempo en Edirne, Turquía, para hoy, mañana y los próximos 7 días: temperatura, lluvia, viento y probabilidad de precipitación. Datos de Open-Meteo, actualizados cada hora.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Edirne" data-lat="41.6771" data-lon="26.5557" data-query="city=Edirne&lat=41.6771&lon=26.5557&cc=TR">
-      <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">Cargando…</p></div>
-      <div class="kp-forecast" id="cityDays" hidden></div>
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Rachas de viento fuertes hoy: hasta 70 km/h</p>
+        <p class="city-alert city-alert-yellow">Rachas de viento fuertes mañana: hasta 68 km/h</p>
+      </div>
+      <div class="kp-forecast city-now" id="cityNow">
+        <h2>Edirne: viernes, 13 de noviembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">17° / 22°</span>
+        <p class="storm-now-status">Nublado · probabilidad de lluvia 13%</p>
+        <p class="storm-updated">Previsión del 13 de noviembre de 2026</p>
+      </div>
+      <div class="kp-forecast" id="cityDays">
+        <h3>Previsión a 7 días</h3>
+        <p class="city-summary">En los próximos 7 días el día más cálido será el sábado, 14 de noviembre (hasta 22°) y el más frío el lunes, 16 de noviembre (hasta 7°). Se esperan precipitaciones en 3 de los días. Las máximas están cerca de lo normal para noviembre (media de 16°).</p>
+        <div class="city-days">
+          <a class="kp-day city-day" href="/weather/?city=Edirne&lat=41.6771&lon=26.5557&cc=TR&date=2026-11-13" title="Por horas →">
+            <span class="kp-day-name">vie 13</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">13.11</span>
+            <span class="city-day-temp">17° / 22°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">13%</span>
+            <span class="city-day-wind city-day-gusts">Viento 36 km/h · rachas 70</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Edirne&lat=41.6771&lon=26.5557&cc=TR&date=2026-11-14" title="Por horas →">
+            <span class="kp-day-name">sáb 14</span>
+            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-date">14.11</span>
+            <span class="city-day-temp">9° / 22°</span>
+            <span class="kp-day-status">Tormenta</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">100% · 6.3 mm</span>
+            <span class="city-day-wind city-day-gusts">Viento 31 km/h · rachas 68</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Edirne&lat=41.6771&lon=26.5557&cc=TR&date=2026-11-15" title="Por horas →">
+            <span class="kp-day-name">dom 15</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">15.11</span>
+            <span class="city-day-temp">7° / 13°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">25%</span>
+            <span class="city-day-wind">Viento 14 km/h · rachas 36</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Edirne&lat=41.6771&lon=26.5557&cc=TR&date=2026-11-16" title="Por horas →">
+            <span class="kp-day-name">lun 16</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">16.11</span>
+            <span class="city-day-temp">7° / 13°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">3%</span>
+            <span class="city-day-wind">Viento 7 km/h · rachas 21</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Edirne&lat=41.6771&lon=26.5557&cc=TR&date=2026-11-17" title="Por horas →">
+            <span class="kp-day-name">mar 17</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">17.11</span>
+            <span class="city-day-temp">8° / 16°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">4%</span>
+            <span class="city-day-wind">Viento 13 km/h · rachas 27</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Edirne&lat=41.6771&lon=26.5557&cc=TR&date=2026-11-18" title="Por horas →">
+            <span class="kp-day-name">mié 18</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">18.11</span>
+            <span class="city-day-temp">12° / 19°</span>
+            <span class="kp-day-status">Lluvia</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">58% · 6.5 mm</span>
+            <span class="city-day-wind">Viento 28 km/h · rachas 56</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Edirne&lat=41.6771&lon=26.5557&cc=TR&date=2026-11-19" title="Por horas →">
+            <span class="kp-day-name">jue 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">11° / 17°</span>
+            <span class="kp-day-status">Lluvia</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">52% · 4.4 mm</span>
+            <span class="city-day-wind">Viento 27 km/h · rachas 60</span>
+          </a>
+        </div>
+        <p class="forecast-note">Mediana de los modelos ECMWF, ICON y GFS · altitud 64 m</p>
+      </div>
     </div>
 
     <p class="city-actions">
