@@ -119,11 +119,21 @@ function cityPages(folders) {
 }
 
 // Open-Meteo limits the requests per minute for all runs from the same address (the runner of this
-// workflow shares it with others) and answers 429. Wait and ask again; any other answer stops the run.
+// workflow shares it with others) and answers 429, or does not answer at all. Wait and ask again; any
+// other answer stops the run.
 async function fetchWithRetry(url) {
   const WAITS = [20000, 65000, 65000, 65000];
   for (let attempt = 0; ; attempt++) {
-    const response = await fetch(url);
+    let response;
+    try {
+      response = await fetch(url);
+    } catch (error) {
+      // no answer at all (timeout, reset connection): also worth another try
+      if (attempt >= WAITS.length) throw error;
+      console.log(`Open-Meteo did not answer (${error.cause ? error.cause.code || error.cause.message : error.message}); trying again in ${WAITS[attempt] / 1000} s`);
+      await new Promise(resolve => setTimeout(resolve, WAITS[attempt]));
+      continue;
+    }
     if (response.ok) return response;
     const body = (await response.text()).slice(0, 200);
     const retryable = response.status === 429 || response.status >= 500;
