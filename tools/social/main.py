@@ -65,8 +65,10 @@ def main():
     f.add_argument("--dry-run", action="store_true", help="only make the image and print the caption")
     f.add_argument("--sample", action="store_true", help="use sample data (no internet)")
     f.add_argument("--tomorrow", action="store_true", help="forecast for tomorrow")
+    f.add_argument("--force", action="store_true", help="post even if today's forecast is already published")
     q = sub.add_parser("queue")
     q.add_argument("--dry-run", action="store_true")
+    q.add_argument("--force", action="store_true", help="post even if the last queue post was recent")
     sub.add_parser("check")
     sub.add_parser("serve")
     a = p.parse_args()
@@ -74,9 +76,9 @@ def main():
     setup_logging()
     cfg = load_config(a.config)
     if a.cmd == "forecast":
-        run_forecast(cfg, dry_run=a.dry_run, sample=a.sample, tomorrow=a.tomorrow)
+        run_forecast(cfg, dry_run=a.dry_run, sample=a.sample, tomorrow=a.tomorrow, force=a.force)
     elif a.cmd == "queue":
-        run_queue(cfg, dry_run=a.dry_run)
+        run_queue(cfg, dry_run=a.dry_run, force=a.force)
     elif a.cmd == "check":
         print(make_client(cfg).check())
     elif a.cmd == "serve":

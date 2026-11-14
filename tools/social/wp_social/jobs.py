@@ -31,12 +31,18 @@ def _targets(cfg):
 
 
 # ---------------- forecast ----------------
-def run_forecast(cfg, dry_run=False, sample=False, tomorrow=False):
+def run_forecast(cfg, dry_run=False, sample=False, tomorrow=False, force=False):
     tz = ZoneInfo(cfg["timezone"])
     offset = 1 if tomorrow else 0
     day = (datetime.now(tz) + timedelta(days=offset)).date()
     fc_cfg = cfg.get("forecast", {})
     cities = cfg["cities"]
+
+    host = Hosting(cfg.get("hosting", {}))
+    # once a day: the run can start twice (GitHub schedule + an outside trigger, or a manual run)
+    if not dry_run and not force and host.already_published(f"-forecast-{day.isoformat()}.jpg"):
+        log.info("The forecast for %s is already published – nothing to do (use --force to post again).", day)
+        return None
 
     forecasts = sample_forecast(cities) if sample else fetch_forecast(cities, cfg["timezone"], offset)
     site_url = cfg["site_url"].rstrip("/")
@@ -51,12 +57,15 @@ def run_forecast(cfg, dry_run=False, sample=False, tomorrow=False):
         print(caption)
         return img_path
 
-    client, host = make_client(cfg), Hosting(cfg.get("hosting", {}))
+    client = make_client(cfg)
     to_fb, to_ig = _targets(cfg)
+    url = None
+    if to_ig or host.enabled:
+        # published first: it also marks the day as done, so a retry never posts twice
+        url = host.publish(img_path, f"{datetime.now(tz).strftime('%Y%m%d-%H%M%S')}-{img_path.name}")
     if to_fb:
         log.info("Facebook post id: %s", client.fb_photo(img_path, caption))
     if to_ig:
-        url = host.publish(img_path, f"{datetime.now(tz).strftime('%Y%m%d-%H%M%S')}-{img_path.name}")
         log.info("Instagram media id: %s", client.ig_image(url, caption))
     return img_path
 
@@ -100,13 +109,21 @@ def _as_jpeg(item: Path, out_dir: Path) -> Path:
     return out
 
 
-def run_queue(cfg, dry_run=False):
+def run_queue(cfg, dry_run=False, force=False):
     qcfg = cfg["queue"]
     qdir = Path(qcfg["dir"])
     qdir.mkdir(parents=True, exist_ok=True)
     posted_dir = qdir / "posted"
     state_file = qdir / ".state.json"
     state = json.loads(state_file.read_text()) if state_file.exists() else {}
+
+    last = state.get("_last_posted")
+    gap = float(qcfg.get("min_gap_minutes", 90))
+    if not dry_run and not force and last:
+        since = (datetime.now(ZoneInfo("UTC")) - datetime.fromisoformat(last)).total_seconds() / 60
+        if since < gap:
+            log.info("Last queue post was %.0f min ago (< %.0f) – skipping this run.", since, gap)
+            return None
 
     item = _next_item(qdir)
     if not item:
@@ -145,5 +162,6 @@ def run_queue(cfg, dry_run=False):
         if f.exists():
             shutil.move(str(f), posted_dir / (prefix + f.name))
     state.pop(item.name, None)
+    state["_last_posted"] = datetime.now(ZoneInfo("UTC")).isoformat()
     save()
     return item
