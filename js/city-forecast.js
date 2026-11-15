@@ -142,6 +142,24 @@
       return first >= 2 ? text.until(name(days[first - 1].i), why) : text.early(name(days[first].i), why);
     }
   };
+  // Air quality: the European Air Quality Index (european_aqi) of the Open-Meteo air quality API
+  // (forecast of CAMS, Copernicus; a model, not a measurement), with PM2.5 and PM10 in µg/m³.
+  // Levels of the index: 0-20 good, 20-40 fair, 40-60 moderate, 60-80 poor, 80-100 very poor,
+  // over 100 extremely poor. A line under "now" on the city pages; the same levels and words on
+  // /vremeto/kachestvo-na-vazduha/ (window.WeatherAir, js/region-weather.js).
+  const AIR = {
+    url: 'https://air-quality-api.open-meteo.com/v1/air-quality',
+    colors: ['#81c784', '#c5e1a5', '#ffd54f', '#ff9800', '#e53935', '#8e24aa'],
+    level: aqi => (typeof aqi !== 'number' ? null : aqi < 20 ? 0 : aqi < 40 ? 1 : aqi < 60 ? 2 : aqi < 80 ? 3 : aqi < 100 ? 4 : 5),
+    text: {
+      en: { label: 'Air quality', levels: ['good', 'fair', 'moderate', 'poor', 'very poor', 'extremely poor'], index: 'index', worst: 'worst in the next 48 hours', more: 'Air quality in Bulgaria →' },
+      bg: { label: 'Качество на въздуха', levels: ['добро', 'задоволително', 'умерено', 'лошо', 'много лошо', 'изключително лошо'], index: 'индекс', worst: 'най-лошо до 48 часа', more: 'Качеството на въздуха в България →' },
+      de: { label: 'Luftqualität', levels: ['gut', 'mäßig gut', 'mäßig', 'schlecht', 'sehr schlecht', 'extrem schlecht'], index: 'Index', worst: 'am schlechtesten in 48 Stunden', more: 'Luftqualität in Bulgarien →' },
+      it: { label: 'Qualità dell\'aria', levels: ['buona', 'discreta', 'moderata', 'scadente', 'molto scadente', 'pessima'], index: 'indice', worst: 'peggiore nelle prossime 48 ore', more: 'Qualità dell\'aria in Bulgaria →' },
+      es: { label: 'Calidad del aire', levels: ['buena', 'aceptable', 'moderada', 'mala', 'muy mala', 'extremadamente mala'], index: 'índice', worst: 'peor en las próximas 48 horas', more: 'Calidad del aire en Bulgaria →' }
+    }
+  };
+  window.WeatherAir = AIR;
   const isBg = () => document.documentElement.lang === 'bg';
   // Pages with more days (data-days="10") or only the coming weekend (data-weekend)
   const PERIOD = {
@@ -379,10 +397,44 @@
     try {
       forecast = await getJson(url, true);
       renderCity();
+      loadAir();
     } catch (error) {
       console.error('City forecast:', error);
       document.getElementById('cityNow').replaceChildren(el('p', 'storm-now-status', t().error));
     }
+  }
+
+  // A line under "now": the index now and its level, PM2.5 and PM10, and the worst level of the
+  // next 48 hours when it is worse than now. Nothing when the air quality API does not answer.
+  async function loadAir() {
+    const nowBox = document.getElementById('cityNow');
+    if (!nowBox) return;
+    try {
+      const response = await fetch(`${AIR.url}?latitude=${box.dataset.lat}&longitude=${box.dataset.lon}` +
+        '&current=european_aqi,pm2_5,pm10&hourly=european_aqi&forecast_days=3&timezone=auto');
+      if (!response.ok) return;
+      const data = await response.json();
+      const now = data.current || {};
+      const level = AIR.level(now.european_aqi);
+      if (level === null) return;
+      const A = AIR.text[document.documentElement.lang] || AIR.text.en;
+      const start = Math.max(0, (data.hourly.time || []).indexOf(now.time && now.time.slice(0, 13) + ':00'));
+      const ahead = (data.hourly.european_aqi || []).slice(start, start + 48).filter(v => typeof v === 'number');
+      const worst = ahead.length ? AIR.level(Math.max(...ahead)) : null;
+      const line = el('p', 'storm-updated city-air');
+      const dot = el('span', '', '● ');
+      dot.style.color = AIR.colors[level];
+      line.append(dot, `${A.label}: ${A.levels[level]} (${A.index} ${Math.round(now.european_aqi)})` +
+        `${typeof now.pm2_5 === 'number' ? ` · PM2.5 ${Math.round(now.pm2_5)} µg/m³` : ''}` +
+        `${typeof now.pm10 === 'number' ? ` · PM10 ${Math.round(now.pm10)} µg/m³` : ''}` +
+        `${worst !== null && worst > level ? ` · ${A.worst}: ${A.levels[worst]}` : ''}`);
+      if (box.dataset.warn && isBg()) {
+        const link = el('a', '', ` ${A.more}`);
+        link.href = '/vremeto/kachestvo-na-vazduha/';
+        line.append(link);
+      }
+      nowBox.appendChild(line);
+    } catch (e) { /* the forecast is still shown */ }
   }
 
   // --- All cities on the hub page ---

@@ -3,6 +3,7 @@
 //   /vremeto/<city>/10-dni/          "времето в Търново за 10 дни" (Bulgarian only, every Bulgarian city)
 //   /vremeto/<city>/uikend/          "времето в Банско през уикенда" (Bulgarian only, the tourist places)
 //   /vremeto/chernomorie/, /vremeto/morska-voda/, /vremeto/snyag-kurorti/, /vremeto/zhegi/, /vremeto/preduprezhdeniya/,
+//   /vremeto/kachestvo-na-vazduha/,
 //   /vremeto/parvi-snyag/            regional and seasonal pages (Bulgarian only); live tables: /js/region-weather.js
 //   /europe/greece/belomorie/, /europe/greece/halkidiki/, /europe/greece/more/, /europe/turkey/more/
 //                                    resorts abroad: 7 days and sea water (Bulgarian only)
@@ -300,6 +301,12 @@ ${liveTable('heat', [], CITIES.map(city => row(placeLink(city.name, city.slug), 
       <h2>${R.rankH}</h2>
 ${ranking(6, 'high', 1)}
       <p class="storm-updated">${R.rankNote(CLIMATE.years)}</p>
+    </section>`;
+  } else if (slug === 'kachestvo-na-vazduha') {
+    main = `
+    <section class="info-card">
+      <h2>${R.tableH}</h2>
+${liveTable('air', BG.tableHead.air, CITIES.map(city => row(placeLink(city.name, city.slug), city.lat, city.lon)), R.tableNote)}
     </section>`;
   } else if (slug === 'preduprezhdeniya') {
     main = `

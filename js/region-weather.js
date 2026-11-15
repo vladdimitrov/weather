@@ -8,6 +8,9 @@
 //   sea        sea surface temperature now and the highest waves today (marine API)
 //   snow       snow depth now, new snow in 7 days, lowest / highest temperature (at data-elevation)
 //   firstsnow  the first day with 1 cm of new snow or more in 16 days, and the total
+//   air        the European Air Quality Index now (window.WeatherAir of js/city-forecast.js: levels,
+//              colours, words), PM2.5, PM10 and the worst index of the next 48 hours; the places
+//              with the worst air now first
 //   warnings   the official warnings of NIMH for the province of the row (data-warn, from
 //              /data/warnings-bg.json) and ours for today and tomorrow (window.WeatherHazards
 //              of js/city-forecast.js, on the median of the models of js/forecast-core.js);
@@ -15,6 +18,7 @@
 (function () {
   const FORECAST = 'https://api.open-meteo.com/v1/forecast';
   const MARINE = 'https://marine-api.open-meteo.com/v1/marine';
+  const AIR_API = 'https://air-quality-api.open-meteo.com/v1/air-quality';
   const T = {
     bg: { today: 'Днес', none: 'не се очаква', error: 'Данните не могат да се заредят. Опитайте отново по-късно.', cm: 'см', m: 'м', locale: 'bg-BG' },
     en: { today: 'Today', none: 'not expected', error: 'The data could not be loaded. Please try again later.', cm: 'cm', m: 'm', locale: 'en-GB' },
@@ -53,6 +57,7 @@
       return `${FORECAST}?${where}&elevation=${elevation}&hourly=snow_depth&daily=snowfall_sum,temperature_2m_max,temperature_2m_min&forecast_days=7`;
     }
     if (mode === 'firstsnow') return `${FORECAST}?${where}&daily=snowfall_sum&forecast_days=16`;
+    if (mode === 'air') return `${AIR_API}?${where}&current=european_aqi,pm2_5,pm10&hourly=european_aqi&forecast_days=3`;
     if (mode === 'warnings') {
       const models = window.ForecastCore ? `&models=${window.ForecastCore.MODELS.join(',')}` : '';
       return `${FORECAST}?${where}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,snowfall_sum,wind_gusts_10m_max&forecast_days=2${models}`;
@@ -97,6 +102,8 @@
         cell(row, typeof depth === 'number' ? `${Math.round(depth * 100)} ${text.cm}` : '—');
         cell(row, `${Math.round(fresh)} ${text.cm}`);
         cell(row, `${deg(Math.min(...(daily.temperature_2m_min || [NaN])))} / ${deg(Math.max(...(daily.temperature_2m_max || [NaN])))}`);
+      } else if (mode === 'air') {
+        airCells(row, data);
       } else if (mode === 'warnings') {
         warningCells(row, data, n);
       } else if (mode === 'firstsnow') {
@@ -108,8 +115,42 @@
       }
     });
     if (mode === 'warnings') sortWarnings(table, rows);
+    if (mode === 'air') sortAir(table, rows);
     const note = table.parentElement.querySelector('.region-nojs');
     if (note) note.remove();
+  }
+
+  // --- The air quality page (data-mode="air") ---
+  function airCells(row, data) {
+    const AIR = window.WeatherAir;
+    const now = data.current || {};
+    const level = AIR ? AIR.level(now.european_aqi) : null;
+    const A = AIR ? AIR.text[document.documentElement.lang] || AIR.text.bg : null;
+    const badge = (value, lvl) => {
+      const td = cell(row, '', 'region-warn');
+      if (lvl === null) { td.textContent = '—'; return; }
+      const span = document.createElement('span');
+      span.textContent = `${A.levels[lvl]} (${Math.round(value)})`;
+      span.style.background = AIR.colors[lvl];
+      span.style.color = lvl >= 4 ? '#fff' : '#1a1a2e';
+      td.appendChild(span);
+    };
+    badge(now.european_aqi, level);
+    cell(row, typeof now.pm2_5 === 'number' ? `${Math.round(now.pm2_5)} µg/m³` : '—');
+    cell(row, typeof now.pm10 === 'number' ? `${Math.round(now.pm10)} µg/m³` : '—');
+    const hourly = data.hourly || {};
+    const start = Math.max(0, (hourly.time || []).indexOf(now.time ? now.time.slice(0, 13) + ':00' : ''));
+    const ahead = (hourly.european_aqi || []).slice(start, start + 48).filter(v => typeof v === 'number');
+    const worst = ahead.length ? Math.max(...ahead) : null;
+    badge(worst, AIR && worst !== null ? AIR.level(worst) : null);
+    row.dataset.rank = typeof now.european_aqi === 'number' ? now.european_aqi : -1;
+  }
+
+  function sortAir(table, rows) {
+    const body = table.tBodies[0];
+    rows.map((row, i) => ({ row, i, rank: +row.dataset.rank }))
+      .sort((a, b) => b.rank - a.rank || a.i - b.i)
+      .forEach(item => body.appendChild(item.row));
   }
 
   // --- The warnings page (data-mode="warnings") ---
