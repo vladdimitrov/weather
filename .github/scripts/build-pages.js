@@ -278,6 +278,7 @@ const NAV_EN = I18N.NAV.en;
 
 // multi: the page exists in the five languages (/luna/, /en/luna/, /de/luna/ ...); url is the
 // Bulgarian path.
+// x-default (visitors whose language the site doesn't have) is the English page, when there is one.
 // indexed: the languages in which search engines should index the page (default: all). In the
 // other languages the page is "noindex, follow" and not in the sitemap, and hreflang lists only
 // the indexed ones; the language switcher still finds every translation in data-alt.
@@ -293,7 +294,7 @@ function page({ url, title, description, body, scripts = '', jsonLd = '', head =
   const listed = I18N.LANGS.filter(code => indexed.includes(code));
   const alternates = multi && !noindex && listed.length > 1
     ? listed.map(code => `  <link rel="alternate" hreflang="${code}" href="https://weatherpulse.eu${I18N.localUrl(code, url, base)}" />`).join('\n') +
-      (listed.includes(base) ? `\n  <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu${url}" />` : '') + '\n'
+      (listed.includes(base) ? `\n  <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu${I18N.localUrl(listed.includes('en') ? 'en' : base, url, base)}" />` : '') + '\n'
     : '';
   // links to the other indexed versions (also from a translation that is not indexed itself)
   const languageLinks = multi && listed.length > 1 ? I18N.langLinks(lang, Object.fromEntries(listed.map(code => [code, I18N.localUrl(code, url, base)]))) : '';
