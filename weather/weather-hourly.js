@@ -60,12 +60,12 @@ function updateHourlyForecast(selectedDate) {
   
   const tbody = document.querySelector("#hourlyTable tbody");
   // Use translations for loading message
-  const loadingMessage = pickText({ en: "Loading...", bg: "Зареждане...", de: "Wird geladen...", it: "Caricamento...", es: "Cargando..." });
+  const loadingMessage = pickText({ en: "Loading...", bg: "Зареждане...", de: "Wird geladen...", it: "Caricamento...", es: "Cargando...", fr: "Chargement...", nl: "Laden..." });
   tbody.innerHTML = `<tr><td colspan='6'>${loadingMessage}</td></tr>`;
 
   if ((!city && (!currentCoords.latitude || !currentCoords.longitude))) {
     // Use translations for error message
-    const errorMessage = pickText({ en: "Please enter a city or enable location.", bg: "Моля, въведете град или активирайте местоположението.", de: "Bitte geben Sie eine Stadt ein oder aktivieren Sie den Standort.", it: "Inserisci una città o attiva la posizione.", es: "Introduce una ciudad o activa la ubicación." });
+    const errorMessage = pickText({ en: "Please enter a city or enable location.", bg: "Моля, въведете град или активирайте местоположението.", de: "Bitte geben Sie eine Stadt ein oder aktivieren Sie den Standort.", it: "Inserisci una città o attiva la posizione.", es: "Introduce una ciudad o activa la ubicación.", fr: "Saisissez une ville ou activez la localisation.", nl: "Voer een stad in of schakel locatie in." });
     tbody.innerHTML = `<tr><td colspan='6'>${errorMessage}</td></tr>`;
     return;
   }
@@ -83,7 +83,7 @@ function updateHourlyForecast(selectedDate) {
         geoData = await geoRes.json();
         if (!geoData.results || geoData.results.length === 0) {
           // Use translations for error message
-          const errorMessage = pickText({ en: "City not found.", bg: "Градът не е намерен.", de: "Stadt nicht gefunden.", it: "Città non trovata.", es: "Ciudad no encontrada." });
+          const errorMessage = pickText({ en: "City not found.", bg: "Градът не е намерен.", de: "Stadt nicht gefunden.", it: "Città non trovata.", es: "Ciudad no encontrada.", fr: "Ville introuvable.", nl: "Stad niet gevonden." });
           tbody.innerHTML = `<tr><td colspan='6'>${errorMessage}</td></tr>`;
           return;
         }
@@ -256,7 +256,7 @@ function updateHourlyForecast(selectedDate) {
      }
      document.getElementById("location").textContent = `${city}, ${region}, ${country}`;
      // Get the current time in the specified timezone
-      const locales = { en: "en-GB", bg: "bg-BG", de: "de-DE", it: "it-IT", es: "es-ES" };
+      const locales = { en: "en-GB", bg: "bg-BG", de: "de-DE", it: "it-IT", es: "es-ES", fr: "fr-FR", nl: "nl-NL" };
       const currentTime = new Date().toLocaleString(locales[document.documentElement.lang] || "en-GB", {
         timeZone: timezone, dateStyle: "short", timeStyle: "short"
       });
@@ -264,7 +264,7 @@ function updateHourlyForecast(selectedDate) {
     } catch (err) {
       console.error("Error:", err);
       // Use translations for error message
-      const errorMessage = pickText({ en: "Error loading data.", bg: "Грешка при зареждане на данните.", de: "Fehler beim Laden der Daten.", it: "Errore nel caricamento dei dati.", es: "Error al cargar los datos." });
+      const errorMessage = pickText({ en: "Error loading data.", bg: "Грешка при зареждане на данните.", de: "Fehler beim Laden der Daten.", it: "Errore nel caricamento dei dati.", es: "Error al cargar los datos.", fr: "Erreur lors du chargement des données.", nl: "Fout bij het laden van de gegevens." });
       tbody.innerHTML = `<tr><td colspan='6'>${errorMessage}</td></tr>`;
     }
   })();

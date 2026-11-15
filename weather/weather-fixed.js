@@ -36,7 +36,7 @@ function updateForecast() {
   const dayCards = document.getElementById("dayCards");
   
   if ((!city && (!currentCoords.latitude || !currentCoords.longitude)) || isNaN(days)) {
-        showDayMessage(`${pickText({ en: "Please enter a city or enable location.", bg: "Моля, въведете град или активирайте местоположението.", de: "Bitte geben Sie eine Stadt ein oder aktivieren Sie den Standort.", it: "Inserisci una città o attiva la posizione.", es: "Introduce una ciudad o activa la ubicación." })}`);
+        showDayMessage(`${pickText({ en: "Please enter a city or enable location.", bg: "Моля, въведете град или активирайте местоположението.", de: "Bitte geben Sie eine Stadt ein oder aktivieren Sie den Standort.", it: "Inserisci una città o attiva la posizione.", es: "Introduce una ciudad o activa la ubicación.", fr: "Saisissez une ville ou activez la localisation.", nl: "Voer een stad in of schakel locatie in." })}`);
     return;
   }
 
@@ -52,7 +52,7 @@ function updateForecast() {
         const geoData = await geoRes.json();
         if (!geoData.results || geoData.results.length === 0) {
           // Use translations for error messages
-          const errorMessage = pickText({ en: "City not found.", bg: "Градът не е намерен.", de: "Stadt nicht gefunden.", it: "Città non trovata.", es: "Ciudad no encontrada." });
+          const errorMessage = pickText({ en: "City not found.", bg: "Градът не е намерен.", de: "Stadt nicht gefunden.", it: "Città non trovata.", es: "Ciudad no encontrada.", fr: "Ville introuvable.", nl: "Stad niet gevonden." });
           showDayMessage(`${errorMessage}`);
           return;
         }
@@ -90,7 +90,7 @@ function updateForecast() {
       if (!weatherData.daily || !weatherData.daily.time) {
         console.error("Invalid weather data format:", weatherData);
         // Use translations for error messages
-        const errorMessage = pickText({ en: "Error processing data.", bg: "Грешка при обработка на данните.", de: "Fehler bei der Datenverarbeitung.", it: "Errore nell'elaborazione dei dati.", es: "Error al procesar los datos." });
+        const errorMessage = pickText({ en: "Error processing data.", bg: "Грешка при обработка на данните.", de: "Fehler bei der Datenverarbeitung.", it: "Errore nell'elaborazione dei dati.", es: "Error al procesar los datos.", fr: "Erreur lors du traitement des données.", nl: "Fout bij het verwerken van de gegevens." });
         showDayMessage(`${errorMessage}`, true);
         return;
       }
@@ -131,7 +131,7 @@ function updateForecast() {
     } catch (err) {
       console.error("Error:", err);
       // Use translations for error messages
-      const errorMessage = pickText({ en: "Error loading data.", bg: "Грешка при зареждане на данните.", de: "Fehler beim Laden der Daten.", it: "Errore nel caricamento dei dati.", es: "Error al cargar los datos." });
+      const errorMessage = pickText({ en: "Error loading data.", bg: "Грешка при зареждане на данните.", de: "Fehler beim Laden der Daten.", it: "Errore nel caricamento dei dati.", es: "Error al cargar los datos.", fr: "Erreur lors du chargement des données.", nl: "Fout bij het laden van de gegevens." });
       showDayMessage(`${errorMessage}`, true);
     }
   })();
@@ -145,7 +145,7 @@ function showDayMessage(html, retry) {
   if (!box) return;
   box.removeAttribute("aria-busy");
   const again = retry
-    ? `<br><button type="button" class="btn day-retry" onclick="document.getElementById('loadData').click()">↻ ${pickText({ en: "Try again", bg: "Опитай пак", de: "Erneut versuchen", it: "Riprova", es: "Reintentar" })}</button>`
+    ? `<br><button type="button" class="btn day-retry" onclick="document.getElementById('loadData').click()">↻ ${pickText({ en: "Try again", bg: "Опитай пак", de: "Erneut versuchen", it: "Riprova", es: "Reintentar", fr: "Réessayer", nl: "Opnieuw proberen" })}</button>`
     : "";
   box.innerHTML = `<p class="day-msg">${html}${again}</p>`;
 }
@@ -157,7 +157,7 @@ function renderDayCards() {
   const language = document.getElementById("language").value;
   const selected = box.querySelector(".day-card.selected");
   const selectedDate = selected && selected.dataset.date;
-  const hint = pickText({ en: "Hourly forecast →", bg: "По часове →", de: "Stündlich →", it: "Ora per ora →", es: "Por horas →" });
+  const hint = pickText({ en: "Hourly forecast →", bg: "По часове →", de: "Stündlich →", it: "Ora per ora →", es: "Por horas →", fr: "Heure par heure →", nl: "Per uur →" });
   box.innerHTML = daily.time.map((date, i) => {
     const day = new Date(date + "T12:00:00");
     const name = day.toLocaleDateString(language, { weekday: "short" });
@@ -166,7 +166,7 @@ function renderDayCards() {
     const chance = daily.precipitation_probability_max && daily.precipitation_probability_max[i];
     const amount = daily.precipitation_sum[i];
     const rain = typeof chance === "number"
-      ? `<span class="dc-line" title="${pickText({ en: "Chance of rain", bg: "Вероятност за валеж", de: "Regenwahrscheinlichkeit", it: "Probabilità di pioggia", es: "Probabilidad de lluvia" })}">${window.WeatherIcons ? WeatherIcons.medal("rain", "", "sm") : "☔"} ${chance}%${amount >= 0.1 ? ` · ${amount.toFixed(1)} mm` : ""}</span>` : "";
+      ? `<span class="dc-line" title="${pickText({ en: "Chance of rain", bg: "Вероятност за валеж", de: "Regenwahrscheinlichkeit", it: "Probabilità di pioggia", es: "Probabilidad de lluvia", fr: "Probabilité de pluie", nl: "Kans op regen" })}">${window.WeatherIcons ? WeatherIcons.medal("rain", "", "sm") : "☔"} ${chance}%${amount >= 0.1 ? ` · ${amount.toFixed(1)} mm` : ""}</span>` : "";
     const gust = daily.wind_gusts_10m_max ? daily.wind_gusts_10m_max[i] : null;
     const wind = `<span class="dc-line${gust >= 60 ? " city-day-gusts" : ""}">${window.WeatherIcons ? WeatherIcons.medal("wind", "", "sm") : "💨"} ${Math.round(daily.windspeed_10m_max[i])} km/h${typeof gust === "number" ? ` · ${window.ForecastExtras ? ForecastExtras.gustLabel() : "gusts"} ${Math.round(gust)}` : ""}</span>`;
     const sunMoon = window.ForecastExtras ? ForecastExtras.sunMoonCell(date, daily.sunrise[i], daily.sunset[i]) : "";
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       if ((!city || city.length === 0) && (!currentCoords.latitude || !currentCoords.longitude)) {
         // Use translations for alert messages
-        const alertMessage = pickText({ en: "Please enter a city or latitude and longitude.", bg: "Моля, въведете град или географска ширина и дължина.", de: "Bitte geben Sie eine Stadt oder Breiten- und Längengrad ein.", it: "Inserisci una città oppure latitudine e longitudine.", es: "Introduce una ciudad o la latitud y la longitud." });
+        const alertMessage = pickText({ en: "Please enter a city or latitude and longitude.", bg: "Моля, въведете град или географска ширина и дължина.", de: "Bitte geben Sie eine Stadt oder Breiten- und Längengrad ein.", it: "Inserisci una città oppure latitudine e longitudine.", es: "Introduce una ciudad o la latitud y la longitud.", fr: "Saisissez une ville ou une latitude et une longitude.", nl: "Voer een stad of breedte- en lengtegraad in." });
         alert(alertMessage);
       }
       updateForecast();
@@ -285,6 +285,6 @@ function dayWarningsHtml(daily, i) {
 function rainChanceHtml(daily, i) {
   const chance = daily.precipitation_probability_max && daily.precipitation_probability_max[i];
   if (typeof chance !== "number") return "";
-  const title = pickText({ en: "Chance of rain", bg: "Вероятност за валеж", de: "Regenwahrscheinlichkeit", it: "Probabilità di pioggia", es: "Probabilidad de lluvia" });
+  const title = pickText({ en: "Chance of rain", bg: "Вероятност за валеж", de: "Regenwahrscheinlichkeit", it: "Probabilità di pioggia", es: "Probabilidad de lluvia", fr: "Probabilité de pluie", nl: "Kans op regen" });
   return `<div class="rain-chance" title="${title}">☔ ${chance}%</div>`;
 }

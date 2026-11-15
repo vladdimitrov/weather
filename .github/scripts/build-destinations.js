@@ -1,13 +1,13 @@
 // Builds /js/destinations.json: the main cities and resorts of each country,
 // shown as one-tap buttons under the place search (js/city-search.js) for the
-// country of the selected place. Names in the 5 site languages and the
+// country of the selected place. Names in the 7 site languages and the
 // coordinates come from the Open-Meteo geocoding API.
 // Run from the repository root: node .github/scripts/build-destinations.js [GR,CZ]
 // (with country codes: rebuild only those countries in the existing file)
 const fs = require('fs');
 const path = require('path');
 
-const LANGUAGES = ['en', 'bg', 'de', 'it', 'es'];
+const LANGUAGES = ['en', 'bg', 'de', 'it', 'es', 'fr', 'nl'];
 const API = 'https://geocoding-api.open-meteo.com/v1/search';
 
 // Country code -> places (English names; "Name|Region" or "Name@lat,lon" when the

@@ -1,6 +1,6 @@
 // Texts of the pages written by build-extra.js. Most of them exist only in Bulgarian: they answer
 // Bulgarian searches ("времето в Банско през уикенда", "температура на морската вода") and a
-// translation would have no searches (see places.js). /gradove/ is in the five languages.
+// translation would have no searches (see places.js). /gradove/ is in the seven languages.
 const bgIn = name => (/^[ВФвф]/.test(name) ? 'във ' : 'в ') + name;
 
 const BG = {
@@ -312,7 +312,7 @@ const BG = {
   }
 };
 
-// /gradove/: every city that has a page, in the five languages
+// /gradove/: every city that has a page, in the seven languages
 const CITIES_PAGE = {
   bg: {
     title: 'Всички градове – времето в България и Европа',
@@ -343,10 +343,22 @@ const CITIES_PAGE = {
     description: n => `Previsión del tiempo para ${n} ciudades de Bulgaria y Europa: elige una ciudad para el tiempo de hoy, la previsión a 7 días, el clima, el amanecer y el atardecer.`,
     intro: n => `Las ${n} ciudades que tienen página propia en Weather Pulse, con previsión a 7 días, clima por meses, amanecer y atardecer. Para cualquier otro lugar, usa el buscador de la página Pronóstico del tiempo.`,
     bulgaria: 'Bulgaria', seasons: ''
+  },
+  fr: {
+    title: 'Toutes les villes – météo en Bulgarie et en Europe',
+    description: n => `Prévisions météo pour ${n} villes de Bulgarie et d’Europe : choisissez une ville pour la météo du jour, les prévisions à 7 jours, le climat, le lever et le coucher du soleil.`,
+    intro: n => `Les ${n} villes qui ont leur propre page sur Weather Pulse, avec prévisions à 7 jours, climat mois par mois, lever et coucher du soleil. Pour tout autre lieu, utilisez la recherche de la page Prévisions météo.`,
+    bulgaria: 'Bulgarie', seasons: ''
+  },
+  nl: {
+    title: 'Alle steden – weer in Bulgarije en Europa',
+    description: n => `Weerbericht voor ${n} steden in Bulgarije en Europa: kies een stad voor het weer van vandaag, de 7-daagse verwachting, het klimaat, zonsopkomst en zonsondergang.`,
+    intro: n => `Alle ${n} steden met een eigen pagina op Weather Pulse, met 7-daagse verwachting, klimaat per maand en zonsopkomst en zonsondergang. Voor elke andere plaats gebruikt u de zoekfunctie op de pagina Weerbericht.`,
+    bulgaria: 'Bulgarije', seasons: ''
   }
 };
 
-// /kurorti/: the winter and summer resorts (Bulgaria and Greece), in the five languages
+// /kurorti/: the winter and summer resorts (Bulgaria and Greece), in the seven languages
 const RESORTS_PAGE = {
   bg: {
     title: 'Курорти – времето в ски и морските курорти на България и Гърция',
@@ -384,6 +396,20 @@ const RESORTS_PAGE = {
     description: 'El tiempo en las estaciones de esquí y de playa: Bansko, Borovets, Pamporovo, Sunny Beach, Arenas Doradas, Sozopol, Tasos, Calcídica y más – previsión, nieve en las pistas y temperatura del mar.',
     intro: 'Previsión a 7 días, nieve en las pistas y temperatura del mar para las estaciones de esquí y de playa de Bulgaria y del norte de Grecia.',
     ski: 'Estaciones de esquí en Bulgaria', sea: 'Destinos del mar Negro', greece: 'Destinos en Grecia'
+  },
+  fr: {
+    title: 'Stations – météo des stations de ski et balnéaires de Bulgarie et de Grèce',
+    h1: 'Météo dans les stations',
+    description: 'Météo des stations de ski et balnéaires : Bansko, Borovets, Pamporovo, Sunny Beach, Sables d’Or, Sozopol, Thassos, Chalcidique et autres – prévisions, neige sur les pistes et température de la mer.',
+    intro: 'Prévisions à 7 jours, neige sur les pistes et température de la mer pour les stations de ski et les stations balnéaires de Bulgarie et du nord de la Grèce.',
+    ski: 'Stations de ski en Bulgarie', sea: 'Stations de la mer Noire', greece: 'Stations en Grèce'
+  },
+  nl: {
+    title: 'Vakantieoorden – weer in de ski- en badplaatsen van Bulgarije en Griekenland',
+    h1: 'Weer in de vakantieoorden',
+    description: 'Weer in de ski- en badplaatsen: Bansko, Borovets, Pamporovo, Sunny Beach, Gouden Zanden, Sozopol, Thassos, Chalkidiki en meer – verwachting, sneeuw op de pistes en zeewatertemperatuur.',
+    intro: '7-daagse verwachting, sneeuw op de pistes en zeewatertemperatuur voor de skioorden en badplaatsen van Bulgarije en Noord-Griekenland.',
+    ski: 'Skioorden in Bulgarije', sea: 'Badplaatsen aan de Zwarte Zee', greece: 'Vakantieoorden in Griekenland'
   }
 };
 

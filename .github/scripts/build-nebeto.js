@@ -1,7 +1,7 @@
-// Generates /nebeto/ in the five languages (/nebeto/, /en/nebeto/, /de/nebeto/ ...): meteor
+// Generates /nebeto/ in the seven languages (/nebeto/, /en/nebeto/, /de/nebeto/ ...): meteor
 // showers, eclipses visible from Bulgaria, supermoons and when the northern lights can be seen
 // from Bulgaria. Events are in sky-events.json (kept by hand, every event with its source, texts
-// in the five languages); page texts are in text-nebeto.js. The Moon at each meteor peak is
+// in the seven languages); page texts are in text-nebeto.js. The Moon at each meteor peak is
 // computed by js/moon.js. A small script greys out events that have already happened.
 // Run from the repository root: node .github/scripts/build-nebeto.js [--sitemap]
 const fs = require('fs');

@@ -84,7 +84,7 @@ function common(html, lang, url, { title, ogTitle, description, source, pending 
     return translated ? `href="/${lang}${page}${rest}"` : m;
   });
   html = html.replace(/alt="Лого"/g, `alt="${I18N.LOGO_ALT[lang]}"`);
-  // Plain links to the other language versions (the Bulgarian page lists the four translations)
+  // Plain links to the other language versions (the Bulgarian page lists the six translations)
   const block = new RegExp(`  ${I18N.LANG_LINKS_START}[\\s\\S]*?${I18N.LANG_LINKS_END}\\n`);
   html = once(html, block, I18N.langLinks(lang, Object.fromEntries(I18N.LANGS.map(code => [code, I18N.localUrl(code, url)]))), 'language links');
   return html;

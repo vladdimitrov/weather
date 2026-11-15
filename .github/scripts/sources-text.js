@@ -1,4 +1,4 @@
-// Text of the /iztochnici/ (data sources) page in the five languages of the site (/iztochnici/, /en/iztochnici/ ...).
+// Text of the /iztochnici/ (data sources) page in the seven languages of the site (/iztochnici/, /en/iztochnici/ ...).
 // build-pages.js renders Bulgarian into the page and embeds the others; the
 // page script swaps them in when the visitor's language is not Bulgarian.
 // Each entry is a function of link(url, text) so every language shares the same links.
@@ -186,5 +186,78 @@ module.exports = {
     ],
     hContact: 'Contacto',
     contact: `Sugerencias, errores y preguntas sobre los datos: <a href="mailto:woodwideweb@yahoo.com">woodwideweb@yahoo.com</a>. Weather Pulse lo mantiene VYZYA. Vea también ${link('/za-saita/', 'Acerca del sitio', true)} y ${link('/poveritelnost/', 'Privacidad', true)}.`
+  }),
+  fr: link => ({
+    title: 'Sources des données',
+    pageTitle: 'Sources des données et comment les prévisions sont faites',
+    description: 'D’où viennent les données de Weather Pulse : les prévisions d’Open-Meteo (modèles ECMWF, ICON, GFS et autres), les tempêtes magnétiques de la NOAA, les jours fériés de Nager.Date. Comment la fiabilité est estimée et quelles sont les limites.',
+    intro: 'Weather Pulse ne calcule pas les prévisions lui-même et n’a pas de modèle météo à lui. Le site affiche des données de sources ouvertes, les met en forme et ajoute une estimation de leur fiabilité. Cette page explique d’où vient chaque chiffre.',
+    hForecast: 'Les prévisions météo',
+    forecast1: `Toutes les prévisions (temps actuel, 7 et 16 jours, heure par heure et par quart d’heure) viennent d’${link('https://open-meteo.com/', 'Open-Meteo')}. Open-Meteo rassemble les résultats des modèles numériques des services météorologiques nationaux et les diffuse par une API. Le site les demande dans le mode par défaut « best match » : pour chaque lieu et chaque heure, Open-Meteo choisit ou combine lui-même les modèles les plus adaptés, par exemple ICON du service allemand DWD, IFS de l’ECMWF, GFS de la NOAA américaine et les modèles de Météo-France. Weather Pulse ne choisit pas et n’indique pas quel modèle exact a produit un chiffre donné.`,
+    forecast2: 'Comme pour tous les modèles, la prévision est plus fiable pour les premiers jours et seulement indicative après le 7e jour.',
+    hCertainty: 'Quelle est la fiabilité de la prévision',
+    certaintyIntro: `Sur la page ${link('/weather/', 'Prévisions météo', true)}, deux éléments supplémentaires sous les températures montrent l’incertitude :`,
+    liRange: '<strong>Fourchette et fiabilité.</strong> On utilise l’ensemble ICON (40 calculs avec des conditions de départ légèrement différentes) de l’API Open-Meteo Ensemble. La fourchette affichée va du 10e au 90e centile des calculs : 80 % d’entre eux s’y trouvent. La fiabilité dépend de leur écart : jusqu’à 2° d’écart sur la maximale, c’est une « Prévision fiable », jusqu’à 4° une « Prévision assez fiable », au-delà une « Prévision incertaine ». Les jours après le 7e sont marqués « Prévision approximative ».',
+    liModels: '<strong>Comparaison des modèles.</strong> Le tableau « Comparer les modèles météo » montre la température maximale et la pluie de chaque jour selon trois modèles distincts : ECMWF IFS (Europe), ICON (Allemagne) et GFS (États-Unis). S’ils diffèrent beaucoup, la prévision est incertaine.',
+    hAll: 'Toutes les sources',
+    thData: 'Données',
+    thSource: 'Source',
+    rows: [
+      ['Prévisions météo, lever et coucher du soleil', link('https://open-meteo.com/en/docs', 'Open-Meteo Forecast API')],
+      ['Fourchette et fiabilité (ensemble ICON)', link('https://open-meteo.com/en/docs/ensemble-api', 'Open-Meteo Ensemble API')],
+      ['Comparaison ECMWF, ICON, GFS', 'Open-Meteo Forecast API avec un modèle choisi (ecmwf_ifs025, icon_seamless, gfs_seamless)'],
+      ['Climat mensuel des pages de villes', `${link('https://open-meteo.com/en/docs/historical-weather-api', 'Open-Meteo Historical Weather API')} : réanalyse ERA5, moyennes 2015–2024`],
+      ['Recherche de lieux', `${link('https://open-meteo.com/en/docs/geocoding-api', 'Open-Meteo Geocoding API')}, et pour « position actuelle » ${link('https://nominatim.openstreetmap.org/', 'OpenStreetMap Nominatim')}`],
+      ['Tempêtes géomagnétiques, indice Kp, vent solaire', link('https://www.swpc.noaa.gov/', 'NOAA Space Weather Prediction Center')],
+      ['Jours fériés', link('https://date.nager.at/', 'Nager.Date')],
+      ['Cartes (vent, pluie, nuages, température)', link('https://www.windy.com/', 'Windy')],
+      ['Phase de la Lune', 'Calculée sur le site à partir du mois lunaire moyen (29,53 jours) compté depuis une nouvelle lune connue, sans requête à une source externe. Utile comme repère, pas pour des instants astronomiquement exacts.']
+    ],
+    hLimits: 'Limites',
+    limits: [
+      'Weather Pulse n’est pas un service météorologique officiel. Pour les alertes de temps dangereux (tempêtes, inondations, canicule), suivez votre service national.',
+      'Les données viennent de modèles sur une grille de points, pas de mesures de stations. En montagne, dans les vallées et sur la côte, la température et la pluie réelles peuvent différer de ce qui est affiché.',
+      'Le climat de chaque ville vient de la réanalyse ERA5, à maille d’environ 10 km : en montagne, il peut différer des mesures d’une station météo.',
+      'Open-Meteo est un service gratuit. S’il est injoignable, le site affiche un message d’erreur, pas de données anciennes.'
+    ],
+    hContact: 'Contact',
+    contact: `Suggestions, erreurs et questions sur les données : <a href="mailto:woodwideweb@yahoo.com">woodwideweb@yahoo.com</a>. Weather Pulse est géré par VYZYA. Voir aussi ${link('/za-saita/', 'À propos', true)} et ${link('/poveritelnost/', 'Confidentialité', true)}.`
+  }),
+  nl: link => ({
+    title: 'Gegevensbronnen',
+    pageTitle: 'Gegevensbronnen en hoe de verwachtingen worden gemaakt',
+    description: 'Waar de gegevens van Weather Pulse vandaan komen: het weerbericht van Open-Meteo (modellen van ECMWF, ICON, GFS en andere), magnetische stormen van de NOAA, feestdagen van Nager.Date. Hoe de betrouwbaarheid wordt ingeschat en wat de beperkingen zijn.',
+    intro: 'Weather Pulse berekent de verwachtingen niet zelf en heeft geen eigen weermodel. De site toont gegevens uit open bronnen, ordent ze en voegt een inschatting toe van hoe betrouwbaar ze zijn. Op deze pagina staat waar elk getal vandaan komt.',
+    hForecast: 'Het weerbericht',
+    forecast1: `Alle verwachtingen (huidig weer, 7 en 16 dagen, per uur en per kwartier) komen van ${link('https://open-meteo.com/', 'Open-Meteo')}. Open-Meteo verzamelt de uitvoer van de numerieke modellen van nationale weerdiensten en levert die via een API. De site vraagt ze op in de standaardmodus "best match": voor elke plaats en elk uur kiest of combineert Open-Meteo zelf de meest geschikte modellen, bijvoorbeeld ICON van de Duitse dienst DWD, IFS van het ECMWF, GFS van de Amerikaanse NOAA en modellen van Météo-France. Weather Pulse bepaalt of toont niet welk model precies een bepaald getal heeft geleverd.`,
+    forecast2: 'Zoals bij alle modellen is de verwachting voor de eerste dagen betrouwbaarder en na dag 7 alleen een ruwe indicatie.',
+    hCertainty: 'Hoe zeker is de verwachting',
+    certaintyIntro: `Op de pagina ${link('/weather/', 'Weerbericht', true)} tonen twee extra onderdelen onder de temperaturen de onzekerheid:`,
+    liRange: '<strong>Bandbreedte en betrouwbaarheid.</strong> Hiervoor wordt het ICON-ensemble (40 berekeningen met iets andere beginvoorwaarden) uit de Open-Meteo Ensemble API gebruikt. De getoonde bandbreedte ligt tussen het 10e en 90e percentiel van de berekeningen, dus 80% van de berekeningen valt erbinnen. De betrouwbaarheid hangt af van hoeveel ze uiteenlopen: tot 2° spreiding in het maximum is "Betrouwbare verwachting", tot 4° "Vrij betrouwbare verwachting", meer is "Onzekere verwachting". Dagen na dag 7 zijn gemarkeerd als "Ruwe verwachting".',
+    liModels: '<strong>Vergelijking van modellen.</strong> De tabel "Weermodellen vergelijken" toont voor elke dag de maximumtemperatuur en de regen uit drie afzonderlijke modellen: ECMWF IFS (Europa), ICON (Duitsland) en GFS (VS). Als ze sterk verschillen, is de verwachting onzeker.',
+    hAll: 'Alle bronnen',
+    thData: 'Gegevens',
+    thSource: 'Bron',
+    rows: [
+      ['Weerbericht, zonsopkomst en zonsondergang', link('https://open-meteo.com/en/docs', 'Open-Meteo Forecast API')],
+      ['Bandbreedte en betrouwbaarheid (ICON-ensemble)', link('https://open-meteo.com/en/docs/ensemble-api', 'Open-Meteo Ensemble API')],
+      ['Vergelijking ECMWF, ICON, GFS', 'Open-Meteo Forecast API met een gekozen model (ecmwf_ifs025, icon_seamless, gfs_seamless)'],
+      ['Klimaat per maand op de stadspagina’s', `${link('https://open-meteo.com/en/docs/historical-weather-api', 'Open-Meteo Historical Weather API')}: ERA5-heranalyse, gemiddelden 2015–2024`],
+      ['Plaatsen zoeken', `${link('https://open-meteo.com/en/docs/geocoding-api', 'Open-Meteo Geocoding API')}, en voor "huidige locatie" ${link('https://nominatim.openstreetmap.org/', 'OpenStreetMap Nominatim')}`],
+      ['Geomagnetische stormen, Kp-index, zonnewind', link('https://www.swpc.noaa.gov/', 'NOAA Space Weather Prediction Center')],
+      ['Officiële feestdagen', link('https://date.nager.at/', 'Nager.Date')],
+      ['Kaarten (wind, regen, bewolking, temperatuur)', link('https://www.windy.com/', 'Windy')],
+      ['Maanfase', 'Op de site berekend uit de gemiddelde maanmaand (29,53 dagen), geteld vanaf een bekende nieuwe maan, zonder verzoek aan een externe bron. Goed als indicatie, niet voor astronomisch exacte momenten.']
+    ],
+    hLimits: 'Beperkingen',
+    limits: [
+      'Weather Pulse is geen officiële weerdienst. Volg voor waarschuwingen voor gevaarlijk weer (storm, overstromingen, hitte) uw nationale weerdienst.',
+      'De gegevens komen uit modellen met een raster van punten, niet uit metingen van weerstations. In de bergen, in dalen en aan de kust kunnen de echte temperatuur en neerslag afwijken van wat wordt getoond.',
+      'Het klimaat van elke stad komt uit de ERA5-heranalyse met een raster van ongeveer 10 km; in de bergen kan het daardoor afwijken van de metingen van een weerstation.',
+      'Open-Meteo is een gratis dienst. Als die niet bereikbaar is, toont de site een foutmelding, geen oude gegevens.'
+    ],
+    hContact: 'Contact',
+    contact: `Suggesties, fouten en vragen over de gegevens: <a href="mailto:woodwideweb@yahoo.com">woodwideweb@yahoo.com</a>. Weather Pulse wordt onderhouden door VYZYA. Zie ook ${link('/za-saita/', 'Over ons', true)} en ${link('/poveritelnost/', 'Privacy', true)}.`
   })
+
 };

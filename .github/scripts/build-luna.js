@@ -1,4 +1,4 @@
-// Generates the Moon calendar pages in the five languages (Bulgarian at /luna/, the others
+// Generates the Moon calendar pages in the seven languages (Bulgarian at /luna/, the others
 // at /en/luna/, /de/luna/, /it/luna/, /es/luna/):
 //   /luna/                   the Moon today + links to the years and months
 //   /luna/<year>/            all phases of the year, month by month
@@ -25,7 +25,7 @@ const SLUGS = ['yanuari', 'fevruari', 'mart', 'april', 'may', 'yuni', 'yuli', 'a
 const ICONS = Moon.ICONS;
 const HEAD = '  <link rel="stylesheet" href="/css/luna.css?v=4">\n';
 const SCRIPTS = `<script src="/js/moon.js?v=${VERSION.moon}" defer></script>
-<script src="/js/moon-view.js?v=1" defer></script>
+<script src="/js/moon-view.js?v=2" defer></script>
 <script src="/js/place-context.js?v=${VERSION.placeContext}" defer></script>
 <script src="/js/luna-today.js?v=${VERSION.lunaToday}" defer></script>
 <script src="/js/luna-local.js?v=${VERSION.lunaLocal}" defer></script>\n`;
@@ -309,7 +309,7 @@ function monthPage(lang, year, month, years) {
     url,
     lang,
     multi: true,
-    scripts: SCRIPTS + `<script src="/js/moon-grid.js?v=3" defer></script>
+    scripts: SCRIPTS + `<script src="/js/moon-grid.js?v=4" defer></script>
 `,
     title: esc(T.monthTitle(name, year, Boolean(full))),
     description: esc(T.monthDescription({ name, year, full, fresh, fullDates: dates(2), freshDates: dates(0) })),
@@ -496,7 +496,7 @@ if (process.argv.includes('--sitemap')) {
   let sitemap = fs.readFileSync(file, 'utf8');
   const nl = sitemap.includes('\r\n') ? '\r\n' : '\n';
   const missing = urls.filter(url => !sitemap.includes(`https://weatherpulse.eu${url}<`));
-  const entries = missing.map(url => ['  <url>', `    <loc>https://weatherpulse.eu${url}</loc>`, `    <lastmod>${today}</lastmod>`, `    <priority>${/^(\/(en|de|it|es))?\/luna\/$/.test(url) ? '0.7' : '0.6'}</priority>`, '  </url>', ''].join(nl)).join(nl);
+  const entries = missing.map(url => ['  <url>', `    <loc>https://weatherpulse.eu${url}</loc>`, `    <lastmod>${today}</lastmod>`, `    <priority>${/^(\/(en|de|it|es|fr|nl))?\/luna\/$/.test(url) ? '0.7' : '0.6'}</priority>`, '  </url>', ''].join(nl)).join(nl);
   sitemap = sitemap.replace('</urlset>', entries + '</urlset>');
   fs.writeFileSync(file, sitemap);
   console.log(`Added ${missing.length} URLs to sitemap.xml.`);

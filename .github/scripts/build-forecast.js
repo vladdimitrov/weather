@@ -22,7 +22,7 @@ const API = 'https://api.open-meteo.com/v1/forecast';
 const DAILY = 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,snowfall_sum,wind_speed_10m_max,wind_gusts_10m_max';
 const CHUNK = 20; // places in one request
 
-const ISSUED = { bg: 'Прогноза от', en: 'Forecast issued on', de: 'Vorhersage vom', it: 'Previsione del', es: 'Previsión del' };
+const ISSUED = { bg: 'Прогноза от', en: 'Forecast issued on', de: 'Vorhersage vom', it: 'Previsione del', es: 'Previsión del', fr: 'Prévision du', nl: 'Verwachting van' };
 
 // One sentence about the days of the page: the warmest and the coldest, the days with
 // precipitation and how the highs compare with the climate of the month (climate.json)
@@ -51,6 +51,16 @@ const SUMMARY = {
     span: n => (n ? `En los próximos ${n} días` : 'Durante el fin de semana'),
     text: s => `${s.span} el día más cálido será el ${s.warmDay} (hasta ${s.warmT}) y el más frío el ${s.coldDay} (hasta ${s.coldT}). ${s.wet ? `Se esperan precipitaciones en ${s.wet} de los días.` : 'No se esperan precipitaciones importantes.'}`,
     normal: (cmp, month, normal) => ` Las máximas están ${['por debajo de', 'cerca de', 'por encima de'][cmp]} lo normal para ${month} (media de ${normal}).`
+  },
+  fr: {
+    span: n => (n ? `Dans les ${n} prochains jours,` : 'Ce week-end,'),
+    text: s => `${s.span} le jour le plus chaud sera ${s.warmDay} (jusqu’à ${s.warmT}) et le plus froid ${s.coldDay} (jusqu’à ${s.coldT}). ${s.wet ? `Des précipitations sont attendues sur ${s.wet} des jours.` : 'Pas de précipitations importantes attendues.'}`,
+    normal: (cmp, month, normal) => ` Les maximales sont ${['inférieures aux', 'proches des', 'supérieures aux'][cmp]} normales de ${month} (moyenne ${normal}).`
+  },
+  nl: {
+    span: n => (n ? `In de komende ${n} dagen` : 'In het weekend'),
+    text: s => `${s.span} is ${s.warmDay} de warmste dag (tot ${s.warmT}) en ${s.coldDay} de koudste (tot ${s.coldT}). ${s.wet ? `Op ${s.wet} van de dagen wordt neerslag verwacht.` : 'Er wordt geen noemenswaardige neerslag verwacht.'}`,
+    normal: (cmp, month, normal) => ` Overdag is het ${['kouder dan', 'ongeveer zo warm als', 'warmer dan'][cmp]} normaal voor ${month} (gemiddeld ${normal}).`
   }
 };
 const CLIMATE = {};
@@ -60,7 +70,7 @@ for (const name of ['climate.json', 'climate-europe.json']) {
 }
 // "/de/europe/italy/naples/" -> "italy/naples", "/vremeto/sofia/10-dni/" -> "sofia"
 const climateOf = url => {
-  const bare = url.replace(/^\/(en|de|it|es)(?=\/)/, '');
+  const bare = url.replace(/^\/(en|de|it|es|fr|nl)(?=\/)/, '');
   const bg = bare.match(/^\/vremeto\/([a-z-]+)\//);
   const europe = bare.match(/^\/europe\/([a-z-]+)\/([a-z-]+)\//);
   return CLIMATE[europe ? `${europe[1]}/${europe[2]}` : bg ? bg[1] : ''] || null;

@@ -9,15 +9,17 @@
   const bar = document.getElementById('lunaPlace');
   if (!bar || typeof PlaceContext === 'undefined' || typeof Moon === 'undefined') return;
 
-  const LOCALES = { bg: 'bg-BG', en: 'en-GB', de: 'de-DE', it: 'it-IT', es: 'es-ES' };
+  const LOCALES = { bg: 'bg-BG', en: 'en-GB', de: 'de-DE', it: 'it-IT', es: 'es-ES', fr: 'fr-FR', nl: 'nl-NL' };
   const SUFFIX = { bg: ' ч.', de: ' Uhr' };
-  const AT = { bg: t => `в ${t} ч.`, en: t => `at ${t}`, de: t => `um ${t} Uhr`, it: t => `alle ${t}`, es: t => `a las ${t}` };
+  const AT = { bg: t => `в ${t} ч.`, en: t => `at ${t}`, de: t => `um ${t} Uhr`, it: t => `alle ${t}`, es: t => `a las ${t}`, fr: t => `à ${t}`, nl: t => `om ${t}` };
   const D = {
     bg: { label: 'Показано за:', hint: 'Датите и часовете следват избраната държава.', tz: z => `Часовете са по местно време (${z}).`, note: z => `Осветеността е в 12:00 ч. местно време (${z}).` },
     en: { label: 'Showing for:', hint: 'Dates and times follow the chosen country.', tz: z => `Times are local time (${z}).`, note: z => `Illumination is at 12:00 local time (${z}).` },
     de: { label: 'Angezeigt für:', hint: 'Daten und Zeiten folgen dem gewählten Land.', tz: z => `Die Zeiten gelten in Ortszeit (${z}).`, note: z => `Die Beleuchtung gilt für 12:00 Uhr Ortszeit (${z}).` },
     it: { label: 'Mostrato per:', hint: 'Date e orari seguono il paese scelto.', tz: z => `Gli orari sono in ora locale (${z}).`, note: z => `L'illuminazione è alle 12:00 ora locale (${z}).` },
-    es: { label: 'Mostrado para:', hint: 'Las fechas y horas siguen al país elegido.', tz: z => `Las horas están en hora local (${z}).`, note: z => `La iluminación corresponde a las 12:00, hora local (${z}).` }
+    es: { label: 'Mostrado para:', hint: 'Las fechas y horas siguen al país elegido.', tz: z => `Las horas están en hora local (${z}).`, note: z => `La iluminación corresponde a las 12:00, hora local (${z}).` },
+    fr: { label: 'Affiché pour :', hint: 'Les dates et les heures suivent le pays choisi.', tz: z => `Les heures sont à l’heure locale (${z}).`, note: z => `L’illumination est donnée à 12 h, heure locale (${z}).` },
+    nl: { label: 'Getoond voor:', hint: 'Data en tijden volgen het gekozen land.', tz: z => `De tijden zijn plaatselijke tijd (${z}).`, note: z => `De verlichting geldt voor 12:00 plaatselijke tijd (${z}).` }
   };
 
   // --- time zone helpers ------------------------------------------------------

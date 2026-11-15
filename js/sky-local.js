@@ -11,7 +11,7 @@
   const bar = document.getElementById('skyPlace');
   if (!bar || typeof PlaceContext === 'undefined') return;
 
-  const LOCALES = { bg: 'bg-BG', en: 'en-GB', de: 'de-DE', it: 'it-IT', es: 'es-ES' };
+  const LOCALES = { bg: 'bg-BG', en: 'en-GB', de: 'de-DE', it: 'it-IT', es: 'es-ES', fr: 'fr-FR', nl: 'nl-NL' };
   const SUFFIX = { bg: ' ч.', de: ' Uhr' };
   const D = {
     bg: {
@@ -43,6 +43,18 @@
       eclipse: place => `El eclipse solar parcial del 2 de agosto de 2027 se ve como parcial desde gran parte de Europa, el norte de África y Oriente Medio; es total en una franja estrecha sobre Gibraltar y el norte de África. Fuera de estas regiones (por ejemplo, América y Asia oriental) no es visible. La hora y la magnitud para ${place} dependen del lugar: solo hemos calculado cifras exactas para Sofía. No mires nunca al Sol sin gafas especiales para eclipses.`,
       aurora: (place, lat, level, dir) => `${place} (${lat}): ${['A esta latitud la aurora prácticamente no se ve nunca.', 'La aurora es rara y solo se ve con las tormentas más fuertes: Kp de 7 o más (niveles G3 y superiores).', 'Normalmente hace falta un Kp de 6–8 (niveles G2–G4).', 'Normalmente hace falta un Kp de 5–7 (niveles G1–G3).', 'A menudo basta un Kp de 4–5 (niveles G0–G1).', 'La aurora se ve a menudo incluso con actividad moderada (Kp 2–4).'][level]} Hacen falta cielo despejado, un lugar lejos de las luces de la ciudad y mirar al ${dir}. Es una estimación aproximada por latitud, no una previsión.`,
       north: 'norte', south: 'sur', n: 'N', s: 'S', sun: place => `Salida y puesta del sol – ${place}`
+    },
+    fr: {
+      label: 'Affiché pour :', hint: 'Les heures, l’éclipse et les aurores suivent le pays choisi.', tz: zone => `heure locale (${zone})`,
+      eclipse: place => `L’éclipse partielle de Soleil du 2 août 2027 est visible comme partielle depuis la majeure partie de l’Europe, de l’Afrique du Nord et du Moyen-Orient ; elle est totale dans une bande étroite au-dessus de Gibraltar et de l’Afrique du Nord. En dehors de ces régions (par exemple aux Amériques et en Asie de l’Est), elle n’est pas visible. L’heure et la magnitude pour ${place} dépendent du lieu : nous n’avons calculé de valeurs exactes que pour Sofia. Ne regardez jamais le Soleil sans lunettes spéciales pour éclipses.`,
+      aurora: (place, lat, level, dir) => `${place} (${lat}) : ${['À cette latitude, les aurores ne sont pratiquement jamais visibles.', 'Les aurores sont rares et ne se voient que lors des plus fortes tempêtes – Kp d’environ 7 ou plus (niveaux G3 et au-delà).', 'Il faut en général un Kp d’environ 6–8 (niveaux G2–G4).', 'Il faut en général un Kp d’environ 5–7 (niveaux G1–G3).', 'Un Kp de 4–5 (niveaux G0–G1) suffit souvent.', 'Les aurores se voient souvent même avec une activité modérée (Kp 2–4).'][level]} Il faut un ciel dégagé, un endroit loin des lumières de la ville et une vue vers le ${dir}. C’est une estimation grossière selon la latitude, pas une prévision.`,
+      north: 'nord', south: 'sud', n: 'N', s: 'S', sun: place => `Lever et coucher du soleil – ${place}`
+    },
+    nl: {
+      label: 'Getoond voor:', hint: 'Tijden, de verduistering en het noorderlicht volgen het gekozen land.', tz: zone => `plaatselijke tijd (${zone})`,
+      eclipse: place => `De gedeeltelijke zonsverduistering van 2 augustus 2027 is vanuit het grootste deel van Europa, Noord-Afrika en het Midden-Oosten als gedeeltelijke verduistering te zien; ze is totaal in een smalle strook over Gibraltar en Noord-Afrika. Buiten deze gebieden (bijvoorbeeld in Amerika en Oost-Azië) is ze niet zichtbaar. Tijd en grootte voor ${place} hangen af van de plaats – exacte waarden hebben we alleen voor Sofia berekend. Kijk nooit naar de zon zonder speciale eclipsbril.`,
+      aurora: (place, lat, level, dir) => `${place} (${lat}): ${['Op deze breedtegraad is het noorderlicht vrijwel nooit te zien.', 'Het noorderlicht is zeldzaam en alleen te zien bij de zwaarste stormen – Kp ongeveer 7 of meer (niveau G3 en hoger).', 'Meestal is een Kp van ongeveer 6–8 nodig (niveau G2–G4).', 'Meestal is een Kp van ongeveer 5–7 nodig (niveau G1–G3).', 'Vaak is Kp 4–5 (niveau G0–G1) genoeg.', 'Het noorderlicht is vaak al te zien bij matige activiteit (Kp 2–4).'][level]} U hebt een heldere hemel nodig, een plek ver van stadslicht en zicht naar het ${dir}. Dit is een ruwe inschatting op basis van de breedtegraad, geen verwachting.`,
+      north: 'noorden', south: 'zuiden', n: 'N', s: 'Z', sun: place => `Zonsopkomst en zonsondergang – ${place}`
     }
   };
 
@@ -52,7 +64,9 @@
     en: { aurora: c => `Northern lights – ${c}`, eclipse: c => `Eclipses – ${c}`, weather: p => `Weather – ${p}` },
     de: { aurora: c => `Polarlichter – ${c}`, eclipse: c => `Finsternisse – ${c}`, weather: p => `Wetter – ${p}` },
     it: { aurora: c => `Aurora boreale – ${c}`, eclipse: c => `Eclissi – ${c}`, weather: p => `Meteo – ${p}` },
-    es: { aurora: c => `Auroras boreales – ${c}`, eclipse: c => `Eclipses – ${c}`, weather: p => `El tiempo – ${p}` }
+    es: { aurora: c => `Auroras boreales – ${c}`, eclipse: c => `Eclipses – ${c}`, weather: p => `El tiempo – ${p}` },
+    fr: { aurora: c => `Aurores boréales – ${c}`, eclipse: c => `Éclipses – ${c}`, weather: p => `Météo – ${p}` },
+    nl: { aurora: c => `Noorderlicht – ${c}`, eclipse: c => `Verduisteringen – ${c}`, weather: p => `Weer – ${p}` }
   };
 
   const originals = new Map();

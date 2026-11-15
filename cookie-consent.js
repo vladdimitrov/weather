@@ -39,6 +39,20 @@
       accept: 'Aceptar',
       reject: 'Rechazar',
       settings: 'Configuración de cookies'
+    },
+    fr: {
+      more: 'Politique de confidentialité',
+      message: 'Nous utilisons des cookies de mesure d’audience (Google Analytics) pour comprendre comment le site est utilisé. Ils ne sont déposés que si vous acceptez.',
+      accept: 'Accepter',
+      reject: 'Refuser',
+      settings: 'Réglages des cookies'
+    },
+    nl: {
+      more: 'Privacybeleid',
+      message: 'We gebruiken analytische cookies (Google Analytics) om te begrijpen hoe de site wordt gebruikt. Ze worden alleen geplaatst als u akkoord gaat.',
+      accept: 'Accepteren',
+      reject: 'Weigeren',
+      settings: 'Cookie-instellingen'
     }
   };
 

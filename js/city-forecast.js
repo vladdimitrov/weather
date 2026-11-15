@@ -6,14 +6,14 @@
 
   // WMO weather codes, grouped (as in /js/home-weather.js)
   const conditions = [
-    { codes: [0], key: 'sun', icon: '☀️', text: { en: 'Clear', bg: 'Ясно', de: 'Klar', it: 'Sereno', es: 'Despejado' } },
-    { codes: [1, 2], key: 'cloudSun', icon: '⛅', text: { en: 'Partly cloudy', bg: 'Променлива облачност', de: 'Wechselnd bewölkt', it: 'Poco nuvoloso', es: 'Parcialmente nublado' } },
-    { codes: [3], key: 'cloud', icon: '☁️', text: { en: 'Cloudy', bg: 'Облачно', de: 'Bewölkt', it: 'Nuvoloso', es: 'Nublado' } },
-    { codes: [45, 48], key: 'fog', icon: '🌫️', text: { en: 'Fog', bg: 'Мъгла', de: 'Nebel', it: 'Nebbia', es: 'Niebla' } },
-    { codes: [51, 53, 55, 56, 57], key: 'drizzle', icon: '🌦️', text: { en: 'Drizzle', bg: 'Ръмеж', de: 'Nieselregen', it: 'Pioviggine', es: 'Llovizna' } },
-    { codes: [61, 63, 65, 66, 67, 80, 81, 82], key: 'rain', icon: '🌧️', text: { en: 'Rain', bg: 'Дъжд', de: 'Regen', it: 'Pioggia', es: 'Lluvia' } },
-    { codes: [71, 73, 75, 77, 85, 86], key: 'snow', icon: '❄️', text: { en: 'Snow', bg: 'Сняг', de: 'Schnee', it: 'Neve', es: 'Nieve' } },
-    { codes: [95, 96, 99], key: 'thunder', icon: '⛈️', text: { en: 'Thunderstorm', bg: 'Гръмотевична буря', de: 'Gewitter', it: 'Temporale', es: 'Tormenta' } }
+    { codes: [0], key: 'sun', icon: '☀️', text: { en: 'Clear', bg: 'Ясно', de: 'Klar', it: 'Sereno', es: 'Despejado', fr: 'Dégagé', nl: 'Helder' } },
+    { codes: [1, 2], key: 'cloudSun', icon: '⛅', text: { en: 'Partly cloudy', bg: 'Променлива облачност', de: 'Wechselnd bewölkt', it: 'Poco nuvoloso', es: 'Parcialmente nublado', fr: 'Partiellement nuageux', nl: 'Half bewolkt' } },
+    { codes: [3], key: 'cloud', icon: '☁️', text: { en: 'Cloudy', bg: 'Облачно', de: 'Bewölkt', it: 'Nuvoloso', es: 'Nublado', fr: 'Nuageux', nl: 'Bewolkt' } },
+    { codes: [45, 48], key: 'fog', icon: '🌫️', text: { en: 'Fog', bg: 'Мъгла', de: 'Nebel', it: 'Nebbia', es: 'Niebla', fr: 'Brouillard', nl: 'Mist' } },
+    { codes: [51, 53, 55, 56, 57], key: 'drizzle', icon: '🌦️', text: { en: 'Drizzle', bg: 'Ръмеж', de: 'Nieselregen', it: 'Pioviggine', es: 'Llovizna', fr: 'Bruine', nl: 'Motregen' } },
+    { codes: [61, 63, 65, 66, 67, 80, 81, 82], key: 'rain', icon: '🌧️', text: { en: 'Rain', bg: 'Дъжд', de: 'Regen', it: 'Pioggia', es: 'Lluvia', fr: 'Pluie', nl: 'Regen' } },
+    { codes: [71, 73, 75, 77, 85, 86], key: 'snow', icon: '❄️', text: { en: 'Snow', bg: 'Сняг', de: 'Schnee', it: 'Neve', es: 'Nieve', fr: 'Neige', nl: 'Sneeuw' } },
+    { codes: [95, 96, 99], key: 'thunder', icon: '⛈️', text: { en: 'Thunderstorm', bg: 'Гръмотевична буря', de: 'Gewitter', it: 'Temporale', es: 'Tormenta', fr: 'Orage', nl: 'Onweer' } }
   ];
   const condition = code => conditions.find(c => c.codes.includes(code)) || conditions[2];
 
@@ -22,7 +22,9 @@
     bg: { now: 'Сега', feels: 'усеща се като', wind: 'Вятър', humidity: 'Влажност', days: 'Прогноза за 7 дни', hourly: 'По часове →', today: 'Днес', tomorrow: 'Утре', rain: 'вероятност за валеж', error: 'Прогнозата не може да се зареди. Опитайте отново по-късно.', locale: 'bg-BG' },
     de: { now: 'Jetzt', feels: 'gefühlt', wind: 'Wind', humidity: 'Luftfeuchte', days: '7-Tage-Vorhersage', hourly: 'Stündlich →', today: 'Heute', tomorrow: 'Morgen', rain: 'Regenwahrscheinlichkeit', error: 'Die Vorhersage konnte nicht geladen werden. Bitte versuchen Sie es später erneut.', locale: 'de-DE' },
     it: { now: 'Ora', feels: 'percepita', wind: 'Vento', humidity: 'Umidità', days: 'Previsioni a 7 giorni', hourly: 'Ora per ora →', today: 'Oggi', tomorrow: 'Domani', rain: 'probabilità di pioggia', error: 'Non è stato possibile caricare le previsioni. Riprova più tardi.', locale: 'it-IT' },
-    es: { now: 'Ahora', feels: 'sensación', wind: 'Viento', humidity: 'Humedad', days: 'Previsión a 7 días', hourly: 'Por horas →', today: 'Hoy', tomorrow: 'Mañana', rain: 'probabilidad de lluvia', error: 'No se pudo cargar la previsión. Inténtalo de nuevo más tarde.', locale: 'es-ES' }
+    es: { now: 'Ahora', feels: 'sensación', wind: 'Viento', humidity: 'Humedad', days: 'Previsión a 7 días', hourly: 'Por horas →', today: 'Hoy', tomorrow: 'Mañana', rain: 'probabilidad de lluvia', error: 'No se pudo cargar la previsión. Inténtalo de nuevo más tarde.', locale: 'es-ES' },
+    fr: { now: 'Maintenant', feels: 'ressenti', wind: 'Vent', humidity: 'Humidité', days: 'Prévisions à 7 jours', hourly: 'Heure par heure →', today: 'Aujourd’hui', tomorrow: 'Demain', rain: 'probabilité de pluie', error: 'Impossible de charger les prévisions. Réessayez plus tard.', locale: 'fr-FR' },
+    nl: { now: 'Nu', feels: 'voelt als', wind: 'Wind', humidity: 'Luchtvochtigheid', days: '7-daagse verwachting', hourly: 'Per uur →', today: 'Vandaag', tomorrow: 'Morgen', rain: 'kans op regen', error: 'De verwachting kon niet worden geladen. Probeer het later opnieuw.', locale: 'nl-NL' }
   };
   const t = () => T[document.documentElement.lang] || T.en;
   // Gusts and warnings: our own (gusts of the strongest model) and the official ones of NIMH
@@ -33,7 +35,9 @@
     bg: { gusts: 'пориви', official: 'Предупреждение на НИМХ', levels: { yellow: 'жълт', orange: 'оранжев', red: 'червен' }, code: 'код' },
     de: { gusts: 'Böen', official: 'Warnung des NIMH', levels: { yellow: 'gelb', orange: 'orange', red: 'rot' }, code: 'Stufe' },
     it: { gusts: 'raffiche', official: 'Allerta del NIMH', levels: { yellow: 'gialla', orange: 'arancione', red: 'rossa' }, code: 'allerta' },
-    es: { gusts: 'rachas', official: 'Aviso del NIMH', levels: { yellow: 'amarillo', orange: 'naranja', red: 'rojo' }, code: 'aviso' }
+    es: { gusts: 'rachas', official: 'Aviso del NIMH', levels: { yellow: 'amarillo', orange: 'naranja', red: 'rojo' }, code: 'aviso' },
+    fr: { gusts: 'rafales', official: 'Vigilance du NIMH', levels: { yellow: 'jaune', orange: 'orange', red: 'rouge' }, code: 'vigilance' },
+    nl: { gusts: 'windstoten', official: 'Waarschuwing van het NIMH', levels: { yellow: 'geel', orange: 'oranje', red: 'rood' }, code: 'code' }
   };
   const wind = () => WIND[document.documentElement.lang] || WIND.en;
   // Our own warnings from the daily forecast of today and tomorrow (gusts: the strongest model,
@@ -54,7 +58,9 @@
       bg: { when: ['днес', 'утре'], wind: (v, w, o) => `${o ? 'Много силни' : 'Силни'} пориви на вятъра ${w}: до ${v} км/ч`, rain: (v, w, o) => `${o ? 'Много обилен' : 'Обилен'} валеж ${w}: около ${v} л/м²`, snow: (v, w, o) => `${o ? 'Много обилен' : 'Обилен'} снеговалеж ${w}: около ${v} см нов сняг`, cold: (v, w, o) => `${o ? 'Много силен' : 'Силен'} студ ${w}: до ${v}`, heat: (v, w, o) => `${o ? 'Силна жега' : 'Жега'} ${w}: до ${v}` },
       de: { when: ['heute', 'morgen'], wind: (v, w, o) => `${o ? 'Sehr starke' : 'Starke'} Windböen ${w}: bis ${v} km/h`, rain: (v, w, o) => `${o ? 'Sehr starker' : 'Starker'} Regen ${w}: etwa ${v} mm`, snow: (v, w, o) => `${o ? 'Sehr starker' : 'Starker'} Schneefall ${w}: etwa ${v} cm Neuschnee`, cold: (v, w, o) => `${o ? 'Sehr strenger' : 'Strenger'} Frost ${w}: bis ${v}`, heat: (v, w, o) => `${o ? 'Extreme' : 'Starke'} Hitze ${w}: bis ${v}` },
       it: { when: ['oggi', 'domani'], wind: (v, w, o) => `Raffiche di vento ${o ? 'molto forti' : 'forti'} ${w}: fino a ${v} km/h`, rain: (v, w, o) => `Pioggia ${o ? 'molto intensa' : 'intensa'} ${w}: circa ${v} mm`, snow: (v, w, o) => `Nevicata ${o ? 'molto abbondante' : 'abbondante'} ${w}: circa ${v} cm di neve fresca`, cold: (v, w, o) => `Gelo ${o ? 'molto intenso' : 'intenso'} ${w}: fino a ${v}`, heat: (v, w, o) => `Caldo ${o ? 'estremo' : 'intenso'} ${w}: fino a ${v}` },
-      es: { when: ['hoy', 'mañana'], wind: (v, w, o) => `Rachas de viento ${o ? 'muy fuertes' : 'fuertes'} ${w}: hasta ${v} km/h`, rain: (v, w, o) => `Lluvia ${o ? 'muy intensa' : 'intensa'} ${w}: unos ${v} mm`, snow: (v, w, o) => `Nevada ${o ? 'muy abundante' : 'abundante'} ${w}: unos ${v} cm de nieve nueva`, cold: (v, w, o) => `Helada ${o ? 'muy fuerte' : 'fuerte'} ${w}: hasta ${v}`, heat: (v, w, o) => `Calor ${o ? 'extremo' : 'intenso'} ${w}: hasta ${v}` }
+      es: { when: ['hoy', 'mañana'], wind: (v, w, o) => `Rachas de viento ${o ? 'muy fuertes' : 'fuertes'} ${w}: hasta ${v} km/h`, rain: (v, w, o) => `Lluvia ${o ? 'muy intensa' : 'intensa'} ${w}: unos ${v} mm`, snow: (v, w, o) => `Nevada ${o ? 'muy abundante' : 'abundante'} ${w}: unos ${v} cm de nieve nueva`, cold: (v, w, o) => `Helada ${o ? 'muy fuerte' : 'fuerte'} ${w}: hasta ${v}`, heat: (v, w, o) => `Calor ${o ? 'extremo' : 'intenso'} ${w}: hasta ${v}` },
+      fr: { when: ['aujourd’hui', 'demain'], wind: (v, w, o) => `Rafales de vent ${o ? 'très fortes' : 'fortes'} ${w} : jusqu’à ${v} km/h`, rain: (v, w, o) => `Pluie ${o ? 'très forte' : 'forte'} ${w} : environ ${v} mm`, snow: (v, w, o) => `Chutes de neige ${o ? 'très abondantes' : 'abondantes'} ${w} : environ ${v} cm de neige fraîche`, cold: (v, w, o) => `Gel ${o ? 'très fort' : 'fort'} ${w} : jusqu’à ${v}`, heat: (v, w, o) => `Chaleur ${o ? 'extrême' : 'forte'} ${w} : jusqu’à ${v}` },
+      nl: { when: ['vandaag', 'morgen'], wind: (v, w, o) => `${o ? 'Zeer zware' : 'Zware'} windstoten ${w}: tot ${v} km/u`, rain: (v, w, o) => `${o ? 'Zeer zware' : 'Zware'} regen ${w}: ongeveer ${v} mm`, snow: (v, w, o) => `${o ? 'Zeer zware' : 'Zware'} sneeuwval ${w}: ongeveer ${v} cm verse sneeuw`, cold: (v, w, o) => `${o ? 'Zeer strenge' : 'Strenge'} vorst ${w}: tot ${v}`, heat: (v, w, o) => `${o ? 'Extreme' : 'Grote'} hitte ${w}: tot ${v}` }
     },
     // daily: Open-Meteo "daily"; official: the official warnings of the place ([{ type }]).
     // Gives [{ type, level: 'yellow' | 'orange', day: 0 | 1, text }], the worse day of each rule.
@@ -126,7 +132,17 @@
         all: 'Los modelos ECMWF, ICON y GFS coinciden en todos estos días, así que la previsión es bastante fiable.',
         until: (day, why) => `Los modelos coinciden hasta ${/^(hoy|mañana)$/.test(day) ? day : `el ${day}`}; después la previsión es menos segura (${why}).`,
         early: (day, why) => `Los modelos ya difieren para ${/^(hoy|mañana)$/.test(day) ? day : `el ${day}`} (${why}), conviene volver a consultar más tarde.`,
-        temp: d => `hasta ${d}° de diferencia en la temperatura`, rain: 'un modelo da lluvia y otro un día seco', and: ' y ' }
+        temp: d => `hasta ${d}° de diferencia en la temperatura`, rain: 'un modelo da lluvia y otro un día seco', and: ' y ' },
+      fr: { levels: ['', 'moins sûre', 'incertaine'], tip: 'L’écart entre les modèles ECMWF, ICON et GFS pour ce jour',
+        all: 'Les modèles ECMWF, ICON et GFS concordent pour tous ces jours : la prévision est assez sûre.',
+        until: (day, why) => `Les modèles concordent jusqu’à ${day} ; ensuite, la prévision est moins sûre (${why}).`,
+        early: (day, why) => `Les modèles divergent déjà pour ${day} (${why}) : revenez consulter la prévision plus tard.`,
+        temp: d => `jusqu’à ${d}° d’écart de température`, rain: 'un modèle prévoit de la pluie, un autre une journée sèche', and: ' et ' },
+      nl: { levels: ['', 'minder zeker', 'onzeker'], tip: 'Hoe ver de modellen ECMWF, ICON en GFS voor deze dag uiteenlopen',
+        all: 'De modellen ECMWF, ICON en GFS zijn het voor al deze dagen eens, dus de verwachting is vrij zeker.',
+        until: (day, why) => `De modellen zijn het eens tot en met ${day}; daarna is de verwachting minder zeker (${why}).`,
+        early: (day, why) => `De modellen lopen al uiteen voor ${day} (${why}), kijk later nog eens naar de verwachting.`,
+        temp: d => `tot ${d}° verschil in temperatuur`, rain: 'het ene model geeft regen, het andere een droge dag', and: ' en ' }
     },
     // One sentence for the days shown (indexes into daily), or '' without the data of the models.
     // name(i): the name of day i ("четвъртък, 19 ноември")
@@ -156,7 +172,9 @@
       bg: { label: 'Качество на въздуха', levels: ['добро', 'задоволително', 'умерено', 'лошо', 'много лошо', 'изключително лошо'], index: 'индекс', worst: 'най-лошо до 48 часа', more: 'Качеството на въздуха в България →' },
       de: { label: 'Luftqualität', levels: ['gut', 'mäßig gut', 'mäßig', 'schlecht', 'sehr schlecht', 'extrem schlecht'], index: 'Index', worst: 'am schlechtesten in 48 Stunden', more: 'Luftqualität in Bulgarien →' },
       it: { label: 'Qualità dell\'aria', levels: ['buona', 'discreta', 'moderata', 'scadente', 'molto scadente', 'pessima'], index: 'indice', worst: 'peggiore nelle prossime 48 ore', more: 'Qualità dell\'aria in Bulgaria →' },
-      es: { label: 'Calidad del aire', levels: ['buena', 'aceptable', 'moderada', 'mala', 'muy mala', 'extremadamente mala'], index: 'índice', worst: 'peor en las próximas 48 horas', more: 'Calidad del aire en Bulgaria →' }
+      es: { label: 'Calidad del aire', levels: ['buena', 'aceptable', 'moderada', 'mala', 'muy mala', 'extremadamente mala'], index: 'índice', worst: 'peor en las próximas 48 horas', more: 'Calidad del aire en Bulgaria →' },
+      fr: { label: 'Qualité de l’air', levels: ['bonne', 'correcte', 'moyenne', 'médiocre', 'très médiocre', 'extrêmement mauvaise'], index: 'indice', worst: 'la pire dans les 48 prochaines heures', more: 'Qualité de l’air en Bulgarie →' },
+      nl: { label: 'Luchtkwaliteit', levels: ['goed', 'redelijk', 'matig', 'slecht', 'zeer slecht', 'extreem slecht'], index: 'index', worst: 'slechtst in de komende 48 uur', more: 'Luchtkwaliteit in Bulgarije →' }
     }
   };
   window.WeatherAir = AIR;
@@ -167,7 +185,9 @@
     bg: { days: n => `Прогноза за ${n} дни`, weekend: 'Уикендът' },
     de: { days: n => `${n}-Tage-Vorhersage`, weekend: 'Das Wochenende' },
     it: { days: n => `Previsioni a ${n} giorni`, weekend: 'Il fine settimana' },
-    es: { days: n => `Previsión a ${n} días`, weekend: 'El fin de semana' }
+    es: { days: n => `Previsión a ${n} días`, weekend: 'El fin de semana' },
+    fr: { days: n => `Prévisions à ${n} jours`, weekend: 'Le week-end' },
+    nl: { days: n => `${n}-daagse verwachting`, weekend: 'Het weekend' }
   };
   const period = () => PERIOD[document.documentElement.lang] || PERIOD.en;
   // Friday to Sunday of the coming weekend (from today when the weekend has started)
@@ -180,13 +200,15 @@
     return list;
   }
 
-  // Sunrise, sunset, day length and the Moon of today (labels in the 5 site languages)
+  // Sunrise, sunset, day length and the Moon of today (labels in the 7 site languages)
   const SUN = {
     en: { sunrise: 'Sunrise', sunset: 'Sunset', daylight: 'Day length', moon: 'Moon', h: 'h', m: 'min' },
     bg: { sunrise: 'Изгрев', sunset: 'Залез', daylight: 'Дължина на деня', moon: 'Луна', h: 'ч', m: 'мин' },
     de: { sunrise: 'Sonnenaufgang', sunset: 'Sonnenuntergang', daylight: 'Tageslänge', moon: 'Mond', h: 'Std', m: 'Min' },
     it: { sunrise: 'Alba', sunset: 'Tramonto', daylight: 'Durata del giorno', moon: 'Luna', h: 'h', m: 'min' },
-    es: { sunrise: 'Amanecer', sunset: 'Atardecer', daylight: 'Duración del día', moon: 'Luna', h: 'h', m: 'min' }
+    es: { sunrise: 'Amanecer', sunset: 'Atardecer', daylight: 'Duración del día', moon: 'Luna', h: 'h', m: 'min' },
+    fr: { sunrise: 'Lever du soleil', sunset: 'Coucher du soleil', daylight: 'Durée du jour', moon: 'Lune', h: 'h', m: 'min' },
+    nl: { sunrise: 'Zonsopkomst', sunset: 'Zonsondergang', daylight: 'Daglengte', moon: 'Maan', h: 'u', m: 'min' }
   };
 
   function sunLines() {
@@ -223,7 +245,7 @@
     if (!corePromise) {
       corePromise = new Promise(resolve => {
         const script = document.createElement('script');
-        script.src = '/js/forecast-core.js?v=2';
+        script.src = '/js/forecast-core.js?v=3';
         script.onload = script.onerror = () => resolve();
         document.head.appendChild(script);
       });
@@ -460,7 +482,7 @@
   }
 
   // --- Other cities of the country near this one, with their temperature now ---
-  const NEARBY = { en: 'Other cities nearby', bg: 'Други градове наблизо', de: 'Weitere Städte in der Nähe', it: 'Altre città vicine', es: 'Otras ciudades cercanas' };
+  const NEARBY = { en: 'Other cities nearby', bg: 'Други градове наблизо', de: 'Weitere Städte in der Nähe', it: 'Altre città vicine', es: 'Otras ciudades cercanas', fr: 'Autres villes proches', nl: 'Andere steden in de buurt' };
   let nearby = null; // { section, items: [{ place, current }] }
 
   function distanceKm(lat1, lon1, lat2, lon2) {

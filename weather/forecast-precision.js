@@ -4,64 +4,72 @@
 //   - reliability per day from how much those runs disagree; days after the
 //     7th are marked as a rough guide
 //   - comparison of three models (ECMWF, ICON, GFS) under the table
-// Texts in 5 languages via pickText() (/js/language-selector.js).
+// Texts in 7 languages via pickText() (/js/language-selector.js).
 window.ForecastPrecision = (function () {
   const ENSEMBLE_URL = 'https://ensemble-api.open-meteo.com/v1/ensemble';
   const FORECAST_URL = 'https://api.open-meteo.com/v1/forecast';
   const MODELS = [
-    { id: 'ecmwf_ifs', name: 'ECMWF', origin: { en: 'Europe', bg: 'Европа', de: 'Europa', it: 'Europa', es: 'Europa' } },
-    { id: 'icon_seamless', name: 'ICON', origin: { en: 'Germany', bg: 'Германия', de: 'Deutschland', it: 'Germania', es: 'Alemania' } },
-    { id: 'gfs_seamless', name: 'GFS', origin: { en: 'USA', bg: 'САЩ', de: 'USA', it: 'USA', es: 'EE. UU.' } }
+    { id: 'ecmwf_ifs', name: 'ECMWF', origin: { en: 'Europe', bg: 'Европа', de: 'Europa', it: 'Europa', es: 'Europa', fr: 'Europe', nl: 'Europa' } },
+    { id: 'icon_seamless', name: 'ICON', origin: { en: 'Germany', bg: 'Германия', de: 'Deutschland', it: 'Germania', es: 'Alemania', fr: 'Allemagne', nl: 'Duitsland' } },
+    { id: 'gfs_seamless', name: 'GFS', origin: { en: 'USA', bg: 'САЩ', de: 'USA', it: 'USA', es: 'EE. UU.', fr: 'États-Unis', nl: 'VS' } }
   ];
 
   const T = {
-    high: { en: 'Reliable forecast', bg: 'Надеждна прогноза', de: 'Zuverlässige Vorhersage', it: 'Previsione affidabile', es: 'Pronóstico fiable' },
-    medium: { en: 'Fairly reliable forecast', bg: 'Средно надеждна прогноза', de: 'Mittel zuverlässige Vorhersage', it: 'Previsione abbastanza affidabile', es: 'Pronóstico bastante fiable' },
-    low: { en: 'Uncertain forecast', bg: 'Несигурна прогноза', de: 'Unsichere Vorhersage', it: 'Previsione incerta', es: 'Pronóstico incierto' },
-    rough: { en: 'Rough forecast', bg: 'Ориентировъчна прогноза', de: 'Grobe Vorhersage', it: 'Previsione indicativa', es: 'Pronóstico orientativo' },
+    high: { en: 'Reliable forecast', bg: 'Надеждна прогноза', de: 'Zuverlässige Vorhersage', it: 'Previsione affidabile', es: 'Pronóstico fiable', fr: 'Prévision fiable', nl: 'Betrouwbare verwachting' },
+    medium: { en: 'Fairly reliable forecast', bg: 'Средно надеждна прогноза', de: 'Mittel zuverlässige Vorhersage', it: 'Previsione abbastanza affidabile', es: 'Pronóstico bastante fiable', fr: 'Prévision assez fiable', nl: 'Vrij betrouwbare verwachting' },
+    low: { en: 'Uncertain forecast', bg: 'Несигурна прогноза', de: 'Unsichere Vorhersage', it: 'Previsione incerta', es: 'Pronóstico incierto', fr: 'Prévision incertaine', nl: 'Onzekere verwachting' },
+    rough: { en: 'Rough forecast', bg: 'Ориентировъчна прогноза', de: 'Grobe Vorhersage', it: 'Previsione indicativa', es: 'Pronóstico orientativo', fr: 'Prévision approximative', nl: 'Ruwe verwachting' },
     reliabilityTitle: {
       en: 'Based on how much {n} runs of the forecast model disagree',
       bg: 'Според разликата между {n} изчисления на модела',
       de: 'Nach der Abweichung zwischen {n} Modellläufen',
       it: 'In base alla differenza tra {n} simulazioni del modello',
-      es: 'Según la diferencia entre {n} simulaciones del modelo'
+      es: 'Según la diferencia entre {n} simulaciones del modelo',
+      fr: 'D’après l’écart entre {n} calculs du modèle de prévision',
+      nl: 'Op basis van hoeveel {n} berekeningen van het verwachtingsmodel uiteenlopen'
     },
     roughTitle: {
       en: 'Forecasts more than a week ahead are only a rough guide',
       bg: 'Прогнозите за повече от седмица напред са само ориентировъчни',
       de: 'Vorhersagen für mehr als eine Woche sind nur eine grobe Orientierung',
       it: 'Le previsioni oltre una settimana sono solo indicative',
-      es: 'Los pronósticos a más de una semana son solo orientativos'
+      es: 'Los pronósticos a más de una semana son solo orientativos',
+      fr: 'Les prévisions à plus d’une semaine ne sont qu’indicatives',
+      nl: 'Verwachtingen voor meer dan een week vooruit zijn alleen een ruwe indicatie'
     },
     rangeTitle: {
       en: '80% of the forecast runs are in this range',
       bg: '80% от изчисленията на модела са в този диапазон',
       de: '80 % der Modellläufe liegen in diesem Bereich',
       it: "L'80% delle simulazioni è in questo intervallo",
-      es: 'El 80% de las simulaciones está en este rango'
+      es: 'El 80% de las simulaciones está en este rango',
+      fr: '80 % des calculs de prévision se situent dans cette fourchette',
+      nl: '80% van de berekeningen valt binnen deze bandbreedte'
     },
-    modelsTitle: { en: 'Compare weather models', bg: 'Сравнение на метеорологичните модели', de: 'Wettermodelle vergleichen', it: 'Confronto dei modelli meteo', es: 'Comparar modelos meteorológicos' },
+    modelsTitle: { en: 'Compare weather models', bg: 'Сравнение на метеорологичните модели', de: 'Wettermodelle vergleichen', it: 'Confronto dei modelli meteo', es: 'Comparar modelos meteorológicos', fr: 'Comparer les modèles météo', nl: 'Weermodellen vergelijken' },
     modelsNote: {
       en: 'Highest temperature / precipitation. When the models agree, the forecast is more certain.',
       bg: 'Най-висока температура / валежи. Когато моделите са съгласни, прогнозата е по-сигурна.',
       de: 'Höchsttemperatur / Niederschlag. Wenn die Modelle übereinstimmen, ist die Vorhersage sicherer.',
       it: 'Temperatura massima / precipitazioni. Quando i modelli concordano, la previsione è più sicura.',
-      es: 'Temperatura máxima / precipitación. Cuando los modelos coinciden, el pronóstico es más seguro.'
+      es: 'Temperatura máxima / precipitación. Cuando los modelos coinciden, el pronóstico es más seguro.',
+      fr: 'Température maximale / précipitations. Quand les modèles concordent, la prévision est plus sûre.',
+      nl: 'Maximumtemperatuur / neerslag. Als de modellen overeenkomen, is de verwachting zekerder.'
     },
-    day: { en: 'Day', bg: 'Ден', de: 'Tag', it: 'Giorno', es: 'Día' }
+    day: { en: 'Day', bg: 'Ден', de: 'Tag', it: 'Giorno', es: 'Día', fr: 'Jour', nl: 'Dag' }
   };
 
   // Legend above the table: what the reliability labels mean
   const LEGEND = {
-    title: { en: 'How reliable is the forecast?', bg: 'Колко е надеждна прогнозата', de: 'Wie zuverlässig ist die Vorhersage?', it: 'Quanto è affidabile la previsione?', es: '¿Qué tan fiable es el pronóstico?' },
-    high: { en: 'The runs agree: the highest temperature is within 2 °C from run to run', bg: 'Изчисленията съвпадат: максималната температура се различава с до 2 °C между тях', de: 'Die Läufe stimmen überein: die Höchsttemperatur weicht um höchstens 2 °C ab', it: 'Le simulazioni concordano: la temperatura massima differisce al massimo di 2 °C', es: 'Las simulaciones coinciden: la temperatura máxima difiere como mucho 2 °C' },
-    medium: { en: 'Some difference: 2 to 4 °C between the runs', bg: 'Има разлика: между 2 и 4 °C между изчисленията', de: 'Etwas Unterschied: 2 bis 4 °C zwischen den Läufen', it: 'Qualche differenza: da 2 a 4 °C tra le simulazioni', es: 'Algo de diferencia: de 2 a 4 °C entre las simulaciones' },
-    low: { en: 'The runs disagree: more than 4 °C apart, the weather may turn out differently', bg: 'Изчисленията се различават: над 4 °C, времето може да е различно от прогнозата', de: 'Die Läufe weichen ab: mehr als 4 °C, das Wetter kann anders ausfallen', it: 'Le simulazioni differiscono: oltre 4 °C, il tempo potrebbe essere diverso', es: 'Las simulaciones difieren: más de 4 °C, el tiempo puede ser distinto' },
-    rough: { en: 'More than a week ahead: only a rough guide', bg: 'За повече от седмица напред: само ориентировъчно', de: 'Mehr als eine Woche voraus: nur eine grobe Orientierung', it: 'Oltre una settimana: solo indicativa', es: 'Más de una semana: solo orientativo' },
-    how: { en: 'How it is worked out: about 40 runs of the ICON model start from slightly different conditions. The range shows where 80% of them fall. The reliability comes from how far apart the runs are. The model comparison under the table (ECMWF, ICON, GFS) is an extra check: when they agree, the forecast is more certain.', bg: 'Как се определя: около 40 изчисления на модела ICON тръгват от леко различни начални условия. Диапазонът показва къде са 80% от тях. Надеждността зависи от това колко са разделени изчисленията. Сравнението на трите модела под таблицата (ECMWF, ICON, GFS) е допълнителна проверка: когато съвпадат, прогнозата е по-сигурна.', de: 'So wird es ermittelt: etwa 40 Läufe des ICON-Modells starten mit leicht unterschiedlichen Bedingungen. Der Bereich zeigt, wo 80 % davon liegen. Die Zuverlässigkeit hängt davon ab, wie weit die Läufe auseinanderliegen. Der Modellvergleich unter der Tabelle (ECMWF, ICON, GFS) ist eine zusätzliche Prüfung: Wenn sie übereinstimmen, ist die Vorhersage sicherer.', it: 'Come si calcola: circa 40 simulazioni del modello ICON partono da condizioni leggermente diverse. L\'intervallo mostra dove cade l\'80% di esse. L\'affidabilità dipende da quanto sono distanti le simulazioni. Il confronto dei modelli sotto la tabella (ECMWF, ICON, GFS) è un controllo in più: quando concordano, la previsione è più sicura.', es: 'Cómo se calcula: unas 40 simulaciones del modelo ICON parten de condiciones ligeramente distintas. El rango muestra dónde cae el 80% de ellas. La fiabilidad depende de lo separadas que estén. La comparación de modelos bajo la tabla (ECMWF, ICON, GFS) es una comprobación extra: cuando coinciden, el pronóstico es más seguro.' }
+    title: { en: 'How reliable is the forecast?', bg: 'Колко е надеждна прогнозата', de: 'Wie zuverlässig ist die Vorhersage?', it: 'Quanto è affidabile la previsione?', es: '¿Qué tan fiable es el pronóstico?', fr: 'Quelle est la fiabilité de la prévision ?', nl: 'Hoe betrouwbaar is de verwachting?' },
+    high: { en: 'The runs agree: the highest temperature is within 2 °C from run to run', bg: 'Изчисленията съвпадат: максималната температура се различава с до 2 °C между тях', de: 'Die Läufe stimmen überein: die Höchsttemperatur weicht um höchstens 2 °C ab', it: 'Le simulazioni concordano: la temperatura massima differisce al massimo di 2 °C', es: 'Las simulaciones coinciden: la temperatura máxima difiere como mucho 2 °C', fr: 'Les calculs concordent : la température maximale varie de 2 °C au plus d’un calcul à l’autre', nl: 'De berekeningen komen overeen: de maximumtemperatuur verschilt hoogstens 2 °C per berekening' },
+    medium: { en: 'Some difference: 2 to 4 °C between the runs', bg: 'Има разлика: между 2 и 4 °C между изчисленията', de: 'Etwas Unterschied: 2 bis 4 °C zwischen den Läufen', it: 'Qualche differenza: da 2 a 4 °C tra le simulazioni', es: 'Algo de diferencia: de 2 a 4 °C entre las simulaciones', fr: 'Un certain écart : de 2 à 4 °C entre les calculs', nl: 'Enig verschil: 2 tot 4 °C tussen de berekeningen' },
+    low: { en: 'The runs disagree: more than 4 °C apart, the weather may turn out differently', bg: 'Изчисленията се различават: над 4 °C, времето може да е различно от прогнозата', de: 'Die Läufe weichen ab: mehr als 4 °C, das Wetter kann anders ausfallen', it: 'Le simulazioni differiscono: oltre 4 °C, il tempo potrebbe essere diverso', es: 'Las simulaciones difieren: más de 4 °C, el tiempo puede ser distinto', fr: 'Les calculs divergent : plus de 4 °C d’écart, le temps peut être différent', nl: 'De berekeningen lopen uiteen: meer dan 4 °C verschil, het weer kan anders uitpakken' },
+    rough: { en: 'More than a week ahead: only a rough guide', bg: 'За повече от седмица напред: само ориентировъчно', de: 'Mehr als eine Woche voraus: nur eine grobe Orientierung', it: 'Oltre una settimana: solo indicativa', es: 'Más de una semana: solo orientativo', fr: 'À plus d’une semaine : simple indication', nl: 'Meer dan een week vooruit: alleen een ruwe indicatie' },
+    how: { en: 'How it is worked out: about 40 runs of the ICON model start from slightly different conditions. The range shows where 80% of them fall. The reliability comes from how far apart the runs are. The model comparison under the table (ECMWF, ICON, GFS) is an extra check: when they agree, the forecast is more certain.', bg: 'Как се определя: около 40 изчисления на модела ICON тръгват от леко различни начални условия. Диапазонът показва къде са 80% от тях. Надеждността зависи от това колко са разделени изчисленията. Сравнението на трите модела под таблицата (ECMWF, ICON, GFS) е допълнителна проверка: когато съвпадат, прогнозата е по-сигурна.', de: 'So wird es ermittelt: etwa 40 Läufe des ICON-Modells starten mit leicht unterschiedlichen Bedingungen. Der Bereich zeigt, wo 80 % davon liegen. Die Zuverlässigkeit hängt davon ab, wie weit die Läufe auseinanderliegen. Der Modellvergleich unter der Tabelle (ECMWF, ICON, GFS) ist eine zusätzliche Prüfung: Wenn sie übereinstimmen, ist die Vorhersage sicherer.', it: 'Come si calcola: circa 40 simulazioni del modello ICON partono da condizioni leggermente diverse. L\'intervallo mostra dove cade l\'80% di esse. L\'affidabilità dipende da quanto sono distanti le simulazioni. Il confronto dei modelli sotto la tabella (ECMWF, ICON, GFS) è un controllo in più: quando concordano, la previsione è più sicura.', es: 'Cómo se calcula: unas 40 simulaciones del modelo ICON parten de condiciones ligeramente distintas. El rango muestra dónde cae el 80% de ellas. La fiabilidad depende de lo separadas que estén. La comparación de modelos bajo la tabla (ECMWF, ICON, GFS) es una comprobación extra: cuando coinciden, el pronóstico es más seguro.', fr: 'Comment c’est calculé : environ 40 calculs du modèle ICON partent de conditions légèrement différentes. La fourchette montre où se situent 80 % d’entre eux. La fiabilité dépend de l’écart entre les calculs. La comparaison des modèles sous le tableau (ECMWF, ICON, GFS) est un contrôle supplémentaire : quand ils concordent, la prévision est plus sûre.', nl: 'Hoe het wordt berekend: ongeveer 40 berekeningen van het ICON-model starten vanuit iets andere beginvoorwaarden. De bandbreedte toont waar 80% ervan valt. De betrouwbaarheid volgt uit hoe ver de berekeningen uiteenlopen. De vergelijking van modellen onder de tabel (ECMWF, ICON, GFS) is een extra controle: als ze overeenkomen, is de verwachting zekerder.' }
   };
 
-  const locales = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES' };
+  const locales = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES', fr: 'fr-FR', nl: 'nl-NL' };
   let state = null; // { dates, ensemble: { [date]: info }, models: { [date]: { [model]: { max, rain } } } }
   let requestId = 0;
 

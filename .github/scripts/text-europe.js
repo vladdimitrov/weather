@@ -1,4 +1,4 @@
-// Texts of the /europe/ pages (build-europe.js) in the five languages. Country names come from
+// Texts of the /europe/ pages (build-europe.js) in the seven languages. Country names come from
 // Intl.DisplayNames (build-europe.js), city names from europe-names.js.
 // c = city, k = country, t = how people search for the weather in the local language, link(text) = link to the forecast page.
 const bgIn = name => (/^[ВФвф]/.test(name) ? 'във ' : 'в ') + name;
@@ -93,7 +93,44 @@ const EUROPE = {
     europeDescription: n => `Previsión del tiempo para ${n} países europeos: temperatura actual y previsión a 7 días para las principales ciudades, de Lisboa a Kiev y de Reikiavik a Atenas.`,
     europeIntro: link => `Elige un país y luego una ciudad para ver el tiempo actual y la previsión a 7 días. Datos de Open-Meteo, actualizados cada hora. Para otro lugar, usa el buscador de la página ${link('Pronóstico del tiempo')}.`,
     bulgaria: 'El tiempo en Bulgaria →'
+  },
+  fr: {
+    and: ' et ',
+    cityH1: c => `Météo à ${c}`,
+    cityTitle: (c, t) => (t ? `${t} – Météo à ${c}, prévisions à 7 jours` : `Météo à ${c} aujourd’hui – prévisions à 7 jours`),
+    cityDescription: (c, k, t) => `Météo à ${c} (${k}) aujourd’hui : prévisions pour demain et les 7 prochains jours avec température, pluie et vent.${t ? ` ${t}.` : ''} Mises à jour toutes les heures (données : Open-Meteo).`,
+    cityIntro: (c, k, t, local) => `Prévisions météo à ${c} (${k}) pour aujourd’hui, demain et les 7 prochains jours : température, pluie, vent et probabilité de précipitations.${t ? ` Nom local : ${local} (${t}).` : ''} Données d’Open-Meteo, mises à jour toutes les heures.`,
+    loading: 'Chargement…', hourly: 'Prévisions heure par heure →', storms: 'Tempêtes géomagnétiques aujourd’hui →',
+    moreIn: k => `Autres villes : ${k}`, otherCountries: 'Météo dans d’autres pays',
+    countryH1: k => `Météo : ${k}, par ville`,
+    countryTitle: k => `Météo : ${k}, par ville – prévisions à 7 jours`,
+    countryDescription: (list, k) => `Prévisions météo pour ${list} : température actuelle et prévisions à 7 jours pour les principales villes (${k}).`,
+    countryIntro: link => `Choisissez une ville pour les prévisions à 7 jours. La température est mise à jour toutes les heures. Pour un autre lieu, utilisez la recherche de la page ${link('Prévisions météo')}.`,
+    europeH1: 'Météo en Europe',
+    europeTitle: 'Météo en Europe par pays et par ville',
+    europeDescription: n => `Prévisions météo pour ${n} pays européens : température actuelle et prévisions à 7 jours pour les principales villes, de Lisbonne à Kiev et de Reykjavik à Athènes.`,
+    europeIntro: link => `Choisissez un pays, puis une ville, pour la météo actuelle et les prévisions à 7 jours. Données d’Open-Meteo, mises à jour toutes les heures. Pour un autre lieu, utilisez la recherche de la page ${link('Prévisions météo')}.`,
+    bulgaria: 'Météo en Bulgarie →'
+  },
+  nl: {
+    and: ' en ',
+    cityH1: c => `Weer in ${c}`,
+    cityTitle: (c, t) => (t ? `${t} – Weer in ${c}, 7-daagse verwachting` : `Weer in ${c} vandaag – 7-daagse verwachting`),
+    cityDescription: (c, k, t) => `Weer in ${c}, ${k} vandaag: verwachting voor morgen en de komende 7 dagen met temperatuur, regen en wind.${t ? ` ${t}.` : ''} Elk uur bijgewerkt (gegevens: Open-Meteo).`,
+    cityIntro: (c, k, t, local) => `Weerbericht voor ${c}, ${k}, voor vandaag, morgen en de komende 7 dagen: temperatuur, regen, wind en kans op neerslag.${t ? ` Plaatselijke naam: ${local} (${t}).` : ''} Gegevens van Open-Meteo, elk uur bijgewerkt.`,
+    loading: 'Laden…', hourly: 'Verwachting per uur →', storms: 'Geomagnetische stormen vandaag →',
+    moreIn: k => `Meer steden in ${k}`, otherCountries: 'Weer in andere landen',
+    countryH1: k => `Weer in ${k} per stad`,
+    countryTitle: k => `Weer in ${k} per stad – 7-daagse verwachting`,
+    countryDescription: (list, k) => `Weerbericht voor ${list}: actuele temperatuur en 7-daagse verwachting voor de belangrijkste steden van ${k}.`,
+    countryIntro: link => `Kies een stad voor de 7-daagse verwachting. De temperatuur wordt elk uur bijgewerkt. Voor een andere plaats gebruikt u de zoekfunctie op de pagina ${link('Weerbericht')}.`,
+    europeH1: 'Weer in Europa',
+    europeTitle: 'Weer in Europa per land en stad',
+    europeDescription: n => `Weerbericht voor ${n} Europese landen: actuele temperatuur en 7-daagse verwachting voor de belangrijkste steden, van Lissabon tot Kiev en van Reykjavik tot Athene.`,
+    europeIntro: link => `Kies een land en daarna een stad voor het actuele weer en de 7-daagse verwachting. Gegevens van Open-Meteo, elk uur bijgewerkt. Voor een andere plaats gebruikt u de zoekfunctie op de pagina ${link('Weerbericht')}.`,
+    bulgaria: 'Weer in Bulgarije →'
   }
+
 };
 
 // Note under the sunrise and sunset table of a city page: local time of the place
@@ -102,7 +139,9 @@ const SUN_NOTE = {
   en: (year, link) => `Times are local time (summer time in summer) for ${year}. Calculated with astronomical formulas (Meeus, NOAA) and checked against Open-Meteo to within about a minute. Moon phase: ${link('Moon calendar')}.`,
   de: (year, link) => `Die Zeiten gelten in Ortszeit (im Sommer Sommerzeit) für ${year}. Berechnet mit astronomischen Formeln (Meeus, NOAA) und auf etwa eine Minute genau mit Open-Meteo abgeglichen. Mondphase: ${link('Mondkalender')}.`,
   it: (year, link) => `Gli orari sono in ora locale (in estate ora legale) per il ${year}. Calcolati con formule astronomiche (Meeus, NOAA) e confrontati con Open-Meteo con una precisione di circa un minuto. Fase lunare: ${link('calendario lunare')}.`,
-  es: (year, link) => `Las horas son locales (horario de verano en verano) para ${year}. Calculadas con fórmulas astronómicas (Meeus, NOAA) y contrastadas con Open-Meteo con una precisión de aproximadamente un minuto. Fase lunar: ${link('calendario lunar')}.`
+  es: (year, link) => `Las horas son locales (horario de verano en verano) para ${year}. Calculadas con fórmulas astronómicas (Meeus, NOAA) y contrastadas con Open-Meteo con una precisión de aproximadamente un minuto. Fase lunar: ${link('calendario lunar')}.`,
+  fr: (year, link) => `Les heures sont en heure locale (heure d’été en été) pour ${year}. Calculées avec des formules astronomiques (Meeus, NOAA) et vérifiées avec Open-Meteo à environ une minute près. Phase de la Lune : ${link('calendrier lunaire')}.`,
+  nl: (year, link) => `De tijden zijn plaatselijke tijd (zomertijd in de zomer) voor ${year}. Berekend met astronomische formules (Meeus, NOAA) en tot op ongeveer een minuut vergeleken met Open-Meteo. Maanfase: ${link('maankalender')}.`
 };
 
 module.exports = { EUROPE, SUN_NOTE };

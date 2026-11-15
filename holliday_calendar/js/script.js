@@ -119,6 +119,54 @@ const holidayTranslations = {
     errorDeterminingCity: "Error al determinar la ciudad a partir de tu ubicación. Inténtalo de nuevo o introdúcela manualmente.",
     couldNotGetLocation: "No se pudo obtener tu ubicación. Asegúrate de que los servicios de ubicación estén activados e inténtalo de nuevo.",
     geolocationNotSupported: "Tu navegador no admite la geolocalización."
+  },
+  fr: {
+    addToCalendar: "Ajouter à l’agenda",
+    holidaysInPeriod: "Jours fériés de la période",
+    noHolidaysInPeriod: "Aucun jour férié sur cette période.",
+    today: "Aujourd’hui",
+    selectedLocation: "Lieu choisi",
+    monthNames: ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],
+    dayNames: ["Lu","Ma","Me","Je","Ve","Sa","Di"],
+    holidayDate: "Date",
+    countryCode: "Code du pays",
+    holidayType: "Type",
+    holidayTypes: {"Public":"Jour férié officiel","Bank":"Fermeture des banques","School":"Vacances scolaires","Authorities":"Administrations fermées","Optional":"Jour férié facultatif","Observance":"Commémoration"},
+    fillAllDates: "Veuillez remplir toutes les dates.",
+    couldNotDetermineCountry: "Impossible de déterminer le pays de la ville choisie. Essayez une autre ville.",
+    errorFetchingCountry: "Erreur lors de la recherche du pays de la ville choisie. Veuillez réessayer.",
+    couldNotDetermineCountryCoords: "Impossible de déterminer le pays à partir des coordonnées. Essayez un autre lieu.",
+    errorFetchingCountryCoords: "Erreur lors de la recherche du pays à partir des coordonnées. Veuillez réessayer.",
+    enterCityOrLocation: "Saisissez une ville ou utilisez votre position actuelle.",
+    errorFetchingHolidays: "Erreur lors du chargement des jours fériés. Consultez la console pour plus de détails.",
+    locating: "Localisation...",
+    errorDeterminingCity: "Impossible de déterminer la ville à partir de votre position. Réessayez ou saisissez-la à la main.",
+    couldNotGetLocation: "Impossible d’obtenir votre position. Vérifiez que la localisation est activée et réessayez.",
+    geolocationNotSupported: "Votre navigateur ne prend pas en charge la géolocalisation."
+  },
+  nl: {
+    addToCalendar: "Toevoegen aan agenda",
+    holidaysInPeriod: "Feestdagen in deze periode",
+    noHolidaysInPeriod: "Geen feestdagen in deze periode.",
+    today: "Vandaag",
+    selectedLocation: "Gekozen plaats",
+    monthNames: ["Januari","Februari","Maart","April","Mei","Juni","Juli","Augustus","September","Oktober","November","December"],
+    dayNames: ["Ma","Di","Wo","Do","Vr","Za","Zo"],
+    holidayDate: "Datum",
+    countryCode: "Landcode",
+    holidayType: "Type",
+    holidayTypes: {"Public":"Officiële feestdag","Bank":"Bankfeestdag","School":"Schoolvakantie","Authorities":"Overheidsdiensten gesloten","Optional":"Optionele feestdag","Observance":"Gedenkdag"},
+    fillAllDates: "Vul alle datumvelden in.",
+    couldNotDetermineCountry: "Het land van de gekozen stad kon niet worden bepaald. Probeer een andere stad.",
+    errorFetchingCountry: "Fout bij het opzoeken van het land van de gekozen stad. Probeer het opnieuw.",
+    couldNotDetermineCountryCoords: "Het land kon niet uit de coördinaten worden bepaald. Probeer een andere plaats.",
+    errorFetchingCountryCoords: "Fout bij het opzoeken van het land uit de coördinaten. Probeer het opnieuw.",
+    enterCityOrLocation: "Voer een stad in of gebruik uw huidige locatie.",
+    errorFetchingHolidays: "Fout bij het laden van de feestdagen. Zie de console voor details.",
+    locating: "Locatie bepalen...",
+    errorDeterminingCity: "De stad kon niet uit uw locatie worden bepaald. Probeer het opnieuw of voer de stad zelf in.",
+    couldNotGetLocation: "Uw locatie kon niet worden opgehaald. Controleer of locatievoorzieningen aan staan en probeer het opnieuw.",
+    geolocationNotSupported: "Uw browser ondersteunt geen geolocatie."
   }
 };
 
@@ -506,7 +554,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return section;
     }
 
-    const locales = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES' };
+    const locales = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES', fr: 'fr-FR', nl: 'nl-NL' };
     const dateFormat = new Intl.DateTimeFormat(locales[document.documentElement.lang] || 'en-GB', { weekday: 'short', day: 'numeric', month: 'long', timeZone: 'UTC' });
     const list = document.createElement('ul');
     [...holidays].sort((a, b) => a.date.iso.localeCompare(b.date.iso)).forEach(holiday => {

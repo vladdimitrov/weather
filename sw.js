@@ -5,7 +5,7 @@
 //  - Scripts and styles with a version in the address (theme.css?v=58): cache first. A new
 //    version is a new address, so nothing stale is ever served; repeat visits do not wait for
 //    the network for them. Change such a file => raise its ?v= (see README).
-const CACHE = 'weatherpulse-v18';
+const CACHE = 'weatherpulse-v19';
 // Visited pages kept for offline use (the pages in PAGES are always kept)
 const MAX_PAGES = 60;
 
@@ -111,7 +111,9 @@ const ALERT_TEXTS = {
   en: { title: 'Magnetic storm', body: 'Kp {kp} expected ({when}).', locale: 'en-GB' },
   de: { title: 'Magnetsturm', body: 'Kp {kp} erwartet ({when}).', locale: 'de-DE' },
   it: { title: 'Tempesta magnetica', body: 'Previsto Kp {kp} ({when}).', locale: 'it-IT' },
-  es: { title: 'Tormenta magnética', body: 'Se espera Kp {kp} ({when}).', locale: 'es-ES' }
+  es: { title: 'Tormenta magnética', body: 'Se espera Kp {kp} ({when}).', locale: 'es-ES' },
+  fr: { title: 'Tempête magnétique', body: 'Kp {kp} attendu ({when}).', locale: 'fr-FR' },
+  nl: { title: 'Magnetische storm', body: 'Kp {kp} verwacht ({when}).', locale: 'nl-NL' }
 };
 
 async function alertLanguage() {

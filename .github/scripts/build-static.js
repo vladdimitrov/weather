@@ -1,4 +1,4 @@
-// Generates /za-saita/ (About) and /poveritelnost/ (Privacy) in the five languages
+// Generates /za-saita/ (About) and /poveritelnost/ (Privacy) in the seven languages
 // (/za-saita/, /en/za-saita/, /de/za-saita/ ...). Texts: text-static.js.
 // Run from the repository root: node .github/scripts/build-static.js, then build-sitemap.js
 const fs = require('fs');

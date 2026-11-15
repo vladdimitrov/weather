@@ -11,7 +11,9 @@
     { value: 'bg', label: 'Български' },
     { value: 'de', label: 'Deutsch' },
     { value: 'it', label: 'Italiano' },
-    { value: 'es', label: 'Español' }
+    { value: 'es', label: 'Español' },
+    { value: 'fr', label: 'Français' },
+    { value: 'nl', label: 'Nederlands' }
   ];
 
   const labelTranslations = {
@@ -19,7 +21,9 @@
     bg: 'Език:',
     de: 'Sprache:',
     it: 'Lingua:',
-    es: 'Idioma:'
+    es: 'Idioma:',
+    fr: 'Langue :',
+    nl: 'Taal:'
   };
 
   function getSavedLanguage() {
@@ -108,7 +112,7 @@
     if (link) saveLanguage(link.dataset.setLang);
   });
 
-  // Pick the text for the current language from { en, bg, de, it, es },
+  // Pick the text for the current language from { en, bg, de, it, es, fr, nl },
   // falling back to English. Used by page scripts for short messages.
   window.pickText = function (texts) {
     return texts[document.documentElement.lang] || texts.en;

@@ -30,7 +30,9 @@
     bg: { label: 'Фон:', blue: 'Син', default: 'Стандартен (лилав)', dark: 'Тъмен', green: 'Зелен', purple: 'Лилав', red: 'Червен', midnight: 'Полунощ', gold: 'Злато', teal: 'Морска вълна', rose: 'Розов', sunset: 'Залез' },
     de: { label: 'Hintergrund:', blue: 'Blau', default: 'Standard (Lila)', dark: 'Dunkel', green: 'Grün', purple: 'Lila', red: 'Rot', midnight: 'Mitternacht', gold: 'Gold', teal: 'Türkis', rose: 'Rosé', sunset: 'Sonnenuntergang' },
     it: { label: 'Sfondo:', blue: 'Blu', default: 'Predefinito (Viola)', dark: 'Scuro', green: 'Verde', purple: 'Viola', red: 'Rosso', midnight: 'Mezzanotte', gold: 'Oro', teal: 'Turchese', rose: 'Rosa', sunset: 'Tramonto' },
-    es: { label: 'Fondo:', blue: 'Azul', default: 'Predeterminado (Morado)', dark: 'Oscuro', green: 'Verde', purple: 'Morado', red: 'Rojo', midnight: 'Medianoche', gold: 'Oro', teal: 'Turquesa', rose: 'Rosa', sunset: 'Atardecer' }
+    es: { label: 'Fondo:', blue: 'Azul', default: 'Predeterminado (Morado)', dark: 'Oscuro', green: 'Verde', purple: 'Morado', red: 'Rojo', midnight: 'Medianoche', gold: 'Oro', teal: 'Turquesa', rose: 'Rosa', sunset: 'Atardecer' },
+    fr: { label: 'Fond :', blue: 'Bleu', default: 'Par défaut (violet)', dark: 'Sombre', green: 'Vert', purple: 'Violet', red: 'Rouge', midnight: 'Minuit', gold: 'Or', teal: 'Turquoise', rose: 'Rose', sunset: 'Coucher de soleil' },
+    nl: { label: 'Achtergrond:', blue: 'Blauw', default: 'Standaard (paars)', dark: 'Donker', green: 'Groen', purple: 'Paars', red: 'Rood', midnight: 'Middernacht', gold: 'Goud', teal: 'Turquoise', rose: 'Roze', sunset: 'Zonsondergang' }
   };
 
   // A background the visitor picked wins; otherwise the default (Sunset)

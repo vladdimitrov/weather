@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 62, mobileNav: 20, languageSelector: 8, cityForecast: 16, moon: 2, lunaToday: 5, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1, regionWeather: 4, passes: 1 };
+const VERSION = { theme: 62, mobileNav: 21, languageSelector: 9, cityForecast: 17, moon: 3, lunaToday: 5, lunaLocal: 2, auroraKp: 3, placeContext: 2, skyLocal: 3, homeCities: 4, regionWeather: 5, passes: 1 };
 
 const CITIES = require('./bg-cities.js');
 
@@ -24,7 +24,9 @@ const LOCAL_WIND = {
     en: 'The south wind under Vitosha: in a strong southerly wind the air comes down the slopes of the mountain and speeds up. In the districts at its foot – Simeonovo, Dragalevtsi, Boyana, Knyazhevo, Darvenitsa – the gusts are often much stronger than in the centre and in the forecast for Sofia. That is why we show the gusts of the model that gives the strongest, and a notice above the forecast for gusts over 60 km/h and for warnings of NIMH.',
     de: 'Südwind am Witoscha: Bei starkem Südwind strömt die Luft die Hänge des Gebirges hinab und wird schneller. In den Vierteln am Fuß des Witoscha – Simeonowo, Dragalewzi, Bojana, Knjaschewo, Darweniza – sind die Böen oft viel stärker als im Zentrum und in der Vorhersage für Sofia. Deshalb zeigen wir die Böen des Modells mit den stärksten Werten und ab 60 km/h sowie bei Warnungen des NIMH einen Hinweis über der Vorhersage.',
     it: 'Il vento da sud sotto il Vitosha: con un forte vento da sud l’aria scende lungo i pendii della montagna e accelera. Nei quartieri ai suoi piedi – Simeonovo, Dragalevtsi, Boyana, Knyazhevo, Darvenitsa – le raffiche sono spesso molto più forti che in centro e nelle previsioni per Sofia. Per questo mostriamo le raffiche del modello che dà le più forti e, oltre i 60 km/h o con un’allerta del NIMH, un avviso sopra le previsioni.',
-    es: 'El viento del sur bajo el Vitosha: con viento fuerte del sur, el aire baja por las laderas de la montaña y se acelera. En los barrios a sus pies – Simeonovo, Dragalevtsi, Boyana, Knyazhevo, Darvenitsa – las rachas suelen ser mucho más fuertes que en el centro y que en la previsión para Sofía. Por eso mostramos las rachas del modelo que da las más fuertes y, por encima de 60 km/h o con un aviso del NIMH, un mensaje sobre la previsión.'
+    es: 'El viento del sur bajo el Vitosha: con viento fuerte del sur, el aire baja por las laderas de la montaña y se acelera. En los barrios a sus pies – Simeonovo, Dragalevtsi, Boyana, Knyazhevo, Darvenitsa – las rachas suelen ser mucho más fuertes que en el centro y que en la previsión para Sofía. Por eso mostramos las rachas del modelo que da las más fuertes y, por encima de 60 km/h o con un aviso del NIMH, un mensaje sobre la previsión.',
+    fr: 'Le vent du sud sous le Vitocha : par fort vent du sud, l’air descend les pentes de la montagne et accélère. Dans les quartiers à son pied – Simeonovo, Dragalevtsi, Boyana, Knyazhevo, Darvenitsa –, les rafales sont souvent bien plus fortes que dans le centre et que dans la prévision pour Sofia. C’est pourquoi nous montrons les rafales du modèle qui donne les plus fortes, et un avertissement au-dessus de la prévision pour les rafales de plus de 60 km/h et pour les alertes du NIMH.',
+    nl: 'De zuidenwind onder de Vitosja: bij een harde zuidenwind stroomt de lucht langs de hellingen van de berg naar beneden en versnelt. In de wijken aan de voet – Simeonovo, Dragalevtsi, Bojana, Knjazjevo, Darvenitsa – zijn de windstoten vaak veel sterker dan in het centrum en in de verwachting voor Sofia. Daarom tonen we de windstoten van het model dat de sterkste geeft, en een melding boven de verwachting bij windstoten boven 60 km/u en bij waarschuwingen van het NIMH.'
   }
 };
 // Bulgarian cities that link to the regional pages (build-extra.js)
@@ -276,7 +278,7 @@ const footer = () => `  <footer style="background: var(--card-bg); border-top: 1
 
 const NAV_EN = I18N.NAV.en;
 
-// multi: the page exists in the five languages (/luna/, /en/luna/, /de/luna/ ...); url is the
+// multi: the page exists in the seven languages (/luna/, /en/luna/, /de/luna/ ...); url is the
 // Bulgarian path.
 // x-default (visitors whose language the site doesn't have) is the English page, when there is one.
 // indexed: the languages in which search engines should index the page (default: all). In the
@@ -379,7 +381,7 @@ ${(FOOTER_TEXT = { about: NAV.about, privacy: NAV.privacy, cities: NAV.cities, s
 
 <script src="/js/mobile-nav.js?v=${VERSION.mobileNav}" defer></script>
 <script src="/js/language-selector.js?v=${VERSION.languageSelector}" defer></script>
-<script src="/js/background-selector.js?v=3" defer></script>
+<script src="/js/background-selector.js?v=4" defer></script>
 ${scripts}</body>
 </html>
 `;

@@ -1,4 +1,4 @@
-// Texts of /nebeto/ (build-nebeto.js) in the five languages. link(url, text) makes an external link.
+// Texts of /nebeto/ (build-nebeto.js) in the seven languages. link(url, text) makes an external link.
 const NEBETO = {
   bg: {
     sky: 'Небето', place: 'Небето над България', cal: 'Лунен календар', calBtn: 'Лунен календар →', stormsBtn: 'Магнитни бури днес →',
@@ -144,7 +144,66 @@ const NEBETO = {
     ldMeteor: name => `${name} – máximo de la lluvia de meteoros`,
     ldMeteorText: (name, date, zhr, source) => `${name}: máximo el ${date}, ZHR ${zhr}. Fuente: ${source}.`,
     ldEclipseText: (name, date, visible) => `${name} el ${date}, visible ${visible}.`
+  },
+  fr: {
+    sky: 'Le ciel', place: 'Le ciel au-dessus de la Bulgarie', cal: 'Calendrier lunaire', calBtn: 'Calendrier lunaire →', stormsBtn: 'Tempêtes magnétiques aujourd’hui →',
+    title: 'Le ciel : étoiles filantes, éclipses, super-lunes et aurores boréales',
+    description: 'Événements astronomiques visibles depuis la Bulgarie en 2026 et 2027 : pluies d’étoiles filantes (Géminides, Perséides), éclipses, super-lunes et quand on peut voir des aurores boréales.',
+    h1: 'Le ciel : événements astronomiques',
+    intro: 'Pluies d’étoiles filantes, éclipses, super-lunes et aurores boréales – uniquement des données calculables, sans horoscope ni astrologie. Chaque événement a une source indiquée. Les heures sont à l’<span data-tzlabel>heure bulgare</span>.',
+    meteorH: 'Pluies d’étoiles filantes 2026–2027',
+    meteorText: 'Le ZHR est le nombre de météores par heure qu’un observateur verrait sous un ciel parfaitement noir avec le radiant haut au-dessus de l’horizon ; en ville et au clair de lune, on en voit beaucoup moins. L’illumination de la Lune est donnée au moment du maximum.',
+    meteorHead: ['Pluie', 'Maximum', 'ZHR', 'Lune', 'Remarque et source'],
+    active: 'active', about: 'environ', over: 'plus de',
+    moonVerdicts: ['presque pas de clair de lune', 'la Lune gêne en partie', 'fort clair de lune'],
+    time: t => t,
+    eclipseH: 'Éclipses visibles depuis la Bulgarie', visible: 'Visible', sourceWord: 'Source',
+    eclipsePast: 'Les éclipses du 12 et du 28 août 2026 sont déjà passées (celle de Soleil n’était visible que dans l’extrême nord-ouest de la Bulgarie, et celle de Lune seulement au début, bas à l’ouest).',
+    superH: 'Super-lunes 2026–2027',
+    superText: 'Une super-lune est une pleine lune survenant quand la Lune est proche de son périgée. Il n’existe pas de définition exacte : selon la NASA, citée par Space.com, c’est une pleine lune à moins d’environ 362 000 km. Les dates et heures des pleines lunes sont calculées par notre calendrier lunaire, et le qualificatif de « super-lune » vient de la source citée. La différence de taille apparente est faible.',
+    superHead: ['Pleine lune', 'Heure', 'Distance', 'Source'],
+    distance: n => `environ ${n} km`,
+    auroraH: 'Aurores boréales en Bulgarie', loadingKp: 'Chargement du Kp…',
+    aurora1: 'Les aurores boréales sont <strong>très rarement</strong> visibles depuis la Bulgarie. Le Kp mesure l’activité géomagnétique de 0 à 9. Les « tempêtes magnétiques » habituelles (Kp 5–6) n’illuminent le ciel qu’au nord de l’Europe. Pour voir une aurore sous nos latitudes, il faut en général un Kp d’environ 7 ou plus (niveaux G3 et au-delà sur l’échelle de la NOAA), un ciel dégagé, loin des lumières de la ville, en regardant vers le nord.',
+    aurora2: bta => `Cela n’arrive qu’avec les tempêtes les plus fortes. Par exemple, aux premières heures du 11 octobre 2024, l’aurore était visible aussi depuis la Bulgarie (${bta}). La plupart des « tempêtes » annoncées dans les médias ne signifient donc pas une aurore au-dessus de nous.`,
+    btaText: 'BTA',
+    aurora3: (storms, noaa) => `Prévision et Kp actuel : ${storms}. Les données proviennent de la ${noaa}.`,
+    stormsLink: 'Tempêtes magnétiques aujourd’hui',
+    more: 'Plus sur Weather Pulse', storms: 'Tempêtes magnétiques', weather: 'Météo en Bulgarie', sunSofia: 'Lever et coucher du soleil à Sofia',
+    ldMeteor: name => `${name} – maximum de la pluie d’étoiles filantes`,
+    ldMeteorText: (name, date, zhr, source) => `${name} : maximum le ${date}, ZHR ${zhr}. Source : ${source}.`,
+    ldEclipseText: (name, date, visible) => `${name} le ${date}, visible ${visible}.`
+  },
+  nl: {
+    sky: 'De hemel', place: 'De hemel boven Bulgarije', cal: 'Maankalender', calBtn: 'Maankalender →', stormsBtn: 'Magnetische stormen vandaag →',
+    title: 'De hemel: meteorenzwermen, verduisteringen, supermanen en noorderlicht',
+    description: 'Astronomische gebeurtenissen die in 2026 en 2027 vanuit Bulgarije te zien zijn: meteorenzwermen (Geminiden, Perseïden), verduisteringen, supermanen en wanneer het noorderlicht te zien is.',
+    h1: 'De hemel: astronomische gebeurtenissen',
+    intro: 'Meteorenzwermen, verduisteringen, supermanen en noorderlicht – alleen berekenbare gegevens, geen horoscopen of astrologie. Bij elke gebeurtenis staat de bron. De tijden zijn <span data-tzlabel>Bulgaarse tijd</span>.',
+    meteorH: 'Meteorenzwermen 2026–2027',
+    meteorText: 'De ZHR is het aantal meteoren per uur dat een waarnemer zou zien onder een volkomen donkere hemel met de radiant hoog boven de horizon; in de stad en bij maanlicht zijn er veel minder te zien. De verlichting van de maan geldt voor het moment van het maximum.',
+    meteorHead: ['Zwerm', 'Maximum', 'ZHR', 'Maan', 'Opmerking en bron'],
+    active: 'actief', about: 'ongeveer', over: 'meer dan',
+    moonVerdicts: ['bijna geen maanlicht', 'de maan stoort deels', 'sterk maanlicht'],
+    time: t => t,
+    eclipseH: 'Verduisteringen zichtbaar vanuit Bulgarije', visible: 'Zichtbaar', sourceWord: 'Bron',
+    eclipsePast: 'De verduisteringen van 12 en 28 augustus 2026 zijn al voorbij (de zonsverduistering was alleen in het uiterste noordwesten van Bulgarije te zien, de maansverduistering alleen bij het begin, laag in het westen).',
+    superH: 'Supermanen 2026–2027',
+    superText: 'Een supermaan is een volle maan wanneer de maan dicht bij haar perigeum staat. Er is geen exacte definitie: volgens NASA, geciteerd door Space.com, is het een volle maan op een afstand van minder dan ongeveer 362.000 km. De data en tijden van de volle manen berekent onze maankalender; het label "supermaan" komt van de genoemde bron. Het verschil in schijnbare grootte is klein.',
+    superHead: ['Volle maan', 'Tijd', 'Afstand', 'Bron'],
+    distance: n => `ongeveer ${n} km`,
+    auroraH: 'Noorderlicht in Bulgarije', loadingKp: 'Kp laden…',
+    aurora1: 'Het noorderlicht is vanuit Bulgarije <strong>zeer zelden</strong> te zien. Kp is een maat voor geomagnetische activiteit van 0 tot 9. De gewone "magnetische stormen" (Kp 5–6) verlichten de hemel alleen ten noorden van Europa. Om vanaf onze breedtegraad noorderlicht te zien is meestal een Kp van ongeveer 7 of meer nodig (niveau G3 en hoger op de schaal van de NOAA), met een heldere hemel, ver van stadslicht en kijkend naar het noorden.',
+    aurora2: bta => `Dat gebeurt alleen bij de zwaarste stormen. In de vroege uren van 11 oktober 2024 was het noorderlicht bijvoorbeeld ook vanuit Bulgarije te zien (${bta}). De meeste "stormen" in het nieuws betekenen dus geen noorderlicht boven ons.`,
+    btaText: 'BTA',
+    aurora3: (storms, noaa) => `Verwachting en actuele Kp: ${storms}. De gegevens komen van de ${noaa}.`,
+    stormsLink: 'Magnetische stormen vandaag',
+    more: 'Meer van Weather Pulse', storms: 'Magnetische stormen', weather: 'Weer in Bulgarije', sunSofia: 'Zonsopkomst en zonsondergang in Sofia',
+    ldMeteor: name => `${name} – maximum van de meteorenzwerm`,
+    ldMeteorText: (name, date, zhr, source) => `${name}: maximum op ${date}, ZHR ${zhr}. Bron: ${source}.`,
+    ldEclipseText: (name, date, visible) => `${name} op ${date}, zichtbaar ${visible}.`
   }
+
 };
 
 module.exports = { NEBETO };

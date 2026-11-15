@@ -2,7 +2,7 @@
 // Uses the browser's real full screen where it exists (Android, desktop). Where
 // it doesn't (iPhone Safari does not allow it for a map) the map is stretched
 // over the whole screen instead (class .map-fullscreen, /css/theme.css).
-// The phone's Back button and the Esc key close it. Texts in 5 languages.
+// The phone's Back button and the Esc key close it. Texts in 7 languages.
 (function () {
   const container = document.getElementById('mapContainer');
   if (!container) return;
@@ -12,7 +12,9 @@
     bg: { enter: 'На цял екран', exit: 'Изход от цял екран' },
     de: { enter: 'Vollbild', exit: 'Vollbild beenden' },
     it: { enter: 'Schermo intero', exit: 'Esci da schermo intero' },
-    es: { enter: 'Pantalla completa', exit: 'Salir de pantalla completa' }
+    es: { enter: 'Pantalla completa', exit: 'Salir de pantalla completa' },
+    fr: { enter: 'Plein écran', exit: 'Quitter le plein écran' },
+    nl: { enter: 'Volledig scherm', exit: 'Volledig scherm sluiten' }
   };
   const t = () => texts[document.documentElement.lang] || texts.en;
 
