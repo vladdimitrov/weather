@@ -9,6 +9,29 @@ const OG_LOCALE = { bg: 'bg_BG', en: 'en_GB', de: 'de_DE', it: 'it_IT', es: 'es_
 const prefix = (lang, base = 'bg') => (lang === base ? '' : `/${lang}`);
 const localUrl = (lang, url, base = 'bg') => prefix(lang, base) + url;
 
+// Plain links to the other language versions of a page, above the footer. The language switcher
+// in the header is drawn by JavaScript, so without these a crawler finds the translations only
+// through hreflang and the sitemap. paths: { lang: path } of the versions to link (the indexed
+// ones); data-set-lang makes /js/language-selector.js remember the choice before the page opens.
+const LANG_NAMES = { bg: 'Български', en: 'English', de: 'Deutsch', it: 'Italiano', es: 'Español' };
+const LANG_LINKS_START = '<!-- lang-links:start -->';
+const LANG_LINKS_END = '<!-- lang-links:end -->';
+function langLinks(lang, paths) {
+  const others = LANGS.filter(code => code !== lang && paths[code]);
+  if (!others.length) return '';
+  return `  ${LANG_LINKS_START}
+  <nav class="lang-links" aria-label="Languages" style="text-align: center; font-size: 0.85em; color: #999; margin: 18px 0 6px;">
+    ${others.map(code => `<a href="${paths[code]}" hreflang="${code}" lang="${code}" data-set-lang="${code}" class="footer-link">${LANG_NAMES[code]}</a>`).join(' · ')}
+  </nav>
+  ${LANG_LINKS_END}
+`;
+}
+
+// <title>: the name of the site is added only when the whole title stays short enough to be shown
+// in the search results (about 65 characters); a longer one keeps its own words instead
+const BRAND = ' | Weather Pulse';
+const withBrand = title => (title.length + BRAND.length > 65 ? title : title + BRAND);
+
 // Same texts as navTexts in /js/mobile-nav.js
 const NAV = {
   bg: { home: 'Начало', weather: 'Прогноза за времето', maps: 'Карти за времето', holidays: 'Календар на празниците', storms: 'Магнитни бури', sky: 'Небето', sources: 'Източници на данни', sourcesShort: 'Източници', moon: 'Лунен календар', cities: 'Всички градове', about: 'За сайта', privacy: 'Поверителност' },
@@ -32,4 +55,4 @@ const latinName = (lang, slug) => {
   return slug.split('-').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
 };
 
-module.exports = { LANGS, LOCALE, OG_LOCALE, prefix, localUrl, NAV, LOGO_ALT, esc, monthName, weekdayName, latinName };
+module.exports = { LANGS, LOCALE, OG_LOCALE, prefix, localUrl, LANG_NAMES, LANG_LINKS_START, LANG_LINKS_END, langLinks, withBrand, NAV, LOGO_ALT, esc, monthName, weekdayName, latinName };

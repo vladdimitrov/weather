@@ -1,4 +1,7 @@
 User-agent: *
-Disallow:
+# The forecast for any place and day (/weather/?city=...&date=...): every city page links to it for
+# each day, so the addresses are endless and change daily; all of them are the one page /weather/
+Disallow: /weather/?
+Disallow: /*/weather/?
 
 Sitemap: https://weatherpulse.eu/sitemap.xml

@@ -33,15 +33,8 @@
       // (/en/, /de/, /it/, /es/ + this path; written by .github/scripts/build-main.js)
       try {
         const languages = ['en', 'de', 'it', 'es'];
-        let wanted = localStorage.getItem('selectedLanguage');
-        // First visit: the language of the browser (English if the site does not have it), as
-        // /js/language-selector.js does on the other pages. Robots keep the Bulgarian page, and so
-        // does a device in the Bulgarian time zone: many people in Bulgaria use an English phone.
-        const inBulgaria = Intl.DateTimeFormat().resolvedOptions().timeZone === 'Europe/Sofia';
-        if (wanted === null && !inBulgaria && !/bot|crawl|spider|slurp|lighthouse|headless|preview/i.test(navigator.userAgent || '')) {
-          const browser = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || '']).map(code => String(code).slice(0, 2).toLowerCase());
-          wanted = browser.find(code => code === 'bg' || languages.includes(code)) || (browser[0] ? 'en' : null);
-        }
+        // Only a language the visitor picked: nobody is sent away because of the browser language
+        const wanted = localStorage.getItem('selectedLanguage');
         if (languages.includes(wanted)) location.replace('/' + wanted + '/holliday_calendar/' + location.search + location.hash);
       } catch (e) { /* storage blocked */ }
     })();
@@ -167,6 +160,12 @@
 
   </div>
 
+  <!-- lang-links:start -->
+  <nav class="lang-links" aria-label="Languages" style="text-align: center; font-size: 0.85em; color: #999; margin: 18px 0 6px;">
+    <a href="/en/holliday_calendar/" hreflang="en" lang="en" data-set-lang="en" class="footer-link">English</a> · <a href="/de/holliday_calendar/" hreflang="de" lang="de" data-set-lang="de" class="footer-link">Deutsch</a> · <a href="/it/holliday_calendar/" hreflang="it" lang="it" data-set-lang="it" class="footer-link">Italiano</a> · <a href="/es/holliday_calendar/" hreflang="es" lang="es" data-set-lang="es" class="footer-link">Español</a>
+  </nav>
+  <!-- lang-links:end -->
+
   <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
     <div class="logo" style="flex-shrink: 0;">
         <a href="/"><img src="/images/logo-64.webp" alt="Лого" class="logo-img" width="30" height="30" style="height: 30px; width: auto;"></a>
@@ -183,7 +182,7 @@
   </footer>
 
 <script src="/js/mobile-nav.js?v=19"></script>
-<script src="/js/language-selector.js?v=7"></script>
+<script src="/js/language-selector.js?v=8"></script>
 <script src="/js/city-search.js?v=12"></script>
 <script src="/holliday_calendar/js/script.js?v=8"></script>
 <script src="/language-switcher.js?v=3"></script>
