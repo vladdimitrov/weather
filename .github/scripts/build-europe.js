@@ -13,7 +13,7 @@ const fs = require('fs');
 const path = require('path');
 const I18N = require('./i18n.js');
 const { EUROPE, SUN_NOTE } = require('./text-europe.js');
-const { page, write, VERSION, placeJson, climateSection, sunSection, bestTimeSection, nearbySection } = require('./build-pages.js');
+const { page, write, VERSION, placeJson, climateSection, sunSection, bestTimeSection, nearbySection, seaSection } = require('./build-pages.js');
 const PLACES = require('./places.js');
 const { BG: BG_ONLY } = require('./text-extra.js');
 // Bulgarian regional pages abroad (build-extra.js) of a country, and of the cities in them
@@ -63,6 +63,14 @@ function breadcrumbsJson(lang, items) {
 `;
 }
 
+// Seaside places: the point in the sea off the beach from the Bulgarian pages of the coasts
+// (/europe/greece/more/, /halkidiki/ ..., text-extra.js); these pages get a title about the sea
+// and a live sea temperature table
+const SEA_POINT = {};
+Object.entries(BG_ONLY.abroad).forEach(([key, region]) => (region.places || []).forEach(([, , , slug, sea]) => {
+  if (slug && sea) SEA_POINT[`${key.split('/')[0]}/${slug}`] = sea;
+}));
+
 function cityPage(lang, country, city) {
   const T = EUROPE[lang];
   const [slug, , local, lat, lon] = city;
@@ -76,14 +84,15 @@ function cityPage(lang, country, city) {
   const others = country.cities.filter(other => other !== city)
     .map(other => `<a href="${E(lang, `/europe/${country.slug}/${other[0]}/`)}" class="recent-place">${esc(PLACES.europeName(other, lang))}</a>`).join('\n        ');
   const climate = CLIMATE && CLIMATE.cities[`${country.slug}/${slug}`];
+  const sea = SEA_POINT[`${country.slug}/${slug}`];
   return page({
     lang,
     multi: true,
     base: BASE,
     url,
     indexed: PLACES.europeIndexed(country.code, slug),
-    title: esc(T.cityTitle(name, term)),
-    description: esc(T.cityDescription(name, k, term)),
+    title: esc(sea && !term ? TXT[lang].seaTitle(TXT[lang].where(name)) : T.cityTitle(name, term)),
+    description: esc(sea && !term ? TXT[lang].seaDescription(TXT[lang].where(name)) : T.cityDescription(name, k, term)),
     jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.europeH1, '/europe/'], [k, `/europe/${country.slug}/`], [T.cityH1(name), url]]) +
       placeJson({ title: T.cityH1(name), name, country: country.code, lat, lon, url: E(lang, url), lang }),
     body: `    <p class="breadcrumbs"><a href="${E(lang, '/europe/')}">${T.europeH1}</a> › <a href="${E(lang, `/europe/${country.slug}/`)}">${esc(k)}</a> › ${esc(name)}</p>
@@ -99,7 +108,7 @@ function cityPage(lang, country, city) {
       <a class="btn" href="/weather/?${params}">${T.hourly}</a>
       <a class="btn" href="/magnitni-buri/">${T.storms}</a>${lang === 'bg' ? abroadButtons(abroadOf(country.slug, slug)) : ''}
     </p>
-${sunSection({ lat, lon }, lang, { where: TXT[lang].where(name), zone: ZONES[country.code], note: SUN_NOTE[lang] })}
+${sea ? seaSection([[esc(name), ...sea]], lang, TXT[lang].where(name)) : ''}${sunSection({ lat, lon }, lang, { where: TXT[lang].where(name), zone: ZONES[country.code], note: SUN_NOTE[lang] })}
 ${climateSection({ slug: `${country.slug}/${slug}` }, lang, {
       climate, years: CLIMATE && CLIMATE.years, name, where: TXT[lang].where(name)
     })}
@@ -119,7 +128,7 @@ ${nearbySection({ lat, lon, url, country: country.code }, lang)}
         ${countryLinks(country, lang)}
       </div>
     </section>`,
-    scripts: SCRIPTS
+    scripts: SCRIPTS + (sea ? `<script src="/js/region-weather.js?v=${VERSION.regionWeather}" defer></script>\n` : '')
   });
 }
 

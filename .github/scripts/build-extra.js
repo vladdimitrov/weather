@@ -18,7 +18,7 @@ const CITIES = require('./bg-cities.js');
 const COUNTRIES = require('./europe-data.js');
 const PLACES = require('./places.js');
 const { provinceOf } = require('./bg-provinces.js');
-const { BG, CITIES_PAGE, bgIn } = require('./text-extra.js');
+const { BG, CITIES_PAGE, RESORTS_PAGE, bgIn } = require('./text-extra.js');
 const { TXT } = require('./text-pages.js');
 
 const esc = I18N.esc;
@@ -44,6 +44,46 @@ function breadcrumbs(lang, items) {
   })}
   </script>
 `;
+}
+
+// ---- /kurorti/ ----
+const RESORTS = {
+  ski: ['bansko', 'borovets', 'pamporovo', 'chepelare', 'dobrinishte'].map(slug => `/vremeto/${slug}/`),
+  sea: ['slanchev-bryag', 'zlatni-pyasatsi', 'albena', 'nesebar', 'sozopol', 'primorsko', 'kiten', 'obzor', 'pomorie', 'balchik', 'varna', 'burgas'].map(slug => `/vremeto/${slug}/`),
+  greece: ['kavala', 'thassos', 'keramoti', 'asprovalta', 'stavros', 'olympiada', 'ouranoupoli', 'nikiti', 'neos-marmaras', 'hanioti', 'kallithea',
+    'paralia-katerinis', 'parga', 'corfu', 'lefkada', 'kefalonia', 'zakynthos', 'santorini', 'mykonos', 'chania', 'heraklion', 'rhodes', 'kos'].map(slug => `/europe/greece/${slug}/`)
+};
+function resortsPage(lang) {
+  const T = RESORTS_PAGE[lang];
+  const byUrl = Object.fromEntries(PLACES.PLACES.map(place => [place.url, place]));
+  const group = (title, urls, more) => {
+    const links = urls.map(url => {
+      if (!byUrl[url]) throw new Error(`/kurorti/: no page ${url}`);
+      return `<a href="${L(lang, url)}" class="recent-place">${esc(byUrl[url].name[lang])}</a>`;
+    });
+    // the Bulgarian-only regional pages, on the Bulgarian page
+    const extra = lang === 'bg' ? (more || []).map(([url, text]) => `<a href="${url}" class="recent-place">${esc(text)}</a>`) : [];
+    return `
+    <section class="info-card">
+      <h2>${esc(title)}</h2>
+      <div class="city-links">
+        ${[...links, ...extra].join('\n        ')}
+      </div>
+    </section>`;
+  };
+  return page({
+    url: '/kurorti/',
+    lang,
+    multi: true,
+    title: T.title,
+    description: T.description,
+    jsonLd: breadcrumbs(lang, [['Weather Pulse', '/'], [T.h1, '/kurorti/']]),
+    body: `    <h1>${esc(T.h1)}</h1>
+    <p class="storm-intro">${esc(T.intro)}</p>
+${group(T.ski, RESORTS.ski, [['/vremeto/snyag-kurorti/', RESORTS_PAGE.bg.skiMore]])}
+${group(T.sea, RESORTS.sea, [['/vremeto/chernomorie/', RESORTS_PAGE.bg.seaMore[0]], ['/vremeto/morska-voda/', RESORTS_PAGE.bg.seaMore[1]]])}
+${group(T.greece, RESORTS.greece, [['/europe/greece/belomorie/', RESORTS_PAGE.bg.greeceMore[0]], ['/europe/greece/halkidiki/', RESORTS_PAGE.bg.greeceMore[1]], ['/europe/greece/more/', RESORTS_PAGE.bg.greeceMore[2]]])}`
+  });
 }
 
 // ---- /gradove/ ----
@@ -140,19 +180,19 @@ ${tip}
 // [name, latitude, longitude, page of the city or null]; sea: a point in the sea off the beach (marine model)
 const COAST = [
   ['Шабла', 43.5390, 28.5350, null, [43.535, 28.62]], ['Каварна', 43.4130, 28.3450, null, [43.40, 28.38]],
-  ['Балчик', 43.4060, 28.1640, null, [43.39, 28.20]], ['Албена', 43.3680, 28.0790, null, [43.36, 28.12]],
-  ['Златни пясъци', 43.2850, 28.0420, null, [43.28, 28.09]], ['Варна', 43.2141, 27.9147, 'varna', [43.19, 27.99]],
-  ['Обзор', 42.8170, 27.8800, null, [42.81, 27.92]], ['Слънчев бряг', 42.6950, 27.7100, null, [42.69, 27.75]],
-  ['Несебър', 42.6597, 27.7360, 'nesebar', [42.65, 27.77]], ['Поморие', 42.5550, 27.6400, null, [42.55, 27.68]],
+  ['Балчик', 43.4060, 28.1640, 'balchik', [43.39, 28.20]], ['Албена', 43.3680, 28.0790, 'albena', [43.36, 28.12]],
+  ['Златни пясъци', 43.2850, 28.0420, 'zlatni-pyasatsi', [43.28, 28.09]], ['Варна', 43.2141, 27.9147, 'varna', [43.19, 27.99]],
+  ['Обзор', 42.8170, 27.8800, 'obzor', [42.81, 27.92]], ['Слънчев бряг', 42.6950, 27.7100, 'slanchev-bryag', [42.69, 27.75]],
+  ['Несебър', 42.6597, 27.7360, 'nesebar', [42.65, 27.77]], ['Поморие', 42.5550, 27.6400, 'pomorie', [42.55, 27.68]],
   ['Бургас', 42.5048, 27.4626, 'burgas', [42.48, 27.55]], ['Созопол', 42.4180, 27.6950, 'sozopol', [42.43, 27.74]],
-  ['Приморско', 42.2670, 27.7560, null, [42.27, 27.80]], ['Китен', 42.2340, 27.7750, null, [42.23, 27.81]],
+  ['Приморско', 42.2670, 27.7560, 'primorsko', [42.27, 27.80]], ['Китен', 42.2340, 27.7750, 'kiten', [42.23, 27.81]],
   ['Царево', 42.1700, 27.8500, null, [42.17, 27.89]], ['Ахтопол', 42.0980, 27.9420, null, [42.10, 27.98]]
 ];
 // [name, latitude, longitude, elevation of the slopes for the model, page of the town or null]
 const SKI = [
   ['Банско (Шилигарника)', 41.8050, 23.4330, 1700, 'bansko'], ['Боровец (Ситняково)', 42.2420, 23.5750, 1750, 'borovets'],
   ['Пампорово (Снежанка)', 41.6450, 24.6800, 1800, 'pamporovo'], ['Витоша (Алеко)', 42.5860, 23.2910, 1800, null],
-  ['Чепеларе (Мечи чал)', 41.7050, 24.6450, 1700, null], ['Добринище (Безбог)', 41.8120, 23.5050, 1800, null],
+  ['Чепеларе (Мечи чал)', 41.7050, 24.6450, 1700, 'chepelare'], ['Добринище (Безбог)', 41.8120, 23.5050, 1800, 'dobrinishte'],
   ['Мальовица', 42.1960, 23.3800, 1750, null], ['Узана', 42.7560, 25.2330, 1300, null]
 ];
 const placeLink = (name, slug, lat, lon) => (slug
@@ -175,7 +215,8 @@ const row = (cells, lat, lon, elevation) => `          <tr data-lat="${lat}" dat
 
 // Cities ranked by the average of a month (climate.json): July highs or January lows
 function ranking(month, key, order) {
-  const list = CITIES.map(city => ({ city, value: CLIMATE.cities[city.slug].months[month][key] }))
+  // cities without climate data yet (just added; build-climate.js fills them) are left out
+  const list = CITIES.filter(city => CLIMATE.cities[city.slug]).map(city => ({ city, value: CLIMATE.cities[city.slug].months[month][key] }))
     .sort((a, b) => (order > 0 ? b.value - a.value : a.value - b.value)).slice(0, 15);
   return `      <div class="table-scroll">
       <table class="kp-table">
@@ -487,6 +528,7 @@ function widgetPage() {
 }
 
 I18N.LANGS.forEach(lang => write(L(lang, '/gradove/').slice(1), citiesPage(lang)));
+I18N.LANGS.forEach(lang => write(L(lang, '/kurorti/').slice(1), resortsPage(lang)));
 CITIES.forEach(city => {
   write(`vremeto/${city.slug}/10-dni`, forecastPage(city, 'tenDays'));
   write(`vremeto/${city.slug}/14-dni`, forecastPage(city, 'fourteenDays'));

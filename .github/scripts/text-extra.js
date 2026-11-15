@@ -291,4 +291,45 @@ const CITIES_PAGE = {
   }
 };
 
-module.exports = { BG, CITIES_PAGE, bgIn };
+// /kurorti/: the winter and summer resorts (Bulgaria and Greece), in the five languages
+const RESORTS_PAGE = {
+  bg: {
+    title: 'Курорти – времето в ски и морските курорти на България и Гърция',
+    h1: 'Времето по курортите',
+    description: 'Времето в ски курортите и на морето: Банско, Боровец, Пампорово, Слънчев бряг, Златни пясъци, Созопол, Тасос, Халкидики и още – прогноза, сняг по пистите и температура на морето.',
+    intro: 'Прогноза за 7 дни, сняг по пистите и температура на морската вода за ски курортите и морските курорти на България и Северна Гърция.',
+    ski: 'Ски курорти в България', sea: 'Черноморски курорти', greece: 'Курорти в Гърция',
+    skiMore: 'Сняг по курортите →', seaMore: ['Времето по Черноморието →', 'Температура на морската вода →'],
+    greeceMore: ['Беломорието →', 'Халкидики →', 'Температура на морето в Гърция →']
+  },
+  en: {
+    title: 'Resorts – weather in the ski and seaside resorts of Bulgaria and Greece',
+    h1: 'Weather in the resorts',
+    description: 'Weather in the ski and seaside resorts: Bansko, Borovets, Pamporovo, Sunny Beach, Golden Sands, Sozopol, Thassos, Halkidiki and more – forecast, snow on the slopes and sea temperature.',
+    intro: 'A 7-day forecast, snow on the slopes and sea temperature for the ski resorts and seaside resorts of Bulgaria and Northern Greece.',
+    ski: 'Ski resorts in Bulgaria', sea: 'Black Sea resorts', greece: 'Resorts in Greece'
+  },
+  de: {
+    title: 'Urlaubsorte – Wetter in den Ski- und Badeorten Bulgariens und Griechenlands',
+    h1: 'Wetter in den Urlaubsorten',
+    description: 'Wetter in den Ski- und Badeorten: Bansko, Borowez, Pamporowo, Sonnenstrand, Goldstrand, Sosopol, Thassos, Chalkidiki und mehr – Vorhersage, Schnee auf den Pisten und Wassertemperatur.',
+    intro: '7-Tage-Vorhersage, Schnee auf den Pisten und Wassertemperatur für die Skiorte und Badeorte Bulgariens und Nordgriechenlands.',
+    ski: 'Skiorte in Bulgarien', sea: 'Badeorte am Schwarzen Meer', greece: 'Urlaubsorte in Griechenland'
+  },
+  it: {
+    title: 'Località – meteo nelle località sciistiche e balneari di Bulgaria e Grecia',
+    h1: 'Meteo nelle località turistiche',
+    description: 'Meteo nelle località sciistiche e balneari: Bansko, Borovets, Pamporovo, Sunny Beach, Sabbie d’Oro, Sozopol, Thassos, Calcidica e altre – previsioni, neve sulle piste e temperatura del mare.',
+    intro: 'Previsioni a 7 giorni, neve sulle piste e temperatura del mare per le località sciistiche e balneari della Bulgaria e della Grecia settentrionale.',
+    ski: 'Località sciistiche in Bulgaria', sea: 'Località sul Mar Nero', greece: 'Località in Grecia'
+  },
+  es: {
+    title: 'Destinos – el tiempo en las estaciones de esquí y de playa de Bulgaria y Grecia',
+    h1: 'El tiempo en los destinos turísticos',
+    description: 'El tiempo en las estaciones de esquí y de playa: Bansko, Borovets, Pamporovo, Sunny Beach, Arenas Doradas, Sozopol, Tasos, Calcídica y más – previsión, nieve en las pistas y temperatura del mar.',
+    intro: 'Previsión a 7 días, nieve en las pistas y temperatura del mar para las estaciones de esquí y de playa de Bulgaria y del norte de Grecia.',
+    ski: 'Estaciones de esquí en Bulgaria', sea: 'Destinos del mar Negro', greece: 'Destinos en Grecia'
+  }
+};
+
+module.exports = { BG, CITIES_PAGE, RESORTS_PAGE, bgIn };

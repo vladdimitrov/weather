@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather in Santorini today – 7-day forecast | Weather Pulse</title>
+  <title>Weather in Santorini today and sea temperature | Weather Pulse</title>
   <link rel="canonical" href="https://weatherpulse.eu/en/europe/greece/santorini/" />
   <link rel="alternate" hreflang="bg" href="https://weatherpulse.eu/europe/greece/santorini/" />
   <link rel="alternate" hreflang="en" href="https://weatherpulse.eu/en/europe/greece/santorini/" />
@@ -16,12 +16,12 @@
   <link rel="alternate" hreflang="it" href="https://weatherpulse.eu/it/europe/greece/santorini/" />
   <link rel="alternate" hreflang="es" href="https://weatherpulse.eu/es/europe/greece/santorini/" />
   <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu/europe/greece/santorini/" />
-  <meta name="description" content="Weather in Santorini, Greece today: forecast for tomorrow and the next 7 days with temperature, rain and wind. Updated every hour (data: Open-Meteo).">
+  <meta name="description" content="Weather in Santorini today and for 7 days, and the sea temperature now: temperature, rain, wind and waves. Updated every hour.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Weather Pulse">
   <meta property="og:locale" content="en_GB">
-  <meta property="og:title" content="Weather in Santorini today – 7-day forecast">
-  <meta property="og:description" content="Weather in Santorini, Greece today: forecast for tomorrow and the next 7 days with temperature, rain and wind. Updated every hour (data: Open-Meteo).">
+  <meta property="og:title" content="Weather in Santorini today and sea temperature">
+  <meta property="og:description" content="Weather in Santorini today and for 7 days, and the sea temperature now: temperature, rain, wind and waves. Updated every hour.">
   <meta property="og:url" content="https://weatherpulse.eu/en/europe/greece/santorini/">
   <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -110,6 +110,7 @@
       <a href="/en/weather/" class="nav-link" data-nav="weather">Weather Forecast</a>
       <a href="/en/maps/" class="nav-link" data-nav="maps">Weather Maps</a>
       <a href="/en/holliday_calendar/" class="nav-link" data-nav="holidays">Holiday Calendar</a>
+      <a href="/en/kurorti/" class="nav-link" data-nav="resorts">Resorts</a>
       <a href="/en/magnitni-buri/" class="nav-link" data-nav="storms">Magnetic Storms</a>
       <a href="/en/luna/" class="nav-link" data-nav="moon">Moon Calendar</a>
     </div>
@@ -206,6 +207,21 @@
       <a class="btn" href="/en/weather/?city=Santorini&lat=36.4167&lon=25.4320&cc=GR">Hourly forecast →</a>
       <a class="btn" href="/en/magnitni-buri/">Geomagnetic storms today →</a>
     </p>
+
+    <section class="info-card">
+      <h2>Sea temperature in Santorini</h2>
+      <p>The temperature of the sea water off the coast now and the highest waves today. The values come from a marine model for a point in the sea near the beach.</p>
+      <div class="table-scroll">
+      <table class="kp-table region-table" data-mode="sea">
+        <thead><tr><th>Place</th><th>Sea now</th><th>Waves today</th></tr></thead>
+        <tbody>
+          <tr data-lat="36.41" data-lon="25.4"><td>Santorini</td></tr>
+        </tbody>
+      </table>
+      <p class="storm-updated region-nojs">The table is filled in when the page loads.</p>
+      </div>
+      <p class="storm-updated">Data: Open-Meteo (marine model), updated every hour.</p>
+    </section>
 
     <section class="info-card city-sun-table">
       <h2>Sunrise and sunset in Santorini</h2>
@@ -375,11 +391,12 @@
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=19" defer></script>
+<script src="/js/mobile-nav.js?v=20" defer></script>
 <script src="/js/language-selector.js?v=8" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/city-forecast.js?v=13" defer></script>
+<script src="/js/region-weather.js?v=2" defer></script>
 </body>
 </html>

@@ -10,7 +10,8 @@ const NAMES = require('./europe-names.js');
 // German, Italian and Spanish: the cities of countries that speak the language and the big
 // tourist places; nobody searches for "El tiempo en Vratsa" in Spanish.
 const SPEAKERS = { DE: ['de'], AT: ['de'], CH: ['de', 'it'], LU: ['de'], IT: ['it'], ES: ['es'] };
-const TOURIST_BG = ['sofia', 'plovdiv', 'varna', 'burgas', 'veliko-tarnovo', 'bansko', 'borovets', 'pamporovo', 'nesebar', 'sozopol'];
+const TOURIST_BG = ['sofia', 'plovdiv', 'varna', 'burgas', 'veliko-tarnovo', 'bansko', 'borovets', 'pamporovo', 'nesebar', 'sozopol',
+  'slanchev-bryag', 'zlatni-pyasatsi', 'albena', 'primorsko', 'kiten', 'obzor', 'pomorie', 'balchik', 'chepelare', 'dobrinishte'];
 const TOURIST_EUROPE = [
   'vienna', 'salzburg', 'innsbruck', 'brussels', 'bruges', 'dubrovnik', 'split', 'paphos', 'limassol', 'prague', 'copenhagen',
   'helsinki', 'rovaniemi', 'paris', 'nice', 'marseille', 'berlin', 'munich', 'athens', 'thessaloniki', 'heraklion', 'rhodes',

@@ -108,6 +108,7 @@
     moon: { en: 'Moon Calendar', bg: 'Лунен календар', de: 'Mondkalender', it: 'Calendario lunare', es: 'Calendario lunar' },
     sky: { en: 'The Sky', bg: 'Небето', de: 'Himmel', it: 'Il cielo', es: 'El cielo' },
     auroraLink: { en: '🌌 Northern lights & the sky →', bg: '🌌 Северно сияние и небето →', de: '🌌 Polarlichter & Himmel →', it: '🌌 Aurora e cielo →', es: '🌌 Auroras y el cielo →' },
+    resorts: { en: 'Resorts', bg: 'Курорти', de: 'Urlaubsorte', it: 'Località', es: 'Destinos' },
     storms: { en: 'Magnetic Storms', bg: 'Магнитни бури', de: 'Magnetstürme', it: 'Tempeste magnetiche', es: 'Tormentas magnéticas' },
     about: { en: 'About', bg: 'За сайта', de: 'Über uns', it: 'Chi siamo', es: 'Acerca de' },
     privacy: { en: 'Privacy', bg: 'Поверителност', de: 'Datenschutz', it: 'Privacy', es: 'Privacidad' },
@@ -120,7 +121,7 @@
   };
 
   // Pages that exist as a translation in /en/, /de/, /it/, /es/: the link follows the language
-  const localPages = { home: '', weather: 'weather/', maps: 'maps/', holidays: 'holliday_calendar/', storms: 'magnitni-buri/', moon: 'luna/', stormsToday: 'magnitni-buri/', allCities: 'vremeto/', holidaysBg: 'praznici/', sky: 'nebeto/', about: 'za-saita/', privacy: 'poveritelnost/', sources: 'iztochnici/', sourcesShort: 'iztochnici/', cityIndex: 'gradove/', europe: 'europe/' };
+  const localPages = { home: '', weather: 'weather/', maps: 'maps/', holidays: 'holliday_calendar/', storms: 'magnitni-buri/', moon: 'luna/', resorts: 'kurorti/', stormsToday: 'magnitni-buri/', allCities: 'vremeto/', holidaysBg: 'praznici/', sky: 'nebeto/', about: 'za-saita/', privacy: 'poveritelnost/', sources: 'iztochnici/', sourcesShort: 'iztochnici/', cityIndex: 'gradove/', europe: 'europe/' };
 
   function translateNav() {
     const lang = document.documentElement.lang;

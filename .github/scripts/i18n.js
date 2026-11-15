@@ -34,11 +34,11 @@ const withBrand = title => (title.length + BRAND.length > 65 ? title : title + B
 
 // Same texts as navTexts in /js/mobile-nav.js
 const NAV = {
-  bg: { home: 'Начало', weather: 'Прогноза за времето', maps: 'Карти за времето', holidays: 'Календар на празниците', storms: 'Магнитни бури', sky: 'Небето', sources: 'Източници на данни', sourcesShort: 'Източници', moon: 'Лунен календар', cities: 'Всички градове', about: 'За сайта', privacy: 'Поверителност' },
-  en: { home: 'Home', weather: 'Weather Forecast', maps: 'Weather Maps', holidays: 'Holiday Calendar', storms: 'Magnetic Storms', sky: 'The Sky', sources: 'Data Sources', sourcesShort: 'Sources', moon: 'Moon Calendar', cities: 'All cities', about: 'About', privacy: 'Privacy' },
-  de: { home: 'Startseite', weather: 'Wettervorhersage', maps: 'Wetterkarten', holidays: 'Feiertagskalender', storms: 'Magnetstürme', sky: 'Himmel', sources: 'Datenquellen', sourcesShort: 'Quellen', moon: 'Mondkalender', cities: 'Alle Städte', about: 'Über uns', privacy: 'Datenschutz' },
-  it: { home: 'Home', weather: 'Previsioni del tempo', maps: 'Mappe meteorologiche', holidays: 'Calendario delle festività', storms: 'Tempeste magnetiche', sky: 'Il cielo', sources: 'Fonti dei dati', sourcesShort: 'Fonti', moon: 'Calendario lunare', cities: 'Tutte le città', about: 'Chi siamo', privacy: 'Privacy' },
-  es: { home: 'Inicio', weather: 'Pronóstico del tiempo', maps: 'Mapas del tiempo', holidays: 'Calendario de festivos', storms: 'Tormentas magnéticas', sky: 'El cielo', sources: 'Fuentes de datos', sourcesShort: 'Fuentes', moon: 'Calendario lunar', cities: 'Todas las ciudades', about: 'Acerca de', privacy: 'Privacidad' }
+  bg: { home: 'Начало', weather: 'Прогноза за времето', maps: 'Карти за времето', holidays: 'Календар на празниците', storms: 'Магнитни бури', sky: 'Небето', sources: 'Източници на данни', sourcesShort: 'Източници', moon: 'Лунен календар', cities: 'Всички градове', about: 'За сайта', privacy: 'Поверителност', resorts: 'Курорти' },
+  en: { home: 'Home', weather: 'Weather Forecast', maps: 'Weather Maps', holidays: 'Holiday Calendar', storms: 'Magnetic Storms', sky: 'The Sky', sources: 'Data Sources', sourcesShort: 'Sources', moon: 'Moon Calendar', cities: 'All cities', about: 'About', privacy: 'Privacy', resorts: 'Resorts' },
+  de: { home: 'Startseite', weather: 'Wettervorhersage', maps: 'Wetterkarten', holidays: 'Feiertagskalender', storms: 'Magnetstürme', sky: 'Himmel', sources: 'Datenquellen', sourcesShort: 'Quellen', moon: 'Mondkalender', cities: 'Alle Städte', about: 'Über uns', privacy: 'Datenschutz', resorts: 'Urlaubsorte' },
+  it: { home: 'Home', weather: 'Previsioni del tempo', maps: 'Mappe meteorologiche', holidays: 'Calendario delle festività', storms: 'Tempeste magnetiche', sky: 'Il cielo', sources: 'Fonti dei dati', sourcesShort: 'Fonti', moon: 'Calendario lunare', cities: 'Tutte le città', about: 'Chi siamo', privacy: 'Privacy', resorts: 'Località' },
+  es: { home: 'Inicio', weather: 'Pronóstico del tiempo', maps: 'Mapas del tiempo', holidays: 'Calendario de festivos', storms: 'Tormentas magnéticas', sky: 'El cielo', sources: 'Fuentes de datos', sourcesShort: 'Fuentes', moon: 'Calendario lunar', cities: 'Todas las ciudades', about: 'Acerca de', privacy: 'Privacidad', resorts: 'Destinos' }
 };
 const LOGO_ALT = { bg: 'Лого', en: 'Logo', de: 'Logo', it: 'Logo', es: 'Logo' };
 
@@ -52,6 +52,9 @@ const weekdayName = (lang, weekday) => new Intl.DateTimeFormat(LOCALE[lang], { t
 const latinName = (lang, slug) => {
   if (slug === 'sofia' && lang === 'es') return 'Sofía';
   if (slug === 'nesebar') return 'Nessebar';
+  // the resorts known abroad by a translated name
+  if (slug === 'slanchev-bryag') return { de: 'Sonnenstrand' }[lang] || 'Sunny Beach';
+  if (slug === 'zlatni-pyasatsi') return { de: 'Goldstrand', it: 'Sabbie d’Oro', es: 'Arenas Doradas' }[lang] || 'Golden Sands';
   return slug.split('-').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
 };
 

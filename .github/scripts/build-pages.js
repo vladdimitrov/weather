@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 62, mobileNav: 19, languageSelector: 8, cityForecast: 13, moon: 2, lunaToday: 5, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1, regionWeather: 2 };
+const VERSION = { theme: 62, mobileNav: 20, languageSelector: 8, cityForecast: 13, moon: 2, lunaToday: 5, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1, regionWeather: 2 };
 
 const CITIES = require('./bg-cities.js');
 
@@ -33,8 +33,39 @@ const LOCAL_WIND = {
 const SKI_POINTS = {
   bansko: [['Банско', 'Bansko', 41.8383, 23.4885, 930], ['Шилигарника', 'Shiligarnika', 41.8050, 23.4330, 1700], ['Тодорка', 'Todorka', 41.7835, 23.4200, 2500]],
   borovets: [['Боровец', 'Borovets', 42.2667, 23.6056, 1350], ['Ситняково', 'Sitnyakovo', 42.2420, 23.5750, 1750], ['Ястребец', 'Yastrebets', 42.2300, 23.5600, 2300]],
-  pamporovo: [['Пампорово', 'Pamporovo', 41.6500, 24.6950, 1650], ['Снежанка', 'Snezhanka', 41.6450, 24.6800, 1900]]
+  pamporovo: [['Пампорово', 'Pamporovo', 41.6500, 24.6950, 1650], ['Снежанка', 'Snezhanka', 41.6450, 24.6800, 1900]],
+  chepelare: [['Чепеларе', 'Chepelare', 41.7247, 24.6853, 1150], ['Мечи чал', 'Mechi Chal', 41.7050, 24.6450, 1700]],
+  dobrinishte: [['Добринище', 'Dobrinishte', 41.8222, 23.5631, 850], ['Безбог', 'Bezbog', 41.7350, 23.5250, 2200]]
 };
+// Seaside towns: a ski-like title about the sea and a live sea table (data-mode="sea") for a point in the
+// sea off the beach (the same points as /vremeto/morska-voda/, build-extra.js)
+const BG_SEA = {
+  varna: [43.19, 27.99], burgas: [42.48, 27.55], sozopol: [42.43, 27.74], nesebar: [42.65, 27.77],
+  'slanchev-bryag': [42.69, 27.75], 'zlatni-pyasatsi': [43.28, 28.09], albena: [43.36, 28.12], primorsko: [42.27, 27.80],
+  kiten: [42.23, 27.81], obzor: [42.81, 27.92], pomorie: [42.55, 27.68], balchik: [43.39, 28.20]
+};
+const SEA_RESORT = slug => BG_SEA[slug] && !['varna', 'burgas'].includes(slug);  // the cities keep their usual title
+// places: [[name, latitude, longitude], ...]
+function seaSection(places, lang, where) {
+  if (!places || !places.length) return '';
+  const T = TXT[lang];
+  return `
+    <section class="info-card">
+      <h2>${T.seaH(where)}</h2>
+      <p>${T.seaIntro}</p>
+      <div class="table-scroll">
+      <table class="kp-table region-table" data-mode="sea">
+        <thead><tr>${T.seaHead.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+        <tbody>
+${places.map(([name, lat, lon]) => `          <tr data-lat="${lat}" data-lon="${lon}"><td>${name}</td></tr>`).join('\n')}
+        </tbody>
+      </table>
+      <p class="storm-updated region-nojs">${T.snowNoJs}</p>
+      </div>
+      <p class="storm-updated">${T.seaNote}</p>
+    </section>
+`;
+}
 function snowSection(city, lang) {
   const points = SKI_POINTS[city.slug];
   if (!points) return '';
@@ -56,7 +87,10 @@ ${points.map(([bg, latin, lat, lon, elevation]) => `          <tr data-lat="${la
     </section>
 `;
 }
-const REGION_OF = { varna: ['chernomorie', 'morska-voda'], burgas: ['chernomorie', 'morska-voda'], sozopol: ['chernomorie', 'morska-voda'], nesebar: ['chernomorie', 'morska-voda'], bansko: ['snyag-kurorti'], borovets: ['snyag-kurorti'], pamporovo: ['snyag-kurorti'] };
+const REGION_OF = { varna: ['chernomorie', 'morska-voda'], burgas: ['chernomorie', 'morska-voda'], sozopol: ['chernomorie', 'morska-voda'], nesebar: ['chernomorie', 'morska-voda'], bansko: ['snyag-kurorti'], borovets: ['snyag-kurorti'], pamporovo: ['snyag-kurorti'],
+  'slanchev-bryag': ['chernomorie', 'morska-voda'], 'zlatni-pyasatsi': ['chernomorie', 'morska-voda'], albena: ['chernomorie', 'morska-voda'], primorsko: ['chernomorie', 'morska-voda'],
+  kiten: ['chernomorie', 'morska-voda'], obzor: ['chernomorie', 'morska-voda'], pomorie: ['chernomorie', 'morska-voda'], balchik: ['chernomorie', 'morska-voda'],
+  chepelare: ['snyag-kurorti'], dobrinishte: ['snyag-kurorti'] };
 const L = (lang, url) => I18N.localUrl(lang, url);
 const linkTo = (url, text) => `<a href="${url}">${text}</a>`;
 
@@ -323,6 +357,7 @@ ${head}</head>
       <a href="/weather/" class="nav-link" data-nav="weather">${nav('weather')}</a>
       <a href="/maps/" class="nav-link" data-nav="maps">${nav('maps')}</a>
       <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">${nav('holidays')}</a>
+      <a href="${multi ? I18N.localUrl(lang, '/kurorti/') : '/kurorti/'}" class="nav-link" data-nav="resorts">${nav('resorts')}</a>
       <a href="/magnitni-buri/" class="nav-link" data-nav="storms">${nav('storms')}</a>
       <a href="${multi ? I18N.localUrl(lang, '/luna/') : '/luna/'}" class="nav-link" data-nav="moon">${nav('moon')}</a>
     </div>
@@ -438,8 +473,8 @@ function cityPage(city, lang) {
     multi: true,
     indexed: PLACES.bgIndexed(city.slug),
     // page() adds " | Weather Pulse" (when the title is short enough)
-    title: SKI_POINTS[city.slug] ? T.skiTitle(where) : T.title(where),
-    description: SKI_POINTS[city.slug] ? T.skiDescription(where) : T.description(where),
+    title: SKI_POINTS[city.slug] ? T.skiTitle(where) : SEA_RESORT(city.slug) ? T.seaTitle(where) : T.title(where),
+    description: SKI_POINTS[city.slug] ? T.skiDescription(where) : SEA_RESORT(city.slug) ? T.seaDescription(where) : T.description(where),
     jsonLd: breadcrumbs + placeJson({ title: T.cityName(where), name, country: 'BG', lat: city.lat, lon: city.lon, url: L(lang, `/vremeto/${city.slug}/`), lang }),
     body: `    <p class="breadcrumbs"><a href="${L(lang, '/vremeto/')}">${T.hubName}</a> › ${name}</p>
     <h1>${T.cityName(where)}</h1>
@@ -449,7 +484,7 @@ function cityPage(city, lang) {
       <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">${T.loading}</p></div>
       <div class="kp-forecast" id="cityDays" hidden></div>
     </div>
-${snowSection(city, lang)}${LOCAL_WIND[city.slug] ? `
+${snowSection(city, lang)}${BG_SEA[city.slug] ? seaSection([[cityName(city, lang), ...BG_SEA[city.slug]]], lang, where) : ''}${LOCAL_WIND[city.slug] ? `
     <section class="info-card city-local-wind">
       <p>${LOCAL_WIND[city.slug][lang]}</p>
     </section>
@@ -478,7 +513,7 @@ ${nearbySection({ lat: city.lat, lon: city.lon, url: `/vremeto/${city.slug}/`, c
     </section>`,
     scripts: `<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=${VERSION.moon}" defer></script>
-<script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n${SKI_POINTS[city.slug] ? `<script src="/js/region-weather.js?v=${VERSION.regionWeather}" defer></script>\n` : ''}`
+<script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n${SKI_POINTS[city.slug] || BG_SEA[city.slug] ? `<script src="/js/region-weather.js?v=${VERSION.regionWeather}" defer></script>\n` : ''}`
   });
 }
 
@@ -677,7 +712,7 @@ ${tables}
 }
 
 // Used by build-climate.js (the city list); the pages are built only when run directly
-module.exports = { CITIES, daysOff, page, write, redirect, VERSION, placeJson, climateSection, sunSection, bestTimeSection, nearbySection, joinList };
+module.exports = { CITIES, daysOff, page, write, redirect, VERSION, placeJson, climateSection, sunSection, bestTimeSection, nearbySection, joinList, seaSection };
 if (require.main === module) (async function main() {
   const firstYear = Number(process.argv[2]) || new Date().getFullYear();
   const years = [firstYear, firstYear + 1];
