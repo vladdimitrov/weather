@@ -2,7 +2,7 @@
 //   /gradove/ (5 languages)          all cities that have a page: Bulgaria and Europe, for the internal links
 //   /vremeto/<city>/10-dni/          "времето в Търново за 10 дни" (Bulgarian only, every Bulgarian city)
 //   /vremeto/<city>/uikend/          "времето в Банско през уикенда" (Bulgarian only, the tourist places)
-//   /vremeto/chernomorie/, /vremeto/morska-voda/, /vremeto/snyag-kurorti/, /vremeto/zhegi/,
+//   /vremeto/chernomorie/, /vremeto/morska-voda/, /vremeto/snyag-kurorti/, /vremeto/zhegi/, /vremeto/preduprezhdeniya/,
 //   /vremeto/parvi-snyag/            regional and seasonal pages (Bulgarian only); live tables: /js/region-weather.js
 //   /europe/greece/belomorie/, /europe/greece/halkidiki/, /europe/greece/more/, /europe/turkey/more/
 //                                    resorts abroad: 7 days and sea water (Bulgarian only)
@@ -32,8 +32,8 @@ const CITY_SCRIPTS = `<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`;
 const REGION_SCRIPTS = `<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>
-<script src="/js/region-weather.js?v=1" defer></script>\n`;
-const REGION_STYLE = '<style>.region-table td.region-hot{color:#ff8a65;font-weight:600}.region-table td.region-snow{color:#81d4fa;font-weight:600}.region-table th,.region-table td{white-space:nowrap}</style>';
+<script src="/js/region-weather.js?v=${VERSION.regionWeather}" defer></script>\n`;
+const REGION_STYLE = '<style>.region-table td.region-hot{color:#ff8a65;font-weight:600}.region-table td.region-snow{color:#81d4fa;font-weight:600}.region-table th,.region-table td{white-space:nowrap}.region-table td.region-warn{white-space:normal;min-width:12em}.region-warn span{display:block;margin:2px 0;padding:3px 8px;border-radius:6px;font-weight:600;color:#1a1a2e}.region-warn .warn-yellow{background:#ffd54f}.region-warn .warn-orange{background:#ff9800}.region-warn .warn-red{background:#e53935;color:#fff}</style>';
 
 function breadcrumbs(lang, items) {
   return `  <script type="application/ld+json">
@@ -299,6 +299,14 @@ ${liveTable('heat', [], CITIES.map(city => row(placeLink(city.name, city.slug), 
 ${ranking(6, 'high', 1)}
       <p class="storm-updated">${R.rankNote(CLIMATE.years)}</p>
     </section>`;
+  } else if (slug === 'preduprezhdeniya') {
+    main = `
+    <p class="storm-intro" id="warnSummary" role="status"></p>
+    <section class="info-card">
+      <h2>${R.tableH}</h2>
+${liveTable('warnings', BG.tableHead.warnings, CITIES.map(city => row(placeLink(city.name, city.slug), city.lat, city.lon)
+    .replace('<tr ', `<tr data-warn="${provinceOf(city.slug)}" `)), R.tableNote)}
+    </section>`;
   } else if (slug === 'parvi-snyag') {
     main = `
     <section class="info-card">
@@ -336,7 +344,8 @@ ${extra}
         <a href="/gradove/" class="recent-place">${I18N.NAV.bg.cities}</a>
       </div>
     </section>`,
-    scripts: REGION_SCRIPTS
+    // the warnings page takes the median of the models, as the city pages
+    scripts: (slug === 'preduprezhdeniya' ? '<script src="/js/forecast-core.js?v=2" defer></script>\n' : '') + REGION_SCRIPTS
   });
 }
 

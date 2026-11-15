@@ -19,7 +19,7 @@ const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
 const API = 'https://api.open-meteo.com/v1/forecast';
-const DAILY = 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,wind_gusts_10m_max';
+const DAILY = 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,snowfall_sum,wind_speed_10m_max,wind_gusts_10m_max';
 const CHUNK = 20; // places in one request
 
 const ISSUED = { bg: 'Прогноза от', en: 'Forecast issued on', de: 'Vorhersage vom', it: 'Previsione del', es: 'Previsión del' };
@@ -87,8 +87,8 @@ function declaration(source, name, file) {
 
 // The texts and weather groups of the live forecast, and the median of the models
 const cityScript = read(path.join(ROOT, 'js/city-forecast.js'));
-const { conditions, T, PERIOD, WIND } = vm.runInNewContext(
-  `${['conditions', 'T', 'PERIOD', 'WIND'].map(name => declaration(cityScript, name, 'js/city-forecast.js')).join('\n')}\n({ conditions, T, PERIOD, WIND })`);
+const { conditions, T, PERIOD, WIND, HAZARDS } = vm.runInNewContext(
+  `${['conditions', 'T', 'PERIOD', 'WIND', 'HAZARDS'].map(name => declaration(cityScript, name, 'js/city-forecast.js')).join('\n')}\n({ conditions, T, PERIOD, WIND, HAZARDS })`);
 const STRONG = Number((cityScript.match(/const STRONG = (\d+);/) || [])[1]);
 if (!STRONG) throw new Error('js/city-forecast.js: "const STRONG" not found');
 const condition = code => conditions.find(c => c.codes.includes(code)) || conditions[2];
@@ -219,10 +219,10 @@ function snapshot(page, data, today) {
   }
   browser.document.documentElement.lang = lang;
   const note = Core.note({ models: data.models, elevation: data.elevation });
-  // Strong gusts today or tomorrow (the page adds the official warnings of NIMH when it opens)
-  const W = WIND[lang];
-  const alerts = [0, 1].map(i => (daily.wind_gusts_10m_max || [])[i]).map((g, i) => (typeof g === 'number' && g >= STRONG
-    ? `        <p class="city-alert city-alert-${g >= 90 ? 'orange' : 'yellow'}">${esc((g >= 90 ? W.very : W.strong)(Math.round(g), i === 0 ? W.today : W.tomorrow))}</p>\n` : '')).join('');
+  // Our warnings for today and tomorrow: gusts, heavy rain or snow, frost, heat (HAZARDS in
+  // js/city-forecast.js; the page adds the official warnings of NIMH when it opens)
+  const alerts = HAZARDS.list(daily, lang, [])
+    .map(h => `        <p class="city-alert city-alert-${h.level}">${esc(h.text)}</p>\n`).join('');
   // Deeper than the closing </div> of #cityForecast (4 spaces), which marks the end of the block
   return `${alerts ? `      <div class="city-alerts" id="cityAlerts" role="status">\n${alerts}      </div>\n` : ''}      <div class="kp-forecast city-now" id="cityNow">
         <h2>${esc(page.name)}: ${esc(date(daily.time[0], { weekday: 'long', day: 'numeric', month: 'long' }))}</h2>

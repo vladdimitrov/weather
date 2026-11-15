@@ -8,6 +8,10 @@
 //   sea        sea surface temperature now and the highest waves today (marine API)
 //   snow       snow depth now, new snow in 7 days, lowest / highest temperature (at data-elevation)
 //   firstsnow  the first day with 1 cm of new snow or more in 16 days, and the total
+//   warnings   the official warnings of NIMH for the province of the row (data-warn, from
+//              /data/warnings-bg.json) and ours for today and tomorrow (window.WeatherHazards
+//              of js/city-forecast.js, on the median of the models of js/forecast-core.js);
+//              the rows with warnings are moved to the top and #warnSummary says how many
 (function () {
   const FORECAST = 'https://api.open-meteo.com/v1/forecast';
   const MARINE = 'https://marine-api.open-meteo.com/v1/marine';
@@ -49,6 +53,10 @@
       return `${FORECAST}?${where}&elevation=${elevation}&hourly=snow_depth&daily=snowfall_sum,temperature_2m_max,temperature_2m_min&forecast_days=7`;
     }
     if (mode === 'firstsnow') return `${FORECAST}?${where}&daily=snowfall_sum&forecast_days=16`;
+    if (mode === 'warnings') {
+      const models = window.ForecastCore ? `&models=${window.ForecastCore.MODELS.join(',')}` : '';
+      return `${FORECAST}?${where}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,snowfall_sum,wind_gusts_10m_max&forecast_days=2${models}`;
+    }
     return `${FORECAST}?${where}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&forecast_days=7`;
   }
 
@@ -89,6 +97,8 @@
         cell(row, typeof depth === 'number' ? `${Math.round(depth * 100)} ${text.cm}` : '—');
         cell(row, `${Math.round(fresh)} ${text.cm}`);
         cell(row, `${deg(Math.min(...(daily.temperature_2m_min || [NaN])))} / ${deg(Math.max(...(daily.temperature_2m_max || [NaN])))}`);
+      } else if (mode === 'warnings') {
+        warningCells(row, data, n);
       } else if (mode === 'firstsnow') {
         const snow = daily.snowfall_sum || [];
         const first = snow.findIndex(v => v >= 1);
@@ -97,8 +107,59 @@
         cell(row, `${Math.round(total)} ${text.cm}`);
       }
     });
+    if (mode === 'warnings') sortWarnings(table, rows);
     const note = table.parentElement.querySelector('.region-nojs');
     if (note) note.remove();
+  }
+
+  // --- The warnings page (data-mode="warnings") ---
+  const WARN = {
+    bg: { none: 'няма', official: (level, event, from, to) => `${level} код: ${event}, ${from} – ${to}`, levels: { yellow: 'Жълт', orange: 'Оранжев', red: 'Червен' },
+      summaryNone: 'В момента няма предупреждения за опасно време за днес и утре в тези места.',
+      summary: (places, official) => `Предупреждения има за ${places} ${places === 1 ? 'място' : 'места'}${official ? `, от тях ${official} с официално предупреждение на НИМХ` : ''}. Те са най-отгоре в таблицата.` }
+  };
+  const warnText = () => WARN[document.documentElement.lang] || WARN.bg;
+  const RANK = { red: 3, orange: 2, yellow: 1 };
+  let officialWarnings = null; // { province: [warnings] }
+  const officialReady = fetch('/data/warnings-bg.json', { cache: 'no-store' })
+    .then(response => (response.ok ? response.json() : {}))
+    .then(data => { officialWarnings = data.provinces || {}; })
+    .catch(() => { officialWarnings = {}; });
+
+  function warningCells(row, data) {
+    const text = warnText();
+    const now = Date.now();
+    const official = ((officialWarnings || {})[row.dataset.warn] || []).filter(w => new Date(w.expires).getTime() > now);
+    const time = iso => new Date(iso).toLocaleString(t().locale, { weekday: 'short', hour: '2-digit', minute: '2-digit' });
+    // one series per model (temperature_2m_max_ecmwf_ifs ...) -> the median, as on the city pages
+    const daily = data.daily && !data.daily.temperature_2m_max && window.ForecastCore ? window.ForecastCore.collapse(data).daily : data.daily;
+    const ours = daily && window.WeatherHazards ? window.WeatherHazards.list(daily, document.documentElement.lang, official) : [];
+    const fill = items => {
+      const td = cell(row, '', 'region-warn');
+      if (!items.length) { td.textContent = text.none; return; }
+      items.forEach(item => {
+        const span = document.createElement('span');
+        span.className = `warn-${item.level}`;
+        span.textContent = item.text;
+        td.appendChild(span);
+      });
+    };
+    fill(official.map(w => ({ level: w.level, text: text.official(text.levels[w.level] || w.level, w.event.bg || w.event.en, time(w.onset), time(w.expires)) })));
+    fill(ours);
+    row.dataset.rank = Math.max(0, ...official.map(w => (RANK[w.level] || 0) + 10), ...ours.map(h => RANK[h.level] || 0));
+    row.dataset.official = official.length ? '1' : '';
+  }
+
+  function sortWarnings(table, rows) {
+    const body = table.tBodies[0];
+    rows.map((row, i) => ({ row, i, rank: +row.dataset.rank || 0 }))
+      .sort((a, b) => b.rank - a.rank || a.i - b.i)
+      .forEach(item => body.appendChild(item.row));
+    const summary = document.getElementById('warnSummary');
+    if (!summary) return;
+    const places = rows.filter(row => +row.dataset.rank > 0).length;
+    const official = rows.filter(row => row.dataset.official).length;
+    summary.textContent = places ? warnText().summary(places, official) : warnText().summaryNone;
   }
 
   async function fill(table) {
@@ -108,6 +169,7 @@
       const response = await fetch(request(table, rows));
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
+      if (table.dataset.mode === 'warnings') await officialReady;
       render(table, rows, Array.isArray(data) ? data : [data]);
     } catch (error) {
       console.error('Regional table:', error);

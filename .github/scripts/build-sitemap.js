@@ -7,7 +7,8 @@
 // A page is listed when it has a canonical address that is its own address, is not a redirect
 // (meta refresh) and is not marked noindex. Its content is remembered as a hash in
 // sitemap-hashes.json; when the hash changes, <lastmod> becomes today, otherwise it stays.
-// Parts that change every day without being new content are left out of the hash:
+// Parts that change every day without being new content are left out of the hash (and the ?v=N of
+// scripts and stylesheets, which changes when they do):
 //   - the forecast written by build-forecast.js inside #cityForecast
 //   - anything between <!-- volatile --> and <!-- /volatile -->
 //   - the year in the footer
@@ -39,7 +40,9 @@ function content(html) {
     .replace(/\r\n/g, '\n')
     .replace(/(<div class="city-forecast" id="cityForecast"[^>]*>\n)[\s\S]*?(\n    <\/div>\n)/, '$1$2')
     .replace(/<!-- volatile -->[\s\S]*?<!-- \/volatile -->/g, '')
-    .replace(/<span class="current-year">\d+<\/span>/g, '');
+    .replace(/<span class="current-year">\d+<\/span>/g, '')
+    // a new version of a script or a stylesheet (?v=N) is not new content
+    .replace(/(\.(?:js|css|json))\?v=\d+/g, '$1');
 }
 
 // Pages that belong in the sitemap
