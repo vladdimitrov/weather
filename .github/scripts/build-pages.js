@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 62, mobileNav: 20, languageSelector: 8, cityForecast: 14, moon: 2, lunaToday: 5, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1, regionWeather: 3 };
+const VERSION = { theme: 62, mobileNav: 20, languageSelector: 8, cityForecast: 14, moon: 2, lunaToday: 5, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1, regionWeather: 3, passes: 1 };
 
 const CITIES = require('./bg-cities.js');
 
@@ -184,6 +184,10 @@ function bestTimeSection(climate, lang, where) {
 
 // Links to the closest city pages: in the same country and across the border, with the distance
 const PLACES = require('./places.js');
+// The mountain passes within 45 km of a Bulgarian city (/prohodi/<slug>/), nearest first
+const PASSES = require('./bg-passes.js');
+const nearPasses = city => PASSES.map(pass => ({ pass, km: PLACES.distanceKm(city.lat, city.lon, pass.lat, pass.lon) }))
+  .filter(item => item.km <= 45).sort((a, b) => a.km - b.km).map(item => item.pass);
 function nearbySection({ lat, lon, url, country }, lang) {
   const T = TXT[lang];
   const { home, abroad } = PLACES.nearby(lat, lon, url, country);
@@ -494,7 +498,8 @@ ${snowSection(city, lang)}${BG_SEA[city.slug] ? seaSection([[cityName(city, lang
       <a class="btn" href="/vremeto/${city.slug}/10-dni/">${BG_ONLY.tenDaysLink}</a>
       <a class="btn" href="/vremeto/${city.slug}/14-dni/">${BG_ONLY.fourteenDaysLink}</a>${PLACES.TOURIST_BG.includes(city.slug) ? `
       <a class="btn" href="/vremeto/${city.slug}/uikend/">${BG_ONLY.weekendLink}</a>` : ''}${(REGION_OF[city.slug] || []).map(region => `
-      <a class="btn" href="/vremeto/${region}/">${BG_ONLY.regionLinks[region]} →</a>`).join('')}` : ''}
+      <a class="btn" href="/vremeto/${region}/">${BG_ONLY.regionLinks[region]} →</a>`).join('')}${nearPasses(city).map(pass => `
+      <a class="btn" href="/prohodi/${pass.slug}/">${I18N.esc(pass.title[0].toUpperCase() + pass.title.slice(1))} →</a>`).join('')}` : ''}
       <a class="btn" href="/magnitni-buri/">${T.storms}</a>
       <a class="btn" href="${L(lang, '/luna/')}">${T.moon}</a>
     </p>
