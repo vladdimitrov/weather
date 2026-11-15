@@ -87,8 +87,8 @@ function declaration(source, name, file) {
 
 // The texts and weather groups of the live forecast, and the median of the models
 const cityScript = read(path.join(ROOT, 'js/city-forecast.js'));
-const { conditions, T, PERIOD, WIND, HAZARDS } = vm.runInNewContext(
-  `${['conditions', 'T', 'PERIOD', 'WIND', 'HAZARDS'].map(name => declaration(cityScript, name, 'js/city-forecast.js')).join('\n')}\n({ conditions, T, PERIOD, WIND, HAZARDS })`);
+const { conditions, T, PERIOD, WIND, HAZARDS, CONFIDENCE } = vm.runInNewContext(
+  `${['conditions', 'T', 'PERIOD', 'WIND', 'HAZARDS', 'CONFIDENCE'].map(name => declaration(cityScript, name, 'js/city-forecast.js')).join('\n')}\n({ conditions, T, PERIOD, WIND, HAZARDS, CONFIDENCE })`);
 const STRONG = Number((cityScript.match(/const STRONG = (\d+);/) || [])[1]);
 if (!STRONG) throw new Error('js/city-forecast.js: "const STRONG" not found');
 const condition = code => conditions.find(c => c.codes.includes(code)) || conditions[2];
@@ -181,6 +181,13 @@ function snapshot(page, data, today) {
   const range = i => `${whole(daily.temperature_2m_min[i])} / ${whole(daily.temperature_2m_max[i])}`;
 
   const shown = page.weekend ? weekendDays(daily.time) : daily.time.map((d, i) => i);
+  // how sure each day is (CONFIDENCE in js/city-forecast.js): a line on the uncertain days
+  const C = CONFIDENCE.text[lang] || CONFIDENCE.text.en;
+  const sureLine = i => {
+    const sure = CONFIDENCE.day(data.spread, i);
+    return sure && sure.level ? `
+            <span class="city-day-conf" title="${esc(C.tip)}" style="font-size:0.8rem;color:${sure.level === 2 ? '#ff8a65' : '#ffd54f'}">● ${esc(C.levels[sure.level])}</span>` : '';
+  };
   const days = shown.map(i => {
     const iso = daily.time[i];
     const rain = chance(i);
@@ -194,7 +201,7 @@ function snapshot(page, data, today) {
             <span class="city-day-temp">${range(i)}</span>
             <span class="kp-day-status">${esc(describe(i))}</span>${typeof rain === 'number' ? `
             <span class="city-day-rain" title="${esc(text.rain)}">${Math.round(rain)}%${typeof amount === 'number' && amount >= 0.1 ? ` · ${amount.toFixed(1)} mm` : ''}</span>` : ''}${typeof wind === 'number' ? `
-            <span class="city-day-wind${gust >= STRONG ? ' city-day-gusts' : ''}">${esc(text.wind)} ${Math.round(wind)} km/h${typeof gust === 'number' ? ` · ${esc(WIND[lang].gusts)} ${Math.round(gust)}` : ''}</span>` : ''}
+            <span class="city-day-wind${gust >= STRONG ? ' city-day-gusts' : ''}">${esc(text.wind)} ${Math.round(wind)} km/h${typeof gust === 'number' ? ` · ${esc(WIND[lang].gusts)} ${Math.round(gust)}` : ''}</span>` : ''}${sureLine(i)}
           </a>`;
   }).join('\n');
 
@@ -217,6 +224,10 @@ function snapshot(page, data, today) {
     const mean = shown.reduce((sum, i) => sum + daily.temperature_2m_max[i], 0) / shown.length;
     summary += S.normal(mean - normal >= 2 ? 2 : normal - mean >= 2 ? 0 : 1, I18N.monthName(lang, month), whole(normal));
   }
+  // and whether the models agree on the days shown
+  const sureText = CONFIDENCE.summary(data.spread, shown, lang,
+    i => (i < 2 ? [text.today, text.tomorrow][i].toLowerCase() : longDay(daily.time[i])));
+  if (sureText) summary += ` ${sureText}`;
   browser.document.documentElement.lang = lang;
   const note = Core.note({ models: data.models, elevation: data.elevation });
   // Our warnings for today and tomorrow: gusts, heavy rain or snow, frost, heat (HAZARDS in
