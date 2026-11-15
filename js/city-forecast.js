@@ -82,6 +82,66 @@
     }
   };
   window.WeatherHazards = HAZARDS;
+  // How sure the forecast of each day is, from how far apart the models are (data.spread of
+  // js/forecast-core.js: the lowest and the highest of ECMWF, ICON and GFS for each day):
+  //   high    highs and lows within 2.5° of each other, and the models agree on rain or dry
+  //   medium  up to 5° apart, or one model gives 2 mm or more where another gives (almost) nothing
+  //   low     more than 5° apart, or one model gives 5 mm or more where another gives nothing
+  // Shown as a line on the uncertain days and as one sentence under the days; also used by
+  // .github/scripts/build-forecast.js for the forecast written into the HTML.
+  const CONFIDENCE = {
+    day(spread, i) {
+      const daily = spread && spread.daily;
+      if (!daily || !daily.temperature_2m_max) return null;
+      const gap = key => (daily[key] && typeof daily[key].max[i] === 'number' ? daily[key].max[i] - daily[key].min[i] : 0);
+      const temp = Math.max(gap('temperature_2m_max'), gap('temperature_2m_min'));
+      const rain = daily.precipitation_sum || { min: [], max: [] };
+      const wetMax = rain.max[i] || 0, wetMin = rain.min[i] || 0;
+      const split = wetMax >= 2 && wetMin < 0.5;
+      const level = temp > 5 || (wetMax >= 5 && wetMin < 0.5) ? 2 : temp > 2.5 || split ? 1 : 0;
+      return { level, temp: Math.round(temp), split };
+    },
+    text: {
+      en: { levels: ['', 'less certain', 'uncertain'], tip: 'How far apart the ECMWF, ICON and GFS models are for this day',
+        all: 'The ECMWF, ICON and GFS models agree on all these days, so the forecast is fairly certain.',
+        until: (day, why) => `The models agree up to ${day}; after that the forecast is less certain (${why}).`,
+        early: (day, why) => `The models already disagree for ${day} (${why}), so check the forecast again later.`,
+        temp: d => `up to ${d}° apart in temperature`, rain: 'one model gives rain, another a dry day', and: ' and ' },
+      bg: { levels: ['', 'по-несигурно', 'несигурно'], tip: 'Колко се различават моделите ECMWF, ICON и GFS за този ден',
+        all: 'Моделите ECMWF, ICON и GFS са единодушни за всички тези дни, така че прогнозата е сравнително сигурна.',
+        until: (day, why) => `Моделите са единодушни до ${day}, след това прогнозата е по-несигурна (${why}).`,
+        early: (day, why) => `Моделите се разминават още за ${day} (${why}), затова проверете прогнозата отново по-късно.`,
+        temp: d => `разлика до ${d}° в температурата`, rain: 'един модел дава валеж, друг – сухо време', and: ' и ' },
+      de: { levels: ['', 'weniger sicher', 'unsicher'], tip: 'Wie weit die Modelle ECMWF, ICON und GFS für diesen Tag auseinanderliegen',
+        all: 'Die Modelle ECMWF, ICON und GFS stimmen an allen diesen Tagen überein, die Vorhersage ist recht sicher.',
+        until: (day, why) => `Die Modelle stimmen bis ${day} überein, danach ist die Vorhersage unsicherer (${why}).`,
+        early: (day, why) => `Die Modelle gehen schon für ${day} auseinander (${why}), schauen Sie später noch einmal nach.`,
+        temp: d => `bis zu ${d}° Unterschied bei der Temperatur`, rain: 'ein Modell zeigt Regen, ein anderes einen trockenen Tag', and: ' und ' },
+      it: { levels: ['', 'meno certo', 'incerto'], tip: 'Quanto differiscono i modelli ECMWF, ICON e GFS per questo giorno',
+        all: 'I modelli ECMWF, ICON e GFS concordano su tutti questi giorni, la previsione è abbastanza affidabile.',
+        until: (day, why) => `I modelli concordano fino a ${day}, poi la previsione è meno certa (${why}).`,
+        early: (day, why) => `I modelli divergono già per ${day} (${why}): ricontrolla la previsione più tardi.`,
+        temp: d => `fino a ${d}° di differenza nella temperatura`, rain: 'un modello prevede pioggia, un altro tempo asciutto', and: ' e ' },
+      es: { levels: ['', 'menos segura', 'incierta'], tip: 'Cuánto difieren los modelos ECMWF, ICON y GFS para este día',
+        all: 'Los modelos ECMWF, ICON y GFS coinciden en todos estos días, así que la previsión es bastante fiable.',
+        until: (day, why) => `Los modelos coinciden hasta ${/^(hoy|mañana)$/.test(day) ? day : `el ${day}`}; después la previsión es menos segura (${why}).`,
+        early: (day, why) => `Los modelos ya difieren para ${/^(hoy|mañana)$/.test(day) ? day : `el ${day}`} (${why}), conviene volver a consultar más tarde.`,
+        temp: d => `hasta ${d}° de diferencia en la temperatura`, rain: 'un modelo da lluvia y otro un día seco', and: ' y ' }
+    },
+    // One sentence for the days shown (indexes into daily), or '' without the data of the models.
+    // name(i): the name of day i ("четвъртък, 19 ноември")
+    summary(spread, shown, lang, name) {
+      const text = this.text[lang] || this.text.en;
+      const days = shown.map(i => ({ i, c: this.day(spread, i) }));
+      if (!days.length || days.some(d => !d.c)) return '';
+      const first = days.findIndex(d => d.c.level > 0);
+      if (first < 0) return text.all;
+      const rest = days.slice(first);
+      const temp = Math.max(...rest.map(d => d.c.temp));
+      const why = [temp > 2.5 ? text.temp(temp) : '', rest.some(d => d.c.split) ? text.rain : ''].filter(Boolean).join(text.and) || text.temp(temp);
+      return first >= 2 ? text.until(name(days[first - 1].i), why) : text.early(name(days[first].i), why);
+    }
+  };
   const isBg = () => document.documentElement.lang === 'bg';
   // Pages with more days (data-days="10") or only the coming weekend (data-weekend)
   const PERIOD = {
@@ -243,6 +303,14 @@
         `${Math.round(forecast.daily.wind_speed_10m_max[i])} km/h${typeof gust === 'number' ? ` · ${wind().gusts} ${Math.round(gust)}` : ''}`);
       windText.prepend(WeatherIcons.node('', 'wind', text.wind, 'sm'));
       day.appendChild(windText);
+      const sure = CONFIDENCE.day(forecast.spread, i);
+      if (sure && sure.level) {
+        const C = CONFIDENCE.text[document.documentElement.lang] || CONFIDENCE.text.en;
+        const line = el('span', 'city-day-conf', `● ${C.levels[sure.level]}`);
+        line.title = C.tip;
+        line.style.cssText = `font-size:0.8rem;color:${sure.level === 2 ? '#ff8a65' : '#ffd54f'}`;
+        day.appendChild(line);
+      }
       day.appendChild(el('span', 'city-day-hourly', text.hourly));
       return day;
     });
@@ -250,7 +318,10 @@
     grid.append(...days);
     const note = window.ForecastCore ? ForecastCore.note({ models: forecast.models, elevation: forecast.elevation }) : '';
     const heading = box.dataset.weekend ? period().weekend : box.dataset.days ? period().days(+box.dataset.days) : text.days;
-    daysBox.replaceChildren(el('h3', '', heading), grid, ...(note ? [el('p', 'forecast-note', note)] : []));
+    const dayLong = i => (i < 2 ? [text.today, text.tomorrow][i].toLowerCase()
+      : new Date(forecast.daily.time[i] + 'T12:00:00').toLocaleDateString(text.locale, { weekday: 'long', day: 'numeric', month: 'long' }));
+    const sureText = CONFIDENCE.summary(forecast.spread, shown, document.documentElement.lang, dayLong);
+    daysBox.replaceChildren(el('h3', '', heading), ...(sureText ? [el('p', 'city-summary', sureText)] : []), grid, ...(note ? [el('p', 'forecast-note', note)] : []));
     daysBox.hidden = false;
   }
 
