@@ -247,5 +247,75 @@ module.exports = {
     de: 'Nessebar liegt auf einer felsigen Halbinsel in der Bucht von Burgas, neben dem Sonnenstrand, und sein Klima ist stark vom Meer geprägt. Die Sommer sind sonnig und warm, die Brise macht die Hitze erträglicher als im Landesinneren. Die Badesaison dauert meist von Juni bis Mitte September, die Winter sind mild, wenn auch windig.',
     it: 'Nesebăr sorge su una penisola rocciosa nel golfo di Burgas, accanto a Sunny Beach, e il suo clima è fortemente influenzato dal mare. Le estati sono soleggiate e calde e la brezza rende il caldo più sopportabile che nell’entroterra. La stagione balneare va di solito da giugno a metà settembre e gli inverni sono miti, anche se ventosi.',
     es: 'Nesebar está en una península rocosa de la bahía de Burgas, junto a Sunny Beach, y su clima está muy marcado por el mar. Los veranos son soleados y cálidos, y la brisa hace el calor más llevadero que en el interior. La temporada de playa suele ir de junio a mediados de septiembre, y los inviernos son suaves, aunque ventosos.'
+  },
+  'slanchev-bryag': {
+    bg: 'Слънчев бряг е най-големият курорт по българското Черноморие, с плаж от около 8 км в Несебърския залив. Летата са слънчеви и топли, а морето обикновено е подходящо за къпане от юни до средата на септември. Зимите са меки, но ветровити, и курортът тогава е почти празен.',
+    en: 'Sunny Beach is the largest resort on the Bulgarian Black Sea coast, with a beach of about 8 km on the bay of Nessebar. Summers are sunny and warm, and the sea is usually warm enough for swimming from June to mid-September. Winters are mild but windy, and the resort is then almost empty.',
+    de: 'Der Sonnenstrand ist der größte Badeort an der bulgarischen Schwarzmeerküste, mit einem etwa 8 km langen Strand an der Bucht von Nessebar. Die Sommer sind sonnig und warm, das Meer ist meist von Juni bis Mitte September warm genug zum Baden. Die Winter sind mild, aber windig, und der Ort ist dann fast leer.',
+    it: 'Sunny Beach è la più grande località balneare della costa bulgara del Mar Nero, con una spiaggia di circa 8 km nella baia di Nesebăr. Le estati sono soleggiate e calde e il mare è di solito abbastanza caldo per fare il bagno da giugno a metà settembre. Gli inverni sono miti ma ventosi, e la località è allora quasi vuota.',
+    es: 'Sunny Beach es el mayor centro turístico de la costa búlgara del mar Negro, con una playa de unos 8 km en la bahía de Nesebar. Los veranos son soleados y cálidos, y el mar suele estar bueno para bañarse de junio a mediados de septiembre. Los inviernos son suaves pero ventosos, y el centro está entonces casi vacío.'
+  },
+  'zlatni-pyasatsi': {
+    bg: 'Златни пясъци е на северното Черноморие, на около 17 км от Варна, между морето и гората на природен парк „Златни пясъци“. Северното Черноморие е малко по-хладно от южното, но летата са слънчеви, а морето обикновено е топло за къпане от юни до средата на септември.',
+    en: 'Golden Sands is on the northern Black Sea coast, about 17 km from Varna, between the sea and the forest of the Golden Sands nature park. The northern coast is a little cooler than the south, but summers are sunny, and the sea is usually warm enough for swimming from June to mid-September.',
+    de: 'Der Goldstrand liegt an der nördlichen Schwarzmeerküste, etwa 17 km von Warna, zwischen dem Meer und dem Wald des Naturparks Goldstrand. Die Nordküste ist etwas kühler als der Süden, doch die Sommer sind sonnig, und das Meer ist meist von Juni bis Mitte September warm genug zum Baden.',
+    it: 'Sabbie d’Oro si trova sulla costa settentrionale del Mar Nero, a circa 17 km da Varna, tra il mare e il bosco del parco naturale di Sabbie d’Oro. La costa nord è un po’ più fresca del sud, ma le estati sono soleggiate e il mare è di solito abbastanza caldo per fare il bagno da giugno a metà settembre.',
+    es: 'Arenas Doradas está en la costa norte del mar Negro, a unos 17 km de Varna, entre el mar y el bosque del parque natural de Arenas Doradas. La costa norte es algo más fresca que el sur, pero los veranos son soleados y el mar suele estar bueno para bañarse de junio a mediados de septiembre.'
+  },
+  'albena': {
+    bg: 'Албена е курорт на северното Черноморие, между Балчик и Златни пясъци, с широк плаж и плитко море, което се затопля бързо. Летата са слънчеви и малко по-прохладни, отколкото на юг, а плажният сезон обикновено е от юни до средата на септември.',
+    en: 'Albena is a resort on the northern Black Sea coast, between Balchik and Golden Sands, with a wide beach and shallow water that warms up quickly. Summers are sunny and a little cooler than in the south, and the beach season usually runs from June to mid-September.',
+    de: 'Albena ist ein Badeort an der nördlichen Schwarzmeerküste zwischen Baltschik und dem Goldstrand, mit breitem Strand und flachem Wasser, das sich schnell erwärmt. Die Sommer sind sonnig und etwas kühler als im Süden, die Badesaison dauert meist von Juni bis Mitte September.',
+    it: 'Albena è una località della costa settentrionale del Mar Nero, tra Balčik e Sabbie d’Oro, con una spiaggia ampia e acqua bassa che si scalda in fretta. Le estati sono soleggiate e un po’ più fresche che al sud e la stagione balneare va di solito da giugno a metà settembre.',
+    es: 'Albena es un centro turístico de la costa norte del mar Negro, entre Balchik y Arenas Doradas, con una playa ancha y aguas poco profundas que se calientan pronto. Los veranos son soleados y algo más frescos que en el sur, y la temporada de playa suele ir de junio a mediados de septiembre.'
+  },
+  'primorsko': {
+    bg: 'Приморско е на южното Черноморие, на полуостров между два залива, и има едни от най-дългите плажове по българския бряг. Южното Черноморие е по-топло и по-сухо от северното, а морето обикновено е подходящо за къпане от юни до края на септември.',
+    en: 'Primorsko is on the southern Black Sea coast, on a peninsula between two bays, and has some of the longest beaches on the Bulgarian coast. The southern coast is warmer and drier than the north, and the sea is usually warm enough for swimming from June to the end of September.',
+    de: 'Primorsko liegt an der südlichen Schwarzmeerküste auf einer Halbinsel zwischen zwei Buchten und hat einige der längsten Strände der bulgarischen Küste. Der Süden ist wärmer und trockener als der Norden, das Meer ist meist von Juni bis Ende September warm genug zum Baden.',
+    it: 'Primorsko si trova sulla costa meridionale del Mar Nero, su una penisola tra due baie, e ha alcune delle spiagge più lunghe della costa bulgara. Il sud è più caldo e secco del nord e il mare è di solito abbastanza caldo per fare il bagno da giugno a fine settembre.',
+    es: 'Primorsko está en la costa sur del mar Negro, en una península entre dos bahías, y tiene algunas de las playas más largas de la costa búlgara. El sur es más cálido y seco que el norte, y el mar suele estar bueno para bañarse de junio a finales de septiembre.'
+  },
+  'kiten': {
+    bg: 'Китен е малък курорт на южното Черноморие, до Приморско, с два плажа в заливи, защитени от вятъра. Климатът е мек: летата са топли и слънчеви, а морето обикновено е топло за къпане от юни до края на септември.',
+    en: 'Kiten is a small resort on the southern Black Sea coast, next to Primorsko, with two beaches in bays sheltered from the wind. The climate is mild: summers are warm and sunny, and the sea is usually warm enough for swimming from June to the end of September.',
+    de: 'Kiten ist ein kleiner Badeort an der südlichen Schwarzmeerküste neben Primorsko, mit zwei Stränden in windgeschützten Buchten. Das Klima ist mild: Die Sommer sind warm und sonnig, das Meer ist meist von Juni bis Ende September warm genug zum Baden.',
+    it: 'Kiten è una piccola località della costa meridionale del Mar Nero, accanto a Primorsko, con due spiagge in baie riparate dal vento. Il clima è mite: le estati sono calde e soleggiate e il mare è di solito abbastanza caldo per fare il bagno da giugno a fine settembre.',
+    es: 'Kiten es un pequeño centro turístico de la costa sur del mar Negro, junto a Primorsko, con dos playas en bahías protegidas del viento. El clima es suave: los veranos son cálidos y soleados, y el mar suele estar bueno para bañarse de junio a finales de septiembre.'
+  },
+  'obzor': {
+    bg: 'Обзор е между Варна и Бургас, там, където Стара планина стига до морето. Планината пази града от северните ветрове, затова климатът е по-мек, отколкото по северното Черноморие, а плажният сезон обикновено е от юни до средата на септември.',
+    en: 'Obzor lies between Varna and Burgas, where the Balkan Mountains reach the sea. The mountains shelter the town from the northern winds, so the climate is milder than on the northern coast, and the beach season usually runs from June to mid-September.',
+    de: 'Obzor liegt zwischen Warna und Burgas, wo der Balkan das Meer erreicht. Das Gebirge schützt den Ort vor den Nordwinden, deshalb ist das Klima milder als an der nördlichen Küste; die Badesaison dauert meist von Juni bis Mitte September.',
+    it: 'Obzor si trova tra Varna e Burgas, dove i Balcani arrivano al mare. Le montagne riparano la città dai venti del nord, perciò il clima è più mite che sulla costa settentrionale e la stagione balneare va di solito da giugno a metà settembre.',
+    es: 'Obzor está entre Varna y Burgas, donde los Balcanes llegan al mar. Las montañas protegen la ciudad de los vientos del norte, así que el clima es más suave que en la costa norte, y la temporada de playa suele ir de junio a mediados de septiembre.'
+  },
+  'pomorie': {
+    bg: 'Поморие е на полуостров в Бургаския залив, известен с Поморийското езеро и лечебната кал. Климатът е силно повлиян от морето: летата са слънчеви и топли, бризът облекчава жегата, а морето обикновено е подходящо за къпане от юни до средата на септември.',
+    en: 'Pomorie is on a peninsula in the Bay of Burgas, known for Lake Pomorie and its healing mud. The climate is strongly shaped by the sea: summers are sunny and warm, the breeze eases the heat, and the sea is usually warm enough for swimming from June to mid-September.',
+    de: 'Pomorie liegt auf einer Halbinsel in der Bucht von Burgas und ist für den Pomorie-See und seinen Heilschlamm bekannt. Das Klima ist stark vom Meer geprägt: Die Sommer sind sonnig und warm, die Brise mildert die Hitze, und das Meer ist meist von Juni bis Mitte September warm genug zum Baden.',
+    it: 'Pomorie si trova su una penisola nel golfo di Burgas ed è nota per il lago di Pomorie e i suoi fanghi curativi. Il clima è fortemente influenzato dal mare: le estati sono soleggiate e calde, la brezza attenua il caldo e il mare è di solito abbastanza caldo per fare il bagno da giugno a metà settembre.',
+    es: 'Pomorie está en una península de la bahía de Burgas y es conocida por el lago de Pomorie y sus lodos curativos. El clima está muy marcado por el mar: los veranos son soleados y cálidos, la brisa alivia el calor y el mar suele estar bueno para bañarse de junio a mediados de septiembre.'
+  },
+  'balchik': {
+    bg: 'Балчик е на северното Черноморие, на тераси над морето, с двореца и ботаническата градина. Варовиковите скали пазят града от северните ветрове и климатът му е по-мек от този на Добруджа, а плажният сезон обикновено е от юни до средата на септември.',
+    en: 'Balchik is on the northern Black Sea coast, on terraces above the sea, with its palace and botanical garden. The limestone cliffs shelter the town from the northern winds, so its climate is milder than that of Dobrudzha, and the beach season usually runs from June to mid-September.',
+    de: 'Baltschik liegt an der nördlichen Schwarzmeerküste auf Terrassen über dem Meer, mit Palast und Botanischem Garten. Die Kalkfelsen schützen die Stadt vor den Nordwinden, daher ist ihr Klima milder als das der Dobrudscha; die Badesaison dauert meist von Juni bis Mitte September.',
+    it: 'Balčik si trova sulla costa settentrionale del Mar Nero, su terrazze sopra il mare, con il palazzo e il giardino botanico. Le scogliere calcaree riparano la città dai venti del nord, perciò il suo clima è più mite di quello della Dobrugia e la stagione balneare va di solito da giugno a metà settembre.',
+    es: 'Balchik está en la costa norte del mar Negro, en terrazas sobre el mar, con su palacio y su jardín botánico. Los acantilados calizos protegen la ciudad de los vientos del norte, así que su clima es más suave que el de Dobruja, y la temporada de playa suele ir de junio a mediados de septiembre.'
+  },
+  'chepelare': {
+    bg: 'Чепеларе е в Централните Родопи, на около 1150 м надморска височина, а пистите на Мечи чал стигат до близо 1900 м. Като Пампорово, курортът получава снеговалежи от средиземноморските циклони; снегът по пистите обикновено се задържа от декември до март.',
+    en: 'Chepelare lies in the Central Rhodopes at about 1150 m, and the slopes of Mechi Chal reach almost 1900 m. Like Pamporovo, the resort gets its snow from Mediterranean cyclones; snow on the slopes usually lasts from December to March.',
+    de: 'Tschepelare liegt in den Zentralrhodopen auf etwa 1150 m, die Pisten von Metschi Tschal reichen bis fast 1900 m. Wie Pamporowo bekommt der Ort seinen Schnee von Mittelmeertiefs; auf den Pisten liegt meist von Dezember bis März Schnee.',
+    it: 'Čepelare si trova nei Rodopi centrali, a circa 1150 m, e le piste di Mechi Chal arrivano a quasi 1900 m. Come Pamporovo, la località riceve la neve dai cicloni mediterranei; sulle piste la neve resta di solito da dicembre a marzo.',
+    es: 'Chepelare está en los Ródope centrales, a unos 1150 m, y las pistas de Mechi Chal llegan a casi 1900 m. Como Pamporovo, la estación recibe la nieve de las borrascas mediterráneas; en las pistas suele haber nieve de diciembre a marzo.'
+  },
+  'dobrinishte': {
+    bg: 'Добринище е в подножието на Пирин, на около 850 м надморска височина, на около 6 км от Банско. Ски зоната Безбог е горе в планината, около 2200 м, където снегът се задържа по-дълго, а в града има минерални извори.',
+    en: 'Dobrinishte lies at the foot of the Pirin mountains at about 850 m, some 6 km from Bansko. The Bezbog ski area is high up in the mountains, at about 2200 m, where the snow lasts longer, and the town has mineral springs.',
+    de: 'Dobrinischte liegt am Fuß des Pirin-Gebirges auf etwa 850 m, rund 6 km von Bansko. Das Skigebiet Besbog liegt hoch im Gebirge auf etwa 2200 m, wo der Schnee länger liegt, und der Ort hat Mineralquellen.',
+    it: 'Dobrinište si trova ai piedi del Pirin, a circa 850 m, a circa 6 km da Bansko. L’area sciistica di Bezbog è in alto sulle montagne, a circa 2200 m, dove la neve dura più a lungo, e il paese ha sorgenti minerali.',
+    es: 'Dobrinishte está al pie del Pirin, a unos 850 m, a unos 6 km de Bansko. La zona de esquí de Bezbog está en lo alto de la montaña, a unos 2200 m, donde la nieve dura más, y el pueblo tiene manantiales minerales.'
   }
 };

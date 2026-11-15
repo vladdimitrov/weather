@@ -1,0 +1,52 @@
+name: Climate of new city pages
+
+# Started by hand (Actions -> Run workflow) after cities are added to bg-cities.js: build-climate.js
+# fetches the 2015–2024 climate of the cities that are not in climate.json yet (Open-Meteo archive;
+# the free API allows a few of these requests a minute, so about 1–2 minutes per city), then the
+# city pages are written again with the climate table and the "best time to go" section.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: forecast-daily
+  cancel-in-progress: false
+
+jobs:
+  climate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Fetch the climate of the new cities
+        run: node .github/scripts/build-climate.js
+      - name: Write the city pages again
+        run: |
+          node .github/scripts/build-pages.js
+          node .github/scripts/build-extra.js
+          node .github/scripts/build-sitemap.js
+      - run: node .github/scripts/check-site.js
+      - name: Commit
+        id: commit
+        run: |
+          git add -A .github/scripts/climate.json vremeto en/vremeto de/vremeto it/vremeto es/vremeto gradove en/gradove de/gradove it/gradove es/gradove sitemap.xml .github/scripts/sitemap-hashes.json
+          if git diff --cached --quiet; then
+            echo "Nothing changed."; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Climate of the new city pages"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+      - name: Publish
+        if: steps.commit.outputs.pushed == 'true'
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"

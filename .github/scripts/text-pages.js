@@ -50,6 +50,13 @@ const TXT = {
     snowHead: ['Място', 'Снежна покривка', 'Нов сняг 7 дни', 'Мин. / макс.'],
     snowNote: 'Данни: Open-Meteo, обновяват се на всеки час. Реалната покривка на пистата зависи и от изкуствения сняг и обработката.',
     snowNoJs: 'Таблицата се попълва, когато страницата се зареди.',
+    // seaside places (BG_SEA in build-pages.js, the sea points of text-extra.js for /europe/): title and the live sea table
+    seaTitle: where => `Времето ${where} днес и температура на морето`,
+    seaDescription: where => `Времето ${where} днес и за 7 дни и температурата на морската вода сега: температура, валежи, вятър и вълни. Обновява се на всеки час.`,
+    seaH: where => `Температура на морето ${where}`,
+    seaIntro: 'Температурата на морската вода край брега сега и най-високите вълни днес. Стойностите са от морски модел за точка в морето близо до плажа.',
+    seaHead: ['Място', 'Морето сега', 'Вълни днес'],
+    seaNote: 'Данни: Open-Meteo (морски модел), обновяват се на всеки час.',
     m: 'м'
   },
   en: {
@@ -100,6 +107,12 @@ const TXT = {
     snowHead: ['Place', 'Snow depth', 'New snow, 7 days', 'Min / max'],
     snowNote: 'Data: Open-Meteo, updated every hour. The real snow on the piste also depends on snowmaking and grooming.',
     snowNoJs: 'The table is filled in when the page loads.',
+    seaTitle: where => `Weather in ${where} today and sea temperature`,
+    seaDescription: where => `Weather in ${where} today and for 7 days, and the sea temperature now: temperature, rain, wind and waves. Updated every hour.`,
+    seaH: where => `Sea temperature in ${where}`,
+    seaIntro: 'The temperature of the sea water off the coast now and the highest waves today. The values come from a marine model for a point in the sea near the beach.',
+    seaHead: ['Place', 'Sea now', 'Waves today'],
+    seaNote: 'Data: Open-Meteo (marine model), updated every hour.',
     m: 'm'
   },
   de: {
@@ -150,6 +163,12 @@ const TXT = {
     snowHead: ['Ort', 'Schneehöhe', 'Neuschnee 7 Tage', 'Min. / max.'],
     snowNote: 'Daten: Open-Meteo, stündlich aktualisiert. Der tatsächliche Schnee auf der Piste hängt auch von Beschneiung und Präparierung ab.',
     snowNoJs: 'Die Tabelle wird beim Laden der Seite gefüllt.',
+    seaTitle: where => `Wetter in ${where} heute und Wassertemperatur`,
+    seaDescription: where => `Wetter in ${where} heute und für 7 Tage und die Wassertemperatur des Meeres jetzt: Temperatur, Regen, Wind und Wellen. Stündlich aktualisiert.`,
+    seaH: where => `Wassertemperatur in ${where}`,
+    seaIntro: 'Die Temperatur des Meerwassers vor der Küste jetzt und die höchsten Wellen heute. Die Werte stammen aus einem Meeresmodell für einen Punkt im Meer nahe dem Strand.',
+    seaHead: ['Ort', 'Meer jetzt', 'Wellen heute'],
+    seaNote: 'Daten: Open-Meteo (Meeresmodell), stündlich aktualisiert.',
     m: 'm'
   },
   it: {
@@ -200,6 +219,12 @@ const TXT = {
     snowHead: ['Luogo', 'Altezza neve', 'Neve fresca 7 giorni', 'Min / max'],
     snowNote: 'Dati: Open-Meteo, aggiornati ogni ora. La neve reale sulla pista dipende anche dall’innevamento artificiale e dalla battitura.',
     snowNoJs: 'La tabella si riempie quando la pagina si carica.',
+    seaTitle: where => `Meteo a ${where} oggi e temperatura del mare`,
+    seaDescription: where => `Meteo a ${where} oggi e per 7 giorni e la temperatura del mare adesso: temperatura, pioggia, vento e onde. Aggiornato ogni ora.`,
+    seaH: where => `Temperatura del mare a ${where}`,
+    seaIntro: 'La temperatura dell’acqua al largo della costa adesso e le onde più alte di oggi. I valori provengono da un modello marino per un punto in mare vicino alla spiaggia.',
+    seaHead: ['Luogo', 'Mare adesso', 'Onde oggi'],
+    seaNote: 'Dati: Open-Meteo (modello marino), aggiornati ogni ora.',
     m: 'm'
   },
   es: {
@@ -250,6 +275,12 @@ const TXT = {
     snowHead: ['Lugar', 'Espesor de nieve', 'Nieve nueva 7 días', 'Mín. / máx.'],
     snowNote: 'Datos: Open-Meteo, actualizados cada hora. La nieve real en la pista depende también de la nieve artificial y del pisado.',
     snowNoJs: 'La tabla se completa al cargar la página.',
+    seaTitle: where => `El tiempo en ${where} hoy y temperatura del mar`,
+    seaDescription: where => `El tiempo en ${where} hoy y para 7 días y la temperatura del mar ahora: temperatura, lluvia, viento y olas. Se actualiza cada hora.`,
+    seaH: where => `Temperatura del mar en ${where}`,
+    seaIntro: 'La temperatura del agua frente a la costa ahora y las olas más altas de hoy. Los valores son de un modelo marino para un punto en el mar cerca de la playa.',
+    seaHead: ['Lugar', 'Mar ahora', 'Olas hoy'],
+    seaNote: 'Datos: Open-Meteo (modelo marino), actualizados cada hora.',
     m: 'm'
   }
 };

@@ -8,18 +8,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Времето в Калитея днес – прогноза за 7 дни | Weather Pulse</title>
+  <title>Времето в Калитея днес и температура на морето | Weather Pulse</title>
   <link rel="canonical" href="https://weatherpulse.eu/europe/greece/kallithea/" />
   <link rel="alternate" hreflang="bg" href="https://weatherpulse.eu/europe/greece/kallithea/" />
   <link rel="alternate" hreflang="en" href="https://weatherpulse.eu/en/europe/greece/kallithea/" />
   <link rel="alternate" hreflang="de" href="https://weatherpulse.eu/de/europe/greece/kallithea/" />
   <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu/europe/greece/kallithea/" />
-  <meta name="description" content="Времето в Калитея, Гърция днес: прогноза за утре и следващите 7 дни с температура, валежи и вятър. Обновява се на всеки час (данни: Open-Meteo).">
+  <meta name="description" content="Времето в Калитея днес и за 7 дни и температурата на морската вода сега: температура, валежи, вятър и вълни. Обновява се на всеки час.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Weather Pulse">
   <meta property="og:locale" content="bg_BG">
-  <meta property="og:title" content="Времето в Калитея днес – прогноза за 7 дни">
-  <meta property="og:description" content="Времето в Калитея, Гърция днес: прогноза за утре и следващите 7 дни с температура, валежи и вятър. Обновява се на всеки час (данни: Open-Meteo).">
+  <meta property="og:title" content="Времето в Калитея днес и температура на морето">
+  <meta property="og:description" content="Времето в Калитея днес и за 7 дни и температурата на морската вода сега: температура, валежи, вятър и вълни. Обновява се на всеки час.">
   <meta property="og:url" content="https://weatherpulse.eu/europe/greece/kallithea/">
   <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -108,6 +108,7 @@
       <a href="/weather/" class="nav-link" data-nav="weather">Прогноза за времето</a>
       <a href="/maps/" class="nav-link" data-nav="maps">Карти за времето</a>
       <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">Календар на празниците</a>
+      <a href="/kurorti/" class="nav-link" data-nav="resorts">Курорти</a>
       <a href="/magnitni-buri/" class="nav-link" data-nav="storms">Магнитни бури</a>
       <a href="/luna/" class="nav-link" data-nav="moon">Лунен календар</a>
     </div>
@@ -205,6 +206,21 @@
       <a class="btn" href="/magnitni-buri/">Геомагнитни бури днес →</a> <a class="btn" href="/europe/greece/halkidiki/">Халкидики →</a> <a class="btn" href="/europe/greece/more/">Морето в Гърция →</a>
     </p>
 
+    <section class="info-card">
+      <h2>Температура на морето в Калитея</h2>
+      <p>Температурата на морската вода край брега сега и най-високите вълни днес. Стойностите са от морски модел за точка в морето близо до плажа.</p>
+      <div class="table-scroll">
+      <table class="kp-table region-table" data-mode="sea">
+        <thead><tr><th>Място</th><th>Морето сега</th><th>Вълни днес</th></tr></thead>
+        <tbody>
+          <tr data-lat="40.07" data-lon="23.48"><td>Калитея</td></tr>
+        </tbody>
+      </table>
+      <p class="storm-updated region-nojs">Таблицата се попълва, когато страницата се зареди.</p>
+      </div>
+      <p class="storm-updated">Данни: Open-Meteo (морски модел), обновяват се на всеки час.</p>
+    </section>
+
     <section class="info-card city-sun-table">
       <h2>Изгрев и залез в Калитея</h2>
       <p>Най-дългият ден в Калитея е около 21 юни: слънцето изгрява в 05:57 ч., залязва в 20:58 ч. и денят е 15 ч 02 мин. Най-краткият е около 21 декември – от 07:44 ч. до 17:03 ч., общо 9 ч 19 мин. Днешният изгрев и залез са до прогнозата по-горе.</p>
@@ -270,10 +286,10 @@
       </div>
       <p class="storm-updated">Отвъд границата:</p>
       <div class="city-links">
+        <a href="/vremeto/dobrinishte/" class="recent-place">Добринище · 194 км</a>
         <a href="/vremeto/bansko/" class="recent-place">Банско · 196 км</a>
         <a href="/vremeto/smolyan/" class="recent-place">Смолян · 197 км</a>
         <a href="/vremeto/pamporovo/" class="recent-place">Пампорово · 204 км</a>
-        <a href="/europe/north-macedonia/bitola/" class="recent-place">Битоля · 208 км</a>
       </div>
     </section>
 
@@ -373,11 +389,12 @@
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=19" defer></script>
+<script src="/js/mobile-nav.js?v=20" defer></script>
 <script src="/js/language-selector.js?v=8" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/city-forecast.js?v=13" defer></script>
+<script src="/js/region-weather.js?v=2" defer></script>
 </body>
 </html>

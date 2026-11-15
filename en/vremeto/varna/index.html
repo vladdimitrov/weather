@@ -89,6 +89,7 @@
       <a href="/en/weather/" class="nav-link" data-nav="weather">Weather Forecast</a>
       <a href="/en/maps/" class="nav-link" data-nav="maps">Weather Maps</a>
       <a href="/en/holliday_calendar/" class="nav-link" data-nav="holidays">Holiday Calendar</a>
+      <a href="/en/kurorti/" class="nav-link" data-nav="resorts">Resorts</a>
       <a href="/en/magnitni-buri/" class="nav-link" data-nav="storms">Magnetic Storms</a>
       <a href="/en/luna/" class="nav-link" data-nav="moon">Moon Calendar</a>
     </div>
@@ -181,6 +182,21 @@
       </div>
     </div>
 
+    <section class="info-card">
+      <h2>Sea temperature in Varna</h2>
+      <p>The temperature of the sea water off the coast now and the highest waves today. The values come from a marine model for a point in the sea near the beach.</p>
+      <div class="table-scroll">
+      <table class="kp-table region-table" data-mode="sea">
+        <thead><tr><th>Place</th><th>Sea now</th><th>Waves today</th></tr></thead>
+        <tbody>
+          <tr data-lat="43.19" data-lon="27.99"><td>Varna</td></tr>
+        </tbody>
+      </table>
+      <p class="storm-updated region-nojs">The table is filled in when the page loads.</p>
+      </div>
+      <p class="storm-updated">Data: Open-Meteo (marine model), updated every hour.</p>
+    </section>
+
     <p class="city-actions">
       <a class="btn" href="/en/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG">Detailed hourly forecast →</a>
       <a class="btn" href="/en/magnitni-buri/">Magnetic storms today →</a>
@@ -247,10 +263,10 @@
     <section class="info-card city-near">
       <h2>Nearby cities</h2>
       <div class="city-links">
+        <a href="/en/vremeto/zlatni-pyasatsi/" class="recent-place">Golden Sands · 13 km</a>
+        <a href="/en/vremeto/albena/" class="recent-place">Albena · 22 km</a>
+        <a href="/en/vremeto/balchik/" class="recent-place">Balchik · 29 km</a>
         <a href="/en/vremeto/dobrich/" class="recent-place">Dobrich · 40 km</a>
-        <a href="/en/vremeto/nesebar/" class="recent-place">Nessebar · 63 km</a>
-        <a href="/en/vremeto/shumen/" class="recent-place">Shumen · 81 km</a>
-        <a href="/en/vremeto/burgas/" class="recent-place">Burgas · 87 km</a>
       </div>
       <p class="storm-updated">Across the border:</p>
       <div class="city-links">
@@ -298,6 +314,16 @@
         <a href="/en/vremeto/pamporovo/" class="recent-place">Pamporovo</a>
         <a href="/en/vremeto/sozopol/" class="recent-place">Sozopol</a>
         <a href="/en/vremeto/nesebar/" class="recent-place">Nessebar</a>
+        <a href="/en/vremeto/slanchev-bryag/" class="recent-place">Sunny Beach</a>
+        <a href="/en/vremeto/zlatni-pyasatsi/" class="recent-place">Golden Sands</a>
+        <a href="/en/vremeto/albena/" class="recent-place">Albena</a>
+        <a href="/en/vremeto/primorsko/" class="recent-place">Primorsko</a>
+        <a href="/en/vremeto/kiten/" class="recent-place">Kiten</a>
+        <a href="/en/vremeto/obzor/" class="recent-place">Obzor</a>
+        <a href="/en/vremeto/pomorie/" class="recent-place">Pomorie</a>
+        <a href="/en/vremeto/balchik/" class="recent-place">Balchik</a>
+        <a href="/en/vremeto/chepelare/" class="recent-place">Chepelare</a>
+        <a href="/en/vremeto/dobrinishte/" class="recent-place">Dobrinishte</a>
       </div>
     </section>
   <!-- lang-links:start -->
@@ -320,11 +346,12 @@
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=19" defer></script>
+<script src="/js/mobile-nav.js?v=20" defer></script>
 <script src="/js/language-selector.js?v=8" defer></script>
 <script src="/js/background-selector.js?v=3" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=2" defer></script>
 <script src="/js/city-forecast.js?v=13" defer></script>
+<script src="/js/region-weather.js?v=2" defer></script>
 </body>
 </html>
