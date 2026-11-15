@@ -3046,6 +3046,876 @@
      "rainDays": 9
     }
    ]
+  },
+  "slanchev-bryag": {
+   "elevation": 3,
+   "records": {
+    "high": {
+     "t": 36.5,
+     "date": "2024-07-18"
+    },
+    "low": {
+     "t": -14,
+     "date": "2017-01-21"
+    }
+   },
+   "months": [
+    {
+     "high": 7.3,
+     "low": 0.1,
+     "precip": 68,
+     "rainDays": 8
+    },
+    {
+     "high": 10,
+     "low": 2.1,
+     "precip": 51,
+     "rainDays": 7
+    },
+    {
+     "high": 12,
+     "low": 3.5,
+     "precip": 51,
+     "rainDays": 9
+    },
+    {
+     "high": 16.5,
+     "low": 7.1,
+     "precip": 54,
+     "rainDays": 9
+    },
+    {
+     "high": 20.8,
+     "low": 12.1,
+     "precip": 51,
+     "rainDays": 11
+    },
+    {
+     "high": 25.7,
+     "low": 17.3,
+     "precip": 67,
+     "rainDays": 12
+    },
+    {
+     "high": 28.4,
+     "low": 19.3,
+     "precip": 41,
+     "rainDays": 8
+    },
+    {
+     "high": 29,
+     "low": 20,
+     "precip": 23,
+     "rainDays": 4
+    },
+    {
+     "high": 24.8,
+     "low": 16.2,
+     "precip": 28,
+     "rainDays": 6
+    },
+    {
+     "high": 19.1,
+     "low": 11.1,
+     "precip": 55,
+     "rainDays": 7
+    },
+    {
+     "high": 14.1,
+     "low": 6.9,
+     "precip": 62,
+     "rainDays": 9
+    },
+    {
+     "high": 9.5,
+     "low": 2.8,
+     "precip": 62,
+     "rainDays": 8
+    }
+   ]
+  },
+  "zlatni-pyasatsi": {
+   "elevation": 27,
+   "records": {
+    "high": {
+     "t": 36.3,
+     "date": "2024-07-18"
+    },
+    "low": {
+     "t": -14.3,
+     "date": "2017-01-09"
+    }
+   },
+   "months": [
+    {
+     "high": 6.3,
+     "low": 0.1,
+     "precip": 58,
+     "rainDays": 8
+    },
+    {
+     "high": 8.8,
+     "low": 2,
+     "precip": 40,
+     "rainDays": 7
+    },
+    {
+     "high": 10.7,
+     "low": 3.3,
+     "precip": 45,
+     "rainDays": 9
+    },
+    {
+     "high": 15.2,
+     "low": 7.1,
+     "precip": 52,
+     "rainDays": 9
+    },
+    {
+     "high": 19.9,
+     "low": 12.3,
+     "precip": 66,
+     "rainDays": 12
+    },
+    {
+     "high": 24.8,
+     "low": 17.5,
+     "precip": 87,
+     "rainDays": 12
+    },
+    {
+     "high": 27.5,
+     "low": 19.4,
+     "precip": 46,
+     "rainDays": 8
+    },
+    {
+     "high": 28.2,
+     "low": 20.1,
+     "precip": 27,
+     "rainDays": 6
+    },
+    {
+     "high": 23.9,
+     "low": 16.3,
+     "precip": 37,
+     "rainDays": 5
+    },
+    {
+     "high": 18.2,
+     "low": 11.2,
+     "precip": 50,
+     "rainDays": 6
+    },
+    {
+     "high": 13.1,
+     "low": 6.7,
+     "precip": 62,
+     "rainDays": 9
+    },
+    {
+     "high": 8.7,
+     "low": 2.7,
+     "precip": 51,
+     "rainDays": 9
+    }
+   ]
+  },
+  "albena": {
+   "elevation": 23,
+   "records": {
+    "high": {
+     "t": 38.1,
+     "date": "2024-07-18"
+    },
+    "low": {
+     "t": -14.3,
+     "date": "2017-01-09"
+    }
+   },
+   "months": [
+    {
+     "high": 6.7,
+     "low": 0.2,
+     "precip": 56,
+     "rainDays": 8
+    },
+    {
+     "high": 9.3,
+     "low": 2.1,
+     "precip": 40,
+     "rainDays": 7
+    },
+    {
+     "high": 11.4,
+     "low": 3.5,
+     "precip": 45,
+     "rainDays": 9
+    },
+    {
+     "high": 16.2,
+     "low": 7.3,
+     "precip": 50,
+     "rainDays": 9
+    },
+    {
+     "high": 20.8,
+     "low": 12.6,
+     "precip": 67,
+     "rainDays": 12
+    },
+    {
+     "high": 25.7,
+     "low": 17.8,
+     "precip": 86,
+     "rainDays": 12
+    },
+    {
+     "high": 28.5,
+     "low": 19.8,
+     "precip": 46,
+     "rainDays": 8
+    },
+    {
+     "high": 29.2,
+     "low": 20.3,
+     "precip": 29,
+     "rainDays": 6
+    },
+    {
+     "high": 24.8,
+     "low": 16.4,
+     "precip": 33,
+     "rainDays": 5
+    },
+    {
+     "high": 18.8,
+     "low": 11.2,
+     "precip": 47,
+     "rainDays": 6
+    },
+    {
+     "high": 13.6,
+     "low": 6.8,
+     "precip": 61,
+     "rainDays": 8
+    },
+    {
+     "high": 9.2,
+     "low": 2.8,
+     "precip": 48,
+     "rainDays": 8
+    }
+   ]
+  },
+  "primorsko": {
+   "elevation": 19,
+   "records": {
+    "high": {
+     "t": 40.7,
+     "date": "2023-07-26"
+    },
+    "low": {
+     "t": -10.2,
+     "date": "2017-01-08"
+    }
+   },
+   "months": [
+    {
+     "high": 8.2,
+     "low": 2.2,
+     "precip": 94,
+     "rainDays": 11
+    },
+    {
+     "high": 10.2,
+     "low": 3.7,
+     "precip": 73,
+     "rainDays": 9
+    },
+    {
+     "high": 11.9,
+     "low": 4.9,
+     "precip": 67,
+     "rainDays": 11
+    },
+    {
+     "high": 15.7,
+     "low": 8.1,
+     "precip": 77,
+     "rainDays": 9
+    },
+    {
+     "high": 19.8,
+     "low": 12.9,
+     "precip": 57,
+     "rainDays": 9
+    },
+    {
+     "high": 24.8,
+     "low": 18.1,
+     "precip": 68,
+     "rainDays": 9
+    },
+    {
+     "high": 27.4,
+     "low": 20.4,
+     "precip": 38,
+     "rainDays": 6
+    },
+    {
+     "high": 27.4,
+     "low": 21.3,
+     "precip": 34,
+     "rainDays": 5
+    },
+    {
+     "high": 24.1,
+     "low": 17.8,
+     "precip": 68,
+     "rainDays": 9
+    },
+    {
+     "high": 19,
+     "low": 12.9,
+     "precip": 71,
+     "rainDays": 9
+    },
+    {
+     "high": 14.8,
+     "low": 8.8,
+     "precip": 105,
+     "rainDays": 11
+    },
+    {
+     "high": 10.5,
+     "low": 4.8,
+     "precip": 90,
+     "rainDays": 12
+    }
+   ]
+  },
+  "kiten": {
+   "elevation": 26,
+   "records": {
+    "high": {
+     "t": 40.3,
+     "date": "2023-07-26"
+    },
+    "low": {
+     "t": -10.7,
+     "date": "2017-01-08"
+    }
+   },
+   "months": [
+    {
+     "high": 7.9,
+     "low": 1.9,
+     "precip": 94,
+     "rainDays": 11
+    },
+    {
+     "high": 9.9,
+     "low": 3.4,
+     "precip": 73,
+     "rainDays": 9
+    },
+    {
+     "high": 11.5,
+     "low": 4.5,
+     "precip": 67,
+     "rainDays": 11
+    },
+    {
+     "high": 15.4,
+     "low": 7.7,
+     "precip": 77,
+     "rainDays": 9
+    },
+    {
+     "high": 19.5,
+     "low": 12.5,
+     "precip": 57,
+     "rainDays": 9
+    },
+    {
+     "high": 24.4,
+     "low": 17.7,
+     "precip": 68,
+     "rainDays": 9
+    },
+    {
+     "high": 27,
+     "low": 20,
+     "precip": 38,
+     "rainDays": 6
+    },
+    {
+     "high": 27.1,
+     "low": 20.9,
+     "precip": 34,
+     "rainDays": 5
+    },
+    {
+     "high": 23.7,
+     "low": 17.4,
+     "precip": 68,
+     "rainDays": 9
+    },
+    {
+     "high": 18.6,
+     "low": 12.6,
+     "precip": 71,
+     "rainDays": 9
+    },
+    {
+     "high": 14.5,
+     "low": 8.5,
+     "precip": 105,
+     "rainDays": 11
+    },
+    {
+     "high": 10.2,
+     "low": 4.5,
+     "precip": 90,
+     "rainDays": 12
+    }
+   ]
+  },
+  "obzor": {
+   "elevation": 40,
+   "records": {
+    "high": {
+     "t": 34,
+     "date": "2017-06-30"
+    },
+    "low": {
+     "t": -11.1,
+     "date": "2017-01-09"
+    }
+   },
+   "months": [
+    {
+     "high": 7.1,
+     "low": 1.2,
+     "precip": 74,
+     "rainDays": 9
+    },
+    {
+     "high": 9.4,
+     "low": 2.9,
+     "precip": 53,
+     "rainDays": 8
+    },
+    {
+     "high": 11.1,
+     "low": 4.1,
+     "precip": 50,
+     "rainDays": 10
+    },
+    {
+     "high": 15.2,
+     "low": 7.5,
+     "precip": 51,
+     "rainDays": 8
+    },
+    {
+     "high": 19.5,
+     "low": 12.5,
+     "precip": 49,
+     "rainDays": 10
+    },
+    {
+     "high": 24.6,
+     "low": 17.8,
+     "precip": 57,
+     "rainDays": 10
+    },
+    {
+     "high": 27.2,
+     "low": 20,
+     "precip": 32,
+     "rainDays": 6
+    },
+    {
+     "high": 27.4,
+     "low": 20.7,
+     "precip": 27,
+     "rainDays": 4
+    },
+    {
+     "high": 23.7,
+     "low": 17.1,
+     "precip": 38,
+     "rainDays": 7
+    },
+    {
+     "high": 18.4,
+     "low": 12.1,
+     "precip": 64,
+     "rainDays": 8
+    },
+    {
+     "high": 13.7,
+     "low": 7.9,
+     "precip": 81,
+     "rainDays": 10
+    },
+    {
+     "high": 9.4,
+     "low": 3.7,
+     "precip": 66,
+     "rainDays": 9
+    }
+   ]
+  },
+  "pomorie": {
+   "elevation": 2,
+   "records": {
+    "high": {
+     "t": 40,
+     "date": "2023-07-26"
+    },
+    "low": {
+     "t": -10.5,
+     "date": "2018-03-01"
+    }
+   },
+   "months": [
+    {
+     "high": 7.9,
+     "low": 1.1,
+     "precip": 71,
+     "rainDays": 8
+    },
+    {
+     "high": 10.3,
+     "low": 2.8,
+     "precip": 50,
+     "rainDays": 7
+    },
+    {
+     "high": 12.1,
+     "low": 4.2,
+     "precip": 49,
+     "rainDays": 9
+    },
+    {
+     "high": 16.2,
+     "low": 7.8,
+     "precip": 56,
+     "rainDays": 9
+    },
+    {
+     "high": 20.7,
+     "low": 13,
+     "precip": 52,
+     "rainDays": 10
+    },
+    {
+     "high": 25.9,
+     "low": 18.3,
+     "precip": 54,
+     "rainDays": 10
+    },
+    {
+     "high": 28.7,
+     "low": 20.7,
+     "precip": 32,
+     "rainDays": 6
+    },
+    {
+     "high": 29.2,
+     "low": 21.4,
+     "precip": 30,
+     "rainDays": 4
+    },
+    {
+     "high": 25.3,
+     "low": 17.6,
+     "precip": 36,
+     "rainDays": 6
+    },
+    {
+     "high": 19.5,
+     "low": 12.3,
+     "precip": 56,
+     "rainDays": 7
+    },
+    {
+     "high": 14.7,
+     "low": 7.9,
+     "precip": 64,
+     "rainDays": 9
+    },
+    {
+     "high": 10.1,
+     "low": 3.7,
+     "precip": 63,
+     "rainDays": 9
+    }
+   ]
+  },
+  "balchik": {
+   "elevation": 34,
+   "records": {
+    "high": {
+     "t": 37.3,
+     "date": "2024-07-18"
+    },
+    "low": {
+     "t": -14,
+     "date": "2017-01-09"
+    }
+   },
+   "months": [
+    {
+     "high": 6.3,
+     "low": 0.1,
+     "precip": 57,
+     "rainDays": 8
+    },
+    {
+     "high": 8.3,
+     "low": 1.8,
+     "precip": 40,
+     "rainDays": 7
+    },
+    {
+     "high": 10.3,
+     "low": 3.2,
+     "precip": 45,
+     "rainDays": 9
+    },
+    {
+     "high": 14.8,
+     "low": 7.1,
+     "precip": 49,
+     "rainDays": 8
+    },
+    {
+     "high": 19.7,
+     "low": 12.4,
+     "precip": 55,
+     "rainDays": 10
+    },
+    {
+     "high": 24.8,
+     "low": 17.7,
+     "precip": 74,
+     "rainDays": 11
+    },
+    {
+     "high": 27.6,
+     "low": 19.8,
+     "precip": 42,
+     "rainDays": 7
+    },
+    {
+     "high": 28.4,
+     "low": 20.4,
+     "precip": 25,
+     "rainDays": 5
+    },
+    {
+     "high": 24,
+     "low": 16.5,
+     "precip": 33,
+     "rainDays": 5
+    },
+    {
+     "high": 18.1,
+     "low": 11.4,
+     "precip": 44,
+     "rainDays": 6
+    },
+    {
+     "high": 13.1,
+     "low": 7,
+     "precip": 58,
+     "rainDays": 8
+    },
+    {
+     "high": 8.7,
+     "low": 2.8,
+     "precip": 48,
+     "rainDays": 9
+    }
+   ]
+  },
+  "chepelare": {
+   "elevation": 1095,
+   "records": {
+    "high": {
+     "t": 33.4,
+     "date": "2021-08-02"
+    },
+    "low": {
+     "t": -17.2,
+     "date": "2016-01-23"
+    }
+   },
+   "months": [
+    {
+     "high": 4.3,
+     "low": -4,
+     "precip": 90,
+     "rainDays": 9
+    },
+    {
+     "high": 6.8,
+     "low": -2.4,
+     "precip": 67,
+     "rainDays": 9
+    },
+    {
+     "high": 8.4,
+     "low": -0.5,
+     "precip": 99,
+     "rainDays": 14
+    },
+    {
+     "high": 13.2,
+     "low": 3.1,
+     "precip": 90,
+     "rainDays": 15
+    },
+    {
+     "high": 17.1,
+     "low": 7.7,
+     "precip": 93,
+     "rainDays": 17
+    },
+    {
+     "high": 21,
+     "low": 11.9,
+     "precip": 119,
+     "rainDays": 17
+    },
+    {
+     "high": 23.9,
+     "low": 14.2,
+     "precip": 69,
+     "rainDays": 10
+    },
+    {
+     "high": 23.9,
+     "low": 14.4,
+     "precip": 54,
+     "rainDays": 8
+    },
+    {
+     "high": 20.2,
+     "low": 10.6,
+     "precip": 63,
+     "rainDays": 8
+    },
+    {
+     "high": 15.7,
+     "low": 6.3,
+     "precip": 58,
+     "rainDays": 7
+    },
+    {
+     "high": 10.8,
+     "low": 2.3,
+     "precip": 71,
+     "rainDays": 9
+    },
+    {
+     "high": 6.5,
+     "low": -1.1,
+     "precip": 79,
+     "rainDays": 10
+    }
+   ]
+  },
+  "dobrinishte": {
+   "elevation": 839,
+   "records": {
+    "high": {
+     "t": 35.2,
+     "date": "2021-08-02"
+    },
+    "low": {
+     "t": -18.9,
+     "date": "2016-01-23"
+    }
+   },
+   "months": [
+    {
+     "high": 5.7,
+     "low": -4,
+     "precip": 97,
+     "rainDays": 10
+    },
+    {
+     "high": 8.7,
+     "low": -2.2,
+     "precip": 70,
+     "rainDays": 9
+    },
+    {
+     "high": 10.5,
+     "low": -0.2,
+     "precip": 99,
+     "rainDays": 13
+    },
+    {
+     "high": 15.7,
+     "low": 3.6,
+     "precip": 87,
+     "rainDays": 11
+    },
+    {
+     "high": 19.8,
+     "low": 8.5,
+     "precip": 71,
+     "rainDays": 12
+    },
+    {
+     "high": 23.8,
+     "low": 12.5,
+     "precip": 57,
+     "rainDays": 11
+    },
+    {
+     "high": 27,
+     "low": 15,
+     "precip": 33,
+     "rainDays": 6
+    },
+    {
+     "high": 27.2,
+     "low": 15.1,
+     "precip": 37,
+     "rainDays": 6
+    },
+    {
+     "high": 23,
+     "low": 11.3,
+     "precip": 39,
+     "rainDays": 6
+    },
+    {
+     "high": 18,
+     "low": 6.3,
+     "precip": 58,
+     "rainDays": 7
+    },
+    {
+     "high": 12.5,
+     "low": 2.4,
+     "precip": 95,
+     "rainDays": 10
+    },
+    {
+     "high": 7.9,
+     "low": -1,
+     "precip": 92,
+     "rainDays": 10
+    }
+   ]
   }
  }
 }
