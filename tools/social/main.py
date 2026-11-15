@@ -3,6 +3,7 @@
 
   python main.py forecast [--dry-run] [--sample] [--tomorrow]   # daily forecast image -> FB + IG
   python main.py queue    [--dry-run]                            # post next photo/video from queue/
+  python main.py alerts   [--dry-run] [--sample]               # magnetic storm / full Moon tomorrow
   python main.py check                                           # verify token, page and IG account
   python main.py serve                                           # run forever on the schedule in config.yaml
 """
@@ -14,6 +15,7 @@ from logging.handlers import RotatingFileHandler
 from zoneinfo import ZoneInfo
 
 from wp_social.config import ROOT, load_config
+from wp_social.alerts import run_alerts
 from wp_social.jobs import make_client, run_forecast, run_queue
 
 log = logging.getLogger("weatherpulse")
@@ -69,6 +71,10 @@ def main():
     q = sub.add_parser("queue")
     q.add_argument("--dry-run", action="store_true")
     q.add_argument("--force", action="store_true", help="post even if the last queue post was recent")
+    al = sub.add_parser("alerts", help="magnetic storm / full Moon tomorrow")
+    al.add_argument("--dry-run", action="store_true")
+    al.add_argument("--sample", action="store_true", help="sample storm and full Moon (no internet)")
+    al.add_argument("--force", action="store_true")
     sub.add_parser("check")
     sub.add_parser("serve")
     a = p.parse_args()
@@ -79,6 +85,8 @@ def main():
         run_forecast(cfg, dry_run=a.dry_run, sample=a.sample, tomorrow=a.tomorrow, force=a.force)
     elif a.cmd == "queue":
         run_queue(cfg, dry_run=a.dry_run, force=a.force)
+    elif a.cmd == "alerts":
+        run_alerts(cfg, make_client, dry_run=a.dry_run, sample=a.sample, force=a.force)
     elif a.cmd == "check":
         print(make_client(cfg).check())
     elif a.cmd == "serve":
