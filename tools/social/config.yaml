@@ -62,7 +62,7 @@ queue:
 # Известия вечер за утре: магнитна буря (прогноза на NOAA, Kp >= storm_min_kp) и пълнолуние.
 # Всяко излиза най-много веднъж за дата.
 alerts:
-  enabled: false                    # true, след като одобрите как изглеждат
+  enabled: true
   storm_min_kp: 5
   full_moon: true
 
