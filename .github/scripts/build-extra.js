@@ -8,6 +8,7 @@
 //                                    resorts abroad: 7 days and sea water (Bulgarian only)
 //   /praznici/pochivni-dni-<year>/   long weekends and working days (Bulgarian only), from holidays-BG.json
 //   /uidzhet/                        the free "weather in [city]" widget (/widget/weather.html) for other sites
+//   /prohodi/, /prohodi/<slug>/      the mountain passes (Bulgarian only, bg-passes.js); live: /js/passes.js
 // Texts: text-extra.js. Run from the repository root after build-pages.js (it refreshes
 // holidays-BG.json): node .github/scripts/build-extra.js, then build-forecast.js and build-sitemap.js.
 const fs = require('fs');
@@ -17,6 +18,7 @@ const { page, write, VERSION, placeJson, daysOff } = require('./build-pages.js')
 const CITIES = require('./bg-cities.js');
 const COUNTRIES = require('./europe-data.js');
 const PLACES = require('./places.js');
+const PASSES = require('./bg-passes.js');
 const { provinceOf } = require('./bg-provinces.js');
 const { BG, CITIES_PAGE, RESORTS_PAGE, bgIn } = require('./text-extra.js');
 const { TXT } = require('./text-pages.js');
@@ -341,6 +343,7 @@ ${extra}
       <div class="city-links">
         ${others}
         ${Object.entries(BG.abroadLinks).map(([key, text]) => `<a href="/europe/${key}/" class="recent-place">${text}</a>`).join('\n        ')}
+        <a href="/prohodi/" class="recent-place">${BG.passes.hubCrumb}</a>
         <a href="/gradove/" class="recent-place">${I18N.NAV.bg.cities}</a>
       </div>
     </section>`,
@@ -536,6 +539,126 @@ function widgetPage() {
   });
 }
 
+// ---- Mountain passes: /prohodi/ and /prohodi/<slug>/ ----
+const PASS_SCRIPTS = `<script src="/js/passes.js?v=${VERSION.passes}" defer></script>\n`;
+const PASS_STYLE = '<style>.pass-verdict{font-size:1.15rem;font-weight:700;padding:10px 14px;border-radius:10px;margin:0 0 8px;color:#1a1a2e}.pass-ok{background:#a5d6a7}.pass-warn{background:#ffd54f}.pass-bad{background:#ff8a65}.region-warn span.pass-ok,.region-warn span.pass-warn,.region-warn span.pass-bad{color:#1a1a2e}.pass-day td{font-weight:700;background:rgba(255,255,255,0.06)}.pass-hazard td:last-child{color:#ffd54f;font-weight:600}.pass-facts{margin:0;padding-left:1.2em}.pass-hours th,.pass-hours td{white-space:nowrap}</style>';
+const PASS_ROADS = 'Тази страница е прогноза за времето, а не информация за затворени пътища. Дали пътят е отворен и дали има ограничения за тежкотоварни, вижте в <a href="https://www.api.bg/" rel="noopener">Агенция „Пътна инфраструктура“</a>.';
+const passHint = pass => `${pass.title} – ${pass.elevation} м`;
+
+function passPage(pass) {
+  const url = `/prohodi/${pass.slug}/`;
+  const T = BG.passes;
+  const near = CITIES.map(city => ({ city, km: PLACES.distanceKm(pass.lat, pass.lon, city.lat, city.lon) }))
+    .sort((a, b) => a.km - b.km).slice(0, 4)
+    .map(({ city, km }) => `<a href="/vremeto/${city.slug}/" class="recent-place">${esc(city.name)} (${Math.round(km)} км)</a>`).join('\n        ');
+  const others = PASSES.filter(other => other !== pass)
+    .map(other => ({ other, km: PLACES.distanceKm(pass.lat, pass.lon, other.lat, other.lon) }))
+    .sort((a, b) => a.km - b.km)
+    .map(({ other }) => `<a href="/prohodi/${other.slug}/" class="recent-place">${esc(other.name)}</a>`).join('\n        ');
+  const params = new URLSearchParams({ city: pass.title, lat: pass.lat.toFixed(4), lon: pass.lon.toFixed(4), cc: 'BG' });
+  return page({
+    ...ONLY_BG,
+    url,
+    title: T.title(pass),
+    description: T.description(pass),
+    jsonLd: breadcrumbs('bg', [['Weather Pulse', '/'], [T.hubCrumb, '/prohodi/'], [pass.title, url]]) +
+      placeJson({ title: T.h1(pass), name: pass.title, country: 'BG', lat: pass.lat, lon: pass.lon, url, lang: 'bg' }),
+    body: `    ${PASS_STYLE}
+    <p class="breadcrumbs"><a href="/prohodi/">${T.hubCrumb}</a> › ${esc(pass.name)}</p>
+    <h1>${T.h1(pass)}</h1>
+    <p class="storm-intro">${esc(pass.text)}</p>
+
+    <div class="city-forecast" id="passForecast" data-lat="${pass.lat}" data-lon="${pass.lon}" data-elevation="${pass.elevation}" data-warn="${pass.warn.join(',')}">
+      <div class="city-alerts" id="passOfficial" role="status" hidden></div>
+      <div class="kp-forecast" id="passNow" role="status"><p class="storm-loading">${TXT.bg.loading}</p></div>
+      <section class="info-card" hidden>
+        <h2>${T.hoursH}</h2>
+        <div id="passHours"></div>
+      </section>
+      <section class="info-card" hidden>
+        <h2>${T.daysH}</h2>
+        <div id="passDays"></div>
+      </section>
+    </div>
+    <p class="storm-updated">${T.modelNote(pass.elevation)} ${PASS_ROADS}</p>
+
+    <section class="info-card">
+      <h2>${T.factsH(pass)}</h2>
+      <ul class="pass-facts">
+        <li>Надморска височина: ${pass.elevation} м</li>
+        <li>Планина: ${esc(pass.mountain)}</li>
+        <li>Свързва: ${esc(pass.connects)}${pass.road ? ` (${esc(pass.road)})` : ''}</li>
+        <li>Координати: ${pass.lat.toFixed(4)}, ${pass.lon.toFixed(4)}</li>
+      </ul>
+    </section>
+
+    <p class="city-actions">
+      <a class="btn" href="/prohodi/">${T.allLink}</a>
+      <a class="btn" href="/vremeto/preduprezhdeniya/">${BG.regionLinks.preduprezhdeniya}</a>
+      <a class="btn" href="/weather/?${params}">${TXT.bg.hourly}</a>
+    </p>
+
+    <section class="info-card">
+      <h2>${T.nearH}</h2>
+      <div class="city-links">
+        ${near}
+      </div>
+    </section>
+
+    <section class="info-card">
+      <h2>${T.othersH}</h2>
+      <div class="city-links">
+        ${others}
+      </div>
+    </section>`,
+    scripts: PASS_SCRIPTS
+  });
+}
+
+function passesHub() {
+  const url = '/prohodi/';
+  const T = BG.passes;
+  const rows = PASSES.map(pass => `          <tr data-lat="${pass.lat}" data-lon="${pass.lon}" data-elevation="${pass.elevation}"><td><a href="/prohodi/${pass.slug}/">${esc(pass.name)}</a> <span class="storm-updated">${pass.elevation} м</span></td></tr>`);
+  return page({
+    ...ONLY_BG,
+    url,
+    title: T.hubTitle,
+    description: T.hubDescription,
+    jsonLd: breadcrumbs('bg', [['Weather Pulse', '/'], [T.hubCrumb, url]]),
+    body: `    ${REGION_STYLE}${PASS_STYLE}
+    <p class="breadcrumbs"><a href="/vremeto/">${TXT.bg.hubName}</a> › ${T.hubCrumb}</p>
+    <h1>${T.hubH1}</h1>
+    <p class="storm-intro">${T.hubIntro}</p>
+
+    <section class="info-card">
+      <h2>${T.tableH}</h2>
+      <div class="table-scroll">
+      <table class="kp-table region-table pass-table">
+        <thead><tr>${T.tableHead.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+        <tbody>
+${rows.join('\n')}
+        </tbody>
+      </table>
+      <p class="storm-updated region-nojs">${BG.noJs}</p>
+      </div>
+      <p class="storm-updated">${T.tableNote} ${PASS_ROADS}</p>
+    </section>
+${T.sections.map(([h, text]) => `
+    <section class="info-card">
+      <h2>${h}</h2>
+      <p>${text}</p>
+    </section>`).join('')}
+
+    <section class="info-card">
+      <h2>${BG.regionLinksH}</h2>
+      <div class="city-links">
+        ${Object.entries(BG.regionLinks).map(([slug, text]) => `<a href="/vremeto/${slug}/" class="recent-place">${text}</a>`).join('\n        ')}
+      </div>
+    </section>`,
+    scripts: PASS_SCRIPTS
+  });
+}
+
 I18N.LANGS.forEach(lang => write(L(lang, '/gradove/').slice(1), citiesPage(lang)));
 I18N.LANGS.forEach(lang => write(L(lang, '/kurorti/').slice(1), resortsPage(lang)));
 CITIES.forEach(city => {
@@ -548,4 +671,6 @@ Object.keys(BG.abroad).forEach(key => write(`europe/${key}`, abroadPage(key)));
 const years = Object.keys(HOLIDAYS).map(Number).sort().slice(-2);
 years.forEach(year => write(`praznici/pochivni-dni-${year}`, daysOffPage(year, years)));
 write('uidzhet', widgetPage());
-console.log(`Wrote /gradove/ (${I18N.LANGS.length} languages), ${CITIES.length} 10-day and ${PLACES.TOURIST_BG.length} weekend pages, ${Object.keys(BG.regions).length} regional pages, days off ${years.join(' and ')}, /uidzhet/.`);
+write('prohodi', passesHub());
+PASSES.forEach(pass => write(`prohodi/${pass.slug}`, passPage(pass)));
+console.log(`Wrote /gradove/ (${I18N.LANGS.length} languages), ${CITIES.length} 10-day and ${PLACES.TOURIST_BG.length} weekend pages, ${Object.keys(BG.regions).length} regional pages, days off ${years.join(' and ')}, /uidzhet/, /prohodi/ and ${PASSES.length} passes.`);
