@@ -17,7 +17,7 @@
   const heading = card.querySelector('h2');
   (heading || card.firstChild).insertAdjacentElement(heading ? 'afterend' : 'beforebegin', grid);
 
-  const LOCALES = { bg: 'bg-BG', en: 'en-GB', de: 'de-DE', it: 'it-IT', es: 'es-ES' };
+  const LOCALES = { bg: 'bg-BG', en: 'en-GB', de: 'de-DE', it: 'it-IT', es: 'es-ES', fr: 'fr-FR', nl: 'nl-NL' };
   const locale = () => LOCALES[document.documentElement.lang] || 'en-GB';
 
   function build() {

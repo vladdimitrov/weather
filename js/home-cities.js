@@ -12,7 +12,7 @@
   // the translated city pages.
   if (place.isDefault || !place.countryCode || place.countryCode === 'BG') {
     const LATIN = { sofia: 'Sofia', plovdiv: 'Plovdiv', varna: 'Varna', burgas: 'Burgas', ruse: 'Ruse', 'stara-zagora': 'Stara Zagora', pleven: 'Pleven', 'veliko-tarnovo': 'Veliko Tarnovo', blagoevgrad: 'Blagoevgrad', bansko: 'Bansko' };
-    const LATIN_ES = { sofia: 'Sofía' };
+    const LATIN_LANG = { es: { sofia: 'Sofía' }, fr: { burgas: 'Bourgas', ruse: 'Roussé' } };
     const cityLinks = [...section.querySelectorAll('.city-links a[href^="vremeto/"]')].filter(a => /^vremeto\/[^/]+\/$/.test(a.getAttribute('href')));
     const original = cityLinks.map(a => ({ text: a.textContent, href: a.getAttribute('href') }));
     const translate = () => {
@@ -23,7 +23,7 @@
           a.textContent = original[i].text;
           a.setAttribute('href', original[i].href);
         } else {
-          a.textContent = (lang === 'es' && LATIN_ES[slug]) || LATIN[slug] || original[i].text;
+          a.textContent = (LATIN_LANG[lang] && LATIN_LANG[lang][slug]) || LATIN[slug] || original[i].text;
           a.setAttribute('href', `/${lang}/${original[i].href}`);
         }
       });
@@ -38,7 +38,9 @@
     en: { cities: 'Weather in cities', all: 'All cities →', holidays: 'Holiday calendar' },
     de: { cities: 'Wetter in Städten', all: 'Alle Städte →', holidays: 'Feiertagskalender' },
     it: { cities: 'Meteo nelle città', all: 'Tutte le città →', holidays: 'Calendario delle festività' },
-    es: { cities: 'El tiempo en ciudades', all: 'Todas las ciudades →', holidays: 'Calendario de festivos' }
+    es: { cities: 'El tiempo en ciudades', all: 'Todas las ciudades →', holidays: 'Calendario de festivos' },
+    fr: { cities: 'Météo dans les villes', all: 'Toutes les villes →', holidays: 'Calendrier des jours fériés' },
+    nl: { cities: 'Weer in steden', all: 'Alle steden →', holidays: 'Feestdagenkalender' }
   };
   const title = section.querySelector('h2');
   const links = section.querySelector('.city-links');

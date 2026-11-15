@@ -69,7 +69,7 @@
   }
 
   // ---- the "Moon today" block ----
-  const LOCALES = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES' };
+  const LOCALES = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES', fr: 'fr-FR', nl: 'nl-NL' };
   const T = {
     bg: {
       lit: 'Осветеност', age: 'Възраст', days: 'дни', distance: 'Разстояние', km: 'км', waxing: 'Луната расте', waning: 'Луната намалява',
@@ -95,6 +95,16 @@
       lit: 'Iluminación', age: 'Edad', days: 'días', distance: 'Distancia', km: 'km', waxing: 'La Luna está creciente', waning: 'La Luna está menguante',
       cycle: 'Ciclo lunar', next: 'Próximas fases', today: 'hoy', tomorrow: 'mañana', inDays: n => `en ${n} días`, at: 'a las', clock: t => t,
       strip: 'La Luna en los próximos 14 días'
+    },
+    fr: {
+      lit: 'Illumination', age: 'Âge', days: 'jours', distance: 'Distance', km: 'km', waxing: 'La Lune est croissante', waning: 'La Lune est décroissante',
+      cycle: 'Cycle lunaire', next: 'Prochaines phases', today: 'aujourd’hui', tomorrow: 'demain', inDays: n => `dans ${n} jours`, at: 'à', clock: t => t,
+      strip: 'La Lune dans les 14 prochains jours'
+    },
+    nl: {
+      lit: 'Verlichting', age: 'Leeftijd', days: 'dagen', distance: 'Afstand', km: 'km', waxing: 'De maan is wassend', waning: 'De maan is afnemend',
+      cycle: 'Maancyclus', next: 'Volgende fasen', today: 'vandaag', tomorrow: 'morgen', inDays: n => `over ${n} dagen`, at: 'om', clock: t => t,
+      strip: 'De maan in de komende 14 dagen'
     }
   };
   const PHASE_ANGLE = [0, 90, 180, 270];

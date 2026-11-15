@@ -1,8 +1,8 @@
-// Texts of the Moon calendar's extra pages and blocks, in the five languages (bg, en, de, it, es):
+// Texts of the Moon calendar's extra pages and blocks, in the seven languages (bg, en, de, it, es, fr, nl):
 //   - the list pages "Full moons <year>" and "New moons <year>" (/luna/<year>/pylnolunie/, /novolunie/)
 //   - the questions and answers on /luna/ (also written as FAQPage data)
 //   - the subscription to the calendar (the .ics file) and the share button
-// Used by build-luna.js. Change the five languages together.
+// Used by build-luna.js. Change the seven languages together.
 module.exports = {
   PROMO: {
     bg: {
@@ -194,6 +194,83 @@ module.exports = {
       share: { btn: '📤 Compartir', copied: '✓ Enlace copiado' },
       cal: 'Calendario lunar',
       ics: { name: 'Fases lunares', super: 'superluna', blue: 'luna azul' }
+    },
+    fr: {
+      listFull: {
+        title: y => `Pleines lunes ${y} – dates et heures`,
+        h1: y => `Pleines lunes en ${y}`,
+        description: (y, n, first) => `Toutes les pleines lunes de ${y} : ${n} dates avec l’heure exacte à l’heure bulgare, super-lunes et lune bleue. La première est le ${first}.`,
+        intro: c => `Il y a ${c.n} pleines lunes en ${c.year}. La première est le ${c.first} et la dernière le ${c.last}.${c.blue ? ` La deuxième pleine lune du ${c.blue} est une « lune bleue ».` : ''}${c.super ? ` Super-lunes : ${c.super}.` : ''} Les heures sont à l’heure bulgare.`,
+        sub: 'Pleine lune'
+      },
+      listNew: {
+        title: y => `Nouvelles lunes ${y} – dates et heures`,
+        h1: y => `Nouvelles lunes en ${y}`,
+        description: (y, n, first) => `Toutes les nouvelles lunes de ${y} : ${n} dates avec l’heure exacte à l’heure bulgare. La première est le ${first}.`,
+        intro: c => `Il y a ${c.n} nouvelles lunes en ${c.year}. La première est le ${c.first} et la dernière le ${c.last}. La nouvelle lune est la nuit la plus sombre du mois et la meilleure pour observer les étoiles et les nébuleuses. Les heures sont à l’heure bulgare.`,
+        sub: 'Nouvelle lune'
+      },
+      cols: { n: 'N°', date: 'Date', day: 'Jour', time: 'Heure', distance: 'Distance', note: 'Remarque' },
+      superMoon: 'super-lune', blueMoon: 'lune bleue', km: 'km',
+      otherKind: { full: 'Nouvelles lunes', new: 'Pleines lunes' },
+      listNote: 'La distance est mesurée du centre de la Terre au centre de la Lune au moment de la phase. Calculé avec l’algorithme de Jean Meeus ; les heures sont vérifiées avec les données de l’USNO.',
+      faqH: 'Questions fréquentes sur la Lune',
+      faq: c => [
+        ['Quand a lieu la prochaine pleine lune et la prochaine nouvelle lune ?', `La prochaine pleine lune est le ${c.full} et la prochaine nouvelle lune le ${c.fresh} (heure bulgare).`],
+        ['Combien de temps dure le cycle lunaire ?', 'D’une nouvelle lune à la suivante, il faut en moyenne 29 jours, 12 heures et 44 minutes. C’est ce qu’on appelle le mois synodique. L’intervalle entre deux nouvelles lunes peut être de quelques heures plus court ou plus long, car l’orbite de la Lune est une ellipse.'],
+        ['Pourquoi la Lune a-t-elle des phases ?', 'La Lune ne brille pas par elle-même, elle réfléchit la lumière du Soleil. En tournant autour de la Terre, elle nous montre une part différente de sa moitié éclairée : d’un mince croissant au premier quartier et à la pleine lune, puis au dernier quartier et de nouveau à la nouvelle lune.'],
+        ['Qu’est-ce qu’une super-lune ?', 'Une super-lune est une pleine lune qui coïncide avec le périgée, le point de l’orbite lunaire le plus proche de la Terre (environ 356 000 km, contre 406 000 km à l’apogée). Elle paraît jusqu’à environ 14 % plus grande et 30 % plus brillante que la pleine lune la plus lointaine.'],
+        ['Qu’est-ce qu’une lune bleue ?', `Une lune bleue est la deuxième pleine lune d’un même mois civil. Elle n’est pas bleue. ${c.blue ? `La prochaine aura lieu le ${c.blue}.` : 'Il n’y a pas de lune bleue au cours de ces deux années.'}`]
+      ],
+      subscribe: {
+        h: 'Le calendrier lunaire dans votre agenda',
+        text: years => `Abonnez-vous et toutes les phases de la Lune pour ${years} apparaîtront dans votre agenda Google, Apple ou Outlook, à l’heure exacte de votre fuseau horaire. Le calendrier est prolongé chaque année.`,
+        btn: '📅 S’abonner',
+        download: 'Télécharger le .ics',
+        how: 'Google Agenda : « Autres agendas » → « À partir de l’URL », puis collez l’adresse :'
+      },
+      share: { btn: '📤 Partager', copied: '✓ Lien copié' },
+      cal: 'Calendrier lunaire',
+      ics: { name: 'Phases de la Lune', super: 'super-lune', blue: 'lune bleue' }
+    },
+    nl: {
+      listFull: {
+        title: y => `Volle manen ${y} – data en tijden`,
+        h1: y => `Volle manen in ${y}`,
+        description: (y, n, first) => `Alle volle manen in ${y}: ${n} data met de exacte tijd in Bulgaarse tijd, supermanen en de blauwe maan. De eerste is op ${first}.`,
+        intro: c => `In ${c.year} zijn er ${c.n} volle manen. De eerste is op ${c.first} en de laatste op ${c.last}.${c.blue ? ` De tweede volle maan op ${c.blue} is een "blauwe maan".` : ''}${c.super ? ` Supermanen: ${c.super}.` : ''} De tijden zijn Bulgaarse tijd.`,
+        sub: 'Volle maan'
+      },
+      listNew: {
+        title: y => `Nieuwe manen ${y} – data en tijden`,
+        h1: y => `Nieuwe manen in ${y}`,
+        description: (y, n, first) => `Alle nieuwe manen in ${y}: ${n} data met de exacte tijd in Bulgaarse tijd. De eerste is op ${first}.`,
+        intro: c => `In ${c.year} zijn er ${c.n} nieuwe manen. De eerste is op ${c.first} en de laatste op ${c.last}. Nieuwe maan is de donkerste nacht van de maand en de beste om sterren en nevels te bekijken. De tijden zijn Bulgaarse tijd.`,
+        sub: 'Nieuwe maan'
+      },
+      cols: { n: 'Nr.', date: 'Datum', day: 'Dag', time: 'Tijd', distance: 'Afstand', note: 'Opmerking' },
+      superMoon: 'supermaan', blueMoon: 'blauwe maan', km: 'km',
+      otherKind: { full: 'Nieuwe manen', new: 'Volle manen' },
+      listNote: 'De afstand is gemeten van het middelpunt van de aarde tot het middelpunt van de maan op het moment van de fase. Berekend met het algoritme van Jean Meeus; de tijden zijn vergeleken met gegevens van het USNO.',
+      faqH: 'Veelgestelde vragen over de maan',
+      faq: c => [
+        ['Wanneer is de volgende volle maan en nieuwe maan?', `De volgende volle maan is op ${c.full} en de volgende nieuwe maan op ${c.fresh} (Bulgaarse tijd).`],
+        ['Hoe lang duurt de maancyclus?', 'Van de ene nieuwe maan tot de volgende duurt gemiddeld 29 dagen, 12 uur en 44 minuten. Dat heet de synodische maand. De tijd tussen twee nieuwe manen kan een paar uur korter of langer zijn, omdat de baan van de maan een ellips is.'],
+        ['Waarom heeft de maan fasen?', 'De maan geeft zelf geen licht, ze weerkaatst het zonlicht. Terwijl ze om de aarde draait, zien we telkens een ander deel van haar verlichte helft: van een dunne sikkel via het eerste kwartier en de volle maan naar het laatste kwartier en weer de nieuwe maan.'],
+        ['Wat is een supermaan?', 'Een supermaan is een volle maan die samenvalt met het perigeum, het punt van de maanbaan dat het dichtst bij de aarde ligt (ongeveer 356.000 km, tegen 406.000 km in het apogeum). Ze lijkt tot ongeveer 14% groter en 30% helderder dan de verste volle maan.'],
+        ['Wat is een blauwe maan?', `Een blauwe maan is de tweede volle maan in één kalendermaand. Ze is niet blauw van kleur. ${c.blue ? `De volgende is op ${c.blue}.` : 'In deze twee jaren is er geen blauwe maan.'}`]
+      ],
+      subscribe: {
+        h: 'De maankalender in uw agenda',
+        text: years => `Abonneer u en alle maanfasen voor ${years} staan in uw Google-, Apple- of Outlook-agenda, op de exacte tijd in uw tijdzone. De kalender wordt elk jaar verlengd.`,
+        btn: '📅 Abonneren',
+        download: '.ics downloaden',
+        how: 'Google Agenda: "Andere agenda\'s" → "Via URL" en plak het adres:'
+      },
+      share: { btn: '📤 Delen', copied: '✓ Link gekopieerd' },
+      cal: 'Maankalender',
+      ics: { name: 'Maanfasen', super: 'supermaan', blue: 'blauwe maan' }
     }
+
   }
 };

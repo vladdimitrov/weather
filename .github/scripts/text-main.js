@@ -1,7 +1,7 @@
 // Titles and descriptions of the translated forecast, maps and holiday calendar pages
 // (/en/weather/, /de/maps/ ...), written by build-main.js. The Bulgarian ones are in the pages
 // themselves; the rest of each page is translated in the browser by its own scripts.
-// The same keys in all four languages: change them together.
+// The same keys in all six languages: change them together.
 module.exports = {
   '/weather/': {
     en: {
@@ -19,6 +19,14 @@ module.exports = {
     es: {
       title: 'Pronóstico del tiempo por días y horas',
       description: 'Pronóstico del tiempo por días y horas para cualquier ciudad: temperatura, precipitaciones, viento, amanecer y atardecer y fase de la Luna.'
+    },
+    fr: {
+      title: 'Prévisions météo par jour et par heure',
+      description: 'Prévisions météo par jour et par heure pour n’importe quelle ville : température, précipitations, vent, lever et coucher du soleil et phase de la Lune.'
+    },
+    nl: {
+      title: 'Weerbericht per dag en per uur',
+      description: 'Weerbericht per dag en per uur voor elke plaats: temperatuur, neerslag, wind, zonsopkomst en zonsondergang en de fase van de maan.'
     }
   },
   '/maps/': {
@@ -37,6 +45,14 @@ module.exports = {
     es: {
       title: 'Mapas del tiempo interactivos',
       description: 'Mapas interactivos de lluvia, viento, temperatura, nubes y tormentas para todo el mundo, con lugares favoritos.'
+    },
+    fr: {
+      title: 'Cartes météo interactives',
+      description: 'Cartes interactives de la pluie, du vent, de la température, des nuages et des orages pour le monde entier, avec vos lieux favoris.'
+    },
+    nl: {
+      title: 'Interactieve weerkaarten',
+      description: 'Interactieve kaarten van regen, wind, temperatuur, bewolking en onweer voor de hele wereld, met favoriete plaatsen.'
     }
   },
   '/holliday_calendar/': {
@@ -55,6 +71,14 @@ module.exports = {
     es: {
       title: 'Calendario de festivos oficiales',
       description: 'Calendario de festivos oficiales para cualquier país y periodo, con los días no laborables marcados. Descarga para los calendarios de Google, Apple u Outlook.'
+    },
+    fr: {
+      title: 'Calendrier des jours fériés officiels',
+      description: 'Calendrier des jours fériés officiels pour tout pays et toute période, avec les jours chômés indiqués. Téléchargeable dans Google Agenda, Apple Calendrier ou Outlook.'
+    },
+    nl: {
+      title: 'Kalender van officiële feestdagen',
+      description: 'Kalender van officiële feestdagen voor elk land en elke periode, met de vrije dagen gemarkeerd. Te downloaden naar Google Agenda, Apple Agenda of Outlook.'
     }
   }
 };

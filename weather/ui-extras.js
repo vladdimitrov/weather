@@ -8,34 +8,35 @@
 
   // WMO weather codes, grouped (same groups as the home page card)
   const conditions = [
-    { codes: [0], key: 'sun', text: { en: 'Clear', bg: 'Ясно', de: 'Klar', it: 'Sereno', es: 'Despejado' } },
-    { codes: [1, 2], key: 'cloudSun', text: { en: 'Partly cloudy', bg: 'Променлива облачност', de: 'Teilweise bewölkt', it: 'Parzialmente nuvoloso', es: 'Parcialmente nublado' } },
-    { codes: [3], key: 'cloud', text: { en: 'Cloudy', bg: 'Облачно', de: 'Bewölkt', it: 'Nuvoloso', es: 'Nublado' } },
-    { codes: [45, 48], key: 'fog', text: { en: 'Fog', bg: 'Мъгла', de: 'Nebel', it: 'Nebbia', es: 'Niebla' } },
-    { codes: [51, 53, 55, 56, 57], key: 'drizzle', text: { en: 'Drizzle', bg: 'Ръмеж', de: 'Nieselregen', it: 'Pioviggine', es: 'Llovizna' } },
-    { codes: [61, 63, 65, 66, 67, 80, 81, 82], key: 'rain', text: { en: 'Rain', bg: 'Дъжд', de: 'Regen', it: 'Pioggia', es: 'Lluvia' } },
-    { codes: [71, 73, 75, 77, 85, 86], key: 'snow', text: { en: 'Snow', bg: 'Сняг', de: 'Schnee', it: 'Neve', es: 'Nieve' } },
-    { codes: [95, 96, 99], key: 'thunder', text: { en: 'Thunderstorm', bg: 'Гръмотевична буря', de: 'Gewitter', it: 'Temporale', es: 'Tormenta' } }
+    { codes: [0], key: 'sun', text: { en: 'Clear', bg: 'Ясно', de: 'Klar', it: 'Sereno', es: 'Despejado', fr: 'Dégagé', nl: 'Helder' } },
+    { codes: [1, 2], key: 'cloudSun', text: { en: 'Partly cloudy', bg: 'Променлива облачност', de: 'Teilweise bewölkt', it: 'Parzialmente nuvoloso', es: 'Parcialmente nublado', fr: 'Partiellement nuageux', nl: 'Half bewolkt' } },
+    { codes: [3], key: 'cloud', text: { en: 'Cloudy', bg: 'Облачно', de: 'Bewölkt', it: 'Nuvoloso', es: 'Nublado', fr: 'Nuageux', nl: 'Bewolkt' } },
+    { codes: [45, 48], key: 'fog', text: { en: 'Fog', bg: 'Мъгла', de: 'Nebel', it: 'Nebbia', es: 'Niebla', fr: 'Brouillard', nl: 'Mist' } },
+    { codes: [51, 53, 55, 56, 57], key: 'drizzle', text: { en: 'Drizzle', bg: 'Ръмеж', de: 'Nieselregen', it: 'Pioviggine', es: 'Llovizna', fr: 'Bruine', nl: 'Motregen' } },
+    { codes: [61, 63, 65, 66, 67, 80, 81, 82], key: 'rain', text: { en: 'Rain', bg: 'Дъжд', de: 'Regen', it: 'Pioggia', es: 'Lluvia', fr: 'Pluie', nl: 'Regen' } },
+    { codes: [71, 73, 75, 77, 85, 86], key: 'snow', text: { en: 'Snow', bg: 'Сняг', de: 'Schnee', it: 'Neve', es: 'Nieve', fr: 'Neige', nl: 'Sneeuw' } },
+    { codes: [95, 96, 99], key: 'thunder', text: { en: 'Thunderstorm', bg: 'Гръмотевична буря', de: 'Gewitter', it: 'Temporale', es: 'Tormenta', fr: 'Orage', nl: 'Onweer' } }
   ];
   const conditionOf = code => conditions.find(c => c.codes.includes(code)) || null;
 
   const T = {
     now: { en: 'Now in {place}', bg: 'Сега в {place}', de: 'Jetzt in {place}', it: 'Adesso a {place}', es: 'Ahora en {place}' },
-    feels: { en: 'feels like', bg: 'усеща се като', de: 'gefühlt', it: 'percepita', es: 'sensación' },
-    wind: { en: 'Wind', bg: 'Вятър', de: 'Wind', it: 'Vento', es: 'Viento' },
-    humidity: { en: 'Humidity', bg: 'Влажност', de: 'Luftfeuchte', it: 'Umidità', es: 'Humedad' },
-    change: { en: 'Change', bg: 'Промени', de: 'Ändern', it: 'Modifica', es: 'Cambiar' },
-    more: { en: 'More details', bg: 'Повече подробности', de: 'Mehr Details', it: 'Più dettagli', es: 'Más detalles' },
-    share: { en: 'Share', bg: 'Сподели', de: 'Teilen', it: 'Condividi', es: 'Compartir' },
-    copied: { en: 'Link copied', bg: 'Линкът е копиран', de: 'Link kopiert', it: 'Link copiato', es: 'Enlace copiado' },
-    less: { en: 'Fewer details', bg: 'По-малко подробности', de: 'Weniger Details', it: 'Meno dettagli', es: 'Menos detalles' }
+    feels: { en: 'feels like', bg: 'усеща се като', de: 'gefühlt', it: 'percepita', es: 'sensación', fr: 'ressenti', nl: 'voelt als' },
+    wind: { en: 'Wind', bg: 'Вятър', de: 'Wind', it: 'Vento', es: 'Viento', fr: 'Vent', nl: 'Wind' },
+    humidity: { en: 'Humidity', bg: 'Влажност', de: 'Luftfeuchte', it: 'Umidità', es: 'Humedad', fr: 'Humidité', nl: 'Luchtvochtigheid' },
+    change: { en: 'Change', bg: 'Промени', de: 'Ändern', it: 'Modifica', es: 'Cambiar', fr: 'Modifier', nl: 'Wijzigen' },
+    more: { en: 'More details', bg: 'Повече подробности', de: 'Mehr Details', it: 'Più dettagli', es: 'Más detalles', fr: 'Plus de détails', nl: 'Meer details' },
+    share: { en: 'Share', bg: 'Сподели', de: 'Teilen', it: 'Condividi', es: 'Compartir', fr: 'Partager', nl: 'Delen' },
+    copied: { en: 'Link copied', bg: 'Линкът е копиран', de: 'Link kopiert', it: 'Link copiato', es: 'Enlace copiado', fr: 'Lien copié', nl: 'Link gekopieerd' },
+    less: { en: 'Fewer details', bg: 'По-малко подробности', de: 'Weniger Details', it: 'Meno dettagli', es: 'Menos detalles', fr: 'Moins de détails', nl: 'Minder details' }
   };
   const dayWord = n => (n === 1
-    ? { en: 'day', bg: 'ден', de: 'Tag', it: 'giorno', es: 'día' }
-    : { en: 'days', bg: 'дни', de: 'Tage', it: 'giorni', es: 'días' });
+    ? { en: 'day', bg: 'ден', de: 'Tag', it: 'giorno', es: 'día', fr: 'jour', nl: 'dag' }
+    : { en: 'days', bg: 'дни', de: 'Tage', it: 'giorni', es: 'días', fr: 'jours', nl: 'dagen' });
   const TITLE = {
     en: 'Weather forecast by day and hour', bg: 'Прогноза за времето по дни и часове', de: 'Wettervorhersage nach Tagen und Stunden',
-    it: 'Previsioni del tempo per giorno e ora', es: 'Pronóstico del tiempo por días y horas'
+    it: 'Previsioni del tempo per giorno e ora', es: 'Pronóstico del tiempo por días y horas',
+    fr: 'Prévisions météo par jour et par heure', nl: 'Weerbericht per dag en per uur'
   };
 
   const el = id => document.getElementById(id);

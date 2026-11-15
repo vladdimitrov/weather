@@ -1,5 +1,5 @@
 // Pages for searches the city pages do not answer:
-//   /gradove/ (5 languages)          all cities that have a page: Bulgaria and Europe, for the internal links
+//   /gradove/ (7 languages)          all cities that have a page: Bulgaria and Europe, for the internal links
 //   /vremeto/<city>/10-dni/          "времето в Търново за 10 дни" (Bulgarian only, every Bulgarian city)
 //   /vremeto/<city>/uikend/          "времето в Банско през уикенда" (Bulgarian only, the tourist places)
 //   /vremeto/chernomorie/, /vremeto/morska-voda/, /vremeto/snyag-kurorti/, /vremeto/zhegi/, /vremeto/preduprezhdeniya/,
@@ -355,7 +355,7 @@ ${extra}
       </div>
     </section>`,
     // the warnings page takes the median of the models, as the city pages
-    scripts: (slug === 'preduprezhdeniya' ? '<script src="/js/forecast-core.js?v=2" defer></script>\n' : '') + REGION_SCRIPTS
+    scripts: (slug === 'preduprezhdeniya' ? '<script src="/js/forecast-core.js?v=3" defer></script>\n' : '') + REGION_SCRIPTS
   });
 }
 

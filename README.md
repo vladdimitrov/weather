@@ -27,23 +27,23 @@ Static site hosted on **GitHub Pages**.
 | `vremeto/`, `vremeto/<city>/`, `praznici/` | `build-pages.js`: hub, 35 city pages and holidays page (texts in `text-pages.js`) |
 | `iztochnici/` | `build-pages.js`: data sources page (text in `sources-text.js`), one page per language |
 | `europe/`, `europe/<country>/`, `europe/<country>/<city>/` | `build-europe.js`: data in `europe-data.js`, city names in `europe-names.js`, texts in `text-europe.js`, time zones in `europe-zones.js`, monthly climate in `climate-europe.json`; Bulgarian at the root like every other page. Each city page has a sunrise and sunset table (local time), a climate table, the best time to visit and nearby cities, as the Bulgarian city pages do |
-| `gradove/`, `vremeto/<city>/10-dni/`, `vremeto/<city>/uikend/`, `vremeto/chernomorie/` (and `morska-voda`, `snyag-kurorti`, `zhegi`, `parvi-snyag`, `preduprezhdeniya`), `praznici/pochivni-dni-<year>/`, `uidzhet/` | `build-extra.js` (texts in `text-extra.js`): all cities (5 languages); the rest only in Bulgarian. The regional tables are filled in the browser by `js/region-weather.js` |
+| `gradove/`, `vremeto/<city>/10-dni/`, `vremeto/<city>/uikend/`, `vremeto/chernomorie/` (and `morska-voda`, `snyag-kurorti`, `zhegi`, `parvi-snyag`, `preduprezhdeniya`), `praznici/pochivni-dni-<year>/`, `uidzhet/` | `build-extra.js` (texts in `text-extra.js`): all cities (7 languages); the rest only in Bulgarian. The regional tables are filled in the browser by `js/region-weather.js` |
 | `magnitni-buri/dnes/`, `utre/`, `<month>-<year>/`, `kp-indeks/`, `zdrave/` | `build-storm-pages.js` from `storms-data.json` (refreshed by `build-storms.js` every morning); Bulgarian only |
 | `bg/`, `bg/europe/...`, `contacts/` | `build-redirects.js`: pages that moved (canonical + meta refresh, as GitHub Pages has no 301) |
 | `luna/`, `luna/<year>/`, `luna/<year>/<month>/` | `build-luna.js`: Moon calendar for this and next year; phases from `js/moon.js`, the drawn Moon, distance and the "Moon today" block from `js/moon-view.js` (the same code in Node and in the browser), styles in `css/luna.css`, texts in `text-luna.js` and `text-luna-promo.js`. Also: the lists `luna/<year>/pylnolunie/` and `novolunie/` (full and new moons with time, distance and supermoon / blue moon), the questions and answers on the hub (written as FAQPage data), and the calendar file `luna/moon-phases.ics` to subscribe to (all phases of the two years as events at their UTC time). The share images are `images/og-luna-<lang>.png`. The daily workflow rebuilds these pages, so the hub shows today's Moon |
-| `nebeto/` | `build-nebeto.js`: meteor showers, eclipses, supermoons, northern lights; events in `sky-events.json` (kept by hand, with sources, texts in 5 languages), page texts in `text-nebeto.js` |
+| `nebeto/` | `build-nebeto.js`: meteor showers, eclipses, supermoons, northern lights; events in `sky-events.json` (kept by hand, with sources, texts in 7 languages), page texts in `text-nebeto.js` |
 | `za-saita/`, `poveritelnost/` | `build-static.js`: About and Privacy (texts in `text-static.js`) |
 | `en/`, `de/`, `it/`, `es/` (home), `<lang>/magnitni-buri/`, `<lang>/weather/`, `<lang>/maps/`, `<lang>/holliday_calendar/` | `build-main.js`: translations of the hand-written pages. Home and storms are translated completely; the forecast, maps and holiday pages get their own address, title, description (`text-main.js`), heading and menu, and their scripts translate the rest when the page opens. The Bulgarian pages are the templates; the texts are the ones the pages use in the browser (`homepageTranslations` in `index.html`, `PAGE` and `T` in `js/storm-page.js`, `navTexts` in `js/mobile-nav.js`) |
 
 Change the script or its data file and run it again; changes made directly in the generated HTML are overwritten.
 
-Languages: Bulgarian, English, German, Italian, Spanish (switcher in the header, saved in the browser).
+Languages: Bulgarian, English, German, Italian, Spanish, French, Dutch (switcher in the header, saved in the browser).
 
 **How pages are translated.** The generated pages exist once per language, each at its own URL: Bulgarian at the root (`/luna/`),
-the others under a prefix (`/en/luna/`, `/de/luna/`, `/it/luna/`, `/es/luna/`); `/europe/` too (`/en/europe/` ...). Every page has `<link rel="alternate" hreflang>` for the languages in which it is indexed and `x-default`; the language
+the others under a prefix (`/en/luna/`, `/de/luna/`, `/it/luna/`, `/es/luna/`, `/fr/luna/`, `/nl/luna/`); `/europe/` too (`/en/europe/` ...). Every page has `<link rel="alternate" hreflang>` for the languages in which it is indexed and `x-default`; the language
 switcher opens the translation of the same page, and a visitor who chose another language is sent from the root URL to it
 (`page()` in `build-pages.js`, `language-selector.js`). Links to the home page and `/magnitni-buri/` follow the language of the page too: `page()` rewrites them in the generated pages, `localPages` in `js/mobile-nav.js` in the pages translated in the browser. City names in `/europe/` come from `europe-data.js` (English) and `europe-names.js`; country names from `Intl.DisplayNames`.
-**Which translations are indexed** (`places.js`): city pages in German, Italian and Spanish only for the countries of the language and the big tourist places; the others exist (the language switcher finds them in `data-alt` on `<html>`) but are `noindex, follow`, have no hreflang and are not in the sitemap.
+**Which translations are indexed** (`places.js`): city pages in German, Italian, Spanish, French and Dutch only for the countries of the language and the big tourist places; the others exist (the language switcher finds them in `data-alt` on `<html>`) but are `noindex, follow`, have no hreflang and are not in the sitemap.
 The home page and `/magnitni-buri/` are written by hand in Bulgarian and get their own translated pages from `build-main.js` (`/en/`, `/en/magnitni-buri/` ...): run it after changing either page or its texts. They link with root paths (`/weather/`, `/css/...`), never relative ones, because the same HTML is also served from `/en/`.
 The forecast, maps and holiday calendar pages get translated addresses from `build-main.js` too (`/en/weather/` ...), with the title, description, heading and menu in the HTML; the rest of the page is still translated by its scripts from their dictionaries. Like home and storms, they must link with root paths. `/contacts/` is translated only in the browser.
 A first-time visitor whose browser is in another language is sent from the Bulgarian page to the translation by a script in the page head (robots are not).
@@ -61,8 +61,8 @@ The home page cities block (`js/home-cities.js`) then lists the main cities of t
 `js/aurora-kp.js`) shows times in the time zone of the place, a country picker, and eclipse and northern lights texts for that latitude instead of the Bulgarian ones. The Moon calendar pages (`js/luna-local.js`, `js/luna-today.js`) rebuild their phase tables and day tables from `js/moon.js` in that time zone.
 The generated HTML stays written for Bulgaria; the scripts only replace it for other countries.
 
-**Adding or changing text:** every generator takes its text from a `text-*.js` file (or `sky-events.json`) that has the same keys in all five
-languages; change all five together. A new language needs its code in `i18n.js` and a text block in each of those files.
+**Adding or changing text:** every generator takes its text from a `text-*.js` file (or `sky-events.json`) that has the same keys in all seven
+languages; change all seven together. A new language needs its code in `i18n.js` and a text block in each of those files.
 
 ## Scripts
 

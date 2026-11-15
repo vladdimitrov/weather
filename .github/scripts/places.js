@@ -1,5 +1,5 @@
 // Every city that has a page of its own (Bulgaria: /vremeto/<city>/, Europe: /europe/<country>/<city>/),
-// with its name in the five languages and the languages in which its page is indexed.
+// with its name in the seven languages and the languages in which its page is indexed.
 // Used for the "Nearby cities" links of the city pages and for /gradove/ (all cities).
 const I18N = require('./i18n.js');
 const CITIES = require('./bg-cities.js');
@@ -7,9 +7,9 @@ const COUNTRIES = require('./europe-data.js');
 const NAMES = require('./europe-names.js');
 
 // Translations of the city pages that are worth indexing. Bulgarian and English: every city.
-// German, Italian and Spanish: the cities of countries that speak the language and the big
+// German, Italian, Spanish, French and Dutch: the cities of countries that speak the language and the big
 // tourist places; nobody searches for "El tiempo en Vratsa" in Spanish.
-const SPEAKERS = { DE: ['de'], AT: ['de'], CH: ['de', 'it'], LU: ['de'], IT: ['it'], ES: ['es'] };
+const SPEAKERS = { DE: ['de'], AT: ['de'], CH: ['de', 'it', 'fr'], LU: ['de', 'fr'], IT: ['it'], ES: ['es'], FR: ['fr'], BE: ['fr', 'nl'], NL: ['nl'] };
 const TOURIST_BG = ['sofia', 'plovdiv', 'varna', 'burgas', 'veliko-tarnovo', 'bansko', 'borovets', 'pamporovo', 'nesebar', 'sozopol',
   'slanchev-bryag', 'zlatni-pyasatsi', 'albena', 'primorsko', 'kiten', 'obzor', 'pomorie', 'balchik', 'chepelare', 'dobrinishte'];
 const TOURIST_EUROPE = [
@@ -36,7 +36,7 @@ const bgName = (city, lang) => (lang === 'bg' ? city.name : I18N.latinName(lang,
 function europeName(city, lang) {
   const names = NAMES[city[0]];
   if (!names) throw new Error(`europe-names.js: no names for "${city[0]}"`);
-  return lang === 'en' ? city[1] : names[['bg', 'de', 'it', 'es'].indexOf(lang)];
+  return lang === 'en' ? city[1] : names[['bg', 'de', 'it', 'es', 'fr', 'nl'].indexOf(lang)];
 }
 
 const PLACES = [

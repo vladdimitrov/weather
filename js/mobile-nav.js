@@ -10,7 +10,9 @@
     bg: { open: 'Отвори менюто', close: 'Затвори менюто' },
     de: { open: 'Menü öffnen', close: 'Menü schließen' },
     it: { open: 'Apri menu', close: 'Chiudi menu' },
-    es: { open: 'Abrir menú', close: 'Cerrar menú' }
+    es: { open: 'Abrir menú', close: 'Cerrar menú' },
+    fr: { open: 'Ouvrir le menu', close: 'Fermer le menu' },
+    nl: { open: 'Menu openen', close: 'Menu sluiten' }
   };
 
   function initMobileNav() {
@@ -72,7 +74,9 @@
     bg: 'Няма връзка с интернет, показват се последните запазени данни.',
     de: 'Keine Internetverbindung, die zuletzt gespeicherten Daten werden angezeigt.',
     it: 'Nessuna connessione, vengono mostrati gli ultimi dati salvati.',
-    es: 'Sin conexión, se muestran los últimos datos guardados.'
+    es: 'Sin conexión, se muestran los últimos datos guardados.',
+    fr: 'Pas de connexion internet : affichage des dernières données enregistrées.',
+    nl: 'Geen internetverbinding, de laatst opgeslagen gegevens worden getoond.'
   };
 
   function initOfflineNotice() {
@@ -99,25 +103,25 @@
   // Menu links marked with data-nav (the newer pages and the "Magnetic
   // storms" link on every page); the older links are translated by each page
   const navTexts = {
-    home: { en: 'Home', bg: 'Начало', de: 'Startseite', it: 'Home', es: 'Inicio' },
-    weather: { en: 'Weather Forecast', bg: 'Прогноза за времето', de: 'Wettervorhersage', it: 'Previsioni del tempo', es: 'Pronóstico del tiempo' },
-    maps: { en: 'Weather Maps', bg: 'Карти за времето', de: 'Wetterkarten', it: 'Mappe meteorologiche', es: 'Mapas del tiempo' },
-    holidays: { en: 'Holiday Calendar', bg: 'Календар на празниците', de: 'Feiertagskalender', it: 'Calendario delle festività', es: 'Calendario de festivos' },
-    sources: { en: 'Data Sources', bg: 'Източници на данни', de: 'Datenquellen', it: 'Fonti dei dati', es: 'Fuentes de datos' },
-    sourcesShort: { en: 'Sources', bg: 'Източници', de: 'Quellen', it: 'Fonti', es: 'Fuentes' },
-    moon: { en: 'Moon Calendar', bg: 'Лунен календар', de: 'Mondkalender', it: 'Calendario lunare', es: 'Calendario lunar' },
-    sky: { en: 'The Sky', bg: 'Небето', de: 'Himmel', it: 'Il cielo', es: 'El cielo' },
-    auroraLink: { en: '🌌 Northern lights & the sky →', bg: '🌌 Северно сияние и небето →', de: '🌌 Polarlichter & Himmel →', it: '🌌 Aurora e cielo →', es: '🌌 Auroras y el cielo →' },
-    resorts: { en: 'Resorts', bg: 'Курорти', de: 'Urlaubsorte', it: 'Località', es: 'Destinos' },
-    storms: { en: 'Magnetic Storms', bg: 'Магнитни бури', de: 'Magnetstürme', it: 'Tempeste magnetiche', es: 'Tormentas magnéticas' },
-    about: { en: 'About', bg: 'За сайта', de: 'Über uns', it: 'Chi siamo', es: 'Acerca de' },
-    privacy: { en: 'Privacy', bg: 'Поверителност', de: 'Datenschutz', it: 'Privacy', es: 'Privacidad' },
-    cities: { en: 'Weather in Bulgarian cities', bg: 'Времето в градовете на България', de: 'Wetter in bulgarischen Städten', it: 'Meteo nelle città bulgare', es: 'El tiempo en ciudades de Bulgaria' },
-    europe: { en: 'Weather in Europe →', bg: 'Времето в Европа →', de: 'Wetter in Europa →', it: 'Meteo in Europa →', es: 'El tiempo en Europa →' },
-    cityIndex: { en: 'All cities', bg: 'Всички градове', de: 'Alle Städte', it: 'Tutte le città', es: 'Todas las ciudades' },
-    allCities: { en: 'All cities →', bg: 'Всички градове →', de: 'Alle Städte →', it: 'Tutte le città →', es: 'Todas las ciudades →' },
-    holidaysBg: { en: 'Public holidays in Bulgaria', bg: 'Официални празници в България', de: 'Feiertage in Bulgarien', it: 'Festività in Bulgaria', es: 'Festivos en Bulgaria' },
-    stormsToday: { en: '🧭 Magnetic storms today →', bg: '🧭 Магнитни бури днес →', de: '🧭 Magnetstürme heute →', it: '🧭 Tempeste magnetiche oggi →', es: '🧭 Tormentas magnéticas hoy →' }
+    home: { en: 'Home', bg: 'Начало', de: 'Startseite', it: 'Home', es: 'Inicio', fr: 'Accueil', nl: 'Home' },
+    weather: { en: 'Weather Forecast', bg: 'Прогноза за времето', de: 'Wettervorhersage', it: 'Previsioni del tempo', es: 'Pronóstico del tiempo', fr: 'Prévisions météo', nl: 'Weerbericht' },
+    maps: { en: 'Weather Maps', bg: 'Карти за времето', de: 'Wetterkarten', it: 'Mappe meteorologiche', es: 'Mapas del tiempo', fr: 'Cartes météo', nl: 'Weerkaarten' },
+    holidays: { en: 'Holiday Calendar', bg: 'Календар на празниците', de: 'Feiertagskalender', it: 'Calendario delle festività', es: 'Calendario de festivos', fr: 'Calendrier des jours fériés', nl: 'Feestdagenkalender' },
+    sources: { en: 'Data Sources', bg: 'Източници на данни', de: 'Datenquellen', it: 'Fonti dei dati', es: 'Fuentes de datos', fr: 'Sources des données', nl: 'Gegevensbronnen' },
+    sourcesShort: { en: 'Sources', bg: 'Източници', de: 'Quellen', it: 'Fonti', es: 'Fuentes', fr: 'Sources', nl: 'Bronnen' },
+    moon: { en: 'Moon Calendar', bg: 'Лунен календар', de: 'Mondkalender', it: 'Calendario lunare', es: 'Calendario lunar', fr: 'Calendrier lunaire', nl: 'Maankalender' },
+    sky: { en: 'The Sky', bg: 'Небето', de: 'Himmel', it: 'Il cielo', es: 'El cielo', fr: 'Le ciel', nl: 'De hemel' },
+    auroraLink: { en: '🌌 Northern lights & the sky →', bg: '🌌 Северно сияние и небето →', de: '🌌 Polarlichter & Himmel →', it: '🌌 Aurora e cielo →', es: '🌌 Auroras y el cielo →', fr: '🌌 Aurores boréales et ciel →', nl: '🌌 Noorderlicht en de hemel →' },
+    resorts: { en: 'Resorts', bg: 'Курорти', de: 'Urlaubsorte', it: 'Località', es: 'Destinos', fr: 'Stations', nl: 'Vakantieoorden' },
+    storms: { en: 'Magnetic Storms', bg: 'Магнитни бури', de: 'Magnetstürme', it: 'Tempeste magnetiche', es: 'Tormentas magnéticas', fr: 'Tempêtes magnétiques', nl: 'Magnetische stormen' },
+    about: { en: 'About', bg: 'За сайта', de: 'Über uns', it: 'Chi siamo', es: 'Acerca de', fr: 'À propos', nl: 'Over ons' },
+    privacy: { en: 'Privacy', bg: 'Поверителност', de: 'Datenschutz', it: 'Privacy', es: 'Privacidad', fr: 'Confidentialité', nl: 'Privacy' },
+    cities: { en: 'Weather in Bulgarian cities', bg: 'Времето в градовете на България', de: 'Wetter in bulgarischen Städten', it: 'Meteo nelle città bulgare', es: 'El tiempo en ciudades de Bulgaria', fr: 'Météo dans les villes bulgares', nl: 'Weer in Bulgaarse steden' },
+    europe: { en: 'Weather in Europe →', bg: 'Времето в Европа →', de: 'Wetter in Europa →', it: 'Meteo in Europa →', es: 'El tiempo en Europa →', fr: 'Météo en Europe →', nl: 'Weer in Europa →' },
+    cityIndex: { en: 'All cities', bg: 'Всички градове', de: 'Alle Städte', it: 'Tutte le città', es: 'Todas las ciudades', fr: 'Toutes les villes', nl: 'Alle steden' },
+    allCities: { en: 'All cities →', bg: 'Всички градове →', de: 'Alle Städte →', it: 'Tutte le città →', es: 'Todas las ciudades →', fr: 'Toutes les villes →', nl: 'Alle steden →' },
+    holidaysBg: { en: 'Public holidays in Bulgaria', bg: 'Официални празници в България', de: 'Feiertage in Bulgarien', it: 'Festività in Bulgaria', es: 'Festivos en Bulgaria', fr: 'Jours fériés en Bulgarie', nl: 'Feestdagen in Bulgarije' },
+    stormsToday: { en: '🧭 Magnetic storms today →', bg: '🧭 Магнитни бури днес →', de: '🧭 Magnetstürme heute →', it: '🧭 Tempeste magnetiche oggi →', es: '🧭 Tormentas magnéticas hoy →', fr: '🧭 Tempêtes magnétiques aujourd’hui →', nl: '🧭 Magnetische stormen vandaag →' }
   };
 
   // Pages that exist as a translation in /en/, /de/, /it/, /es/: the link follows the language
@@ -129,7 +133,7 @@
       const texts = navTexts[link.dataset.nav];
       if (texts) link.textContent = texts[lang] || texts.en;
       const page = localPages[link.dataset.nav];
-      if (page !== undefined && (link.dataset.navLocal || !/^\/?(en|de|it|es)\//.test(link.getAttribute('href') || ''))) {
+      if (page !== undefined && (link.dataset.navLocal || !/^\/?(en|de|it|es|fr|nl)\//.test(link.getAttribute('href') || ''))) {
         link.dataset.navLocal = '1';
         link.setAttribute('href', (lang === 'bg' || !navTexts.home[lang] ? '/' : '/' + lang + '/') + page);
       }
@@ -216,7 +220,9 @@
     bg: { install: 'Инсталирай приложението', ios: 'На iPhone: натисни „Сподели“ (квадрат със стрелка), после „Добави към началния екран“.', close: 'Затвори' },
     de: { install: 'App installieren', ios: 'Auf dem iPhone: „Teilen“ (Quadrat mit Pfeil) antippen, dann „Zum Home-Bildschirm“.', close: 'Schließen' },
     it: { install: "Installa l'app", ios: 'Su iPhone: tocca Condividi (quadrato con freccia), poi “Aggiungi alla schermata Home”.', close: 'Chiudi' },
-    es: { install: 'Instalar la aplicación', ios: 'En iPhone: toca Compartir (cuadrado con flecha) y luego “Añadir a pantalla de inicio”.', close: 'Cerrar' }
+    es: { install: 'Instalar la aplicación', ios: 'En iPhone: toca Compartir (cuadrado con flecha) y luego “Añadir a pantalla de inicio”.', close: 'Cerrar' },
+    fr: { install: 'Installer l’application', ios: 'Sur iPhone : touchez Partager (carré avec une flèche), puis « Sur l’écran d’accueil ».', close: 'Fermer' },
+    nl: { install: 'App installeren', ios: 'Op de iPhone: tik op Deel (vierkant met pijl) en daarna op ‘Zet op beginscherm’.', close: 'Sluiten' }
   };
 
   function initInstall() {
@@ -298,7 +304,7 @@
   }
 
   // a link at the very top for keyboard users: straight to the content, past the menu
-  const skipTexts = { en: 'Skip to content', bg: 'Към съдържанието', de: 'Zum Inhalt springen', it: 'Vai al contenuto', es: 'Saltar al contenido' };
+  const skipTexts = { en: 'Skip to content', bg: 'Към съдържанието', de: 'Zum Inhalt springen', it: 'Vai al contenuto', es: 'Saltar al contenido', fr: 'Aller au contenu', nl: 'Naar de inhoud' };
   function initSkipLink() {
     if (document.querySelector('.skip-link')) return;
     const target = document.querySelector('[role="main"]') || document.querySelector('main') || document.querySelector('.container');
@@ -318,7 +324,7 @@
   function initUnits() {
     if (document.querySelector('script[src*="/js/units.js"]')) return;
     const script = document.createElement('script');
-    script.src = '/js/units.js?v=3';
+    script.src = '/js/units.js?v=4';
     document.head.appendChild(script);
   }
 

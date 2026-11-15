@@ -11,7 +11,7 @@
 (function () {
   'use strict';
 
-  const LOCALES = { bg: 'bg-BG', en: 'en-GB', de: 'de-DE', it: 'it-IT', es: 'es-ES' };
+  const LOCALES = { bg: 'bg-BG', en: 'en-GB', de: 'de-DE', it: 'it-IT', es: 'es-ES', fr: 'fr-FR', nl: 'nl-NL' };
   const language = () => (LOCALES[document.documentElement.lang] ? document.documentElement.lang : 'bg');
   const DEFAULT = { name: 'Sofia', countryCode: 'BG', latitude: 42.6977, longitude: 23.3219, isDefault: true };
 
@@ -47,7 +47,7 @@
     }
   }
 
-  // The list knows the main places of 46 countries in five languages; other names stay as saved
+  // The list knows the main places of 46 countries in seven languages; other names stay as saved
   function placeName(place, lang, list) {
     const found = (list || []).find(item => Math.abs(item.latitude - place.latitude) < 0.1 && Math.abs(item.longitude - place.longitude) < 0.1);
     return (found && found.name[lang || language()]) || place.name || '';

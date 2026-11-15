@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if ((!query || query.length === 0) && ((!latitude || latitude.length === 0) || (!longitude || longitude.length === 0))) {
           // Use translations for alert messages
-          const alertMessage = pickText({ en: "Please enter a city or latitude and longitude.", bg: "Моля, въведете град или географска ширина и дължина.", de: "Bitte geben Sie eine Stadt oder Breiten- und Längengrad ein.", it: "Inserisci una città oppure latitudine e longitudine.", es: "Introduce una ciudad o la latitud y la longitud." });
+          const alertMessage = pickText({ en: "Please enter a city or latitude and longitude.", bg: "Моля, въведете град или географска ширина и дължина.", de: "Bitte geben Sie eine Stadt oder Breiten- und Längengrad ein.", it: "Inserisci una città oppure latitudine e longitudine.", es: "Introduce una ciudad o la latitud y la longitud.", fr: "Saisissez une ville ou une latitude et une longitude.", nl: "Voer een stad of breedte- en lengtegraad in." });
           alert(alertMessage);
           return;
         }
@@ -56,14 +56,14 @@ document.addEventListener('DOMContentLoaded', function() {
               document.getElementById("selected-city").textContent = `${_t('selectedLocation')}: ${city}, ${data.address.country}`;
             } else {
               // Use translations for coordinates text
-              const coordsText = pickText({ en: "Coordinates", bg: "Координати", de: "Koordinaten", it: "Coordinate", es: "Coordenadas" });
+              const coordsText = pickText({ en: "Coordinates", bg: "Координати", de: "Koordinaten", it: "Coordinate", es: "Coordenadas", fr: "Coordonnées", nl: "Coördinaten" });
               document.getElementById("selected-city").textContent = `${coordsText} (${latitude}, ${longitude})`;
             }
             //document.getElementById("loadData").click();
           } catch (err) {
             console.error("Error getting weather data:", err);
             // Use translations for error messages
-            const errorMessage = pickText({ en: "Error getting weather data. Please try again later.", bg: "Грешка при получаване на данни за времето. Моля, опитайте отново по-късно.", de: "Fehler beim Abrufen von Wetterdaten. Bitte versuchen Sie es später erneut.", it: "Errore nel recupero dei dati meteo. Riprova più tardi.", es: "Error al obtener los datos del tiempo. Inténtalo de nuevo más tarde." });
+            const errorMessage = pickText({ en: "Error getting weather data. Please try again later.", bg: "Грешка при получаване на данни за времето. Моля, опитайте отново по-късно.", de: "Fehler beim Abrufen von Wetterdaten. Bitte versuchen Sie es später erneut.", it: "Errore nel recupero dei dati meteo. Riprova più tardi.", es: "Error al obtener los datos del tiempo. Inténtalo de nuevo más tarde.", fr: "Erreur lors de la récupération des données météo. Réessayez plus tard.", nl: "Fout bij het ophalen van weergegevens. Probeer het later opnieuw." });
             alert(errorMessage);
           }
           return;
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         } catch (err) {
           // Use translations for error messages
-          const errorMessage = pickText({ en: "Error selecting city:", bg: "Грешка при избор на град:", de: "Fehler bei der Stadtauswahl:", it: "Errore nella selezione della città:", es: "Error al seleccionar la ciudad:" });
+          const errorMessage = pickText({ en: "Error selecting city:", bg: "Грешка при избор на град:", de: "Fehler bei der Stadtauswahl:", it: "Errore nella selezione della città:", es: "Error al seleccionar la ciudad:", fr: "Erreur lors du choix de la ville :", nl: "Fout bij het kiezen van de stad:" });
           console.error(errorMessage, err);
         }
       });

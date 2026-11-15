@@ -130,14 +130,16 @@
     return { fraction, waxing: angle < 180, angle, index };
   }
 
-  // Names of the 8 phases (index of state()) in the 5 site languages
+  // Names of the 8 phases (index of state()) in the 7 site languages
   const ICONS = ['🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘'];
   const NAMES = {
     bg: ['Новолуние', 'Растящ сърп', 'Първа четвърт', 'Растяща луна', 'Пълнолуние', 'Намаляваща луна', 'Последна четвърт', 'Намаляващ сърп'],
     en: ['New moon', 'Waxing crescent', 'First quarter', 'Waxing gibbous', 'Full moon', 'Waning gibbous', 'Last quarter', 'Waning crescent'],
     de: ['Neumond', 'Zunehmende Sichel', 'Erstes Viertel', 'Zunehmender Mond', 'Vollmond', 'Abnehmender Mond', 'Letztes Viertel', 'Abnehmende Sichel'],
     it: ['Luna nuova', 'Luna crescente (falce)', 'Primo quarto', 'Gibbosa crescente', 'Luna piena', 'Gibbosa calante', 'Ultimo quarto', 'Luna calante (falce)'],
-    es: ['Luna nueva', 'Luna creciente', 'Cuarto creciente', 'Gibosa creciente', 'Luna llena', 'Gibosa menguante', 'Cuarto menguante', 'Luna menguante']
+    es: ['Luna nueva', 'Luna creciente', 'Cuarto creciente', 'Gibosa creciente', 'Luna llena', 'Gibosa menguante', 'Cuarto menguante', 'Luna menguante'],
+    fr: ['Nouvelle lune', 'Premier croissant', 'Premier quartier', 'Gibbeuse croissante', 'Pleine lune', 'Gibbeuse décroissante', 'Dernier quartier', 'Dernier croissant'],
+    nl: ['Nieuwe maan', 'Wassende sikkel', 'Eerste kwartier', 'Wassende maan', 'Volle maan', 'Afnemende maan', 'Laatste kwartier', 'Afnemende sikkel']
   };
 
   const Moon = { phaseEvents, nextPhase, state, phaseJde, jdFromDate, dateFromJd, ICONS, NAMES };

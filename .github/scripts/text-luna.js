@@ -1,4 +1,4 @@
-// Texts of the Moon calendar pages (build-luna.js) in the five languages.
+// Texts of the Moon calendar pages (build-luna.js) in the seven languages.
 // `when(date, time)` is "3 July at 14:05"; `clock(time)` is the time inside a table cell.
 const LUNA = {
   bg: {
@@ -175,7 +175,78 @@ const LUNA = {
       "El ciclo completo de una luna nueva a la siguiente (el mes sinódico) dura de media 29 días, 12 horas y 44 minutos. Después de la luna nueva la Luna crece: una fina hoz al atardecer hacia el oeste, el cuarto creciente al cabo de una semana aproximadamente y la luna llena al cabo de dos. Luego mengua, pasando por el cuarto menguante, hasta la siguiente luna nueva. Desde el hemisferio norte la Luna creciente está iluminada por la derecha y la menguante por la izquierda.",
       "La distancia a la Luna también cambia, porque su órbita es una elipse: de unos 356.000 km en el perigeo a unos 406.000 km en el apogeo. Cuando la luna llena coincide con el perigeo, la Luna se ve algo más grande y brillante: es lo que se llama «superluna»."
     ]
+  },
+  fr: {
+    cal: 'Calendrier lunaire', today: 'La Lune aujourd’hui', thisMonth: 'Ce mois-ci', wholeYear: y => `Toute l’année ${y}`, joiner: ' et ',
+    when: (d, t) => `${d} à ${t}`, clock: t => t, on: d => `le ${d}`,
+    lit: 'éclairée', waxing: 'La Lune est croissante', waning: 'La Lune est décroissante', nextFull: 'Prochaine pleine lune', nextNew: 'Prochaine nouvelle lune',
+    monthTitle: (n, y, full) => (full ? `Pleine lune ${n} ${y} – date et heure, calendrier lunaire` : `Calendrier lunaire ${n} ${y} – phases de la Lune`),
+    monthH1: (n, y) => `Calendrier lunaire de ${n} ${y}`,
+    monthIntro: c => `En ${c.name} ${c.year}, ${c.full ? `la pleine lune est ${c.full}${c.blue ? ' (une « lune bleue » : la deuxième pleine lune du mois)' : ''}` : 'il n’y a pas de pleine lune'}, et ${c.fresh ? `la nouvelle lune est ${c.fresh}` : 'il n’y a pas de nouvelle lune'}. Toutes les heures sont à l’heure bulgare. Le tableau ci-dessous indique la phase de la Lune et sa partie éclairée pour chaque jour.`,
+    monthDescription: c => `Calendrier lunaire de ${c.name} ${c.year} : ${c.full ? `pleine lune ${c.fullDates}` : 'pas de pleine lune'}, ${c.fresh ? `nouvelle lune ${c.freshDates}` : 'pas de nouvelle lune'}. Phase et illumination de la Lune pour chaque jour, à l’heure bulgare.`,
+    phasesH: (n, y) => `Phases de la Lune en ${n} ${y}`,
+    phasesHead: ['Phase', 'Date', 'Jour', 'Heure'],
+    daysH: (n, y) => `Phase de la Lune jour par jour – ${n} ${y}`,
+    daysHead: ['Date', 'Jour', 'Phase', 'Illumination'],
+    daysNote: 'L’illumination est donnée à 12 h, heure bulgare. Calculé avec l’algorithme de Jean Meeus (« Astronomical Algorithms ») ; les heures des phases ont été vérifiées avec les données de l’Observatoire naval des États-Unis (USNO).',
+    otherMonths: y => `Autres mois de ${y}`,
+    more: 'Plus sur Weather Pulse', weather: 'Météo en Bulgarie', storms: 'Tempêtes magnétiques aujourd’hui', sky: 'Le ciel : étoiles filantes, éclipses, super-lunes', holidays: 'Jours fériés',
+    yearTitle: y => `Calendrier lunaire ${y} – pleines lunes et nouvelles lunes`,
+    yearDescription: (y, n) => `Calendrier lunaire ${y} : les dates de toutes les pleines lunes (${n}), nouvelles lunes et quartiers par mois, à l’heure bulgare.`,
+    yearH1: y => `Calendrier lunaire ${y} : pleines lunes et nouvelles lunes`,
+    yearIntro: c => `En ${c.year}, il y a ${c.n} pleines lunes${c.blue ? `, et la deuxième pleine lune du ${c.blue} est une « lune bleue »` : ''}. La première pleine lune est le ${c.first} et la dernière le ${c.last}. Choisissez un mois pour les phases jour par jour. Les heures sont à l’heure bulgare.`,
+    yearH2: y => `Phases de la Lune en ${y} par mois`,
+    month: 'Mois',
+    yearNote: 'Calculé avec l’algorithme de Jean Meeus ; vérifié avec les données de l’USNO.',
+    hubTitle: 'Calendrier lunaire – la phase de la Lune aujourd’hui',
+    hubDescription: years => `Phase de la Lune aujourd’hui, partie éclairée et dates de la prochaine pleine lune et nouvelle lune. Calendrier lunaire par mois pour ${years}, à l’heure bulgare.`,
+    hubH1: 'Calendrier lunaire : la phase de la Lune aujourd’hui',
+    hubIntro: 'Quelle est la phase de la Lune aujourd’hui, quelle part est éclairée et quand a lieu la prochaine pleine lune. Les calendriers mensuels donnent la phase de chaque jour ; toutes les données sont calculées, sans horoscope ni astrologie.',
+    hubYearH: y => `Calendrier lunaire ${y} par mois`,
+    sky: {"h":"Le ciel","intro":"Prochains événements dans le ciel : pluies d’étoiles filantes, éclipses et super-lunes.","btn":"Tout sur le ciel →","meteor":"Pluie d’étoiles filantes","eclipse":"Éclipse","supermoon":"Super-lune","peak":"maximum","km":"km"},
+    aboutH: "Comment changent les phases de la Lune",
+    about: [
+      "La Lune ne brille pas par elle-même : nous voyons la partie éclairée par le Soleil. Pendant qu’elle tourne autour de la Terre, l’angle entre le Soleil, la Terre et la Lune change, et une part différente de sa moitié éclairée est visible depuis la Terre. Ce sont les phases.",
+      "Le cycle complet d’une nouvelle lune à la suivante (le mois synodique) dure en moyenne 29 jours, 12 heures et 44 minutes. Après la nouvelle lune, la Lune croît : un mince croissant le soir à l’ouest, le premier quartier au bout d’une semaine environ et la pleine lune au bout de deux. Puis elle décroît, en passant par le dernier quartier, jusqu’à la nouvelle lune suivante. Depuis l’hémisphère nord, la Lune croissante est éclairée à droite et la Lune décroissante à gauche.",
+      "La distance de la Lune change aussi, car son orbite est une ellipse : d’environ 356 000 km au périgée à environ 406 000 km à l’apogée. Quand une pleine lune tombe près du périgée, la Lune paraît un peu plus grande et plus brillante : c’est ce qu’on appelle une « super-lune »."
+    ]
+  },
+  nl: {
+    cal: 'Maankalender', today: 'De maan vandaag', thisMonth: 'Deze maand', wholeYear: y => `Heel ${y}`, joiner: ' en ',
+    when: (d, t) => `${d} om ${t}`, clock: t => t, on: d => `op ${d}`,
+    lit: 'verlicht', waxing: 'De maan is wassend', waning: 'De maan is afnemend', nextFull: 'Volgende volle maan', nextNew: 'Volgende nieuwe maan',
+    monthTitle: (n, y, full) => (full ? `Volle maan ${n} ${y} – datum en tijd, maankalender` : `Maankalender ${n} ${y} – maanfasen`),
+    monthH1: (n, y) => `Maankalender voor ${n} ${y}`,
+    monthIntro: c => `In ${c.name} ${c.year} ${c.full ? `is de volle maan ${c.full}${c.blue ? ' (een "blauwe maan": de tweede volle maan van de maand)' : ''}` : 'is er geen volle maan'}, en ${c.fresh ? `de nieuwe maan is ${c.fresh}` : 'er is geen nieuwe maan'}. Alle tijden zijn Bulgaarse tijd. De tabel hieronder toont de maanfase en het verlichte deel voor elke dag.`,
+    monthDescription: c => `Maankalender voor ${c.name} ${c.year}: ${c.full ? `volle maan ${c.fullDates}` : 'geen volle maan'}, ${c.fresh ? `nieuwe maan ${c.freshDates}` : 'geen nieuwe maan'}. Maanfase en verlichting voor elke dag, in Bulgaarse tijd.`,
+    phasesH: (n, y) => `Maanfasen in ${n} ${y}`,
+    phasesHead: ['Fase', 'Datum', 'Dag', 'Tijd'],
+    daysH: (n, y) => `Maanfase per dag – ${n} ${y}`,
+    daysHead: ['Datum', 'Dag', 'Fase', 'Verlichting'],
+    daysNote: 'De verlichting geldt voor 12:00 Bulgaarse tijd. Berekend met het algoritme van Jean Meeus ("Astronomical Algorithms"); de tijden van de fasen zijn vergeleken met gegevens van het US Naval Observatory (USNO).',
+    otherMonths: y => `Andere maanden in ${y}`,
+    more: 'Meer van Weather Pulse', weather: 'Weer in Bulgarije', storms: 'Magnetische stormen vandaag', sky: 'De hemel: meteoren, verduisteringen, supermanen', holidays: 'Feestdagen',
+    yearTitle: y => `Maankalender ${y} – volle manen en nieuwe manen`,
+    yearDescription: (y, n) => `Maankalender voor ${y}: de data van alle volle manen (${n}), nieuwe manen en kwartieren per maand, in Bulgaarse tijd.`,
+    yearH1: y => `Maankalender ${y}: volle manen en nieuwe manen`,
+    yearIntro: c => `In ${c.year} zijn er ${c.n} volle manen${c.blue ? `, en de tweede volle maan op ${c.blue} is een "blauwe maan"` : ''}. De eerste volle maan is op ${c.first} en de laatste op ${c.last}. Kies een maand voor de fasen per dag. De tijden zijn Bulgaarse tijd.`,
+    yearH2: y => `Maanfasen in ${y} per maand`,
+    month: 'Maand',
+    yearNote: 'Berekend met het algoritme van Jean Meeus; vergeleken met gegevens van het USNO.',
+    hubTitle: 'Maankalender – de maanfase vandaag',
+    hubDescription: years => `De maanfase vandaag, het verlichte deel en wanneer de volgende volle maan en nieuwe maan zijn. Maankalender per maand voor ${years}, in Bulgaarse tijd.`,
+    hubH1: 'Maankalender: de maanfase vandaag',
+    hubIntro: 'Welke maanfase het vandaag is, hoeveel van de maan verlicht is en wanneer de volgende volle maan is. De maandkalenders tonen de fase voor elke dag; alle gegevens zijn berekend, zonder horoscopen of astrologie.',
+    hubYearH: y => `Maankalender ${y} per maand`,
+    sky: {"h":"De hemel","intro":"Komende gebeurtenissen aan de hemel: meteorenzwermen, verduisteringen en supermanen.","btn":"Alles over de hemel →","meteor":"Meteorenzwerm","eclipse":"Verduistering","supermoon":"Supermaan","peak":"maximum","km":"km"},
+    aboutH: "Hoe de fasen van de maan veranderen",
+    about: [
+      "De maan geeft zelf geen licht: we zien het deel dat door de zon wordt beschenen. Terwijl de maan om de aarde draait, verandert de hoek tussen zon, aarde en maan, en is vanaf de aarde een ander deel van de verlichte helft te zien. Dat zijn de fasen.",
+      "De volledige cyclus van de ene nieuwe maan tot de volgende (de synodische maand) duurt gemiddeld 29 dagen, 12 uur en 44 minuten. Na de nieuwe maan is de maan wassend: een dunne sikkel 's avonds in het westen, het eerste kwartier na ongeveer een week en volle maan na ongeveer twee weken. Daarna neemt ze af, via het laatste kwartier, tot de volgende nieuwe maan. Vanaf het noordelijk halfrond is de wassende maan rechts verlicht en de afnemende maan links.",
+      "Ook de afstand tot de maan verandert, omdat haar baan een ellips is: van ongeveer 356.000 km in het perigeum tot ongeveer 406.000 km in het apogeum. Valt een volle maan dicht bij het perigeum, dan lijkt de maan iets groter en helderder: dat heet een \"supermaan\"."
+    ]
   }
+
 };
 
 module.exports = { LUNA };

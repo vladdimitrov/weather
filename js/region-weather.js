@@ -25,7 +25,9 @@
     // the ski resort city pages (snow table) exist in every language
     de: { today: 'Heute', none: 'nicht erwartet', error: 'Die Daten konnten nicht geladen werden. Bitte später erneut versuchen.', cm: 'cm', m: 'm', locale: 'de-DE' },
     it: { today: 'Oggi', none: 'non previsto', error: 'Impossibile caricare i dati. Riprova più tardi.', cm: 'cm', m: 'm', locale: 'it-IT' },
-    es: { today: 'Hoy', none: 'no se espera', error: 'No se pudieron cargar los datos. Inténtalo de nuevo más tarde.', cm: 'cm', m: 'm', locale: 'es-ES' }
+    es: { today: 'Hoy', none: 'no se espera', error: 'No se pudieron cargar los datos. Inténtalo de nuevo más tarde.', cm: 'cm', m: 'm', locale: 'es-ES' },
+    fr: { today: 'Aujourd’hui', none: 'non attendue', error: 'Impossible de charger les données. Réessayez plus tard.', cm: 'cm', m: 'm', locale: 'fr-FR' },
+    nl: { today: 'Vandaag', none: 'niet verwacht', error: 'De gegevens konden niet worden geladen. Probeer het later opnieuw.', cm: 'cm', m: 'm', locale: 'nl-NL' }
   };
   const t = () => T[document.documentElement.lang] || T.en;
   const deg = v => (typeof v === 'number' ? `${Math.round(v) < 0 ? '−' : ''}${Math.abs(Math.round(v))}°` : '—');

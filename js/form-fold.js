@@ -12,7 +12,7 @@
   if (!loadButton || (!mapBox && !details)) return;
 
   const pick = texts => (window.pickText ? window.pickText(texts) : texts[document.documentElement.lang] || texts.en);
-  const changeText = { en: 'Change', bg: 'Промени', de: 'Ändern', it: 'Modifica', es: 'Cambiar' };
+  const changeText = { en: 'Change', bg: 'Промени', de: 'Ändern', it: 'Modifica', es: 'Cambiar', fr: 'Modifier', nl: 'Wijzigen' };
   const el = id => document.getElementById(id);
 
   function placeName() {

@@ -14,7 +14,7 @@
   window.Units = { imperial };
 
   // ---- the selector in the header ----
-  const labels = { en: 'Units:', bg: 'Мерни единици:', de: 'Einheiten:', it: 'Unità:', es: 'Unidades:' };
+  const labels = { en: 'Units:', bg: 'Мерни единици:', de: 'Einheiten:', it: 'Unità:', es: 'Unidades:', fr: 'Unités :', nl: 'Eenheden:' };
   const lang = () => document.documentElement.lang;
 
   function buildSelector() {

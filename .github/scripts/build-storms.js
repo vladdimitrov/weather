@@ -28,10 +28,11 @@ const ZONE = 'Europe/Sofia';
 
 // Words that are not on the page yet
 const TEXT = {
-  day: { bg: 'Ден', en: 'Day', de: 'Tag', it: 'Giorno', es: 'Día' },
-  highest: { bg: 'Най-висок Kp', en: 'Highest Kp', de: 'Höchster Kp', it: 'Kp massimo', es: 'Kp máximo' },
+  day: { bg: 'Ден', en: 'Day', de: 'Tag', it: 'Giorno', es: 'Día', fr: 'Jour', nl: 'Dag' },
+  highest: { bg: 'Най-висок Kp', en: 'Highest Kp', de: 'Höchster Kp', it: 'Kp massimo', es: 'Kp máximo', fr: 'Kp maximal', nl: 'Hoogste Kp' },
   issued: {
-    bg: 'Прогноза на NOAA от', en: 'NOAA forecast of', de: 'NOAA-Vorhersage vom', it: 'Previsione NOAA del', es: 'Pronóstico de la NOAA del'
+    bg: 'Прогноза на NOAA от', en: 'NOAA forecast of', de: 'NOAA-Vorhersage vom', it: 'Previsione NOAA del', es: 'Pronóstico de la NOAA del',
+    fr: 'Prévision de la NOAA du', nl: 'NOAA-verwachting van'
   }
 };
 

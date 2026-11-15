@@ -13,7 +13,9 @@
     bg: 'Няма намерени места',
     de: 'Keine Orte gefunden',
     it: 'Nessuna località trovata',
-    es: 'No se encontraron lugares'
+    es: 'No se encontraron lugares',
+    fr: 'Aucun lieu trouvé',
+    nl: 'Geen plaatsen gevonden'
   };
 
   const transliterationTable = {
@@ -379,7 +381,7 @@
         render(found);
       } catch (err) {
         if (err.name === 'AbortError') return;
-        const errorMessage = pickText({ en: "Error searching for city:", bg: "Грешка при търсене на град:", de: "Fehler bei der Stadtsuche:", it: "Errore nella ricerca della città:", es: "Error al buscar la ciudad:" });
+        const errorMessage = pickText({ en: "Error searching for city:", bg: "Грешка при търсене на град:", de: "Fehler bei der Stadtsuche:", it: "Errore nella ricerca della città:", es: "Error al buscar la ciudad:", fr: "Erreur lors de la recherche de la ville :", nl: "Fout bij het zoeken naar de stad:" });
         console.error(errorMessage, err);
       }
     }
@@ -439,7 +441,7 @@
   let destinationsData = null;
   function loadDestinations() {
     if (!destinationsData) {
-      destinationsData = fetch('/js/destinations.json?v=1')
+      destinationsData = fetch('/js/destinations.json?v=2')
         .then(response => (response.ok ? response.json() : {}))
         .catch(() => ({}));
     }
@@ -451,7 +453,9 @@
     bg: 'Популярни места {in} {country}:',
     de: 'Beliebt in {country}:',
     it: 'Popolari in {country}:',
-    es: 'Populares en {country}:'
+    es: 'Populares en {country}:',
+    fr: 'Populaires – {country} :',
+    nl: 'Populair in {country}:'
   };
 
   const recentTexts = {
@@ -459,7 +463,9 @@
     bg: 'Последно избрани:',
     de: 'Zuletzt gewählt:',
     it: 'Scelti di recente:',
-    es: 'Elegidos recientemente:'
+    es: 'Elegidos recientemente:',
+    fr: 'Choisis récemment :',
+    nl: 'Recent gekozen:'
   };
 
   const removeTexts = {
@@ -467,7 +473,9 @@
     bg: 'Премахни',
     de: 'Entfernen',
     it: 'Rimuovi',
-    es: 'Quitar'
+    es: 'Quitar',
+    fr: 'Retirer',
+    nl: 'Verwijderen'
   };
 
   function countryName(code) {
@@ -663,7 +671,9 @@
     bg: ['София', 'България'],
     de: ['Sofia', 'Bulgarien'],
     it: ['Sofia', 'Bulgaria'],
-    es: ['Sofía', 'Bulgaria']
+    es: ['Sofía', 'Bulgaria'],
+    fr: ['Sofia', 'Bulgarie'],
+    nl: ['Sofia', 'Bulgarije']
   };
 
   // The place a page opens with: the last one picked (saved in localStorage
@@ -690,7 +700,9 @@
     bg: { off: '☆ Добави в любими', on: '★ Любимо', remove: 'Премахни от любими', full: 'Може да имате до 10 любими места. Първо премахнете едно.', title: 'Любими места' },
     de: { off: '☆ Zu Favoriten', on: '★ Favorit', remove: 'Aus Favoriten entfernen', full: 'Sie können bis zu 10 Lieblingsorte speichern. Entfernen Sie zuerst einen.', title: 'Lieblingsorte' },
     it: { off: '☆ Aggiungi ai preferiti', on: '★ Preferito', remove: 'Rimuovi dai preferiti', full: 'Puoi salvare fino a 10 località preferite. Rimuovine prima una.', title: 'Località preferite' },
-    es: { off: '☆ Añadir a favoritos', on: '★ Favorito', remove: 'Quitar de favoritos', full: 'Puedes guardar hasta 10 lugares favoritos. Quita uno primero.', title: 'Lugares favoritos' }
+    es: { off: '☆ Añadir a favoritos', on: '★ Favorito', remove: 'Quitar de favoritos', full: 'Puedes guardar hasta 10 lugares favoritos. Quita uno primero.', title: 'Lugares favoritos' },
+    fr: { off: '☆ Ajouter aux favoris', on: '★ Favori', remove: 'Retirer des favoris', full: 'Vous pouvez garder jusqu’à 10 lieux favoris. Retirez-en un d’abord.', title: 'Lieux favoris' },
+    nl: { off: '☆ Toevoegen aan favorieten', on: '★ Favoriet', remove: 'Verwijderen uit favorieten', full: 'U kunt maximaal 10 favoriete plaatsen bewaren. Verwijder er eerst een.', title: 'Favoriete plaatsen' }
   };
 
   const shareTexts = {
@@ -698,7 +710,9 @@
     bg: ['🔗 Сподели', '✓ Линкът е копиран'],
     de: ['🔗 Teilen', '✓ Link kopiert'],
     it: ['🔗 Condividi', '✓ Link copiato'],
-    es: ['🔗 Compartir', '✓ Enlace copiado']
+    es: ['🔗 Compartir', '✓ Enlace copiado'],
+    fr: ['🔗 Partager', '✓ Lien copié'],
+    nl: ['🔗 Delen', '✓ Link gekopieerd']
   };
 
   const coordinatesToggleText = {
@@ -706,7 +720,9 @@
     bg: ['📐 Въведи координати', '📐 Скрий координатите'],
     de: ['📐 Koordinaten eingeben', '📐 Koordinaten ausblenden'],
     it: ['📐 Inserisci coordinate', '📐 Nascondi coordinate'],
-    es: ['📐 Introducir coordenadas', '📐 Ocultar coordenadas']
+    es: ['📐 Introducir coordenadas', '📐 Ocultar coordenadas'],
+    fr: ['📐 Saisir des coordonnées', '📐 Masquer les coordonnées'],
+    nl: ['📐 Coördinaten invoeren', '📐 Coördinaten verbergen']
   };
 
   // Most visitors search by city, so the latitude/longitude fields are hidden

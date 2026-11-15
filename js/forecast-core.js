@@ -162,7 +162,9 @@
     bg: 'Медиана на моделите ECMWF, ICON и GFS · надм. височина {m} м',
     de: 'Median der Modelle ECMWF, ICON und GFS · Höhe {m} m',
     it: 'Mediana dei modelli ECMWF, ICON e GFS · altitudine {m} m',
-    es: 'Mediana de los modelos ECMWF, ICON y GFS · altitud {m} m'
+    es: 'Mediana de los modelos ECMWF, ICON y GFS · altitud {m} m',
+    fr: 'Médiane des modèles ECMWF, ICON et GFS · altitude {m} m',
+    nl: 'Mediaan van de modellen ECMWF, ICON en GFS · hoogte {m} m'
   };
 
   // the line under the forecast: how it is made and for what height

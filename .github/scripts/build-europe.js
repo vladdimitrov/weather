@@ -1,4 +1,4 @@
-// Generates the "weather in Europe" pages in the five languages. Bulgarian is at the root, as on
+// Generates the "weather in Europe" pages in the seven languages. Bulgarian is at the root, as on
 // the rest of the site (/europe/), the others are /en/europe/, /de/europe/, /it/europe/, /es/europe/:
 //   /europe/                       all countries
 //   /europe/<country>/             cities of one country
@@ -30,7 +30,10 @@ const CLIMATE = fs.existsSync(CLIMATE_FILE) ? JSON.parse(fs.readFileSync(CLIMATE
 const ROOT = process.cwd();
 const BASE = 'bg';
 // The language spoken in a country, when it is one of the site's: its search term goes first in the title
-const SPOKEN = { AT: 'de', DE: 'de', CH: 'de', LU: 'de', IT: 'it', ES: 'es', GB: 'en', IE: 'en', MT: 'en' };
+const SPOKEN = { AT: 'de', DE: 'de', CH: 'de', LU: 'de', IT: 'it', ES: 'es', GB: 'en', IE: 'en', MT: 'en', FR: 'fr', BE: 'fr', NL: 'nl' };
+// Flemish cities of Belgium: searched in Dutch ("Weer Antwerpen"), not with the French "Météo"
+const FLEMISH = ['antwerp', 'ghent', 'bruges'];
+const localSearch = (country, slug) => (FLEMISH.includes(slug) ? { lang: 'nl', word: 'Weer' } : { lang: SPOKEN[country.code], word: country.word });
 const SCRIPTS = `<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=${VERSION.moon}" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`;
@@ -79,8 +82,9 @@ function cityPage(lang, country, city) {
   const k = countryName(lang, country);
   const params = new URLSearchParams({ city: name, lat: lat.toFixed(4), lon: lon.toFixed(4), cc: country.code });
   // "Meteo Napoli" first in the title only on the page in Italian; the other pages mention the local name in the text
-  const term = country.word && SPOKEN[country.code] === lang ? `${country.word} ${local}` : '';
-  const localTerm = country.word && local !== name ? `${country.word} ${local}` : '';
+  const search = localSearch(country, slug);
+  const term = search.word && search.lang === lang ? `${search.word} ${local}` : '';
+  const localTerm = search.word && local !== name ? `${search.word} ${local}` : '';
   const others = country.cities.filter(other => other !== city)
     .map(other => `<a href="${E(lang, `/europe/${country.slug}/${other[0]}/`)}" class="recent-place">${esc(PLACES.europeName(other, lang))}</a>`).join('\n        ');
   const climate = CLIMATE && CLIMATE.cities[`${country.slug}/${slug}`];

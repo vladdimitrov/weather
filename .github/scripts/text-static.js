@@ -1,4 +1,4 @@
-// Texts of /za-saita/ (About) and /poveritelnost/ (Privacy) in the five languages (build-static.js).
+// Texts of /za-saita/ (About) and /poveritelnost/ (Privacy) in the seven languages (build-static.js).
 // i(url, text) is a link to a page of the site, x(url, text) an external link.
 const MAIL = 'woodwideweb@yahoo.com';
 
@@ -153,7 +153,68 @@ const ABOUT = {
     hContact: 'Contacto',
     contact: `Sugerencias, errores y preguntas: <a href="mailto:${MAIL}">${MAIL}</a>.`,
     maintained: 'Weather Pulse está a cargo de VYZYA.'
+  }),
+  fr: (i, x) => ({
+    title: 'À propos',
+    description: 'Weather Pulse est un site gratuit de prévisions météo, de tempêtes magnétiques et de jours fériés. D’où viennent les données et comment les prévisions sont faites.',
+    h1: 'À propos de Weather Pulse',
+    lead: 'Weather Pulse est un site gratuit de prévisions météo, de tempêtes magnétiques et de jours fériés, sans inscription et sans fonctions payantes. Vous pouvez l’installer comme une application sur votre téléphone depuis le menu du navigateur.',
+    hWhat: 'Ce que propose le site',
+    what: [
+      `${i('/weather/', 'Prévisions météo')} — 16 jours et heure par heure, avec une marge d’incertitude, une comparaison des modèles, le lever et le coucher du soleil et la phase de la Lune ;`,
+      `${i('/magnitni-buri/', 'Tempêtes magnétiques')} — l’indice Kp en temps réel, une prévision à 3 jours, le vent solaire et des alertes de tempête ;`,
+      `${i('/maps/', 'Cartes météo')} — vent, pluie, nuages et température ;`,
+      `${i('/holliday_calendar/', 'Calendrier des jours fériés')} — les jours fériés du pays du lieu choisi ;`,
+      `${i('/luna/', 'Calendrier lunaire')} et ${i('/nebeto/', 'Le ciel')} — phases de la Lune, étoiles filantes, éclipses et super-lunes ;`
+    ],
+    hData: 'D’où viennent les données',
+    data: [
+      `Les prévisions météo viennent d’${x('https://open-meteo.com/', 'Open-Meteo')}, qui utilise les modèles de l’ECMWF (Europe), d’ICON (Allemagne), de GFS (États-Unis) et d’autres services météorologiques.`,
+      `Les données sur les tempêtes magnétiques et le vent solaire viennent du ${x('https://www.swpc.noaa.gov/', 'NOAA Space Weather Prediction Center')}.`,
+      `Les jours fériés viennent de ${x('https://date.nager.at/', 'Nager.Date')}.`,
+      `Les cartes viennent de ${x('https://www.windy.com/', 'Windy')}.`
+    ],
+    moreData: `Plus de détails sur la page ${i('/iztochnici/', 'Sources des données')}.`,
+    hHow: 'Comment les prévisions sont faites',
+    how1: 'Les prévisions météo sont calculées par des modèles numériques qui simulent l’atmosphère sur une grille de points. En plus de la prévision principale, nous montrons aussi la dispersion des prévisions d’ensemble : le modèle est lancé de nombreuses fois avec des conditions de départ légèrement différentes, et plus les résultats sont proches, plus la prévision est sûre. Une prévision est en général précise pour 3 à 5 jours et seulement indicative au-delà de 7 jours.',
+    how2: `La prévision des tempêtes magnétiques vient des prévisionnistes de la NOAA, qui observent le Soleil par satellite. Plus d’informations sur la page ${i('/magnitni-buri/', 'Tempêtes magnétiques')}.`,
+    hPrivacy: 'Confidentialité',
+    privacy: `Nous n’exigeons pas d’inscription et ne collectons pas de données personnelles sur un serveur à nous. Les détails sont sur la page ${i('/poveritelnost/', 'Confidentialité')}.`,
+    hContact: 'Nous contacter',
+    contact: `Suggestions, erreurs et questions : <a href="mailto:${MAIL}">${MAIL}</a>.`,
+    maintained: 'Weather Pulse est géré par VYZYA.'
+  }),
+  nl: (i, x) => ({
+    title: 'Over ons',
+    description: 'Weather Pulse is een gratis site voor weerberichten, magnetische stormen en feestdagen. Waar de gegevens vandaan komen en hoe de verwachtingen worden gemaakt.',
+    h1: 'Over Weather Pulse',
+    lead: 'Weather Pulse is een gratis site voor weerberichten, magnetische stormen en feestdagen, zonder registratie en zonder betaalde functies. U kunt de site via het menu van de browser als app op uw telefoon installeren.',
+    hWhat: 'Wat de site biedt',
+    what: [
+      `${i('/weather/', 'Weerbericht')} — 16 dagen en per uur, met een onzekerheidsmarge, een vergelijking van modellen, zonsopkomst, zonsondergang en de maanfase;`,
+      `${i('/magnitni-buri/', 'Magnetische stormen')} — de Kp-index in realtime, een verwachting voor 3 dagen, de zonnewind en stormwaarschuwingen;`,
+      `${i('/maps/', 'Weerkaarten')} — wind, regen, bewolking en temperatuur;`,
+      `${i('/holliday_calendar/', 'Feestdagenkalender')} — de officiële feestdagen van het land van de gekozen plaats;`,
+      `${i('/luna/', 'Maankalender')} en ${i('/nebeto/', 'De hemel')} — maanfasen, meteorenzwermen, verduisteringen en supermanen;`
+    ],
+    hData: 'Waar de gegevens vandaan komen',
+    data: [
+      `Het weerbericht komt van ${x('https://open-meteo.com/', 'Open-Meteo')}, dat de modellen gebruikt van ECMWF (Europa), ICON (Duitsland), GFS (VS) en andere weerdiensten.`,
+      `De gegevens over magnetische stormen en de zonnewind komen van het ${x('https://www.swpc.noaa.gov/', 'NOAA Space Weather Prediction Center')}.`,
+      `De feestdagen komen van ${x('https://date.nager.at/', 'Nager.Date')}.`,
+      `De kaarten komen van ${x('https://www.windy.com/', 'Windy')}.`
+    ],
+    moreData: `Meer details staan op de pagina ${i('/iztochnici/', 'Gegevensbronnen')}.`,
+    hHow: 'Hoe de verwachtingen worden gemaakt',
+    how1: 'Het weerbericht wordt berekend door numerieke modellen die de atmosfeer op een raster van punten nabootsen. Naast de hoofdverwachting tonen we ook de spreiding van ensembleverwachtingen: het model wordt vele keren gedraaid met iets andere beginvoorwaarden, en hoe dichter de uitkomsten bij elkaar liggen, hoe zekerder de verwachting. Een verwachting is meestal nauwkeurig voor 3–5 dagen en na 7 dagen alleen een indicatie.',
+    how2: `De verwachting voor magnetische stormen komt van de meteorologen van de NOAA, die de zon met satellieten volgen. Meer daarover op de pagina ${i('/magnitni-buri/', 'Magnetische stormen')}.`,
+    hPrivacy: 'Privacy',
+    privacy: `We vragen geen registratie en verzamelen geen persoonsgegevens op een eigen server. Details staan op de pagina ${i('/poveritelnost/', 'Privacy')}.`,
+    hContact: 'Contact',
+    contact: `Suggesties, fouten en vragen: <a href="mailto:${MAIL}">${MAIL}</a>.`,
+    maintained: 'Weather Pulse wordt onderhouden door VYZYA.'
   })
+
 };
 
 const PRIVACY = {
@@ -311,7 +372,70 @@ const PRIVACY = {
     notif: `Si activas las notificaciones, tu navegador consulta por sí mismo la previsión de la NOAA y muestra una notificación cuando se espera una tormenta. No usamos un servidor de notificaciones ni recogemos datos de tu dispositivo. Puedes desactivarlas en la página ${i('/magnitni-buri/', 'Tormentas magnéticas')} o en los ajustes del navegador.`,
     hRights: 'Tus derechos',
     rights: `Como no guardamos datos personales en un servidor propio, la mayor parte de tus datos está solo en tu dispositivo. Para preguntas o solicitudes sobre los datos tratados mediante Google Analytics, escríbenos a <a href="mailto:${MAIL}">${MAIL}</a>. Tienes derecho a presentar una reclamación ante la ${x('https://www.cpdp.bg/', 'Comisión búlgara de Protección de Datos Personales')}.`
+  }),
+  fr: (i, x) => ({
+    title: 'Confidentialité et cookies',
+    description: 'Quelles données Weather Pulse utilise : réglages dans le navigateur, Google Analytics uniquement avec votre consentement, et services externes pour les prévisions.',
+    h1: 'Confidentialité et cookies',
+    updated: 'Dernière mise à jour : 4 novembre 2026',
+    lead: 'Weather Pulse (weatherpulse.eu) est un site gratuit de prévisions météo, de tempêtes magnétiques et de jours fériés. Il n’y a ni inscription, ni formulaires, ni serveur à nous qui conserve des données : le site est statique et hébergé sur GitHub Pages. Nous expliquons ici ce qu’il advient de vos données quand vous l’utilisez.',
+    hLocal: 'Réglages qui restent dans votre navigateur',
+    localIntro: 'Pour se souvenir de vos choix, le site enregistre les éléments suivants dans le stockage local du navigateur (localStorage) :',
+    local: ['la langue et le fond d’écran choisis ;', 'le dernier lieu recherché, les lieux récents et les lieux favoris ;', 'votre choix concernant les cookies ;', 'l’activation ou non des notifications de tempêtes magnétiques.'],
+    localOutro: 'Ces données ne quittent pas votre appareil et ne nous sont pas envoyées. Vous pouvez les supprimer à tout moment en effaçant les données du site dans les réglages de votre navigateur.',
+    hGa: 'Google Analytics (uniquement avec votre consentement)',
+    ga1: 'Si vous cliquez sur « Accepter » dans le bandeau des cookies, nous chargeons Google Analytics pour obtenir des statistiques globales : nombre de visites, pages consultées et appareils utilisés. Google Analytics dépose des cookies et traite votre adresse IP ; le fournisseur est Google, qui peut traiter les données hors de l’UE. Si vous cliquez sur « Refuser » ou ne choisissez rien, Google Analytics n’est pas chargé et aucun de ces cookies n’est déposé.',
+    ga2: 'Vous pouvez modifier votre choix à tout moment avec le bouton 🍪 dans le coin inférieur de la page. Si vous refusez, nous supprimons les cookies de Google Analytics.',
+    hExt: 'Services externes pour les données',
+    extIntro: 'Les prévisions et les autres données sont chargées directement par votre navigateur depuis les services suivants. Ils reçoivent votre adresse IP et, quand vous consultez une prévision, les coordonnées du lieu :',
+    ext: [
+      `${x('https://open-meteo.com/', 'Open-Meteo')} — les prévisions météo et la recherche de lieux ;`,
+      `${x('https://www.swpc.noaa.gov/', 'NOAA SWPC')} — les tempêtes magnétiques et le vent solaire ;`,
+      `${x('https://date.nager.at/', 'Nager.Date')} — les jours fériés ;`,
+      `${x('https://nominatim.openstreetmap.org/', 'OpenStreetMap Nominatim')} — le nom d’un lieu à partir de ses coordonnées ;`,
+      `${x('https://www.windy.com/', 'Windy')} — la carte de la page Cartes météo ;`,
+      'Google Fonts — les polices du site ;',
+      'GitHub Pages — l’hébergement du site (conserve des journaux techniques avec les adresses IP pour la sécurité).'
+    ],
+    hLoc: 'Localisation',
+    loc: 'Le bouton de localisation ne fonctionne que si vous l’autorisez dans le navigateur. Les coordonnées servent uniquement à charger la prévision de votre lieu et ne sont pas enregistrées sur un serveur.',
+    hNotif: 'Notifications de tempêtes magnétiques',
+    notif: `Si vous activez les notifications, c’est votre navigateur lui-même qui consulte la prévision de la NOAA et affiche une notification quand une tempête est attendue. Nous n’utilisons pas de serveur de notifications et ne collectons pas de données sur votre appareil. Vous pouvez les désactiver sur la page ${i('/magnitni-buri/', 'Tempêtes magnétiques')} ou dans les réglages du navigateur.`,
+    hRights: 'Vos droits',
+    rights: `Comme nous ne conservons pas de données personnelles sur un serveur à nous, la plupart de vos données ne se trouvent que sur votre appareil. Pour toute question ou demande concernant les données traitées par Google Analytics, écrivez-nous à <a href="mailto:${MAIL}">${MAIL}</a>. Vous avez le droit d’introduire une réclamation auprès de la ${x('https://www.cpdp.bg/', 'Commission de protection des données personnelles')} (Bulgarie).`
+  }),
+  nl: (i, x) => ({
+    title: 'Privacy en cookies',
+    description: 'Welke gegevens Weather Pulse gebruikt: instellingen in de browser, Google Analytics alleen met toestemming, en externe diensten voor het weerbericht.',
+    h1: 'Privacy en cookies',
+    updated: 'Laatst bijgewerkt: 4 november 2026',
+    lead: 'Weather Pulse (weatherpulse.eu) is een gratis site voor weerberichten, magnetische stormen en feestdagen. Er is geen registratie, er zijn geen formulieren en er is geen eigen server die gegevens bewaart: de site is statisch en wordt gehost op GitHub Pages. Hier leggen we uit wat er met uw gegevens gebeurt terwijl u de site gebruikt.',
+    hLocal: 'Instellingen die in uw browser blijven',
+    localIntro: 'Om uw keuzes te onthouden, slaat de site het volgende op in de lokale opslag van de browser (localStorage):',
+    local: ['de gekozen taal en achtergrond;', 'de laatst gezochte plaats, recente plaatsen en favoriete plaatsen;', 'uw keuze over cookies;', 'of meldingen over magnetische stormen aan staan.'],
+    localOutro: 'Deze gegevens verlaten uw apparaat niet en worden niet naar ons gestuurd. U kunt ze op elk moment verwijderen door de sitegegevens te wissen in de instellingen van uw browser.',
+    hGa: 'Google Analytics (alleen met toestemming)',
+    ga1: 'Als u in de cookiebanner op "Accepteren" klikt, laden we Google Analytics om totaalstatistieken te zien: hoeveel bezoeken er zijn, welke pagina’s worden geopend en vanaf welke apparaten. Google Analytics plaatst cookies en verwerkt uw IP-adres; de aanbieder is Google, dat de gegevens buiten de EU kan verwerken. Als u op "Weigeren" klikt of niets kiest, wordt Google Analytics niet geladen en worden er geen van deze cookies geplaatst.',
+    ga2: 'U kunt uw keuze op elk moment wijzigen met de knop 🍪 in de onderhoek van de pagina. Als u weigert, verwijderen we de cookies van Google Analytics.',
+    hExt: 'Externe diensten voor de gegevens',
+    extIntro: 'Het weerbericht en de andere gegevens worden door uw browser rechtstreeks geladen bij de volgende diensten. Zij ontvangen uw IP-adres en, als u een verwachting opzoekt, de coördinaten van de plaats:',
+    ext: [
+      `${x('https://open-meteo.com/', 'Open-Meteo')} — het weerbericht en het zoeken naar plaatsen;`,
+      `${x('https://www.swpc.noaa.gov/', 'NOAA SWPC')} — magnetische stormen en de zonnewind;`,
+      `${x('https://date.nager.at/', 'Nager.Date')} — officiële feestdagen;`,
+      `${x('https://nominatim.openstreetmap.org/', 'OpenStreetMap Nominatim')} — de naam van een plaats op basis van de coördinaten;`,
+      `${x('https://www.windy.com/', 'Windy')} — de kaart op de pagina Weerkaarten;`,
+      'Google Fonts — de lettertypen van de site;',
+      'GitHub Pages — hosting van de site (bewaart technische logboeken met IP-adressen voor de beveiliging).'
+    ],
+    hLoc: 'Locatie',
+    loc: 'De knop voor de huidige locatie werkt alleen als u dat in de browser toestaat. De coördinaten worden alleen gebruikt om de verwachting voor uw plaats te laden en worden niet op een server opgeslagen.',
+    hNotif: 'Meldingen over magnetische stormen',
+    notif: `Als u meldingen inschakelt, controleert uw browser zelf de verwachting van de NOAA en toont een melding wanneer er een storm wordt verwacht. We gebruiken geen meldingsserver en verzamelen geen gegevens over uw apparaat. U kunt ze uitschakelen op de pagina ${i('/magnitni-buri/', 'Magnetische stormen')} of in de instellingen van de browser.`,
+    hRights: 'Uw rechten',
+    rights: `Omdat we geen persoonsgegevens op een eigen server bewaren, staan de meeste van uw gegevens alleen op uw apparaat. Voor vragen of verzoeken over de gegevens die via Google Analytics worden verwerkt, kunt u ons schrijven op <a href="mailto:${MAIL}">${MAIL}</a>. U hebt het recht een klacht in te dienen bij de ${x('https://www.cpdp.bg/', 'Commissie voor de bescherming van persoonsgegevens')} (Bulgarije).`
   })
+
 };
 
 module.exports = { ABOUT, PRIVACY, MAIL };

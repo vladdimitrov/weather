@@ -2,35 +2,35 @@
 //   - sunrise, sunset and moon phase for each day
 //   - warning badges (storm, strong wind, heavy rain, snow, frost, heat)
 //   - temperature chart above the hourly table
-// Texts in 5 languages via pickText() (/js/language-selector.js).
+// Texts in 7 languages via pickText() (/js/language-selector.js).
 window.ForecastExtras = (function () {
   const T = {
-    sunrise: { en: 'Sunrise', bg: 'Изгрев', de: 'Sonnenaufgang', it: 'Alba', es: 'Amanecer' },
-    sunset: { en: 'Sunset', bg: 'Залез', de: 'Sonnenuntergang', it: 'Tramonto', es: 'Atardecer' },
-    chartTemperature: { en: 'Temperature (°C)', bg: 'Температура (°C)', de: 'Temperatur (°C)', it: 'Temperatura (°C)', es: 'Temperatura (°C)' },
-    chartRainChance: { en: 'Chance of rain', bg: 'Вероятност за валеж', de: 'Regenwahrscheinlichkeit', it: 'Probabilità di pioggia', es: 'Probabilidad de lluvia' }
+    sunrise: { en: 'Sunrise', bg: 'Изгрев', de: 'Sonnenaufgang', it: 'Alba', es: 'Amanecer', fr: 'Lever du soleil', nl: 'Zonsopkomst' },
+    sunset: { en: 'Sunset', bg: 'Залез', de: 'Sonnenuntergang', it: 'Tramonto', es: 'Atardecer', fr: 'Coucher du soleil', nl: 'Zonsondergang' },
+    chartTemperature: { en: 'Temperature (°C)', bg: 'Температура (°C)', de: 'Temperatur (°C)', it: 'Temperatura (°C)', es: 'Temperatura (°C)', fr: 'Température (°C)', nl: 'Temperatuur (°C)' },
+    chartRainChance: { en: 'Chance of rain', bg: 'Вероятност за валеж', de: 'Regenwahrscheinlichkeit', it: 'Probabilità di pioggia', es: 'Probabilidad de lluvia', fr: 'Probabilité de pluie', nl: 'Kans op regen' }
   };
 
   const moonPhases = [
-    { key: 'moonNew', icon: '🌑', name: { en: 'New moon', bg: 'Новолуние', de: 'Neumond', it: 'Luna nuova', es: 'Luna nueva' } },
-    { key: 'moonWaxCrescent', icon: '🌒', name: { en: 'Waxing crescent', bg: 'Растящ полумесец', de: 'Zunehmende Sichel', it: 'Falce crescente', es: 'Luna creciente' } },
-    { key: 'moonFirstQ', icon: '🌓', name: { en: 'First quarter', bg: 'Първа четвърт', de: 'Erstes Viertel', it: 'Primo quarto', es: 'Cuarto creciente' } },
-    { key: 'moonWaxGibbous', icon: '🌔', name: { en: 'Waxing gibbous', bg: 'Растяща луна', de: 'Zunehmender Mond', it: 'Gibbosa crescente', es: 'Gibosa creciente' } },
-    { key: 'moonFull', icon: '🌕', name: { en: 'Full moon', bg: 'Пълнолуние', de: 'Vollmond', it: 'Luna piena', es: 'Luna llena' } },
-    { key: 'moonWaneGibbous', icon: '🌖', name: { en: 'Waning gibbous', bg: 'Намаляваща луна', de: 'Abnehmender Mond', it: 'Gibbosa calante', es: 'Gibosa menguante' } },
-    { key: 'moonLastQ', icon: '🌗', name: { en: 'Last quarter', bg: 'Последна четвърт', de: 'Letztes Viertel', it: 'Ultimo quarto', es: 'Cuarto menguante' } },
-    { key: 'moonWaneCrescent', icon: '🌘', name: { en: 'Waning crescent', bg: 'Намаляващ полумесец', de: 'Abnehmende Sichel', it: 'Falce calante', es: 'Luna menguante' } }
+    { key: 'moonNew', icon: '🌑', name: { en: 'New moon', bg: 'Новолуние', de: 'Neumond', it: 'Luna nuova', es: 'Luna nueva', fr: 'Nouvelle lune', nl: 'Nieuwe maan' } },
+    { key: 'moonWaxCrescent', icon: '🌒', name: { en: 'Waxing crescent', bg: 'Растящ полумесец', de: 'Zunehmende Sichel', it: 'Falce crescente', es: 'Luna creciente', fr: 'Premier croissant', nl: 'Wassende sikkel' } },
+    { key: 'moonFirstQ', icon: '🌓', name: { en: 'First quarter', bg: 'Първа четвърт', de: 'Erstes Viertel', it: 'Primo quarto', es: 'Cuarto creciente', fr: 'Premier quartier', nl: 'Eerste kwartier' } },
+    { key: 'moonWaxGibbous', icon: '🌔', name: { en: 'Waxing gibbous', bg: 'Растяща луна', de: 'Zunehmender Mond', it: 'Gibbosa crescente', es: 'Gibosa creciente', fr: 'Gibbeuse croissante', nl: 'Wassende maan' } },
+    { key: 'moonFull', icon: '🌕', name: { en: 'Full moon', bg: 'Пълнолуние', de: 'Vollmond', it: 'Luna piena', es: 'Luna llena', fr: 'Pleine lune', nl: 'Volle maan' } },
+    { key: 'moonWaneGibbous', icon: '🌖', name: { en: 'Waning gibbous', bg: 'Намаляваща луна', de: 'Abnehmender Mond', it: 'Gibbosa calante', es: 'Gibosa menguante', fr: 'Gibbeuse décroissante', nl: 'Afnemende maan' } },
+    { key: 'moonLastQ', icon: '🌗', name: { en: 'Last quarter', bg: 'Последна четвърт', de: 'Letztes Viertel', it: 'Ultimo quarto', es: 'Cuarto menguante', fr: 'Dernier quartier', nl: 'Laatste kwartier' } },
+    { key: 'moonWaneCrescent', icon: '🌘', name: { en: 'Waning crescent', bg: 'Намаляващ полумесец', de: 'Abnehmende Sichel', it: 'Falce calante', es: 'Luna menguante', fr: 'Dernier croissant', nl: 'Afnemende sikkel' } }
   ];
 
   const warningTexts = {
-    thunder: { icon: '⛈️', text: { en: 'Thunderstorms', bg: 'Гръмотевици', de: 'Gewitter', it: 'Temporali', es: 'Tormentas' } },
-    wind: { icon: '💨', text: { en: 'Strong wind', bg: 'Силен вятър', de: 'Starker Wind', it: 'Vento forte', es: 'Viento fuerte' } },
-    rain: { icon: '🌧️', text: { en: 'Heavy rain', bg: 'Обилни валежи', de: 'Starkregen', it: 'Pioggia intensa', es: 'Lluvia intensa' } },
-    snow: { icon: '❄️', text: { en: 'Snow', bg: 'Сняг', de: 'Schnee', it: 'Neve', es: 'Nieve' } },
-    frost: { icon: '🧊', text: { en: 'Frost', bg: 'Слана', de: 'Frost', it: 'Gelate', es: 'Heladas' } },
-    heat: { icon: '🔥', text: { en: 'Heat', bg: 'Жега', de: 'Hitze', it: 'Caldo intenso', es: 'Calor intenso' } },
-    fog: { icon: '🌫️', text: { en: 'Fog', bg: 'Мъгла', de: 'Nebel', it: 'Nebbia', es: 'Niebla' } },
-    drizzle: { icon: '🌦️', text: { en: 'Drizzle', bg: 'Ръмене', de: 'Nieselregen', it: 'Pioggerella', es: 'Llovizna' } }
+    thunder: { icon: '⛈️', text: { en: 'Thunderstorms', bg: 'Гръмотевици', de: 'Gewitter', it: 'Temporali', es: 'Tormentas', fr: 'Orages', nl: 'Onweer' } },
+    wind: { icon: '💨', text: { en: 'Strong wind', bg: 'Силен вятър', de: 'Starker Wind', it: 'Vento forte', es: 'Viento fuerte', fr: 'Vent fort', nl: 'Harde wind' } },
+    rain: { icon: '🌧️', text: { en: 'Heavy rain', bg: 'Обилни валежи', de: 'Starkregen', it: 'Pioggia intensa', es: 'Lluvia intensa', fr: 'Fortes pluies', nl: 'Zware regen' } },
+    snow: { icon: '❄️', text: { en: 'Snow', bg: 'Сняг', de: 'Schnee', it: 'Neve', es: 'Nieve', fr: 'Neige', nl: 'Sneeuw' } },
+    frost: { icon: '🧊', text: { en: 'Frost', bg: 'Слана', de: 'Frost', it: 'Gelate', es: 'Heladas', fr: 'Gel', nl: 'Vorst' } },
+    heat: { icon: '🔥', text: { en: 'Heat', bg: 'Жега', de: 'Hitze', it: 'Caldo intenso', es: 'Calor intenso', fr: 'Chaleur', nl: 'Hitte' } },
+    fog: { icon: '🌫️', text: { en: 'Fog', bg: 'Мъгла', de: 'Nebel', it: 'Nebbia', es: 'Niebla', fr: 'Brouillard', nl: 'Mist' } },
+    drizzle: { icon: '🌦️', text: { en: 'Drizzle', bg: 'Ръмене', de: 'Nieselregen', it: 'Pioggerella', es: 'Llovizna', fr: 'Bruine', nl: 'Motregen' } }
   };
 
   // Weather codes (WMO, as used by Open-Meteo)
@@ -39,7 +39,7 @@ window.ForecastExtras = (function () {
   const SNOW_CODES = [71, 73, 75, 77, 85, 86];
   const THUNDER_CODES = [95, 96, 99];
 
-  const locales = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES' };
+  const locales = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES', fr: 'fr-FR', nl: 'nl-NL' };
 
   function locale() {
     return locales[document.documentElement.lang] || 'en-GB';
@@ -111,7 +111,7 @@ window.ForecastExtras = (function () {
   // ---- Hourly temperature chart ----
   let chartPoints = null;
 
-  const NOW_TEXT = { en: 'now', bg: 'сега', de: 'jetzt', it: 'ora', es: 'ahora' };
+  const NOW_TEXT = { en: 'now', bg: 'сега', de: 'jetzt', it: 'ora', es: 'ahora', fr: 'maintenant', nl: 'nu' };
 
   // The hour you point at: a line, and a small box with the time, temperature and chance of rain.
   // If the chart is for today (in the place's time), a dashed line marks the current hour.
@@ -260,7 +260,7 @@ window.ForecastExtras = (function () {
   });
 
   // "gusts" in the language of the page (hourly table, day cards)
-  const GUSTS = { en: 'gusts', bg: 'пориви', de: 'Böen', it: 'raffiche', es: 'rachas' };
+  const GUSTS = { en: 'gusts', bg: 'пориви', de: 'Böen', it: 'raffiche', es: 'rachas', fr: 'rafales', nl: 'windstoten' };
   function gustLabel() {
     let lang = document.documentElement.dataset.pageLang;
     if (!lang) { try { lang = localStorage.getItem('selectedLanguage'); } catch (e) { /* no storage */ } }
