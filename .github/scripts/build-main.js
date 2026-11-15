@@ -84,12 +84,17 @@ function common(html, lang, url, { title, ogTitle, description, source, pending 
     return translated ? `href="/${lang}${page}${rest}"` : m;
   });
   html = html.replace(/alt="Лого"/g, `alt="${I18N.LOGO_ALT[lang]}"`);
+  // Plain links to the other language versions (the Bulgarian page lists the four translations)
+  const block = new RegExp(`  ${I18N.LANG_LINKS_START}[\\s\\S]*?${I18N.LANG_LINKS_END}\\n`);
+  html = once(html, block, I18N.langLinks(lang, Object.fromEntries(I18N.LANGS.map(code => [code, I18N.localUrl(code, url)]))), 'language links');
   return html;
 }
 
 // Cyrillic left in the visible page (outside scripts and comments) means a text was missed
 function leftovers(html, file) {
-  const visible = html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<!--[\s\S]*?-->/g, '');
+  // (the language links name each language in its own language: "Български")
+  const visible = html.replace(new RegExp(`${I18N.LANG_LINKS_START}[\\s\\S]*?${I18N.LANG_LINKS_END}`), '')
+    .replace(/<script[\s\S]*?<\/script>/g, '').replace(/<!--[\s\S]*?-->/g, '');
   const lines = visible.split('\n').filter(line => /[Ѐ-ӿ]/.test(line));
   if (lines.length) throw new Error(`${file}: Bulgarian text left in the page:\n  ${lines.map(line => line.trim().slice(0, 120)).join('\n  ')}`);
 }
@@ -156,9 +161,10 @@ function storms() {
   };
 
   TARGETS.forEach(lang => {
-    const title = text(PAGE, 'title', lang);
+    const ogTitle = text(PAGE, 'title', lang).replace(/ \| Weather Pulse$/, '');
+    const title = I18N.withBrand(ogTitle);
     let html = common(template, lang, '/magnitni-buri/', {
-      title, ogTitle: title.replace(/ \| Weather Pulse$/, ''), description: text(PAGE, 'description', lang), source: '/magnitni-buri/index.html'
+      title, ogTitle, description: text(PAGE, 'description', lang), source: '/magnitni-buri/index.html'
     });
     html = html.replace(/(<(\w+)\b[^>]*\bdata-i18n="(\w+)"[^>]*>)[\s\S]*?(<\/\2>)/g, (m, open, tag, key, close) => open + esc(text(PAGE, key, lang)) + close);
     // texts the script writes when it runs
@@ -207,7 +213,7 @@ function apps() {
     TARGETS.forEach(lang => {
       const T = APP_TEXT[url][lang];
       if (!T || !T.title || !T.description) throw new Error(`text-main.js: no texts for ${url} in ${lang}`);
-      const title = `${T.title} | Weather Pulse`;
+      const title = I18N.withBrand(T.title);
       let html = common(template, lang, url, { title, ogTitle: title, description: T.description, source: `${url}index.html`, pending: true });
       html = once(html, /(<h1\b[^>]*>)[^<]*(<\/h1>)/, (m, open, close) => open + esc(HEADING[url](lang)) + close, 'h1');
       // The page and its place in the site as structured data, in the language of the page

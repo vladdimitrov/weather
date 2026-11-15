@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 62, mobileNav: 19, languageSelector: 7, cityForecast: 13, moon: 2, lunaToday: 5, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1, regionWeather: 2 };
+const VERSION = { theme: 62, mobileNav: 19, languageSelector: 8, cityForecast: 13, moon: 2, lunaToday: 5, lunaLocal: 1, auroraKp: 2, placeContext: 1, skyLocal: 2, homeCities: 1, regionWeather: 2 };
 
 const CITIES = require('./bg-cities.js');
 
@@ -171,7 +171,12 @@ function nearbySection({ lat, lon, url, country }, lang) {
 // Sunrise and sunset on the 15th of every month (computed locally, sun.js; Sofia time,
 // summer time included) and the longest and shortest day: text for searches like "изгрев София"
 const { sunTimes } = require('./sun.js');
-const sunClock = (lang, zone = 'Europe/Sofia') => new Intl.DateTimeFormat(I18N.LOCALE[lang], { timeZone: zone, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+// The same text on every Node version: ICU of Node 20 writes Bulgarian times as "07:47 ч.", newer
+// versions drop the "ч.", and the pages must not change with the machine that builds them
+const sunClock = (lang, zone = 'Europe/Sofia') => {
+  const parts = new Intl.DateTimeFormat('en-GB', { timeZone: zone, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+  return { format: date => parts.format(date) + (lang === 'bg' ? ' ч.' : '') };
+};
 const dayLength = (lang, sunrise, sunset) => {
   const minutes = Math.round((sunset - sunrise) / 60000);
   return TXT[lang].dayLength(Math.floor(minutes / 60), String(minutes % 60).padStart(2, '0'));
@@ -252,6 +257,8 @@ function page({ url, title, description, body, scripts = '', jsonLd = '', head =
     ? listed.map(code => `  <link rel="alternate" hreflang="${code}" href="https://weatherpulse.eu${I18N.localUrl(code, url, base)}" />`).join('\n') +
       (listed.includes(base) ? `\n  <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu${url}" />` : '') + '\n'
     : '';
+  // links to the other indexed versions (also from a translation that is not indexed itself)
+  const languageLinks = multi && listed.length > 1 ? I18N.langLinks(lang, Object.fromEntries(listed.map(code => [code, I18N.localUrl(code, url, base)]))) : '';
   const altPaths = multi ? JSON.stringify(Object.fromEntries(I18N.LANGS.filter(code => langs.includes(code)).map(code => [code, I18N.localUrl(code, url, base)]))) : '';
   let languageScript;
   if (multi) {
@@ -281,7 +288,7 @@ function page({ url, title, description, body, scripts = '', jsonLd = '', head =
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${title} | Weather Pulse</title>
+  <title>${I18N.withBrand(title)}</title>
   <link rel="canonical" href="https://weatherpulse.eu${pageUrl}" />
 ${alternates}${noindex ? '  <meta name="robots" content="noindex, follow">\n' : ''}  <meta name="description" content="${description}">
   <meta property="og:type" content="website">
@@ -326,7 +333,7 @@ ${head}</head>
 
   <div id="main-content" role="main" class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
 ${body}
-  </div>
+${languageLinks}  </div>
 
 ${(FOOTER_TEXT = { about: NAV.about, privacy: NAV.privacy, cities: NAV.cities, sources: NAV.sourcesShort }, LOGO = I18N.LOGO_ALT[lang], FOOTER_URLS = Object.fromEntries(Object.entries({ about: '/za-saita/', privacy: '/poveritelnost/', cities: '/gradove/', sources: '/iztochnici/' }).map(([key, to]) => [key, multi ? I18N.localUrl(lang, to) : to])), footer())}
 
@@ -430,7 +437,7 @@ function cityPage(city, lang) {
     lang,
     multi: true,
     indexed: PLACES.bgIndexed(city.slug),
-    // page() adds " | Weather Pulse"
+    // page() adds " | Weather Pulse" (when the title is short enough)
     title: SKI_POINTS[city.slug] ? T.skiTitle(where) : T.title(where),
     description: SKI_POINTS[city.slug] ? T.skiDescription(where) : T.description(where),
     jsonLd: breadcrumbs + placeJson({ title: T.cityName(where), name, country: 'BG', lat: city.lat, lon: city.lon, url: L(lang, `/vremeto/${city.slug}/`), lang }),
@@ -663,7 +670,7 @@ ${holidayRows(daysOff(data[i], year), year, lang)}
     description: T.holidaysDescription(years[0], years[1]),
     body: `    <h1>${T.holidaysH1(years[0], years[1])}</h1>
     <p class="storm-intro">${T.holidaysIntro}</p>
-    <p class="city-actions">${years.map(year => `<a class="btn" href="#y${year}">${year}</a>`).join(' ')} <a class="btn" href="/holliday_calendar/">${T.holidaysOther}</a></p>
+    <p class="city-actions">${years.map(year => `<a class="btn" href="#y${year}">${year}</a>`).join(' ')} <a class="btn" href="/holliday_calendar/">${T.holidaysOther}</a>${lang === 'bg' ? years.map(year => ` <a class="btn" href="/praznici/pochivni-dni-${year}/">Почивни дни ${year}</a>`).join('') : ''}</p>
 ${tables}
     <p class="storm-updated">${T.holidaysSource(text => `<a href="https://date.nager.at/" target="_blank" rel="noopener">${text}</a>`, checked)}</p>`
   });

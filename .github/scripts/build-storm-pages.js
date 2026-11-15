@@ -56,10 +56,13 @@ const faqJson = items => `  <script type="application/ld+json">
   </script>
 `;
 
+const monthsOf = data => [...new Set([data.issued, ...(data.outlook || []).map(d => d.day), ...data.days.map(d => d.day)].map(d => d.slice(0, 7)))].sort();
+
 function links(current, data) {
   const list = [
     ['/magnitni-buri/', 'Kp индекс сега'], ['/magnitni-buri/dnes/', 'Магнитни бури днес'], ['/magnitni-buri/utre/', 'Магнитни бури утре'],
-    [monthUrl(data.issued), `Магнитни бури през ${monthTitle(data.issued)}`],
+    // every month that has a page (this one and the next, when the 27-day outlook reaches it)
+    ...monthsOf(data).map(month => [monthUrl(month + '-01'), `Магнитни бури през ${monthTitle(month + '-01')}`]),
     ['/magnitni-buri/kp-indeks/', 'Kp индекс – какво означава'], ['/magnitni-buri/zdrave/', 'Магнитни бури и здраве'], ['/nebeto/', 'Северно сияние и небето']
   ].filter(([url]) => url !== current);
   return `
@@ -252,7 +255,7 @@ function build() {
   write('magnitni-buri/dnes', dayPage(data, 0));
   write('magnitni-buri/utre', dayPage(data, 1));
   // the month of today, and the next one when the forecast reaches it
-  const months = [...new Set([data.issued, ...(data.outlook || []).map(d => d.day), ...data.days.map(d => d.day)].map(d => d.slice(0, 7)))].sort();
+  const months = monthsOf(data);
   months.forEach(month => write(monthUrl(month + '-01').slice(1, -1), monthPage(data, month)));
   write('magnitni-buri/kp-indeks', kpPage(data));
   write('magnitni-buri/zdrave', healthPage(data));

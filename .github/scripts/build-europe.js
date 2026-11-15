@@ -127,7 +127,9 @@ function countryPage(lang, country) {
   const T = EUROPE[lang];
   const url = `/europe/${country.slug}/`;
   const k = countryName(lang, country);
-  const names = country.cities.map(city => PLACES.europeName(city, lang));
+  // the description names the first five cities (the largest): a full list of a country with many
+  // pages (Greece, Turkey) made it 250–400 characters, and search results show about 160
+  const names = country.cities.slice(0, 5).map(city => PLACES.europeName(city, lang));
   const list = names.length > 1 ? `${names.slice(0, -1).join(', ')}${T.and}${names[names.length - 1]}` : names[0];
   return page({
     lang,
