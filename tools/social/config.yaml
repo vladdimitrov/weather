@@ -59,6 +59,13 @@ queue:
   default_caption: "Следете времето на weatherpulse.eu 🌦"
   hashtags: "#времето #България #weatherpulse"
 
+# Известия вечер за утре: магнитна буря (прогноза на NOAA, Kp >= storm_min_kp) и пълнолуние.
+# Всяко излиза най-много веднъж за дата.
+alerts:
+  enabled: false                    # true, след като одобрите как изглеждат
+  storm_min_kp: 5
+  full_moon: true
+
 # За командата `serve` (вграден график). Ако ползвате cron/Task Scheduler, не ви трябва.
 schedule:
   forecast_time: "07:30"

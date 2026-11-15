@@ -11,14 +11,15 @@ on:
     # Нечетна минута: в :00 и :30 GitHub е най-натоварен.
     - cron: "29 5 * * *"        # 07:29 зимно време -> прогноза
     - cron: "29 10,16 * * *"    # 12:29 и 18:29 зимно време -> следващ файл от queue/
+    - cron: "47 17 * * *"       # 19:47 зимно време -> известия за утре (магнитна буря, пълнолуние)
   workflow_dispatch:            # ръчно пускане от таб Actions
     inputs:
       job:
-        description: "forecast или queue"
+        description: "forecast, queue или alerts"
         required: true
         default: queue
         type: choice
-        options: [forecast, queue]
+        options: [forecast, queue, alerts]
 
 permissions:
   contents: write               # качва картинките в social/ и мести публикуваните файлове
@@ -51,6 +52,8 @@ jobs:
             echo "job=${{ inputs.job }}" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event.schedule }}" = "29 5 * * *" ]; then
             echo "job=forecast" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "47 17 * * *" ]; then
+            echo "job=alerts" >> "$GITHUB_OUTPUT"
           else
             echo "job=queue" >> "$GITHUB_OUTPUT"
           fi
