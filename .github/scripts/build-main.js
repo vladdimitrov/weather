@@ -132,6 +132,8 @@ function home() {
     });
     // tiles that lead to Bulgarian-only pages (tomorrow, UV, pollen, passes, widget) exist only in the Bulgarian home page
     html = html.replace(/[ \t]*<a [^>]*\bdata-bg-only\b[^>]*>[\s\S]*?<\/a>\n/g, '');
+    // and the ski resorts and Greece block (links to Bulgarian-only texts)
+    html = html.replace(/[ \t]*<!-- bg-only:start[\s\S]*?<!-- bg-only:end -->\n/g, '');
     // Bulgarian cities: Latin names and the translated city pages
     html = html.replace(/href="vremeto\/([a-z-]+)\/"([^>]*)>[^<]*</g, (m, slug, attributes) => `href="/${lang}/vremeto/${slug}/"${attributes}>${esc(I18N.latinName(lang, slug))}<`);
     html = once(html, /<script type="application\/ld\+json">[^<]*<\/script>/,

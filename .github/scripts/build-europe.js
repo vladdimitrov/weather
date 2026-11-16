@@ -95,8 +95,9 @@ function cityPage(lang, country, city) {
     base: BASE,
     url,
     indexed: PLACES.europeIndexed(country.code, slug),
-    title: esc(sea && !term ? TXT[lang].seaTitle(TXT[lang].where(name)) : T.cityTitle(name, term)),
-    description: esc(sea && !term ? TXT[lang].seaDescription(TXT[lang].where(name)) : T.cityDescription(name, k, term)),
+    // in Bulgarian the country goes into the title of a seaside place: people search "времето керамоти гърция"
+    title: esc(sea && !term ? TXT[lang].seaTitle(TXT[lang].where(name) + (lang === 'bg' ? `, ${k},` : '')) : T.cityTitle(name, term)),
+    description: esc(sea && !term ? TXT[lang].seaDescription(TXT[lang].where(name) + (lang === 'bg' ? `, ${k},` : '')) : T.cityDescription(name, k, term)),
     jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.europeH1, '/europe/'], [k, `/europe/${country.slug}/`], [T.cityH1(name), url]]) +
       placeJson({ title: T.cityH1(name), name, country: country.code, lat, lon, url: E(lang, url), lang }),
     body: `    <p class="breadcrumbs"><a href="${E(lang, '/europe/')}">${T.europeH1}</a> › <a href="${E(lang, `/europe/${country.slug}/`)}">${esc(k)}</a> › ${esc(name)}</p>

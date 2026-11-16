@@ -85,10 +85,19 @@ ${points.map(([bg, latin, lat, lon, elevation]) => `          <tr data-lat="${la
       </table>
       <p class="storm-updated region-nojs">${T.snowNoJs}</p>
       </div>
-      <p class="storm-updated">${T.snowNote}</p>
+      <p class="storm-updated">${T.snowNote}</p>${lang === 'bg' ? `
+      <p>${BG_ONLY.ski.notes[city.slug]}</p>
+      <h3>${BG_ONLY.ski.othersH}</h3>
+      <div class="city-links">
+        ${skiLinks(city.slug)}
+        <a href="/vremeto/snyag-kurorti/" class="recent-place">${BG_ONLY.ski.allLink}</a>
+      </div>` : ''}
     </section>
 `;
 }
+// Links to the Bulgarian pages of the ski resorts (all but `except`)
+const skiLinks = except => Object.keys(SKI_POINTS).filter(slug => slug !== except)
+  .map(slug => `<a href="/vremeto/${slug}/" class="recent-place">${SKI_POINTS[slug][0][0]}</a>`).join('\n        ');
 const REGION_OF = { varna: ['chernomorie', 'morska-voda'], burgas: ['chernomorie', 'morska-voda'], sozopol: ['chernomorie', 'morska-voda'], nesebar: ['chernomorie', 'morska-voda'], bansko: ['snyag-kurorti'], borovets: ['snyag-kurorti'], pamporovo: ['snyag-kurorti'],
   'slanchev-bryag': ['chernomorie', 'morska-voda'], 'zlatni-pyasatsi': ['chernomorie', 'morska-voda'], albena: ['chernomorie', 'morska-voda'], primorsko: ['chernomorie', 'morska-voda'],
   kiten: ['chernomorie', 'morska-voda'], obzor: ['chernomorie', 'morska-voda'], pomorie: ['chernomorie', 'morska-voda'], balchik: ['chernomorie', 'morska-voda'],
@@ -537,7 +546,19 @@ function hubPage(lang) {
     <p class="storm-intro">${T.hubIntro(text => linkTo('/weather/', text))}</p>
 
     <p class="city-actions">${lang === 'bg' ? '<a class="btn" href="/vremeto/utre/">Времето утре →</a> <a class="btn" href="/vremeto/uv-indeks/">UV индекс →</a> <a class="btn" href="/vremeto/polen/">Полени →</a> ' : ''}<a class="btn" href="${L(lang, '/europe/')}">${T.europe}</a> <a class="btn" href="${L(lang, '/gradove/')}">${I18N.NAV[lang].cities} →</a></p>
-
+${lang === 'bg' ? `
+    <section class="info-card">
+      <h2>${BG_ONLY.ski.hubH}</h2>
+      <div class="city-links">
+        ${skiLinks()}
+        <a href="/vremeto/snyag-kurorti/" class="recent-place">${BG_ONLY.ski.allLink}</a>
+      </div>
+      <h2>${BG_ONLY.ski.greeceH}</h2>
+      <div class="city-links">
+        ${BG_ONLY.ski.greece.map(([name, url]) => `<a href="${url}" class="recent-place">${name}</a>`).join('\n        ')}
+      </div>
+    </section>
+` : ''}
     <div class="city-grid" id="cityList">
       ${CITIES.map(city => `<a href="${L(lang, `/vremeto/${city.slug}/`)}" class="city-tile" data-lat="${city.lat}" data-lon="${city.lon}"><span class="city-tile-name">${cityName(city, lang)}</span><span class="city-tile-temp"></span></a>`).join('\n      ')}
     </div>${lang === 'bg' ? `
