@@ -98,10 +98,16 @@
         run = null;
       }
     });
-    const when = unix => (dayKey(unix) === dayKey(hours[0].time) ? hour(unix) : `${dayName(unix)} ${hour(unix)}`);
+    // "днес", "утре" or the date of the day of the hour
+    const dayWord = unix => {
+      const today = dayKey(hours[0].time);
+      const tomorrow = dayKey(hours[0].time + 86400);
+      return dayKey(unix) === today ? 'днес' : dayKey(unix) === tomorrow ? 'утре' : dayName(unix);
+    };
+    const when = unix => `${dayWord(unix)} в ${hour(unix)}`;
     if (best) {
-      const span = best.n === 1 ? `около ${when(best.from)}` : `${when(best.from)} – ${hour(best.to + 3600)}`;
-      return { ok: true, text: `Най-подходящо време за минаване в следващите 24 часа: ${span} – без сняг, поледица, силен вятър и мъгла.` };
+      const span = best.n === 1 ? `${dayWord(best.from)} около ${hour(best.from)}` : `${dayWord(best.from)} от ${hour(best.from)} до ${hour(best.to + 3600)}`;
+      return { ok: true, text: `Най-подходящо време за минаване: ${span} – без сняг, поледица, силен вятър и мъгла.` };
     }
     const score = x => x.kinds.size * 100 + x.snow * 20 + x.gust;
     const mild = light.reduce((a, b) => (score(b) < score(a) ? b : a));
@@ -131,7 +137,7 @@
 
     // every 3 hours, 48 hours
     const table = el('table', 'kp-table region-table pass-hours');
-    table.innerHTML = '<thead><tr><th>Час</th><th>Темп.</th><th>Валеж</th><th>Нов сняг</th><th>Вятър / пориви</th><th>Видимост</th><th>На пътя</th></tr></thead>';
+    table.innerHTML = '<thead><tr><th>Час</th><th>На пътя</th><th>Темп.</th><th>Вятър / пориви</th><th>Нов сняг</th><th>Валеж</th><th>Видимост</th></tr></thead>';
     const body = el('tbody');
     let lastDay = null;
     hours.forEach((x, k) => {
@@ -147,12 +153,15 @@
       }
       const rain = h.precipitation[i] || 0;
       const vis = h.visibility[i];
+      // "На пътя" second, so that it is seen on a phone without scrolling the table sideways
       const cells = [
-        hour(x.time), deg(h.temperature_2m[i]), rain >= 0.1 ? `${rain.toFixed(1)} мм` : '–',
-        x.snow >= 0.1 ? `${x.snow.toFixed(1)} см` : '–',
+        hour(x.time),
+        x.kinds.size ? ['snow', 'ice', 'wind', 'fog'].filter(kind => x.kinds.has(kind)).map(kind => NAMES[kind]).join(', ') : 'нормално',
+        deg(h.temperature_2m[i]),
         `${Math.round(h.wind_speed_10m[i])} / ${Math.round(x.gust)} км/ч`,
-        typeof vis === 'number' ? (vis >= 10000 ? 'над 10 км' : vis >= 1000 ? `${(vis / 1000).toFixed(1)} км` : `${Math.round(vis / 10) * 10} м`) : '–',
-        x.kinds.size ? ['snow', 'ice', 'wind', 'fog'].filter(kind => x.kinds.has(kind)).map(kind => NAMES[kind]).join(', ') : 'нормално'
+        x.snow >= 0.1 ? `${x.snow.toFixed(1)} см` : '–',
+        rain >= 0.1 ? `${rain.toFixed(1)} мм` : '–',
+        typeof vis === 'number' ? (vis >= 10000 ? 'над 10 км' : vis >= 1000 ? `${(vis / 1000).toFixed(1)} км` : `${Math.round(vis / 10) * 10} м`) : '–'
       ];
       const tr = el('tr', x.kinds.size ? 'pass-hazard' : '');
       cells.forEach(text => tr.appendChild(el('td', '', text)));
