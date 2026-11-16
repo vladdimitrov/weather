@@ -127,6 +127,9 @@
     <p class="storm-intro">Wettervorhersage für Barcelona, Spanien, für heute, morgen und die nächsten 7 Tage: Temperatur, Regen, Wind und Niederschlagswahrscheinlichkeit. Daten von Open-Meteo, stündlich aktualisiert.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Barcelona" data-lat="41.3874" data-lon="2.1686" data-query="city=Barcelona&lat=41.3874&lon=2.1686&cc=ES">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Starke Windböen morgen: bis 60 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
         <h2>Barcelona: Montag, 16. November</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">14° / 20°</span>
@@ -135,7 +138,7 @@
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-Tage-Vorhersage</h3>
-        <p class="city-summary">In den nächsten 7 Tagen ist Mittwoch, 18. November am wärmsten (bis 23°) und Samstag, 21. November am kältesten (bis 10°). Nennenswerter Niederschlag ist nicht zu erwarten. Tagsüber ist es wärmer als üblich im November (im Mittel 18°). Die Modelle stimmen bis Freitag, 20. November überein, danach ist die Vorhersage unsicherer (bis zu 6° Unterschied bei der Temperatur).</p>
+        <p class="city-summary">In den nächsten 7 Tagen ist Mittwoch, 18. November am wärmsten (bis 23°) und Samstag, 21. November am kältesten (bis 10°). An 1 der Tage wird Niederschlag erwartet. Tagsüber ist es wärmer als üblich im November (im Mittel 18°). Die Modelle stimmen bis Freitag, 20. November überein, danach ist die Vorhersage unsicherer (bis zu 6° Unterschied bei der Temperatur).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Barcelona&lat=41.3874&lon=2.1686&cc=ES&date=2026-11-16" title="Stündlich →">
             <span class="kp-day-name">Mo., 16.</span>
@@ -144,7 +147,7 @@
             <span class="city-day-temp">14° / 20°</span>
             <span class="kp-day-status">Bewölkt</span>
             <span class="city-day-rain" title="Regenwahrscheinlichkeit">0%</span>
-            <span class="city-day-wind">Wind 13 km/h · Böen 33</span>
+            <span class="city-day-wind">Wind 14 km/h · Böen 35</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Barcelona&lat=41.3874&lon=2.1686&cc=ES&date=2026-11-17" title="Stündlich →">
             <span class="kp-day-name">Di., 17.</span>
@@ -152,8 +155,8 @@
             <span class="city-day-date">17.11</span>
             <span class="city-day-temp">16° / 21°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">4%</span>
-            <span class="city-day-wind">Wind 18 km/h · Böen 60</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">5%</span>
+            <span class="city-day-wind city-day-gusts">Wind 18 km/h · Böen 60</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Barcelona&lat=41.3874&lon=2.1686&cc=ES&date=2026-11-18" title="Stündlich →">
             <span class="kp-day-name">Mi., 18.</span>
@@ -161,8 +164,8 @@
             <span class="city-day-date">18.11</span>
             <span class="city-day-temp">18° / 23°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">14%</span>
-            <span class="city-day-wind">Wind 21 km/h · Böen 58</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">13%</span>
+            <span class="city-day-wind">Wind 21 km/h · Böen 54</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Barcelona&lat=41.3874&lon=2.1686&cc=ES&date=2026-11-19" title="Stündlich →">
             <span class="kp-day-name">Do., 19.</span>
@@ -170,7 +173,7 @@
             <span class="city-day-date">19.11</span>
             <span class="city-day-temp">15° / 20°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">29%</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">29% · 1.8 mm</span>
             <span class="city-day-wind city-day-gusts">Wind 25 km/h · Böen 63</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Barcelona&lat=41.3874&lon=2.1686&cc=ES&date=2026-11-20" title="Stündlich →">
@@ -180,7 +183,7 @@
             <span class="city-day-temp">13° / 18°</span>
             <span class="kp-day-status">Bewölkt</span>
             <span class="city-day-rain" title="Regenwahrscheinlichkeit">0%</span>
-            <span class="city-day-wind">Wind 13 km/h · Böen 45</span>
+            <span class="city-day-wind">Wind 18 km/h · Böen 45</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Barcelona&lat=41.3874&lon=2.1686&cc=ES&date=2026-11-21" title="Stündlich →">
             <span class="kp-day-name">Sa., 21.</span>
@@ -188,7 +191,7 @@
             <span class="city-day-date">21.11</span>
             <span class="city-day-temp">10° / 16°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">5%</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">7%</span>
             <span class="city-day-wind">Wind 9 km/h · Böen 25</span>
             <span class="city-day-conf" title="Wie weit die Modelle ECMWF, ICON und GFS für diesen Tag auseinanderliegen" style="font-size:0.8rem;color:#ffd54f">● weniger sicher</span>
           </a>
@@ -198,9 +201,9 @@
             <span class="city-day-date">22.11</span>
             <span class="city-day-temp">12° / 19°</span>
             <span class="kp-day-status">Bewölkt</span>
-            <span class="city-day-rain" title="Regenwahrscheinlichkeit">10% · 0.4 mm</span>
-            <span class="city-day-wind">Wind 9 km/h · Böen 28</span>
-            <span class="city-day-conf" title="Wie weit die Modelle ECMWF, ICON und GFS für diesen Tag auseinanderliegen" style="font-size:0.8rem;color:#ffd54f">● weniger sicher</span>
+            <span class="city-day-rain" title="Regenwahrscheinlichkeit">10%</span>
+            <span class="city-day-wind">Wind 9 km/h · Böen 31</span>
+            <span class="city-day-conf" title="Wie weit die Modelle ECMWF, ICON und GFS für diesen Tag auseinanderliegen" style="font-size:0.8rem;color:#ff8a65">● unsicher</span>
           </a>
         </div>
         <p class="forecast-note">Median der Modelle ECMWF, ICON und GFS · Höhe 25 m</p>
