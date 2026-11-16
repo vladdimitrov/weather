@@ -149,10 +149,13 @@
       if (!data || !data.current) throw new Error('no current weather in the answer');
       weather = data.current;
       daily = data.daily || null;
+      // A broken answer of NOAA leaves the card without Kp, not without the weather
       if (kpResponse && kpResponse.ok) {
-        const kpData = await kpResponse.json();
-        const last = kpData[kpData.length - 1];
-        if (last) kp = Math.round(parseFloat(last.estimated_kp ?? last.kp_index) * 10) / 10;
+        try {
+          const kpData = await kpResponse.json();
+          const last = kpData[kpData.length - 1];
+          if (last) kp = Math.round(parseFloat(last.estimated_kp ?? last.kp_index) * 10) / 10;
+        } catch (e) { kp = null; }
       }
       render();
     } catch (err) {
