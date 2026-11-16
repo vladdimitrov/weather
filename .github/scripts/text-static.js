@@ -31,7 +31,7 @@ const ABOUT = {
     hPrivacy: 'Поверителност',
     privacy: `Не изискваме регистрация и не събираме лични данни на свой сървър. Подробности има на страница ${i('/poveritelnost/', 'Поверителност')}.`,
     hContact: 'Връзка с нас',
-    contact: `Предложения, грешки и въпроси: <a href="mailto:${MAIL}">${MAIL}</a>.`,
+    contact: `Предложения, грешки и въпроси: <a href="mailto:${MAIL}">${MAIL}</a>. <a href="https://www.facebook.com/profile.php?id=61579343439474" rel="noopener" target="_blank">Facebook</a>.`,
     maintained: 'Weather Pulse се поддържа от VYZYA.'
   }),
   en: (i, x) => ({
@@ -61,7 +61,7 @@ const ABOUT = {
     hPrivacy: 'Privacy',
     privacy: `We do not require registration and do not collect personal data on a server of our own. Details are on the ${i('/poveritelnost/', 'Privacy')} page.`,
     hContact: 'Contact us',
-    contact: `Suggestions, errors and questions: <a href="mailto:${MAIL}">${MAIL}</a>.`,
+    contact: `Suggestions, errors and questions: <a href="mailto:${MAIL}">${MAIL}</a>. <a href="https://www.facebook.com/profile.php?id=61579343439474" rel="noopener" target="_blank">Facebook</a>.`,
     maintained: 'Weather Pulse is maintained by VYZYA.'
   }),
   de: (i, x) => ({
@@ -91,7 +91,7 @@ const ABOUT = {
     hPrivacy: 'Datenschutz',
     privacy: `Wir verlangen keine Registrierung und sammeln keine personenbezogenen Daten auf einem eigenen Server. Einzelheiten stehen auf der Seite ${i('/poveritelnost/', 'Datenschutz')}.`,
     hContact: 'Kontakt',
-    contact: `Vorschläge, Fehler und Fragen: <a href="mailto:${MAIL}">${MAIL}</a>.`,
+    contact: `Vorschläge, Fehler und Fragen: <a href="mailto:${MAIL}">${MAIL}</a>. <a href="https://www.facebook.com/profile.php?id=61579343439474" rel="noopener" target="_blank">Facebook</a>.`,
     maintained: 'Weather Pulse wird von VYZYA betrieben.'
   }),
   it: (i, x) => ({
@@ -121,7 +121,7 @@ const ABOUT = {
     hPrivacy: 'Privacy',
     privacy: `Non chiediamo la registrazione e non raccogliamo dati personali su un server nostro. I dettagli sono nella pagina ${i('/poveritelnost/', 'Privacy')}.`,
     hContact: 'Contattaci',
-    contact: `Suggerimenti, errori e domande: <a href="mailto:${MAIL}">${MAIL}</a>.`,
+    contact: `Suggerimenti, errori e domande: <a href="mailto:${MAIL}">${MAIL}</a>. <a href="https://www.facebook.com/profile.php?id=61579343439474" rel="noopener" target="_blank">Facebook</a>.`,
     maintained: 'Weather Pulse è gestito da VYZYA.'
   }),
   es: (i, x) => ({
@@ -151,7 +151,7 @@ const ABOUT = {
     hPrivacy: 'Privacidad',
     privacy: `No pedimos registro y no recogemos datos personales en un servidor propio. Los detalles están en la página ${i('/poveritelnost/', 'Privacidad')}.`,
     hContact: 'Contacto',
-    contact: `Sugerencias, errores y preguntas: <a href="mailto:${MAIL}">${MAIL}</a>.`,
+    contact: `Sugerencias, errores y preguntas: <a href="mailto:${MAIL}">${MAIL}</a>. <a href="https://www.facebook.com/profile.php?id=61579343439474" rel="noopener" target="_blank">Facebook</a>.`,
     maintained: 'Weather Pulse está a cargo de VYZYA.'
   }),
   fr: (i, x) => ({
@@ -181,7 +181,7 @@ const ABOUT = {
     hPrivacy: 'Confidentialité',
     privacy: `Nous n’exigeons pas d’inscription et ne collectons pas de données personnelles sur un serveur à nous. Les détails sont sur la page ${i('/poveritelnost/', 'Confidentialité')}.`,
     hContact: 'Nous contacter',
-    contact: `Suggestions, erreurs et questions : <a href="mailto:${MAIL}">${MAIL}</a>.`,
+    contact: `Suggestions, erreurs et questions : <a href="mailto:${MAIL}">${MAIL}</a>. <a href="https://www.facebook.com/profile.php?id=61579343439474" rel="noopener" target="_blank">Facebook</a>.`,
     maintained: 'Weather Pulse est géré par VYZYA.'
   }),
   nl: (i, x) => ({
@@ -211,7 +211,7 @@ const ABOUT = {
     hPrivacy: 'Privacy',
     privacy: `We vragen geen registratie en verzamelen geen persoonsgegevens op een eigen server. Details staan op de pagina ${i('/poveritelnost/', 'Privacy')}.`,
     hContact: 'Contact',
-    contact: `Suggesties, fouten en vragen: <a href="mailto:${MAIL}">${MAIL}</a>.`,
+    contact: `Suggesties, fouten en vragen: <a href="mailto:${MAIL}">${MAIL}</a>. <a href="https://www.facebook.com/profile.php?id=61579343439474" rel="noopener" target="_blank">Facebook</a>.`,
     maintained: 'Weather Pulse wordt onderhouden door VYZYA.'
   })
 
