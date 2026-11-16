@@ -130,6 +130,95 @@
     return { fraction, waxing: angle < 180, angle, index };
   }
 
+
+  // Meeus ch. 47: geocentric longitude and latitude of the Moon (the largest periodic terms,
+  // about 0.02° accurate), then right ascension and declination
+  // [D, M, M', F, coefficient in 0.000001°] for longitude (Σl) and latitude (Σb)
+  const SL = [
+    [0, 0, 1, 0, 6288774], [2, 0, -1, 0, 1274027], [2, 0, 0, 0, 658314], [0, 0, 2, 0, 213618], [0, 1, 0, 0, -185116],
+    [0, 0, 0, 2, -114332], [2, 0, -2, 0, 58793], [2, -1, -1, 0, 57066], [2, 0, 1, 0, 53322], [2, -1, 0, 0, 45758],
+    [0, 1, -1, 0, -40923], [1, 0, 0, 0, -34720], [0, 1, 1, 0, -30383], [2, 0, 0, -2, 15327], [0, 0, 1, 2, -12528],
+    [0, 0, 1, -2, 10980], [4, 0, -1, 0, 10675], [0, 0, 3, 0, 10034], [4, 0, -2, 0, 8548], [2, 1, -1, 0, -7888],
+    [2, 1, 0, 0, -6766], [1, 0, -1, 0, -5163], [1, 1, 0, 0, 4987], [2, -1, 1, 0, 4036], [2, 0, 2, 0, 3994],
+    [4, 0, 0, 0, 3861], [2, 0, -3, 0, 3665], [0, 1, -2, 0, -2689], [2, 0, -1, 2, -2602], [2, -1, -2, 0, 2390],
+    [1, 0, 1, 0, -2348], [2, -2, 0, 0, 2236], [0, 1, 2, 0, -2120], [0, 2, 0, 0, -2069], [2, -2, -1, 0, 2048],
+    [2, 0, 1, -2, -1773], [2, 0, 0, 2, -1595], [4, -1, -1, 0, 1215], [0, 0, 2, 2, -1110], [3, 0, -1, 0, -892],
+    [2, 1, 1, 0, -810], [4, -1, -2, 0, 759], [0, 2, -1, 0, -713], [2, 2, -1, 0, -700], [2, 1, -2, 0, 691],
+    [2, -1, 0, -2, 596], [4, 0, 1, 0, 549], [0, 0, 4, 0, 537], [4, -1, 0, 0, 520], [1, 0, -2, 0, -487]
+  ];
+  const SB = [
+    [0, 0, 0, 1, 5128122], [0, 0, 1, 1, 280602], [0, 0, 1, -1, 277693], [2, 0, 0, -1, 173237], [2, 0, -1, 1, 55413],
+    [2, 0, -1, -1, 46271], [2, 0, 0, 1, 32573], [0, 0, 2, 1, 17198], [2, 0, 1, -1, 9266], [0, 0, 2, -1, 8822],
+    [2, -1, 0, -1, 8216], [2, 0, -2, -1, 4324], [2, 0, 1, 1, 4200], [2, 1, 0, -1, -3359], [2, -1, -1, 1, 2463],
+    [2, -1, 0, 1, 2211], [2, -1, -1, -1, 2065], [0, 1, -1, -1, -1870], [4, 0, -1, -1, 1828], [0, 1, 0, 1, -1794],
+    [0, 0, 0, 3, -1749], [0, 1, -1, 1, -1565], [1, 0, 0, 1, -1491], [0, 1, 1, 1, -1475], [0, 1, 1, -1, -1410],
+    [0, 1, 0, -1, -1344], [1, 0, 0, -1, -1335], [0, 0, 3, 1, 1107], [4, 0, 0, -1, 1021], [4, 0, -1, 1, 833]
+  ];
+
+  function ecliptic(date) {
+    const T = (jdFromDate(date) - 2451545) / 36525;
+    const Lp = norm(218.3164477 + 481267.88123421 * T - 0.0015786 * T * T);
+    const D = norm(297.8501921 + 445267.1114034 * T - 0.0018819 * T * T);
+    const M = norm(357.5291092 + 35999.0502909 * T - 0.0001536 * T * T);
+    const Mp = norm(134.9633964 + 477198.8675055 * T + 0.0087414 * T * T);
+    const F = norm(93.272095 + 483202.0175233 * T - 0.0036539 * T * T);
+    const E = 1 - 0.002516 * T - 0.0000074 * T * T;
+    const A1 = norm(119.75 + 131.849 * T), A2 = norm(53.09 + 479264.29 * T), A3 = norm(313.45 + 481266.484 * T);
+    const sum = (table, fn) => table.reduce((total, [d, m, mp, f, c]) => {
+      const e = Math.abs(m) === 1 ? E : Math.abs(m) === 2 ? E * E : 1;
+      return total + c * e * fn((d * D + m * M + mp * Mp + f * F));
+    }, 0);
+    let l = sum(SL, sin) + 3958 * sin(A1) + 1962 * sin(Lp - F) + 318 * sin(A2);
+    let b = sum(SB, sin) - 2235 * sin(Lp) + 382 * sin(A3) + 175 * sin(A1 - F) + 175 * sin(A1 + F) + 127 * sin(Lp - Mp) - 115 * sin(Lp + Mp);
+    return { lambda: norm(Lp + l / 1e6), beta: b / 1e6, T };
+  }
+
+  // Right ascension and declination (degrees) of the Moon, geocentric
+  function position(date) {
+    const { lambda, beta, T } = ecliptic(date);
+    const eps = 23.4392911 - 0.0130042 * T;
+    const ra = norm(Math.atan2(sin(lambda) * cos(eps) - Math.tan(beta * RAD) * sin(eps), cos(lambda)) / RAD);
+    const dec = Math.asin(sin(beta) * cos(eps) + cos(beta) * sin(eps) * sin(lambda)) / RAD;
+    return { ra, dec, lambda, beta };
+  }
+
+  // Altitude of the Moon's centre above the horizon (degrees, geometric, topocentric parallax ≈ 57′ at the horizon
+  // is taken into account in riseSet through the threshold)
+  function altitude(date, lat, lon) {
+    const { ra, dec } = position(date);
+    const T = (jdFromDate(date) - 2451545) / 36525;
+    const gmst = norm(280.46061837 + 360.98564736629 * (jdFromDate(date) - 2451545) + 0.000387933 * T * T);
+    const hourAngle = norm(gmst + lon - ra);
+    return Math.asin(sin(lat) * sin(dec) + cos(lat) * cos(dec) * cos(hourAngle)) / RAD;
+  }
+
+  // Moonrise and moonset in the 24 hours after `from` (a Date, usually local midnight)
+  // for a latitude and an east longitude. The Moon's upper limb at the horizon: centre at +0.125°
+  // (parallax 0.95° − refraction 0.57° − semidiameter 0.26° taken together).
+  // → { rise: Date|null, set: Date|null }
+  function riseSet(from, lat, lon) {
+    const H0 = 0.125;
+    const STEP = 10 * 60000;
+    const result = { rise: null, set: null };
+    let previous = altitude(from, lat, lon) - H0;
+    for (let t = from.getTime() + STEP; t <= from.getTime() + 86400000; t += STEP) {
+      const current = altitude(new Date(t), lat, lon) - H0;
+      if ((previous < 0) !== (current < 0)) {
+        let low = t - STEP, high = t;
+        for (let i = 0; i < 20; i++) {
+          const mid = (low + high) / 2;
+          const above = altitude(new Date(mid), lat, lon) - H0 >= 0;
+          if (above === (previous >= 0)) low = mid; else high = mid;
+        }
+        const time = new Date((low + high) / 2);
+        if (current >= 0 && !result.rise) result.rise = time;
+        if (current < 0 && !result.set) result.set = time;
+      }
+      previous = current;
+    }
+    return result;
+  }
+
   // Names of the 8 phases (index of state()) in the 7 site languages
   const ICONS = ['🌑', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘'];
   const NAMES = {
@@ -142,7 +231,7 @@
     nl: ['Nieuwe maan', 'Wassende sikkel', 'Eerste kwartier', 'Wassende maan', 'Volle maan', 'Afnemende maan', 'Laatste kwartier', 'Afnemende sikkel']
   };
 
-  const Moon = { phaseEvents, nextPhase, state, phaseJde, jdFromDate, dateFromJd, ICONS, NAMES };
+  const Moon = { phaseEvents, nextPhase, state, position, altitude, riseSet, phaseJde, jdFromDate, dateFromJd, ICONS, NAMES };
   if (typeof module !== 'undefined' && module.exports) module.exports = Moon;
   else root.Moon = Moon;
 })(typeof window !== 'undefined' ? window : this);
