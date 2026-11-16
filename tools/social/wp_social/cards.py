@@ -314,7 +314,7 @@ def build_cards(mode="live"):
         affected = sum(1 for r in rated if r[2]["level"])
         if not worst[2]["level"]:
             hub = dict(kicker="Проходи", title="Времето по проходите", level=0, verdict_text="Нормални условия навсякъде",
-                       lines=[f"Проверени са {len(rated)} прохода за следващите 24 часа."])
+                       lines=[f"Проверени са {len(rated)} прохода за следващите 48 часа."])
         else:
             what = worst[2]["text"].split("– ", 1)[-1]
             hub = dict(kicker="Проходи", title="Времето по проходите", level=worst[2]["level"],
