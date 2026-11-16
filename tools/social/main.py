@@ -4,6 +4,7 @@
   python main.py forecast [--dry-run] [--sample] [--tomorrow]   # daily forecast image -> FB + IG
   python main.py queue    [--dry-run]                            # post next photo/video from queue/
   python main.py alerts   [--dry-run] [--sample] [--today]               # magnetic storm / full Moon tomorrow
+  python main.py cards    [--sample] [--static] [--force]         # share cards (og:image) of passes, storms, air
   python main.py check                                           # verify token, page and IG account
   python main.py serve                                           # run forever on the schedule in config.yaml
 """
@@ -16,6 +17,7 @@ from zoneinfo import ZoneInfo
 
 from wp_social.config import ROOT, load_config
 from wp_social.alerts import run_alerts
+from wp_social.cards import run_cards
 from wp_social.jobs import make_client, run_forecast, run_queue
 
 log = logging.getLogger("weatherpulse")
@@ -76,6 +78,10 @@ def main():
     al.add_argument("--sample", action="store_true", help="sample storm and full Moon (no internet)")
     al.add_argument("--force", action="store_true")
     al.add_argument("--today", action="store_true", help="morning run: a magnetic storm expected today (skipped if the evening run already posted it)")
+    cd = sub.add_parser("cards", help="share cards for passes, storms and air (images/cards/)")
+    cd.add_argument("--sample", action="store_true", help="invented data (no internet)")
+    cd.add_argument("--static", action="store_true", help="neutral cards without numbers")
+    cd.add_argument("--force", action="store_true", help="redraw every card")
     sub.add_parser("check")
     sub.add_parser("serve")
     a = p.parse_args()
@@ -88,6 +94,8 @@ def main():
         run_queue(cfg, dry_run=a.dry_run, force=a.force)
     elif a.cmd == "alerts":
         run_alerts(cfg, make_client, dry_run=a.dry_run, sample=a.sample, force=a.force, today=a.today)
+    elif a.cmd == "cards":
+        run_cards("sample" if a.sample else "static" if a.static else "live", force=a.force)
     elif a.cmd == "check":
         print(make_client(cfg).check())
     elif a.cmd == "serve":

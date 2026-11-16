@@ -10,7 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 const I18N = require('./i18n.js');
-const { page, write } = require('./build-pages.js');
+const { page, write, VERSION } = require('./build-pages.js');
 
 const DATA_FILE = path.join(__dirname, 'storms-data.json');
 const ONLY_BG = { lang: 'bg', multi: true, langs: ['bg'] };
@@ -115,17 +115,20 @@ ${next.map(d => `          <tr><td>${date(d.day, { weekday: 'long', day: 'numeri
     ...ONLY_BG,
     url,
     title,
+    image: '/images/cards/storm.png',
     description: `Има ли магнитна буря ${which}: най-високият Kp индекс, прогноза по 3-часови интервали по българско време и нивото на бурята по скалата на NOAA. Обновява се всяка сутрин.`,
     jsonLd: breadcrumbs([['Weather Pulse', '/'], ['Магнитни бури', '/magnitni-buri/'], [`Магнитни бури ${which}`, url]]),
     body: `    <p class="breadcrumbs"><a href="/magnitni-buri/">Магнитни бури</a> › ${which}</p>
     <h1>Магнитни бури ${which}</h1>
+    <div data-share></div>
     <section class="info-card">
       <p class="storm-intro">${summary}</p>
       <p>Магнитна буря има при Kp индекс 5 и повече (G1 по скалата на NOAA). При Kp 4 полето е неспокойно, но това още не е буря. Прогнозата идва от Центъра за космическо време на NOAA и се обновява тук всяка сутрин; моментната стойност е в полето по-долу.</p>
     </section>
 ${slots}${ahead}
 ${KP_WIDGET}
-${links(url, data)}`
+${links(url, data)}`,
+    scripts: `<script src="/js/share.js?v=${VERSION.share}" defer></script>\n`
   });
 }
 
