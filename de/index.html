@@ -1121,8 +1121,11 @@
       }
     });
     
-    // Update page title
-    document.title = "Weather Pulse – " + homepageTranslations[language].heroTitle;
+    // Page title: the page keeps its own (the one written for search, e.g. "Времето днес и утре") in its
+    // own language; only a switch to another language shows the translated one
+    if (!window.homeOwnTitle) window.homeOwnTitle = document.title;
+    document.title = language === (document.documentElement.lang || 'bg') ? window.homeOwnTitle
+      : "Weather Pulse – " + homepageTranslations[language].heroTitle;
   }
   
   // Header initialization for homepage
