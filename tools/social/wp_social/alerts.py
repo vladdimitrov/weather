@@ -32,16 +32,24 @@ def level_of(kp):
 # ---------------- data ----------------
 def storm_tomorrow(tz, days_ahead=1):
     """(date, [(start, end, kp), ...]) for tomorrow (days_ahead=1) or today (0) in Bulgarian time from NOAA's forecast; the list is empty if it doesn't cover the day."""
-    rows = requests.get(NOAA_KP, timeout=60).json()
-    head, rows = rows[0], rows[1:]
-    i_time, i_kp = head.index("time_tag"), head.index("kp")
+    data = requests.get(NOAA_KP, timeout=60).json()
+    # NOAA serves either a list of objects ({"time_tag": ..., "kp": ...}, current) or a header row
+    # followed by rows (older format)
+    if data and isinstance(data[0], dict):
+        entries = [(row.get("time_tag"), row.get("kp")) for row in data]
+    else:
+        head = data[0]
+        i_time, i_kp = head.index("time_tag"), head.index("kp")
+        entries = [(row[i_time], row[i_kp]) for row in data[1:]]
     tomorrow = (datetime.now(tz) + timedelta(days=days_ahead)).date()
     slots = []
-    for row in rows:
-        start = datetime.fromisoformat(row[i_time].replace(" ", "T")).replace(tzinfo=timezone.utc).astimezone(tz)
+    for time_tag, kp in entries:
+        if not time_tag or kp is None:
+            continue
+        start = datetime.fromisoformat(str(time_tag).replace(" ", "T").rstrip("Z")).replace(tzinfo=timezone.utc).astimezone(tz)
         if start.date() == tomorrow:
             end = start + timedelta(hours=3)
-            slots.append((f"{start:%H:%M}", f"{end:%H:%M}", float(row[i_kp])))
+            slots.append((f"{start:%H:%M}", f"{end:%H:%M}", float(kp)))
     return tomorrow, slots
 
 
