@@ -208,6 +208,9 @@
     if (note) note.remove();
   }
 
+  // For the home page (js/home-today.js)
+  window.Passes = { API, TZ, HOURLY, hazards, verdict, nowIndex };
+
   const box = document.getElementById('passForecast');
   if (box) passPage(box);
   document.querySelectorAll('table.pass-table').forEach(passTable);

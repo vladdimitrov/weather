@@ -8,7 +8,8 @@
 
   // Deep, rich tones: three colour stops plus a soft light from the top left corner.
   // The keys are saved in the visitor's browser, so the old ones keep their names.
-  const GLOW = 'radial-gradient(ellipse at 15% 0%, rgba(255,255,255,0.14), rgba(255,255,255,0) 55%), ';
+  // A soft light in the corner and a dark veil over the gradient, so that text stays readable on its bright end
+  const GLOW = 'radial-gradient(ellipse at 15% 0%, rgba(255,255,255,0.10), rgba(255,255,255,0) 55%), linear-gradient(rgba(9, 11, 30, 0.34), rgba(9, 11, 30, 0.34)), ';
   const backgrounds = {
     blue: GLOW + 'linear-gradient(135deg, #06204a 0%, #0d47a1 52%, #2284d6 100%)',
     default: GLOW + 'linear-gradient(135deg, #1d1450 0%, #4a2f9e 50%, #8a6fe0 100%)',

@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
       geolocationNotSupported: "Geolocation is not supported by your browser."
     },
     bg: {
-      title: "Прогноза за времето и магнитни бури",
+      title: "Прогноза за времето, магнитни бури и лунен календар",
       cityLabel: "Град / Курорт:",
       useLocation: "📍 Използвай текущото местоположение",
       holidayCalendarTitle: "Календар на празниците",

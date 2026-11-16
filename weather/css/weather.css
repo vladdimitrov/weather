@@ -16,7 +16,7 @@ body {
   background-repeat: repeat;
   background-size: cover; /* Changed back to cover for better filling */
   color: #FFD700;
-  font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Exo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
   padding-bottom: var(--footer-height);

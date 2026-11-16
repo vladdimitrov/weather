@@ -680,4 +680,8 @@ years.forEach(year => write(`praznici/pochivni-dni-${year}`, daysOffPage(year, y
 write('uidzhet', widgetPage());
 write('prohodi', passesHub());
 PASSES.forEach(pass => write(`prohodi/${pass.slug}`, passPage(pass)));
+// The passes for the "today in Bulgaria" strip of the home page (js/home-today.js)
+fs.mkdirSync(path.join(process.cwd(), 'data'), { recursive: true });
+fs.writeFileSync(path.join(process.cwd(), 'data', 'passes.json'),
+  JSON.stringify(PASSES.map(pass => ({ slug: pass.slug, name: pass.name, lat: pass.lat, lon: pass.lon, elevation: pass.elevation }))) + '\n');
 console.log(`Wrote /gradove/ (${I18N.LANGS.length} languages), ${CITIES.length} 10-day and ${PLACES.TOURIST_BG.length} weekend pages, ${Object.keys(BG.regions).length} regional pages, days off ${years.join(' and ')}, /uidzhet/, /prohodi/ and ${PASSES.length} passes.`);

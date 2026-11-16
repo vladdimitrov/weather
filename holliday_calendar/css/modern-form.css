@@ -59,7 +59,7 @@
   border: 1px solid var(--card-border);
   border-radius: 7px;
   color: var(--text-light);
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Exo 2', sans-serif;
   font-size: 0.85rem;
   transition: all var(--transition-speed) ease;
   box-sizing: border-box;
@@ -136,7 +136,7 @@
   border: 1px solid var(--primary-color);
   background: var(--secondary-color);
   color: var(--primary-color);
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Exo 2', sans-serif;
   font-weight: 600;
   font-size: 0.85rem;
   cursor: pointer;

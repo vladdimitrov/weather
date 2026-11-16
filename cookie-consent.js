@@ -130,7 +130,7 @@
         border-radius: 12px;
         box-shadow: 0 0 20px rgba(255, 215, 0, 0.35);
         color: #fff;
-        font-family: 'Orbitron', sans-serif;
+        font-family: 'Exo 2', sans-serif;
         font-size: 13px;
         line-height: 1.5;
         z-index: 10000;

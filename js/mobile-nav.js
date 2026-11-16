@@ -207,7 +207,7 @@
     if (window.MutationObserver) {
       new MutationObserver(scheduleFit).observe(header.querySelector('.nav-links') || header, { childList: true, characterData: true, subtree: true });
     }
-    // The Orbitron font is wider than the fallback font
+    // The display font is wider than the fallback font
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitNav);
     window.addEventListener('load', fitNav);
   }

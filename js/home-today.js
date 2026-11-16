@@ -1,12 +1,12 @@
 // Home page, "all sections" tiles: a live line under some of them, computed in the browser.
 //   [data-today="moon"]     phase and illumination of the Moon (js/moon.js, no network)
-//   [data-today="kp"]       the latest Kp index (NOAA)
+//   [data-today="kp"]       the Kp index now (NOAA, 1-minute estimate)
 //   [data-today="tomorrow"] tomorrow's high and low in Sofia (Open-Meteo), Bulgarian page only
 //   [data-today="uv"]       today's highest UV index in Sofia (Open-Meteo), Bulgarian page only
 // A failed request leaves the line empty; the tile is a plain link either way.
 (function () {
   const lang = document.documentElement.lang || 'bg';
-  const set = (name, text) => { const node = document.querySelector(`[data-today="${name}"]`); if (node && text) node.textContent = text; };
+  const set = (name, text) => { if (text) document.querySelectorAll(`[data-today="${name}"]`).forEach(node => { node.textContent = text; }); };
   const deg = value => `${value > 0 ? '+' : value < 0 ? '−' : ''}${Math.abs(Math.round(value))}°`;
 
   if (typeof Moon !== 'undefined') {
@@ -18,16 +18,16 @@
   const KP = { bg: 'Kp сега', en: 'Kp now', de: 'Kp aktuell', it: 'Kp ora', es: 'Kp ahora', fr: 'Kp actuel', nl: 'Kp nu' };
   const level = kp => (kp >= 5 ? { bg: 'буря', en: 'storm', de: 'Sturm', it: 'tempesta', es: 'tormenta', fr: 'tempête', nl: 'storm' }
     : { bg: 'спокойно', en: 'calm', de: 'ruhig', it: 'calmo', es: 'calma', fr: 'calme', nl: 'rustig' })[lang] || '';
-  // the same NOAA file the storm page and the widget read: the latest measured (not predicted) 3-hour value
-  fetch('https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json')
+  // The same NOAA file as the weather card above and the storm page: the estimated Kp of the last minutes
+  // (the forecast file marks hours ahead as "estimated" too, so its last value is not "now")
+  fetch('https://services.swpc.noaa.gov/json/planetary_k_index_1m.json')
     .then(r => (r.ok ? r.json() : Promise.reject()))
     .then(list => {
-      const measured = list.filter(entry => entry.observed !== 'predicted' && !isNaN(parseFloat(entry.kp)));
-      const last = measured[measured.length - 1];
-      if (last) {
-        const kp = parseFloat(last.kp);
-        set('kp', `${KP[lang] || KP.en} ${kp.toFixed(1).replace('.', lang === 'en' ? '.' : ',')} · ${level(kp)}`);
-      }
+      const last = list[list.length - 1];
+      const kp = last ? parseFloat(last.estimated_kp ?? last.kp_index) : NaN;
+      if (isNaN(kp)) return;
+      set('kp', `${KP[lang] || KP.en} ${kp.toFixed(1).replace('.', lang === 'en' ? '.' : ',')} · ${level(kp)}`);
+      document.querySelectorAll('.tc-value[data-today="kp"]').forEach(node => { node.dataset.level = kp >= 5 ? 2 : 0; });
     })
     .catch(() => { /* leave empty */ });
 
@@ -41,4 +41,65 @@
       })
       .catch(() => { /* leave empty */ });
   }
+
+  // ---- "Today in Bulgaria" strip (Bulgarian home page): the worst pass, the worst air, the official warnings ----
+  const strip = document.getElementById('todayStrip');
+  if (!strip) return;
+  // level 0 calm, 1 attention, 2 bad: the colour of the value
+  const chip = (name, text, level) => {
+    const node = strip.querySelector(`[data-chip="${name}"]`);
+    if (!node || !text) return;
+    node.textContent = text;
+    node.dataset.level = level;
+  };
+  const json = url => fetch(url).then(r => (r.ok ? r.json() : Promise.reject()));
+
+  // Official warnings of NIMH by province (data/warnings-bg.json, refreshed every 30 minutes)
+  json('/data/warnings-bg.json').then(data => {
+    const lists = Object.values(data.provinces || {}).filter(list => list.length);
+    if (!lists.length) return chip('warn', 'няма код на НИМХ', 0);
+    const rank = { yellow: 1, orange: 2, red: 3 };
+    const top = Math.max(...lists.flat().map(item => rank[item.level] || 1));
+    const name = ['', 'жълт', 'оранжев', 'червен'][top];
+    chip('warn', `${name} код в ${lists.length} ${lists.length === 1 ? 'област' : 'области'}`, top > 1 ? 2 : 1);
+  }).catch(() => {});
+
+  // The worst pass of the next 24 hours (the same rules as /prohodi/, js/passes.js)
+  if (window.Passes) {
+    json('/data/passes.json').then(passes => {
+      const q = key => passes.map(pass => pass[key]).join(',');
+      return json(`${Passes.API}?latitude=${q('lat')}&longitude=${q('lon')}&elevation=${q('elevation')}&hourly=${Passes.HOURLY}&timezone=${encodeURIComponent(Passes.TZ)}&timeformat=unixtime&forecast_days=2`)
+        .then(data => {
+          const answers = Array.isArray(data) ? data : [data];
+          const rated = passes.map((pass, n) => {
+            const h = answers[n] && answers[n].hourly;
+            if (!h) return null;
+            const v = Passes.verdict(Passes.hazards(h, Passes.nowIndex(h), 24));
+            return { pass, v, rank: v.level * 1000 + v.snow + v.gust / 100 };
+          }).filter(Boolean).sort((a, b) => b.rank - a.rank);
+          if (!rated.length) return;
+          const worst = rated[0];
+          if (!worst.v.level) return chip('pass', 'нормални условия навсякъде', 0);
+          const affected = rated.filter(item => item.v.level).length;
+          // "Внимание – силен вятър след 17:00" -> "Петрохан: силен вятър след 17:00 (+3 други)"
+          const what = worst.v.text.replace(/^[^–]*–\s*/, '');
+          chip('pass', `${worst.pass.name.replace(/\s*\(.*\)$/, '')}: ${what}${affected > 1 ? ` (+${affected - 1})` : ''}`, worst.v.level);
+        });
+    }).catch(() => {});
+  }
+
+  // The worst air right now among the largest cities (CAMS model, as on /vremeto/kachestvo-na-vazduha/)
+  const CITIES = [['София', 42.6977, 23.3219], ['Пловдив', 42.1354, 24.7453], ['Варна', 43.2141, 27.9147], ['Бургас', 42.5048, 27.4626],
+    ['Русе', 43.8356, 25.9657], ['Стара Загора', 42.4258, 25.6345], ['Плевен', 43.417, 24.6067], ['Перник', 42.6052, 23.0378],
+    ['Видин', 43.9962, 22.8679], ['Благоевград', 42.0209, 23.0943]];
+  const AIR = [[20, 'добро', 0], [40, 'задоволително', 0], [60, 'умерено', 1], [80, 'лошо', 2], [100, 'много лошо', 2], [Infinity, 'изключително лошо', 2]];
+  json(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${CITIES.map(c => c[1]).join(',')}&longitude=${CITIES.map(c => c[2]).join(',')}&current=european_aqi`)
+    .then(data => {
+      const worst = (Array.isArray(data) ? data : [data])
+        .map((answer, n) => ({ name: CITIES[n][0], aqi: answer.current && answer.current.european_aqi }))
+        .filter(item => typeof item.aqi === 'number').sort((a, b) => b.aqi - a.aqi)[0];
+      if (!worst) return;
+      const [, text, level] = AIR.find(step => worst.aqi <= step[0]);
+      chip('air', `${worst.name}: ${text} (${Math.round(worst.aqi)})`, level);
+    }).catch(() => {});
 })();

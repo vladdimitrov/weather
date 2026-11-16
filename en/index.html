@@ -6,10 +6,10 @@
   <script src="/cookie-consent.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather Pulse – Weather Forecast and Magnetic Storms</title>
+  <title>Weather Pulse – Weather Forecast, Magnetic Storms and Moon Calendar</title>
   <link rel="canonical" href="https://weatherpulse.eu/en/" />
   <link rel="alternate" hreflang="bg" href="https://weatherpulse.eu/" />
   <link rel="alternate" hreflang="en" href="https://weatherpulse.eu/en/" />
@@ -23,7 +23,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Weather Pulse">
 <meta property="og:locale" content="en_GB">
-<meta property="og:title" content="Weather Pulse – Weather Forecast and Magnetic Storms">
+<meta property="og:title" content="Weather Pulse – Weather Forecast, Magnetic Storms and Moon Calendar">
 <meta property="og:description" content="Weather forecast for 16 days and by the hour, magnetic storms with alerts, weather maps, public holidays and the weather in Bulgarian cities. Free.">
 <meta property="og:url" content="https://weatherpulse.eu/en/">
 <meta property="og:image" content="https://weatherpulse.eu/images/og-image.png">
@@ -740,6 +740,28 @@
    .home-tile .ht-live { font-size: 0.82rem; color: var(--gold); min-height: 1.1em; }
    @media (max-width: 480px) { .home-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } .home-tile { padding: 10px 11px; } }
 
+   /* ---- "today in Bulgaria": four live lines right under the search (js/home-today.js) ---- */
+   .today-strip { max-width: 900px; margin: 4px auto 0; padding: 0 4px; }
+   .today-strip h2 { text-align: center; font-size: 1.05rem; margin: 0 0 10px; color: #ffffff; letter-spacing: 0.02em; }
+   .today-chips { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+   .today-chip {
+     display: flex; flex-direction: column; gap: 4px; padding: 11px 13px; min-height: 76px; box-sizing: border-box;
+     border: 1px solid var(--panel-border); border-radius: 12px; background: var(--panel);
+     color: #ffffff; text-decoration: none; font-family: var(--font-text); transition: border-color 0.2s ease, transform 0.2s ease;
+   }
+   .today-chip:hover, .today-chip:focus-visible { border-color: var(--gold); transform: translateY(-2px); }
+   .today-chip .tc-label { font-weight: 600; font-size: 0.92rem; }
+   .today-chip .tc-value { font-size: 0.84rem; line-height: 1.3; color: var(--ink-soft, #b9c2d9); }
+   .today-chip .tc-value[data-level="0"] { color: #8fe3a8; }
+   .today-chip .tc-value[data-level="1"] { color: #ffd166; }
+   .today-chip .tc-value[data-level="2"] { color: #ff8f7a; font-weight: 600; }
+   @media (max-width: 720px) { .today-chips { grid-template-columns: repeat(2, minmax(0, 1fr)); } .today-chip { min-height: 84px; padding: 10px 11px; } }
+
+   /* A smaller orbit: it comes after the strip and must not take the whole first screen */
+   .circular-nav { width: 300px; height: 300px; --orbit-radius: 150px; margin: 22px auto; }
+   @media (max-width: 768px) { .circular-nav { width: 230px; height: 230px; --orbit-radius: 115px; margin: 16px auto; } }
+   @media (max-width: 480px) { .circular-nav { width: 210px; height: 210px; --orbit-radius: 105px; margin: 14px auto; } }
+
    /* ---- phones: a shorter start; the intro paragraph stays for wider screens ---- */
    @media (max-width: 600px) {
      .hero-subtitle { display: none; }
@@ -748,10 +770,10 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=62">
+  <link rel="stylesheet" href="/css/theme.css?v=63">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
-<body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+<body style="font-family: 'Exo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
   <div class="nav-header" tabindex="-1" id="header">
     <div class="nav-links">
@@ -771,12 +793,13 @@
     
     <!-- Hero Section -->
     <div class="hero-section">
-      <h1 class="hero-title" id="hero-title" data-translation-key="heroTitle">Weather Forecast and Magnetic Storms</h1>
+      <h1 class="hero-title" id="hero-title" data-translation-key="heroTitle">Weather Forecast, Magnetic Storms and Moon Calendar</h1>
       <p class="hero-subtitle" id="hero-subtitle" data-translation-key="heroSubtitle">Track weather, moon phases, magnetic storms, and holidays in real time for any location worldwide. Plan your day with accuracy and confidence.</p>
       <a class="now-card" id="nowCard" href="/en/weather/" hidden></a>
       <div class="now-days" id="nowDays" hidden></div>
       <div class="home-search" id="homeSearch"></div>
     </div>
+
 
     <!-- Circular Navigation -->
     <div class="circular-nav">
@@ -888,7 +911,7 @@
 
       mapsOrbitTitle: "Weather Maps",
 
-      heroTitle: "Weather Forecast and Magnetic Storms",
+      heroTitle: "Weather Forecast, Magnetic Storms and Moon Calendar",
       heroSubtitle: "Track weather, moon phases, magnetic storms, and holidays in real time for any location worldwide. Plan your day with accuracy and confidence.",
       featuresTitle: "Everything about the weather in one place",
       featuresDescription: "A 16-day and hourly forecast for any place in the world, magnetic storms with phone alerts, rain and wind maps, public holidays and the weather in Bulgarian cities. Free, no sign-up.",
@@ -913,7 +936,7 @@
 
       mapsOrbitTitle: "Карти за времето",
 
-      heroTitle: "Прогноза за времето и магнитни бури",
+      heroTitle: "Прогноза за времето, магнитни бури и лунен календар",
       heroSubtitle: "Прогноза за 16 дни от три модела с оценка колко можете да ѝ вярвате, плюс Луна, магнитни бури и празници за всяка точка по света.",
       featuresTitle: "Всичко за времето на едно място",
       featuresDescription:  	"Прогноза за 16 дни и по часове за всяко място по света, магнитни бури с известия на телефона, карти на валежите и вятъра, официални празници и времето в градовете на България. Безплатно и без регистрация.",
@@ -942,7 +965,7 @@
 
       mapsOrbitTitle: "Wetterkarten",
 
-      heroTitle: 				"Wettervorhersage und Magnetstürme",
+      heroTitle: 				"Wettervorhersage, Magnetstürme und Mondkalender",
       heroSubtitle: 			"Verfolgen Sie Wetter, Mondphasen, magnetische Stürme und Feiertage in Echtzeit für jeden Ort weltweit. Planen Sie Ihren Tag mit Genauigkeit und Zuversicht.",
       featuresTitle: 			"Alles rund ums Wetter an einem Ort",
       featuresDescription:  	"16-Tage- und Stundenvorhersage für jeden Ort der Welt, Magnetstürme mit Benachrichtigungen aufs Handy, Regen- und Windkarten, gesetzliche Feiertage und das Wetter in bulgarischen Städten. Kostenlos und ohne Anmeldung.",
@@ -971,7 +994,7 @@
 
       mapsOrbitTitle: "Mappe meteorologiche",
 
-      heroTitle: "Previsioni del Tempo e Tempeste Magnetiche",
+      heroTitle: "Previsioni del Tempo, Tempeste Magnetiche e Calendario Lunare",
       heroSubtitle: "Monitora il tempo, le fasi lunari, le tempeste magnetiche e le festività in tempo reale per qualsiasi località nel mondo. Pianifica la tua giornata con precisione e fiducia.",
       featuresTitle: "Tutto sul meteo in un unico posto",
       featuresDescription: "Previsioni a 16 giorni e ora per ora per qualsiasi luogo del mondo, tempeste magnetiche con avvisi sul telefono, mappe di pioggia e vento, festività ufficiali e il meteo nelle città bulgare. Gratis e senza registrazione.",
@@ -1000,7 +1023,7 @@
 
       mapsOrbitTitle: "Mapas del tiempo",
 
-      heroTitle: "Pronóstico del Tiempo y Tormentas Magnéticas",
+      heroTitle: "Pronóstico del Tiempo, Tormentas Magnéticas y Calendario Lunar",
       heroSubtitle: "Rastrea el clima, fases lunares, tormentas magnéticas y días festivos en tiempo real para cualquier ubicación mundial. Planifica tu día con precisión y confianza.",
       featuresTitle: "Todo sobre el tiempo en un solo lugar",
       featuresDescription: "Pronóstico de 16 días y por horas para cualquier lugar del mundo, tormentas magnéticas con avisos en el móvil, mapas de lluvia y viento, festivos oficiales y el tiempo en las ciudades de Bulgaria. Gratis y sin registro.",
@@ -1023,7 +1046,7 @@
       moonOrbitTitle: "Calendrier lunaire : la phase de la Lune aujourd’hui",
       moonOrbitLabel: "LUNE",
       mapsOrbitTitle: "Cartes météo",
-      heroTitle: "Prévisions météo et tempêtes magnétiques",
+      heroTitle: "Prévisions météo, tempêtes magnétiques et calendrier lunaire",
       heroSubtitle: "Suivez la météo, les phases de la Lune, les tempêtes magnétiques et les jours fériés en temps réel, pour n’importe quel lieu du monde. Organisez votre journée en toute confiance.",
       featuresTitle: "Tout sur la météo au même endroit",
       featuresDescription: "Des prévisions à 16 jours et heure par heure pour n’importe quel lieu du monde, les tempêtes magnétiques avec alertes sur votre téléphone, des cartes de pluie et de vent, les jours fériés et la météo des villes bulgares. Gratuit, sans inscription.",
@@ -1044,7 +1067,7 @@
       moonOrbitTitle: "Maankalender: de maanfase vandaag",
       moonOrbitLabel: "MAAN",
       mapsOrbitTitle: "Weerkaarten",
-      heroTitle: "Weerbericht en magnetische stormen",
+      heroTitle: "Weerbericht, magnetische stormen en maankalender",
       heroSubtitle: "Volg het weer, de maanfasen, magnetische stormen en feestdagen in realtime voor elke plaats ter wereld. Plan uw dag nauwkeurig en met vertrouwen.",
       featuresTitle: "Alles over het weer op één plek",
       featuresDescription: "Een verwachting voor 16 dagen en per uur voor elke plaats ter wereld, magnetische stormen met waarschuwingen op uw telefoon, regen- en windkaarten, feestdagen en het weer in Bulgaarse steden. Gratis, zonder registratie.",
@@ -1123,15 +1146,15 @@
 <script src="/js/mobile-nav.js?v=22"></script>
 <script src="/js/language-selector.js?v=9"></script>
 <script src="/language-switcher.js?v=15"></script>
-<script src="/js/background-selector.js?v=4"></script>
-<script src="/js/city-search.js?v=13"></script>
+<script src="/js/background-selector.js?v=5"></script>
+<script src="/js/city-search.js?v=14"></script>
 <script src="/js/weather-icons.js?v=5"></script>
 <script src="/js/forecast-core.js?v=3"></script>
 <script src="/js/home-weather.js?v=9"></script>
 <script src="/js/place-context.js?v=2"></script>
 <script src="/js/home-cities.js?v=4"></script>
 <script src="/js/moon.js?v=4"></script>
-<script src="/js/home-today.js?v=1"></script>
+<script src="/js/home-today.js?v=2"></script>
 
 <script>
   // Listen for language changes from the language-switcher.js
