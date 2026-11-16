@@ -66,6 +66,17 @@ jobs:
           WP_IG_USER_ID: ${{ secrets.WP_IG_USER_ID }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Morning storm post
+        if: steps.pick.outputs.job == 'forecast'
+        continue-on-error: true
+        # a magnetic storm (Kp 5+) expected today; skipped when the evening run already posted it
+        run: python main.py alerts --today
+        env:
+          WP_PAGE_ID: ${{ secrets.WP_PAGE_ID }}
+          WP_PAGE_TOKEN: ${{ secrets.WP_PAGE_TOKEN }}
+          WP_IG_USER_ID: ${{ secrets.WP_IG_USER_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Save queue progress
         if: always() && steps.pick.outputs.job == 'queue'
         run: |

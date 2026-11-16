@@ -6069,31 +6069,31 @@
 
   <url>
     <loc>https://weatherpulse.eu/magnitni-buri/dnes/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/magnitni-buri/kp-indeks/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/magnitni-buri/noemvri-2026/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/magnitni-buri/utre/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/magnitni-buri/zdrave/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.6</priority>
   </url>
 
@@ -6417,7 +6417,7 @@
 
   <url>
     <loc>https://weatherpulse.eu/magnitni-buri/dekemvri-2026/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.6</priority>
   </url>
 
@@ -11279,6 +11279,18 @@
     <loc>https://weatherpulse.eu/nl/luna/pylnolunie/2027-12-13/</loc>
     <lastmod>2026-11-16</lastmod>
     <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/magnitni-buri/tazi-sedmitsa/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/magnitni-buri/vchera/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.6</priority>
   </url>
 
 </urlset>
