@@ -120,8 +120,88 @@
     <p class="storm-intro">Prévisions météo à Lviv (Ukraine) pour aujourd’hui, demain et les 7 prochains jours : température, pluie, vent et probabilité de précipitations. Nom local : Львів (Погода Львів). Données d’Open-Meteo, mises à jour toutes les heures.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Lviv" data-lat="49.8397" data-lon="24.0297" data-query="city=Lviv&lat=49.8397&lon=24.0297&cc=UA">
-      <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">Chargement…</p></div>
-      <div class="kp-forecast" id="cityDays" hidden></div>
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Rafales de vent fortes demain : jusqu’à 66 km/h</p>
+      </div>
+      <div class="kp-forecast city-now" id="cityNow">
+        <h2>Lviv: lundi 16 novembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">1° / 8°</span>
+        <p class="storm-now-status">Pluie · probabilité de pluie 90%</p>
+        <p class="storm-updated">Prévision du 16 novembre 2026</p>
+      </div>
+      <div class="kp-forecast" id="cityDays">
+        <h3>Prévisions à 7 jours</h3>
+        <p class="city-summary">Dans les 7 prochains jours, le jour le plus chaud sera mercredi 18 novembre (jusqu’à 13°) et le plus froid dimanche 22 novembre (jusqu’à 0°). Des précipitations sont attendues sur 5 des jours. Les maximales sont proches des normales de novembre (moyenne 7°). Les modèles concordent jusqu’à mercredi 18 novembre ; ensuite, la prévision est moins sûre (jusqu’à 4° d’écart de température et un modèle prévoit de la pluie, un autre une journée sèche).</p>
+        <div class="city-days">
+          <a class="kp-day city-day" href="/weather/?city=Lviv&lat=49.8397&lon=24.0297&cc=UA&date=2026-11-16" title="Heure par heure →">
+            <span class="kp-day-name">lun. 16</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">16.11</span>
+            <span class="city-day-temp">1° / 8°</span>
+            <span class="kp-day-status">Pluie</span>
+            <span class="city-day-rain" title="probabilité de pluie">90% · 3.2 mm</span>
+            <span class="city-day-wind">Vent 18 km/h · rafales 45</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Lviv&lat=49.8397&lon=24.0297&cc=UA&date=2026-11-17" title="Heure par heure →">
+            <span class="kp-day-name">mar. 17</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">17.11</span>
+            <span class="city-day-temp">4° / 8°</span>
+            <span class="kp-day-status">Pluie</span>
+            <span class="city-day-rain" title="probabilité de pluie">100% · 11.7 mm</span>
+            <span class="city-day-wind city-day-gusts">Vent 23 km/h · rafales 66</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Lviv&lat=49.8397&lon=24.0297&cc=UA&date=2026-11-18" title="Heure par heure →">
+            <span class="kp-day-name">mer. 18</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">18.11</span>
+            <span class="city-day-temp">7° / 13°</span>
+            <span class="kp-day-status">Bruine</span>
+            <span class="city-day-rain" title="probabilité de pluie">81% · 2.3 mm</span>
+            <span class="city-day-wind">Vent 19 km/h · rafales 55</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Lviv&lat=49.8397&lon=24.0297&cc=UA&date=2026-11-19" title="Heure par heure →">
+            <span class="kp-day-name">jeu. 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">6° / 11°</span>
+            <span class="kp-day-status">Bruine</span>
+            <span class="city-day-rain" title="probabilité de pluie">29% · 0.4 mm</span>
+            <span class="city-day-wind">Vent 19 km/h · rafales 53</span>
+            <span class="city-day-conf" title="L’écart entre les modèles ECMWF, ICON et GFS pour ce jour" style="font-size:0.8rem;color:#ffd54f">● moins sûre</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Lviv&lat=49.8397&lon=24.0297&cc=UA&date=2026-11-20" title="Heure par heure →">
+            <span class="kp-day-name">ven. 20</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">20.11</span>
+            <span class="city-day-temp">3° / 11°</span>
+            <span class="kp-day-status">Pluie</span>
+            <span class="city-day-rain" title="probabilité de pluie">42% · 8.1 mm</span>
+            <span class="city-day-wind city-day-gusts">Vent 27 km/h · rafales 61</span>
+            <span class="city-day-conf" title="L’écart entre les modèles ECMWF, ICON et GFS pour ce jour" style="font-size:0.8rem;color:#ffd54f">● moins sûre</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Lviv&lat=49.8397&lon=24.0297&cc=UA&date=2026-11-21" title="Heure par heure →">
+            <span class="kp-day-name">sam. 21</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">21.11</span>
+            <span class="city-day-temp">0° / 7°</span>
+            <span class="kp-day-status">Nuageux</span>
+            <span class="city-day-rain" title="probabilité de pluie">29%</span>
+            <span class="city-day-wind">Vent 22 km/h · rafales 48</span>
+            <span class="city-day-conf" title="L’écart entre les modèles ECMWF, ICON et GFS pour ce jour" style="font-size:0.8rem;color:#ffd54f">● moins sûre</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Lviv&lat=49.8397&lon=24.0297&cc=UA&date=2026-11-22" title="Heure par heure →">
+            <span class="kp-day-name">dim. 22</span>
+            <span class="city-day-icon" aria-hidden="true">❄️</span>
+            <span class="city-day-date">22.11</span>
+            <span class="city-day-temp">0° / 2°</span>
+            <span class="kp-day-status">Neige</span>
+            <span class="city-day-rain" title="probabilité de pluie">24% · 1.2 mm</span>
+            <span class="city-day-wind">Vent 25 km/h · rafales 55</span>
+          </a>
+        </div>
+        <p class="forecast-note">Médiane des modèles ECMWF, ICON et GFS · altitude 280 m</p>
+      </div>
     </div>
 
     <p class="city-actions">

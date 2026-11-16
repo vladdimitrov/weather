@@ -124,8 +124,88 @@
     <p class="storm-intro">Prévisions météo à Gand (Belgique) pour aujourd’hui, demain et les 7 prochains jours : température, pluie, vent et probabilité de précipitations. Nom local : Gent (Weer Gent). Données d’Open-Meteo, mises à jour toutes les heures.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Gand" data-lat="51.0543" data-lon="3.7174" data-query="city=Gand&lat=51.0543&lon=3.7174&cc=BE">
-      <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">Chargement…</p></div>
-      <div class="kp-forecast" id="cityDays" hidden></div>
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Rafales de vent fortes demain : jusqu’à 76 km/h</p>
+      </div>
+      <div class="kp-forecast city-now" id="cityNow">
+        <h2>Gand: lundi 16 novembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">3° / 10°</span>
+        <p class="storm-now-status">Bruine · probabilité de pluie 78%</p>
+        <p class="storm-updated">Prévision du 16 novembre 2026</p>
+      </div>
+      <div class="kp-forecast" id="cityDays">
+        <h3>Prévisions à 7 jours</h3>
+        <p class="city-summary">Dans les 7 prochains jours, le jour le plus chaud sera mardi 17 novembre (jusqu’à 15°) et le plus froid samedi 21 novembre (jusqu’à 2°). Des précipitations sont attendues sur 6 des jours. Les maximales sont proches des normales de novembre (moyenne 11°). Les modèles divergent déjà pour aujourd’hui (jusqu’à 4° d’écart de température et un modèle prévoit de la pluie, un autre une journée sèche) : revenez consulter la prévision plus tard.</p>
+        <div class="city-days">
+          <a class="kp-day city-day" href="/weather/?city=Gand&lat=51.0543&lon=3.7174&cc=BE&date=2026-11-16" title="Heure par heure →">
+            <span class="kp-day-name">lun. 16</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-date">16.11</span>
+            <span class="city-day-temp">3° / 10°</span>
+            <span class="kp-day-status">Bruine</span>
+            <span class="city-day-rain" title="probabilité de pluie">78% · 2.2 mm</span>
+            <span class="city-day-wind">Vent 21 km/h · rafales 48</span>
+            <span class="city-day-conf" title="L’écart entre les modèles ECMWF, ICON et GFS pour ce jour" style="font-size:0.8rem;color:#ffd54f">● moins sûre</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Gand&lat=51.0543&lon=3.7174&cc=BE&date=2026-11-17" title="Heure par heure →">
+            <span class="kp-day-name">mar. 17</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">17.11</span>
+            <span class="city-day-temp">4° / 15°</span>
+            <span class="kp-day-status">Pluie</span>
+            <span class="city-day-rain" title="probabilité de pluie">100% · 18.3 mm</span>
+            <span class="city-day-wind city-day-gusts">Vent 30 km/h · rafales 76</span>
+            <span class="city-day-conf" title="L’écart entre les modèles ECMWF, ICON et GFS pour ce jour" style="font-size:0.8rem;color:#ffd54f">● moins sûre</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Gand&lat=51.0543&lon=3.7174&cc=BE&date=2026-11-18" title="Heure par heure →">
+            <span class="kp-day-name">mer. 18</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">18.11</span>
+            <span class="city-day-temp">9° / 12°</span>
+            <span class="kp-day-status">Pluie</span>
+            <span class="city-day-rain" title="probabilité de pluie">76% · 3.8 mm</span>
+            <span class="city-day-wind city-day-gusts">Vent 27 km/h · rafales 65</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Gand&lat=51.0543&lon=3.7174&cc=BE&date=2026-11-19" title="Heure par heure →">
+            <span class="kp-day-name">jeu. 19</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">19.11</span>
+            <span class="city-day-temp">8° / 11°</span>
+            <span class="kp-day-status">Pluie</span>
+            <span class="city-day-rain" title="probabilité de pluie">65% · 11.0 mm</span>
+            <span class="city-day-wind city-day-gusts">Vent 23 km/h · rafales 82</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Gand&lat=51.0543&lon=3.7174&cc=BE&date=2026-11-20" title="Heure par heure →">
+            <span class="kp-day-name">ven. 20</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">20.11</span>
+            <span class="city-day-temp">2° / 10°</span>
+            <span class="kp-day-status">Pluie</span>
+            <span class="city-day-rain" title="probabilité de pluie">44% · 4.6 mm</span>
+            <span class="city-day-wind">Vent 15 km/h · rafales 36</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Gand&lat=51.0543&lon=3.7174&cc=BE&date=2026-11-21" title="Heure par heure →">
+            <span class="kp-day-name">sam. 21</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">21.11</span>
+            <span class="city-day-temp">2° / 9°</span>
+            <span class="kp-day-status">Nuageux</span>
+            <span class="city-day-rain" title="probabilité de pluie">17%</span>
+            <span class="city-day-wind">Vent 13 km/h · rafales 26</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Gand&lat=51.0543&lon=3.7174&cc=BE&date=2026-11-22" title="Heure par heure →">
+            <span class="kp-day-name">dim. 22</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-date">22.11</span>
+            <span class="city-day-temp">3° / 7°</span>
+            <span class="kp-day-status">Pluie</span>
+            <span class="city-day-rain" title="probabilité de pluie">30% · 2.9 mm</span>
+            <span class="city-day-wind">Vent 16 km/h · rafales 48</span>
+            <span class="city-day-conf" title="L’écart entre les modèles ECMWF, ICON et GFS pour ce jour" style="font-size:0.8rem;color:#ff8a65">● incertaine</span>
+          </a>
+        </div>
+        <p class="forecast-note">Médiane des modèles ECMWF, ICON et GFS · altitude 12 m</p>
+      </div>
     </div>
 
     <p class="city-actions">
