@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 62, mobileNav: 22, languageSelector: 9, cityForecast: 18, moon: 4, lunaToday: 6, lunaLocal: 2, auroraKp: 3, placeContext: 2, skyLocal: 3, homeCities: 4, regionWeather: 5, passes: 2 };
+const VERSION = { theme: 63, mobileNav: 22, languageSelector: 9, cityForecast: 18, moon: 4, lunaToday: 6, lunaLocal: 2, auroraKp: 3, placeContext: 2, skyLocal: 3, homeCities: 4, regionWeather: 5, passes: 3 };
 
 const CITIES = require('./bg-cities.js');
 
@@ -336,7 +336,7 @@ function page({ url, title, description, body, scripts = '', jsonLd = '', head =
   <script src="/cookie-consent.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${I18N.withBrand(title)}</title>
@@ -366,7 +366,7 @@ ${languageScript}
   <link rel="stylesheet" href="/css/theme.css?v=${VERSION.theme}">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 ${head}</head>
-<body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+<body style="font-family: 'Exo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
   <div class="nav-header" tabindex="-1" id="header">
     <div class="nav-links">
@@ -391,7 +391,7 @@ ${(FOOTER_TEXT = { about: NAV.about, privacy: NAV.privacy, cities: NAV.cities, s
 
 <script src="/js/mobile-nav.js?v=${VERSION.mobileNav}" defer></script>
 <script src="/js/language-selector.js?v=${VERSION.languageSelector}" defer></script>
-<script src="/js/background-selector.js?v=4" defer></script>
+<script src="/js/background-selector.js?v=5" defer></script>
 ${scripts}</body>
 </html>
 `;

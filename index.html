@@ -5,7 +5,7 @@
   <script src="/cookie-consent.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Времето днес и утре, 16 дни напред | Weather Pulse</title>
@@ -745,6 +745,28 @@
    .home-tile .ht-live { font-size: 0.82rem; color: var(--gold); min-height: 1.1em; }
    @media (max-width: 480px) { .home-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } .home-tile { padding: 10px 11px; } }
 
+   /* ---- "today in Bulgaria": four live lines right under the search (js/home-today.js) ---- */
+   .today-strip { max-width: 900px; margin: 4px auto 0; padding: 0 4px; }
+   .today-strip h2 { text-align: center; font-size: 1.05rem; margin: 0 0 10px; color: #ffffff; letter-spacing: 0.02em; }
+   .today-chips { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+   .today-chip {
+     display: flex; flex-direction: column; gap: 4px; padding: 11px 13px; min-height: 76px; box-sizing: border-box;
+     border: 1px solid var(--panel-border); border-radius: 12px; background: var(--panel);
+     color: #ffffff; text-decoration: none; font-family: var(--font-text); transition: border-color 0.2s ease, transform 0.2s ease;
+   }
+   .today-chip:hover, .today-chip:focus-visible { border-color: var(--gold); transform: translateY(-2px); }
+   .today-chip .tc-label { font-weight: 600; font-size: 0.92rem; }
+   .today-chip .tc-value { font-size: 0.84rem; line-height: 1.3; color: var(--ink-soft, #b9c2d9); }
+   .today-chip .tc-value[data-level="0"] { color: #8fe3a8; }
+   .today-chip .tc-value[data-level="1"] { color: #ffd166; }
+   .today-chip .tc-value[data-level="2"] { color: #ff8f7a; font-weight: 600; }
+   @media (max-width: 720px) { .today-chips { grid-template-columns: repeat(2, minmax(0, 1fr)); } .today-chip { min-height: 84px; padding: 10px 11px; } }
+
+   /* A smaller orbit: it comes after the strip and must not take the whole first screen */
+   .circular-nav { width: 300px; height: 300px; --orbit-radius: 150px; margin: 22px auto; }
+   @media (max-width: 768px) { .circular-nav { width: 230px; height: 230px; --orbit-radius: 115px; margin: 16px auto; } }
+   @media (max-width: 480px) { .circular-nav { width: 210px; height: 210px; --orbit-radius: 105px; margin: 14px auto; } }
+
    /* ---- phones: a shorter start; the intro paragraph stays for wider screens ---- */
    @media (max-width: 600px) {
      .hero-subtitle { display: none; }
@@ -753,10 +775,10 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=62">
+  <link rel="stylesheet" href="/css/theme.css?v=63">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
-<body style="font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+<body style="font-family: 'Exo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
   <div class="nav-header" tabindex="-1" id="header">
     <div class="nav-links">
@@ -784,6 +806,18 @@
       <div class="now-days" id="nowDays" hidden></div>
       <div class="home-search" id="homeSearch"></div>
     </div>
+
+    <!-- bg-only:start (build-main.js leaves this block out of the translations): what matters today, filled by js/home-today.js -->
+    <section class="today-strip" id="todayStrip" aria-labelledby="todayStripTitle">
+      <h2 id="todayStripTitle">Днес в България</h2>
+      <div class="today-chips">
+        <a class="today-chip" href="/magnitni-buri/"><span class="tc-label">🧲 Магнитни бури</span><span class="tc-value" data-today="kp">Kp индекс сега →</span></a>
+        <a class="today-chip" href="/prohodi/"><span class="tc-label">🏔️ Проходи</span><span class="tc-value" data-chip="pass">сняг, поледица, вятър →</span></a>
+        <a class="today-chip" href="/vremeto/kachestvo-na-vazduha/"><span class="tc-label">🏭 Въздух</span><span class="tc-value" data-chip="air">по градове →</span></a>
+        <a class="today-chip" href="/vremeto/preduprezhdeniya/"><span class="tc-label">⚠️ Предупреждения</span><span class="tc-value" data-chip="warn">днес и утре →</span></a>
+      </div>
+    </section>
+    <!-- bg-only:end -->
 
     <!-- Circular Navigation -->
     <div class="circular-nav">
@@ -1164,15 +1198,18 @@
 <script src="/js/mobile-nav.js?v=22"></script>
 <script src="/js/language-selector.js?v=9"></script>
 <script src="/language-switcher.js?v=15"></script>
-<script src="/js/background-selector.js?v=4"></script>
-<script src="/js/city-search.js?v=13"></script>
+<script src="/js/background-selector.js?v=5"></script>
+<script src="/js/city-search.js?v=14"></script>
 <script src="/js/weather-icons.js?v=5"></script>
 <script src="/js/forecast-core.js?v=3"></script>
 <script src="/js/home-weather.js?v=9"></script>
 <script src="/js/place-context.js?v=2"></script>
 <script src="/js/home-cities.js?v=4"></script>
 <script src="/js/moon.js?v=4"></script>
-<script src="/js/home-today.js?v=1"></script>
+<!-- bg-only:start (the pass rules for the strip) -->
+<script src="/js/passes.js?v=3"></script>
+<!-- bg-only:end -->
+<script src="/js/home-today.js?v=2"></script>
 
 <script>
   // Listen for language changes from the language-switcher.js

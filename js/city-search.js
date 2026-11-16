@@ -92,7 +92,7 @@
     style.id = 'city-search-styles';
     style.textContent = `
       #citySuggestions {
-        font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Exo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         max-height: 250px;
         overflow-y: auto;
         border-radius: 0 0 8px 8px;
@@ -682,8 +682,11 @@
     try {
       const saved = JSON.parse(localStorage.getItem('lastLocation'));
       if (saved && saved.latitude && saved.longitude) {
+        // Sofia saved while the site was in another language ("Sofia") is shown in the page's language
+        const isDefault = Math.abs(saved.latitude - 42.6977) < 0.05 && Math.abs(saved.longitude - 23.3219) < 0.05 &&
+          Object.values(defaultNames).some(names => names[0] === saved.city);
         return {
-          name: saved.city || '',
+          name: isDefault ? (defaultNames[currentLanguage()] || defaultNames.en)[0] : saved.city || '',
           country: saved.country || '',
           countryCode: saved.countryCode || '',
           latitude: parseFloat(saved.latitude),
