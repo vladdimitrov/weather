@@ -11299,4 +11299,16 @@
     <priority>0.6</priority>
   </url>
 
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/polen/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/uv-indeks/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>
