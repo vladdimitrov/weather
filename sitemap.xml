@@ -45,13 +45,13 @@
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/praznici/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.7</priority>
   </url>
 
@@ -1677,7 +1677,7 @@
 
   <url>
     <loc>https://weatherpulse.eu/en/praznici/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.7</priority>
   </url>
 
@@ -1899,7 +1899,7 @@
 
   <url>
     <loc>https://weatherpulse.eu/de/praznici/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.7</priority>
   </url>
 
@@ -1971,7 +1971,7 @@
 
   <url>
     <loc>https://weatherpulse.eu/it/praznici/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.7</priority>
   </url>
 
@@ -2043,7 +2043,7 @@
 
   <url>
     <loc>https://weatherpulse.eu/es/praznici/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.7</priority>
   </url>
 
@@ -9063,7 +9063,7 @@
 
   <url>
     <loc>https://weatherpulse.eu/fr/praznici/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.7</priority>
   </url>
 
@@ -10089,7 +10089,7 @@
 
   <url>
     <loc>https://weatherpulse.eu/nl/praznici/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <priority>0.7</priority>
   </url>
 
@@ -11289,6 +11289,12 @@
 
   <url>
     <loc>https://weatherpulse.eu/magnitni-buri/vchera/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/utre/</loc>
     <lastmod>2026-11-16</lastmod>
     <priority>0.6</priority>
   </url>

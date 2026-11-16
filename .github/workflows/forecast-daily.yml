@@ -46,6 +46,10 @@ jobs:
       - name: Write the storm forecast
         continue-on-error: true
         run: node .github/scripts/build-storms.js
+      # /vremeto/utre/: tomorrow in the Bulgarian cities (the page keeps yesterday's table if Open-Meteo is down)
+      - name: Write tomorrow's weather
+        continue-on-error: true
+        run: node .github/scripts/build-tomorrow.js
       # the Moon calendar hub: today's Moon and the next phases in the HTML (and the .ics file)
       - name: Write the Moon calendar
         run: node .github/scripts/build-luna.js
