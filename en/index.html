@@ -725,6 +725,20 @@
    /* the row of recently picked places belongs to the forecast form; here it would move the page */
    .home-search .recent-places { display: none !important; }
 
+   /* ---- "all sections": a grid of tiles with a live line under some of them (js/home-today.js) ---- */
+   .home-sections { max-width: 900px; margin: 24px auto; padding: 0 4px; }
+   .home-sections h2 { text-align: center; font-size: 1.3rem; margin: 0 0 14px; color: #ffffff; }
+   .home-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+   .home-tile {
+     display: flex; flex-direction: column; gap: 3px; padding: 12px 14px; min-height: 64px;
+     border: 1px solid var(--panel-border); border-radius: 12px; background: var(--panel);
+     color: #ffffff; text-decoration: none; font-family: var(--font-text); transition: border-color 0.2s ease, transform 0.2s ease;
+   }
+   .home-tile:hover, .home-tile:focus-visible { border-color: var(--gold); transform: translateY(-2px); }
+   .home-tile .ht-title { font-weight: 600; font-size: 0.98rem; }
+   .home-tile .ht-live { font-size: 0.82rem; color: var(--gold); min-height: 1.1em; }
+   @media (max-width: 480px) { .home-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } .home-tile { padding: 10px 11px; } }
+
    /* ---- phones: a shorter start; the intro paragraph stays for wider screens ---- */
    @media (max-width: 600px) {
      .hero-subtitle { display: none; }
@@ -790,6 +804,19 @@
       </div>
     </div>
 
+
+    <!-- All sections: links to the pages that are not in the circle -->
+    <section class="home-sections" id="homeSections">
+      <h2 data-nav="allSections">All sections</h2>
+      <div class="home-tiles">
+        <a class="home-tile" href="/en/magnitni-buri/"><span class="ht-title">🧲 <span data-nav="storms">Magnetic Storms</span></span><span class="ht-live" data-today="kp"></span></a>
+        <a class="home-tile" href="/en/luna/"><span class="ht-title">🌙 <span data-nav="moon">Moon Calendar</span></span><span class="ht-live" data-today="moon"></span></a>
+        <a class="home-tile" href="/en/kurorti/"><span class="ht-title">🏖️ <span data-nav="resorts">Resorts</span></span></a>
+        <a class="home-tile" href="/en/nebeto/"><span class="ht-title">🌌 <span data-nav="sky">The Sky</span></span></a>
+        <a class="home-tile" href="/en/holliday_calendar/"><span class="ht-title">🎉 <span data-nav="holidays">Holiday Calendar</span></span></a>
+        <a class="home-tile" href="/en/maps/"><span class="ht-title">🗺️ <span data-nav="maps">Weather Maps</span></span></a>
+      </div>
+    </section>
 
     <!-- Features Section -->
     <div class="features-section">
@@ -1091,7 +1118,7 @@
   }
 </script>
 
-<script src="/js/mobile-nav.js?v=21"></script>
+<script src="/js/mobile-nav.js?v=22"></script>
 <script src="/js/language-selector.js?v=9"></script>
 <script src="/language-switcher.js?v=15"></script>
 <script src="/js/background-selector.js?v=4"></script>
@@ -1101,6 +1128,8 @@
 <script src="/js/home-weather.js?v=9"></script>
 <script src="/js/place-context.js?v=2"></script>
 <script src="/js/home-cities.js?v=4"></script>
+<script src="/js/moon.js?v=4"></script>
+<script src="/js/home-today.js?v=1"></script>
 
 <script>
   // Listen for language changes from the language-switcher.js
