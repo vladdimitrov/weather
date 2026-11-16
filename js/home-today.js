@@ -1,6 +1,6 @@
 // Home page, "all sections" tiles: a live line under some of them, computed in the browser.
 //   [data-today="moon"]     phase and illumination of the Moon (js/moon.js, no network)
-//   [data-today="kp"]       the latest Kp index (NOAA)
+//   [data-today="kp"]       the Kp index now (NOAA, 1-minute estimate)
 //   [data-today="tomorrow"] tomorrow's high and low in Sofia (Open-Meteo), Bulgarian page only
 //   [data-today="uv"]       today's highest UV index in Sofia (Open-Meteo), Bulgarian page only
 // A failed request leaves the line empty; the tile is a plain link either way.
@@ -18,16 +18,16 @@
   const KP = { bg: 'Kp сега', en: 'Kp now', de: 'Kp aktuell', it: 'Kp ora', es: 'Kp ahora', fr: 'Kp actuel', nl: 'Kp nu' };
   const level = kp => (kp >= 5 ? { bg: 'буря', en: 'storm', de: 'Sturm', it: 'tempesta', es: 'tormenta', fr: 'tempête', nl: 'storm' }
     : { bg: 'спокойно', en: 'calm', de: 'ruhig', it: 'calmo', es: 'calma', fr: 'calme', nl: 'rustig' })[lang] || '';
-  // the same NOAA file the storm page and the widget read: the latest measured (not predicted) 3-hour value
-  fetch('https://services.swpc.noaa.gov/products/noaa-planetary-k-index-forecast.json')
+  // The same NOAA file as the weather card above and the storm page: the estimated Kp of the last minutes
+  // (the forecast file marks hours ahead as "estimated" too, so its last value is not "now")
+  fetch('https://services.swpc.noaa.gov/json/planetary_k_index_1m.json')
     .then(r => (r.ok ? r.json() : Promise.reject()))
     .then(list => {
-      const measured = list.filter(entry => entry.observed !== 'predicted' && !isNaN(parseFloat(entry.kp)));
-      const last = measured[measured.length - 1];
-      if (last) {
-        const kp = parseFloat(last.kp);
-        set('kp', `${KP[lang] || KP.en} ${kp.toFixed(1).replace('.', lang === 'en' ? '.' : ',')} · ${level(kp)}`);
-      }
+      const last = list[list.length - 1];
+      const kp = last ? parseFloat(last.estimated_kp ?? last.kp_index) : NaN;
+      if (isNaN(kp)) return;
+      set('kp', `${KP[lang] || KP.en} ${kp.toFixed(1).replace('.', lang === 'en' ? '.' : ',')} · ${level(kp)}`);
+      document.querySelectorAll('.tc-value[data-today="kp"]').forEach(node => { node.dataset.level = kp >= 5 ? 2 : 0; });
     })
     .catch(() => { /* leave empty */ });
 
