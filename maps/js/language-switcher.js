@@ -129,7 +129,7 @@ const translations = {
     language: "Език",
     weather: "Прогноза",
     // Maps-specific translations
-    mapsTitle: "Карти за времето - Интерактивна визуализация на времето",
+    mapsTitle: "Карти за времето: дъжд, вятър, температура и мълнии",
     layerLabel: "Слой за времето:",
     loadMap: "Зареди карта",
     favoriteLocations: "Любими места",
