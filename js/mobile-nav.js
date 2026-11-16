@@ -109,6 +109,7 @@
     holidays: { en: 'Holiday Calendar', bg: 'Календар на празниците', de: 'Feiertagskalender', it: 'Calendario delle festività', es: 'Calendario de festivos', fr: 'Calendrier des jours fériés', nl: 'Feestdagenkalender' },
     sources: { en: 'Data Sources', bg: 'Източници на данни', de: 'Datenquellen', it: 'Fonti dei dati', es: 'Fuentes de datos', fr: 'Sources des données', nl: 'Gegevensbronnen' },
     sourcesShort: { en: 'Sources', bg: 'Източници', de: 'Quellen', it: 'Fonti', es: 'Fuentes', fr: 'Sources', nl: 'Bronnen' },
+    dataBy: { en: 'Data:', bg: 'Данни:', de: 'Daten:', it: 'Dati:', es: 'Datos:', fr: 'Données :', nl: 'Gegevens:' },
     moon: { en: 'Moon Calendar', bg: 'Лунен календар', de: 'Mondkalender', it: 'Calendario lunare', es: 'Calendario lunar', fr: 'Calendrier lunaire', nl: 'Maankalender' },
     allSections: { en: 'All sections', bg: 'Всички раздели', de: 'Alle Bereiche', it: 'Tutte le sezioni', es: 'Todas las secciones', fr: 'Toutes les rubriques', nl: 'Alle onderdelen' },
     sky: { en: 'The Sky', bg: 'Небето', de: 'Himmel', it: 'Il cielo', es: 'El cielo', fr: 'Le ciel', nl: 'De hemel' },

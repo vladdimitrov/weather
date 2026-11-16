@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 62, mobileNav: 21, languageSelector: 9, cityForecast: 18, moon: 4, lunaToday: 6, lunaLocal: 2, auroraKp: 3, placeContext: 2, skyLocal: 3, homeCities: 4, regionWeather: 5, passes: 2 };
+const VERSION = { theme: 62, mobileNav: 22, languageSelector: 9, cityForecast: 18, moon: 4, lunaToday: 6, lunaLocal: 2, auroraKp: 3, placeContext: 2, skyLocal: 3, homeCities: 4, regionWeather: 5, passes: 2 };
 
 const CITIES = require('./bg-cities.js');
 
@@ -269,7 +269,7 @@ ${rows}
     </section>`;
 }
 
-let FOOTER_TEXT = { about: 'За сайта', privacy: 'Поверителност', cities: 'Всички градове', sources: 'Източници' };
+let FOOTER_TEXT = { about: 'За сайта', privacy: 'Поверителност', cities: 'Всички градове', sources: 'Източници', data: 'Данни:' };
 let LOGO = 'Лого';
 let FOOTER_URLS = { about: '/za-saita/', privacy: '/poveritelnost/', cities: '/gradove/', sources: '/iztochnici/' };
 const footer = () => `  <footer style="background: var(--card-bg); border-top: 1px solid var(--card-border); padding: 10px; box-shadow: var(--shadow-glow); position: fixed; bottom: 0; left: 0; width: 100%; margin-top: 0; height: var(--footer-height); z-index: 100; display: flex; align-items: center; justify-content: space-between;">
@@ -278,6 +278,7 @@ const footer = () => `  <footer style="background: var(--card-bg); border-top: 1
     </div>
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">${new Date().getFullYear()}</span> VYZYA
+      · <span data-nav="dataBy">${FOOTER_TEXT.data}</span> <a href="https://open-meteo.com/" class="footer-link" rel="noopener" target="_blank">Open-Meteo.com</a> (<a href="https://creativecommons.org/licenses/by/4.0/" class="footer-link" rel="noopener license" target="_blank">CC BY 4.0</a>)
       · <a href="${FOOTER_URLS.cities}" class="footer-link" data-nav="cityIndex">${FOOTER_TEXT.cities}</a>
       · <a href="${FOOTER_URLS.sources}" class="footer-link" data-nav="sourcesShort">${FOOTER_TEXT.sources}</a>
       · <a href="${FOOTER_URLS.about}" class="footer-link" data-nav="about">${FOOTER_TEXT.about}</a>
@@ -386,7 +387,7 @@ ${head}</head>
 ${body}
 ${languageLinks}  </div>
 
-${(FOOTER_TEXT = { about: NAV.about, privacy: NAV.privacy, cities: NAV.cities, sources: NAV.sourcesShort }, LOGO = I18N.LOGO_ALT[lang], FOOTER_URLS = Object.fromEntries(Object.entries({ about: '/za-saita/', privacy: '/poveritelnost/', cities: '/gradove/', sources: '/iztochnici/' }).map(([key, to]) => [key, multi ? I18N.localUrl(lang, to) : to])), footer())}
+${(FOOTER_TEXT = { about: NAV.about, privacy: NAV.privacy, cities: NAV.cities, sources: NAV.sourcesShort, data: NAV.dataBy }, LOGO = I18N.LOGO_ALT[lang], FOOTER_URLS = Object.fromEntries(Object.entries({ about: '/za-saita/', privacy: '/poveritelnost/', cities: '/gradove/', sources: '/iztochnici/' }).map(([key, to]) => [key, multi ? I18N.localUrl(lang, to) : to])), footer())}
 
 <script src="/js/mobile-nav.js?v=${VERSION.mobileNav}" defer></script>
 <script src="/js/language-selector.js?v=${VERSION.languageSelector}" defer></script>
