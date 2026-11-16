@@ -103,8 +103,10 @@
       const temp = Math.max(gap('temperature_2m_max'), gap('temperature_2m_min'));
       const rain = daily.precipitation_sum || { min: [], max: [] };
       const wetMax = rain.max[i] || 0, wetMin = rain.min[i] || 0;
-      const split = wetMax >= 2 && wetMin < 0.5;
-      const level = temp > 5 || (wetMax >= 5 && wetMin < 0.5) ? 2 : temp > 2.5 || split ? 1 : 0;
+      // Thresholds from the usual gap between the three models over Bulgaria: 1–3° for the first days and
+      // 3–5° later in the week are normal and say nothing, so only a larger gap is marked
+      const split = wetMax >= 5 && wetMin < 0.5;
+      const level = temp > 6 || (wetMax >= 10 && wetMin < 0.5) ? 2 : temp > 4 || split ? 1 : 0;
       return { level, temp: Math.round(temp), split };
     },
     text: {
@@ -154,7 +156,7 @@
       if (first < 0) return text.all;
       const rest = days.slice(first);
       const temp = Math.max(...rest.map(d => d.c.temp));
-      const why = [temp > 2.5 ? text.temp(temp) : '', rest.some(d => d.c.split) ? text.rain : ''].filter(Boolean).join(text.and) || text.temp(temp);
+      const why = [temp > 4 ? text.temp(temp) : '', rest.some(d => d.c.split) ? text.rain : ''].filter(Boolean).join(text.and) || text.temp(temp);
       return first >= 2 ? text.until(name(days[first - 1].i), why) : text.early(name(days[first].i), why);
     }
   };

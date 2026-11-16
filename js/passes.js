@@ -92,7 +92,7 @@
     const v = verdict(hours);
 
     const head = el('p', `pass-verdict ${LEVEL[v.level].cls}`, v.text);
-    const facts = el('p', 'storm-updated', `Следващите 48 часа: до ${Math.round(v.snow)} см нов сняг, пориви до ${Math.round(v.gust)} км/ч.`);
+    const facts = el('p', 'storm-updated', `Следващите 48 часа: ${Math.round(v.snow) >= 1 ? `до ${Math.round(v.snow)} см нов сняг` : 'без нов сняг'}, пориви до ${Math.round(v.gust)} км/ч.`);
 
     // every 3 hours, 48 hours
     const table = el('table', 'kp-table region-table pass-hours');
