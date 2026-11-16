@@ -1,7 +1,7 @@
 // The mountain passes (Bulgarian only, pages written by .github/scripts/build-extra.js from
 // bg-passes.js). Forecast of Open-Meteo for the height of the road (elevation=), in hours.
 //   /prohodi/<slug>/  #passForecast (data-lat, data-lon, data-elevation, data-warn): the verdict for
-//                     the next 48 hours, every 3 hours for 48 hours, 7 days, official warnings of NIMH
+//                     the next 48 hours, the best time to cross in the next 24, every 3 hours for 48 hours, 7 days, official warnings of NIMH
 //   /prohodi/         table.pass-table, one row per pass: now, new snow and gusts in 24 hours, verdict;
 //                     the passes with the worst conditions first
 // What counts as a hazard on the road, per hour:
@@ -72,6 +72,41 @@
     const i = h.time.findIndex(t => t + 3600 > now);
     return i < 0 ? 0 : i;
   };
+
+  // The best time to cross in the next 24 hours, in daylight (06:00–20:00):
+  //   the longest run of hours without snow, ice, strong wind or fog;
+  //   if every hour has something, the hour with the mildest conditions.
+  // Returns null when the next 24 hours have no hazard at all (then the verdict already says so).
+  const localHour = unix => +new Date(unix * 1000).toLocaleString('en-GB', { timeZone: TZ, hour: '2-digit', hour12: false }) % 24;
+  function bestTime(hours) {
+    const day = hours.slice(0, 24);
+    if (!day.some(x => x.kinds.size)) return null;
+    const light = day.filter(x => localHour(x.time) >= 6 && localHour(x.time) <= 20);
+    if (!light.length) return null;
+    let best = null;
+    let run = null;
+    light.forEach((x, k) => {
+      const next = light[k + 1];
+      if (!x.kinds.size) {
+        run = run || { from: x.time, to: x.time, n: 0 };
+        run.to = x.time;
+        run.n++;
+      }
+      // a run ends at a hazard, at the end, or at a gap (the night between two days)
+      if (run && (x.kinds.size || !next || next.time - x.time > 3600)) {
+        if (!best || run.n > best.n) best = run;
+        run = null;
+      }
+    });
+    const when = unix => (dayKey(unix) === dayKey(hours[0].time) ? hour(unix) : `${dayName(unix)} ${hour(unix)}`);
+    if (best) {
+      const span = best.n === 1 ? `около ${when(best.from)}` : `${when(best.from)} – ${hour(best.to + 3600)}`;
+      return { ok: true, text: `Най-подходящо време за минаване в следващите 24 часа: ${span} – без сняг, поледица, силен вятър и мъгла.` };
+    }
+    const score = x => x.kinds.size * 100 + x.snow * 20 + x.gust;
+    const mild = light.reduce((a, b) => (score(b) < score(a) ? b : a));
+    return { ok: false, text: `През деня в следващите 24 часа няма час без опасни условия. Най-леко е ${when(mild.time)} (пориви до ${Math.round(mild.gust)} км/ч${mild.snow >= 0.1 ? `, ${mild.snow.toFixed(1)} см сняг за часа` : ''}). Ако можете, отложете пътуването.` };
+  }
 
   // ---- One pass ----
   async function passPage(box) {
@@ -145,7 +180,8 @@
     daysWrap.appendChild(days);
 
     const now = box.querySelector('#passNow');
-    now.replaceChildren(head, facts);
+    const best = bestTime(hours);
+    now.replaceChildren(head, facts, ...(best ? [el('p', `pass-best ${best.ok ? 'pass-best-ok' : 'pass-best-bad'}`, best.text)] : []));
     box.querySelector('#passHours').replaceChildren(hoursWrap);
     box.querySelector('#passDays').replaceChildren(daysWrap);
     box.querySelectorAll('[hidden]').forEach(node => { node.hidden = false; });
@@ -187,6 +223,7 @@
       return;
     }
     const answers = Array.isArray(data) ? data : [data];
+    const heads = [...table.tHead.rows[0].cells].map(th => th.textContent);
     rows.forEach((row, n) => {
       const h = answers[n] && answers[n].hourly;
       if (!h) return;
@@ -194,7 +231,8 @@
       const v = verdict(hazards(h, start, 48));
       const day = verdict(hazards(h, start, 24));
       const cells = [deg(h.temperature_2m[start]), day.snow >= 0.1 ? `${day.snow.toFixed(1)} см` : '–', `${Math.round(day.gust)} км/ч`];
-      cells.forEach(text => row.appendChild(el('td', '', text)));
+      // data-label: the column name, shown on phones, where the table becomes one card per pass
+      cells.forEach((text, k) => { const td = el('td', 'pass-stat', text); td.dataset.label = heads[k + 1] || ''; row.appendChild(td); });
       const td = el('td', 'region-warn');
       td.appendChild(el('span', LEVEL[v.level].cls, v.text));
       row.appendChild(td);
