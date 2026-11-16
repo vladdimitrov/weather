@@ -40,6 +40,34 @@
     return params;
   };
 
+  // One sentence for the day under the card: the weather, the range, the chance of rain and
+  // whether the three models agree for today and tomorrow (the spread of the daily maximum)
+  const sentenceText = {
+    en: { day: 'Today', range: (a, b) => `${a}° to ${b}°`, rain: p => `${p}% chance of rain`, agree: 'The three models agree for today and tomorrow.', differ: d => `The models differ by up to ${d}° for tomorrow, so check again later.` },
+    bg: { day: 'Днес', range: (a, b) => `${a}° до ${b}°`, rain: p => `вероятност за валеж ${p}%`, agree: 'Трите модела са единодушни за днес и утре.', differ: d => `Моделите се разминават до ${d}° за утре, затова проверете отново по-късно.` },
+    de: { day: 'Heute', range: (a, b) => `${a}° bis ${b}°`, rain: p => `${p}% Regenwahrscheinlichkeit`, agree: 'Die drei Modelle sind sich für heute und morgen einig.', differ: d => `Die Modelle weichen für morgen um bis zu ${d}° ab, schauen Sie später noch einmal nach.` },
+    it: { day: 'Oggi', range: (a, b) => `da ${a}° a ${b}°`, rain: p => `${p}% di probabilità di pioggia`, agree: 'I tre modelli concordano per oggi e domani.', differ: d => `I modelli differiscono fino a ${d}° per domani: ricontrolla più tardi.` },
+    es: { day: 'Hoy', range: (a, b) => `de ${a}° a ${b}°`, rain: p => `${p}% de probabilidad de lluvia`, agree: 'Los tres modelos coinciden para hoy y mañana.', differ: d => `Los modelos difieren hasta ${d}° para mañana, conviene volver a consultar más tarde.` },
+    fr: { day: 'Aujourd’hui', range: (a, b) => `de ${a}° à ${b}°`, rain: p => `${p}% de risque de pluie`, agree: 'Les trois modèles concordent pour aujourd’hui et demain.', differ: d => `Les modèles divergent jusqu’à ${d}° pour demain : revenez plus tard.` },
+    nl: { day: 'Vandaag', range: (a, b) => `${a}° tot ${b}°`, rain: p => `${p}% kans op regen`, agree: 'De drie modellen zijn het eens voor vandaag en morgen.', differ: d => `De modellen lopen tot ${d}° uiteen voor morgen, kijk later nog eens.` }
+  };
+  const summaryBox = document.getElementById('nowSummary');
+  function renderSummary() {
+    if (!summaryBox || !daily || !daily.time || !data0) return;
+    const language = sentenceText[document.documentElement.lang] ? document.documentElement.lang : 'en';
+    const text = sentenceText[language];
+    const condition = conditions.find(c => c.codes.includes(daily.weather_code[0])) || conditions[2];
+    const rain = daily.precipitation_probability_max ? daily.precipitation_probability_max[0] : null;
+    const parts = [pickText(condition.text), text.range(Math.round(daily.temperature_2m_min[0]), Math.round(daily.temperature_2m_max[0]))];
+    if (typeof rain === 'number' && rain >= 30) parts.push(text.rain(rain));
+    const max = data0.spread && data0.spread.daily && data0.spread.daily.temperature_2m_max;
+    const gap = max && max.min && max.max ? Math.max(...[0, 1].map(i => (max.max[i] ?? 0) - (max.min[i] ?? 0))) : null;
+    const verdict = gap === null ? '' : gap > 2.5 ? text.differ(Math.round(gap)) : text.agree;
+    summaryBox.textContent = `${text.day}: ${parts.join(', ')}. ${verdict}`.trim();
+    summaryBox.hidden = false;
+  }
+
+  let data0 = null;
   let weather = null;
   let daily = null;
   let kp = null;
@@ -84,6 +112,7 @@
     card.appendChild(element('now-more', pickText(moreText)));
     card.hidden = false;
     renderDays(place);
+    renderSummary();
   }
 
   // The next three days under the card; each opens the hourly forecast of that day
@@ -139,7 +168,7 @@
     const place = CitySearch.startPlace();
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${place.latitude}&longitude=${place.longitude}` +
       '&current=temperature_2m,apparent_temperature,weather_code' +
-      '&daily=weather_code,temperature_2m_max,temperature_2m_min&forecast_days=3&timezone=auto';
+      '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&forecast_days=3&timezone=auto';
     try {
       // the same forecast as the other pages: the median of three models (/js/forecast-core.js)
       const [data, kpResponse] = await Promise.all([
@@ -147,6 +176,7 @@
         fetch('https://services.swpc.noaa.gov/json/planetary_k_index_1m.json').catch(() => null)
       ]);
       if (!data || !data.current) throw new Error('no current weather in the answer');
+      data0 = data;
       weather = data.current;
       daily = data.daily || null;
       if (kpResponse && kpResponse.ok) {

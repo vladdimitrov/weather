@@ -344,7 +344,7 @@
       windText.prepend(WeatherIcons.node('', 'wind', text.wind, 'sm'));
       day.appendChild(windText);
       const sure = CONFIDENCE.day(forecast.spread, i);
-      if (sure && sure.level) {
+      if (sure && sure.level === 2) {
         const C = CONFIDENCE.text[document.documentElement.lang] || CONFIDENCE.text.en;
         const line = el('span', 'city-day-conf', `● ${C.levels[sure.level]}`);
         line.title = C.tip;

@@ -696,6 +696,8 @@
    .now-day .nd-name { color: var(--gold); font-weight: 600; }
    .now-day .nd-temp { font-weight: 700; white-space: nowrap; }
    /* keeps its room while it loads, so the page does not jump */
+   .now-summary { max-width: 560px; margin: 10px auto 0; text-align: center; font-size: 0.95rem; line-height: 1.4; color: #e8f1ff; }
+   #nowSummary[hidden] { display: block; visibility: hidden; min-height: 2.8em; }
    #nowDays[hidden] { display: flex !important; visibility: hidden; min-height: 94px; }
    /* the room theme.css keeps for the "now" card is its whole height, padding included */
    .hero-section #nowCard[hidden] { box-sizing: border-box; }
@@ -774,6 +776,7 @@
       <h1 class="hero-title" id="hero-title" data-translation-key="heroTitle">Prévisions météo et tempêtes magnétiques</h1>
       <p class="hero-subtitle" id="hero-subtitle" data-translation-key="heroSubtitle">Suivez la météo, les phases de la Lune, les tempêtes magnétiques et les jours fériés en temps réel, pour n’importe quel lieu du monde. Organisez votre journée en toute confiance.</p>
       <a class="now-card" id="nowCard" href="/fr/weather/" hidden></a>
+      <p class="now-summary" id="nowSummary" hidden></p>
       <div class="now-days" id="nowDays" hidden></div>
       <div class="home-search" id="homeSearch"></div>
     </div>
@@ -1126,7 +1129,7 @@
 <script src="/js/city-search.js?v=13"></script>
 <script src="/js/weather-icons.js?v=5"></script>
 <script src="/js/forecast-core.js?v=3"></script>
-<script src="/js/home-weather.js?v=9"></script>
+<script src="/js/home-weather.js?v=10"></script>
 <script src="/js/place-context.js?v=2"></script>
 <script src="/js/home-cities.js?v=4"></script>
 <script src="/js/moon.js?v=4"></script>
