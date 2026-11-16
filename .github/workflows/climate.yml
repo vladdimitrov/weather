@@ -37,7 +37,7 @@ jobs:
       - name: Commit
         id: commit
         run: |
-          git add -A .github/scripts/climate.json vremeto en/vremeto de/vremeto it/vremeto es/vremeto gradove en/gradove de/gradove it/gradove es/gradove sitemap.xml .github/scripts/sitemap-hashes.json
+          git add -A .github/scripts/climate.json vremeto en/vremeto de/vremeto it/vremeto es/vremeto fr/vremeto nl/vremeto gradove en/gradove de/gradove it/gradove es/gradove fr/gradove nl/gradove sitemap.xml .github/scripts/sitemap-hashes.json
           if git diff --cached --quiet; then
             echo "Nothing changed."; exit 0
           fi
