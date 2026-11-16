@@ -35,6 +35,8 @@ Static site hosted on **GitHub Pages**.
 | `za-saita/`, `poveritelnost/` | `build-static.js`: About and Privacy (texts in `text-static.js`) |
 | `en/`, `de/`, `it/`, `es/` (home), `<lang>/magnitni-buri/`, `<lang>/weather/`, `<lang>/maps/`, `<lang>/holliday_calendar/` | `build-main.js`: translations of the hand-written pages. Home and storms are translated completely; the forecast, maps and holiday pages get their own address, title, description (`text-main.js`), heading and menu, and their scripts translate the rest when the page opens. The Bulgarian pages are the templates; the texts are the ones the pages use in the browser (`homepageTranslations` in `index.html`, `PAGE` and `T` in `js/storm-page.js`, `navTexts` in `js/mobile-nav.js`) |
 
+Share images with today's values (`images/cards/`: passes, storms, air) are drawn three times a day by `tools/social` (`python main.py cards`, workflow `cards.yml`); the Share button on those pages is `js/share.js`.
+
 Change the script or its data file and run it again; changes made directly in the generated HTML are overwritten.
 
 Languages: Bulgarian, English, German, Italian, Spanish, French, Dutch (switcher in the header, saved in the browser).

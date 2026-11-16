@@ -63,6 +63,8 @@ function common(html, lang, url, { title, ogTitle, description, source, pending 
   html = once(html, /<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${esc(ogTitle)}">`, 'og:title');
   html = once(html, /<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${esc(description)}">`, 'og:description');
   html = once(html, /<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${SITE}${pageUrl}">`, 'og:url');
+  // The share cards with today's values (images/cards/) are drawn in Bulgarian only
+  html = html.replace(/\/images\/cards\/[\w-]+\.png/g, '/images/og-image.png');
   // The Bulgarian page sends visitors to their language; a translation remembers its own
   html = once(html, /  <script>\n    \(function\(\) \{\n      \/\/ Bulgarian original\.[\s\S]*?<\/script>/, `  <script>
     (function() {

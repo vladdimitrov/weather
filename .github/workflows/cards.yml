@@ -1,0 +1,52 @@
+name: Share cards
+
+# Three times a day: redraws the share images (og:image) of the pass pages, /prohodi/, the magnetic
+# storms and the air quality page with today's values (tools/social/wp_social/cards.py, the same
+# rules as js/passes.js) into images/cards/. A card is written, and committed, only when its text
+# changed. If Open-Meteo or NOAA does not answer, the run fails and the cards stay as they are
+# (each card shows the day of its values).
+on:
+  schedule:
+    # UTC. 04:17, 10:17 and 15:17 = 06:17, 12:17 and 17:17 in Sofia in winter. An odd minute is less busy.
+    - cron: '17 4,10,15 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: cards
+  cancel-in-progress: false
+
+jobs:
+  cards:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r tools/social/requirements.txt
+      - name: Draw the cards
+        working-directory: tools/social
+        run: python main.py cards
+      - name: Commit
+        id: commit
+        run: |
+          git add images/cards data/cards-state.json
+          if git diff --cached --quiet; then
+            echo "Nothing changed."; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Share cards of $(date -u '+%F %H:%M')"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+      # A push made by Actions may not start the Pages build by itself: ask for it
+      - name: Publish
+        if: steps.commit.outputs.pushed == 'true'
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"

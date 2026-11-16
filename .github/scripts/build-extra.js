@@ -336,6 +336,7 @@ ${ranking(0, 'low', -1)}
     url,
     title: R.title,
     description: R.description,
+    ...(slug === 'kachestvo-na-vazduha' ? { image: '/images/cards/air.png' } : {}),
     jsonLd: breadcrumbs('bg', [['Weather Pulse', '/'], [TXT.bg.hubName, '/vremeto/'], [R.h1, url]]),
     body: `    ${REGION_STYLE}
     <p class="breadcrumbs"><a href="/vremeto/">${TXT.bg.hubName}</a> › ${R.h1}</p>
@@ -547,7 +548,8 @@ function widgetPage() {
 }
 
 // ---- Mountain passes: /prohodi/ and /prohodi/<slug>/ ----
-const PASS_SCRIPTS = `<script src="/js/passes.js?v=${VERSION.passes}" defer></script>\n`;
+const SHARE_SCRIPT = `<script src="/js/share.js?v=${VERSION.share}" defer></script>\n`;
+const PASS_SCRIPTS = `<script src="/js/passes.js?v=${VERSION.passes}" defer></script>\n${SHARE_SCRIPT}`;
 const PASS_STYLE = '<style>.pass-verdict{font-size:1.15rem;font-weight:700;padding:10px 14px;border-radius:10px;margin:0 0 8px;color:#1a1a2e}.pass-ok{background:#a5d6a7}.pass-warn{background:#ffd54f}.pass-bad{background:#ff8a65}.region-warn span.pass-ok,.region-warn span.pass-warn,.region-warn span.pass-bad{color:#1a1a2e}.pass-day td{font-weight:700;background:rgba(255,255,255,0.06)}.pass-hazard td:nth-child(2){color:#ffd54f;font-weight:600}.pass-facts{margin:0;padding-left:1.2em}.pass-hours th,.pass-hours td{white-space:nowrap}.pass-best{margin:8px 0 0;padding:9px 13px;border-radius:10px;border:1px solid var(--panel-border);background:var(--panel);line-height:1.45}.pass-best-ok{border-color:#81c784}.pass-best-bad{border-color:#ff8a65}@media (max-width:640px){.pass-table thead{display:none}.pass-table,.pass-table tbody{display:block}.pass-table tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 8px;padding:12px;margin:0 0 10px;border:1px solid var(--panel-border);border-radius:12px;background:var(--panel)}.pass-table td{display:block;padding:0;border:0;text-align:left}.pass-table td:first-child{grid-column:1/-1;font-weight:700;font-size:1.05rem}.pass-table td.region-warn{grid-column:1/-1;order:2}.pass-table td.pass-stat{order:3;font-size:0.95rem}.pass-table td.pass-stat::before{content:attr(data-label);display:block;font-size:0.75rem;color:var(--ink-soft,#b9c2d9)}.pass-table .region-warn span{display:block;padding:7px 10px;border-radius:8px;white-space:normal}}</style>';
 const PASS_ROADS = 'Тази страница е прогноза за времето, а не информация за затворени пътища. Дали пътят е отворен и дали има ограничения за тежкотоварни, вижте в <a href="https://www.api.bg/" rel="noopener">Агенция „Пътна инфраструктура“</a>.';
 const passHint = pass => `${pass.title} – ${pass.elevation} м`;
@@ -568,11 +570,13 @@ function passPage(pass) {
     url,
     title: T.title(pass),
     description: T.description(pass),
+    image: `/images/cards/pass-${pass.slug}.png`,
     jsonLd: breadcrumbs('bg', [['Weather Pulse', '/'], [T.hubCrumb, '/prohodi/'], [pass.title, url]]) +
       placeJson({ title: T.h1(pass), name: pass.title, country: 'BG', lat: pass.lat, lon: pass.lon, url, lang: 'bg' }),
     body: `    ${PASS_STYLE}
     <p class="breadcrumbs"><a href="/prohodi/">${T.hubCrumb}</a> › ${esc(pass.name)}</p>
     <h1>${T.h1(pass)}</h1>
+    <div data-share></div>
     <p class="storm-intro">${esc(pass.text)}</p>
 
     <div class="city-forecast" id="passForecast" data-lat="${pass.lat}" data-lon="${pass.lon}" data-elevation="${pass.elevation}" data-warn="${pass.warn.join(',')}">
@@ -631,10 +635,12 @@ function passesHub() {
     url,
     title: T.hubTitle,
     description: T.hubDescription,
+    image: '/images/cards/pass-all.png',
     jsonLd: breadcrumbs('bg', [['Weather Pulse', '/'], [T.hubCrumb, url]]),
     body: `    ${REGION_STYLE}${PASS_STYLE}
     <p class="breadcrumbs"><a href="/vremeto/">${TXT.bg.hubName}</a> › ${T.hubCrumb}</p>
     <h1>${T.hubH1}</h1>
+    <div data-share></div>
     <p class="storm-intro">${T.hubIntro}</p>
 
     <section class="info-card">
