@@ -9,15 +9,21 @@
   // Time zone: the browser's, or that of the place picked on the forecast page (/js/place-context.js)
   let zone;
 
+  // Moonrise and moonset are for the picked place (Sofia by default), in that place's time zone
+  let skyPlace = null;
   function render() {
-    target.innerHTML = MoonView.today(document.documentElement.lang, new Date(), zone);
+    target.innerHTML = MoonView.today(document.documentElement.lang, new Date(), zone, skyPlace);
   }
 
   function useZone() {
     if (typeof PlaceContext === 'undefined') return;
     const place = PlaceContext.get();
-    if (place.isDefault) { zone = undefined; render(); return; }
-    PlaceContext.timeZone(place).then(value => { zone = value; render(); });
+    if (place.isDefault) { zone = undefined; skyPlace = null; render(); return; }
+    PlaceContext.timeZone(place).then(value => {
+      zone = value;
+      skyPlace = { latitude: place.latitude, longitude: place.longitude, name: place.name, zone: value };
+      render();
+    });
   }
 
   // Share: the system share sheet where there is one, else the link is copied

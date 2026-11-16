@@ -61,6 +61,7 @@ const monthsOf = data => [...new Set([data.issued, ...(data.outlook || []).map(d
 function links(current, data) {
   const list = [
     ['/magnitni-buri/', 'Kp индекс сега'], ['/magnitni-buri/dnes/', 'Магнитни бури днес'], ['/magnitni-buri/utre/', 'Магнитни бури утре'],
+    ['/magnitni-buri/vchera/', 'Магнитни бури вчера'], ['/magnitni-buri/tazi-sedmitsa/', 'Магнитни бури тази седмица'],
     // every month that has a page (this one and the next, when the 27-day outlook reaches it)
     ...monthsOf(data).map(month => [monthUrl(month + '-01'), `Магнитни бури през ${monthTitle(month + '-01')}`]),
     ['/magnitni-buri/kp-indeks/', 'Kp индекс – какво означава'], ['/magnitni-buri/zdrave/', 'Магнитни бури и здраве'], ['/nebeto/', 'Северно сияние и небето']
@@ -249,11 +250,102 @@ ${links(url, data)}`
   });
 }
 
+// ---- Yesterday and this week ----
+const addDays = (iso, n) => new Date(new Date(iso + 'T12:00:00Z').getTime() + n * 86400000).toISOString().slice(0, 10);
+
+// Every day we know about, observed or forecast, by date (an observed value wins over a forecast)
+function dayMap(data) {
+  const map = {};
+  (data.outlook || []).forEach(d => { map[d.day] = { day: d.day, kp: d.kp, observed: false }; });
+  data.days.forEach(d => { map[d.day] = { day: d.day, kp: d.kp, observed: false }; });
+  Object.entries(data.history).forEach(([day, kp]) => { map[day] = { day, kp, observed: true }; });
+  return map;
+}
+
+const dayRows = list => list.map(d => `          <tr${Math.round(d.kp) >= 5 ? ' class="weekend"' : ''}><td>${date(d.day, { weekday: 'long', day: 'numeric', month: 'long' })}</td><td>${kpText(d.kp)}</td><td>${level(d.kp)[1]}</td><td>${d.observed ? 'измерено' : 'прогноза'}</td></tr>`).join('\n');
+const dayTable = list => `
+      <div class="table-scroll">
+      <table class="kp-table">
+        <thead><tr><th>Ден</th><th>Най-висок Kp</th><th>Ниво</th><th></th></tr></thead>
+        <tbody>
+${dayRows(list)}
+        </tbody>
+      </table>
+      </div>`;
+
+function yesterdayPage(data) {
+  const url = '/magnitni-buri/vchera/';
+  const map = dayMap(data);
+  const today = data.days[0] ? data.days[0].day : data.issued;
+  const yesterday = map[addDays(today, -1)];
+  const week = Array.from({ length: 7 }, (_, i) => map[addDays(today, -7 + i)]).filter(Boolean);
+  const [, name, g] = yesterday ? level(yesterday.kp) : [];
+  const summary = yesterday
+    ? `Вчера, ${longDate(yesterday.day)}, най-високият измерен Kp индекс беше ${kpText(yesterday.kp)}: ${yesterday.kp >= 4.67 ? `<strong>имаше магнитна буря</strong> – ${name.toLowerCase()}${g ? ` (${g})` : ''}` : name === 'Спокойно' ? 'спокойно магнитно поле, без магнитна буря' : 'повишена геомагнитна активност, но без магнитна буря'}.`
+    : 'Данните за вчера още не са публикувани.';
+  const storms = week.filter(d => Math.round(d.kp) >= 5);
+  return page({
+    ...ONLY_BG,
+    url,
+    title: 'Магнитни бури вчера – какъв беше Kp индексът',
+    description: 'Имаше ли магнитна буря вчера: измереният най-висок Kp индекс, нивото по скалата на NOAA и дните на последната седмица. Обновява се всяка сутрин.',
+    jsonLd: breadcrumbs([['Weather Pulse', '/'], ['Магнитни бури', '/magnitni-buri/'], ['Магнитни бури вчера', url]]),
+    body: `    <p class="breadcrumbs"><a href="/magnitni-buri/">Магнитни бури</a> › вчера</p>
+    <h1>Магнитни бури вчера</h1>
+    <section class="info-card">
+      <p class="storm-intro">${summary}</p>
+      <p>Магнитна буря има при Kp индекс 5 и повече (G1 по скалата на NOAA). Показаната стойност е най-високият 3-часов Kp за деня по оценка на NOAA и може да се уточни по-късно. ${storms.length ? `През последните 7 дни дните с буря са ${storms.length}: ${storms.map(d => date(d.day, { day: 'numeric', month: 'long' })).join(', ')}.` : 'През последните 7 дни не е имало ден с магнитна буря.'}</p>
+    </section>
+    <section class="info-card">
+      <h2>Последните 7 дни</h2>${dayTable(week)}
+      <p class="storm-updated">Данни на NOAA SWPC. Какво ще бъде днес: <a href="/magnitni-buri/dnes/">магнитни бури днес</a>.</p>
+    </section>
+${KP_WIDGET}
+${links(url, data)}`
+  });
+}
+
+function weekPage(data) {
+  const url = '/magnitni-buri/tazi-sedmitsa/';
+  const map = dayMap(data);
+  const today = data.days[0] ? data.days[0].day : data.issued;
+  // Monday to Sunday of the week of today
+  const weekday = (new Date(today + 'T12:00:00Z').getUTCDay() + 6) % 7;
+  const start = addDays(today, -weekday);
+  const week = Array.from({ length: 7 }, (_, i) => map[addDays(start, i)]).filter(Boolean);
+  const storms = week.filter(d => Math.round(d.kp) >= 5);
+  const peak = week.reduce((best, d) => (!best || d.kp > best.kp ? d : best), null);
+  const intro = week.length
+    ? `Тази седмица (${date(week[0].day, { day: 'numeric', month: 'long' })} – ${date(week[week.length - 1].day, { day: 'numeric', month: 'long' })}) ${storms.length ? `има ${storms.length} ${storms.length === 1 ? 'ден' : 'дни'} с магнитна буря (Kp 5 и повече): ${storms.map(d => date(d.day, { weekday: 'long', day: 'numeric', month: 'long' })).join(', ')}.` : 'няма дни с магнитна буря (Kp 5 и повече) по измерванията и прогнозата на NOAA.'} Най-високият Kp е ${kpText(peak.kp)} (${date(peak.day, { weekday: 'long' })}).`
+    : 'Данните за седмицата още не са публикувани.';
+  return page({
+    ...ONLY_BG,
+    url,
+    title: 'Магнитни бури тази седмица – Kp индекс по дни',
+    description: 'Магнитни бури тази седмица: измерен и прогнозен Kp индекс за всеки ден от понеделник до неделя по данни на NOAA и кои дни се очаква буря.',
+    jsonLd: breadcrumbs([['Weather Pulse', '/'], ['Магнитни бури', '/magnitni-buri/'], ['Магнитни бури тази седмица', url]]),
+    body: `    <p class="breadcrumbs"><a href="/magnitni-buri/">Магнитни бури</a> › тази седмица</p>
+    <h1>Магнитни бури тази седмица</h1>
+    <section class="info-card">
+      <p class="storm-intro">${intro}</p>
+      <p>Измерено е най-високото 3-часово Kp за вече минали дни, а за предстоящите – прогнозата на NOAA (3 дни по часове, по-нататък по 27-дневната прогноза, която е ориентировъчна).</p>
+    </section>
+    <section class="info-card">
+      <h2>Kp индекс по дни</h2>${dayTable(week)}
+      <p class="storm-updated">Прогноза на NOAA SWPC от ${date(data.issued, { day: 'numeric', month: 'long', year: 'numeric' })} г. Подробности по часове: <a href="/magnitni-buri/dnes/">днес</a> и <a href="/magnitni-buri/utre/">утре</a>.</p>
+    </section>
+${KP_WIDGET}
+${links(url, data)}`
+  });
+}
+
 function build() {
   const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
   data.history = data.history || {};
   write('magnitni-buri/dnes', dayPage(data, 0));
   write('magnitni-buri/utre', dayPage(data, 1));
+  write('magnitni-buri/vchera', yesterdayPage(data));
+  write('magnitni-buri/tazi-sedmitsa', weekPage(data));
   // the month of today, and the next one when the forecast reaches it
   const months = monthsOf(data);
   months.forEach(month => write(monthUrl(month + '-01').slice(1, -1), monthPage(data, month)));
@@ -265,5 +357,5 @@ function build() {
 module.exports = { build, monthUrl, monthTitle };
 if (require.main === module) {
   const { months } = build();
-  console.log(`Wrote /magnitni-buri/dnes/, /utre/, /kp-indeks/, /zdrave/ and ${months.length} month page(s).`);
+  console.log(`Wrote /magnitni-buri/dnes/, /utre/, /vchera/, /tazi-sedmitsa/, /kp-indeks/, /zdrave/ and ${months.length} month page(s).`);
 }

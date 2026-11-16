@@ -32,9 +32,11 @@
     const seas = MARIA.map(([x, y, s]) => `<circle cx="${(c + x * r).toFixed(1)}" cy="${(c + y * r).toFixed(1)}" r="${(s * r).toFixed(1)}"/>`).join('');
     const title = label ? `<title>${label}</title>` : '';
     return `<svg class="moon-svg" viewBox="0 0 100 100" width="${size}" height="${size}" role="img"${label ? ` aria-label="${label}"` : ' aria-hidden="true"'}>${title}` +
+      `<defs><radialGradient id="mvShade" cx="50%" cy="50%" r="50%"><stop offset="72%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#000" stop-opacity="0.38"/></radialGradient></defs>` +
       `<circle cx="${c}" cy="${c}" r="${r}" fill="#1a2036"/>` +
       `<path d="${lit}" fill="#f1ecd9"/>` +
       `<g fill="#3d4663" fill-opacity="0.2">${seas}</g>` +
+      `<circle cx="${c}" cy="${c}" r="${r}" fill="url(#mvShade)"/>` +
       `<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1"/></svg>`;
   }
 
@@ -72,45 +74,53 @@
   const LOCALES = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES', fr: 'fr-FR', nl: 'nl-NL' };
   const T = {
     bg: {
+      rise: 'Изгрев на Луната', set: 'Залез на Луната', untilFull: 'До пълнолунието', untilNew: 'До новолунието', d: 'д.', h: 'ч.', min: 'мин.', none: 'няма', placeFor: 'Времената са за',
       lit: 'Осветеност', age: 'Възраст', days: 'дни', distance: 'Разстояние', km: 'км', waxing: 'Луната расте', waning: 'Луната намалява',
       cycle: 'Лунен цикъл', next: 'Следващи фази', today: 'днес', tomorrow: 'утре', inDays: n => `след ${n} дни`, at: 'в', clock: t => `${t} ч.`,
       strip: 'Луната през следващите 14 дни'
     },
     en: {
+      rise: 'Moonrise', set: 'Moonset', untilFull: 'Until full moon', untilNew: 'Until new moon', d: 'd', h: 'h', min: 'min', none: 'none', placeFor: 'Times are for',
       lit: 'Illumination', age: 'Age', days: 'days', distance: 'Distance', km: 'km', waxing: 'The Moon is waxing', waning: 'The Moon is waning',
       cycle: 'Lunar cycle', next: 'Next phases', today: 'today', tomorrow: 'tomorrow', inDays: n => `in ${n} days`, at: 'at', clock: t => t,
       strip: 'The Moon in the next 14 days'
     },
     de: {
+      rise: 'Mondaufgang', set: 'Monduntergang', untilFull: 'Bis zum Vollmond', untilNew: 'Bis zum Neumond', d: 'T', h: 'Std.', min: 'Min.', none: 'keiner', placeFor: 'Zeiten für',
       lit: 'Beleuchtung', age: 'Alter', days: 'Tage', distance: 'Entfernung', km: 'km', waxing: 'Der Mond nimmt zu', waning: 'Der Mond nimmt ab',
       cycle: 'Mondzyklus', next: 'Nächste Phasen', today: 'heute', tomorrow: 'morgen', inDays: n => `in ${n} Tagen`, at: 'um', clock: t => `${t} Uhr`,
       strip: 'Der Mond in den nächsten 14 Tagen'
     },
     it: {
+      rise: 'Sorgere della Luna', set: 'Tramonto della Luna', untilFull: 'Alla Luna piena', untilNew: 'Alla Luna nuova', d: 'g', h: 'h', min: 'min', none: 'nessuno', placeFor: 'Orari per',
       lit: 'Illuminazione', age: 'Età', days: 'giorni', distance: 'Distanza', km: 'km', waxing: 'La Luna è crescente', waning: 'La Luna è calante',
       cycle: 'Ciclo lunare', next: 'Prossime fasi', today: 'oggi', tomorrow: 'domani', inDays: n => `tra ${n} giorni`, at: 'alle', clock: t => t,
       strip: 'La Luna nei prossimi 14 giorni'
     },
     es: {
+      rise: 'Salida de la Luna', set: 'Puesta de la Luna', untilFull: 'Hasta la Luna llena', untilNew: 'Hasta la Luna nueva', d: 'd', h: 'h', min: 'min', none: 'ninguna', placeFor: 'Horas para',
       lit: 'Iluminación', age: 'Edad', days: 'días', distance: 'Distancia', km: 'km', waxing: 'La Luna está creciente', waning: 'La Luna está menguante',
       cycle: 'Ciclo lunar', next: 'Próximas fases', today: 'hoy', tomorrow: 'mañana', inDays: n => `en ${n} días`, at: 'a las', clock: t => t,
       strip: 'La Luna en los próximos 14 días'
     },
     fr: {
+      rise: 'Lever de la Lune', set: 'Coucher de la Lune', untilFull: 'Avant la pleine lune', untilNew: 'Avant la nouvelle lune', d: 'j', h: 'h', min: 'min', none: 'aucun', placeFor: 'Heures pour',
       lit: 'Illumination', age: 'Âge', days: 'jours', distance: 'Distance', km: 'km', waxing: 'La Lune est croissante', waning: 'La Lune est décroissante',
       cycle: 'Cycle lunaire', next: 'Prochaines phases', today: 'aujourd’hui', tomorrow: 'demain', inDays: n => `dans ${n} jours`, at: 'à', clock: t => t,
       strip: 'La Lune dans les 14 prochains jours'
     },
     nl: {
+      rise: 'Maanopkomst', set: 'Maanondergang', untilFull: 'Tot volle maan', untilNew: 'Tot nieuwe maan', d: 'd', h: 'u', min: 'min', none: 'geen', placeFor: 'Tijden voor',
       lit: 'Verlichting', age: 'Leeftijd', days: 'dagen', distance: 'Afstand', km: 'km', waxing: 'De maan is wassend', waning: 'De maan is afnemend',
       cycle: 'Maancyclus', next: 'Volgende fasen', today: 'vandaag', tomorrow: 'morgen', inDays: n => `over ${n} dagen`, at: 'om', clock: t => t,
       strip: 'De maan in de komende 14 dagen'
     }
   };
+  const SOFIA = { bg: 'София', en: 'Sofia', de: 'Sofia', it: 'Sofia', es: 'Sofía', fr: 'Sofia', nl: 'Sofia' };
   const PHASE_ANGLE = [0, 90, 180, 270];
   const PHASE_NAME = [0, 2, 4, 6]; // index of Moon.NAMES for new, first quarter, full, last quarter
 
-  function today(lang, now, zone) {
+  function today(lang, now, zone, place) {
     const language = T[lang] ? lang : 'en';
     const text = T[language];
     const names = Moon.NAMES[language];
@@ -145,8 +155,28 @@
         `${svg(day.angle, 34, names[day.index])}<strong>${format(date, { day: 'numeric' })}</strong><em>${Math.round(day.fraction * 100)}%</em></div>`;
     }).join('\n        ');
 
+
+    // Moonrise and moonset of the calendar day in the zone, for the place (default Sofia)
+    const here = place && isFinite(place.latitude) && isFinite(place.longitude) ? place : { latitude: 42.6977, longitude: 23.3219, name: '', zone: 'Europe/Sofia' };
+    const skyZone = here.zone || zone;
+    const skyClock = date => text.clock(date.toLocaleTimeString(locale, { timeZone: skyZone, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }));
+    const dayParts = new Intl.DateTimeFormat('en-CA', { timeZone: skyZone, year: 'numeric', month: '2-digit', day: '2-digit' }).format(now).split('-').map(Number);
+    const zoneOffset = instant => { const p = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: skyZone, hourCycle: 'h23', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' }).formatToParts(instant).map(x => [x.type, x.value])); return Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute) - instant.getTime(); };
+    const midnightGuess = new Date(Date.UTC(dayParts[0], dayParts[1] - 1, dayParts[2]));
+    const midnight = new Date(midnightGuess.getTime() - zoneOffset(new Date(midnightGuess.getTime() - zoneOffset(midnightGuess))));
+    const sky = Moon.riseSet(midnight, here.latitude, here.longitude);
+    const riseText = sky.rise ? skyClock(sky.rise) : text.none;
+    const setText = sky.set ? skyClock(sky.set) : text.none;
+    // Countdown to the next full moon (or the new moon when that comes first and the Moon is waning)
+    const targetType = state.waxing ? 2 : 0;
+    const target = Moon.nextPhase(now, targetType);
+    const left = target - now;
+    const leftDays = Math.floor(left / DAY);
+    const leftHours = Math.floor((left % DAY) / 3600000);
+    const countdown = `${leftDays} ${text.d} ${leftHours} ${text.h}`;
+
     return `<div class="moon-hero">
-        <div class="moon-hero-disc">${svg(state.angle, 190, names[state.index])}</div>
+        <div class="moon-hero-disc">${svg(state.angle, 240, names[state.index])}</div>
         <div class="moon-hero-text">
           <h2>${names[state.index]}</h2>
           <p class="moon-hero-sub">${format(now, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })} · ${state.waxing ? text.waxing : text.waning}</p>
@@ -154,7 +184,11 @@
             <div><dt>${text.lit}</dt><dd>${percent}%</dd></div>
             <div><dt>${text.age}</dt><dd>${moonAge.toFixed(1).replace('.', language === 'en' ? '.' : ',')} <small>${text.days}</small></dd></div>
             <div><dt>${text.distance}</dt><dd>${number(Math.round(distance(now) / 100) * 100)} <small>${text.km}</small></dd></div>
+            <div><dt>${text.rise}</dt><dd>${riseText}</dd></div>
+            <div><dt>${text.set}</dt><dd>${setText}</dd></div>
+            <div><dt>${state.waxing ? text.untilFull : text.untilNew}</dt><dd>${countdown}</dd></div>
           </dl>
+          <p class="moon-place-note">${text.placeFor} ${here.name || SOFIA[language]}</p>
           <div class="moon-cycle" role="img" aria-label="${text.cycle}: ${Math.round(cycle)}%">
             <div class="moon-cycle-bar"><i style="width:${cycle.toFixed(1)}%"></i></div>
             <div class="moon-cycle-ends"><span>${names[0]}</span><span>${names[4]}</span><span>${names[0]}</span></div>

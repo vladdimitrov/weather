@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 62, mobileNav: 21, languageSelector: 9, cityForecast: 17, moon: 3, lunaToday: 5, lunaLocal: 2, auroraKp: 3, placeContext: 2, skyLocal: 3, homeCities: 4, regionWeather: 5, passes: 1 };
+const VERSION = { theme: 62, mobileNav: 21, languageSelector: 9, cityForecast: 17, moon: 4, lunaToday: 6, lunaLocal: 2, auroraKp: 3, placeContext: 2, skyLocal: 3, homeCities: 4, regionWeather: 5, passes: 1 };
 
 const CITIES = require('./bg-cities.js');
 
@@ -536,7 +536,7 @@ function hubPage(lang) {
     body: `    <h1>${T.hubTitle}</h1>
     <p class="storm-intro">${T.hubIntro(text => linkTo('/weather/', text))}</p>
 
-    <p class="city-actions"><a class="btn" href="${L(lang, '/europe/')}">${T.europe}</a> <a class="btn" href="${L(lang, '/gradove/')}">${I18N.NAV[lang].cities} →</a></p>
+    <p class="city-actions">${lang === 'bg' ? '<a class="btn" href="/vremeto/utre/">Времето утре →</a> <a class="btn" href="/vremeto/uv-indeks/">UV индекс →</a> <a class="btn" href="/vremeto/polen/">Полени →</a> ' : ''}<a class="btn" href="${L(lang, '/europe/')}">${T.europe}</a> <a class="btn" href="${L(lang, '/gradove/')}">${I18N.NAV[lang].cities} →</a></p>
 
     <div class="city-grid" id="cityList">
       ${CITIES.map(city => `<a href="${L(lang, `/vremeto/${city.slug}/`)}" class="city-tile" data-lat="${city.lat}" data-lon="${city.lon}"><span class="city-tile-name">${cityName(city, lang)}</span><span class="city-tile-temp"></span></a>`).join('\n      ')}
