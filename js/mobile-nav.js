@@ -110,6 +110,7 @@
     sources: { en: 'Data Sources', bg: 'Източници на данни', de: 'Datenquellen', it: 'Fonti dei dati', es: 'Fuentes de datos', fr: 'Sources des données', nl: 'Gegevensbronnen' },
     sourcesShort: { en: 'Sources', bg: 'Източници', de: 'Quellen', it: 'Fonti', es: 'Fuentes', fr: 'Sources', nl: 'Bronnen' },
     moon: { en: 'Moon Calendar', bg: 'Лунен календар', de: 'Mondkalender', it: 'Calendario lunare', es: 'Calendario lunar', fr: 'Calendrier lunaire', nl: 'Maankalender' },
+    allSections: { en: 'All sections', bg: 'Всички раздели', de: 'Alle Bereiche', it: 'Tutte le sezioni', es: 'Todas las secciones', fr: 'Toutes les rubriques', nl: 'Alle onderdelen' },
     sky: { en: 'The Sky', bg: 'Небето', de: 'Himmel', it: 'Il cielo', es: 'El cielo', fr: 'Le ciel', nl: 'De hemel' },
     auroraLink: { en: '🌌 Northern lights & the sky →', bg: '🌌 Северно сияние и небето →', de: '🌌 Polarlichter & Himmel →', it: '🌌 Aurora e cielo →', es: '🌌 Auroras y el cielo →', fr: '🌌 Aurores boréales et ciel →', nl: '🌌 Noorderlicht en de hemel →' },
     resorts: { en: 'Resorts', bg: 'Курорти', de: 'Urlaubsorte', it: 'Località', es: 'Destinos', fr: 'Stations', nl: 'Vakantieoorden' },

@@ -130,6 +130,8 @@ function home() {
       html = once(html, new RegExp(`(<\\w+\\b[^>]*\\b${attribute}[^>]*\\btitle=")[^"]*"|(<\\w+\\b[^>]*\\btitle=")[^"]*("[^>]*\\b${attribute})`),
         (m, before, before2, after) => (before ? `${before}${esc(T[key])}"` : `${before2}${esc(T[key])}${after}`), selector);
     });
+    // tiles that lead to Bulgarian-only pages (tomorrow, UV, pollen, passes, widget) exist only in the Bulgarian home page
+    html = html.replace(/[ \t]*<a [^>]*\bdata-bg-only\b[^>]*>[\s\S]*?<\/a>\n/g, '');
     // Bulgarian cities: Latin names and the translated city pages
     html = html.replace(/href="vremeto\/([a-z-]+)\/"([^>]*)>[^<]*</g, (m, slug, attributes) => `href="/${lang}/vremeto/${slug}/"${attributes}>${esc(I18N.latinName(lang, slug))}<`);
     html = once(html, /<script type="application\/ld\+json">[^<]*<\/script>/,
