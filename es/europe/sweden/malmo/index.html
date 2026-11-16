@@ -120,6 +120,9 @@
     <p class="storm-intro">Previsión del tiempo en Malmö, Suecia, para hoy, mañana y los próximos 7 días: temperatura, lluvia, viento y probabilidad de precipitación. Datos de Open-Meteo, actualizados cada hora.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Malmö" data-lat="55.605" data-lon="13.0038" data-query="city=Malm%C3%B6&lat=55.6050&lon=13.0038&cc=SE">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Rachas de viento fuertes hoy: hasta 68 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
         <h2>Malmö: lunes, 16 de noviembre</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">7° / 9°</span>
@@ -128,7 +131,7 @@
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsión a 7 días</h3>
-        <p class="city-summary">En los próximos 7 días el día más cálido será el lunes, 16 de noviembre (hasta 9°) y el más frío el domingo, 22 de noviembre (hasta 0°). Se esperan precipitaciones en 3 de los días. Las máximas están por debajo de lo normal para noviembre (media de 8°). Los modelos coinciden hasta mañana; después la previsión es menos segura (hasta 5° de diferencia en la temperatura y un modelo da lluvia y otro un día seco).</p>
+        <p class="city-summary">En los próximos 7 días el día más cálido será el lunes, 16 de noviembre (hasta 9°) y el más frío el jueves, 19 de noviembre (hasta 1°). Se esperan precipitaciones en 4 de los días. Las máximas están por debajo de lo normal para noviembre (media de 8°). Los modelos coinciden hasta mañana; después la previsión es menos segura (hasta 5° de diferencia en la temperatura y un modelo da lluvia y otro un día seco).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Malm%C3%B6&lat=55.6050&lon=13.0038&cc=SE&date=2026-11-16" title="Por horas →">
             <span class="kp-day-name">lun 16</span>
@@ -136,17 +139,17 @@
             <span class="city-day-date">16.11</span>
             <span class="city-day-temp">7° / 9°</span>
             <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">100% · 7.7 mm</span>
-            <span class="city-day-wind">Viento 26 km/h · rachas 53</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">100% · 10.0 mm</span>
+            <span class="city-day-wind city-day-gusts">Viento 36 km/h · rachas 68</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Malm%C3%B6&lat=55.6050&lon=13.0038&cc=SE&date=2026-11-17" title="Por horas →">
             <span class="kp-day-name">mar 17</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">17.11</span>
             <span class="city-day-temp">4° / 7°</span>
-            <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">37%</span>
-            <span class="city-day-wind">Viento 28 km/h · rachas 54</span>
+            <span class="kp-day-status">Llovizna</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">37% · 1.0 mm</span>
+            <span class="city-day-wind city-day-gusts">Viento 34 km/h · rachas 65</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Malm%C3%B6&lat=55.6050&lon=13.0038&cc=SE&date=2026-11-18" title="Por horas →">
             <span class="kp-day-name">mié 18</span>
@@ -155,46 +158,47 @@
             <span class="city-day-temp">3° / 5°</span>
             <span class="kp-day-status">Lluvia</span>
             <span class="city-day-rain" title="probabilidad de lluvia">59% · 9.3 mm</span>
-            <span class="city-day-wind">Viento 25 km/h · rachas 58</span>
+            <span class="city-day-wind">Viento 28 km/h · rachas 58</span>
             <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ffd54f">● menos segura</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Malm%C3%B6&lat=55.6050&lon=13.0038&cc=SE&date=2026-11-19" title="Por horas →">
             <span class="kp-day-name">jue 19</span>
             <span class="city-day-icon" aria-hidden="true">❄️</span>
             <span class="city-day-date">19.11</span>
-            <span class="city-day-temp">1° / 4°</span>
+            <span class="city-day-temp">1° / 3°</span>
             <span class="kp-day-status">Nieve</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">39% · 6.0 mm</span>
-            <span class="city-day-wind city-day-gusts">Viento 27 km/h · rachas 60</span>
-            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ff8a65">● incierta</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">39% · 1.5 mm</span>
+            <span class="city-day-wind city-day-gusts">Viento 20 km/h · rachas 60</span>
+            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ffd54f">● menos segura</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Malm%C3%B6&lat=55.6050&lon=13.0038&cc=SE&date=2026-11-20" title="Por horas →">
             <span class="kp-day-name">vie 20</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">20.11</span>
-            <span class="city-day-temp">3° / 5°</span>
+            <span class="city-day-temp">3° / 6°</span>
             <span class="kp-day-status">Nublado</span>
             <span class="city-day-rain" title="probabilidad de lluvia">33%</span>
-            <span class="city-day-wind">Viento 25 km/h · rachas 50</span>
+            <span class="city-day-wind">Viento 20 km/h · rachas 50</span>
+            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ffd54f">● menos segura</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Malm%C3%B6&lat=55.6050&lon=13.0038&cc=SE&date=2026-11-21" title="Por horas →">
             <span class="kp-day-name">sáb 21</span>
             <span class="city-day-icon" aria-hidden="true">⛅</span>
             <span class="city-day-date">21.11</span>
-            <span class="city-day-temp">3° / 6°</span>
+            <span class="city-day-temp">4° / 6°</span>
             <span class="kp-day-status">Parcialmente nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">12% · 0.3 mm</span>
-            <span class="city-day-wind">Viento 28 km/h · rachas 59</span>
-            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ff8a65">● incierta</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">12%</span>
+            <span class="city-day-wind">Viento 27 km/h · rachas 59</span>
+            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ffd54f">● menos segura</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Malm%C3%B6&lat=55.6050&lon=13.0038&cc=SE&date=2026-11-22" title="Por horas →">
             <span class="kp-day-name">dom 22</span>
             <span class="city-day-icon" aria-hidden="true">⛅</span>
             <span class="city-day-date">22.11</span>
-            <span class="city-day-temp">0° / 5°</span>
+            <span class="city-day-temp">2° / 5°</span>
             <span class="kp-day-status">Parcialmente nublado</span>
             <span class="city-day-rain" title="probabilidad de lluvia">25%</span>
-            <span class="city-day-wind">Viento 17 km/h · rachas 41</span>
+            <span class="city-day-wind">Viento 14 km/h · rachas 41</span>
           </a>
         </div>
         <p class="forecast-note">Mediana de los modelos ECMWF, ICON y GFS · altitud 11 m</p>
