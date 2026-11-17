@@ -52,6 +52,13 @@
     node.textContent = text;
     node.dataset.level = level;
   };
+  // The Moon: phase now and the date of the next full Moon (js/moon.js, no network)
+  if (typeof Moon !== 'undefined') {
+    const state = Moon.state(new Date());
+    const full = Moon.nextPhase(new Date(), 2);
+    const date = full instanceof Date && !isNaN(full) ? full.toLocaleDateString('bg-BG', { day: 'numeric', month: 'long' }) : '';
+    chip('moon', `${Moon.NAMES.bg[state.index]} · ${Math.round(state.fraction * 100)}%${date ? `, пълнолуние на ${date}` : ''}`, 0);
+  }
   const json = url => fetch(url).then(r => (r.ok ? r.json() : Promise.reject()));
 
   // Official warnings of NIMH by province (data/warnings-bg.json, refreshed every 30 minutes)
