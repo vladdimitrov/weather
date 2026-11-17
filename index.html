@@ -749,7 +749,7 @@
    /* ---- "today in Bulgaria": four live lines right under the search (js/home-today.js) ---- */
    .today-strip { max-width: 900px; margin: 4px auto 0; padding: 0 4px; }
    .today-strip h2 { text-align: center; font-size: 1.05rem; margin: 0 0 10px; color: #ffffff; letter-spacing: 0.02em; }
-   .today-chips { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+   .today-chips { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
    .today-chip {
      display: flex; flex-direction: column; gap: 4px; padding: 11px 13px; min-height: 76px; box-sizing: border-box;
      border: 1px solid var(--panel-border); border-radius: 12px; background: var(--panel);
@@ -761,7 +761,7 @@
    .today-chip .tc-value[data-level="0"] { color: #8fe3a8; }
    .today-chip .tc-value[data-level="1"] { color: #ffd166; }
    .today-chip .tc-value[data-level="2"] { color: #ff8f7a; font-weight: 600; }
-   @media (max-width: 720px) { .today-chips { grid-template-columns: repeat(2, minmax(0, 1fr)); } .today-chip { min-height: 84px; padding: 10px 11px; } }
+   @media (max-width: 720px) { .today-chips { grid-template-columns: repeat(2, minmax(0, 1fr)); } .today-chip { min-height: 84px; padding: 10px 11px; } .today-chip:nth-child(5) { grid-column: 1 / -1; min-height: 0; } }
 
    /* A smaller orbit: it comes after the strip and must not take the whole first screen */
    .circular-nav { width: 300px; height: 300px; --orbit-radius: 150px; margin: 22px auto; }
@@ -816,6 +816,7 @@
         <a class="today-chip" href="/prohodi/"><span class="tc-label">🏔️ Проходи</span><span class="tc-value" data-chip="pass">сняг, поледица, вятър →</span></a>
         <a class="today-chip" href="/vremeto/kachestvo-na-vazduha/"><span class="tc-label">🏭 Въздух</span><span class="tc-value" data-chip="air">по градове →</span></a>
         <a class="today-chip" href="/vremeto/preduprezhdeniya/"><span class="tc-label">⚠️ Предупреждения</span><span class="tc-value" data-chip="warn">днес и утре →</span></a>
+        <a class="today-chip" href="/luna/"><span class="tc-label">🌙 Луна</span><span class="tc-value" data-today="moon">фаза днес →</span></a>
       </div>
     </section>
     <!-- bg-only:end -->
