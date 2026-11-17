@@ -35,7 +35,8 @@ const CITY_SCRIPTS = `<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`;
 const REGION_SCRIPTS = `<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>
-<script src="/js/region-weather.js?v=${VERSION.regionWeather}" defer></script>\n`;
+<script src="/js/region-weather.js?v=${VERSION.regionWeather}" defer></script>
+<script src="/js/share.js?v=${VERSION.share}" defer></script>\n`;
 const REGION_STYLE = '<style>.region-table td.region-hot{color:#ff8a65;font-weight:600}.region-table td.region-snow{color:#81d4fa;font-weight:600}.region-table th,.region-table td{white-space:nowrap}.region-table td.region-warn{white-space:normal;min-width:12em}.region-warn span{display:block;margin:2px 0;padding:3px 8px;border-radius:6px;font-weight:600;color:#1a1a2e}.region-warn .warn-yellow{background:#ffd54f}.region-warn .warn-orange{background:#ff9800}.region-warn .warn-red{background:#e53935;color:#fff}</style>';
 
 function breadcrumbs(lang, items) {
@@ -342,6 +343,7 @@ ${ranking(0, 'low', -1)}
     body: `    ${REGION_STYLE}
     <p class="breadcrumbs"><a href="/vremeto/">${TXT.bg.hubName}</a> › ${R.h1}</p>
     <h1>${R.h1}</h1>
+    <div data-share></div>
     <p class="storm-intro">${R.intro}</p>
 ${main}
 ${sections}

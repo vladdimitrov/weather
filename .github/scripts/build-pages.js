@@ -495,6 +495,7 @@ function cityPage(city, lang) {
     jsonLd: breadcrumbs + placeJson({ title: T.cityName(where), name, country: 'BG', lat: city.lat, lon: city.lon, url: L(lang, `/vremeto/${city.slug}/`), lang }),
     body: `    <p class="breadcrumbs"><a href="${L(lang, '/vremeto/')}">${T.hubName}</a> › ${name}</p>
     <h1>${T.cityName(where)}</h1>
+    <div data-share></div>
     <p class="storm-intro">${T.intro(where)}</p>
 
     <div class="city-forecast" id="cityForecast" data-name="${name}" data-lat="${city.lat}" data-lon="${city.lon}" data-query="${params}" data-warn="${provinceOf(city.slug)}">
@@ -531,7 +532,7 @@ ${nearbySection({ lat: city.lat, lon: city.lon, url: `/vremeto/${city.slug}/`, c
     </section>`,
     scripts: `<script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=${VERSION.moon}" defer></script>
-<script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n${SKI_POINTS[city.slug] || BG_SEA[city.slug] ? `<script src="/js/region-weather.js?v=${VERSION.regionWeather}" defer></script>\n` : ''}`
+<script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n<script src="/js/share.js?v=${VERSION.share}" defer></script>\n${SKI_POINTS[city.slug] || BG_SEA[city.slug] ? `<script src="/js/region-weather.js?v=${VERSION.regionWeather}" defer></script>\n` : ''}`
   });
 }
 
