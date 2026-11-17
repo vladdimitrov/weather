@@ -102,4 +102,25 @@
       const [, text, level] = AIR.find(step => worst.aqi <= step[0]);
       chip('air', `${worst.name}: ${text} (${Math.round(worst.aqi)})`, level);
     }).catch(() => {});
+  // Ski resorts: the deepest snow on the slopes now (model, as on /vremeto/snyag-kurorti/) and the new snow of the next 3 days
+  const SKI = [['Банско', 41.8050, 23.4330, 1700], ['Боровец', 42.2420, 23.5750, 1750], ['Пампорово', 41.6450, 24.6800, 1800], ['Витоша', 42.5860, 23.2910, 1800],
+    ['Чепеларе', 41.7050, 24.6450, 1700], ['Добринище', 41.8120, 23.5050, 1800], ['Мальовица', 42.1960, 23.3800, 1750], ['Узана', 42.7560, 25.2330, 1300]];
+  json(`https://api.open-meteo.com/v1/forecast?latitude=${SKI.map(r => r[1]).join(',')}&longitude=${SKI.map(r => r[2]).join(',')}&elevation=${SKI.map(r => r[3]).join(',')}&hourly=snow_depth,snowfall&forecast_days=3&timeformat=unixtime`)
+    .then(data => {
+      const rated = (Array.isArray(data) ? data : [data]).map((answer, n) => {
+        const h = answer.hourly;
+        if (!h) return null;
+        const at = h.time.findIndex(time => time * 1000 <= Date.now() && Date.now() < (time + 3600) * 1000);
+        if (at < 0) return null;
+        const fresh = h.snowfall.slice(at + 1, at + 73).reduce((sum, v) => sum + (v || 0), 0);
+        return { name: SKI[n][0], depth: Math.round((h.snow_depth[at] || 0) * 100), fresh };
+      }).filter(Boolean);
+      if (!rated.length) return;
+      const best = rated.reduce((a, b) => (b.depth > a.depth || (b.depth === a.depth && b.fresh > a.fresh) ? b : a));
+      if (best.depth < 1) {
+        const soon = rated.reduce((a, b) => (b.fresh > a.fresh ? b : a));
+        return chip('ski', soon.fresh >= 3 ? `${soon.name}: до ${Math.round(soon.fresh)} см нов сняг до 3 дни` : 'още няма сняг по пистите', soon.fresh >= 3 ? 1 : 0);
+      }
+      chip('ski', `${best.name}: ${best.depth} см${best.fresh >= 3 ? `, до 3 дни още +${Math.round(best.fresh)} см` : ''}`, 0);
+    }).catch(() => {});
 })();

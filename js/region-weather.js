@@ -7,6 +7,8 @@
 //   heat       max temperature for 7 days, days of 33°C and more marked
 //   sea        sea surface temperature now and the highest waves today (marine API)
 //   snow       snow depth now, new snow in 7 days, lowest / highest temperature (at data-elevation)
+//   ski        the ski resorts hub (Bulgarian only): snow depth now, new snow in the last 24 h / next 3 and 7 days,
+//              freezing level, gusts in 24 h and a one-word verdict; the resorts with the most new snow first
 //   firstsnow  the first day with 1 cm of new snow or more in 16 days, and the total
 //   air        the European Air Quality Index now (window.WeatherAir of js/city-forecast.js: levels,
 //              colours, words), PM2.5, PM10 and the worst index of the next 48 hours; the places
@@ -58,6 +60,10 @@
       const elevation = rows.map(row => row.dataset.elevation || 'nan').join(',');
       return `${FORECAST}?${where}&elevation=${elevation}&hourly=snow_depth&daily=snowfall_sum,temperature_2m_max,temperature_2m_min&forecast_days=7`;
     }
+    if (mode === 'ski') {
+      const elevation = rows.map(row => row.dataset.elevation || 'nan').join(',');
+      return `${FORECAST}?${where}&elevation=${elevation}&hourly=snow_depth,snowfall,freezing_level_height,wind_gusts_10m&past_days=1&forecast_days=7&timeformat=unixtime`;
+    }
     if (mode === 'firstsnow') return `${FORECAST}?${where}&daily=snowfall_sum&forecast_days=16`;
     if (mode === 'air') return `${AIR_API}?${where}&current=european_aqi,pm2_5,pm10&hourly=european_aqi&forecast_days=3`;
     if (mode === 'warnings') {
@@ -104,6 +110,8 @@
         cell(row, typeof depth === 'number' ? `${Math.round(depth * 100)} ${text.cm}` : '—');
         cell(row, `${Math.round(fresh)} ${text.cm}`);
         cell(row, `${deg(Math.min(...(daily.temperature_2m_min || [NaN])))} / ${deg(Math.max(...(daily.temperature_2m_max || [NaN])))}`);
+      } else if (mode === 'ski') {
+        skiCells(row, data);
       } else if (mode === 'air') {
         airCells(row, data);
       } else if (mode === 'warnings') {
@@ -118,8 +126,62 @@
     });
     if (mode === 'warnings') sortWarnings(table, rows);
     if (mode === 'air') sortAir(table, rows);
+    if (mode === 'ski') sortSki(table, rows);
     const note = table.parentElement.querySelector('.region-nojs');
     if (note) note.remove();
+  }
+
+
+  // --- The ski resorts page (data-mode="ski", Bulgarian only) ---
+  // Hourly series, unix times; "now" is the hour that contains the present moment
+  function skiCells(row, data) {
+    const h = data.hourly || {};
+    const times = h.time || [];
+    const at = times.findIndex(time => time * 1000 <= Date.now() && Date.now() < (time + 3600) * 1000);
+    const sum = (from, to) => (h.snowfall || []).slice(Math.max(0, from), Math.max(0, to)).reduce((total, v) => total + (v || 0), 0);
+    const depthNow = at >= 0 && typeof h.snow_depth[at] === 'number' ? Math.round(h.snow_depth[at] * 100) : null;
+    const last24 = at >= 0 ? sum(at - 23, at + 1) : null;
+    const next72 = at >= 0 ? sum(at + 1, at + 73) : null;
+    const next7 = at >= 0 ? sum(at + 1, at + 169) : null;
+    const level = at >= 0 ? h.freezing_level_height[at] : null;
+    const gusts = at >= 0 ? (h.wind_gusts_10m || []).slice(at, at + 24).filter(v => typeof v === 'number') : [];
+    const gust = gusts.length ? Math.round(Math.max(...gusts)) : null;
+    const cm = v => (typeof v === 'number' ? `${Math.round(v)} см` : '—');
+    cell(row, cm(depthNow), depthNow >= 30 ? 'region-snow' : '');
+    cell(row, cm(last24));
+    cell(row, cm(next72), next72 >= 10 ? 'region-snow' : '');
+    cell(row, cm(next7), next7 >= 10 ? 'region-snow' : '');
+    cell(row, typeof level === 'number' ? `${Math.round(level / 10) * 10} м` : '—');
+    cell(row, gust === null ? '—' : `${gust} км/ч`, gust >= 70 ? 'region-hot' : '');
+    let verdict = '—';
+    if (depthNow !== null) {
+      const base = depthNow >= 30 ? 'добра покривка' : depthNow >= 10 ? 'тънка покривка' : next72 >= 5 ? 'започва да натрупва' : 'още няма сняг';
+      verdict = (gust >= 70 ? `${base}, силен вятър` : next72 >= 10 ? `${base}, идва нов сняг` : base);
+    }
+    cell(row, verdict);
+    row.dataset.depth = depthNow === null ? -1 : depthNow;
+    row.dataset.fresh = next7 === null ? -1 : next7;
+    row.dataset.name = row.cells[0].textContent.replace(/\s*\d+\s*м\s*$/, '').replace(/\s*\(.*\)\s*/, ' ').trim();
+  }
+
+  function sortSki(table, rows) {
+    const body = table.tBodies[0];
+    rows.map((row, i) => ({ row, i }))
+      .sort((a, b) => b.row.dataset.fresh - a.row.dataset.fresh || b.row.dataset.depth - a.row.dataset.depth || a.i - b.i)
+      .forEach(item => body.appendChild(item.row));
+    const summary = document.getElementById('skiSummary');
+    if (!summary) return;
+    const known = rows.filter(row => +row.dataset.depth >= 0);
+    if (!known.length) return;
+    const deepest = known.reduce((best, row) => (+row.dataset.depth > +best.dataset.depth ? row : best));
+    const freshest = known.reduce((best, row) => (+row.dataset.fresh > +best.dataset.fresh ? row : best));
+    if (+deepest.dataset.depth < 1 && +freshest.dataset.fresh < 1) {
+      summary.textContent = 'По модела сега няма сняг по пистите и през следващите 7 дни не се очаква значителен.';
+      return;
+    }
+    const first = +deepest.dataset.depth >= 1 ? `Най-дебела покривка по модела: ${deepest.dataset.name} (${deepest.dataset.depth} см). ` : '';
+    const second = +freshest.dataset.fresh >= 1 ? `Най-много нов сняг до 7 дни: ${freshest.dataset.name} (${Math.round(freshest.dataset.fresh)} см).` : 'През следващите 7 дни не се очаква значителен нов сняг.';
+    summary.textContent = first + second;
   }
 
   // --- The air quality page (data-mode="air") ---
