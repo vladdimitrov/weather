@@ -354,7 +354,7 @@ ${extra}
       <div class="city-links">
         ${others}
         ${Object.entries(BG.abroadLinks).map(([key, text]) => `<a href="/europe/${key}/" class="recent-place">${text}</a>`).join('\n        ')}
-        <a href="/prohodi/" class="recent-place">${BG.passes.hubCrumb}</a>
+        ${PASSES.length ? `<a href="/prohodi/" class="recent-place">${BG.passes.hubCrumb}</a>` : ''}
         <a href="/gradove/" class="recent-place">${I18N.NAV.bg.cities}</a>
       </div>
     </section>`,
@@ -687,8 +687,11 @@ Object.keys(BG.abroad).forEach(key => write(`europe/${key}`, abroadPage(key)));
 const years = Object.keys(HOLIDAYS).map(Number).sort().slice(-2);
 years.forEach(year => write(`praznici/pochivni-dni-${year}`, daysOffPage(year, years)));
 write('uidzhet', widgetPage());
-write('prohodi', passesHub());
-PASSES.forEach(pass => write(`prohodi/${pass.slug}`, passPage(pass)));
+// paused: bg-passes.js exports no passes, so there are no pages
+if (PASSES.length) {
+  write('prohodi', passesHub());
+  PASSES.forEach(pass => write(`prohodi/${pass.slug}`, passPage(pass)));
+}
 // The passes for the "today in Bulgaria" strip of the home page (js/home-today.js)
 fs.mkdirSync(path.join(process.cwd(), 'data'), { recursive: true });
 fs.writeFileSync(path.join(process.cwd(), 'data', 'passes.json'),
