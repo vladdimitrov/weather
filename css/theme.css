@@ -1977,6 +1977,8 @@ html body .home-cities { margin-block: var(--s6); }
 }
 .city-day:hover .city-day-hourly,
 .city-day:focus-visible .city-day-hourly { background: var(--gold); color: #1b1b2f !important; }
+/* a gap above the button when the card is full (two badges above it) */
+.city-day > :has(+ .city-day-hourly) { margin-bottom: 7px; }
 
 /* motion: the content rises in, buttons lift, nothing for those who asked for less */
 @keyframes wpRise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
