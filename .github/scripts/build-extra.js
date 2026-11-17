@@ -286,9 +286,10 @@ ${R.months.map((t, m) => `          <tr><td>${I18N.monthName('bg', m)}</td><td>â
     </section>`;
   } else if (slug === 'snyag-kurorti') {
     main = `
+    <p class="storm-intro" id="skiSummary" role="status"></p>
     <section class="info-card">
       <h2>${R.tableH}</h2>
-${liveTable('snow', BG.tableHead.snow, SKI.map(([name, lat, lon, elevation, city]) => row(`${placeLink(name, city, lat, lon)} <span class="storm-updated">${elevation} ${BG.tableHead.elevation}</span>`, lat, lon, elevation)), R.tableNote)}
+${liveTable('ski', BG.tableHead.ski, SKI.map(([name, lat, lon, elevation, city]) => row(`${placeLink(name, city, lat, lon)} <span class="storm-updated">${elevation} ${BG.tableHead.elevation}</span>`, lat, lon, elevation)), R.tableNote)}
     </section>`;
   } else if (slug === 'zhegi') {
     main = `

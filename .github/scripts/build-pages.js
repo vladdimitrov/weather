@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 63, mobileNav: 22, languageSelector: 9, cityForecast: 18, moon: 4, lunaToday: 6, lunaLocal: 2, auroraKp: 3, placeContext: 2, skyLocal: 3, homeCities: 4, regionWeather: 5, passes: 4, share: 1 };
+const VERSION = { theme: 63, mobileNav: 22, languageSelector: 9, cityForecast: 18, moon: 4, lunaToday: 6, lunaLocal: 2, auroraKp: 3, placeContext: 2, skyLocal: 3, homeCities: 4, regionWeather: 6, passes: 4, share: 1 };
 
 const CITIES = require('./bg-cities.js');
 
