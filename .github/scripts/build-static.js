@@ -35,7 +35,7 @@ function aboutPage(lang) {
       {
         '@type': 'Organization', '@id': 'https://weatherpulse.eu/#organization', name: 'Weather Pulse', url: 'https://weatherpulse.eu/',
         logo: 'https://weatherpulse.eu/images/icons/icon-512.png', email: MAIL,
-        parentOrganization: { '@type': 'Organization', name: 'VYZYA' },
+        parentOrganization: { '@type': 'Organization', name: 'VYZYA', url: 'https://vyzya.com/' },
         contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: MAIL, availableLanguage: ['bg', 'en'] }
       }
     ]

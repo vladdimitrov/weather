@@ -277,7 +277,7 @@ const footer = () => `  <footer style="background: var(--card-bg); border-top: 1
         <a href="/"><img src="/images/logo-64.webp" alt="${LOGO}" class="logo-img" width="30" height="30" style="height: 30px; width: auto;"></a>
     </div>
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
-      © <span class="current-year">${new Date().getFullYear()}</span> VYZYA
+      © <span class="current-year">${new Date().getFullYear()}</span> <a href="https://vyzya.com/" class="footer-link" rel="noopener" target="_blank">VYZYA</a>
       · <span data-nav="dataBy">${FOOTER_TEXT.data}</span> <a href="https://open-meteo.com/" class="footer-link" rel="noopener" target="_blank">Open-Meteo.com</a> (<a href="https://creativecommons.org/licenses/by/4.0/" class="footer-link" rel="noopener license" target="_blank">CC BY 4.0</a>)
       · <a href="${FOOTER_URLS.cities}" class="footer-link" data-nav="cityIndex">${FOOTER_TEXT.cities}</a>
       · <a href="${FOOTER_URLS.sources}" class="footer-link" data-nav="sourcesShort">${FOOTER_TEXT.sources}</a>
