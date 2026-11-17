@@ -7,7 +7,12 @@
 //   warn       the provinces on both sides (official warnings of NIMH, bg-provinces.js)
 //   road       the road number, when the source gives it
 //   text       what the pass is and why the weather there matters
-module.exports = [
+// The pass pages are paused (November 2026): with false there are no /prohodi/ pages, no links to them
+// and no pass chip on the home page. Set it back to true and run build-extra.js, build-pages.js,
+// build-main.js and build-sitemap.js to bring them back (the chip: see the git history of index.html).
+const ENABLED = false;
+
+const PASSES = [
   {
     slug: 'petrohan', name: 'Петрохан', title: 'проход Петрохан', of: 'проход Петрохан', lat: 43.1225, lon: 23.1253, elevation: 1444,
     mountain: 'Западна Стара планина', connects: 'София и Монтана', road: 'път 81', warn: ['montana', 'sofia-province'],
@@ -64,3 +69,5 @@ module.exports = [
     text: 'Ришкият проход свързва Шумен и Карнобат през село Риш. Висок е около 400 м – най-ниският от проходите тук, – но и тук през зимата може да има сняг и поледица. През 759 г. в прохода българите побеждават византийската армия.'
   }
 ];
+
+module.exports = ENABLED ? PASSES : [];

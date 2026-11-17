@@ -289,9 +289,9 @@ def build_cards(mode="live"):
 
     # --- passes ---
     answers = None
-    if mode == "live":
+    if mode == "live" and passes:
         answers = fetch_passes(passes)
-    elif mode == "sample":
+    elif mode == "sample" and passes:
         answers = sample_passes(passes)
     rated = []
     for n, p in enumerate(passes):
@@ -321,7 +321,7 @@ def build_cards(mode="live"):
                        verdict_text=f"{worst[1]}: {what}",
                        lines=[f"Още {affected - 1} с внимание или трудни условия." if affected > 1 else "Останалите са нормални."])
         cards["pass-all"] = hub
-    else:
+    elif passes:
         cards["pass-all"] = dict(kicker="Проходи", title="Времето по проходите",
                                  lines=["Сняг, поледица, вятър и мъгла на 11 прохода – по часове, на български."])
 
