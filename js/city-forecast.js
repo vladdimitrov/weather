@@ -247,7 +247,7 @@
     if (!corePromise) {
       corePromise = new Promise(resolve => {
         const script = document.createElement('script');
-        script.src = '/js/forecast-core.js?v=3';
+        script.src = '/js/forecast-core.js?v=4';
         script.onload = script.onerror = () => resolve();
         document.head.appendChild(script);
       });

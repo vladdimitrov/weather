@@ -109,10 +109,21 @@
       const [, text, level] = AIR.find(step => worst.aqi <= step[0]);
       chip('air', `${worst.name}: ${text} (${Math.round(worst.aqi)})`, level);
     }).catch(() => {});
+  // The same answer for 30 minutes within a visit, so a reload does not ask Open-Meteo for eight places again
+  const cached = (key, url) => {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem('wp-' + key) || 'null');
+      if (saved && Date.now() - saved.time < 30 * 60 * 1000) return Promise.resolve(saved.data);
+    } catch (e) { /* no storage: just fetch */ }
+    return json(url).then(data => {
+      try { sessionStorage.setItem('wp-' + key, JSON.stringify({ time: Date.now(), data })); } catch (e) { /* full or blocked */ }
+      return data;
+    });
+  };
   // Ski resorts: the deepest snow on the slopes now (model, as on /vremeto/snyag-kurorti/) and the new snow of the next 3 days
   const SKI = [['Банско', 41.8050, 23.4330, 1700], ['Боровец', 42.2420, 23.5750, 1750], ['Пампорово', 41.6450, 24.6800, 1800], ['Витоша', 42.5860, 23.2910, 1800],
     ['Чепеларе', 41.7050, 24.6450, 1700], ['Добринище', 41.8120, 23.5050, 1800], ['Мальовица', 42.1960, 23.3800, 1750], ['Узана', 42.7560, 25.2330, 1300]];
-  json(`https://api.open-meteo.com/v1/forecast?latitude=${SKI.map(r => r[1]).join(',')}&longitude=${SKI.map(r => r[2]).join(',')}&elevation=${SKI.map(r => r[3]).join(',')}&hourly=snow_depth,snowfall&forecast_days=3&timeformat=unixtime`)
+  cached('ski', `https://api.open-meteo.com/v1/forecast?latitude=${SKI.map(r => r[1]).join(',')}&longitude=${SKI.map(r => r[2]).join(',')}&elevation=${SKI.map(r => r[3]).join(',')}&hourly=snow_depth,snowfall&forecast_days=3&timeformat=unixtime`)
     .then(data => {
       const rated = (Array.isArray(data) ? data : [data]).map((answer, n) => {
         const h = answer.hourly;
