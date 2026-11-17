@@ -737,6 +737,7 @@
    }
    .home-tile:hover, .home-tile:focus-visible { border-color: var(--gold); transform: translateY(-2px); }
    .home-tile .ht-title { font-weight: 600; font-size: 0.98rem; }
+   html[lang="bg"] .home-tile[data-dup] { display: none; } /* bg only: the strip and the circle already link here */
    .home-tile .ht-live { font-size: 0.82rem; color: var(--gold); min-height: 1.1em; }
    @media (max-width: 480px) { .home-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } .home-tile { padding: 10px 11px; } }
 
@@ -833,12 +834,12 @@
     <section class="home-sections" id="homeSections">
       <h2 data-nav="allSections">Alle Bereiche</h2>
       <div class="home-tiles">
-        <a class="home-tile" href="/de/magnitni-buri/"><span class="ht-title">🧲 <span data-nav="storms">Magnetstürme</span></span><span class="ht-live" data-today="kp"></span></a>
+        <a class="home-tile" data-dup href="/de/magnitni-buri/"><span class="ht-title">🧲 <span data-nav="storms">Magnetstürme</span></span><span class="ht-live" data-today="kp"></span></a>
         <a class="home-tile" href="/de/kurorti/"><span class="ht-title">🏖️ <span data-nav="resorts">Urlaubsorte</span></span></a>
-        <a class="home-tile" href="/de/luna/"><span class="ht-title">🌙 <span data-nav="moon">Mondkalender</span></span><span class="ht-live" data-today="moon"></span></a>
+        <a class="home-tile" data-dup href="/de/luna/"><span class="ht-title">🌙 <span data-nav="moon">Mondkalender</span></span><span class="ht-live" data-today="moon"></span></a>
         <a class="home-tile" href="/de/nebeto/"><span class="ht-title">🌌 <span data-nav="sky">Himmel</span></span></a>
-        <a class="home-tile" href="/de/holliday_calendar/"><span class="ht-title">🎉 <span data-nav="holidays">Feiertagskalender</span></span></a>
-        <a class="home-tile" href="/de/maps/"><span class="ht-title">🗺️ <span data-nav="maps">Wetterkarten</span></span></a>
+        <a class="home-tile" data-dup href="/de/holliday_calendar/"><span class="ht-title">🎉 <span data-nav="holidays">Feiertagskalender</span></span></a>
+        <a class="home-tile" data-dup href="/de/maps/"><span class="ht-title">🗺️ <span data-nav="maps">Wetterkarten</span></span></a>
       </div>
     </section>
 
