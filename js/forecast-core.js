@@ -135,9 +135,18 @@
     return data;
   }
 
+  // One retry after a short pause: Open-Meteo sometimes answers 503 with an empty body for a moment
   async function plain(url) {
-    const response = await fetch(url);
-    return response.json();
+    for (let attempt = 0; ; attempt++) {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return await response.json();
+      } catch (error) {
+        if (attempt >= 1) throw error;
+        await new Promise(resolve => setTimeout(resolve, 1200));
+      }
+    }
   }
 
   async function load(url) {

@@ -359,7 +359,7 @@ ${extra}
       </div>
     </section>`,
     // the warnings page takes the median of the models, as the city pages
-    scripts: (slug === 'preduprezhdeniya' ? '<script src="/js/forecast-core.js?v=3" defer></script>\n' : '') + REGION_SCRIPTS
+    scripts: (slug === 'preduprezhdeniya' ? '<script src="/js/forecast-core.js?v=4" defer></script>\n' : '') + REGION_SCRIPTS
   });
 }
 
