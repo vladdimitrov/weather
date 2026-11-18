@@ -2,25 +2,31 @@
 // prefixes (Bulgarian is the default and has none: /luna/, /en/luna/, /de/luna/ ...),
 // menu texts and date helpers.
 const LANGS = ['bg', 'en', 'de', 'it', 'es', 'fr', 'nl'];
-const LOCALE = { bg: 'bg-BG', en: 'en-GB', de: 'de-DE', it: 'it-IT', es: 'es-ES', fr: 'fr-FR', nl: 'nl-NL' };
-const OG_LOCALE = { bg: 'bg_BG', en: 'en_GB', de: 'de_DE', it: 'it_IT', es: 'es_ES', fr: 'fr_FR', nl: 'nl_NL' };
+// Romanian is added page by page (the ski resorts first): LANGS stays the seven languages every page has,
+// ALL adds Romanian, and RO_URLS are the (Bulgarian) addresses that exist in Romanian (text-ro.js).
+// A Romanian page links to the English page where it has no Romanian one.
+const RO_URLS = require('./text-ro.js').URLS;
+const ALL = [...LANGS, 'ro'];
+const langsFor = url => (RO_URLS.includes(url) ? ALL : LANGS);
+const LOCALE = { bg: 'bg-BG', en: 'en-GB', de: 'de-DE', it: 'it-IT', es: 'es-ES', fr: 'fr-FR', nl: 'nl-NL', ro: 'ro-RO' };
+const OG_LOCALE = { bg: 'bg_BG', en: 'en_GB', de: 'de_DE', it: 'it_IT', es: 'es_ES', fr: 'fr_FR', nl: 'nl_NL', ro: 'ro_RO' };
 
 // base: the language of the root URLs of a page family (Bulgarian everywhere)
 const prefix = (lang, base = 'bg') => (lang === base ? '' : `/${lang}`);
-const localUrl = (lang, url, base = 'bg') => prefix(lang, base) + url;
+const localUrl = (lang, url, base = 'bg') => (lang === 'ro' && !RO_URLS.includes(url) ? '/en' : prefix(lang, base)) + url;
 
 // Plain links to the other language versions of a page, above the footer. The language switcher
 // in the header is drawn by JavaScript, so without these a crawler finds the translations only
 // through hreflang and the sitemap. paths: { lang: path } of the versions to link (the indexed
 // ones); data-set-lang makes /js/language-selector.js remember the choice before the page opens.
-const LANG_NAMES = { bg: 'Български', en: 'English', de: 'Deutsch', it: 'Italiano', es: 'Español', fr: 'Français', nl: 'Nederlands' };
+const LANG_NAMES = { bg: 'Български', en: 'English', de: 'Deutsch', it: 'Italiano', es: 'Español', fr: 'Français', nl: 'Nederlands', ro: 'Română' };
 const LANG_LINKS_START = '<!-- lang-links:start -->';
 const LANG_LINKS_END = '<!-- lang-links:end -->';
 function langLinks(lang, paths) {
-  const others = LANGS.filter(code => code !== lang && paths[code]);
+  const others = ALL.filter(code => code !== lang && paths[code]);
   if (!others.length) return '';
   return `  ${LANG_LINKS_START}
-  <nav class="lang-links" aria-label="Languages" style="text-align: center; font-size: 0.85em; color: #999; margin: 18px 0 6px;">
+  <nav class="lang-links" aria-label="${lang === 'ro' ? 'Limbi' : 'Languages'}" style="text-align: center; font-size: 0.85em; color: #999; margin: 18px 0 6px;">
     ${others.map(code => `<a href="${paths[code]}" hreflang="${code}" lang="${code}" data-set-lang="${code}" class="footer-link">${LANG_NAMES[code]}</a>`).join(' · ')}
   </nav>
   ${LANG_LINKS_END}
@@ -40,9 +46,10 @@ const NAV = {
   it: { home: 'Home', weather: 'Previsioni del tempo', maps: 'Mappe meteorologiche', holidays: 'Calendario delle festività', storms: 'Tempeste magnetiche', sky: 'Il cielo', sources: 'Fonti dei dati', sourcesShort: 'Fonti', moon: 'Calendario lunare', cities: 'Tutte le città', about: 'Chi siamo', privacy: 'Privacy', resorts: 'Località', dataBy: 'Dati:' },
   es: { home: 'Inicio', weather: 'Pronóstico del tiempo', maps: 'Mapas del tiempo', holidays: 'Calendario de festivos', storms: 'Tormentas magnéticas', sky: 'El cielo', sources: 'Fuentes de datos', sourcesShort: 'Fuentes', moon: 'Calendario lunar', cities: 'Todas las ciudades', about: 'Acerca de', privacy: 'Privacidad', resorts: 'Destinos', dataBy: 'Datos:' },
   fr: { home: 'Accueil', weather: 'Prévisions météo', maps: 'Cartes météo', holidays: 'Calendrier des jours fériés', storms: 'Tempêtes magnétiques', sky: 'Le ciel', sources: 'Sources des données', sourcesShort: 'Sources', moon: 'Calendrier lunaire', cities: 'Toutes les villes', about: 'À propos', privacy: 'Confidentialité', resorts: 'Stations', dataBy: 'Données :' },
-  nl: { home: 'Home', weather: 'Weerbericht', maps: 'Weerkaarten', holidays: 'Feestdagenkalender', storms: 'Magnetische stormen', sky: 'De hemel', sources: 'Gegevensbronnen', sourcesShort: 'Bronnen', moon: 'Maankalender', cities: 'Alle steden', about: 'Over ons', privacy: 'Privacy', resorts: 'Vakantieoorden', dataBy: 'Gegevens:' }
+  nl: { home: 'Home', weather: 'Weerbericht', maps: 'Weerkaarten', holidays: 'Feestdagenkalender', storms: 'Magnetische stormen', sky: 'De hemel', sources: 'Gegevensbronnen', sourcesShort: 'Bronnen', moon: 'Maankalender', cities: 'Alle steden', about: 'Over ons', privacy: 'Privacy', resorts: 'Vakantieoorden', dataBy: 'Gegevens:' },
+  ro: { home: 'Acasă', weather: 'Prognoza meteo', maps: 'Hărți meteo', holidays: 'Calendarul sărbătorilor', storms: 'Furtuni magnetice', sky: 'Cerul', sources: 'Surse de date', sourcesShort: 'Surse', moon: 'Calendar lunar', cities: 'Toate orașele', about: 'Despre site', privacy: 'Confidențialitate', resorts: 'Stațiuni', dataBy: 'Date:' }
 };
-const LOGO_ALT = { bg: 'Лого', en: 'Logo', de: 'Logo', it: 'Logo', es: 'Logo', fr: 'Logo', nl: 'Logo' };
+const LOGO_ALT = { bg: 'Лого', en: 'Logo', de: 'Logo', it: 'Logo', es: 'Logo', fr: 'Logo', nl: 'Logo', ro: 'Logo' };
 
 const esc = text => String(text).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
@@ -67,4 +74,4 @@ const latinName = (lang, slug) => {
   return slug.split('-').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
 };
 
-module.exports = { LANGS, LOCALE, OG_LOCALE, prefix, localUrl, LANG_NAMES, LANG_LINKS_START, LANG_LINKS_END, langLinks, withBrand, NAV, LOGO_ALT, esc, monthName, weekdayName, latinName };
+module.exports = { LANGS, ALL, RO_URLS, langsFor, LOCALE, OG_LOCALE, prefix, localUrl, LANG_NAMES, LANG_LINKS_START, LANG_LINKS_END, langLinks, withBrand, NAV, LOGO_ALT, esc, monthName, weekdayName, latinName };

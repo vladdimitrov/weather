@@ -228,6 +228,7 @@
     it: ['Luna nuova', 'Luna crescente (falce)', 'Primo quarto', 'Gibbosa crescente', 'Luna piena', 'Gibbosa calante', 'Ultimo quarto', 'Luna calante (falce)'],
     es: ['Luna nueva', 'Luna creciente', 'Cuarto creciente', 'Gibosa creciente', 'Luna llena', 'Gibosa menguante', 'Cuarto menguante', 'Luna menguante'],
     fr: ['Nouvelle lune', 'Premier croissant', 'Premier quartier', 'Gibbeuse croissante', 'Pleine lune', 'Gibbeuse décroissante', 'Dernier quartier', 'Dernier croissant'],
+    ro: ['Lună nouă', 'Semilună crescătoare', 'Primul pătrar', 'Lună crescătoare', 'Lună plină', 'Lună descrescătoare', 'Ultimul pătrar', 'Semilună descrescătoare'],
     nl: ['Nieuwe maan', 'Wassende sikkel', 'Eerste kwartier', 'Wassende maan', 'Volle maan', 'Afnemende maan', 'Laatste kwartier', 'Afnemende sikkel']
   };
 

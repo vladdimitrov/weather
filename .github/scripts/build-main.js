@@ -23,9 +23,12 @@ const APP_TEXT = require('./text-main.js');
 const ROOT = process.cwd();
 const SITE = 'https://weatherpulse.eu';
 const TARGETS = I18N.LANGS.filter(lang => lang !== 'bg');
+// The home page also exists in Romanian (text-ro.js: the ski resorts first); the other pages here do not
+const HOME_TARGETS = [...TARGETS, 'ro'];
 // Pages this script writes; links to them (and to every page that already has a translation) follow the language
 const OWN = ['/', '/magnitni-buri/', '/weather/', '/maps/', '/holliday_calendar/'];
 
+const RO_RESORTS = require('./text-ro.js').RESORTS;
 const read = file => fs.readFileSync(path.join(ROOT, file), 'utf8').replace(/\r\n/g, '\n');
 const esc = I18N.esc;
 
@@ -80,15 +83,19 @@ function common(html, lang, url, { title, ogTitle, description, source, pending 
     if (!NAV[key] || !NAV[key][lang]) throw new Error(`mobile-nav.js: no "${key}" text in ${lang}`);
     return open + esc(NAV[key][lang]) + close;
   });
-  // Links to pages that exist in this language
+  // Links to pages that exist in this language (Romanian: its own pages, else the English page)
   html = html.replace(/href="(\/[^"?#]*\/|\/)([?#][^"]*)?"/g, (m, page, rest = '') => {
+    if (lang === 'ro') {
+      if (I18N.RO_URLS.includes(page)) return `href="/ro${page}${rest}"`;
+      return OWN.includes(page) || fs.existsSync(path.join(ROOT, 'en', page, 'index.html')) ? `href="/en${page}${rest}"` : m;
+    }
     const translated = OWN.includes(page) || fs.existsSync(path.join(ROOT, lang, page, 'index.html'));
     return translated ? `href="/${lang}${page}${rest}"` : m;
   });
   html = html.replace(/alt="Лого"/g, `alt="${I18N.LOGO_ALT[lang]}"`);
   // Plain links to the other language versions (the Bulgarian page lists the six translations)
   const block = new RegExp(`  ${I18N.LANG_LINKS_START}[\\s\\S]*?${I18N.LANG_LINKS_END}\\n`);
-  html = once(html, block, I18N.langLinks(lang, Object.fromEntries(I18N.LANGS.map(code => [code, I18N.localUrl(code, url)]))), 'language links');
+  html = once(html, block, I18N.langLinks(lang, Object.fromEntries((url === '/' ? I18N.ALL : I18N.LANGS).map(code => [code, I18N.localUrl(code, url)]))), 'language links');
   return html;
 }
 
@@ -117,11 +124,23 @@ function home() {
     ['homepageTranslations', 'elements', 'titles'].map(name => declaration(template, name, 'index.html')).join('\n'),
     ['homepageTranslations', 'elements', 'titles']);
 
-  TARGETS.forEach(lang => {
+  HOME_TARGETS.forEach(lang => {
     const T = texts.homepageTranslations[lang];
     if (!T || !T.metaDescription) throw new Error(`index.html: homepageTranslations.${lang}.metaDescription is missing`);
     const title = `Weather Pulse – ${T.heroTitle}`;
-    let html = common(template, lang, '/', { title, ogTitle: title, description: T.metaDescription, source: '/index.html' });
+    let source = template;
+    if (lang === 'ro') {
+      // the ski resorts block of the Bulgarian page, written for Romanian (the other languages leave it out)
+      source = once(template, /    <!-- bg-only:start \(build-main\.js leaves this block out of the translations\) -->\n    <section class="home-cities">\n      <h2>Ски курорти[\s\S]*?<!-- bg-only:end -->\n/, `    <section class="home-cities">
+      <h2>Stațiuni de schi – zăpadă pe pârtii</h2>
+      <div class="city-links">
+${RO_RESORTS.map(slug => `        <a href="/vremeto/${slug}/" class="recent-place">${I18N.latinName('ro', slug)}</a>`).join('\n')}
+        <a href="/kurorti/" class="recent-place">Toate stațiunile →</a>
+      </div>
+    </section>
+`, 'Romanian ski block');
+    }
+    let html = common(source, lang, '/', { title, ogTitle: title, description: T.metaDescription, source: '/index.html' });
 
     // the same elements updateHomepageContent() fills in the browser
     Object.entries(texts.elements).forEach(([id, key]) => {
@@ -137,7 +156,7 @@ function home() {
     // and the ski resorts and Greece block (links to Bulgarian-only texts)
     html = html.replace(/[ \t]*<!-- bg-only:start[\s\S]*?<!-- bg-only:end -->\n/g, '');
     // Bulgarian cities: Latin names and the translated city pages
-    html = html.replace(/href="vremeto\/([a-z-]+)\/"([^>]*)>[^<]*</g, (m, slug, attributes) => `href="/${lang}/vremeto/${slug}/"${attributes}>${esc(I18N.latinName(lang, slug))}<`);
+    html = html.replace(/href="vremeto\/([a-z-]+)\/"([^>]*)>[^<]*</g, (m, slug, attributes) => `href="/${lang === 'ro' && !RO_RESORTS.includes(slug) ? 'en' : lang}/vremeto/${slug}/"${attributes}>${esc(I18N.latinName(lang, slug))}<`);
     html = once(html, /<script type="application\/ld\+json">[^<]*<\/script>/,
       `<script type="application/ld+json">${JSON.stringify({
         '@context': 'https://schema.org',

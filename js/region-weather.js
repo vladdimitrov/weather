@@ -29,6 +29,7 @@
     it: { today: 'Oggi', none: 'non previsto', error: 'Impossibile caricare i dati. Riprova più tardi.', cm: 'cm', m: 'm', locale: 'it-IT' },
     es: { today: 'Hoy', none: 'no se espera', error: 'No se pudieron cargar los datos. Inténtalo de nuevo más tarde.', cm: 'cm', m: 'm', locale: 'es-ES' },
     fr: { today: 'Aujourd’hui', none: 'non attendue', error: 'Impossible de charger les données. Réessayez plus tard.', cm: 'cm', m: 'm', locale: 'fr-FR' },
+    ro: { today: 'Azi', none: 'nu se așteaptă', error: 'Datele nu au putut fi încărcate. Încercați din nou mai târziu.', cm: 'cm', m: 'm', locale: 'ro-RO' },
     nl: { today: 'Vandaag', none: 'niet verwacht', error: 'De gegevens konden niet worden geladen. Probeer het later opnieuw.', cm: 'cm', m: 'm', locale: 'nl-NL' }
   };
   const t = () => T[document.documentElement.lang] || T.en;

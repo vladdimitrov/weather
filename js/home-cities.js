@@ -40,6 +40,7 @@
     it: { cities: 'Meteo nelle città', all: 'Tutte le città →', holidays: 'Calendario delle festività' },
     es: { cities: 'El tiempo en ciudades', all: 'Todas las ciudades →', holidays: 'Calendario de festivos' },
     fr: { cities: 'Météo dans les villes', all: 'Toutes les villes →', holidays: 'Calendrier des jours fériés' },
+    ro: { cities: 'Vremea în orașe', all: 'Toate orașele →', holidays: 'Calendarul sărbătorilor' },
     nl: { cities: 'Weer in steden', all: 'Alle steden →', holidays: 'Feestdagenkalender' }
   };
   const title = section.querySelector('h2');

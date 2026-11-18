@@ -22,7 +22,7 @@ const API = 'https://api.open-meteo.com/v1/forecast';
 const DAILY = 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,snowfall_sum,wind_speed_10m_max,wind_gusts_10m_max';
 const CHUNK = 20; // places in one request
 
-const ISSUED = { bg: 'Прогноза от', en: 'Forecast issued on', de: 'Vorhersage vom', it: 'Previsione del', es: 'Previsión del', fr: 'Prévision du', nl: 'Verwachting van' };
+const ISSUED = { bg: 'Прогноза от', en: 'Forecast issued on', de: 'Vorhersage vom', it: 'Previsione del', es: 'Previsión del', fr: 'Prévision du', nl: 'Verwachting van', ro: 'Prognoză emisă la' };
 
 // One sentence about the days of the page: the warmest and the coldest, the days with
 // precipitation and how the highs compare with the climate of the month (climate.json)
@@ -61,6 +61,11 @@ const SUMMARY = {
     span: n => (n ? `In de komende ${n} dagen` : 'In het weekend'),
     text: s => `${s.span} is ${s.warmDay} de warmste dag (tot ${s.warmT}) en ${s.coldDay} de koudste (tot ${s.coldT}). ${s.wet ? `Op ${s.wet} van de dagen wordt neerslag verwacht.` : 'Er wordt geen noemenswaardige neerslag verwacht.'}`,
     normal: (cmp, month, normal) => ` Overdag is het ${['kouder dan', 'ongeveer zo warm als', 'warmer dan'][cmp]} normaal voor ${month} (gemiddeld ${normal}).`
+  },
+  ro: {
+    span: n => (n ? `În următoarele ${n} zile` : 'În weekend'),
+    text: s => `${s.span} cea mai caldă zi va fi ${s.warmDay} (până la ${s.warmT}), iar cea mai rece ${s.coldDay} (până la ${s.coldT}). ${s.wet ? `Se așteaptă precipitații în ${s.wet} dintre zile.` : 'Nu se așteaptă precipitații importante.'}`,
+    normal: (cmp, month, normal) => ` Temperaturile maxime sunt ${['sub cele normale', 'apropiate de cele normale', 'peste cele normale'][cmp]} pentru luna ${month} (medie ${normal}).`
   }
 };
 const CLIMATE = {};
@@ -70,7 +75,7 @@ for (const name of ['climate.json', 'climate-europe.json']) {
 }
 // "/de/europe/italy/naples/" -> "italy/naples", "/vremeto/sofia/10-dni/" -> "sofia"
 const climateOf = url => {
-  const bare = url.replace(/^\/(en|de|it|es|fr|nl)(?=\/)/, '');
+  const bare = url.replace(/^\/(en|de|it|es|fr|nl|ro)(?=\/)/, '');
   const bg = bare.match(/^\/vremeto\/([a-z-]+)\//);
   const europe = bare.match(/^\/europe\/([a-z-]+)\/([a-z-]+)\//);
   return CLIMATE[europe ? `${europe[1]}/${europe[2]}` : bg ? bg[1] : ''] || null;
@@ -204,7 +209,7 @@ function snapshot(page, data, today) {
     const amount = daily.precipitation_sum ? daily.precipitation_sum[i] : null;
     const wind = daily.wind_speed_10m_max ? daily.wind_speed_10m_max[i] : null;
     const gust = daily.wind_gusts_10m_max ? daily.wind_gusts_10m_max[i] : null;
-    return `          <a class="kp-day city-day" href="/weather/?${page.query}&date=${iso}" title="${esc(text.hourly)}">
+    return `          <a class="kp-day city-day" href="${lang === 'ro' ? '/en' : ''}/weather/?${page.query}&date=${iso}" title="${esc(text.hourly)}">
             <span class="kp-day-name">${esc(date(iso, { weekday: 'short', day: 'numeric' }))}</span>
             <span class="city-day-icon" aria-hidden="true">${condition(daily.weather_code[i]).icon}</span>
             <span class="city-day-date">${iso.slice(5).split('-').reverse().join('.')}</span>
@@ -249,7 +254,7 @@ function snapshot(page, data, today) {
         <h2>${esc(page.name)}: ${esc(date(daily.time[0], { weekday: 'long', day: 'numeric', month: 'long' }))}</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">${range(0)}</span>
         <p class="storm-now-status">${esc(describe(0))}${typeof rainToday === 'number' ? ` · ${esc(text.rain)} ${Math.round(rainToday)}%` : ''}</p>
-        <p class="storm-updated">${ISSUED[lang]} ${esc(date(today, { day: 'numeric', month: 'long', year: 'numeric' }))}</p>
+        <p class="storm-updated">${ISSUED[lang]} ${esc(date(today, lang === 'ro' ? { day: '2-digit', month: '2-digit', year: 'numeric' } : { day: 'numeric', month: 'long', year: 'numeric' }))}</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>${esc(heading)}</h3>
@@ -264,7 +269,8 @@ ${days}
 (async function main() {
   const folders = process.argv.slice(2).filter(arg => !arg.startsWith('--'));
   // Bulgarian at the root, the other languages under /en/, /de/ ...
-  const all = I18N.LANGS.flatMap(lang => ['vremeto', 'europe'].map(folder => path.join(I18N.prefix(lang).slice(1), folder)));
+  const all = I18N.LANGS.flatMap(lang => ['vremeto', 'europe'].map(folder => path.join(I18N.prefix(lang).slice(1), folder)))
+    .concat('ro/vremeto');  // Romanian: the ski resorts (text-ro.js)
   const pages = cityPages(folders.length ? folders : all);
   if (!pages.length) throw new Error('No city pages found');
   pages.forEach(page => {

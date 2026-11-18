@@ -5,7 +5,7 @@
 (function () {
   const L = {
     bg: ['Сподели', 'Връзката е копирана'], en: ['Share', 'Link copied'], de: ['Teilen', 'Link kopiert'],
-    it: ['Condividi', 'Link copiato'], es: ['Compartir', 'Enlace copiado'], fr: ['Partager', 'Lien copié'], nl: ['Delen', 'Link gekopieerd']
+    it: ['Condividi', 'Link copiato'], es: ['Compartir', 'Enlace copiado'], fr: ['Partager', 'Lien copié'], ro: ['Distribuie', 'Link copiat'], nl: ['Delen', 'Link gekopieerd']
   };
   const [label, copied] = L[document.documentElement.lang] || L.en;
   const boxes = document.querySelectorAll('[data-share]');
