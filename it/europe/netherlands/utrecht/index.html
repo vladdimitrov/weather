@@ -120,6 +120,9 @@
     <p class="storm-intro">Previsioni del tempo a Utrecht, Paesi Bassi, per oggi, domani e i prossimi 7 giorni: temperatura, pioggia, vento e probabilità di precipitazioni. Dati di Open-Meteo, aggiornati ogni ora.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Utrecht" data-lat="52.0907" data-lon="5.1214" data-query="city=Utrecht&lat=52.0907&lon=5.1214&cc=NL">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Raffiche di vento forti domani: fino a 63 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
         <h2>Utrecht: mercoledì 18 novembre</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">8° / 10°</span>
@@ -145,18 +148,18 @@
             <span class="city-day-date">19.11</span>
             <span class="city-day-temp">7° / 11°</span>
             <span class="kp-day-status">Pioggia</span>
-            <span class="city-day-rain" title="probabilità di pioggia">98% · 7.0 mm</span>
-            <span class="city-day-wind">Vento 21 km/h · raffiche 45</span>
+            <span class="city-day-rain" title="probabilità di pioggia">98% · 8.1 mm</span>
+            <span class="city-day-wind city-day-gusts">Vento 18 km/h · raffiche 63</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Utrecht&lat=52.0907&lon=5.1214&cc=NL&date=2026-11-20" title="Ora per ora →">
             <span class="kp-day-name">ven 20</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">20.11</span>
-            <span class="city-day-temp">3° / 7°</span>
-            <span class="kp-day-status">Nuvoloso</span>
-            <span class="city-day-rain" title="probabilità di pioggia">30%</span>
-            <span class="city-day-wind">Vento 13 km/h · raffiche 42</span>
-            <span class="city-day-conf" title="Quanto differiscono i modelli ECMWF, ICON e GFS per questo giorno" style="font-size:0.8rem;color:#ffd54f">● meno certo</span>
+            <span class="city-day-temp">2° / 7°</span>
+            <span class="kp-day-status">Pioggia</span>
+            <span class="city-day-rain" title="probabilità di pioggia">30% · 9.3 mm</span>
+            <span class="city-day-wind">Vento 13 km/h · raffiche 33</span>
+            <span class="city-day-conf" title="Quanto differiscono i modelli ECMWF, ICON e GFS per questo giorno" style="font-size:0.8rem;color:#ff8a65">● incerto</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Utrecht&lat=52.0907&lon=5.1214&cc=NL&date=2026-11-21" title="Ora per ora →">
             <span class="kp-day-name">sab 21</span>
@@ -174,7 +177,7 @@
             <span class="city-day-temp">0° / 7°</span>
             <span class="kp-day-status">Nebbia</span>
             <span class="city-day-rain" title="probabilità di pioggia">9%</span>
-            <span class="city-day-wind">Vento 8 km/h · raffiche 35</span>
+            <span class="city-day-wind">Vento 11 km/h · raffiche 35</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Utrecht&lat=52.0907&lon=5.1214&cc=NL&date=2026-11-23" title="Ora per ora →">
             <span class="kp-day-name">lun 23</span>
@@ -183,7 +186,7 @@
             <span class="city-day-temp">0° / 3°</span>
             <span class="kp-day-status">Nuvoloso</span>
             <span class="city-day-rain" title="probabilità di pioggia">9%</span>
-            <span class="city-day-wind">Vento 11 km/h · raffiche 26</span>
+            <span class="city-day-wind">Vento 9 km/h · raffiche 24</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Utrecht&lat=52.0907&lon=5.1214&cc=NL&date=2026-11-24" title="Ora per ora →">
             <span class="kp-day-name">mar 24</span>
@@ -192,7 +195,7 @@
             <span class="city-day-temp">−2° / 4°</span>
             <span class="kp-day-status">Nuvoloso</span>
             <span class="city-day-rain" title="probabilità di pioggia">16%</span>
-            <span class="city-day-wind">Vento 15 km/h · raffiche 51</span>
+            <span class="city-day-wind">Vento 15 km/h · raffiche 53</span>
           </a>
         </div>
         <p class="forecast-note">Mediana dei modelli ECMWF, ICON e GFS · altitudine 10 m</p>
@@ -354,6 +357,6 @@
 <script src="/js/background-selector.js?v=6" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=5" defer></script>
-<script src="/js/city-forecast.js?v=20" defer></script>
+<script src="/js/city-forecast.js?v=21" defer></script>
 </body>
 </html>

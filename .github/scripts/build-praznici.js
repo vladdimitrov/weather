@@ -304,7 +304,7 @@ ${links}
 ${body.html}
 ${teaser}
 ${featured}`,
-    scripts: `<script src="/js/forecast-core.js?v=5" defer></script>
+    scripts: `<script src="/js/forecast-core.js?v=6" defer></script>
 <script src="/js/holiday-weather.js?v=1" defer></script>\n`
   });
 }

@@ -115,7 +115,7 @@
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsión a 7 días</h3>
-        <p class="city-summary">En los próximos 7 días el día más cálido será el viernes, 20 de noviembre (hasta 20°) y el más frío el martes, 24 de noviembre (hasta 3°). Se esperan precipitaciones en 1 de los días. Las máximas están por encima de lo normal para noviembre (media de 15°). Los modelos ECMWF, ICON y GFS coinciden en todos estos días, así que la previsión es bastante fiable.</p>
+        <p class="city-summary">En los próximos 7 días el día más cálido será el lunes, 23 de noviembre (hasta 20°) y el más frío el martes, 24 de noviembre (hasta 3°). Se esperan precipitaciones en 1 de los días. Las máximas están por encima de lo normal para noviembre (media de 15°). Los modelos coinciden hasta el domingo, 22 de noviembre; después la previsión es menos segura (hasta 6° de diferencia en la temperatura y un modelo da lluvia y otro un día seco).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Burgas&lat=42.5048&lon=27.4626&cc=BG&date=2026-11-18" title="Por horas →">
             <span class="kp-day-name">mié 18</span>
@@ -131,9 +131,9 @@
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">19.11</span>
             <span class="city-day-temp">12° / 19°</span>
-            <span class="kp-day-status">Lluvia</span>
+            <span class="kp-day-status">Llovizna</span>
             <span class="city-day-rain" title="probabilidad de lluvia">20% · 0.2 mm</span>
-            <span class="city-day-wind">Viento 21 km/h · rachas 56</span>
+            <span class="city-day-wind city-day-gusts">Viento 21 km/h · rachas 71</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Burgas&lat=42.5048&lon=27.4626&cc=BG&date=2026-11-20" title="Por horas →">
             <span class="kp-day-name">vie 20</span>
@@ -150,8 +150,8 @@
             <span class="city-day-date">21.11</span>
             <span class="city-day-temp">8° / 17°</span>
             <span class="kp-day-status">Llovizna</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">29% · 0.6 mm</span>
-            <span class="city-day-wind">Viento 7 km/h · rachas 36</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">29% · 0.5 mm</span>
+            <span class="city-day-wind">Viento 8 km/h · rachas 36</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Burgas&lat=42.5048&lon=27.4626&cc=BG&date=2026-11-22" title="Por horas →">
             <span class="kp-day-name">dom 22</span>
@@ -166,10 +166,11 @@
             <span class="kp-day-name">lun 23</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">23.11</span>
-            <span class="city-day-temp">7° / 19°</span>
+            <span class="city-day-temp">7° / 20°</span>
             <span class="kp-day-status">Llovizna</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">57% · 3.6 mm</span>
-            <span class="city-day-wind city-day-gusts">Viento 30 km/h · rachas 68</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">57% · 3.3 mm</span>
+            <span class="city-day-wind city-day-gusts">Viento 30 km/h · rachas 76</span>
+            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ffd54f">● menos segura</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Burgas&lat=42.5048&lon=27.4626&cc=BG&date=2026-11-24" title="Por horas →">
             <span class="kp-day-name">mar 24</span>
@@ -178,7 +179,8 @@
             <span class="city-day-temp">3° / 10°</span>
             <span class="kp-day-status">Nublado</span>
             <span class="city-day-rain" title="probabilidad de lluvia">10%</span>
-            <span class="city-day-wind city-day-gusts">Viento 21 km/h · rachas 63</span>
+            <span class="city-day-wind city-day-gusts">Viento 21 km/h · rachas 64</span>
+            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ffd54f">● menos segura</span>
           </a>
         </div>
         <p class="forecast-note">Mediana de los modelos ECMWF, ICON y GFS · altitud 15 m</p>
@@ -355,7 +357,7 @@
 <script src="/js/background-selector.js?v=6" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=5" defer></script>
-<script src="/js/city-forecast.js?v=20" defer></script>
+<script src="/js/city-forecast.js?v=21" defer></script>
 <script src="/js/share.js?v=2" defer></script>
 <script src="/js/region-weather.js?v=7" defer></script>
 </body>

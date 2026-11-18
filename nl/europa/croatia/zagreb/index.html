@@ -120,6 +120,9 @@
     <p class="storm-intro">Weerbericht voor Zagreb, Kroatië, voor vandaag, morgen en de komende 7 dagen: temperatuur, regen, wind en kans op neerslag. Gegevens van Open-Meteo, elk uur bijgewerkt.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Zagreb" data-lat="45.815" data-lon="15.9819" data-query="city=Zagreb&lat=45.8150&lon=15.9819&cc=HR">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Zware windstoten morgen: tot 72 km/u</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
         <h2>Zagreb: woensdag 18 november</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">10° / 17°</span>
@@ -128,7 +131,7 @@
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-daagse verwachting</h3>
-        <p class="city-summary">In de komende 7 dagen is woensdag 18 november de warmste dag (tot 17°) en dinsdag 24 november de koudste (tot 1°). Op 4 van de dagen wordt neerslag verwacht. De modellen lopen al uiteen voor morgen (tot 4° verschil in temperatuur), kijk later nog eens naar de verwachting.</p>
+        <p class="city-summary">In de komende 7 dagen is woensdag 18 november de warmste dag (tot 17°) en dinsdag 24 november de koudste (tot 1°). Op 4 van de dagen wordt neerslag verwacht. De modellen ECMWF, ICON en GFS zijn het voor al deze dagen eens, dus de verwachting is vrij zeker.</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Zagreb&lat=45.8150&lon=15.9819&cc=HR&date=2026-11-18" title="Per uur →">
             <span class="kp-day-name">wo 18</span>
@@ -146,8 +149,7 @@
             <span class="city-day-temp">8° / 13°</span>
             <span class="kp-day-status">Regen</span>
             <span class="city-day-rain" title="kans op regen">100% · 18.9 mm</span>
-            <span class="city-day-wind">Wind 20 km/h · windstoten 59</span>
-            <span class="city-day-conf" title="Hoe ver de modellen ECMWF, ICON en GFS voor deze dag uiteenlopen" style="font-size:0.8rem;color:#ffd54f">● minder zeker</span>
+            <span class="city-day-wind city-day-gusts">Wind 20 km/h · windstoten 72</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Zagreb&lat=45.8150&lon=15.9819&cc=HR&date=2026-11-20" title="Per uur →">
             <span class="kp-day-name">vr 20</span>
@@ -163,9 +165,9 @@
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">21.11</span>
             <span class="city-day-temp">4° / 14°</span>
-            <span class="kp-day-status">Bewolkt</span>
-            <span class="city-day-rain" title="kans op regen">6%</span>
-            <span class="city-day-wind">Wind 9 km/h · windstoten 31</span>
+            <span class="kp-day-status">Motregen</span>
+            <span class="city-day-rain" title="kans op regen">6% · 0.1 mm</span>
+            <span class="city-day-wind">Wind 8 km/h · windstoten 36</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Zagreb&lat=45.8150&lon=15.9819&cc=HR&date=2026-11-22" title="Per uur →">
             <span class="kp-day-name">zo 22</span>
@@ -181,9 +183,9 @@
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">23.11</span>
             <span class="city-day-temp">2° / 7°</span>
-            <span class="kp-day-status">Motregen</span>
-            <span class="city-day-rain" title="kans op regen">90% · 1.6 mm</span>
-            <span class="city-day-wind">Wind 10 km/h · windstoten 45</span>
+            <span class="kp-day-status">Regen</span>
+            <span class="city-day-rain" title="kans op regen">90% · 5.0 mm</span>
+            <span class="city-day-wind">Wind 13 km/h · windstoten 50</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Zagreb&lat=45.8150&lon=15.9819&cc=HR&date=2026-11-24" title="Per uur →">
             <span class="kp-day-name">di 24</span>
@@ -192,7 +194,7 @@
             <span class="city-day-temp">1° / 6°</span>
             <span class="kp-day-status">Bewolkt</span>
             <span class="city-day-rain" title="kans op regen">12%</span>
-            <span class="city-day-wind">Wind 5 km/h · windstoten 22</span>
+            <span class="city-day-wind">Wind 6 km/h · windstoten 22</span>
           </a>
         </div>
         <p class="forecast-note">Mediaan van de modellen ECMWF, ICON en GFS · hoogte 142 m</p>
@@ -354,6 +356,6 @@
 <script src="/js/background-selector.js?v=6" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=5" defer></script>
-<script src="/js/city-forecast.js?v=20" defer></script>
+<script src="/js/city-forecast.js?v=21" defer></script>
 </body>
 </html>
