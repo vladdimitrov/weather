@@ -47,11 +47,11 @@
   // Our own warnings from the daily forecast of today and tomorrow (gusts: the strongest model,
   // the rest: the median of the models). Each rule is left out when NIMH has an official warning
   // of one of its kinds for the province. The levels are ours, near the yellow and orange codes of
-  // NIMH; they are not official. Used above the forecast of the city pages, on
+  // NIMH (wind: always, the models see the gusts of the place); they are not official. Used above the forecast of the city pages, on
   // /vremeto/preduprezhdeniya/ (window.WeatherHazards) and by .github/scripts/build-forecast.js.
   const HAZARDS = {
     rules: [
-      { type: 'wind', key: 'wind_gusts_10m_max', limits: [60, 90], official: ['wind'] },
+      { type: 'wind', key: 'wind_gusts_10m_max', limits: [60, 90], official: [] },  // always ours too: the official wind warning (province, one level) does not replace the gusts of the place
       { type: 'rain', key: 'precipitation_sum', limits: [25, 50], official: ['rain', 'rain-flood', 'flooding', 'thunderstorm'] },
       { type: 'snow', key: 'snowfall_sum', limits: [10, 25], official: ['snow-ice', 'snow'] },
       { type: 'cold', key: 'temperature_2m_min', limits: [-12, -18], below: true, official: ['low-temperature'] },

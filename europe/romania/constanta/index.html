@@ -122,6 +122,9 @@
     <p class="storm-intro">Прогноза за времето в Констанца, Румъния, за днес, утре и следващите 7 дни: температура, валежи, вятър и вероятност за валеж. Местно име: Constanța (Vremea Constanța). Данните са от Open-Meteo и се обновяват на всеки час.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Констанца" data-lat="44.1598" data-lon="28.6348" data-query="city=%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B0&lat=44.1598&lon=28.6348&cc=RO">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Силни пориви на вятъра утре: до 62 км/ч</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
         <h2>Констанца: сряда, 18 ноември</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">11° / 17°</span>
@@ -134,7 +137,7 @@
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B0&lat=44.1598&lon=28.6348&cc=RO&date=2026-11-18" title="По часове →">
             <span class="kp-day-name">ср, 18</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">18.11</span>
             <span class="city-day-temp">11° / 17°</span>
             <span class="kp-day-status">Дъжд</span>
@@ -156,8 +159,8 @@
             <span class="city-day-date">20.11</span>
             <span class="city-day-temp">11° / 18°</span>
             <span class="kp-day-status">Дъжд</span>
-            <span class="city-day-rain" title="вероятност за валеж">47% · 1.9 mm</span>
-            <span class="city-day-wind city-day-gusts">Вятър 35 km/h · пориви 82</span>
+            <span class="city-day-rain" title="вероятност за валеж">47% · 0.5 mm</span>
+            <span class="city-day-wind city-day-gusts">Вятър 38 km/h · пориви 85</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B0&lat=44.1598&lon=28.6348&cc=RO&date=2026-11-21" title="По часове →">
             <span class="kp-day-name">сб, 21</span>
@@ -180,7 +183,7 @@
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9A%D0%BE%D0%BD%D1%81%D1%82%D0%B0%D0%BD%D1%86%D0%B0&lat=44.1598&lon=28.6348&cc=RO&date=2026-11-23" title="По часове →">
             <span class="kp-day-name">пн, 23</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">23.11</span>
             <span class="city-day-temp">5° / 15°</span>
             <span class="kp-day-status">Ръмеж</span>
@@ -357,6 +360,6 @@
 <script src="/js/background-selector.js?v=6" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=5" defer></script>
-<script src="/js/city-forecast.js?v=21" defer></script>
+<script src="/js/city-forecast.js?v=22" defer></script>
 </body>
 </html>
