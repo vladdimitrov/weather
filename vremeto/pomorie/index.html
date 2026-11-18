@@ -107,10 +107,13 @@
     <p class="storm-intro">Прогноза за времето в Поморие за днес, утре и следващите 7 дни: температура, валежи, вятър и вероятност за дъжд. Данните са от Open-Meteo и се обновяват на всеки час.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Поморие" data-lat="42.555" data-lon="27.64" data-query="city=%D0%9F%D0%BE%D0%BC%D0%BE%D1%80%D0%B8%D0%B5&lat=42.5550&lon=27.6400&cc=BG" data-warn="burgas">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Силни пориви на вятъра утре: до 71 км/ч</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
         <h2>Поморие: сряда, 18 ноември</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">11° / 16°</span>
-        <p class="storm-now-status">Облачно · вероятност за валеж 35%</p>
+        <p class="storm-now-status">Облачно · вероятност за валеж 25%</p>
         <p class="storm-updated">Прогноза от 18 ноември 2026 г.</p>
       </div>
       <div class="kp-forecast" id="cityDays">
@@ -128,7 +131,7 @@
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%BE%D0%BC%D0%BE%D1%80%D0%B8%D0%B5&lat=42.5550&lon=27.6400&cc=BG&date=2026-11-19" title="По часове →">
             <span class="kp-day-name">чт, 19</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">19.11</span>
             <span class="city-day-temp">12° / 19°</span>
             <span class="kp-day-status">Ръмеж</span>
@@ -174,7 +177,7 @@
           </a>
           <a class="kp-day city-day" href="/weather/?city=%D0%9F%D0%BE%D0%BC%D0%BE%D1%80%D0%B8%D0%B5&lat=42.5550&lon=27.6400&cc=BG&date=2026-11-24" title="По часове →">
             <span class="kp-day-name">вт, 24</span>
-            <span class="city-day-icon" aria-hidden="true">⛅</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">24.11</span>
             <span class="city-day-temp">4° / 11°</span>
             <span class="kp-day-status">Облачно</span>
@@ -363,7 +366,7 @@
 <script src="/js/background-selector.js?v=6" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=5" defer></script>
-<script src="/js/city-forecast.js?v=21" defer></script>
+<script src="/js/city-forecast.js?v=22" defer></script>
 <script src="/js/share.js?v=2" defer></script>
 <script src="/js/region-weather.js?v=7" defer></script>
 </body>
