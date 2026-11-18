@@ -14,8 +14,8 @@
   <link rel="alternate" hreflang="de" href="https://weatherpulse.eu/de/holliday_calendar/" />
   <link rel="alternate" hreflang="it" href="https://weatherpulse.eu/it/holliday_calendar/" />
   <link rel="alternate" hreflang="es" href="https://weatherpulse.eu/es/holliday_calendar/" />
-  <link rel="alternate" hreflang="fr" href="https://weatherpulse.eu/fr/holliday_calendar/" />
-  <link rel="alternate" hreflang="nl" href="https://weatherpulse.eu/nl/holliday_calendar/" />
+  <link rel="alternate" hreflang="fr" href="https://weatherpulse.eu/fr/calendrier-jours-feries/" />
+  <link rel="alternate" hreflang="nl" href="https://weatherpulse.eu/nl/feestdagenkalender/" />
   <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu/en/holliday_calendar/" />
 <meta name="description" content="Календар на официалните празници за всяка държава и период, с отбелязани почивни дни. Изтегляне в Google, Apple или Outlook календар.">
 <meta property="og:type" content="website">
@@ -37,7 +37,7 @@
         const languages = ['en', 'de', 'it', 'es', 'fr', 'nl'];
         // Only a language the visitor picked: nobody is sent away because of the browser language
         const wanted = localStorage.getItem('selectedLanguage');
-        if (languages.includes(wanted)) location.replace('/' + wanted + '/holliday_calendar/' + location.search + location.hash);
+        if (languages.includes(wanted)) location.replace(({ fr: '/fr/calendrier-jours-feries/', nl: '/nl/feestdagenkalender/' }[wanted] || '/' + wanted + '/holliday_calendar/') + location.search + location.hash);
       } catch (e) { /* storage blocked */ }
     })();
   </script>
@@ -165,7 +165,7 @@
 
   <!-- lang-links:start -->
   <nav class="lang-links" aria-label="Languages" style="text-align: center; font-size: 0.85em; color: #999; margin: 18px 0 6px;">
-    <a href="/en/holliday_calendar/" hreflang="en" lang="en" data-set-lang="en" class="footer-link">English</a> · <a href="/de/holliday_calendar/" hreflang="de" lang="de" data-set-lang="de" class="footer-link">Deutsch</a> · <a href="/it/holliday_calendar/" hreflang="it" lang="it" data-set-lang="it" class="footer-link">Italiano</a> · <a href="/es/holliday_calendar/" hreflang="es" lang="es" data-set-lang="es" class="footer-link">Español</a> · <a href="/fr/holliday_calendar/" hreflang="fr" lang="fr" data-set-lang="fr" class="footer-link">Français</a> · <a href="/nl/holliday_calendar/" hreflang="nl" lang="nl" data-set-lang="nl" class="footer-link">Nederlands</a>
+    <a href="/en/holliday_calendar/" hreflang="en" lang="en" data-set-lang="en" class="footer-link">English</a> · <a href="/de/holliday_calendar/" hreflang="de" lang="de" data-set-lang="de" class="footer-link">Deutsch</a> · <a href="/it/holliday_calendar/" hreflang="it" lang="it" data-set-lang="it" class="footer-link">Italiano</a> · <a href="/es/holliday_calendar/" hreflang="es" lang="es" data-set-lang="es" class="footer-link">Español</a> · <a href="/fr/calendrier-jours-feries/" hreflang="fr" lang="fr" data-set-lang="fr" class="footer-link">Français</a> · <a href="/nl/feestdagenkalender/" hreflang="nl" lang="nl" data-set-lang="nl" class="footer-link">Nederlands</a>
   </nav>
   <!-- lang-links:end -->
 
@@ -185,7 +185,7 @@
 
   </footer>
 
-<script src="/js/mobile-nav.js?v=24"></script>
+<script src="/js/mobile-nav.js?v=25"></script>
 <script src="/js/language-selector.js?v=10"></script>
 <script src="/js/city-search.js?v=15"></script>
 <script src="/holliday_calendar/js/script.js?v=9"></script>

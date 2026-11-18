@@ -12,6 +12,9 @@
   // the translated city pages.
   if (place.isDefault || !place.countryCode || place.countryCode === 'BG') {
     const LATIN = { sofia: 'Sofia', plovdiv: 'Plovdiv', varna: 'Varna', burgas: 'Burgas', ruse: 'Ruse', 'stara-zagora': 'Stara Zagora', pleven: 'Pleven', 'veliko-tarnovo': 'Veliko Tarnovo', blagoevgrad: 'Blagoevgrad', bansko: 'Bansko' };
+    // the folder of the city pages in French, Dutch and Romanian (.github/scripts/i18n.js)
+    const CITY_FOLDER = { fr: 'meteo', nl: 'weer', ro: 'vremea' };
+    const RO_CITIES = ['bansko', 'borovets', 'pamporovo', 'chepelare', 'dobrinishte'];
     const LATIN_LANG = { es: { sofia: 'Sofía' }, fr: { burgas: 'Bourgas', ruse: 'Roussé' } };
     const cityLinks = [...section.querySelectorAll('.city-links a[href^="vremeto/"]')].filter(a => /^vremeto\/[^/]+\/$/.test(a.getAttribute('href')));
     const original = cityLinks.map(a => ({ text: a.textContent, href: a.getAttribute('href') }));
@@ -24,7 +27,9 @@
           a.setAttribute('href', original[i].href);
         } else {
           a.textContent = (LATIN_LANG[lang] && LATIN_LANG[lang][slug]) || LATIN[slug] || original[i].text;
-          a.setAttribute('href', `/${lang}/${original[i].href}`);
+          // Romanian has the ski resorts only (text-ro.js): the other cities open in English
+          const own = lang === 'ro' && !RO_CITIES.includes(slug) ? 'en' : lang;
+          a.setAttribute('href', `/${own}/${original[i].href.replace(/^vremeto\//, (CITY_FOLDER[own] || 'vremeto') + '/')}`);
         }
       });
     };
@@ -62,7 +67,7 @@
       return `<a href="/weather/?${query}" class="recent-place">${name}</a>`;
     });
     const slug = data.slugs[place.countryCode];
-    if (slug) items.push(`<a href="${lang === 'bg' ? '' : '/' + lang}/europe/${slug}/" class="recent-place">${t.all}</a>`);
+    if (slug) items.push(`<a href="${lang === 'bg' ? '' : '/' + lang}/${lang === 'nl' ? 'europa' : 'europe'}/${slug}/" class="recent-place">${t.all}</a>`);
     links.innerHTML = items.join('\n        ');
     if (holidays) {
       holidays.removeAttribute('data-nav');

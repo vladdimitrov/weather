@@ -287,6 +287,11 @@ function monthPage(lang, year, month, years) {
   const prev = month === 0 ? (years.includes(year - 1) ? [year - 1, 11] : null) : [year, month - 1];
   const next = month === 11 ? (years.includes(year + 1) ? [year + 1, 0] : null) : [year, month + 1];
   const blue = blueMoons(allEvents).filter(event => sofia(event.time).month === month);
+  // A month that is over is no longer something people search for: the page stays for visitors
+  // and links (noindex, follow) but leaves the index and the sitemap. The daily workflow rebuilds
+  // these pages, so a month turns noindex on the 1st of the next month.
+  const today = sofia(new Date());
+  const past = year < today.year || (year === today.year && month < today.month);
 
   const phaseRows = events.map(event => {
     const s = sofia(event.time);
@@ -311,6 +316,7 @@ function monthPage(lang, year, month, years) {
     url,
     lang,
     multi: true,
+    ...(past ? { indexed: [] } : {}),
     scripts: SCRIPTS + `<script src="/js/moon-grid.js?v=4" defer></script>
 `,
     title: esc(T.monthTitle(name, year, Boolean(full))),
@@ -574,6 +580,12 @@ I18N.LANGS.forEach(lang => {
     write(dir(lang, fullMoonUrl(event)), fullMoonPage(lang, event, chain[i - 1], chain[i + 1], after));
   });
   fs.writeFileSync(path.join(ROOT, dir(lang, '/luna/moon-phases.ics')), icsFile(lang, years));
+  // calendars subscribed before the French and Dutch addresses got their own words keep working
+  const oldIcs = `${I18N.prefix(lang).slice(1)}/luna/moon-phases.ics`.replace(/^\//, '');
+  if (lang !== 'bg' && oldIcs !== dir(lang, '/luna/moon-phases.ics')) {
+    fs.mkdirSync(path.dirname(path.join(ROOT, oldIcs)), { recursive: true });
+    fs.writeFileSync(path.join(ROOT, oldIcs), icsFile(lang, years));
+  }
 });
 console.log(`Wrote /luna/, ${years.length} year pages and ${years.length * 12} month pages (${years.join(', ')}) in ${I18N.LANGS.length} languages, the lists of full and new moons and the calendar file (moon-phases.ics).`);
 

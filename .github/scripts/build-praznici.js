@@ -362,7 +362,7 @@ YEARS.forEach(year => moved(`praznici/pochivni-dni-${year}`, year === CURRENT ? 
 moved('holliday_calendar', '/praznici/', `  <script>
     try {
       var wanted = localStorage.getItem('selectedLanguage');
-      if (['en', 'de', 'it', 'es', 'fr', 'nl'].indexOf(wanted) >= 0) location.replace('/' + wanted + '/holliday_calendar/' + location.search + location.hash);
+      if (['en', 'de', 'it', 'es', 'fr', 'nl'].indexOf(wanted) >= 0) location.replace(({ fr: '/fr/calendrier-jours-feries/', nl: '/nl/feestdagenkalender/' }[wanted] || '/' + wanted + '/holliday_calendar/') + location.search + location.hash);
     } catch (e) { /* storage blocked */ }
   </script>
 `);

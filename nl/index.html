@@ -779,12 +779,12 @@
 
   <div class="nav-header" tabindex="-1" id="header">
     <div class="nav-links">
-      <a href="/nl/weather/" class="nav-link" data-nav="weather">Weerbericht</a>
-      <a href="/nl/maps/" class="nav-link" data-nav="maps">Weerkaarten</a>
-      <a href="/nl/holliday_calendar/" class="nav-link" data-nav="holidays">Feestdagenkalender</a>
-      <a href="/nl/kurorti/" class="nav-link" data-nav="resorts">Vakantieoorden</a>
-      <a href="/nl/magnitni-buri/" class="nav-link" data-nav="storms">Magnetische stormen</a>
-      <a href="/nl/luna/" class="nav-link" data-nav="moon">Maankalender</a>
+      <a href="/nl/weersverwachting/" class="nav-link" data-nav="weather">Weerbericht</a>
+      <a href="/nl/weerkaarten/" class="nav-link" data-nav="maps">Weerkaarten</a>
+      <a href="/nl/feestdagenkalender/" class="nav-link" data-nav="holidays">Feestdagenkalender</a>
+      <a href="/nl/vakantieoorden/" class="nav-link" data-nav="resorts">Vakantieoorden</a>
+      <a href="/nl/magnetische-stormen/" class="nav-link" data-nav="storms">Magnetische stormen</a>
+      <a href="/nl/maan/" class="nav-link" data-nav="moon">Maankalender</a>
     </div>
     <div class="header-selectors" id="selectors-container">
       <!-- Background and language selectors will be inserted here by JS -->
@@ -797,7 +797,7 @@
     <div class="hero-section">
       <h1 class="hero-title" id="hero-title" data-translation-key="heroTitle">Weerbericht, magnetische stormen en maankalender</h1>
       <p class="hero-subtitle" id="hero-subtitle" data-translation-key="heroSubtitle">Volg het weer, de maanfasen, magnetische stormen en feestdagen in realtime voor elke plaats ter wereld. Plan uw dag nauwkeurig en met vertrouwen.</p>
-      <a class="now-card" id="nowCard" href="/nl/weather/" hidden></a>
+      <a class="now-card" id="nowCard" href="/nl/weersverwachting/" hidden></a>
       <div class="now-days" id="nowDays" hidden></div>
       <div class="home-search" id="homeSearch"></div>
     </div>
@@ -808,20 +808,20 @@
       <div class="sun-center" title="Home – weer en magnetische stormen"></div>
       
       <div class="orbit-container">
-        <a href="/nl/weather/" class="orbit-button" id="weather-orbit-btn" title="Weerbericht">
+        <a href="/nl/weersverwachting/" class="orbit-button" id="weather-orbit-btn" title="Weerbericht">
           <span class="label" id="weather-orbit-label">WEER</span>
         </a>
         
-       <a href="/nl/magnitni-buri/" class="orbit-button" id="magnetic-orbit-btn" title="Magnetische stormen">
+       <a href="/nl/magnetische-stormen/" class="orbit-button" id="magnetic-orbit-btn" title="Magnetische stormen">
           <span class="label" id="magnetic-orbit-label">STORMEN</span>
         </a>
-		<a href="/nl/holliday_calendar/" class="orbit-button" id="holliday-calendar-btn" title="Feestdagenkalender">
+		<a href="/nl/feestdagenkalender/" class="orbit-button" id="holliday-calendar-btn" title="Feestdagenkalender">
           <span class="label" id="holiday-calendar-label">FEESTDAGEN</span>
         </a>
-        <a href="/nl/luna/" class="orbit-button" id="moon-orbit-btn" title="Maankalender: de maanfase vandaag">
+        <a href="/nl/maan/" class="orbit-button" id="moon-orbit-btn" title="Maankalender: de maanfase vandaag">
           <span class="label" id="moon-orbit-label">MAAN</span>
         </a>
-        <a href="/nl/maps/" class="orbit-button" id="maps-orbit-btn" title="Weerkaarten">
+        <a href="/nl/weerkaarten/" class="orbit-button" id="maps-orbit-btn" title="Weerkaarten">
           <span class="label" id="maps-orbit-label">KAARTEN</span>
         </a>
         
@@ -835,12 +835,12 @@
     <section class="home-sections" id="homeSections">
       <h2 data-nav="allSections">Alle onderdelen</h2>
       <div class="home-tiles">
-        <a class="home-tile" data-dup href="/nl/magnitni-buri/"><span class="ht-title">🧲 <span data-nav="storms">Magnetische stormen</span></span><span class="ht-live" data-today="kp"></span></a>
-        <a class="home-tile" href="/nl/kurorti/"><span class="ht-title">🏖️ <span data-nav="resorts">Vakantieoorden</span></span></a>
-        <a class="home-tile" data-dup href="/nl/luna/"><span class="ht-title">🌙 <span data-nav="moon">Maankalender</span></span><span class="ht-live" data-today="moon"></span></a>
-        <a class="home-tile" href="/nl/nebeto/"><span class="ht-title">🌌 <span data-nav="sky">De hemel</span></span></a>
-        <a class="home-tile" data-dup href="/nl/holliday_calendar/"><span class="ht-title">🎉 <span data-nav="holidays">Feestdagenkalender</span></span></a>
-        <a class="home-tile" data-dup href="/nl/maps/"><span class="ht-title">🗺️ <span data-nav="maps">Weerkaarten</span></span></a>
+        <a class="home-tile" data-dup href="/nl/magnetische-stormen/"><span class="ht-title">🧲 <span data-nav="storms">Magnetische stormen</span></span><span class="ht-live" data-today="kp"></span></a>
+        <a class="home-tile" href="/nl/vakantieoorden/"><span class="ht-title">🏖️ <span data-nav="resorts">Vakantieoorden</span></span></a>
+        <a class="home-tile" data-dup href="/nl/maan/"><span class="ht-title">🌙 <span data-nav="moon">Maankalender</span></span><span class="ht-live" data-today="moon"></span></a>
+        <a class="home-tile" href="/nl/hemel/"><span class="ht-title">🌌 <span data-nav="sky">De hemel</span></span></a>
+        <a class="home-tile" data-dup href="/nl/feestdagenkalender/"><span class="ht-title">🎉 <span data-nav="holidays">Feestdagenkalender</span></span></a>
+        <a class="home-tile" data-dup href="/nl/weerkaarten/"><span class="ht-title">🗺️ <span data-nav="maps">Weerkaarten</span></span></a>
       </div>
     </section>
 
@@ -855,21 +855,21 @@
     <section class="home-cities">
       <h2 data-nav="cities">Weer in Bulgaarse steden</h2>
       <div class="city-links">
-        <a href="/nl/vremeto/sofia/" class="recent-place">Sofia</a>
-        <a href="/nl/vremeto/plovdiv/" class="recent-place">Plovdiv</a>
-        <a href="/nl/vremeto/varna/" class="recent-place">Varna</a>
-        <a href="/nl/vremeto/burgas/" class="recent-place">Burgas</a>
-        <a href="/nl/vremeto/ruse/" class="recent-place">Ruse</a>
-        <a href="/nl/vremeto/stara-zagora/" class="recent-place">Stara Zagora</a>
-        <a href="/nl/vremeto/pleven/" class="recent-place">Pleven</a>
-        <a href="/nl/vremeto/veliko-tarnovo/" class="recent-place">Veliko Tarnovo</a>
-        <a href="/nl/vremeto/blagoevgrad/" class="recent-place">Blagoevgrad</a>
-        <a href="/nl/vremeto/bansko/" class="recent-place">Bansko</a>
-        <a href="/nl/vremeto/borovets/" class="recent-place">Borovets</a>
-        <a href="/nl/vremeto/pamporovo/" class="recent-place">Pamporovo</a>
-        <a href="/nl/vremeto/" class="recent-place" data-nav="allCities">Alle steden →</a>
+        <a href="/nl/weer/sofia/" class="recent-place">Sofia</a>
+        <a href="/nl/weer/plovdiv/" class="recent-place">Plovdiv</a>
+        <a href="/nl/weer/varna/" class="recent-place">Varna</a>
+        <a href="/nl/weer/burgas/" class="recent-place">Burgas</a>
+        <a href="/nl/weer/ruse/" class="recent-place">Ruse</a>
+        <a href="/nl/weer/stara-zagora/" class="recent-place">Stara Zagora</a>
+        <a href="/nl/weer/pleven/" class="recent-place">Pleven</a>
+        <a href="/nl/weer/veliko-tarnovo/" class="recent-place">Veliko Tarnovo</a>
+        <a href="/nl/weer/blagoevgrad/" class="recent-place">Blagoevgrad</a>
+        <a href="/nl/weer/bansko/" class="recent-place">Bansko</a>
+        <a href="/nl/weer/borovets/" class="recent-place">Borovets</a>
+        <a href="/nl/weer/pamporovo/" class="recent-place">Pamporovo</a>
+        <a href="/nl/weer/" class="recent-place" data-nav="allCities">Alle steden →</a>
       </div>
-      <p class="city-actions"><a class="btn" href="/nl/kurorti/" data-nav="resorts">Vakantieoorden</a> <a class="btn" href="/nl/praznici/" data-nav="holidaysBg">Feestdagen in Bulgarije</a> <a class="btn" href="/nl/europe/" data-nav="europe">Weer in Europa →</a> <a class="btn" href="/nl/gradove/" data-nav="cityIndex">Alle steden</a></p>
+      <p class="city-actions"><a class="btn" href="/nl/vakantieoorden/" data-nav="resorts">Vakantieoorden</a> <a class="btn" href="/nl/feestdagen/" data-nav="holidaysBg">Feestdagen in Bulgarije</a> <a class="btn" href="/nl/europa/" data-nav="europe">Weer in Europa →</a> <a class="btn" href="/nl/steden/" data-nav="cityIndex">Alle steden</a></p>
     </section>
   </div>
 
@@ -887,10 +887,10 @@
     <p style="font-size: 0.8em; color: #999; margin: 0; text-align: center; flex-grow: 1;">
       © <span class="current-year">2026</span> <a href="https://vyzya.com/" class="footer-link" rel="noopener" target="_blank">VYZYA</a>
       · <span data-nav="dataBy">Gegevens:</span> <a href="https://open-meteo.com/" class="footer-link" rel="noopener" target="_blank">Open-Meteo.com</a> (<a href="https://creativecommons.org/licenses/by/4.0/" class="footer-link" rel="noopener license" target="_blank">CC BY 4.0</a>)
-      · <a href="/nl/gradove/" class="footer-link" data-nav="cityIndex">Alle steden</a>
-      · <a href="/nl/iztochnici/" class="footer-link" data-nav="sourcesShort">Bronnen</a>
-      · <a href="/nl/za-saita/" class="footer-link" data-nav="about">Over ons</a>
-      · <a href="/nl/poveritelnost/" class="footer-link" data-nav="privacy">Privacy</a>
+      · <a href="/nl/steden/" class="footer-link" data-nav="cityIndex">Alle steden</a>
+      · <a href="/nl/bronnen/" class="footer-link" data-nav="sourcesShort">Bronnen</a>
+      · <a href="/nl/over-ons/" class="footer-link" data-nav="about">Over ons</a>
+      · <a href="/nl/privacy/" class="footer-link" data-nav="privacy">Privacy</a>
     </p>
 
   </footer>
@@ -1172,7 +1172,7 @@
   }
 </script>
 
-<script src="/js/mobile-nav.js?v=24"></script>
+<script src="/js/mobile-nav.js?v=25"></script>
 <script src="/js/language-selector.js?v=10"></script>
 <script src="/language-switcher.js?v=16"></script>
 <script src="/js/background-selector.js?v=6"></script>
@@ -1181,7 +1181,7 @@
 <script src="/js/forecast-core.js?v=5"></script>
 <script src="/js/home-weather.js?v=12"></script>
 <script src="/js/place-context.js?v=3"></script>
-<script src="/js/home-cities.js?v=6"></script>
+<script src="/js/home-cities.js?v=7"></script>
 <script src="/js/moon.js?v=5"></script>
 <script src="/js/home-today.js?v=5"></script>
 

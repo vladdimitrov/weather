@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 65, mobileNav: 24, languageSelector: 10, cityForecast: 20, moon: 5, lunaToday: 6, lunaLocal: 2, auroraKp: 3, placeContext: 3, skyLocal: 3, homeCities: 6, regionWeather: 7, passes: 4, share: 2 };
+const VERSION = { theme: 65, mobileNav: 25, languageSelector: 10, cityForecast: 20, moon: 5, lunaToday: 6, lunaLocal: 2, auroraKp: 3, placeContext: 3, skyLocal: 3, homeCities: 7, regionWeather: 7, passes: 4, share: 2 };
 
 const CITIES = require('./bg-cities.js');
 
@@ -414,7 +414,7 @@ ${scripts}</body>
 `;
   // The home, forecast, maps, holiday calendar and storms pages exist in every language
   // (build-main.js): a page in another language links to its own (/en/, /en/weather/?city=...)
-  return lang === 'bg' ? html : html.replace(/href="\/(weather\/|maps\/|holliday_calendar\/|magnitni-buri\/)?(["#?])/g, (m, page = '', end) => `href="/${lang === 'ro' && page ? 'en' : lang}/${page}${end}`);
+  return lang === 'bg' ? html : html.replace(/href="\/(weather\/|maps\/|holliday_calendar\/|magnitni-buri\/)?(["#?])/g, (m, page = '', end) => `href="${page ? I18N.localUrl(lang, '/' + page) : `/${lang}/`}${end}`);
 }
 
 // The forecast build-forecast.js wrote into a city page stays when the page is written again
@@ -488,7 +488,7 @@ function cityPage(city, lang) {
   const T = TXT[lang];
   const name = cityName(city, lang);
   const where = cityWhere(city, lang);
-  const hub = lang === 'ro' ? '/ro/kurorti/' : L(lang, '/vremeto/');
+  const hub = lang === 'ro' ? L('ro', '/kurorti/') : L(lang, '/vremeto/');
   const params = new URLSearchParams({ city: name, lat: city.lat.toFixed(4), lon: city.lon.toFixed(4), cc: 'BG' });
   const breadcrumbs = `  <script type="application/ld+json">
   {
@@ -775,7 +775,7 @@ if (require.main === module) (async function main() {
     write(dir('/iztochnici/'), sourcesPage(lang));
   });
   // Romanian: the ski resorts only
-  RO.RESORTS.forEach(slug => write(`ro/vremeto/${slug}`, cityPage(CITIES.find(city => city.slug === slug), 'ro')));
+  RO.RESORTS.forEach(slug => write(I18N.localUrl('ro', `/vremeto/${slug}/`).slice(1, -1), cityPage(CITIES.find(city => city.slug === slug), 'ro')));
   console.log(`Wrote ${CITIES.length} city pages, /vremeto/ and /praznici/ (${years.join('–')}) in ${I18N.LANGS.length} languages.`);
 
   // The sitemap: node .github/scripts/build-sitemap.js

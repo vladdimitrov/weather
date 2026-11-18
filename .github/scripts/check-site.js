@@ -11,6 +11,7 @@
 //   - sitemap.xml lists a page that doesn't exist, a redirect or a noindex page, or misses a page
 //     that has a canonical address and is not noindex
 const fs = require('fs');
+const I18N = require('./i18n.js');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..', '..');
@@ -133,7 +134,10 @@ for (const file of files) {
 for (const [url, page] of pages) {
   if (!page.redirect) continue;
   const target = pages.get(page.canonical.slice(SITE.length));
-  if (!target || target.redirect || target.noindex) problems.push(`${relative(pageFile(url))}: redirects to "${page.canonical}", which is not an indexed page of the site`);
+  // an old French, Dutch or Romanian address (Bulgarian words, i18n.js) may lead to a page that left the index
+  // since (a past month of the Moon calendar)
+  const movedWords = /^\/(fr|nl|ro)\//.test(url) && I18N.localUrl(url.split('/')[1], I18N.bgPath(url.split('/')[1], url.slice(3))) === page.canonical.slice(SITE.length);
+  if (!target || target.redirect || (target.noindex && !movedWords)) problems.push(`${relative(pageFile(url))}: redirects to "${page.canonical}", which is not an indexed page of the site`);
 }
 for (const [url, page] of pages) {
   if (page.redirect) continue;

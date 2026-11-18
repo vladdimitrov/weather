@@ -129,6 +129,14 @@
   };
 
   // Pages that exist as a translation in /en/, /de/, /it/, /es/: the link follows the language
+  // French, Dutch and Romanian addresses have their own words (/fr/meteo/, /nl/maan/; localPath in
+  // .github/scripts/i18n.js, which build-main.js checks against this list)
+  const localWords = {
+    fr: { weather: 'previsions', maps: 'cartes', holliday_calendar: 'calendrier-jours-feries', 'magnitni-buri': 'tempetes-magnetiques', luna: 'lune', kurorti: 'stations', vremeto: 'meteo', praznici: 'jours-feries', nebeto: 'ciel', 'za-saita': 'a-propos', poveritelnost: 'confidentialite', iztochnici: 'sources', gradove: 'villes' },
+    nl: { weather: 'weersverwachting', maps: 'weerkaarten', holliday_calendar: 'feestdagenkalender', 'magnitni-buri': 'magnetische-stormen', luna: 'maan', kurorti: 'vakantieoorden', vremeto: 'weer', praznici: 'feestdagen', nebeto: 'hemel', 'za-saita': 'over-ons', poveritelnost: 'privacy', iztochnici: 'bronnen', gradove: 'steden', europe: 'europa' },
+    ro: { weather: 'prognoza', maps: 'harti', holliday_calendar: 'calendar-sarbatori', 'magnitni-buri': 'furtuni-magnetice', kurorti: 'statiuni', vremeto: 'vremea', praznici: 'sarbatori', nebeto: 'cerul', 'za-saita': 'despre', poveritelnost: 'confidentialitate', iztochnici: 'surse', gradove: 'orase', europe: 'europa' }
+  };
+  const localPage = (lang, page) => page.replace(/^[^/]+/, word => (localWords[lang] || {})[word] || word);
   const localPages = { home: '', weather: 'weather/', maps: 'maps/', holidays: 'holliday_calendar/', storms: 'magnitni-buri/', moon: 'luna/', resorts: 'kurorti/', stormsToday: 'magnitni-buri/', allCities: 'vremeto/', holidaysBg: 'praznici/', sky: 'nebeto/', about: 'za-saita/', privacy: 'poveritelnost/', sources: 'iztochnici/', sourcesShort: 'iztochnici/', cityIndex: 'gradove/', europe: 'europe/' };
 
   function translateNav() {
@@ -142,7 +150,7 @@
         link.dataset.navLocal = '1';
         // Romanian exists for the home page and the resorts only: the other links lead to the English page
         const own = lang === 'ro' && !['', 'kurorti/'].includes(page) ? 'en' : lang;
-        link.setAttribute('href', (own === 'bg' || !navTexts.home[own] ? '/' : '/' + own + '/') + page);
+        link.setAttribute('href', (own === 'bg' || !navTexts.home[own] ? '/' : '/' + own + '/') + localPage(own, page));
       }
     });
   }

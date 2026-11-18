@@ -269,8 +269,8 @@ ${days}
 (async function main() {
   const folders = process.argv.slice(2).filter(arg => !arg.startsWith('--'));
   // Bulgarian at the root, the other languages under /en/, /de/ ...
-  const all = I18N.LANGS.flatMap(lang => ['vremeto', 'europe'].map(folder => path.join(I18N.prefix(lang).slice(1), folder)))
-    .concat('ro/vremeto');  // Romanian: the ski resorts (text-ro.js)
+  const all = I18N.LANGS.flatMap(lang => ['/vremeto/', '/europe/'].map(folder => I18N.localUrl(lang, folder).slice(1, -1)))
+    .concat(I18N.localUrl('ro', '/vremeto/bansko/').split('/').slice(1, 3).join('/'));  // Romanian: the ski resorts (text-ro.js)
   const pages = cityPages(folders.length ? folders : all);
   if (!pages.length) throw new Error('No city pages found');
   pages.forEach(page => {
