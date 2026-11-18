@@ -120,6 +120,9 @@
     <p class="storm-intro">Prévisions météo à Brno (Tchéquie) pour aujourd’hui, demain et les 7 prochains jours : température, pluie, vent et probabilité de précipitations. Données d’Open-Meteo, mises à jour toutes les heures.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Brno" data-lat="49.1951" data-lon="16.6068" data-query="city=Brno&lat=49.1951&lon=16.6068&cc=CZ">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Rafales de vent fortes aujourd’hui : jusqu’à 60 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
         <h2>Brno: mercredi 18 novembre</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">5° / 14°</span>
@@ -128,7 +131,7 @@
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Prévisions à 7 jours</h3>
-        <p class="city-summary">Dans les 7 prochains jours, le jour le plus chaud sera mercredi 18 novembre (jusqu’à 14°) et le plus froid mardi 24 novembre (jusqu’à −3°). Des précipitations sont attendues sur 3 des jours. Les maximales sont proches des normales de novembre (moyenne 8°). Les modèles ECMWF, ICON et GFS concordent pour tous ces jours : la prévision est assez sûre.</p>
+        <p class="city-summary">Dans les 7 prochains jours, le jour le plus chaud sera mercredi 18 novembre (jusqu’à 14°) et le plus froid mardi 24 novembre (jusqu’à −3°). Des précipitations sont attendues sur 2 des jours. Les maximales sont proches des normales de novembre (moyenne 8°). Les modèles ECMWF, ICON et GFS concordent pour tous ces jours : la prévision est assez sûre.</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Brno&lat=49.1951&lon=16.6068&cc=CZ&date=2026-11-18" title="Heure par heure →">
             <span class="kp-day-name">mer. 18</span>
@@ -137,7 +140,7 @@
             <span class="city-day-temp">5° / 14°</span>
             <span class="kp-day-status">Pluie</span>
             <span class="city-day-rain" title="probabilité de pluie">100% · 1.5 mm</span>
-            <span class="city-day-wind">Vent 20 km/h · rafales 59</span>
+            <span class="city-day-wind city-day-gusts">Vent 20 km/h · rafales 60</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Brno&lat=49.1951&lon=16.6068&cc=CZ&date=2026-11-19" title="Heure par heure →">
             <span class="kp-day-name">jeu. 19</span>
@@ -145,8 +148,8 @@
             <span class="city-day-date">19.11</span>
             <span class="city-day-temp">5° / 11°</span>
             <span class="kp-day-status">Bruine</span>
-            <span class="city-day-rain" title="probabilité de pluie">38% · 0.1 mm</span>
-            <span class="city-day-wind">Vent 18 km/h · rafales 55</span>
+            <span class="city-day-rain" title="probabilité de pluie">38% · 0.5 mm</span>
+            <span class="city-day-wind">Vent 16 km/h · rafales 55</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Brno&lat=49.1951&lon=16.6068&cc=CZ&date=2026-11-20" title="Heure par heure →">
             <span class="kp-day-name">ven. 20</span>
@@ -155,11 +158,11 @@
             <span class="city-day-temp">6° / 11°</span>
             <span class="kp-day-status">Pluie</span>
             <span class="city-day-rain" title="probabilité de pluie">35% · 1.1 mm</span>
-            <span class="city-day-wind">Vent 22 km/h · rafales 54</span>
+            <span class="city-day-wind">Vent 23 km/h · rafales 54</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Brno&lat=49.1951&lon=16.6068&cc=CZ&date=2026-11-21" title="Heure par heure →">
             <span class="kp-day-name">sam. 21</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">21.11</span>
             <span class="city-day-temp">1° / 8°</span>
             <span class="kp-day-status">Pluie</span>
@@ -182,16 +185,16 @@
             <span class="city-day-temp">−1° / 3°</span>
             <span class="kp-day-status">Nuageux</span>
             <span class="city-day-rain" title="probabilité de pluie">17%</span>
-            <span class="city-day-wind">Vent 18 km/h · rafales 45</span>
+            <span class="city-day-wind">Vent 18 km/h · rafales 46</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Brno&lat=49.1951&lon=16.6068&cc=CZ&date=2026-11-24" title="Heure par heure →">
             <span class="kp-day-name">mar. 24</span>
-            <span class="city-day-icon" aria-hidden="true">⛅</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">24.11</span>
             <span class="city-day-temp">−3° / 3°</span>
-            <span class="kp-day-status">Partiellement nuageux</span>
+            <span class="kp-day-status">Nuageux</span>
             <span class="city-day-rain" title="probabilité de pluie">10%</span>
-            <span class="city-day-wind">Vent 11 km/h · rafales 39</span>
+            <span class="city-day-wind">Vent 12 km/h · rafales 43</span>
           </a>
         </div>
         <p class="forecast-note">Médiane des modèles ECMWF, ICON et GFS · altitude 231 m</p>
