@@ -15,19 +15,13 @@
 
   <url>
     <loc>https://weatherpulse.eu/weather/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/holliday_calendar/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/maps/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.8</priority>
   </url>
 
@@ -45,7 +39,7 @@
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.7</priority>
   </url>
 
@@ -57,181 +51,181 @@
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/sofia/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/plovdiv/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/varna/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/burgas/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/ruse/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/stara-zagora/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pleven/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/sliven/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/dobrich/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/shumen/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pernik/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/haskovo/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/yambol/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pazardzhik/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/blagoevgrad/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/veliko-tarnovo/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/vratsa/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/gabrovo/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/asenovgrad/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/vidin/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/kazanlak/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/kardzhali/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/kyustendil/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/montana/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/dimitrovgrad/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/lovech/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/silistra/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/targovishte/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/razgrad/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/smolyan/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
@@ -255,1249 +249,1249 @@
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/sozopol/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/nesebar/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/albania/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/albania/tirana/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/albania/durres/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/albania/vlore/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/albania/shkoder/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/austria/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/austria/vienna/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/austria/graz/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/austria/linz/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/austria/salzburg/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/austria/innsbruck/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/belgium/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/belgium/brussels/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/belgium/antwerp/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/belgium/ghent/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/belgium/bruges/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/belgium/liege/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/bosnia-and-herzegovina/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/bosnia-and-herzegovina/sarajevo/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/bosnia-and-herzegovina/banja-luka/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/bosnia-and-herzegovina/mostar/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/bosnia-and-herzegovina/tuzla/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/croatia/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/croatia/zagreb/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/croatia/split/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/croatia/dubrovnik/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/croatia/rijeka/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/croatia/zadar/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/cyprus/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/cyprus/nicosia/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/cyprus/limassol/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/cyprus/paphos/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/cyprus/larnaca/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/czechia/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/czechia/prague/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/czechia/brno/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/czechia/ostrava/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/czechia/plzen/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/czechia/olomouc/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/denmark/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/denmark/copenhagen/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/denmark/aarhus/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/denmark/odense/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/denmark/aalborg/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/estonia/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/estonia/tallinn/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/estonia/tartu/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/estonia/parnu/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/finland/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/finland/helsinki/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/finland/espoo/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/finland/tampere/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/finland/turku/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/finland/rovaniemi/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/france/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/france/paris/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/france/marseille/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/france/lyon/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/france/toulouse/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/france/nice/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/france/bordeaux/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/germany/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/germany/berlin/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/germany/hamburg/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/germany/munich/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/germany/cologne/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/germany/frankfurt/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/germany/stuttgart/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/germany/dresden/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/athens/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/thessaloniki/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/patras/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/heraklion/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/rhodes/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/hungary/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/hungary/budapest/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/hungary/debrecen/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/hungary/szeged/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/hungary/pecs/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/iceland/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/iceland/reykjavik/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/iceland/akureyri/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/iceland/keflavik/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/ireland/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/ireland/dublin/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/ireland/cork/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/ireland/galway/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/ireland/limerick/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/italy/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/italy/rome/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/italy/milan/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/italy/naples/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/italy/turin/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/italy/florence/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/italy/venice/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/italy/palermo/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/latvia/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/latvia/riga/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/latvia/daugavpils/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/latvia/liepaja/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/lithuania/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/lithuania/vilnius/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/lithuania/kaunas/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/lithuania/klaipeda/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/luxembourg/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/luxembourg/luxembourg/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/luxembourg/esch-sur-alzette/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/malta/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/malta/valletta/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/malta/sliema/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/malta/mosta/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/moldova/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/moldova/chisinau/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/moldova/balti/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/moldova/tiraspol/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/montenegro/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/montenegro/podgorica/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/montenegro/budva/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/montenegro/kotor/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/netherlands/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/netherlands/amsterdam/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/netherlands/rotterdam/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/netherlands/the-hague/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/netherlands/utrecht/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/netherlands/eindhoven/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/north-macedonia/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/north-macedonia/skopje/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/north-macedonia/bitola/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/north-macedonia/ohrid/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/norway/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/norway/oslo/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/norway/bergen/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/norway/trondheim/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/norway/stavanger/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/norway/tromso/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/poland/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/poland/warsaw/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/poland/krakow/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/poland/lodz/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/poland/wroclaw/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/poland/gdansk/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/poland/poznan/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/portugal/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/portugal/lisbon/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/portugal/porto/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/portugal/faro/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/portugal/braga/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/portugal/funchal/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/romania/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/romania/bucharest/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/romania/cluj-napoca/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/romania/timisoara/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/romania/iasi/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/romania/constanta/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/romania/brasov/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/serbia/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/serbia/belgrade/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/serbia/novi-sad/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/serbia/nis/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/serbia/kragujevac/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/slovakia/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/slovakia/bratislava/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/slovakia/kosice/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/slovakia/zilina/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/slovakia/poprad/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/slovenia/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/slovenia/ljubljana/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/slovenia/maribor/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/slovenia/bled/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/slovenia/koper/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/spain/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/spain/madrid/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/spain/barcelona/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/spain/valencia/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/spain/seville/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/spain/malaga/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/spain/bilbao/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/spain/palma/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/sweden/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/sweden/stockholm/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/sweden/gothenburg/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/sweden/malmo/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/sweden/uppsala/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/sweden/kiruna/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/switzerland/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/switzerland/zurich/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/switzerland/geneva/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/switzerland/basel/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/switzerland/bern/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/switzerland/lucerne/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/ukraine/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/ukraine/kyiv/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/ukraine/lviv/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/ukraine/odesa/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/ukraine/kharkiv/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/ukraine/dnipro/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/united-kingdom/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/united-kingdom/london/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/united-kingdom/manchester/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/united-kingdom/birmingham/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/united-kingdom/edinburgh/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/united-kingdom/glasgow/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/united-kingdom/cardiff/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/united-kingdom/belfast/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
@@ -1509,163 +1503,163 @@
 
   <url>
     <loc>https://weatherpulse.eu/luna/2026/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2026/yanuari/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2026/fevruari/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2026/mart/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2026/april/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2026/may/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2026/yuni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2026/yuli/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2026/avgust/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2026/septemvri/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2026/oktomvri/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2026/noemvri/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2026/dekemvri/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2027/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2027/yanuari/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2027/fevruari/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2027/mart/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2027/april/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2027/may/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2027/yuni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2027/yuli/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2027/avgust/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2027/septemvri/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2027/oktomvri/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2027/noemvri/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2027/dekemvri/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/nebeto/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.7</priority>
   </url>
 
@@ -4749,25 +4743,25 @@
 
   <url>
     <loc>https://weatherpulse.eu/en/holliday_calendar/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/de/holliday_calendar/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/it/holliday_calendar/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/es/holliday_calendar/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.8</priority>
   </url>
 
@@ -6045,7 +6039,7 @@
 
   <url>
     <loc>https://weatherpulse.eu/gradove/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.7</priority>
   </url>
 
@@ -6063,7 +6057,7 @@
 
   <url>
     <loc>https://weatherpulse.eu/iztochnici/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.7</priority>
   </url>
 
@@ -6075,7 +6069,7 @@
 
   <url>
     <loc>https://weatherpulse.eu/magnitni-buri/kp-indeks/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
@@ -6093,325 +6087,313 @@
 
   <url>
     <loc>https://weatherpulse.eu/magnitni-buri/zdrave/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/praznici/pochivni-dni-2026/</loc>
-    <lastmod>2026-11-17</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/praznici/pochivni-dni-2027/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/uidzhet/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/asenovgrad/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/bansko/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/bansko/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/blagoevgrad/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/borovets/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/borovets/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/burgas/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/burgas/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/chernomorie/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/dimitrovgrad/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/dobrich/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/gabrovo/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/haskovo/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/kardzhali/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/kazanlak/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/kyustendil/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/lovech/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/montana/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/morska-voda/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/nesebar/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/nesebar/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pamporovo/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pamporovo/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/parvi-snyag/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pazardzhik/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pernik/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pleven/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/plovdiv/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/plovdiv/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/razgrad/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/ruse/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/shumen/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/silistra/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/sliven/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/smolyan/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/snyag-kurorti/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/sofia/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/sofia/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/sozopol/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/sozopol/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/stara-zagora/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/targovishte/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/varna/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/varna/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/veliko-tarnovo/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/veliko-tarnovo/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/vidin/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/vratsa/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/yambol/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/zhegi/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
@@ -6939,277 +6921,277 @@
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/alexandroupoli/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/asprovalta/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/belomorie/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/chania/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/corfu/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/halkidiki/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/hanioti/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/kalambaka/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/kallithea/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/kavala/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/kefalonia/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/keramoti/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/kos/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/lefkada/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/more/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/mykonos/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/nafplio/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/neos-marmaras/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/nikiti/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/olympiada/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/ouranoupoli/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/paralia-katerinis/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/parga/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/santorini/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/stavros/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/thassos/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/greece/zakynthos/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/alanya/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/ankara/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/antalya/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/belek/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/bodrum/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/bursa/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/canakkale/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/didim/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/edirne/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/fethiye/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/goreme/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/istanbul/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/izmir/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/kemer/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/kusadasi/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/marmaris/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/more/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/europe/turkey/side/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
@@ -7335,235 +7317,235 @@
 
   <url>
     <loc>https://weatherpulse.eu/luna/2026/novolunie/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2026/pylnolunie/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2027/novolunie/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/2027/pylnolunie/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/asenovgrad/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/bansko/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/blagoevgrad/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/borovets/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/burgas/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/dimitrovgrad/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/dobrich/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/gabrovo/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/haskovo/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/kardzhali/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/kazanlak/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/kyustendil/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/lovech/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/montana/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/nesebar/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pamporovo/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pazardzhik/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pernik/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pleven/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/plovdiv/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/razgrad/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/ruse/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/shumen/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/silistra/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/sliven/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/smolyan/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/sofia/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/sozopol/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/stara-zagora/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/targovishte/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/varna/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/veliko-tarnovo/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/vidin/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/vratsa/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/yambol/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
@@ -7839,49 +7821,49 @@
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/albena/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/albena/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/albena/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/albena/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/balchik/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/balchik/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/balchik/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/balchik/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
@@ -7893,19 +7875,19 @@
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/chepelare/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/chepelare/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/chepelare/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
@@ -7917,175 +7899,175 @@
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/dobrinishte/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/dobrinishte/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/dobrinishte/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/kiten/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/kiten/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/kiten/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/kiten/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/obzor/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/obzor/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/obzor/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/obzor/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pomorie/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pomorie/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pomorie/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/pomorie/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/primorsko/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/primorsko/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/primorsko/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/primorsko/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/slanchev-bryag/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/slanchev-bryag/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/slanchev-bryag/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/slanchev-bryag/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/zlatni-pyasatsi/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/zlatni-pyasatsi/10-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/zlatni-pyasatsi/14-dni/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/zlatni-pyasatsi/uikend/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/preduprezhdeniya/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/vremeto/kachestvo-na-vazduha/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
 
@@ -8763,7 +8745,7 @@
 
   <url>
     <loc>https://weatherpulse.eu/fr/holliday_calendar/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.8</priority>
   </url>
 
@@ -9789,7 +9771,7 @@
 
   <url>
     <loc>https://weatherpulse.eu/nl/holliday_calendar/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.8</priority>
   </url>
 
@@ -10911,151 +10893,151 @@
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2026-01-03/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2026-02-02/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2026-03-03/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2026-04-02/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2026-05-01/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2026-05-31/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2026-06-30/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2026-07-29/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2026-08-28/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2026-09-26/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2026-10-26/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2026-11-24/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2026-12-24/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2027-01-22/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2027-02-21/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2027-03-22/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2027-04-21/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2027-05-20/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2027-06-19/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2027-07-18/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2027-08-17/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2027-09-16/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2027-10-15/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2027-11-14/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://weatherpulse.eu/luna/pylnolunie/2027-12-13/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
 
@@ -11279,6 +11261,18 @@
     <loc>https://weatherpulse.eu/ro/vremeto/pamporovo/</loc>
     <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/praznici/2027/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/praznici/darzhavi/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <priority>0.6</priority>
   </url>
 
 </urlset>

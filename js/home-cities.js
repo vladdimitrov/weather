@@ -67,7 +67,7 @@
     if (holidays) {
       holidays.removeAttribute('data-nav');
       holidays.textContent = t.holidays;
-      holidays.setAttribute('href', '/holliday_calendar/');
+      holidays.setAttribute('href', document.documentElement.lang === 'bg' ? '/praznici/darzhavi/' : '/holliday_calendar/');
     }
   }
 

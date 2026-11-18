@@ -121,7 +121,7 @@ for (const file of files) {
   pages.set(url, { canonical, alternates, redirect, noindex });
   if (redirect) {
     const target = (html.match(/<meta http-equiv="refresh" content="0; url=([^"]+)"/i) || [])[1];
-    if (!target || SITE + target !== canonical) problems.push(`${relative(file)}: the redirect goes to "${target}" but the canonical is "${canonical}"`);
+    if (!target || (/^https?:/.test(target) ? target : SITE + target) !== canonical) problems.push(`${relative(file)}: the redirect goes to "${target}" but the canonical is "${canonical}"`);
     continue;
   }
   if (canonical !== SITE + url) problems.push(`${relative(file)}: canonical is "${canonical}", expected "${SITE + url}"`);

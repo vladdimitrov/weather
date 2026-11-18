@@ -127,6 +127,9 @@
     <p class="storm-intro">Previsión del tiempo en Oporto, Portugal, para hoy, mañana y los próximos 7 días: temperatura, lluvia, viento y probabilidad de precipitación. Nombre local: Porto (Tempo Porto). Datos de Open-Meteo, actualizados cada hora.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Oporto" data-lat="41.1579" data-lon="-8.6291" data-query="city=Oporto&lat=41.1579&lon=-8.6291&cc=PT">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Rachas de viento fuertes hoy: hasta 63 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
         <h2>Oporto: miércoles, 18 de noviembre</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">15° / 18°</span>
@@ -135,7 +138,7 @@
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsión a 7 días</h3>
-        <p class="city-summary">En los próximos 7 días el día más cálido será el miércoles, 18 de noviembre (hasta 18°) y el más frío el lunes, 23 de noviembre (hasta 8°). Se esperan precipitaciones en 6 de los días. Las máximas están cerca de lo normal para noviembre (media de 17°). Los modelos coinciden hasta el lunes, 23 de noviembre; después la previsión es menos segura (un modelo da lluvia y otro un día seco).</p>
+        <p class="city-summary">En los próximos 7 días el día más cálido será el miércoles, 18 de noviembre (hasta 18°) y el más frío el lunes, 23 de noviembre (hasta 9°). Se esperan precipitaciones en 6 de los días. Las máximas están cerca de lo normal para noviembre (media de 17°). Los modelos coinciden hasta el lunes, 23 de noviembre; después la previsión es menos segura (un modelo da lluvia y otro un día seco).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Oporto&lat=41.1579&lon=-8.6291&cc=PT&date=2026-11-18" title="Por horas →">
             <span class="kp-day-name">mié 18</span>
@@ -144,7 +147,7 @@
             <span class="city-day-temp">15° / 18°</span>
             <span class="kp-day-status">Lluvia</span>
             <span class="city-day-rain" title="probabilidad de lluvia">100% · 12.5 mm</span>
-            <span class="city-day-wind">Viento 26 km/h · rachas 59</span>
+            <span class="city-day-wind city-day-gusts">Viento 26 km/h · rachas 63</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Oporto&lat=41.1579&lon=-8.6291&cc=PT&date=2026-11-19" title="Por horas →">
             <span class="kp-day-name">jue 19</span>
@@ -153,7 +156,7 @@
             <span class="city-day-temp">13° / 15°</span>
             <span class="kp-day-status">Lluvia</span>
             <span class="city-day-rain" title="probabilidad de lluvia">94% · 13.5 mm</span>
-            <span class="city-day-wind">Viento 22 km/h · rachas 50</span>
+            <span class="city-day-wind">Viento 22 km/h · rachas 49</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Oporto&lat=41.1579&lon=-8.6291&cc=PT&date=2026-11-20" title="Por horas →">
             <span class="kp-day-name">vie 20</span>
@@ -161,7 +164,7 @@
             <span class="city-day-date">20.11</span>
             <span class="city-day-temp">13° / 15°</span>
             <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">90% · 16.4 mm</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">90% · 13.7 mm</span>
             <span class="city-day-wind">Viento 19 km/h · rachas 55</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Oporto&lat=41.1579&lon=-8.6291&cc=PT&date=2026-11-21" title="Por horas →">
@@ -170,25 +173,25 @@
             <span class="city-day-date">21.11</span>
             <span class="city-day-temp">14° / 16°</span>
             <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">100% · 55.2 mm</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">100% · 63.3 mm</span>
             <span class="city-day-wind city-day-gusts">Viento 33 km/h · rachas 68</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Oporto&lat=41.1579&lon=-8.6291&cc=PT&date=2026-11-22" title="Por horas →">
             <span class="kp-day-name">dom 22</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">22.11</span>
-            <span class="city-day-temp">10° / 16°</span>
+            <span class="city-day-temp">11° / 16°</span>
             <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">52% · 0.1 mm</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">52%</span>
             <span class="city-day-wind">Viento 16 km/h · rachas 40</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Oporto&lat=41.1579&lon=-8.6291&cc=PT&date=2026-11-23" title="Por horas →">
             <span class="kp-day-name">lun 23</span>
             <span class="city-day-icon" aria-hidden="true">🌦️</span>
             <span class="city-day-date">23.11</span>
-            <span class="city-day-temp">8° / 15°</span>
+            <span class="city-day-temp">9° / 15°</span>
             <span class="kp-day-status">Llovizna</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">30% · 0.2 mm</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">20% · 0.2 mm</span>
             <span class="city-day-wind">Viento 6 km/h · rachas 24</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Oporto&lat=41.1579&lon=-8.6291&cc=PT&date=2026-11-24" title="Por horas →">
@@ -356,7 +359,7 @@
     </p>
   </footer>
 
-<script src="/js/mobile-nav.js?v=23" defer></script>
+<script src="/js/mobile-nav.js?v=24" defer></script>
 <script src="/js/language-selector.js?v=10" defer></script>
 <script src="/js/background-selector.js?v=6" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>

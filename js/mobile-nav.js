@@ -136,7 +136,8 @@
     document.querySelectorAll('[data-nav]').forEach(link => {
       const texts = navTexts[link.dataset.nav];
       if (texts) link.textContent = texts[lang] || texts.en;
-      const page = localPages[link.dataset.nav];
+      // the Bulgarian holiday page is /praznici/ (the calendar of other countries moved to /praznici/darzhavi/)
+      const page = lang === 'bg' && link.dataset.nav === 'holidays' ? 'praznici/' : localPages[link.dataset.nav];
       if (page !== undefined && (link.dataset.navLocal || !/^\/?(en|de|it|es|fr|nl|ro)\//.test(link.getAttribute('href') || ''))) {
         link.dataset.navLocal = '1';
         // Romanian exists for the home page and the resorts only: the other links lead to the English page
