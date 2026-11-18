@@ -14,8 +14,8 @@
   <link rel="alternate" hreflang="de" href="https://weatherpulse.eu/de/weather/" />
   <link rel="alternate" hreflang="it" href="https://weatherpulse.eu/it/weather/" />
   <link rel="alternate" hreflang="es" href="https://weatherpulse.eu/es/weather/" />
-  <link rel="alternate" hreflang="fr" href="https://weatherpulse.eu/fr/weather/" />
-  <link rel="alternate" hreflang="nl" href="https://weatherpulse.eu/nl/weather/" />
+  <link rel="alternate" hreflang="fr" href="https://weatherpulse.eu/fr/previsions/" />
+  <link rel="alternate" hreflang="nl" href="https://weatherpulse.eu/nl/weersverwachting/" />
   <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu/en/weather/" />
 <meta name="description" content="Прогноза за времето по дни и часове за всеки град: температура, валежи, вятър, изгрев и залез и фаза на Луната.">
 <meta property="og:type" content="website">
@@ -37,7 +37,7 @@
         const languages = ['en', 'de', 'it', 'es', 'fr', 'nl'];
         // Only a language the visitor picked: nobody is sent away because of the browser language
         const wanted = localStorage.getItem('selectedLanguage');
-        if (languages.includes(wanted)) location.replace('/' + wanted + '/weather/' + location.search + location.hash);
+        if (languages.includes(wanted)) location.replace(({ fr: '/fr/previsions/', nl: '/nl/weersverwachting/' }[wanted] || '/' + wanted + '/weather/') + location.search + location.hash);
       } catch (e) { /* storage blocked */ }
     })();
   </script>
@@ -346,7 +346,7 @@
   // and triggers the loadData button click
 </script>
 
-<script src="/js/mobile-nav.js?v=24" defer></script>
+<script src="/js/mobile-nav.js?v=25" defer></script>
 <script src="/js/language-selector.js?v=10" defer></script>
 <script src="/js/forecast-core.js?v=5" defer></script>
 <script src="/js/city-search.js?v=15" defer></script>
@@ -362,7 +362,7 @@
 
   <!-- lang-links:start -->
   <nav class="lang-links" aria-label="Languages" style="text-align: center; font-size: 0.85em; color: #999; margin: 18px 0 6px;">
-    <a href="/en/weather/" hreflang="en" lang="en" data-set-lang="en" class="footer-link">English</a> · <a href="/de/weather/" hreflang="de" lang="de" data-set-lang="de" class="footer-link">Deutsch</a> · <a href="/it/weather/" hreflang="it" lang="it" data-set-lang="it" class="footer-link">Italiano</a> · <a href="/es/weather/" hreflang="es" lang="es" data-set-lang="es" class="footer-link">Español</a> · <a href="/fr/weather/" hreflang="fr" lang="fr" data-set-lang="fr" class="footer-link">Français</a> · <a href="/nl/weather/" hreflang="nl" lang="nl" data-set-lang="nl" class="footer-link">Nederlands</a>
+    <a href="/en/weather/" hreflang="en" lang="en" data-set-lang="en" class="footer-link">English</a> · <a href="/de/weather/" hreflang="de" lang="de" data-set-lang="de" class="footer-link">Deutsch</a> · <a href="/it/weather/" hreflang="it" lang="it" data-set-lang="it" class="footer-link">Italiano</a> · <a href="/es/weather/" hreflang="es" lang="es" data-set-lang="es" class="footer-link">Español</a> · <a href="/fr/previsions/" hreflang="fr" lang="fr" data-set-lang="fr" class="footer-link">Français</a> · <a href="/nl/weersverwachting/" hreflang="nl" lang="nl" data-set-lang="nl" class="footer-link">Nederlands</a>
   </nav>
   <!-- lang-links:end -->
 

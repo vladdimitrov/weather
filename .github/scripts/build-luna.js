@@ -574,6 +574,12 @@ I18N.LANGS.forEach(lang => {
     write(dir(lang, fullMoonUrl(event)), fullMoonPage(lang, event, chain[i - 1], chain[i + 1], after));
   });
   fs.writeFileSync(path.join(ROOT, dir(lang, '/luna/moon-phases.ics')), icsFile(lang, years));
+  // calendars subscribed before the French and Dutch addresses got their own words keep working
+  const oldIcs = `${I18N.prefix(lang).slice(1)}/luna/moon-phases.ics`.replace(/^\//, '');
+  if (lang !== 'bg' && oldIcs !== dir(lang, '/luna/moon-phases.ics')) {
+    fs.mkdirSync(path.dirname(path.join(ROOT, oldIcs)), { recursive: true });
+    fs.writeFileSync(path.join(ROOT, oldIcs), icsFile(lang, years));
+  }
 });
 console.log(`Wrote /luna/, ${years.length} year pages and ${years.length * 12} month pages (${years.join(', ')}) in ${I18N.LANGS.length} languages, the lists of full and new moons and the calendar file (moon-phases.ics).`);
 

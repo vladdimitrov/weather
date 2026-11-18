@@ -13,7 +13,42 @@ const OG_LOCALE = { bg: 'bg_BG', en: 'en_GB', de: 'de_DE', it: 'it_IT', es: 'es_
 
 // base: the language of the root URLs of a page family (Bulgarian everywhere)
 const prefix = (lang, base = 'bg') => (lang === base ? '' : `/${lang}`);
-const localUrl = (lang, url, base = 'bg') => (lang === 'ro' && !RO_URLS.includes(url) ? '/en' : prefix(lang, base)) + url;
+// Addresses in the language of the page. The site started with Bulgarian words in every address
+// (/de/vremeto/sofia/); French, Dutch and Romanian, added later and not yet indexed, have their
+// own words instead (/fr/meteo/sofia/, /nl/maan/2027/januari/, /ro/vremea/bansko/). Names of
+// places stay as they are. The old French and Dutch addresses are redirect pages (build-redirects.js).
+// The same words are in localPages of /js/mobile-nav.js and in /js/home-cities.js.
+const MONTHS = ['yanuari', 'fevruari', 'mart', 'april', 'may', 'yuni', 'yuli', 'avgust', 'septemvri', 'oktomvri', 'noemvri', 'dekemvri'];
+const monthWords = list => Object.fromEntries(MONTHS.map((month, i) => [month, list.split(' ')[i]]));
+const SLUGS = {
+  fr: {
+    vremeto: 'meteo', luna: 'lune', pylnolunie: 'pleine-lune', novolunie: 'nouvelle-lune', praznici: 'jours-feries', darzhavi: 'pays',
+    gradove: 'villes', kurorti: 'stations', nebeto: 'ciel', 'magnitni-buri': 'tempetes-magnetiques', 'za-saita': 'a-propos',
+    poveritelnost: 'confidentialite', iztochnici: 'sources', uidzhet: 'widget-meteo', '10-dni': '10-jours', uikend: 'week-end',
+    weather: 'previsions', maps: 'cartes', holliday_calendar: 'calendrier-jours-feries',
+    ...monthWords('janvier fevrier mars avril mai juin juillet aout septembre octobre novembre decembre')
+  },
+  nl: {
+    vremeto: 'weer', luna: 'maan', pylnolunie: 'volle-maan', novolunie: 'nieuwe-maan', praznici: 'feestdagen', darzhavi: 'landen',
+    gradove: 'steden', kurorti: 'vakantieoorden', nebeto: 'hemel', 'magnitni-buri': 'magnetische-stormen', 'za-saita': 'over-ons',
+    poveritelnost: 'privacy', iztochnici: 'bronnen', uidzhet: 'weerwidget', '10-dni': '10-dagen', uikend: 'weekend',
+    weather: 'weersverwachting', maps: 'weerkaarten', holliday_calendar: 'feestdagenkalender', europe: 'europa',
+    ...monthWords('januari februari maart april mei juni juli augustus september oktober november december')
+  },
+  ro: {
+    vremeto: 'vremea', pylnolunie: 'luna-plina', novolunie: 'luna-noua', praznici: 'sarbatori', darzhavi: 'tari',
+    gradove: 'orase', kurorti: 'statiuni', nebeto: 'cerul', 'magnitni-buri': 'furtuni-magnetice', 'za-saita': 'despre',
+    poveritelnost: 'confidentialitate', iztochnici: 'surse', uidzhet: 'widget', '10-dni': '10-zile', uikend: 'weekend',
+    weather: 'prognoza', maps: 'harti', holliday_calendar: 'calendar-sarbatori', europe: 'europa',
+    ...monthWords('ianuarie februarie martie aprilie mai iunie iulie august septembrie octombrie noiembrie decembrie')
+  }
+};
+// "/vremeto/sofia/" -> "/meteo/sofia/" (fr); every other language keeps the Bulgarian words
+const localPath = (lang, url) => (SLUGS[lang] ? url.replace(/[^/?#]+/g, (segment, at) => (url.slice(0, at).match(/[?#]/) ? segment : SLUGS[lang][segment] || segment)) : url);
+// The other way: the Bulgarian address of a path in this language
+const REVERSE = Object.fromEntries(Object.entries(SLUGS).map(([lang, words]) => [lang, Object.fromEntries(Object.entries(words).map(([bg, word]) => [word, bg]))]));
+const bgPath = (lang, url) => (REVERSE[lang] ? url.replace(/[^/?#]+/g, segment => REVERSE[lang][segment] || segment) : url);
+const localUrl = (lang, url, base = 'bg') => (lang === 'ro' && !RO_URLS.includes(url) ? '/en' + url : prefix(lang, base) + localPath(lang, url));
 
 // Plain links to the other language versions of a page, above the footer. The language switcher
 // in the header is drawn by JavaScript, so without these a crawler finds the translations only
@@ -74,4 +109,4 @@ const latinName = (lang, slug) => {
   return slug.split('-').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
 };
 
-module.exports = { LANGS, ALL, RO_URLS, langsFor, LOCALE, OG_LOCALE, prefix, localUrl, LANG_NAMES, LANG_LINKS_START, LANG_LINKS_END, langLinks, withBrand, NAV, LOGO_ALT, esc, monthName, weekdayName, latinName };
+module.exports = { LANGS, ALL, RO_URLS, langsFor, LOCALE, OG_LOCALE, prefix, localUrl, localPath, bgPath, SLUGS, LANG_NAMES, LANG_LINKS_START, LANG_LINKS_END, langLinks, withBrand, NAV, LOGO_ALT, esc, monthName, weekdayName, latinName };
