@@ -15,9 +15,9 @@
     set('moon', `${names[state.index]} · ${Math.round(state.fraction * 100)}%`);
   }
 
-  const KP = { bg: 'Kp сега', en: 'Kp now', de: 'Kp aktuell', it: 'Kp ora', es: 'Kp ahora', fr: 'Kp actuel', nl: 'Kp nu' };
-  const level = kp => (kp >= 5 ? { bg: 'буря', en: 'storm', de: 'Sturm', it: 'tempesta', es: 'tormenta', fr: 'tempête', nl: 'storm' }
-    : { bg: 'спокойно', en: 'calm', de: 'ruhig', it: 'calmo', es: 'calma', fr: 'calme', nl: 'rustig' })[lang] || '';
+  const KP = { bg: 'Kp сега', en: 'Kp now', de: 'Kp aktuell', it: 'Kp ora', es: 'Kp ahora', fr: 'Kp actuel', ro: 'Kp acum', nl: 'Kp nu' };
+  const level = kp => (kp >= 5 ? { bg: 'буря', en: 'storm', de: 'Sturm', it: 'tempesta', es: 'tormenta', fr: 'tempête', ro: 'furtună', nl: 'storm' }
+    : { bg: 'спокойно', en: 'calm', de: 'ruhig', it: 'calmo', es: 'calma', fr: 'calme', ro: 'calm', nl: 'rustig' })[lang] || '';
   // The same NOAA file as the weather card above and the storm page: the estimated Kp of the last minutes
   // (the forecast file marks hours ahead as "estimated" too, so its last value is not "now")
   fetch('https://services.swpc.noaa.gov/json/planetary_k_index_1m.json')

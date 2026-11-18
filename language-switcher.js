@@ -617,6 +617,14 @@ document.addEventListener('DOMContentLoaded', function() {
       errorDeterminingCity: "De stad kon niet uit uw locatie worden bepaald. Probeer het opnieuw of voer de stad zelf in.",
       couldNotGetLocation: "Uw locatie kon niet worden opgehaald. Controleer of locatievoorzieningen aan staan en probeer het opnieuw.",
       geolocationNotSupported: "Uw browser ondersteunt geen geolocatie."
+    },
+    ro: {
+      // the home page (the rest of the page is translated by its own script)
+      title: "Prognoza meteo și furtuni magnetice",
+      heroTitle: "Prognoză meteo, furtuni magnetice și calendar lunar",
+      heroSubtitle: "Urmăriți în timp real vremea, fazele Lunii, furtunile magnetice și sărbătorile pentru orice loc din lume. Planificați-vă ziua cu precizie și încredere.",
+      featuresTitle: "Tot ce trebuie să știți despre vreme, într-un singur loc",
+      featuresDescription: "Prognoză pe 16 zile și pe ore pentru orice loc din lume, furtuni magnetice cu notificări pe telefon, hărți ale precipitațiilor și vântului, sărbători legale și vremea în orașele din Bulgaria. Gratuit, fără înregistrare."
     }
   };
 

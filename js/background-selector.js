@@ -33,6 +33,7 @@
     it: { label: 'Sfondo:', blue: 'Blu', default: 'Predefinito (Viola)', dark: 'Scuro', green: 'Verde', purple: 'Viola', red: 'Rosso', midnight: 'Mezzanotte', gold: 'Oro', teal: 'Turchese', rose: 'Rosa', sunset: 'Tramonto' },
     es: { label: 'Fondo:', blue: 'Azul', default: 'Predeterminado (Morado)', dark: 'Oscuro', green: 'Verde', purple: 'Morado', red: 'Rojo', midnight: 'Medianoche', gold: 'Oro', teal: 'Turquesa', rose: 'Rosa', sunset: 'Atardecer' },
     fr: { label: 'Fond :', blue: 'Bleu', default: 'Par défaut (violet)', dark: 'Sombre', green: 'Vert', purple: 'Violet', red: 'Rouge', midnight: 'Minuit', gold: 'Or', teal: 'Turquoise', rose: 'Rose', sunset: 'Coucher de soleil' },
+    ro: { label: 'Fundal:', blue: 'Albastru', default: 'Implicit (violet)', dark: 'Închis', green: 'Verde', purple: 'Violet', red: 'Roșu', midnight: 'Miezul nopții', gold: 'Auriu', teal: 'Turcoaz', rose: 'Roz', sunset: 'Apus de soare' },
     nl: { label: 'Achtergrond:', blue: 'Blauw', default: 'Standaard (paars)', dark: 'Donker', green: 'Groen', purple: 'Paars', red: 'Rood', midnight: 'Middernacht', gold: 'Goud', teal: 'Turquoise', rose: 'Roze', sunset: 'Zonsondergang' }
   };
 

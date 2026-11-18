@@ -15,6 +15,7 @@
     it: 'Nessuna località trovata',
     es: 'No se encontraron lugares',
     fr: 'Aucun lieu trouvé',
+    ro: 'Nu au fost găsite locuri',
     nl: 'Geen plaatsen gevonden'
   };
 
@@ -381,7 +382,7 @@
         render(found);
       } catch (err) {
         if (err.name === 'AbortError') return;
-        const errorMessage = pickText({ en: "Error searching for city:", bg: "Грешка при търсене на град:", de: "Fehler bei der Stadtsuche:", it: "Errore nella ricerca della città:", es: "Error al buscar la ciudad:", fr: "Erreur lors de la recherche de la ville :", nl: "Fout bij het zoeken naar de stad:" });
+        const errorMessage = pickText({ en: "Error searching for city:", bg: "Грешка при търсене на град:", de: "Fehler bei der Stadtsuche:", it: "Errore nella ricerca della città:", es: "Error al buscar la ciudad:", fr: "Erreur lors de la recherche de la ville :", ro: "Eroare la căutarea orașului:", nl: "Fout bij het zoeken naar de stad:" });
         console.error(errorMessage, err);
       }
     }
@@ -455,6 +456,7 @@
     it: 'Popolari in {country}:',
     es: 'Populares en {country}:',
     fr: 'Populaires – {country} :',
+    ro: 'Populare în {country}:',
     nl: 'Populair in {country}:'
   };
 
@@ -465,6 +467,7 @@
     it: 'Scelti di recente:',
     es: 'Elegidos recientemente:',
     fr: 'Choisis récemment :',
+    ro: 'Alese recent:',
     nl: 'Recent gekozen:'
   };
 
@@ -475,6 +478,7 @@
     it: 'Rimuovi',
     es: 'Quitar',
     fr: 'Retirer',
+    ro: 'Șterge',
     nl: 'Verwijderen'
   };
 
@@ -673,6 +677,7 @@
     it: ['Sofia', 'Bulgaria'],
     es: ['Sofía', 'Bulgaria'],
     fr: ['Sofia', 'Bulgarie'],
+    ro: ['Sofia', 'Bulgaria'],
     nl: ['Sofia', 'Bulgarije']
   };
 
@@ -705,6 +710,7 @@
     it: { off: '☆ Aggiungi ai preferiti', on: '★ Preferito', remove: 'Rimuovi dai preferiti', full: 'Puoi salvare fino a 10 località preferite. Rimuovine prima una.', title: 'Località preferite' },
     es: { off: '☆ Añadir a favoritos', on: '★ Favorito', remove: 'Quitar de favoritos', full: 'Puedes guardar hasta 10 lugares favoritos. Quita uno primero.', title: 'Lugares favoritos' },
     fr: { off: '☆ Ajouter aux favoris', on: '★ Favori', remove: 'Retirer des favoris', full: 'Vous pouvez garder jusqu’à 10 lieux favoris. Retirez-en un d’abord.', title: 'Lieux favoris' },
+    ro: { off: '☆ Adaugă la favorite', on: '★ Favorit', remove: 'Elimină din favorite', full: 'Puteți păstra cel mult 10 locuri favorite. Eliminați mai întâi unul.', title: 'Locuri favorite' },
     nl: { off: '☆ Toevoegen aan favorieten', on: '★ Favoriet', remove: 'Verwijderen uit favorieten', full: 'U kunt maximaal 10 favoriete plaatsen bewaren. Verwijder er eerst een.', title: 'Favoriete plaatsen' }
   };
 
@@ -715,6 +721,7 @@
     it: ['🔗 Condividi', '✓ Link copiato'],
     es: ['🔗 Compartir', '✓ Enlace copiado'],
     fr: ['🔗 Partager', '✓ Lien copié'],
+    ro: ['🔗 Distribuie', '✓ Link copiat'],
     nl: ['🔗 Delen', '✓ Link gekopieerd']
   };
 
@@ -725,6 +732,7 @@
     it: ['📐 Inserisci coordinate', '📐 Nascondi coordinate'],
     es: ['📐 Introducir coordenadas', '📐 Ocultar coordenadas'],
     fr: ['📐 Saisir des coordonnées', '📐 Masquer les coordonnées'],
+    ro: ['📐 Introdu coordonate', '📐 Ascunde coordonatele'],
     nl: ['📐 Coördinaten invoeren', '📐 Coördinaten verbergen']
   };
 

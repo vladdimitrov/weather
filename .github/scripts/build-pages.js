@@ -9,12 +9,16 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 65, mobileNav: 22, languageSelector: 9, cityForecast: 19, moon: 4, lunaToday: 6, lunaLocal: 2, auroraKp: 3, placeContext: 2, skyLocal: 3, homeCities: 4, regionWeather: 6, passes: 4, share: 1 };
+const VERSION = { theme: 65, mobileNav: 23, languageSelector: 10, cityForecast: 20, moon: 5, lunaToday: 6, lunaLocal: 2, auroraKp: 3, placeContext: 3, skyLocal: 3, homeCities: 5, regionWeather: 7, passes: 4, share: 2 };
 
 const CITIES = require('./bg-cities.js');
 
 const { TXT, HOLIDAYS } = require('./text-pages.js');
 const CITY_TEXT = require('./text-cities.js');
+// Romanian (ski resorts first): texts in text-ro.js
+const RO = require('./text-ro.js');
+TXT.ro = RO.TXT;
+RO.RESORTS.forEach(slug => { CITY_TEXT[slug].ro = RO.CITY[slug]; });
 const BG_ONLY = require('./text-extra.js').BG;
 const { provinceOf } = require('./bg-provinces.js');
 // What the forecast of a city cannot show: a local wind the models with a 7–25 km grid miss
@@ -138,7 +142,9 @@ function climateSection(city, lang, site = {}) {
     name, elevation, warm: month(warmest), warmHigh: degrees(m[warmest].high), cold: month(coldest), coldLow: degrees(m[coldest].low),
     yearly: Math.round(yearly / 10) * 10, wet: month(wettest), wetMm: m[wettest].precip
   });
-  const recordDate = date => new Date(date + 'T12:00:00Z').toLocaleDateString(I18N.LOCALE[lang], { timeZone: 'UTC', day: 'numeric', month: 'long', year: 'numeric' });
+  const recordDate = date => new Date(date + 'T12:00:00Z').toLocaleDateString(I18N.LOCALE[lang], lang === 'ro'
+    ? { timeZone: 'UTC', day: '2-digit', month: '2-digit', year: 'numeric' }
+    : { timeZone: 'UTC', day: 'numeric', month: 'long', year: 'numeric' });
   const records = climate.records ? ` ${T.recordText({
     where, years, max: degrees(climate.records.high.t), maxDate: recordDate(climate.records.high.date),
     min: degrees(climate.records.low.t), minDate: recordDate(climate.records.low.date)
@@ -201,7 +207,18 @@ const nearPasses = city => PASSES.map(pass => ({ pass, km: PLACES.distanceKm(cit
   .filter(item => item.km <= 45).sort((a, b) => a.km - b.km).map(item => item.pass);
 function nearbySection({ lat, lon, url, country }, lang) {
   const T = TXT[lang];
-  const { home, abroad } = PLACES.nearby(lat, lon, url, country);
+  let { home, abroad } = PLACES.nearby(lat, lon, url, country);
+  if (lang === 'ro') {
+    home = home.filter(({ place }) => I18N.RO_URLS.includes(place.url));
+    if (!home.length) return '';
+    return `
+    <section class="info-card city-near">
+      <h2>${T.nearH}</h2>
+      <div class="city-links">
+        ${home.map(({ place, km }) => `<a href="${I18N.localUrl('ro', place.url)}" class="recent-place">${I18N.esc(I18N.latinName('ro', place.url.split('/')[2]))} · ${km} ${T.km}</a>`).join('\n        ')}
+      </div>
+    </section>`;
+  }
   const links = list => list.map(({ place, km }) =>
     `<a href="${I18N.localUrl(lang, place.url)}" class="recent-place">${I18N.esc(place.name[lang])} · ${km} ${T.km}</a>`).join('\n        ');
   return `
@@ -297,20 +314,20 @@ const NAV_EN = I18N.NAV.en;
 // head: extra lines for the <head>, after the site stylesheets (a stylesheet of one page family)
 // image: the share image of the page (1200x630), default /images/og-image.png
 // langs: the languages in which the page exists (default: all five; ['bg'] for Bulgarian-only pages)
-function page({ url, title, description, body, scripts = '', jsonLd = '', head = '', image = '/images/og-image.png', lang = 'bg', multi = false, base = 'bg', langs = I18N.LANGS, indexed = langs }) {
+function page({ url, title, description, body, scripts = '', jsonLd = '', head = '', image = '/images/og-image.png', lang = 'bg', multi = false, base = 'bg', langs = I18N.langsFor(url), indexed = langs }) {
   const fixed = multi || lang === 'en';
   const NAV = I18N.NAV[lang];
   const nav = key => NAV[key];
   const pageUrl = multi ? I18N.localUrl(lang, url, base) : url;
   const noindex = multi && !indexed.includes(lang);
-  const listed = I18N.LANGS.filter(code => indexed.includes(code));
+  const listed = I18N.ALL.filter(code => indexed.includes(code));
   const alternates = multi && !noindex && listed.length > 1
     ? listed.map(code => `  <link rel="alternate" hreflang="${code}" href="https://weatherpulse.eu${I18N.localUrl(code, url, base)}" />`).join('\n') +
       (listed.includes(base) ? `\n  <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu${I18N.localUrl(listed.includes('en') ? 'en' : base, url, base)}" />` : '') + '\n'
     : '';
   // links to the other indexed versions (also from a translation that is not indexed itself)
   const languageLinks = multi && listed.length > 1 ? I18N.langLinks(lang, Object.fromEntries(listed.map(code => [code, I18N.localUrl(code, url, base)]))) : '';
-  const altPaths = multi ? JSON.stringify(Object.fromEntries(I18N.LANGS.filter(code => langs.includes(code)).map(code => [code, I18N.localUrl(code, url, base)]))) : '';
+  const altPaths = multi ? JSON.stringify(Object.fromEntries(I18N.ALL.filter(code => langs.includes(code)).map(code => [code, I18N.localUrl(code, url, base)]))) : '';
   let languageScript;
   if (multi) {
     languageScript = `      // The page has its own language. Bulgarian (default) pages send a visitor who chose
@@ -391,13 +408,13 @@ ${(FOOTER_TEXT = { about: NAV.about, privacy: NAV.privacy, cities: NAV.cities, s
 
 <script src="/js/mobile-nav.js?v=${VERSION.mobileNav}" defer></script>
 <script src="/js/language-selector.js?v=${VERSION.languageSelector}" defer></script>
-<script src="/js/background-selector.js?v=5" defer></script>
+<script src="/js/background-selector.js?v=6" defer></script>
 ${scripts}</body>
 </html>
 `;
   // The home, forecast, maps, holiday calendar and storms pages exist in every language
   // (build-main.js): a page in another language links to its own (/en/, /en/weather/?city=...)
-  return lang === 'bg' ? html : html.replace(/href="\/(weather\/|maps\/|holliday_calendar\/|magnitni-buri\/)?(["#?])/g, (m, page = '', end) => `href="/${lang}/${page}${end}`);
+  return lang === 'bg' ? html : html.replace(/href="\/(weather\/|maps\/|holliday_calendar\/|magnitni-buri\/)?(["#?])/g, (m, page = '', end) => `href="/${lang === 'ro' && page ? 'en' : lang}/${page}${end}`);
 }
 
 // The forecast build-forecast.js wrote into a city page stays when the page is written again
@@ -445,7 +462,7 @@ function redirect(relativeDir, to, lang = 'bg') {
 }
 
 const cityLinks = (current, lang) => CITIES
-  .filter(city => city !== current)
+  .filter(city => city !== current && (lang !== 'ro' || RO.RESORTS.includes(city.slug)))
   .map(city => `<a href="${L(lang, `/vremeto/${city.slug}/`)}" class="recent-place">${cityName(city, lang)}</a>`)
   .join('\n        ');
 
@@ -471,6 +488,7 @@ function cityPage(city, lang) {
   const T = TXT[lang];
   const name = cityName(city, lang);
   const where = cityWhere(city, lang);
+  const hub = lang === 'ro' ? '/ro/kurorti/' : L(lang, '/vremeto/');
   const params = new URLSearchParams({ city: name, lat: city.lat.toFixed(4), lon: city.lon.toFixed(4), cc: 'BG' });
   const breadcrumbs = `  <script type="application/ld+json">
   {
@@ -478,7 +496,7 @@ function cityPage(city, lang) {
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Weather Pulse", "item": "https://weatherpulse.eu${L(lang, '/')}" },
-      { "@type": "ListItem", "position": 2, "name": "${T.hubName}", "item": "https://weatherpulse.eu${L(lang, '/vremeto/')}" },
+      { "@type": "ListItem", "position": 2, "name": "${T.hubName}", "item": "https://weatherpulse.eu${hub}" },
       { "@type": "ListItem", "position": 3, "name": "${T.cityName(where)}", "item": "https://weatherpulse.eu${L(lang, `/vremeto/${city.slug}/`)}" }
     ]
   }
@@ -493,7 +511,7 @@ function cityPage(city, lang) {
     title: SKI_POINTS[city.slug] ? T.skiTitle(where) : SEA_RESORT(city.slug) ? T.seaTitle(where) : T.title(where),
     description: SKI_POINTS[city.slug] ? T.skiDescription(where) : SEA_RESORT(city.slug) ? T.seaDescription(where) : T.description(where),
     jsonLd: breadcrumbs + placeJson({ title: T.cityName(where), name, country: 'BG', lat: city.lat, lon: city.lon, url: L(lang, `/vremeto/${city.slug}/`), lang }),
-    body: `    <p class="breadcrumbs"><a href="${L(lang, '/vremeto/')}">${T.hubName}</a> › ${name}</p>
+    body: `    <p class="breadcrumbs"><a href="${hub}">${T.hubName}</a> › ${name}</p>
     <h1>${T.cityName(where)}</h1>
     <div data-share></div>
     <p class="storm-intro">${T.intro(where)}</p>
@@ -755,6 +773,8 @@ if (require.main === module) (async function main() {
     write(dir('/praznici/'), holidaysPage(years, data, lang));
     write(dir('/iztochnici/'), sourcesPage(lang));
   });
+  // Romanian: the ski resorts only
+  RO.RESORTS.forEach(slug => write(`ro/vremeto/${slug}`, cityPage(CITIES.find(city => city.slug === slug), 'ro')));
   console.log(`Wrote ${CITIES.length} city pages, /vremeto/ and /praznici/ (${years.join('–')}) in ${I18N.LANGS.length} languages.`);
 
   // The sitemap: node .github/scripts/build-sitemap.js

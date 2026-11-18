@@ -13,7 +13,8 @@
     { value: 'it', label: 'Italiano' },
     { value: 'es', label: 'Español' },
     { value: 'fr', label: 'Français' },
-    { value: 'nl', label: 'Nederlands' }
+    { value: 'nl', label: 'Nederlands' },
+    { value: 'ro', label: 'Română' }
   ];
 
   const labelTranslations = {
@@ -23,6 +24,7 @@
     it: 'Lingua:',
     es: 'Idioma:',
     fr: 'Langue :',
+    ro: 'Limba:',
     nl: 'Taal:'
   };
 
@@ -96,6 +98,8 @@
       try { target = (JSON.parse(document.documentElement.dataset.alt || 'null') || {})[selectedLanguage] || null; } catch (e) { /* no list */ }
       const alternate = document.querySelector('link[rel="alternate"][hreflang="' + selectedLanguage + '"]');
       if (!target && alternate) target = new URL(alternate.href).pathname;
+      // Romanian exists for the home page and the ski resorts only: any other page leads to the Romanian home page
+      if (!target && selectedLanguage === 'ro') target = '/ro/';
       if (target && selectedLanguage !== document.documentElement.dataset.pageLang) {
         location.href = target + location.search + location.hash;
         return;

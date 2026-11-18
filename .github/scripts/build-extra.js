@@ -57,13 +57,15 @@ const RESORTS = {
   greece: ['kavala', 'thassos', 'keramoti', 'asprovalta', 'stavros', 'olympiada', 'ouranoupoli', 'nikiti', 'neos-marmaras', 'hanioti', 'kallithea',
     'paralia-katerinis', 'parga', 'corfu', 'lefkada', 'kefalonia', 'zakynthos', 'santorini', 'mykonos', 'chania', 'heraklion', 'rhodes', 'kos'].map(slug => `/europe/greece/${slug}/`)
 };
+// Romanian: the ski resorts only (text-ro.js)
+RESORTS_PAGE.ro = require('./text-ro.js').RESORTS_PAGE;
 function resortsPage(lang) {
   const T = RESORTS_PAGE[lang];
   const byUrl = Object.fromEntries(PLACES.PLACES.map(place => [place.url, place]));
   const group = (title, urls, more) => {
     const links = urls.map(url => {
       if (!byUrl[url]) throw new Error(`/kurorti/: no page ${url}`);
-      return `<a href="${L(lang, url)}" class="recent-place">${esc(byUrl[url].name[lang])}</a>`;
+      return `<a href="${L(lang, url)}" class="recent-place">${esc(lang === 'ro' ? I18N.latinName('ro', url.split('/')[2]) : byUrl[url].name[lang])}</a>`;
     });
     // the Bulgarian-only regional pages, on the Bulgarian page
     const extra = lang === 'bg' ? (more || []).map(([url, text]) => `<a href="${url}" class="recent-place">${esc(text)}</a>`) : [];
@@ -85,8 +87,8 @@ function resortsPage(lang) {
     body: `    <h1>${esc(T.h1)}</h1>
     <p class="storm-intro">${esc(T.intro)}</p>
 ${group(T.ski, RESORTS.ski, [['/vremeto/snyag-kurorti/', RESORTS_PAGE.bg.skiMore]])}
-${group(T.sea, RESORTS.sea, [['/vremeto/chernomorie/', RESORTS_PAGE.bg.seaMore[0]], ['/vremeto/morska-voda/', RESORTS_PAGE.bg.seaMore[1]]])}
-${group(T.greece, RESORTS.greece, [['/europe/greece/belomorie/', RESORTS_PAGE.bg.greeceMore[0]], ['/europe/greece/halkidiki/', RESORTS_PAGE.bg.greeceMore[1]], ['/europe/greece/more/', RESORTS_PAGE.bg.greeceMore[2]]])}`
+${lang === 'ro' ? '' : group(T.sea, RESORTS.sea, [['/vremeto/chernomorie/', RESORTS_PAGE.bg.seaMore[0]], ['/vremeto/morska-voda/', RESORTS_PAGE.bg.seaMore[1]]])}
+${lang === 'ro' ? '' : group(T.greece, RESORTS.greece, [['/europe/greece/belomorie/', RESORTS_PAGE.bg.greeceMore[0]], ['/europe/greece/halkidiki/', RESORTS_PAGE.bg.greeceMore[1]], ['/europe/greece/more/', RESORTS_PAGE.bg.greeceMore[2]]])}`
   });
 }
 
@@ -359,7 +361,7 @@ ${extra}
       </div>
     </section>`,
     // the warnings page takes the median of the models, as the city pages
-    scripts: (slug === 'preduprezhdeniya' ? '<script src="/js/forecast-core.js?v=4" defer></script>\n' : '') + REGION_SCRIPTS
+    scripts: (slug === 'preduprezhdeniya' ? '<script src="/js/forecast-core.js?v=5" defer></script>\n' : '') + REGION_SCRIPTS
   });
 }
 
@@ -676,7 +678,7 @@ ${T.sections.map(([h, text]) => `
 }
 
 I18N.LANGS.forEach(lang => write(L(lang, '/gradove/').slice(1), citiesPage(lang)));
-I18N.LANGS.forEach(lang => write(L(lang, '/kurorti/').slice(1), resortsPage(lang)));
+I18N.langsFor('/kurorti/').forEach(lang => write(L(lang, '/kurorti/').slice(1), resortsPage(lang)));
 CITIES.forEach(city => {
   write(`vremeto/${city.slug}/10-dni`, forecastPage(city, 'tenDays'));
   write(`vremeto/${city.slug}/14-dni`, forecastPage(city, 'fourteenDays'));

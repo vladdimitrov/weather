@@ -47,6 +47,13 @@
       reject: 'Refuser',
       settings: 'Réglages des cookies'
     },
+    ro: {
+      more: 'Politica de confidențialitate',
+      message: 'Folosim cookie-uri de analiză (Google Analytics) pentru a înțelege cum este folosit site-ul. Ele sunt plasate numai dacă sunteți de acord.',
+      accept: 'Accept',
+      reject: 'Refuz',
+      settings: 'Setări cookie'
+    },
     nl: {
       more: 'Privacybeleid',
       message: 'We gebruiken analytische cookies (Google Analytics) om te begrijpen hoe de site wordt gebruikt. Ze worden alleen geplaatst als u akkoord gaat.',
@@ -82,7 +89,8 @@
 
   function privacyUrl() {
     const lang = pageLanguage();
-    return lang === 'bg' ? '/poveritelnost/' : '/' + lang + '/poveritelnost/';
+    // Romanian has no privacy page yet: the English one
+    return lang === 'bg' ? '/poveritelnost/' : '/' + (lang === 'ro' ? 'en' : lang) + '/poveritelnost/';
   }
 
   let gaLoaded = false;

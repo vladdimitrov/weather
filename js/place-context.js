@@ -11,7 +11,7 @@
 (function () {
   'use strict';
 
-  const LOCALES = { bg: 'bg-BG', en: 'en-GB', de: 'de-DE', it: 'it-IT', es: 'es-ES', fr: 'fr-FR', nl: 'nl-NL' };
+  const LOCALES = { bg: 'bg-BG', en: 'en-GB', de: 'de-DE', it: 'it-IT', es: 'es-ES', fr: 'fr-FR', ro: 'ro-RO', nl: 'nl-NL' };
   const language = () => (LOCALES[document.documentElement.lang] ? document.documentElement.lang : 'bg');
   const DEFAULT = { name: 'Sofia', countryCode: 'BG', latitude: 42.6977, longitude: 23.3219, isDefault: true };
 

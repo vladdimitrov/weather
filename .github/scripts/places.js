@@ -28,7 +28,7 @@ const GERMAN_TOURIST = [
 ];
 const ALL = I18N.LANGS;
 const BASIC = ['bg', 'en'];
-const bgIndexed = slug => (TOURIST_BG.includes(slug) ? ALL : BASIC);
+const bgIndexed = slug => { const base = TOURIST_BG.includes(slug) ? ALL : BASIC; return I18N.RO_URLS.includes(`/vremeto/${slug}/`) ? [...base, 'ro'] : base; };
 const europeIndexed = (code, slug) => (TOURIST_EUROPE.includes(slug) ? ALL
   : [...new Set([...BASIC, ...(SPEAKERS[code] || []), ...(GERMAN_TOURIST.includes(slug) ? ['de'] : [])])].sort((a, b) => ALL.indexOf(a) - ALL.indexOf(b)));
 

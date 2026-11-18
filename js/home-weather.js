@@ -7,30 +7,30 @@
 
   // WMO weather codes, grouped
   const conditions = [
-    { codes: [0], key: 'sun', icon: '☀️', text: { en: 'Clear', bg: 'Ясно', de: 'Klar', it: 'Sereno', es: 'Despejado', fr: 'Dégagé', nl: 'Helder' } },
-    { codes: [1, 2], key: 'cloudSun', icon: '⛅', text: { en: 'Partly cloudy', bg: 'Променлива облачност', de: 'Teilweise bewölkt', it: 'Parzialmente nuvoloso', es: 'Parcialmente nublado', fr: 'Partiellement nuageux', nl: 'Half bewolkt' } },
-    { codes: [3], key: 'cloud', icon: '☁️', text: { en: 'Cloudy', bg: 'Облачно', de: 'Bewölkt', it: 'Nuvoloso', es: 'Nublado', fr: 'Nuageux', nl: 'Bewolkt' } },
-    { codes: [45, 48], key: 'fog', icon: '🌫️', text: { en: 'Fog', bg: 'Мъгла', de: 'Nebel', it: 'Nebbia', es: 'Niebla', fr: 'Brouillard', nl: 'Mist' } },
-    { codes: [51, 53, 55, 56, 57], key: 'drizzle', icon: '🌦️', text: { en: 'Drizzle', bg: 'Ръмеж', de: 'Nieselregen', it: 'Pioviggine', es: 'Llovizna', fr: 'Bruine', nl: 'Motregen' } },
-    { codes: [61, 63, 65, 66, 67, 80, 81, 82], key: 'rain', icon: '🌧️', text: { en: 'Rain', bg: 'Дъжд', de: 'Regen', it: 'Pioggia', es: 'Lluvia', fr: 'Pluie', nl: 'Regen' } },
-    { codes: [71, 73, 75, 77, 85, 86], key: 'snow', icon: '❄️', text: { en: 'Snow', bg: 'Сняг', de: 'Schnee', it: 'Neve', es: 'Nieve', fr: 'Neige', nl: 'Sneeuw' } },
-    { codes: [95, 96, 99], key: 'thunder', icon: '⛈️', text: { en: 'Thunderstorm', bg: 'Гръмотевична буря', de: 'Gewitter', it: 'Temporale', es: 'Tormenta', fr: 'Orage', nl: 'Onweer' } }
+    { codes: [0], key: 'sun', icon: '☀️', text: { en: 'Clear', bg: 'Ясно', de: 'Klar', it: 'Sereno', es: 'Despejado', fr: 'Dégagé', ro: 'Senin', nl: 'Helder' } },
+    { codes: [1, 2], key: 'cloudSun', icon: '⛅', text: { en: 'Partly cloudy', bg: 'Променлива облачност', de: 'Teilweise bewölkt', it: 'Parzialmente nuvoloso', es: 'Parcialmente nublado', fr: 'Partiellement nuageux', ro: 'Parțial noros', nl: 'Half bewolkt' } },
+    { codes: [3], key: 'cloud', icon: '☁️', text: { en: 'Cloudy', bg: 'Облачно', de: 'Bewölkt', it: 'Nuvoloso', es: 'Nublado', fr: 'Nuageux', ro: 'Noros', nl: 'Bewolkt' } },
+    { codes: [45, 48], key: 'fog', icon: '🌫️', text: { en: 'Fog', bg: 'Мъгла', de: 'Nebel', it: 'Nebbia', es: 'Niebla', fr: 'Brouillard', ro: 'Ceață', nl: 'Mist' } },
+    { codes: [51, 53, 55, 56, 57], key: 'drizzle', icon: '🌦️', text: { en: 'Drizzle', bg: 'Ръмеж', de: 'Nieselregen', it: 'Pioviggine', es: 'Llovizna', fr: 'Bruine', ro: 'Burniță', nl: 'Motregen' } },
+    { codes: [61, 63, 65, 66, 67, 80, 81, 82], key: 'rain', icon: '🌧️', text: { en: 'Rain', bg: 'Дъжд', de: 'Regen', it: 'Pioggia', es: 'Lluvia', fr: 'Pluie', ro: 'Ploaie', nl: 'Regen' } },
+    { codes: [71, 73, 75, 77, 85, 86], key: 'snow', icon: '❄️', text: { en: 'Snow', bg: 'Сняг', de: 'Schnee', it: 'Neve', es: 'Nieve', fr: 'Neige', ro: 'Ninsoare', nl: 'Sneeuw' } },
+    { codes: [95, 96, 99], key: 'thunder', icon: '⛈️', text: { en: 'Thunderstorm', bg: 'Гръмотевична буря', de: 'Gewitter', it: 'Temporale', es: 'Tormenta', fr: 'Orage', ro: 'Furtună', nl: 'Onweer' } }
   ];
 
   const kpStatus = {
-    calm: { en: 'calm', bg: 'спокойно', de: 'ruhig', it: 'calmo', es: 'tranquilo', fr: 'calme', nl: 'rustig' },
-    active: { en: 'active', bg: 'активно', de: 'aktiv', it: 'attivo', es: 'activo', fr: 'actif', nl: 'actief' },
-    storm: { en: 'storm', bg: 'буря', de: 'Sturm', it: 'tempesta', es: 'tormenta', fr: 'tempête', nl: 'storm' }
+    calm: { en: 'calm', bg: 'спокойно', de: 'ruhig', it: 'calmo', es: 'tranquilo', fr: 'calme', ro: 'calm', nl: 'rustig' },
+    active: { en: 'active', bg: 'активно', de: 'aktiv', it: 'attivo', es: 'activo', fr: 'actif', ro: 'activ', nl: 'actief' },
+    storm: { en: 'storm', bg: 'буря', de: 'Sturm', it: 'tempesta', es: 'tormenta', fr: 'tempête', ro: 'furtună', nl: 'storm' }
   };
 
-  const moreText = { en: 'Forecast →', bg: 'Прогноза →', de: 'Vorhersage →', it: 'Previsioni →', es: 'Pronóstico →', fr: 'Prévisions →', nl: 'Verwachting →' };
-  const feelsText = { en: 'feels like', bg: 'усеща се като', de: 'gefühlt', it: 'percepita', es: 'sensación', fr: 'ressenti', nl: 'voelt als' };
+  const moreText = { en: 'Forecast →', bg: 'Прогноза →', de: 'Vorhersage →', it: 'Previsioni →', es: 'Pronóstico →', fr: 'Prévisions →', ro: 'Prognoză →', nl: 'Verwachting →' };
+  const feelsText = { en: 'feels like', bg: 'усеща се като', de: 'gefühlt', it: 'percepita', es: 'sensación', fr: 'ressenti', ro: 'se simte ca', nl: 'voelt als' };
   const dayNames = [
-    { en: 'Today', bg: 'Днес', de: 'Heute', it: 'Oggi', es: 'Hoy', fr: 'Aujourd’hui', nl: 'Vandaag' },
-    { en: 'Tomorrow', bg: 'Утре', de: 'Morgen', it: 'Domani', es: 'Mañana', fr: 'Demain', nl: 'Morgen' }
+    { en: 'Today', bg: 'Днес', de: 'Heute', it: 'Oggi', es: 'Hoy', fr: 'Aujourd’hui', ro: 'Azi', nl: 'Vandaag' },
+    { en: 'Tomorrow', bg: 'Утре', de: 'Morgen', it: 'Domani', es: 'Mañana', fr: 'Demain', ro: 'Mâine', nl: 'Morgen' }
   ];
-  const searchText = { en: 'Search for a city…', bg: 'Търси град…', de: 'Stadt suchen…', it: 'Cerca una città…', es: 'Buscar una ciudad…', fr: 'Rechercher une ville…', nl: 'Zoek een stad…' };
-  const locales = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES', fr: 'fr-FR', nl: 'nl-NL' };
+  const searchText = { en: 'Search for a city…', bg: 'Търси град…', de: 'Stadt suchen…', it: 'Cerca una città…', es: 'Buscar una ciudad…', fr: 'Rechercher une ville…', ro: 'Caută un oraș…', nl: 'Zoek een stad…' };
+  const locales = { en: 'en-GB', bg: 'bg-BG', de: 'de-DE', it: 'it-IT', es: 'es-ES', fr: 'fr-FR', ro: 'ro-RO', nl: 'nl-NL' };
   // on a translated home page (/en/, /de/ ...) the links open the forecast page in that language
   const pageLanguage = document.documentElement.dataset.pageLang;
   const forecastPage = (pageLanguage && pageLanguage !== 'bg' ? '/' + pageLanguage : '') + '/weather/';
@@ -231,8 +231,8 @@
   // search engines and for Bulgaria)
   const citiesSection = document.querySelector('.home-cities');
   const countryTexts = {
-    title: { en: 'Weather in {country}', bg: 'Времето {in} {country}', de: 'Wetter in {country}', it: 'Meteo in {country}', es: 'El tiempo en {country}', fr: 'Météo : {country}', nl: 'Weer in {country}' },
-    holidays: { en: 'Public holidays in {country}', bg: 'Официални празници {in} {country}', de: 'Feiertage in {country}', it: 'Festività in {country}', es: 'Festivos en {country}', fr: 'Jours fériés : {country}', nl: 'Feestdagen in {country}' }
+    title: { en: 'Weather in {country}', bg: 'Времето {in} {country}', de: 'Wetter in {country}', it: 'Meteo in {country}', es: 'El tiempo en {country}', fr: 'Météo : {country}', ro: 'Vremea în {country}', nl: 'Weer in {country}' },
+    holidays: { en: 'Public holidays in {country}', bg: 'Официални празници {in} {country}', de: 'Feiertage in {country}', it: 'Festività in {country}', es: 'Festivos en {country}', fr: 'Jours fériés : {country}', ro: 'Sărbători legale în {country}', nl: 'Feestdagen in {country}' }
   };
 
   function countryText(texts, country) {
