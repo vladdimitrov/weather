@@ -167,7 +167,7 @@ async function forecasts(places) {
   });
   for (const chunk of chunks) {
     const url = `${API}?latitude=${chunk.map(p => p.lat).join(',')}&longitude=${chunk.map(p => p.lon).join(',')}` +
-      `&daily=${DAILY}&forecast_days=${chunk[0].days}&timezone=auto&models=${Core.MODELS.join(',')}`;
+      `&daily=${DAILY}&forecast_days=${chunk[0].days}&timezone=auto&models=${Core.GUST_MODELS.join(',')}`;
     const response = await fetchWithRetry(url);
     const json = await response.json();
     const answers = Array.isArray(json) ? json : [json];

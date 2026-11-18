@@ -120,6 +120,9 @@
     <p class="storm-intro">Prévisions météo à Cardiff (Royaume-Uni) pour aujourd’hui, demain et les 7 prochains jours : température, pluie, vent et probabilité de précipitations. Données d’Open-Meteo, mises à jour toutes les heures.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Cardiff" data-lat="51.4816" data-lon="-3.1791" data-query="city=Cardiff&lat=51.4816&lon=-3.1791&cc=GB">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Rafales de vent fortes aujourd’hui : jusqu’à 71 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
         <h2>Cardiff: mercredi 18 novembre</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">9° / 12°</span>
@@ -128,7 +131,7 @@
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Prévisions à 7 jours</h3>
-        <p class="city-summary">Dans les 7 prochains jours, le jour le plus chaud sera mercredi 18 novembre (jusqu’à 12°) et le plus froid samedi 21 novembre (jusqu’à 1°). Des précipitations sont attendues sur 5 des jours. Les maximales sont proches des normales de novembre (moyenne 11°). Les modèles concordent jusqu’à samedi 21 novembre ; ensuite, la prévision est moins sûre (jusqu’à 6° d’écart de température et un modèle prévoit de la pluie, un autre une journée sèche).</p>
+        <p class="city-summary">Dans les 7 prochains jours, le jour le plus chaud sera mercredi 18 novembre (jusqu’à 12°) et le plus froid samedi 21 novembre (jusqu’à 1°). Des précipitations sont attendues sur 6 des jours. Les maximales sont proches des normales de novembre (moyenne 11°). Les modèles concordent jusqu’à samedi 21 novembre ; ensuite, la prévision est moins sûre (jusqu’à 5° d’écart de température et un modèle prévoit de la pluie, un autre une journée sèche).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Cardiff&lat=51.4816&lon=-3.1791&cc=GB&date=2026-11-18" title="Heure par heure →">
             <span class="kp-day-name">mer. 18</span>
@@ -136,16 +139,16 @@
             <span class="city-day-date">18.11</span>
             <span class="city-day-temp">9° / 12°</span>
             <span class="kp-day-status">Pluie</span>
-            <span class="city-day-rain" title="probabilité de pluie">100% · 16.3 mm</span>
-            <span class="city-day-wind">Vent 30 km/h · rafales 59</span>
+            <span class="city-day-rain" title="probabilité de pluie">100% · 16.1 mm</span>
+            <span class="city-day-wind city-day-gusts">Vent 30 km/h · rafales 71</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Cardiff&lat=51.4816&lon=-3.1791&cc=GB&date=2026-11-19" title="Heure par heure →">
             <span class="kp-day-name">jeu. 19</span>
-            <span class="city-day-icon" aria-hidden="true">⛈️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">19.11</span>
             <span class="city-day-temp">7° / 11°</span>
-            <span class="kp-day-status">Orage</span>
-            <span class="city-day-rain" title="probabilité de pluie">92% · 5.9 mm</span>
+            <span class="kp-day-status">Pluie</span>
+            <span class="city-day-rain" title="probabilité de pluie">90% · 5.9 mm</span>
             <span class="city-day-wind">Vent 16 km/h · rafales 32</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Cardiff&lat=51.4816&lon=-3.1791&cc=GB&date=2026-11-20" title="Heure par heure →">
@@ -154,7 +157,7 @@
             <span class="city-day-date">20.11</span>
             <span class="city-day-temp">2° / 9°</span>
             <span class="kp-day-status">Pluie</span>
-            <span class="city-day-rain" title="probabilité de pluie">51% · 1.9 mm</span>
+            <span class="city-day-rain" title="probabilité de pluie">48% · 1.9 mm</span>
             <span class="city-day-wind">Vent 21 km/h · rafales 44</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Cardiff&lat=51.4816&lon=-3.1791&cc=GB&date=2026-11-21" title="Heure par heure →">
@@ -163,7 +166,7 @@
             <span class="city-day-date">21.11</span>
             <span class="city-day-temp">1° / 7°</span>
             <span class="kp-day-status">Nuageux</span>
-            <span class="city-day-rain" title="probabilité de pluie">23%</span>
+            <span class="city-day-rain" title="probabilité de pluie">29%</span>
             <span class="city-day-wind">Vent 22 km/h · rafales 48</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Cardiff&lat=51.4816&lon=-3.1791&cc=GB&date=2026-11-22" title="Heure par heure →">
@@ -172,17 +175,17 @@
             <span class="city-day-date">22.11</span>
             <span class="city-day-temp">3° / 7°</span>
             <span class="kp-day-status">Nuageux</span>
-            <span class="city-day-rain" title="probabilité de pluie">89%</span>
+            <span class="city-day-rain" title="probabilité de pluie">87%</span>
             <span class="city-day-wind">Vent 26 km/h · rafales 57</span>
             <span class="city-day-conf" title="L’écart entre les modèles ECMWF, ICON et GFS pour ce jour" style="font-size:0.8rem;color:#ff8a65">● incertaine</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Cardiff&lat=51.4816&lon=-3.1791&cc=GB&date=2026-11-23" title="Heure par heure →">
             <span class="kp-day-name">lun. 23</span>
-            <span class="city-day-icon" aria-hidden="true">🌫️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">23.11</span>
-            <span class="city-day-temp">2° / 11°</span>
-            <span class="kp-day-status">Brouillard</span>
-            <span class="city-day-rain" title="probabilité de pluie">38% · 0.5 mm</span>
+            <span class="city-day-temp">2° / 8°</span>
+            <span class="kp-day-status">Pluie</span>
+            <span class="city-day-rain" title="probabilité de pluie">48% · 1.6 mm</span>
             <span class="city-day-wind">Vent 18 km/h · rafales 57</span>
             <span class="city-day-conf" title="L’écart entre les modèles ECMWF, ICON et GFS pour ce jour" style="font-size:0.8rem;color:#ffd54f">● moins sûre</span>
           </a>
@@ -192,8 +195,8 @@
             <span class="city-day-date">24.11</span>
             <span class="city-day-temp">5° / 11°</span>
             <span class="kp-day-status">Pluie</span>
-            <span class="city-day-rain" title="probabilité de pluie">63% · 19.7 mm</span>
-            <span class="city-day-wind city-day-gusts">Vent 26 km/h · rafales 61</span>
+            <span class="city-day-rain" title="probabilité de pluie">64% · 22.6 mm</span>
+            <span class="city-day-wind city-day-gusts">Vent 25 km/h · rafales 61</span>
             <span class="city-day-conf" title="L’écart entre les modèles ECMWF, ICON et GFS pour ce jour" style="font-size:0.8rem;color:#ffd54f">● moins sûre</span>
           </a>
         </div>
@@ -358,6 +361,6 @@
 <script src="/js/background-selector.js?v=6" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=5" defer></script>
-<script src="/js/city-forecast.js?v=20" defer></script>
+<script src="/js/city-forecast.js?v=21" defer></script>
 </body>
 </html>

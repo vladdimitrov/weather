@@ -123,6 +123,9 @@
     <p class="storm-intro">Weather forecast for Utrecht, Netherlands, for today, tomorrow and the next 7 days: temperature, rain, wind and chance of precipitation. Data from Open-Meteo, updated every hour.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Utrecht" data-lat="52.0907" data-lon="5.1214" data-query="city=Utrecht&lat=52.0907&lon=5.1214&cc=NL">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Strong wind gusts tomorrow: up to 63 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
         <h2>Utrecht: Wednesday, 18 November</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">9° / 10°</span>
@@ -148,8 +151,8 @@
             <span class="city-day-date">19.11</span>
             <span class="city-day-temp">7° / 11°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">81% · 8.1 mm</span>
-            <span class="city-day-wind">Wind 18 km/h · gusts 52</span>
+            <span class="city-day-rain" title="chance of rain">98% · 8.1 mm</span>
+            <span class="city-day-wind city-day-gusts">Wind 18 km/h · gusts 63</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Utrecht&lat=52.0907&lon=5.1214&cc=NL&date=2026-11-20" title="Hourly forecast →">
             <span class="kp-day-name">Fri 20</span>
@@ -157,8 +160,8 @@
             <span class="city-day-date">20.11</span>
             <span class="city-day-temp">2° / 7°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">48% · 4.8 mm</span>
-            <span class="city-day-wind">Wind 12 km/h · gusts 26</span>
+            <span class="city-day-rain" title="chance of rain">30% · 9.3 mm</span>
+            <span class="city-day-wind">Wind 13 km/h · gusts 33</span>
             <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ff8a65">● uncertain</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Utrecht&lat=52.0907&lon=5.1214&cc=NL&date=2026-11-21" title="Hourly forecast →">
@@ -176,17 +179,17 @@
             <span class="city-day-date">22.11</span>
             <span class="city-day-temp">0° / 7°</span>
             <span class="kp-day-status">Fog</span>
-            <span class="city-day-rain" title="chance of rain">10%</span>
+            <span class="city-day-rain" title="chance of rain">9%</span>
             <span class="city-day-wind">Wind 11 km/h · gusts 35</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Utrecht&lat=52.0907&lon=5.1214&cc=NL&date=2026-11-23" title="Hourly forecast →">
             <span class="kp-day-name">Mon 23</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">23.11</span>
-            <span class="city-day-temp">0° / 4°</span>
+            <span class="city-day-temp">0° / 3°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">10%</span>
-            <span class="city-day-wind">Wind 9 km/h · gusts 21</span>
+            <span class="city-day-rain" title="chance of rain">9%</span>
+            <span class="city-day-wind">Wind 9 km/h · gusts 24</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Utrecht&lat=52.0907&lon=5.1214&cc=NL&date=2026-11-24" title="Hourly forecast →">
             <span class="kp-day-name">Tue 24</span>
@@ -194,8 +197,8 @@
             <span class="city-day-date">24.11</span>
             <span class="city-day-temp">−2° / 4°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">26%</span>
-            <span class="city-day-wind">Wind 19 km/h · gusts 53</span>
+            <span class="city-day-rain" title="chance of rain">16%</span>
+            <span class="city-day-wind">Wind 15 km/h · gusts 53</span>
           </a>
         </div>
         <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 10 m</p>
@@ -357,6 +360,6 @@
 <script src="/js/background-selector.js?v=6" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/moon.js?v=5" defer></script>
-<script src="/js/city-forecast.js?v=20" defer></script>
+<script src="/js/city-forecast.js?v=21" defer></script>
 </body>
 </html>

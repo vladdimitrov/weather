@@ -260,7 +260,7 @@
     if (!corePromise) {
       corePromise = new Promise(resolve => {
         const script = document.createElement('script');
-        script.src = '/js/forecast-core.js?v=5';
+        script.src = '/js/forecast-core.js?v=6';
         script.onload = script.onerror = () => resolve();
         document.head.appendChild(script);
       });
@@ -429,6 +429,7 @@
     loadWarnings();
     const url = `${API}?latitude=${box.dataset.lat}&longitude=${box.dataset.lon}` +
       '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,wind_gusts_10m' +
+      '&hourly=wind_speed_10m,wind_gusts_10m' +
       '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,snowfall_sum,wind_speed_10m_max,wind_gusts_10m_max,sunrise,sunset,daylight_duration' +
       `&forecast_days=${Math.min(Math.max(+box.dataset.days || 7, 7), 16)}&timezone=auto`;
     try {

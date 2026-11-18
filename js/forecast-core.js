@@ -11,6 +11,10 @@
 // 15 minute data and anything the models cannot answer is loaded as before.
 (function () {
   const MODELS = ['ecmwf_ifs', 'icon_seamless', 'gfs_seamless'];
+  // Gusts (and the wind of the moment) are also asked from ARPEGE/AROME (Météo-France): of the models it sees the
+  // downslope winds and fronts of the Balkans best (18.11.2026: gusts of 70-78 km/h at Simeonovo, Sofia, where
+  // ECMWF said 25, ICON 49 and GFS 51). The median of everything else stays the median of the three models above.
+  const GUST_MODELS = [...MODELS, 'meteofrance_seamless'];
   // when the models are split on the weather symbol, the one with the finer grid wins
   const PRIORITY = ['icon_seamless', 'ecmwf_ifs', 'gfs_seamless'];
 
@@ -75,7 +79,7 @@
     const out = {};
     if (source.time) out.time = source.time;
     bases.forEach(base => {
-      const series = MODELS.map(model => source[base + '_' + model] || null);
+      const series = (/^wind_gusts/.test(base) ? GUST_MODELS : MODELS).map(model => source[base + '_' + model] || null);
       const length = (source.time || series.find(Boolean) || []).length;
       out[base] = Array.from({ length }, (_, i) => pick(base, series.map(s => (s ? s[i] : null))));
       if (spread && /^(temperature|precipitation_sum|wind)/.test(base)) {
@@ -129,6 +133,18 @@
       data.current = collapseCurrent(json.current);
       if (json.current_units) data.current_units = collapseUnits(json.current_units);
     }
+    // "current" of the models: the wind of the moment is the stronger of it and the hour's wind of the models
+    // (current is answered by one model only; a local storm of another one would never show)
+    if (json.current && json.hourly && json.current.time) {
+      const i = (json.hourly.time || []).findIndex(t => t.slice(0, 13) === json.current.time.slice(0, 13));
+      if (i >= 0) {
+        const at = base => GUST_MODELS.map(model => (json.hourly[base + '_' + model] || [])[i]).filter(v => typeof v === 'number');
+        const gusts = at('wind_gusts_10m'), speeds = at('wind_speed_10m');
+        data.current = Object.assign({}, data.current);
+        if (gusts.length) data.current.wind_gusts_10m = Math.max(data.current.wind_gusts_10m || 0, ...gusts);
+        if (speeds.length) data.current.wind_speed_10m = Math.max(data.current.wind_speed_10m || 0, median(speeds));
+      }
+    }
     data.spread = spread;
     data.models = MODELS.filter(model => ['daily', 'hourly'].some(section => json[section] &&
       Object.keys(json[section]).some(key => key.endsWith('_' + model) && json[section][key].some(v => v !== null))));
@@ -152,7 +168,7 @@
   async function load(url) {
     if (/minutely_15|[?&]models=/.test(url)) return plain(url);
     try {
-      const response = await fetch(url + '&models=' + MODELS.join(','));
+      const response = await fetch(url + '&models=' + GUST_MODELS.join(','));
       if (!response.ok) throw new Error('HTTP ' + response.status);
       const json = await response.json();
       if (json.error) throw new Error(json.reason || 'API error');
@@ -187,5 +203,5 @@
     return full ? line : line.replace(/^[^·]*·\s*/, '');
   }
 
-  window.ForecastCore = { MODELS, load, note, median, consensusCode, collapse, last: null };
+  window.ForecastCore = { MODELS, GUST_MODELS, load, note, median, consensusCode, collapse, last: null };
 })();
