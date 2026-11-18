@@ -1508,66 +1508,6 @@
   </url>
 
   <url>
-    <loc>https://weatherpulse.eu/luna/2026/yanuari/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/luna/2026/fevruari/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/luna/2026/mart/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/luna/2026/april/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/luna/2026/may/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/luna/2026/yuni/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/luna/2026/yuli/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/luna/2026/avgust/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/luna/2026/septemvri/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/luna/2026/oktomvri/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
     <loc>https://weatherpulse.eu/luna/2026/noemvri/</loc>
     <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
@@ -3938,66 +3878,6 @@
   </url>
 
   <url>
-    <loc>https://weatherpulse.eu/en/luna/2026/yanuari/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/en/luna/2026/fevruari/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/en/luna/2026/mart/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/en/luna/2026/april/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/en/luna/2026/may/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/en/luna/2026/yuni/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/en/luna/2026/yuli/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/en/luna/2026/avgust/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/en/luna/2026/septemvri/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/en/luna/2026/oktomvri/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
     <loc>https://weatherpulse.eu/en/luna/2026/noemvri/</loc>
     <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
@@ -4095,66 +3975,6 @@
 
   <url>
     <loc>https://weatherpulse.eu/de/luna/2026/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/de/luna/2026/yanuari/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/de/luna/2026/fevruari/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/de/luna/2026/mart/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/de/luna/2026/april/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/de/luna/2026/may/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/de/luna/2026/yuni/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/de/luna/2026/yuli/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/de/luna/2026/avgust/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/de/luna/2026/septemvri/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/de/luna/2026/oktomvri/</loc>
     <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
@@ -4262,66 +4082,6 @@
   </url>
 
   <url>
-    <loc>https://weatherpulse.eu/it/luna/2026/yanuari/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/it/luna/2026/fevruari/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/it/luna/2026/mart/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/it/luna/2026/april/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/it/luna/2026/may/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/it/luna/2026/yuni/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/it/luna/2026/yuli/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/it/luna/2026/avgust/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/it/luna/2026/septemvri/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/it/luna/2026/oktomvri/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
     <loc>https://weatherpulse.eu/it/luna/2026/noemvri/</loc>
     <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
@@ -4419,66 +4179,6 @@
 
   <url>
     <loc>https://weatherpulse.eu/es/luna/2026/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/es/luna/2026/yanuari/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/es/luna/2026/fevruari/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/es/luna/2026/mart/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/es/luna/2026/april/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/es/luna/2026/may/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/es/luna/2026/yuni/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/es/luna/2026/yuli/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/es/luna/2026/avgust/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/es/luna/2026/septemvri/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/es/luna/2026/oktomvri/</loc>
     <lastmod>2026-11-18</lastmod>
     <priority>0.6</priority>
   </url>
@@ -9590,55 +9290,7 @@
   </url>
 
   <url>
-    <loc>https://weatherpulse.eu/fr/lune/2026/aout/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/fr/lune/2026/avril/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
     <loc>https://weatherpulse.eu/fr/lune/2026/decembre/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/fr/lune/2026/fevrier/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/fr/lune/2026/janvier/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/fr/lune/2026/juillet/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/fr/lune/2026/juin/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/fr/lune/2026/mai/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/fr/lune/2026/mars/</loc>
     <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
@@ -9656,19 +9308,7 @@
   </url>
 
   <url>
-    <loc>https://weatherpulse.eu/fr/lune/2026/octobre/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
     <loc>https://weatherpulse.eu/fr/lune/2026/pleine-lune/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/fr/lune/2026/septembre/</loc>
     <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
@@ -10748,55 +10388,7 @@
   </url>
 
   <url>
-    <loc>https://weatherpulse.eu/nl/maan/2026/april/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/nl/maan/2026/augustus/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
     <loc>https://weatherpulse.eu/nl/maan/2026/december/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/nl/maan/2026/februari/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/nl/maan/2026/januari/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/nl/maan/2026/juli/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/nl/maan/2026/juni/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/nl/maan/2026/maart/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/nl/maan/2026/mei/</loc>
     <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
@@ -10809,18 +10401,6 @@
 
   <url>
     <loc>https://weatherpulse.eu/nl/maan/2026/november/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/nl/maan/2026/oktober/</loc>
-    <lastmod>2026-11-18</lastmod>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://weatherpulse.eu/nl/maan/2026/september/</loc>
     <lastmod>2026-11-18</lastmod>
     <priority>0.5</priority>
   </url>
