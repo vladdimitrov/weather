@@ -67,7 +67,7 @@
     {
       "name": "Календар на празниците",
       "short_name": "Празници",
-      "url": "/holliday_calendar/"
+      "url": "/praznici/"
     }
   ]
 }

@@ -7,7 +7,7 @@
 //   /vremeto/parvi-snyag/            regional and seasonal pages (Bulgarian only); live tables: /js/region-weather.js
 //   /europe/greece/belomorie/, /europe/greece/halkidiki/, /europe/greece/more/, /europe/turkey/more/
 //                                    resorts abroad: 7 days and sea water (Bulgarian only)
-//   /praznici/pochivni-dni-<year>/   long weekends and working days (Bulgarian only), from holidays-BG.json
+//   (the holiday pages /praznici/, /praznici/<year>/ are written by build-praznici.js)
 //   /uidzhet/                        the free "weather in [city]" widget (/widget/weather.html) for other sites
 //   /prohodi/, /prohodi/<slug>/      the mountain passes (Bulgarian only, bg-passes.js); live: /js/passes.js
 // Texts: text-extra.js. Run from the repository root after build-pages.js (it refreshes
@@ -420,77 +420,6 @@ ${R.sections.map(([h, p]) => `
   });
 }
 
-// ---- /praznici/pochivni-dni-<year>/ ----
-function daysOffPage(year, years) {
-  const T = BG.daysOff;
-  const list = daysOff(HOLIDAYS[year], year);
-  const holidayOn = new Map();
-  list.forEach(h => holidayOn.set(h.date, holidayOn.has(h.date) ? `${holidayOn.get(h.date)}; ${h.localName}` : h.localName));
-  const iso = d => d.toISOString().slice(0, 10);
-  const days = [];
-  for (let d = new Date(Date.UTC(year, 0, 1)); d.getUTCFullYear() === year; d.setUTCDate(d.getUTCDate() + 1)) {
-    const weekday = d.getUTCDay();
-    days.push({ date: iso(d), month: d.getUTCMonth(), off: weekday === 0 || weekday === 6 || holidayOn.has(iso(d)), holiday: holidayOn.get(iso(d)) });
-  }
-  // Runs of three or more days off that include a holiday
-  const runs = [];
-  for (let i = 0; i < days.length;) {
-    if (!days[i].off) { i++; continue; }
-    let j = i;
-    while (j + 1 < days.length && days[j + 1].off) j++;
-    const run = days.slice(i, j + 1);
-    if (run.length >= 3 && run.some(day => day.holiday)) runs.push(run);
-    i = j + 1;
-  }
-  const date = (isoDate, options) => new Date(isoDate + 'T12:00:00Z').toLocaleDateString('bg-BG', { timeZone: 'UTC', ...options });
-  const total = days.filter(day => day.off).length;
-  const work = days.length - total;
-  const reasons = run => [...new Set(run.filter(day => day.holiday).flatMap(day => day.holiday.split('; ')))].join('; ');
-  const months = Array.from({ length: 12 }, (_, m) => {
-    const inMonth = days.filter(day => day.month === m);
-    return { m, work: inMonth.filter(day => !day.off).length, off: inMonth.filter(day => day.off).length };
-  });
-  const url = `/praznici/pochivni-dni-${year}/`;
-  const other = years.filter(y => y !== year).map(y => `<a class="btn" href="/praznici/pochivni-dni-${y}/">${T.other(y)}</a>`).join(' ');
-  return page({
-    ...ONLY_BG,
-    url,
-    title: T.title(year),
-    description: T.description(year, new Set(list.map(h => h.name)).size, runs.length),
-    jsonLd: breadcrumbs('bg', [['Weather Pulse', '/'], [TXT.bg.holidaysTitle(years[0], years[1]), '/praznici/'], [T.h1(year), url]]),
-    body: `    <p class="breadcrumbs"><a href="/praznici/">${TXT.bg.holidaysTitle(years[0], years[1])}</a> › ${T.h1(year)}</p>
-    <h1>${T.h1(year)}</h1>
-    <p class="storm-intro">${T.intro(year, total, work)}</p>
-
-    <section class="info-card">
-      <h2>${T.longH(year)}</h2>
-${runs.length ? `      <div class="table-scroll">
-      <table class="kp-table holiday-table">
-        <thead><tr>${T.longHead.map(h => `<th>${h}</th>`).join('')}</tr></thead>
-        <tbody>
-${runs.map(run => `          <tr><td>${date(run[0].date, { weekday: 'short', day: 'numeric', month: 'long' })}</td><td>${date(run[run.length - 1].date, { weekday: 'short', day: 'numeric', month: 'long' })}</td><td>${run.length}</td><td>${esc(reasons(run))}</td></tr>`).join('\n')}
-        </tbody>
-      </table>
-      </div>` : `      <p>${T.noLong}</p>`}
-    </section>
-
-    <section class="info-card">
-      <h2>${T.monthsH(year)}</h2>
-      <div class="table-scroll">
-      <table class="kp-table">
-        <thead><tr>${T.monthsHead.map(h => `<th>${h}</th>`).join('')}</tr></thead>
-        <tbody>
-${months.map(({ m, work: w, off }) => `          <tr><td>${I18N.monthName('bg', m)}</td><td>${w}</td><td>${off}</td></tr>`).join('\n')}
-          <tr><td><strong>${T.total}</strong></td><td><strong>${work}</strong></td><td><strong>${total}</strong></td></tr>
-        </tbody>
-      </table>
-      </div>
-    </section>
-
-    <p class="city-actions"><a class="btn" href="/praznici/#y${year}">${T.holidaysLink(year)}</a> ${other}</p>`
-  });
-}
-
 // ---- /uidzhet/ ----
 function widgetPage() {
   const T = BG.widget;
@@ -687,7 +616,6 @@ CITIES.forEach(city => {
 Object.keys(BG.regions).forEach(slug => write(`vremeto/${slug}`, regionPage(slug)));
 Object.keys(BG.abroad).forEach(key => write(`europe/${key}`, abroadPage(key)));
 const years = Object.keys(HOLIDAYS).map(Number).sort().slice(-2);
-years.forEach(year => write(`praznici/pochivni-dni-${year}`, daysOffPage(year, years)));
 write('uidzhet', widgetPage());
 // paused: bg-passes.js exports no passes, so there are no pages
 if (PASSES.length) {

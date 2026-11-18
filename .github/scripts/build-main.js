@@ -29,6 +29,14 @@ const HOME_TARGETS = [...TARGETS, 'ro'];
 const OWN = ['/', '/magnitni-buri/', '/weather/', '/maps/', '/holliday_calendar/'];
 
 const RO_RESORTS = require('./text-ro.js').RESORTS;
+// The Bulgarian menu, home page and tool page lead to /praznici/ (holidays of Bulgaria) and /praznici/darzhavi/
+// (the calendar of other countries). The translations keep /<lang>/holliday_calendar/ as before: their
+// templates get the old link back, and the tool template is the Bulgarian page at its new address.
+const TEMPLATE_FILE = { '/holliday_calendar/': 'praznici/darzhavi/index.html' };
+const holidaysLinkBack = html => html
+  .replace('href="/praznici/" class="nav-link" data-nav="holidays"', 'href="/holliday_calendar/" class="nav-link" data-nav="holidays"')
+  .replace('href="/praznici/" class="orbit-button" id="holliday-calendar-btn"', 'href="/holliday_calendar/" class="orbit-button" id="holliday-calendar-btn"')
+  .replace('data-dup href="/praznici/"><span class="ht-title">🎉', 'data-dup href="/holliday_calendar/"><span class="ht-title">🎉');
 const read = file => fs.readFileSync(path.join(ROOT, file), 'utf8').replace(/\r\n/g, '\n');
 const esc = I18N.esc;
 
@@ -119,7 +127,7 @@ const NAV = evaluate(declaration(read('js/mobile-nav.js'), 'navTexts', 'js/mobil
 
 // ---- Home ----
 function home() {
-  const template = read('index.html');
+  const template = holidaysLinkBack(read('index.html'));
   const texts = evaluate(
     ['homepageTranslations', 'elements', 'titles'].map(name => declaration(template, name, 'index.html')).join('\n'),
     ['homepageTranslations', 'elements', 'titles']);
@@ -177,7 +185,7 @@ const KP_BLOCK = /<div class="kp-forecast" id="stormForecast">(<!-- kp-forecast:
 const KP_EMPTY = '<div class="kp-forecast" id="stormForecast" hidden></div>';
 
 function storms() {
-  const template = read('magnitni-buri/index.html').replace(KP_BLOCK, KP_EMPTY);
+  const template = holidaysLinkBack(read('magnitni-buri/index.html')).replace(KP_BLOCK, KP_EMPTY);
   const script = read('js/storm-page.js');
   const { PAGE, T } = evaluate(`${declaration(script, 'PAGE', 'js/storm-page.js')}\n${declaration(script, 'T', 'js/storm-page.js')}`, ['PAGE', 'T']);
   const text = (group, key, lang) => {
@@ -234,7 +242,7 @@ function apps() {
     '/holliday_calendar/': dictionary('language-switcher.js', 'holidayCalendarTitle')
   };
   Object.keys(HEADING).forEach(url => {
-    const template = read(`${url.slice(1)}index.html`);
+    const template = holidaysLinkBack(read(TEMPLATE_FILE[url] || `${url.slice(1)}index.html`));
     TARGETS.forEach(lang => {
       const T = APP_TEXT[url][lang];
       if (!T || !T.title || !T.description) throw new Error(`text-main.js: no texts for ${url} in ${lang}`);

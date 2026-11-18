@@ -61,7 +61,7 @@ function indexable(file) {
 function priority(url) {
   const bare = url.replace(/^\/(en|de|it|es|fr|nl)(?=\/)/, '');
   if (bare === '/') return url === '/' ? '1.0' : '0.8';
-  if (['/magnitni-buri/', '/weather/', '/maps/', '/holliday_calendar/'].includes(bare)) return '0.8';
+  if (['/magnitni-buri/', '/weather/', '/maps/', '/holliday_calendar/', '/praznici/'].includes(bare) || url === '/praznici/2027/') return '0.8';
   const depth = bare.split('/').length - 2;
   return depth <= 1 ? '0.7' : depth === 2 ? '0.6' : '0.5';
 }

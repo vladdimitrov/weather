@@ -267,7 +267,7 @@
     if (holidays) {
       holidays.removeAttribute('data-nav');
       holidays.classList.add('home-holidays-link');
-      holidays.href = '/holliday_calendar/';
+      holidays.href = document.documentElement.lang === 'bg' ? '/praznici/darzhavi/' : '/holliday_calendar/';
       holidays.textContent = countryText(countryTexts.holidays, country);
     }
   }

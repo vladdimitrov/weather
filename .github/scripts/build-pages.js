@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 65, mobileNav: 23, languageSelector: 10, cityForecast: 20, moon: 5, lunaToday: 6, lunaLocal: 2, auroraKp: 3, placeContext: 3, skyLocal: 3, homeCities: 5, regionWeather: 7, passes: 4, share: 2 };
+const VERSION = { theme: 65, mobileNav: 24, languageSelector: 10, cityForecast: 20, moon: 5, lunaToday: 6, lunaLocal: 2, auroraKp: 3, placeContext: 3, skyLocal: 3, homeCities: 6, regionWeather: 7, passes: 4, share: 2 };
 
 const CITIES = require('./bg-cities.js');
 
@@ -390,7 +390,7 @@ ${head}</head>
       <a href="/" class="nav-link" data-nav="home">${nav('home')}</a>
       <a href="/weather/" class="nav-link" data-nav="weather">${nav('weather')}</a>
       <a href="/maps/" class="nav-link" data-nav="maps">${nav('maps')}</a>
-      <a href="/holliday_calendar/" class="nav-link" data-nav="holidays">${nav('holidays')}</a>
+      <a href="${lang === 'bg' ? '/praznici/' : '/holliday_calendar/'}" class="nav-link" data-nav="holidays">${nav('holidays')}</a>
       <a href="${multi ? I18N.localUrl(lang, '/kurorti/') : '/kurorti/'}" class="nav-link" data-nav="resorts">${nav('resorts')}</a>
       <a href="/magnitni-buri/" class="nav-link" data-nav="storms">${nav('storms')}</a>
       <a href="${multi ? I18N.localUrl(lang, '/luna/') : '/luna/'}" class="nav-link" data-nav="moon">${nav('moon')}</a>
@@ -754,14 +754,14 @@ ${holidayRows(daysOff(data[i], year), year, lang)}
     description: T.holidaysDescription(years[0], years[1]),
     body: `    <h1>${T.holidaysH1(years[0], years[1])}</h1>
     <p class="storm-intro">${T.holidaysIntro}</p>
-    <p class="city-actions">${years.map(year => `<a class="btn" href="#y${year}">${year}</a>`).join(' ')} <a class="btn" href="/holliday_calendar/">${T.holidaysOther}</a>${lang === 'bg' ? years.map(year => ` <a class="btn" href="/praznici/pochivni-dni-${year}/">Почивни дни ${year}</a>`).join('') : ''}</p>
+    <p class="city-actions">${years.map(year => `<a class="btn" href="#y${year}">${year}</a>`).join(' ')} <a class="btn" href="${lang === 'bg' ? '/praznici/darzhavi/' : '/holliday_calendar/'}">${T.holidaysOther}</a>${lang === 'bg' ? years.map(year => ` <a class="btn" href="/praznici/pochivni-dni-${year}/">Почивни дни ${year}</a>`).join('') : ''}</p>
 ${tables}
     <p class="storm-updated">${T.holidaysSource(text => `<a href="https://date.nager.at/" target="_blank" rel="noopener">${text}</a>`, checked)}</p>`
   });
 }
 
 // Used by build-climate.js (the city list); the pages are built only when run directly
-module.exports = { CITIES, daysOff, page, write, redirect, VERSION, placeJson, climateSection, sunSection, bestTimeSection, nearbySection, joinList, seaSection };
+module.exports = { CITIES, FIXED, daysOff, page, write, redirect, VERSION, placeJson, climateSection, sunSection, bestTimeSection, nearbySection, joinList, seaSection };
 if (require.main === module) (async function main() {
   const firstYear = Number(process.argv[2]) || new Date().getFullYear();
   const years = [firstYear, firstYear + 1];
@@ -770,7 +770,8 @@ if (require.main === module) (async function main() {
     const dir = url => L(lang, url).slice(1);
     CITIES.forEach(city => write(dir(`/vremeto/${city.slug}/`), cityPage(city, lang)));
     write(dir('/vremeto/'), hubPage(lang));
-    write(dir('/praznici/'), holidaysPage(years, data, lang));
+    // Bulgarian: build-praznici.js (this year, next year, long weekends)
+    if (lang !== 'bg') write(dir('/praznici/'), holidaysPage(years, data, lang));
     write(dir('/iztochnici/'), sourcesPage(lang));
   });
   // Romanian: the ski resorts only
