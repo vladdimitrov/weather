@@ -8,7 +8,7 @@ weatherpulse.eu: a static weather site on GitHub Pages, part of the VYZYA brand 
 - Search Console (Nov 2026): most impressions for "времето" and "времето утре" come from the Bulgarian pages of cities abroad (Munich, The Hague, Vienna…) shown to Bulgarians living there. These pages matter as much as the Bulgarian cities.
 - Growth comes from Google. The weak point is the click-through rate (under 1 %), not the position (7–10 on the main queries): titles and descriptions are worth more than new pages.
 - Pages that bring clicks: magnetic storms (`/magnitni-buri/`), the ski resorts (Bansko, Borovets, Pamporovo), the 10- and 14-day city pages.
-- Later: ads (needs more traffic), automated Facebook/Instagram posts, maybe a YouTube channel.
+- Later: ads (needs more traffic, and the Open-Meteo licence first), automated Facebook/Instagram posts.
 
 ## Decisions already taken (do not undo without asking)
 
@@ -24,14 +24,18 @@ weatherpulse.eu: a static weather site on GitHub Pages, part of the VYZYA brand 
 - **Posts for warnings (Facebook/Instagram):** the owner wants to see every new kind of post before it goes out. An orange or red code of NIMH (`data/warnings-bg.json`) makes a DRAFT (card + text in `tools/social/queue/drafts/`, `python main.py warnings`) and a GitHub issue (e-mail to the owner); the workflow "Social draft" publishes (next slot or at once) or deletes it. One draft per warning, at most 2 new drafts a day (red first). Magnetic storms of Kp 5+ are the older automatic posts of `alerts.py` and stay as they are (Kp 7+ needs no extra post). Everything else in `tools/social` (forecast, queue, storms) still posts by itself.
 - Don't add hundreds of new pages at once: Google is still indexing the site slowly (Nov 2026: ~780 indexed, ~700 waiting).
 
-## Next task (decided)
+## Plan (decided Nov 2026, details in `NEXT_TASK.md`)
 
-- **Agro forecast (агропрогноза):** a section for farmers – frost risk, spraying windows, soil temperature and moisture, weekly rain totals, days for sowing and harvest. Plan in `NEXT_TASK.md`.
+1. **First: Open-Meteo commercial licence** (paid plan or self-hosting) – before any affiliate link or ad, since the free API is non-commercial.
+2. **Nov–Dec: hotel offers on the ski resort pages**, tied to the forecast ("sunny weekend – free rooms"); start with affiliate links. Also: real numbers of the day in the ski titles and descriptions ("Банско утре: −4°, 20 см нов сняг"), like the city and storm pages.
+3. **Jan–Feb: agro forecast as a layer inside the existing city pages** (frost, spraying window, soil temperature and moisture, weekly rain) – no new URLs, so the indexing problem does not grow; ready for March. Paid agro alerts only later, after a free Telegram/Viber frost channel shows interest.
+4. **Fix indexing before adding pages:** ~700 pages not indexed are treated as a quality signal (near-identical template pages); make them more distinct or merge them.
+- **Expansion rule:** new destinations only in Bulgarian and only where Bulgarians really search (GSC, Google Trends), e.g. Thessaloniki, Halkidiki, Istanbul. Foreign-language pages stay for Bulgaria and Greece only. No "weather for the world".
+- **Dropped for now:** software for guest houses (separate business), YouTube channel.
+- **Not worth it:** FAQPage/HowTo schema for CTR (Google limits FAQ rich results to government/health sites and removed HowTo).
 
 ## Suggested next (not decided yet, ask first)
 
-- Last-minute offers from local hotels on the city pages, tied to the forecast; start with affiliate links to test interest (see `NEXT_TASK.md`).
-- Later, a separate VYZYA product: simple software for small guest houses (offers panel, availability calendar, direct booking, iCal sync), feeding offers to the city pages. Not a full PMS. Needs a backend outside GitHub Pages (see `NEXT_TASK.md`).
 - Languages by tourist numbers: Greek and more Romanian pages first, then Polish, Serbian, Turkish; Spanish has the least potential.
 
 ## How to work here
