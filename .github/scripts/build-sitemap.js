@@ -11,6 +11,7 @@
 // scripts and stylesheets, which changes when they do):
 //   - the forecast written by build-forecast.js inside #cityForecast
 //   - anything between <!-- volatile --> and <!-- /volatile -->
+//   - the numbers of today and tomorrow in the description of a city page (data-description)
 //   - the year in the footer
 // Run it after the generators (the daily workflow runs it after build-forecast.js and build-storms.js).
 const fs = require('fs');
@@ -40,6 +41,8 @@ function content(html) {
     .replace(/\r\n/g, '\n')
     .replace(/(<div class="city-forecast" id="cityForecast"[^>]*>\n)[\s\S]*?(\n    <\/div>\n)/, '$1$2')
     .replace(/<!-- volatile -->[\s\S]*?<!-- \/volatile -->/g, '')
+    // the numbers of today and tomorrow at the start of the description of a city page (build-forecast.js)
+    .replace(/<meta name="description" content="[^"]*" data-description="([^"]*)">/, '<meta name="description" content="$1">')
     .replace(/<span class="current-year">\d+<\/span>/g, '')
     // a new version of a script or a stylesheet (?v=N) is not new content
     .replace(/(\.(?:js|css|json))\?v=\d+/g, '$1');

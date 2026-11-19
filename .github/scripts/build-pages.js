@@ -427,6 +427,11 @@ function keepForecast(file, html) {
   const after = html.match(FORECAST_BLOCK);
   const language = text => (text.match(/<html lang="(\w+)"/) || [])[1];
   if (!before || !after || before[1] !== after[1] || language(old) !== language(html) || before[2].includes('storm-loading')) return html;
+  // and the description that starts with the numbers of today and tomorrow (build-forecast.js), while
+  // the description of the page is the same
+  const description = old.match(/<meta name="description" content="[^"]*" data-description="([^"]*)">/);
+  const fresh = (html.match(/<meta name="description" content="([^"]*)">/) || [])[1];
+  if (description && description[1] === fresh) html = html.replace(/<meta name="description" content="[^"]*">/, () => description[0]);
   return html.replace(FORECAST_BLOCK, (m, open, inner, close) => open + before[2] + close);
 }
 
