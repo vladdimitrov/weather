@@ -76,13 +76,70 @@ function links(current, data) {
 }
 
 // ---- Today and tomorrow ----
+// Colour of a level (as the Kp bars of /js/storm-page.js): calm, active (Kp 4), storm (Kp 5 and more)
+const levelColor = kp => (Math.round(kp) >= 5 ? '#e74c3c' : Math.round(kp) >= 4 ? '#f1c40f' : '#2ecc71');
+// What a level means, in one sentence (the table of /magnitni-buri/kp-indeks/)
+const MEANING = [
+  [9, 'Изключителна буря: възможни са аварии в енергийните мрежи, прекъсване на GPS и радиовръзките и северно сияние, което може да се види и в България.'],
+  [8, 'Много силна буря: възможни са проблеми в енергийните мрежи и спътниците, а северното сияние понякога се вижда и в Южна Европа.'],
+  [7, 'Силна буря: възможни са неточности в GPS и прекъсвания на късовълновите радиовръзки, а сиянието стига до Германия и Полша.'],
+  [6, 'Умерена буря: възможни са смущения в радиовръзките на големи ширини, а сиянието стига до Шотландия и Южна Скандинавия.'],
+  [5, 'Слаба буря: възможни са слаби колебания в енергийните мрежи и сияние над Северна Европа, а в България обикновено няма видими последици.'],
+  [4, 'Повишена активност: полето е неспокойно, но това още не е буря и няма последици за хората.'],
+  [0, 'Спокойно: няма смущения в геомагнитното поле, не се очакват проблеми с радиовръзките и навигацията.']
+];
+const meaning = kp => (MEANING.find(([min]) => Math.round(kp) >= min) || MEANING[MEANING.length - 1])[1];
+// The 3-hour interval of the highest Kp of a day (the first one when several are equal), Sofia time
+function peak(day) {
+  const slots = (day && day.slots) || [];
+  if (!slots.length) return null;
+  return slots.reduce((best, slot) => (slot[2] > best[2] ? slot : best), slots[0]);
+}
+const shortLevel = name => name.toLowerCase().replace(' магнитна буря', ' буря');
+const STORM_STYLE = `  <style>
+    .storm-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 14px 0; }
+    .storm-card { display: block; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--card-border, rgba(255, 255, 255, 0.15)); background: var(--card-bg, rgba(255, 255, 255, 0.06)); color: inherit; text-decoration: none; }
+    a.storm-card:hover { border-color: var(--gold, #ffd700); }
+    .storm-card.is-current { border-color: var(--gold, #ffd700); }
+    .storm-card h2 { margin: 0 0 6px; font-size: 1.05em; }
+    .storm-card .storm-kp { font-size: 2.2em; font-weight: 700; line-height: 1.1; }
+    .storm-card .storm-badge { display: inline-block; margin-left: 8px; padding: 2px 10px; border-radius: 999px; font-size: 0.9em; font-weight: 600; color: #162447; vertical-align: middle; }
+    .storm-card p { margin: 6px 0 0; font-size: 0.95em; }
+  </style>
+`;
+
+function dayCard(data, index, current) {
+  const day = data.days[index];
+  const label = index === 0 ? 'Днес' : 'Утре';
+  const url = index === 0 ? '/magnitni-buri/dnes/' : '/magnitni-buri/utre/';
+  if (!day) return `      <div class="storm-card"><h2>${label}</h2><p>Прогнозата на NOAA още не е публикувана.</p></div>`;
+  const [, name, g] = level(day.kp);
+  const top = peak(day);
+  const color = levelColor(day.kp);
+  const inner = `<h2>${label}, ${date(day.day, { weekday: 'long', day: 'numeric', month: 'long' })}</h2>
+        <span class="storm-kp" style="color:${color}">Kp ${kpText(day.kp)}</span><span class="storm-badge" style="background:${color}">${name}${g ? ` (${g})` : ''}</span>
+        ${top ? `<p>Пикът е между <strong>${top[0]}</strong> и <strong>${top[1]} ч.</strong> (българско време).</p>` : ''}${current ? '' : `<p>${label} по часове →</p>`}`;
+  return current
+    ? `      <div class="storm-card is-current" aria-current="page">${inner}</div>`
+    : `      <a class="storm-card" href="${url}">${inner}</a>`;
+}
+
+// Title and description with the numbers of the day: the places that change every morning sit between
+// <!-- volatile --> marks, which build-sitemap.js leaves out of the hash (the lastmod does not move every day)
+const volatile = (html, pattern) => html.replace(pattern, m => `<!-- volatile -->${m}<!-- /volatile -->`);
+
 function dayPage(data, index) {
   const which = index === 0 ? 'днес' : 'утре';
+  const other = index === 0 ? 'Утре' : 'Днес';
   const url = index === 0 ? '/magnitni-buri/dnes/' : '/magnitni-buri/utre/';
   const day = data.days[index];
+  const otherDay = data.days[1 - index];
   const [, name, g] = day ? level(day.kp) : [];
+  const top = peak(day);
+  const when = day ? date(day.day, { day: 'numeric', month: 'long' }) : '';
+  const storm = day && Math.round(day.kp) >= 5;
   const summary = day
-    ? `${index === 0 ? 'Днес' : 'Утре'}, ${longDate(day.day)}, NOAA очаква ${day.kp >= 4.67 ? `<strong>магнитна буря</strong> – ${name.toLowerCase()}${g ? ` (${g})` : ''}` : name === 'Спокойно' ? 'спокойно магнитно поле, без магнитна буря' : 'повишена геомагнитна активност, но без магнитна буря'}. Най-високият Kp индекс ${index === 0 ? 'за деня' : 'утре'} е ${kpText(day.kp)}.`
+    ? `${index === 0 ? 'Днес' : 'Утре'}, ${longDate(day.day)}, NOAA очаква ${storm ? `<strong>магнитна буря</strong> – ${name.toLowerCase()}${g ? ` (${g})` : ''}` : name === 'Спокойно' ? '<strong>спокойно</strong> геомагнитно поле' : `<strong>${name.toLowerCase()}</strong>, но не магнитна буря`}. Най-високият Kp индекс за деня е ${kpText(day.kp)}${top ? `, а пикът е между ${top[0]} и ${top[1]} ч. българско време` : ''}.`
     : `Прогнозата на NOAA за ${which} още не е публикувана.`;
   const slots = day && day.slots && day.slots.length ? `
     <section class="info-card">
@@ -91,11 +148,11 @@ function dayPage(data, index) {
       <table class="kp-table">
         <thead><tr><th>Часове (българско време)</th><th>Kp</th><th>Ниво</th></tr></thead>
         <tbody>
-${day.slots.map(([from, to, kp]) => `          <tr><td>${from}–${to}</td><td>${kpText(kp)}</td><td>${level(kp)[1]}</td></tr>`).join('\n')}
+${day.slots.map(([from, to, kp]) => `          <tr><td>${from}–${to}</td><td>${kpText(kp)}</td><td><span style="color:${levelColor(kp)}">●</span> ${level(kp)[1]}</td></tr>`).join('\n')}
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">Kp е за 3-часови интервали. Прогноза на NOAA SWPC от ${date(data.issued, { day: 'numeric', month: 'long', year: 'numeric' })} г.</p>
+      <p class="storm-updated">Kp е за 3-часови интервали. Прогноза на NOAA SWPC от ${date(data.issued, { day: 'numeric', month: 'long', year: 'numeric' }).replace(/\s*г\.$/, '')} г.</p>
     </section>` : '';
   const next = data.days.slice(index + 1, index + 3);
   const ahead = next.length ? `
@@ -105,31 +162,67 @@ ${day.slots.map(([from, to, kp]) => `          <tr><td>${from}–${to}</td><td>$
       <table class="kp-table">
         <thead><tr><th>Ден</th><th>Най-висок Kp</th><th>Ниво</th></tr></thead>
         <tbody>
-${next.map(d => `          <tr><td>${date(d.day, { weekday: 'long', day: 'numeric', month: 'long' })}</td><td>${kpText(d.kp)}</td><td>${level(d.kp)[1]}</td></tr>`).join('\n')}
+${next.map(d => `          <tr><td>${date(d.day, { weekday: 'long', day: 'numeric', month: 'long' })}</td><td>${kpText(d.kp)}</td><td><span style="color:${levelColor(d.kp)}">●</span> ${level(d.kp)[1]}</td></tr>`).join('\n')}
         </tbody>
       </table>
       </div>
     </section>` : '';
-  const title = `Магнитни бури ${which} – Kp индекс и прогноза по часове`;
-  return page({
+
+  // Title and description of the day (the generic ones when NOAA has no forecast)
+  let title = `Магнитни бури ${which} – Kp индекс и прогноза по часове`;
+  let description = `Има ли магнитна буря ${which}: най-високият Kp индекс, прогноза по 3-часови интервали по българско време и нивото на бурята по скалата на NOAA. Обновява се всяка сутрин.`;
+  if (day) {
+    title = `Магнитни бури ${which} (${when}) – Kp ${kpText(day.kp)}, ${shortLevel(name)}`;
+    const answer = storm ? `Да – ${name.toLowerCase()}${g ? ` (${g})` : ''}` : 'Не';
+    const parts = [
+      `Има ли магнитна буря ${which} (${when})? ${answer}: най-висок Kp ${kpText(day.kp)}`,
+      top ? `, пик ${top[0]}–${top[1]} ч.` : '.',
+      otherDay ? ` ${other}: Kp ${kpText(otherDay.kp)}, ${shortLevel(level(otherDay.kp)[1])}.` : '',
+      ' Kp по часове по данни на NOAA, обновява се всяка сутрин.'
+    ];
+    // as much as fits in 155 characters, from the end
+    description = parts.join('');
+    for (let i = parts.length - 1; description.length > 155 && i >= 2; i--) description = parts.slice(0, i).join('');
+    if (description.length > 155) description = parts.slice(0, 2).join('');
+  }
+
+  const cards = day ? `
+    <!-- volatile -->
+    <div class="storm-cards">
+${dayCard(data, index, true)}
+${dayCard(data, 1 - index, false)}
+    </div>
+    <!-- /volatile -->` : '';
+  let html = page({
     ...ONLY_BG,
     url,
     title,
     image: '/images/cards/storm.png',
-    description: `Има ли магнитна буря ${which}: най-високият Kp индекс, прогноза по 3-часови интервали по българско време и нивото на бурята по скалата на NOAA. Обновява се всяка сутрин.`,
+    description,
+    head: STORM_STYLE,
     jsonLd: breadcrumbs([['Weather Pulse', '/'], ['Магнитни бури', '/magnitni-buri/'], [`Магнитни бури ${which}`, url]]),
     body: `    <p class="breadcrumbs"><a href="/magnitni-buri/">Магнитни бури</a> › ${which}</p>
     <h1>Магнитни бури ${which}</h1>
-    <div data-share></div>
+    <div data-share></div>${cards}
     <section class="info-card">
-      <p class="storm-intro">${summary}</p>
+      <!-- volatile -->
+      <p class="storm-intro">${summary}</p>${day ? `
+      <p>${meaning(day.kp)}${storm ? ' Повечето хора не усещат нищо; какво е известно за здравето е в <a href="/magnitni-buri/zdrave/">магнитни бури и здраве</a>.' : ''}</p>` : ''}
+      <!-- /volatile -->
       <p>Магнитна буря има при Kp индекс 5 и повече (G1 по скалата на NOAA). При Kp 4 полето е неспокойно, но това още не е буря. Прогнозата идва от Центъра за космическо време на NOAA и се обновява тук всяка сутрин; моментната стойност е в полето по-долу.</p>
     </section>
-${slots}${ahead}
+<!-- volatile -->${slots}${ahead}
+<!-- /volatile -->
 ${KP_WIDGET}
 ${links(url, data)}`,
     scripts: `<script src="/js/share.js?v=${VERSION.share}" defer></script>\n`
   });
+  // the numbers in the head change every morning too
+  html = volatile(html, /<title>[^<]*<\/title>/);
+  html = volatile(html, /<meta name="description" content="[^"]*">/);
+  html = volatile(html, /<meta property="og:title" content="[^"]*">/);
+  html = volatile(html, /<meta property="og:description" content="[^"]*">/);
+  return html;
 }
 
 // ---- A month ----
