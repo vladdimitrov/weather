@@ -41,6 +41,8 @@ function content(html) {
     .replace(/\r\n/g, '\n')
     .replace(/(<div class="city-forecast" id="cityForecast"[^>]*>\n)[\s\S]*?(\n    <\/div>\n)/, '$1$2')
     .replace(/<!-- volatile -->[\s\S]*?<!-- \/volatile -->/g, '')
+    // the 3-day storm forecast of /magnitni-buri/ and its translations (build-storms.js)
+    .replace(/<!-- kp-forecast:start -->[\s\S]*?<!-- kp-forecast:end -->/g, '')
     // the numbers of today and tomorrow at the start of the description of a city page (build-forecast.js)
     .replace(/<meta name="description" content="[^"]*" data-description="([^"]*)">/, '<meta name="description" content="$1">')
     .replace(/<span class="current-year">\d+<\/span>/g, '')

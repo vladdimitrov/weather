@@ -30,6 +30,7 @@ const ZONE = 'Europe/Sofia';
 const TEXT = {
   day: { bg: 'Ден', en: 'Day', de: 'Tag', it: 'Giorno', es: 'Día', fr: 'Jour', nl: 'Dag' },
   highest: { bg: 'Най-висок Kp', en: 'Highest Kp', de: 'Höchster Kp', it: 'Kp massimo', es: 'Kp máximo', fr: 'Kp maximal', nl: 'Hoogste Kp' },
+  peak: { bg: 'Пик (българско време)', en: 'Peak (Sofia time)', de: 'Spitze (Sofia-Zeit)', it: 'Picco (ora di Sofia)', es: 'Pico (hora de Sofía)', fr: 'Pic (heure de Sofia)', nl: 'Piek (tijd Sofia)' },
   issued: {
     bg: 'Прогноза на NOAA от', en: 'NOAA forecast of', de: 'NOAA-Vorhersage vom', it: 'Previsione NOAA del', es: 'Pronóstico de la NOAA del',
     fr: 'Prévision de la NOAA du', nl: 'NOAA-verwachting van'
@@ -56,7 +57,7 @@ const word = (group, key, lang) => {
 const levelKey = kp => (kp >= 9 ? 'extreme' : kp >= 8 ? 'severe' : kp >= 7 ? 'strong' : kp >= 6 ? 'moderate' : kp >= 5 ? 'minor' : kp >= 4 ? 'active' : 'calm');
 
 const dayOf = date => new Intl.DateTimeFormat('en-CA', { timeZone: ZONE, year: 'numeric', month: '2-digit', day: '2-digit' }).format(date);
-const hourOf = date => new Intl.DateTimeFormat('bg-BG', { timeZone: ZONE, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(date);
+const hourOf = date => new Intl.DateTimeFormat('en-GB', { timeZone: ZONE, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(date);
 
 async function forecast() {
   const response = await fetch(URL);
@@ -103,14 +104,19 @@ async function outlook() {
 function table(lang, days, today) {
   const locale = I18N.LOCALE[lang];
   const date = (iso, options) => new Date(iso + 'T12:00:00Z').toLocaleDateString(locale, { timeZone: 'UTC', ...options });
-  const rows = days.map(({ day, kp }) =>
-    `            <tr><td>${esc(date(day, { weekday: 'long', day: 'numeric', month: 'long' }))}</td><td>${(Math.round(kp * 10) / 10).toFixed(1)}</td><td>${esc(word(T, levelKey(kp), lang))}</td></tr>`).join('\n');
+  // the 3-hour interval of the highest Kp of the day (Sofia time), the first one when several are equal
+  const peakOf = slots => (slots && slots.length ? slots.reduce((best, slot) => (slot[2] > best[2] ? slot : best), slots[0]) : null);
+  const color = kp => (Math.round(kp) >= 5 ? '#e74c3c' : Math.round(kp) >= 4 ? '#f1c40f' : '#2ecc71');
+  const rows = days.map(({ day, kp, slots }) => {
+    const top = peakOf(slots);
+    return `            <tr><td>${esc(date(day, { weekday: 'long', day: 'numeric', month: 'long' }))}</td><td>${(Math.round(kp * 10) / 10).toFixed(1)}</td><td><span style="color:${color(kp)}">●</span> ${esc(word(T, levelKey(kp), lang))}</td><td>${top ? `${top[0]}–${top[1]}` : '–'}</td></tr>`;
+  }).join('\n');
   const level = lang === 'bg' ? 'Ниво' : word(PAGE, 'thLevel', lang);
   // Deeper than the page's own lines, between the marks build-main.js looks for
   return `${START}
       <h3>${esc(word(T, 'forecastTitle', lang))}</h3>
       <table class="kp-table">
-        <thead><tr><th>${TEXT.day[lang]}</th><th>${TEXT.highest[lang]}</th><th>${esc(level)}</th></tr></thead>
+        <thead><tr><th>${TEXT.day[lang]}</th><th>${TEXT.highest[lang]}</th><th>${esc(level)}</th><th>${esc(TEXT.peak[lang])}</th></tr></thead>
         <tbody>
 ${rows}
         </tbody>
