@@ -12,6 +12,13 @@ main.py check                                           проверка на т
 main.py serve                                           работи постоянно по графика в config.yaml
 ```
 
+3. **Чернови за предупреждения** (`main.py warnings`): за оранжев или червен код на НИМХ прави картинка и текст в `queue/drafts/` и отваря GitHub issue. **Нищо не се публикува, докато не го одобрите** (workflow „Social draft“: `publish`, `publish-now` или `delete`). Най-много 2 нови чернови на ден, без повторения (`state/warnings.json`). Магнитните бури (Kp 5+) са отделните автоматични известия на `alerts`.
+
+```
+main.py warnings [--dry-run] [--sample]   чернови за оранжев/червен код (--dry-run: само картинките в output/)
+main.py warnings --notify                 issue за всяка чернова, която още няма (иска GITHUB_TOKEN)
+```
+
 ## 1. Инсталация
 
 ```bash

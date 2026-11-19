@@ -4,6 +4,8 @@ name: Weather warnings of NIMH
 # into /data/warnings-bg.json (.github/scripts/build-warnings.js), which the city pages read.
 # The file changes, and is committed, only when the warnings change. If MeteoAlarm does not
 # answer, the run fails and the file stays as it is (the pages ignore warnings that have expired).
+# When the warnings change, orange and red codes get a DRAFT post (card + text in tools/social/queue/drafts/) and a
+# GitHub issue for the owner; nothing is posted until the owner approves it (social-draft.yml).
 on:
   schedule:
     - cron: '7,37 * * * *'
@@ -12,6 +14,7 @@ on:
 permissions:
   contents: write
   pages: write
+  issues: write
 
 concurrency:
   group: warnings
@@ -45,3 +48,41 @@ jobs:
       - name: Publish
         if: steps.commit.outputs.pushed == 'true'
         run: gh api -X POST "repos/${{ github.repository }}/pages/builds"
+      # Drafts for the orange and red warnings: nothing is posted, the owner decides (social-draft.yml)
+      - uses: actions/setup-python@v5
+        if: steps.commit.outputs.pushed == 'true' || github.event_name == 'workflow_dispatch'
+        with:
+          python-version: "3.12"
+      - name: Draft posts for orange and red warnings
+        id: drafts
+        if: steps.commit.outputs.pushed == 'true' || github.event_name == 'workflow_dispatch'
+        run: |
+          pip install -r tools/social/requirements.txt
+          cd tools/social
+          python main.py warnings
+          cd ../..
+          git add tools/social/queue/drafts tools/social/state
+          if git diff --cached --quiet; then
+            echo "No new drafts."; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "social: draft post for a warning of NIMH"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+      # The issue tells the owner (GitHub e-mails it); its number goes into the state
+      - name: Open an issue for each new draft
+        if: steps.drafts.outputs.pushed == 'true'
+        run: |
+          cd tools/social
+          python main.py warnings --notify
+          cd ../..
+          git add tools/social/state
+          if ! git diff --cached --quiet; then
+            git commit -m "social: issues of the drafts"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

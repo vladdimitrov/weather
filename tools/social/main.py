@@ -5,6 +5,7 @@
   python main.py queue    [--dry-run]                            # post next photo/video from queue/
   python main.py alerts   [--dry-run] [--sample] [--today]               # magnetic storm / full Moon tomorrow
   python main.py cards    [--sample] [--static] [--force]         # share cards (og:image) of passes, storms, air
+  python main.py warnings [--dry-run] [--sample] [--notify]       # DRAFTS for orange/red warnings of NIMH (nothing is posted)
   python main.py check                                           # verify token, page and IG account
   python main.py serve                                           # run forever on the schedule in config.yaml
 """
@@ -19,6 +20,7 @@ from wp_social.config import ROOT, load_config
 from wp_social.alerts import run_alerts
 from wp_social.cards import run_cards
 from wp_social.jobs import make_client, run_forecast, run_queue
+from wp_social.warnings import notify, run_warnings
 
 log = logging.getLogger("weatherpulse")
 
@@ -82,6 +84,10 @@ def main():
     cd.add_argument("--sample", action="store_true", help="invented data (no internet)")
     cd.add_argument("--static", action="store_true", help="neutral cards without numbers")
     cd.add_argument("--force", action="store_true", help="redraw every card")
+    wd = sub.add_parser("warnings", help="drafts (card + text in queue/drafts/) for orange and red warnings; nothing is posted")
+    wd.add_argument("--dry-run", action="store_true", help="only the cards in output/ and the texts on the screen; no state, no drafts")
+    wd.add_argument("--sample", action="store_true", help="invented warnings (no data file)")
+    wd.add_argument("--notify", action="store_true", help="a GitHub issue for every draft that has none (needs GITHUB_TOKEN)")
     sub.add_parser("check")
     sub.add_parser("serve")
     a = p.parse_args()
@@ -96,6 +102,11 @@ def main():
         run_alerts(cfg, make_client, dry_run=a.dry_run, sample=a.sample, force=a.force, today=a.today)
     elif a.cmd == "cards":
         run_cards("sample" if a.sample else "static" if a.static else "live", force=a.force)
+    elif a.cmd == "warnings":
+        if a.notify:
+            notify(cfg, dry_run=a.dry_run)
+        else:
+            run_warnings(cfg, dry_run=a.dry_run, sample=a.sample)
     elif a.cmd == "check":
         print(make_client(cfg).check())
     elif a.cmd == "serve":
