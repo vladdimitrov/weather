@@ -1,0 +1,93 @@
+name: Social draft
+
+# The owner's decision about a DRAFT post for an official warning (tools/social, `python main.py warnings`).
+# The bot writes the draft (card + text) to tools/social/queue/drafts/ and opens an issue about it; nothing is
+# posted until it is approved here:
+#   publish      moves the draft to the queue: it is posted at the next slot (12:29 or 18:29, social.yml)
+#   publish-now  moves it to the queue and posts it at once
+#   delete       removes it
+# The text (<draft>.txt) can be edited in the repository before approving.
+on:
+  workflow_dispatch:
+    inputs:
+      draft:
+        description: "Name of the draft, as in the issue (without .jpg), e.g. 2026-11-19-warning-wind-orange"
+        required: true
+        type: string
+      action:
+        description: "What to do"
+        required: true
+        default: publish
+        type: choice
+        options: [publish, publish-now, delete]
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+
+concurrency:
+  group: social
+  cancel-in-progress: false
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      NAME: ${{ inputs.draft }}
+      ACTION: ${{ inputs.action }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Move or delete the draft
+        run: |
+          set -e
+          # only letters, digits, - and _ : the name goes into a path
+          case "$NAME" in ""|*[!A-Za-z0-9_-]*) echo "Bad draft name: $NAME"; exit 1;; esac
+          cd tools/social/queue
+          [ -f "drafts/$NAME.jpg" ] || { echo "No draft drafts/$NAME.jpg"; ls drafts; exit 1; }
+          if [ "$ACTION" = "delete" ]; then
+            git rm -q "drafts/$NAME.jpg"
+            [ -f "drafts/$NAME.txt" ] && git rm -q "drafts/$NAME.txt" || true
+          else
+            # 000- : the first in the queue (it is posted by name order)
+            git mv "drafts/$NAME.jpg" "000-$NAME.jpg"
+            [ -f "drafts/$NAME.txt" ] && git mv "drafts/$NAME.txt" "000-$NAME.txt" || true
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "social: draft $NAME: $ACTION"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Close the issue of the draft
+        run: |
+          for n in $(gh issue list --state open --search "$NAME in:title" --json number -q '.[].number'); do
+            gh issue close "$n" --comment "Решение: $ACTION"
+          done
+
+      - uses: actions/setup-python@v5
+        if: inputs.action == 'publish-now'
+        with:
+          python-version: "3.12"
+
+      - name: Post it now
+        if: inputs.action == 'publish-now'
+        working-directory: tools/social
+        run: |
+          pip install -r requirements.txt
+          python main.py queue --force
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A queue
+          if ! git diff --cached --quiet; then
+            git commit -m "social: queue item published"
+            git pull --rebase origin main
+            git push
+          fi
+        env:
+          WP_PAGE_ID: ${{ secrets.WP_PAGE_ID }}
+          WP_PAGE_TOKEN: ${{ secrets.WP_PAGE_TOKEN }}
+          WP_IG_USER_ID: ${{ secrets.WP_IG_USER_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -66,6 +66,12 @@ alerts:
   storm_min_kp: 5
   full_moon: true
 
+# Чернови за оранжев и червен код на НИМХ (python main.py warnings): картинка и текст в queue/drafts/, нищо не се
+# публикува, докато не го одобрите (workflow „Social draft“). Най-много max_per_day нови чернови на ден.
+warnings:
+  max_per_day: 2
+  hashtags: "#предупреждение"   # към хаштаговете на опашката
+
 # За командата `serve` (вграден график). Ако ползвате cron/Task Scheduler, не ви трябва.
 schedule:
   forecast_time: "07:30"

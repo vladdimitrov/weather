@@ -21,12 +21,12 @@ weatherpulse.eu: a static weather site on GitHub Pages, part of the VYZYA brand 
 - **Magnetic storms today and tomorrow:** `/magnitni-buri/dnes/` and `/utre/` already exist, so no new pages. Their HTML has the Kp of both days, a coloured level, the peak and one sentence for people; the title and description carry the numbers of the day ("Магнитни бури днес (19 ноември) – Kp 5.0, слаба буря"), written every morning by `build-storms.js`. These places sit between `<!-- volatile -->` marks, so the sitemap `lastmod` does not move every day. Bulgarian only.
 - **10- and 14-day pages:** the title starts with the exact query ("Времето в Перник за 10 дни – …") and ends with "10-дневна прогноза по дни"; the hub `/vremeto/` links to all of them. Pernik keeps its old texts (`KEEP_TEXT` in `build-extra.js`): its 10-day page has a 28 % CTR at position 9, do not touch it without data. No new cities, no "25 days" pages (the forecast reaches 16 days).
 - **Widget for hotels (external links):** `/uidzhet/` has a section with ready code for the five ski resorts. The code is the iframe plus a plain, visible, dofollow link "Прогноза: WeatherPulse" to the city page **outside** the iframe (a link inside an iframe is not a link of the page that embeds it); the widget has the same link inside. Keep the anchor the brand name, not keywords, and do not hide it (Google treats keyword-rich links in distributed widgets as link spam). Open-Meteo's free API is for non-commercial use and the widget calls it from visitors' browsers: check their terms before spreading the widget widely. Emails to hotels are written by the owner.
+- **Posts for warnings (Facebook/Instagram):** the owner wants to see every new kind of post before it goes out. An orange or red code of NIMH (`data/warnings-bg.json`) makes a DRAFT (card + text in `tools/social/queue/drafts/`, `python main.py warnings`) and a GitHub issue (e-mail to the owner); the workflow "Social draft" publishes (next slot or at once) or deletes it. One draft per warning, at most 2 new drafts a day (red first). Magnetic storms of Kp 5+ are the older automatic posts of `alerts.py` and stay as they are (Kp 7+ needs no extra post). Everything else in `tools/social` (forecast, queue, storms) still posts by itself.
 - Don't add hundreds of new pages at once: Google is still indexing the site slowly (Nov 2026: ~780 indexed, ~700 waiting).
 
 ## Suggested next (not decided yet, ask first)
 
 - Languages by tourist numbers: Greek and more Romanian pages first, then Polish, Serbian, Turkish; Spanish has the least potential.
-- Shareable posts for official weather warnings and strong magnetic storms.
 
 ## How to work here
 
