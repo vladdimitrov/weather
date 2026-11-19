@@ -131,8 +131,10 @@ ${countries.map(({ country, name }) => group(name, `/europe/${country.slug}/`, P
 
 // ---- /vremeto/<city>/10-dni/, /14-dni/ and /uikend/ ----
 const FORECAST_SLUG = { tenDays: '10-dni', fourteenDays: '14-dni', weekend: 'uikend' };
+// Pages whose texts must not change: the 10-day page of Pernik has a CTR of 28 % at position 9 (Search Console, Nov 2026)
+const KEEP_TEXT = ['pernik'];
 function forecastPage(city, kind) {
-  const T = BG[kind];
+  const T = KEEP_TEXT.includes(city.slug) && (kind === 'tenDays' || kind === 'fourteenDays') ? BG[kind + 'Legacy'] : BG[kind];
   const url = `/vremeto/${city.slug}/${FORECAST_SLUG[kind]}/`;
   const params = new URLSearchParams({ city: city.name, lat: city.lat.toFixed(4), lon: city.lon.toFixed(4), cc: 'BG' });
   const extra = kind === 'tenDays' ? ' data-days="10"' : kind === 'fourteenDays' ? ' data-days="14"' : ' data-days="10" data-weekend="1"';
