@@ -348,6 +348,19 @@ function fillSnow(html, values, lang) {
   }) + '<!-- /volatile -->').replace(/<!-- volatile --><!-- volatile -->/g, '<!-- volatile -->').replace(/<!-- \/volatile --><!-- \/volatile -->/g, '<!-- /volatile -->');
 }
 
+// "Today here and in Sofia" (Bulgarian pages of cities abroad, build-europe.js): today and tomorrow in the city and
+// in Sofia, between <!-- volatile --> so that a new day is not a new lastmod
+const ABROAD_TABLE = /(<table class="kp-table" id="abroadTable">[\s\S]*?<tbody>)<!-- volatile -->[\s\S]*?<!-- \/volatile -->/;
+function fillAbroad(html, name, here, home) {
+  const cell = (data, i) => {
+    const d = data.daily;
+    const words = condition(d.weather_code[i]).text.bg;
+    return `${whole(d.temperature_2m_min[i])} / ${whole(d.temperature_2m_max[i])}, ${words.charAt(0).toLocaleLowerCase('bg-BG') + words.slice(1)}`;
+  };
+  const row = (label, data) => `<tr><td>${esc(label)}</td><td>${cell(data, 0)}</td><td>${cell(data, 1)}</td></tr>`;
+  return html.replace(ABROAD_TABLE, (m, start) => `${start}<!-- volatile -->${row(name, here)}${row('София', home)}<!-- /volatile -->`);
+}
+
 (async function main() {
   const folders = process.argv.slice(2).filter(arg => !arg.startsWith('--'));
   // Bulgarian at the root, the other languages under /en/, /de/ ...
@@ -360,7 +373,11 @@ function fillSnow(html, values, lang) {
     page.url = '/' + path.relative(ROOT, path.dirname(page.file)).split(path.sep).join('/') + '/';
   });
   // one request per chunk of places with the same number of days
-  const places = [...new Map(pages.map(page => [page.key, page])).values()].sort((a, b) => a.days - b.days);
+  // Sofia for the "Today here and in Sofia" block of the Bulgarian pages of cities abroad (build-europe.js)
+  const sofia = pages.find(page => page.url === '/vremeto/sofia/') || cityPages(['vremeto/sofia']).map(page => ({ ...page, key: `${page.lat},${page.lon},${page.days}` }))[0];
+  const withBlock = pages.some(page => ABROAD_TABLE.test(page.html));
+  if (withBlock && !sofia) throw new Error('/vremeto/sofia/ not found (needed for the block "today here and in Sofia")');
+  const places = [...new Map(pages.concat(withBlock ? [sofia] : []).map(page => [page.key, page])).values()].sort((a, b) => a.days - b.days);
   const data = await forecasts(places);
   const today = new Date().toISOString().slice(0, 10);
 
@@ -382,6 +399,7 @@ function fillSnow(html, values, lang) {
       return open + snapshot(page, data.get(page.key), today) + close;
     });
     if (count !== 1) throw new Error(`${path.relative(ROOT, page.file)}: the forecast block was not found`);
+    if (ABROAD_TABLE.test(html)) html = fillAbroad(html, page.name, data.get(page.key), data.get(sofia.key));
     // the most snow of the places of the resort (the highest one) and the new snow there
     const top = page.snow && page.snow.filter(v => v.depth !== null).sort((a, b) => b.depth - a.depth)[0];
     if (page.snow) html = fillSnow(html, page.snow, page.lang);
