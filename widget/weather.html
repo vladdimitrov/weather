@@ -7,17 +7,18 @@
   <title>Времето — Weather Pulse</title>
   <!-- Embeddable "weather in [city]" card for other sites (the code is made on /uidzhet/):
        <iframe src="https://weatherpulse.eu/widget/weather.html?lat=42.6977&lon=23.3219&name=София&page=/vremeto/sofia/" width="320" height="230">
-       lat, lon: the place; name: its name; page: the page of the place on weatherpulse.eu the card links to; lang: bg (default) or en.
+       lat, lon: the place; name: its name; page: the page of the place on weatherpulse.eu the two links of the card lead to (the title and "Прогноза: WeatherPulse"); lang: bg (default) or en.
        Self-contained (no site scripts, no cookies or analytics); data from Open-Meteo. -->
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; height: 100%; background: transparent; }
     body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: #ffffff; }
-    a.card {
+    .card {
       display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 12px 14px;
       border: 1px solid rgba(255, 215, 0, 0.45); border-radius: 14px; background: #162447; color: inherit; text-decoration: none;
     }
-    .title { color: #FFD700; font-weight: 700; font-size: 15px; }
+    .title { color: #FFD700; font-weight: 700; font-size: 15px; text-decoration: none; }
+    a.title:hover, a.footer:hover { text-decoration: underline; }
     .now { display: flex; align-items: center; gap: 10px; font-size: 14px; }
     .now b { font-size: 30px; }
     .now .icon { font-size: 30px; }
@@ -25,21 +26,21 @@
     .days div { padding: 5px 2px; border-radius: 8px; background: rgba(255, 255, 255, 0.08); }
     .days .name { display: block; color: #FFD700; text-transform: capitalize; }
     .days .icon { display: block; font-size: 18px; }
-    .footer { margin-top: auto; font-size: 11px; color: rgba(255, 255, 255, 0.7); text-align: right; }
+    .footer { margin-top: auto; font-size: 12px; color: rgba(255, 255, 255, 0.9); text-align: right; text-decoration: underline; }
   </style>
 </head>
 <body>
-  <a class="card" id="card" href="https://weatherpulse.eu/" target="_blank" rel="noopener">
-    <span class="title" id="title">Времето</span>
+  <div class="card" id="card">
+    <a class="title" id="title" href="https://weatherpulse.eu/" target="_blank" rel="noopener">Времето</a>
     <span class="now" id="now">…</span>
     <span class="days" id="days"></span>
-    <span class="footer" id="footer">weatherpulse.eu</span>
-  </a>
+    <a class="footer" id="footer" href="https://weatherpulse.eu/" target="_blank" rel="noopener">Прогноза: WeatherPulse →</a>
+  </div>
   <script>
     (function () {
       const texts = {
-        bg: { title: name => 'Времето ' + (/^[ВФвф]/.test(name) ? 'във ' : 'в ') + name, feels: 'усеща се', wind: 'вятър', today: 'Днес', tomorrow: 'Утре', error: 'Няма данни в момента', more: 'Прогноза за 7 дни →', locale: 'bg-BG' },
-        en: { title: name => 'Weather in ' + name, feels: 'feels like', wind: 'wind', today: 'Today', tomorrow: 'Tomorrow', error: 'Data unavailable', more: '7-day forecast →', locale: 'en-GB' }
+        bg: { title: name => 'Времето ' + (/^[ВФвф]/.test(name) ? 'във ' : 'в ') + name, feels: 'усеща се', wind: 'вятър', today: 'Днес', tomorrow: 'Утре', error: 'Няма данни в момента', more: 'Прогноза: WeatherPulse →', locale: 'bg-BG' },
+        en: { title: name => 'Weather in ' + name, feels: 'feels like', wind: 'wind', today: 'Today', tomorrow: 'Tomorrow', error: 'Data unavailable', more: 'Forecast: WeatherPulse →', locale: 'en-GB' }
       };
       // WMO weather codes, as on the site (js/city-forecast.js)
       const icon = code => code === 0 ? '☀️' : code <= 2 ? '⛅' : code === 3 ? '☁️' : code <= 48 ? '🌫️' : code <= 57 ? '🌦️' : code <= 67 || (code >= 80 && code <= 82) ? '🌧️' : code <= 86 ? '❄️' : '⛈️';
@@ -51,10 +52,12 @@
       // only a path on this site, never another address
       const page = /^\/[a-z0-9\/-]*$/.test(query.get('page') || '') ? query.get('page') : '/weather/?' + new URLSearchParams({ city: name, lat, lon });
       document.documentElement.lang = language;
-      document.getElementById('card').href = 'https://weatherpulse.eu' + page;
+      // two plain links to the page of the place (no nofollow): the title and "Прогноза: WeatherPulse"
+      document.getElementById('title').href = 'https://weatherpulse.eu' + page;
+      document.getElementById('footer').href = 'https://weatherpulse.eu' + page;
       document.getElementById('title').textContent = name ? t.title(name) : 'Weather Pulse';
       document.title = (name ? t.title(name) : 'Weather Pulse') + ' — Weather Pulse';
-      document.getElementById('footer').textContent = t.more + ' weatherpulse.eu';
+      document.getElementById('footer').textContent = t.more;
       const show = (id, text) => { document.getElementById(id).textContent = text; };
       if (isNaN(lat) || isNaN(lon)) { show('now', t.error); return; }
       const round = v => Math.round(v) + '°';

@@ -423,6 +423,17 @@ ${R.sections.map(([h, p]) => `
 }
 
 // ---- /uidzhet/ ----
+// The code a site pastes: the widget (iframe) and under it a plain link "Прогноза: WeatherPulse" to the page of the
+// place, without nofollow. Self-contained: its source is also put into the script of /uidzhet/ (embedCode.toString()).
+function embedCode(lat, lon, name, page, lang) {
+  const src = '/widget/weather.html?' + new URLSearchParams({ lat: lat, lon: lon, name: name, page: page, lang: lang });
+  const text = lang === 'bg' ? 'Прогноза: WeatherPulse' : 'Forecast: WeatherPulse';
+  return '<div style="max-width:320px">\n  <iframe src="https://weatherpulse.eu' + src.replace(/&/g, '&amp;') + '" width="320" height="230" style="border:0;max-width:100%" title="Weather Pulse" loading="lazy"></iframe>\n'
+    + '  <p style="margin:4px 0 0;font:12px/1.4 sans-serif"><a href="https://weatherpulse.eu' + page + '">' + text + '</a></p>\n</div>';
+}
+// The resorts of the section for hotels, ski schools and guest houses
+const HOTEL_RESORTS = ['bansko', 'borovets', 'pamporovo', 'chepelare', 'dobrinishte'];
+
 function widgetPage() {
   const T = BG.widget;
   const options = PLACES.PLACES.map(place => {
@@ -452,8 +463,30 @@ function widgetPage() {
       <h2>${T.preview}</h2>
       <iframe id="widgetPreview" src="/widget/weather.html?lat=42.6977&amp;lon=23.3219&amp;name=%D0%A1%D0%BE%D1%84%D0%B8%D1%8F&amp;page=%2Fvremeto%2Fsofia%2F" width="320" height="230" style="border:0" title="${T.h1}" loading="lazy"></iframe>
       <p class="storm-updated">${T.note}</p>
+    </section>
+
+    <section class="info-card" id="hoteli">
+      <h2>${T.hotelsH}</h2>
+      <p>${T.hotelsIntro}</p>
+      <p>${T.hotelsFree}</p>
+${HOTEL_RESORTS.map(slug => {
+  const place = PLACES.PLACES.find(p => p.url === `/vremeto/${slug}/`);
+  if (!place) throw new Error(`widgetPage: no place ${slug}`);
+  const name = place.name.bg;
+  const src = '/widget/weather.html?' + new URLSearchParams({ lat: place.lat, lon: place.lon, name, page: place.url, lang: 'bg' });
+  return `      <h3>${esc(name)}</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;align-items:start">
+        <iframe src="${esc(src)}" width="320" height="230" style="border:0;max-width:100%" title="${esc(name)}" loading="lazy"></iframe>
+        <div>
+          <textarea id="hotel-${slug}" rows="8" style="width:100%;font-family:monospace;font-size:12px" readonly>${esc(embedCode(place.lat, place.lon, name, place.url, 'bg'))}</textarea>
+          <p><button type="button" class="btn" data-copy="hotel-${slug}">${T.copy}</button></p>
+        </div>
+      </div>`;
+}).join('\n')}
+      <p class="storm-updated">${T.hotelsEnglish}</p>
     </section>`,
     scripts: `<script>
+  ${embedCode.toString()}
   // The embed code of the chosen city (the widget is /widget/weather.html)
   (function () {
     const city = document.getElementById('widgetCity');
@@ -468,7 +501,7 @@ function widgetPage() {
       const query = new URLSearchParams({ lat: option.dataset.lat, lon: option.dataset.lon, name: option.dataset['name' + (lang.value === 'bg' ? 'Bg' : 'En')], page, lang: lang.value });
       const src = '/widget/weather.html?' + query;
       preview.src = src;
-      code.value = '<iframe src="https://weatherpulse.eu' + src.replace(/&/g, '&amp;') + '" width="320" height="230" style="border:0" title="Weather Pulse" loading="lazy"></iframe>';
+      code.value = embedCode(option.dataset.lat, option.dataset.lon, option.dataset['name' + (lang.value === 'bg' ? 'Bg' : 'En')], page, lang.value);
     }
     city.addEventListener('change', update);
     lang.addEventListener('change', update);
@@ -477,6 +510,12 @@ function widgetPage() {
       (navigator.clipboard ? navigator.clipboard.writeText(code.value) : Promise.reject()).catch(() => document.execCommand('copy'));
       event.target.textContent = ${JSON.stringify(T.copied)};
     });
+    document.querySelectorAll('[data-copy]').forEach(button => button.addEventListener('click', () => {
+      const area = document.getElementById(button.dataset.copy);
+      area.select();
+      (navigator.clipboard ? navigator.clipboard.writeText(area.value) : Promise.reject()).catch(() => document.execCommand('copy'));
+      button.textContent = ${JSON.stringify(T.copied)};
+    }));
     update();
   })();
 </script>\n`
