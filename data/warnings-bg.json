@@ -1,17 +1,5 @@
 {
  "provinces": {
-  "burgas": [
-   {
-    "level": "yellow",
-    "type": "wind",
-    "event": {
-     "bg": "Силен вятър и значителни валежи!",
-     "en": "Strong wind and heavy rain!"
-    },
-    "onset": "2026-11-18T00:00:01+02:00",
-    "expires": "2026-11-19T00:00:00+02:00"
-   }
-  ],
   "dobrich": [
    {
     "level": "yellow",
@@ -24,51 +12,7 @@
     "expires": "2026-11-20T00:00:00+02:00"
    }
   ],
-  "haskovo": [
-   {
-    "level": "yellow",
-    "type": "wind",
-    "event": {
-     "bg": "Силен вятър и значителни валежи!",
-     "en": "Strong wind and heavy rain!"
-    },
-    "onset": "2026-11-18T00:00:01+02:00",
-    "expires": "2026-11-19T00:00:00+02:00"
-   }
-  ],
-  "kardzhali": [
-   {
-    "level": "yellow",
-    "type": "wind",
-    "event": {
-     "bg": "Силен вятър и значителни валежи!",
-     "en": "Strong wind and heavy rain!"
-    },
-    "onset": "2026-11-18T00:00:01+02:00",
-    "expires": "2026-11-19T00:00:00+02:00"
-   }
-  ],
   "montana": [
-   {
-    "level": "yellow",
-    "type": "wind",
-    "event": {
-     "bg": "Силен вятър и значителни валежи!",
-     "en": "Strong wind and heavy rain!"
-    },
-    "onset": "2026-11-18T00:00:01+02:00",
-    "expires": "2026-11-19T00:00:00+02:00"
-   },
-   {
-    "level": "yellow",
-    "type": "rain",
-    "event": {
-     "bg": "Силен вятър и значителни валежи!",
-     "en": "Strong wind and heavy rain!"
-    },
-    "onset": "2026-11-18T00:00:01+02:00",
-    "expires": "2026-11-19T00:00:00+02:00"
-   },
    {
     "level": "yellow",
     "type": "wind",
@@ -157,16 +101,6 @@
     "level": "yellow",
     "type": "wind",
     "event": {
-     "bg": "Силен вятър и значителни валежи!",
-     "en": "Strong wind and heavy rain!"
-    },
-    "onset": "2026-11-18T00:00:01+02:00",
-    "expires": "2026-11-19T00:00:00+02:00"
-   },
-   {
-    "level": "yellow",
-    "type": "wind",
-    "event": {
      "bg": "Силен вятър!",
      "en": "Strong wind!"
     },
@@ -175,16 +109,6 @@
    }
   ],
   "sofia-province": [
-   {
-    "level": "yellow",
-    "type": "wind",
-    "event": {
-     "bg": "Силен вятър и значителни валежи!",
-     "en": "Strong wind and heavy rain!"
-    },
-    "onset": "2026-11-18T00:00:01+02:00",
-    "expires": "2026-11-19T00:00:00+02:00"
-   },
    {
     "level": "yellow",
     "type": "wind",
@@ -237,26 +161,6 @@
     "level": "yellow",
     "type": "wind",
     "event": {
-     "bg": "Силен вятър и значителни валежи!",
-     "en": "Strong wind and heavy rain!"
-    },
-    "onset": "2026-11-18T00:00:01+02:00",
-    "expires": "2026-11-19T00:00:00+02:00"
-   },
-   {
-    "level": "yellow",
-    "type": "rain",
-    "event": {
-     "bg": "Силен вятър и значителни валежи!",
-     "en": "Strong wind and heavy rain!"
-    },
-    "onset": "2026-11-18T00:00:01+02:00",
-    "expires": "2026-11-19T00:00:00+02:00"
-   },
-   {
-    "level": "yellow",
-    "type": "wind",
-    "event": {
      "bg": "Силен вятър!",
      "en": "Strong wind!"
     },
@@ -269,43 +173,11 @@
     "level": "yellow",
     "type": "wind",
     "event": {
-     "bg": "Силен вятър и значителни валежи!",
-     "en": "Strong wind and heavy rain!"
-    },
-    "onset": "2026-11-18T00:00:01+02:00",
-    "expires": "2026-11-19T00:00:00+02:00"
-   },
-   {
-    "level": "yellow",
-    "type": "rain",
-    "event": {
-     "bg": "Силен вятър и значителни валежи!",
-     "en": "Strong wind and heavy rain!"
-    },
-    "onset": "2026-11-18T00:00:01+02:00",
-    "expires": "2026-11-19T00:00:00+02:00"
-   },
-   {
-    "level": "yellow",
-    "type": "wind",
-    "event": {
      "bg": "Силен вятър!",
      "en": "Strong wind!"
     },
     "onset": "2026-11-19T00:00:01+02:00",
     "expires": "2026-11-20T00:00:00+02:00"
-   }
-  ],
-  "yambol": [
-   {
-    "level": "yellow",
-    "type": "wind",
-    "event": {
-     "bg": "Силен вятър и значителни валежи!",
-     "en": "Strong wind and heavy rain!"
-    },
-    "onset": "2026-11-18T00:00:01+02:00",
-    "expires": "2026-11-19T00:00:00+02:00"
    }
   ]
  }
