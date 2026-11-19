@@ -166,6 +166,8 @@ ${RO_RESORTS.map(slug => `        <a href="/vremeto/${slug}/" class="recent-plac
     });
     // tiles that lead to Bulgarian-only pages (tomorrow, UV, pollen, passes, widget) exist only in the Bulgarian home page
     html = html.replace(/[ \t]*<a [^>]*\bdata-bg-only\b[^>]*>[\s\S]*?<\/a>\n/g, '');
+    // data-bg-page: a link to a Bulgarian-only page that stays visible for Bulgarians abroad (data-bg-only is hidden outside Bulgaria)
+    html = html.replace(/ ?<a [^>]*\bdata-bg-page\b[^>]*>[\s\S]*?<\/a>/g, '');
     // and the ski resorts and Greece block (links to Bulgarian-only texts)
     html = html.replace(/[ \t]*<!-- bg-only:start[\s\S]*?<!-- bg-only:end -->\n/g, '');
     // Bulgarian cities: Latin names and the translated city pages
