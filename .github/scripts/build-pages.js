@@ -588,6 +588,20 @@ ${lang === 'bg' ? `
       ${CITIES.map(city => `<a href="${L(lang, `/vremeto/${city.slug}/`)}" class="city-tile" data-lat="${city.lat}" data-lon="${city.lon}"><span class="city-tile-name">${cityName(city, lang)}</span><span class="city-tile-temp"></span></a>`).join('\n      ')}
     </div>${lang === 'bg' ? `
 
+    <section class="info-card" id="10-dni">
+      <h2>${BG_ONLY.hubTenDaysH}</h2>
+      <div class="city-links">
+        ${CITIES.map(city => `<a href="/vremeto/${city.slug}/10-dni/" class="recent-place">${city.name}</a>`).join('\n        ')}
+      </div>
+    </section>
+
+    <section class="info-card" id="14-dni">
+      <h2>${BG_ONLY.hubFourteenDaysH}</h2>
+      <div class="city-links">
+        ${CITIES.map(city => `<a href="/vremeto/${city.slug}/14-dni/" class="recent-place">${city.name}</a>`).join('\n        ')}
+      </div>
+    </section>
+
     <section class="info-card">
       <h2>${BG_ONLY.regionLinksH}</h2>
       <div class="city-links">

@@ -19,6 +19,7 @@ weatherpulse.eu: a static weather site on GitHub Pages, part of the VYZYA brand 
 - **Moon calendar:** past months are noindex and out of the sitemap (automatic).
 - **Descriptions of the city pages** start with today and tomorrow, written every morning by `build-forecast.js` (the resorts start with the snow); keep it that way.
 - **Magnetic storms today and tomorrow:** `/magnitni-buri/dnes/` and `/utre/` already exist, so no new pages. Their HTML has the Kp of both days, a coloured level, the peak and one sentence for people; the title and description carry the numbers of the day ("Магнитни бури днес (19 ноември) – Kp 5.0, слаба буря"), written every morning by `build-storms.js`. These places sit between `<!-- volatile -->` marks, so the sitemap `lastmod` does not move every day. Bulgarian only.
+- **10- and 14-day pages:** the title starts with the exact query ("Времето в Перник за 10 дни – …") and ends with "10-дневна прогноза по дни"; the hub `/vremeto/` links to all of them. Pernik keeps its old texts (`KEEP_TEXT` in `build-extra.js`): its 10-day page has a 28 % CTR at position 9, do not touch it without data. No new cities, no "25 days" pages (the forecast reaches 16 days).
 - Don't add hundreds of new pages at once: Google is still indexing the site slowly (Nov 2026: ~780 indexed, ~700 waiting).
 
 ## Suggested next (not decided yet, ask first)
