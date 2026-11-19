@@ -35,3 +35,7 @@ weatherpulse.eu: a static weather site on GitHub Pages, part of the VYZYA brand 
 - `main` gets automatic commits every day (forecast, warnings, share cards): pull before working.
 - Work on a branch and open a pull request; the owner merges. Commit messages in English, the owner talks in Bulgarian.
 - GitHub Pages has no real 301: a moved page gets a redirect page from `build-redirects.js`.
+
+## Keep this file current
+
+Without being asked: when the owner takes a decision about the site (a language, an address, a kind of page wanted or not, a priority), or a suggestion above is done or rejected, update this file in the same pull request. Keep it short: decisions and reasons, not a log of the work.
