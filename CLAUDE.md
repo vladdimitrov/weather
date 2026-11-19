@@ -31,6 +31,7 @@ weatherpulse.eu: a static weather site on GitHub Pages, part of the VYZYA brand 
 ## Suggested next (not decided yet, ask first)
 
 - Last-minute offers from local hotels on the city pages, tied to the forecast; start with affiliate links to test interest (see `NEXT_TASK.md`).
+- Later, a separate VYZYA product: simple software for small guest houses (offers panel, availability calendar, direct booking, iCal sync), feeding offers to the city pages. Not a full PMS. Needs a backend outside GitHub Pages (see `NEXT_TASK.md`).
 - Languages by tourist numbers: Greek and more Romanian pages first, then Polish, Serbian, Turkish; Spanish has the least potential.
 
 ## How to work here
