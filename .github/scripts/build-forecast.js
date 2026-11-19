@@ -270,14 +270,14 @@ ${days}
 // them under the title); the description written by the generator follows. build-pages.js keeps this
 // description when it writes the page again, build-sitemap.js leaves it out of the content.
 const SHORT = {
-  bg: { rain: 'валеж', snow: 'Сняг на пистите: до', fresh: 'нов сняг за 7 дни' },
-  en: { rain: 'rain', snow: 'Snow on the slopes: up to', fresh: 'new snow in 7 days' },
-  de: { rain: 'Regen', snow: 'Schnee auf den Pisten: bis', fresh: 'Neuschnee in 7 Tagen' },
-  it: { rain: 'pioggia', snow: 'Neve sulle piste: fino a', fresh: 'neve fresca in 7 giorni' },
-  es: { rain: 'lluvia', snow: 'Nieve en las pistas: hasta', fresh: 'nieve nueva en 7 días' },
-  fr: { rain: 'pluie', snow: 'Neige sur les pistes : jusqu’à', fresh: 'neige fraîche sur 7 jours' },
-  nl: { rain: 'regen', snow: 'Sneeuw op de pistes: tot', fresh: 'verse sneeuw in 7 dagen' },
-  ro: { rain: 'ploaie', snow: 'Zăpadă pe pârtii: până la', fresh: 'zăpadă nouă în 7 zile' }
+  bg: { rain: 'валеж', snow: 'Сняг на пистите: до', fresh: 'нов сняг за 7 дни', only: 'Нов сняг на пистите за 7 дни: до' },
+  en: { rain: 'rain', snow: 'Snow on the slopes: up to', fresh: 'new snow in 7 days', only: 'New snow on the slopes in 7 days: up to' },
+  de: { rain: 'Regen', snow: 'Schnee auf den Pisten: bis', fresh: 'Neuschnee in 7 Tagen', only: 'Neuschnee auf den Pisten in 7 Tagen: bis' },
+  it: { rain: 'pioggia', snow: 'Neve sulle piste: fino a', fresh: 'neve fresca in 7 giorni', only: 'Neve fresca sulle piste in 7 giorni: fino a' },
+  es: { rain: 'lluvia', snow: 'Nieve en las pistas: hasta', fresh: 'nieve nueva en 7 días', only: 'Nieve nueva en las pistas en 7 días: hasta' },
+  fr: { rain: 'pluie', snow: 'Neige sur les pistes : jusqu’à', fresh: 'neige fraîche sur 7 jours', only: 'Neige fraîche sur les pistes en 7 jours : jusqu’à' },
+  nl: { rain: 'regen', snow: 'Sneeuw op de pistes: tot', fresh: 'verse sneeuw in 7 dagen', only: 'Verse sneeuw op de pistes in 7 dagen: tot' },
+  ro: { rain: 'ploaie', snow: 'Zăpadă pe pârtii: până la', fresh: 'zăpadă nouă în 7 zile', only: 'Zăpadă nouă pe pârtii în 7 zile: până la' }
 };
 const UNIT = { bg: 'см' };
 function forecastWords(page, data, snow) {
@@ -294,8 +294,9 @@ function forecastWords(page, data, snow) {
     return `${label}${colon} ${whole(daily.temperature_2m_min[i])} / ${whole(daily.temperature_2m_max[i])}, ${lower(condition(daily.weather_code[i]).text[lang])}${chance}`;
   };
   const cm = UNIT[lang] || 'cm';
-  const snowText = snow && (snow.depth >= 1 || snow.fresh >= 1)
-    ? `${SHORT[lang].snow} ${snow.depth} ${cm}, ${SHORT[lang].fresh}${colon} ${snow.fresh} ${cm}. ` : '';
+  // no snow on the ground yet: only the new snow, if any
+  const snowText = !snow ? '' : snow.depth >= 1 ? `${SHORT[lang].snow} ${snow.depth} ${cm}, ${SHORT[lang].fresh}${colon} ${snow.fresh} ${cm}. `
+    : snow.fresh >= 1 ? `${SHORT[lang].only} ${snow.fresh} ${cm}. ` : '';
   return `${snowText}${day(text.today, 0)}. ${daily.time.length > 1 ? day(text.tomorrow, 1) + '. ' : ''}`;
 }
 const DESCRIPTION = /(<meta name="description" content=")([^"]*)(">)/;
