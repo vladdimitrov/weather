@@ -24,8 +24,13 @@ weatherpulse.eu: a static weather site on GitHub Pages, part of the VYZYA brand 
 - **Posts for warnings (Facebook/Instagram):** the owner wants to see every new kind of post before it goes out. An orange or red code of NIMH (`data/warnings-bg.json`) makes a DRAFT (card + text in `tools/social/queue/drafts/`, `python main.py warnings`) and a GitHub issue (e-mail to the owner); the workflow "Social draft" publishes (next slot or at once) or deletes it. One draft per warning, at most 2 new drafts a day (red first). Magnetic storms of Kp 5+ are the older automatic posts of `alerts.py` and stay as they are (Kp 7+ needs no extra post). Everything else in `tools/social` (forecast, queue, storms) still posts by itself.
 - Don't add hundreds of new pages at once: Google is still indexing the site slowly (Nov 2026: ~780 indexed, ~700 waiting).
 
+## Next task (decided)
+
+- **Agro forecast (агропрогноза):** a section for farmers – frost risk, spraying windows, soil temperature and moisture, weekly rain totals, days for sowing and harvest. Plan in `NEXT_TASK.md`.
+
 ## Suggested next (not decided yet, ask first)
 
+- Last-minute offers from local hotels on the city pages, tied to the forecast; start with affiliate links to test interest (see `NEXT_TASK.md`).
 - Languages by tourist numbers: Greek and more Romanian pages first, then Polish, Serbian, Turkish; Spanish has the least potential.
 
 ## How to work here
