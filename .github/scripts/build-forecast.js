@@ -266,6 +266,87 @@ ${days}
       </div>`;
 }
 
+// The description of a city page starts with the numbers of today and tomorrow (search results show
+// them under the title); the description written by the generator follows. build-pages.js keeps this
+// description when it writes the page again, build-sitemap.js leaves it out of the content.
+const SHORT = {
+  bg: { rain: 'валеж', snow: 'Сняг на пистите: до', fresh: 'нов сняг за 7 дни' },
+  en: { rain: 'rain', snow: 'Snow on the slopes: up to', fresh: 'new snow in 7 days' },
+  de: { rain: 'Regen', snow: 'Schnee auf den Pisten: bis', fresh: 'Neuschnee in 7 Tagen' },
+  it: { rain: 'pioggia', snow: 'Neve sulle piste: fino a', fresh: 'neve fresca in 7 giorni' },
+  es: { rain: 'lluvia', snow: 'Nieve en las pistas: hasta', fresh: 'nieve nueva en 7 días' },
+  fr: { rain: 'pluie', snow: 'Neige sur les pistes : jusqu’à', fresh: 'neige fraîche sur 7 jours' },
+  nl: { rain: 'regen', snow: 'Sneeuw op de pistes: tot', fresh: 'verse sneeuw in 7 dagen' },
+  ro: { rain: 'ploaie', snow: 'Zăpadă pe pârtii: până la', fresh: 'zăpadă nouă în 7 zile' }
+};
+const UNIT = { bg: 'см' };
+function forecastWords(page, data, snow) {
+  const lang = T[page.lang] ? page.lang : 'en';
+  const text = T[lang];
+  const daily = data.daily;
+  const lower = word => (lang === 'de' ? word : word.charAt(0).toLocaleLowerCase(text.locale) + word.slice(1));
+  const colon = lang === 'fr' ? ' :' : ':';
+  const day = (label, i) => {
+    const rain = daily.precipitation_probability_max ? daily.precipitation_probability_max[i] : null;
+    // rain or snow in the words of the day (codes from 51 on): only the chance; otherwise the word too
+    const wet = daily.weather_code[i] >= 51;
+    const chance = typeof rain === 'number' && rain >= (wet ? 20 : 40) ? (wet ? ` (${Math.round(rain)}%)` : `, ${SHORT[lang].rain} ${Math.round(rain)}%`) : '';
+    return `${label}${colon} ${whole(daily.temperature_2m_min[i])} / ${whole(daily.temperature_2m_max[i])}, ${lower(condition(daily.weather_code[i]).text[lang])}${chance}`;
+  };
+  const cm = UNIT[lang] || 'cm';
+  const snowText = snow && (snow.depth >= 1 || snow.fresh >= 1)
+    ? `${SHORT[lang].snow} ${snow.depth} ${cm}, ${SHORT[lang].fresh}${colon} ${snow.fresh} ${cm}. ` : '';
+  return `${snowText}${day(text.today, 0)}. ${daily.time.length > 1 ? day(text.tomorrow, 1) + '. ' : ''}`;
+}
+const DESCRIPTION = /(<meta name="description" content=")([^"]*)(">)/;
+function describePage(html, words) {
+  // the description of the generator is the end of the current one (data-description keeps it)
+  const base = (html.match(/<meta name="description" content="[^"]*" data-description="([^"]*)">/) || [])[1] ||
+    (html.match(DESCRIPTION) || [])[2];
+  if (base === undefined) return html;
+  return html.replace(/<meta name="description" content="[^"]*"(?: data-description="[^"]*")?>/,
+    () => `<meta name="description" content="${esc(words)}${base}" data-description="${base}">`);
+}
+
+// The snow table of the ski resorts (data-mode="snow", js/region-weather.js fills it when the page opens):
+// the same cells written into the page, so that the page says how much snow there is without a script
+const SNOW_TABLE = /(<table class="kp-table region-table" data-mode="snow">[\s\S]*?)(<tbody>[\s\S]*?<\/tbody>)/;
+const SNOW_ROW = /<tr data-lat="([^"]+)" data-lon="([^"]+)" data-elevation="([^"]+)"><td>([\s\S]*?)<\/td>(?:<td>[\s\S]*?<\/td>)*<\/tr>/g;
+function snowRows(html) {
+  const table = html.match(SNOW_TABLE);
+  if (!table) return null;
+  return [...table[2].matchAll(SNOW_ROW)].map(m => ({ lat: m[1], lon: m[2], elevation: m[3], name: m[4] }));
+}
+async function snowData(rows) {
+  const url = `${API}?latitude=${rows.map(r => r.lat).join(',')}&longitude=${rows.map(r => r.lon).join(',')}` +
+    `&elevation=${rows.map(r => r.elevation).join(',')}&hourly=snow_depth&daily=snowfall_sum,temperature_2m_max,temperature_2m_min&forecast_days=7&timezone=auto`;
+  const json = await (await fetchWithRetry(url)).json();
+  const answers = Array.isArray(json) ? json : [json];
+  if (answers.length !== rows.length) throw new Error(`Open-Meteo: ${answers.length} snow answers for ${rows.length} places`);
+  return answers.map(answer => {
+    // the hour now in the time of the place (timezone=auto)
+    const local = new Date(Date.now() + (answer.utc_offset_seconds || 0) * 1000).toISOString().slice(0, 13);
+    const at = answer.hourly.time.findIndex(time => time.slice(0, 13) === local);
+    const depth = at >= 0 ? answer.hourly.snow_depth[at] : null;
+    const d = answer.daily;
+    return {
+      depth: typeof depth === 'number' ? Math.round(depth * 100) : null,
+      fresh: Math.round(d.snowfall_sum.reduce((sum, v) => sum + (v || 0), 0)),
+      min: Math.min(...d.temperature_2m_min.filter(v => typeof v === 'number')),
+      max: Math.max(...d.temperature_2m_max.filter(v => typeof v === 'number'))
+    };
+  });
+}
+function fillSnow(html, values, lang) {
+  const cm = UNIT[lang] || 'cm';
+  let n = 0;
+  return html.replace(SNOW_TABLE, (m, start, body) => start + '<!-- volatile -->' + body.replace(SNOW_ROW, (row, lat, lon, elevation, name) => {
+    const v = values[n++];
+    return `<tr data-lat="${lat}" data-lon="${lon}" data-elevation="${elevation}"><td>${name}</td>` +
+      `<td>${v.depth === null ? '—' : `${v.depth} ${cm}`}</td><td>${v.fresh} ${cm}</td><td>${whole(v.min)} / ${whole(v.max)}</td></tr>`;
+  }) + '<!-- /volatile -->').replace(/<!-- volatile --><!-- volatile -->/g, '<!-- volatile -->').replace(/<!-- \/volatile --><!-- \/volatile -->/g, '<!-- /volatile -->');
+}
+
 (async function main() {
   const folders = process.argv.slice(2).filter(arg => !arg.startsWith('--'));
   // Bulgarian at the root, the other languages under /en/, /de/ ...
@@ -282,13 +363,27 @@ ${days}
   const data = await forecasts(places);
   const today = new Date().toISOString().slice(0, 10);
 
+  // the snow of the ski resorts: one request per resort, shared by its pages in all languages
+  const snow = new Map();
+  for (const page of pages) {
+    const rows = snowRows(page.html);
+    if (!rows || !rows.length) continue;
+    const key = rows.map(r => `${r.lat},${r.lon},${r.elevation}`).join(';');
+    if (!snow.has(key)) snow.set(key, await snowData(rows));
+    page.snow = snow.get(key);
+  }
+
   pages.forEach(page => {
     let count = 0;
-    const html = page.html.replace(/(<div class="city-forecast" id="cityForecast"[^>]*>\n)[\s\S]*?(\n    <\/div>\n)/, (m, open, close) => {
+    let html = page.html.replace(/(<div class="city-forecast" id="cityForecast"[^>]*>\n)[\s\S]*?(\n    <\/div>\n)/, (m, open, close) => {
       count++;
       return open + snapshot(page, data.get(page.key), today) + close;
     });
     if (count !== 1) throw new Error(`${path.relative(ROOT, page.file)}: the forecast block was not found`);
+    // the most snow of the places of the resort (the highest one) and the new snow there
+    const top = page.snow && page.snow.filter(v => v.depth !== null).sort((a, b) => b.depth - a.depth)[0];
+    if (page.snow) html = fillSnow(html, page.snow, page.lang);
+    html = describePage(html, forecastWords(page, data.get(page.key), top && { depth: top.depth, fresh: Math.max(...page.snow.map(v => v.fresh)) }));
     fs.writeFileSync(page.file, html);
   });
   // The sitemap is not touched: a new forecast is not new content (build-sitemap.js leaves it out)
