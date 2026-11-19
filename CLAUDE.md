@@ -8,7 +8,7 @@ weatherpulse.eu: a static weather site on GitHub Pages, part of the VYZYA brand 
 - Search Console (Nov 2026): most impressions for "времето" and "времето утре" come from the Bulgarian pages of cities abroad (Munich, The Hague, Vienna…) shown to Bulgarians living there. These pages matter as much as the Bulgarian cities.
 - Growth comes from Google. The weak point is the click-through rate (under 1 %), not the position (7–10 on the main queries): titles and descriptions are worth more than new pages.
 - Pages that bring clicks: magnetic storms (`/magnitni-buri/`), the ski resorts (Bansko, Borovets, Pamporovo), the 10- and 14-day city pages.
-- Later: ads (needs more traffic), automated Facebook/Instagram posts, maybe a YouTube channel.
+- Later: ads (needs more traffic, and the Open-Meteo licence first), automated Facebook/Instagram posts.
 
 ## Decisions already taken (do not undo without asking)
 
@@ -25,6 +25,16 @@ weatherpulse.eu: a static weather site on GitHub Pages, part of the VYZYA brand 
 - **Bulgarians abroad (Bulgarian pages of European cities):** the title already starts with "Времето в <град>" and ends with "прогноза на български", the description starts with the numbers of the day: unchanged. New (Nov 2026, `build-europe.js` + `build-forecast.js`): on the Bulgarian city pages of the **test group** the block "Днес в <град> и в София" (time difference to Bulgaria computed from the IANA zone, a table of today and tomorrow in the city and in Sofia between `<!-- volatile -->`, links "Времето у дома"). Test group (`ABROAD` in `build-europe.js`): Germany, Netherlands, France, Austria, Belgium, Spain, Italy, United Kingdom, Ireland, because the Bulgarian impressions come from there. **Control group:** every other country has no block and must stay that way until the check on **7 December 2026** (compare impressions, position and CTR of the two groups in Search Console; roll the block out to the rest only if the test group is better). One new page: `/europe/balgari-v-chuzhbina/` ("Времето за българите в чужбина": "Популярни градове" first, then the test countries), linked from the home page (`data-bg-page`, hidden in the translations) and from `/europe/`. No invented data (no numbers of Bulgarians, flights).
 - **Spanish Dublin:** `/es/europe/ireland/dublin/` has "clima" in the title and description (1,224 of its 1,253 impressions are the query "clima"); nothing else in Spanish until there is data.
 - Don't add hundreds of new pages at once: Google is still indexing the site slowly (Nov 2026: ~780 indexed, ~700 waiting).
+
+## Plan (decided Nov 2026, details in `NEXT_TASK.md`)
+
+1. **First: Open-Meteo commercial licence** (paid plan or self-hosting) – before any affiliate link or ad, since the free API is non-commercial.
+2. **Nov–Dec: hotel offers on the ski resort pages**, tied to the forecast ("sunny weekend – free rooms"); start with affiliate links. Also: real numbers of the day in the ski titles and descriptions ("Банско утре: −4°, 20 см нов сняг"), like the city and storm pages.
+3. **Jan–Feb: agro forecast as a layer inside the existing city pages** (frost, spraying window, soil temperature and moisture, weekly rain) – no new URLs, so the indexing problem does not grow; ready for March. Paid agro alerts only later, after a free Telegram/Viber frost channel shows interest.
+4. **Fix indexing before adding pages:** ~700 pages not indexed are treated as a quality signal (near-identical template pages); make them more distinct or merge them.
+- **Expansion rule:** new destinations only in Bulgarian and only where Bulgarians really search (GSC, Google Trends), e.g. Thessaloniki, Halkidiki, Istanbul. Foreign-language pages stay for Bulgaria and Greece only. No "weather for the world".
+- **Dropped for now:** software for guest houses (separate business), YouTube channel.
+- **Not worth it:** FAQPage/HowTo schema for CTR (Google limits FAQ rich results to government/health sites and removed HowTo).
 
 ## Suggested next (not decided yet, ask first)
 
