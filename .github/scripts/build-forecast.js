@@ -369,8 +369,9 @@ function fillSnow(html, values, lang) {
     const rows = snowRows(page.html);
     if (!rows || !rows.length) continue;
     const key = rows.map(r => `${r.lat},${r.lon},${r.elevation}`).join(';');
-    if (!snow.has(key)) snow.set(key, await snowData(rows));
-    page.snow = snow.get(key);
+    // without the snow the page still gets its forecast (the table is filled when the page opens)
+    if (!snow.has(key)) snow.set(key, await snowData(rows).catch(error => (console.log(`Snow of ${rows[0].lat},${rows[0].lon}: ${error.message}`), null)));
+    page.snow = snow.get(key) || undefined;
   }
 
   pages.forEach(page => {
