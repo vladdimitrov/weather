@@ -4609,4 +4609,28 @@
     <priority>0.5</priority>
   </url>
 
+  <url>
+    <loc>https://weatherpulse.eu/en/vremeto/kartala/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/kartala/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/kartala/10-dni/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://weatherpulse.eu/vremeto/kartala/14-dni/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>
