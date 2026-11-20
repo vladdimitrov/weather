@@ -383,3 +383,14 @@
     }
   }
 })();
+
+// Every page gets the "Share" button: the pages that carry a [data-share] box load /js/share.js themselves, all the
+// others (10-day pages, Europe, Greece, hubs, home ...) get it from here, placed after the main heading
+(function () {
+  if (document.querySelector('script[src*="/js/share.js"]')) return;
+  if (/^\/(widget|poveritelnost|contacts|za-saita)\//.test(location.pathname) || /\/(poveritelnost|contacts|za-saita)\//.test(location.pathname)) return;
+  const script = document.createElement('script');
+  script.src = '/js/share.js?v=3';
+  script.defer = true;
+  document.head.appendChild(script);
+})();
