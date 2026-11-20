@@ -7,6 +7,7 @@
   python main.py cards    [--sample] [--static] [--force]         # share cards (og:image) of passes, storms, air
   python main.py warnings [--dry-run] [--sample] [--notify]       # DRAFTS for orange/red warnings of NIMH (nothing is posted)
   python main.py check                                           # verify token, page and IG account
+  python main.py channel [--test] [--viber-info]                 # the Viber / Telegram channel: state, a test message, the Viber ids
   python main.py serve                                           # run forever on the schedule in config.yaml
 """
 import argparse
@@ -16,6 +17,7 @@ from datetime import datetime, timedelta
 from logging.handlers import RotatingFileHandler
 from zoneinfo import ZoneInfo
 
+from wp_social.channel import broadcast, check as channel_check, viber_info
 from wp_social.config import ROOT, load_config
 from wp_social.alerts import run_alerts
 from wp_social.cards import run_cards
@@ -88,6 +90,9 @@ def main():
     wd.add_argument("--dry-run", action="store_true", help="only the cards in output/ and the texts on the screen; no state, no drafts")
     wd.add_argument("--sample", action="store_true", help="invented warnings (no data file)")
     wd.add_argument("--notify", action="store_true", help="a GitHub issue for every draft that has none (needs GITHUB_TOKEN)")
+    ch = sub.add_parser("channel", help="the Viber / Telegram channel: which are set, a test message")
+    ch.add_argument("--test", action="store_true", help="send a short test message to every channel that is set")
+    ch.add_argument("--viber-info", action="store_true", help="the name and the members of the Viber channel (the super admin id is WP_VIBER_FROM)")
     sub.add_parser("check")
     sub.add_parser("serve")
     a = p.parse_args()
@@ -107,6 +112,12 @@ def main():
             notify(cfg, dry_run=a.dry_run)
         else:
             run_warnings(cfg, dry_run=a.dry_run, sample=a.sample)
+    elif a.cmd == "channel":
+        channel_check(cfg)
+        if a.viber_info:
+            viber_info(cfg)
+        if a.test:
+            print(broadcast(cfg, "Тест от WeatherPulse: така ще изглеждат съобщенията тук. https://weatherpulse.eu/"))
     elif a.cmd == "check":
         print(make_client(cfg).check())
     elif a.cmd == "serve":

@@ -19,6 +19,18 @@ main.py warnings [--dry-run] [--sample]   чернови за оранжев/ч�
 main.py warnings --notify                 issue за всяка чернова, която още няма (иска GITHUB_TOKEN)
 ```
 
+4. **Постоянна публика – Viber и Telegram канал** (`wp_social/channel.py`): същите съобщения като във Facebook – прогнозата сутрин, магнитна буря (Kp 5+), пълнолуние утре и одобрените предупреждения на НИМХ – отиват и в канал. Каналът без токен се пропуска, а грешка в канал не спира публикацията във Facebook. Съобщението е текст с връзка (Viber показва картата на страницата като преглед), в Telegram има и картинка.
+
+```
+main.py channel                 кои канали са настроени
+main.py channel --test          тестово съобщение във всеки настроен канал
+main.py channel --viber-info    име и членове на Viber канала (id-то на супер администратора е WP_VIBER_FROM)
+```
+
+Secrets в GitHub (Settings → Secrets → Actions): `WP_VIBER_TOKEN`, `WP_VIBER_FROM`, `WP_TG_TOKEN`, `WP_TG_CHAT`. Проверка: Actions → „Channel“ → Run workflow (`check`, после `test`).
+- **Viber:** създайте канал (приложението, версия 17.7+), в информацията на канала → „Developer Tools“ → копирайте токена. Каналите са безплатни; платеният е ботът (около 100 € на месец), който не ни трябва.
+- **Telegram:** @BotFather → `/newbot` → токен; създайте публичен канал, добавете бота като администратор; `WP_TG_CHAT` е `@името_на_канала`.
+
 ## 1. Инсталация
 
 ```bash

@@ -9,6 +9,7 @@ from zoneinfo import ZoneInfo
 import requests
 
 from .alerts_render import render_full_moon, render_storm
+from .channel import broadcast
 from .config import ROOT
 from .hosting import Hosting
 from .render import MONTHS, bg_date
@@ -80,6 +81,7 @@ def _post(cfg, client, host, img_path: Path, caption: str, stamp: str):
         log.info("Facebook post id: %s", client.fb_photo(img_path, caption))
     if to_ig:
         log.info("Instagram media id: %s", client.ig_image(url, caption))
+    broadcast(cfg, caption, img_path)
 
 
 def run_alerts(cfg, make_client, dry_run=False, sample=False, force=False, today=False):

@@ -64,6 +64,10 @@ jobs:
           WP_PAGE_ID: ${{ secrets.WP_PAGE_ID }}
           WP_PAGE_TOKEN: ${{ secrets.WP_PAGE_TOKEN }}
           WP_IG_USER_ID: ${{ secrets.WP_IG_USER_ID }}
+          WP_VIBER_TOKEN: ${{ secrets.WP_VIBER_TOKEN }}
+          WP_VIBER_FROM: ${{ secrets.WP_VIBER_FROM }}
+          WP_TG_TOKEN: ${{ secrets.WP_TG_TOKEN }}
+          WP_TG_CHAT: ${{ secrets.WP_TG_CHAT }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Morning storm post
@@ -75,6 +79,10 @@ jobs:
           WP_PAGE_ID: ${{ secrets.WP_PAGE_ID }}
           WP_PAGE_TOKEN: ${{ secrets.WP_PAGE_TOKEN }}
           WP_IG_USER_ID: ${{ secrets.WP_IG_USER_ID }}
+          WP_VIBER_TOKEN: ${{ secrets.WP_VIBER_TOKEN }}
+          WP_VIBER_FROM: ${{ secrets.WP_VIBER_FROM }}
+          WP_TG_TOKEN: ${{ secrets.WP_TG_TOKEN }}
+          WP_TG_CHAT: ${{ secrets.WP_TG_CHAT }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Save queue progress
