@@ -7,6 +7,16 @@
   // loaded twice (by the page and by mobile-nav.js, which may run first): only the first copy works
   if (window.__wpShareLoaded) return;
   window.__wpShareLoaded = true;
+
+  // The last crumb of the breadcrumbs is the page itself and repeats the big heading: leave it out
+  const crumbs = document.querySelector('p.breadcrumbs');
+  const h1 = document.querySelector('h1');
+  if (crumbs && h1 && crumbs.lastChild && crumbs.lastChild.nodeType === 3) {
+    const text = crumbs.lastChild.textContent;
+    const cut = text.lastIndexOf('›');
+    const crumb = cut >= 0 ? text.slice(cut + 1).trim() : '';
+    if (crumb && h1.textContent.includes(crumb)) crumbs.lastChild.textContent = text.slice(0, cut).replace(/\s+$/, '');
+  }
   const L = {
     bg: ['Сподели', 'Връзката е копирана'], en: ['Share', 'Link copied'], de: ['Teilen', 'Link kopiert'],
     it: ['Condividi', 'Link copiato'], es: ['Compartir', 'Enlace copiado'], fr: ['Partager', 'Lien copié'], ro: ['Distribuie', 'Link copiat'], nl: ['Delen', 'Link gekopieerd']
@@ -23,7 +33,7 @@
     boxes = [box];
   }
   const style = document.createElement('style');
-  style.textContent = '.share-btn{display:inline-flex;align-items:center;gap:8px;margin:0 0 14px;padding:9px 16px;border-radius:999px;border:1px solid var(--panel-border,rgba(255,255,255,.25));background:var(--panel,rgba(255,255,255,.08));color:inherit;font:inherit;font-weight:600;cursor:pointer}.share-btn:hover,.share-btn:focus-visible{background:rgba(255,255,255,.16)}.share-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}';
+  style.textContent = '[data-share]{text-align:center}.share-btn{display:inline-flex;align-items:center;gap:8px;margin:0 0 14px;padding:9px 16px;border-radius:999px;border:1px solid var(--panel-border,rgba(255,255,255,.25));background:var(--panel,rgba(255,255,255,.08));color:inherit;font:inherit;font-weight:600;cursor:pointer}.share-btn:hover,.share-btn:focus-visible{background:rgba(255,255,255,.16)}.share-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}';
   document.head.appendChild(style);
   const canonical = document.querySelector('link[rel="canonical"]');
   const url = canonical ? canonical.href : location.href.split('#')[0];
