@@ -24,7 +24,7 @@
     feels: { en: 'feels like', bg: 'усеща се като', de: 'gefühlt', it: 'percepita', es: 'sensación', fr: 'ressenti', nl: 'voelt als' },
     wind: { en: 'Wind', bg: 'Вятър', de: 'Wind', it: 'Vento', es: 'Viento', fr: 'Vent', nl: 'Wind' },
     humidity: { en: 'Humidity', bg: 'Влажност', de: 'Luftfeuchte', it: 'Umidità', es: 'Humedad', fr: 'Humidité', nl: 'Luchtvochtigheid' },
-    change: { en: 'Change', bg: 'Промени', de: 'Ändern', it: 'Modifica', es: 'Cambiar', fr: 'Modifier', nl: 'Wijzigen' },
+    change: { en: 'Change', bg: 'Смени локацията', de: 'Ändern', it: 'Modifica', es: 'Cambiar', fr: 'Modifier', nl: 'Wijzigen' },
     more: { en: 'More details', bg: 'Повече подробности', de: 'Mehr Details', it: 'Più dettagli', es: 'Más detalles', fr: 'Plus de détails', nl: 'Meer details' },
     share: { en: 'Share', bg: 'Сподели', de: 'Teilen', it: 'Condividi', es: 'Compartir', fr: 'Partager', nl: 'Delen' },
     copied: { en: 'Link copied', bg: 'Линкът е копиран', de: 'Link kopiert', it: 'Link copiato', es: 'Enlace copiado', fr: 'Lien copié', nl: 'Link gekopieerd' },
