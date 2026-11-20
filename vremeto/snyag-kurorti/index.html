@@ -63,7 +63,7 @@
   </div>
 
   <div id="main-content" role="main" class="container info-page" style="margin-top: calc(var(--header-height) + 20px);">
-    <style>.region-table td.region-hot{color:#ff8a65;font-weight:600}.region-table td.region-snow{color:#81d4fa;font-weight:600}.region-table th,.region-table td{white-space:nowrap}.region-table td.region-warn{white-space:normal;min-width:12em}.region-warn span{display:block;margin:2px 0;padding:3px 8px;border-radius:6px;font-weight:600;color:#1a1a2e}.region-warn .warn-yellow{background:#ffd54f}.region-warn .warn-orange{background:#ff9800}.region-warn .warn-red{background:#e53935;color:#fff}</style>
+    <style>.region-table td.region-hot{color:#ff8a65;font-weight:600}.region-table td.region-snow{color:#81d4fa;font-weight:600}.region-table th,.region-table td{white-space:nowrap}.region-table td.region-warn{white-space:normal;min-width:12em}.region-table[data-mode=ski] th,.region-table[data-mode=ski] td:first-child,.region-table[data-mode=ski] td:last-child{white-space:normal}.region-table[data-mode=ski] td:last-child{min-width:9em}.region-warn span{display:block;margin:2px 0;padding:3px 8px;border-radius:6px;font-weight:600;color:#1a1a2e}.region-warn .warn-yellow{background:#ffd54f}.region-warn .warn-orange{background:#ff9800}.region-warn .warn-red{background:#e53935;color:#fff}</style>
     <p class="breadcrumbs"><a href="/vremeto/">Времето в България</a> › Сняг по курортите</p>
     <h1>Сняг по курортите</h1>
     <div data-share></div>
@@ -74,7 +74,7 @@
       <h2>Снегът сега и през следващите 7 дни</h2>
       <div class="table-scroll">
       <table class="kp-table region-table" data-mode="ski">
-        <thead><tr><th>Място</th><th>Сняг сега</th><th>Нов сняг 24 ч</th><th>Нов сняг 3 дни</th><th>Нов сняг 7 дни</th><th>Нулева изотерма</th><th>Пориви до (24 ч)</th><th>Оценка</th></tr></thead>
+        <thead><tr><th>Място</th><th>Сняг сега</th><th>Нов за 24 ч</th><th>Нов за 3 дни</th><th>Нов за 7 дни</th><th>Температура</th><th>Пориви</th><th>Оценка</th></tr></thead>
         <tbody>
           <tr data-lat="41.805" data-lon="23.433" data-elevation="1700"><td><a href="/vremeto/bansko/">Банско (Шилигарника)</a> <span class="storm-updated">1700 м</span></td></tr>
           <tr data-lat="42.242" data-lon="23.575" data-elevation="1750"><td><a href="/vremeto/borovets/">Боровец (Ситняково)</a> <span class="storm-updated">1750 м</span></td></tr>
@@ -88,7 +88,7 @@
       </table>
       <p class="storm-updated region-nojs">Таблицата се попълва от Open-Meteo, когато страницата се отвори в браузър с JavaScript.</p>
       </div>
-      <p class="storm-updated">Снежна покривка по модела (не е измерване на пистата) на височината на горните писти. Новият сняг е сумата за последните 24 часа и за следващите 3 и 7 дни; нулевата изотерма е височината, над която е под 0°. Подредбата е по нов сняг за 7 дни. Официалните данни за пистите и лифтовете публикуват самите курорти.</p>
+      <p class="storm-updated">Снежна покривка по модела (не е измерване на пистата) на височината на горните писти. „Нов за 24 ч“ е навалялото за последните 24 часа, а „Нов за 3 дни“ и „Нов за 7 дни“ е очакваният нов сняг. Температурата е сега, а пориви – най-силният вятър за следващите 24 часа, и двете на височината на пистите. Подредбата е по очакван нов сняг за 7 дни. Официалните данни за пистите и лифтовете публикуват самите курорти.</p>
     </section>
 
     <section class="info-card">
@@ -139,7 +139,7 @@
 <script src="/js/background-selector.js?v=6" defer></script>
 <script src="/js/weather-icons.js?v=5" defer></script>
 <script src="/js/city-forecast.js?v=22" defer></script>
-<script src="/js/region-weather.js?v=7" defer></script>
+<script src="/js/region-weather.js?v=8" defer></script>
 <script src="/js/share.js?v=2" defer></script>
 </body>
 </html>
