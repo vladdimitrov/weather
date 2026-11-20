@@ -52,7 +52,7 @@ function breadcrumbs(lang, items) {
 
 // ---- /kurorti/ ----
 const RESORTS = {
-  ski: ['bansko', 'borovets', 'pamporovo', 'chepelare', 'dobrinishte', 'aleko'].map(slug => `/vremeto/${slug}/`),
+  ski: ['bansko', 'borovets', 'pamporovo', 'chepelare', 'dobrinishte', 'aleko', 'kartala'].map(slug => `/vremeto/${slug}/`),
   sea: ['slanchev-bryag', 'zlatni-pyasatsi', 'albena', 'nesebar', 'sozopol', 'primorsko', 'kiten', 'obzor', 'pomorie', 'balchik', 'varna', 'burgas'].map(slug => `/vremeto/${slug}/`),
   greece: ['kavala', 'thassos', 'keramoti', 'asprovalta', 'stavros', 'olympiada', 'ouranoupoli', 'nikiti', 'neos-marmaras', 'hanioti', 'kallithea',
     'paralia-katerinis', 'parga', 'corfu', 'lefkada', 'kefalonia', 'zakynthos', 'santorini', 'mykonos', 'chania', 'heraklion', 'rhodes', 'kos'].map(slug => `/europe/greece/${slug}/`)
@@ -210,7 +210,7 @@ const COAST = [
 const SKI = [
   ['Банско (Шилигарника)', 41.8050, 23.4330, 1700, 'bansko'], ['Боровец (Ситняково)', 42.2420, 23.5750, 1750, 'borovets'],
   ['Пампорово (Снежанка)', 41.6450, 24.6800, 1800, 'pamporovo'], ['Витоша (Алеко)', 42.5860, 23.2910, 1800, 'aleko'],
-  ['Чепеларе (Мечи чал)', 41.7050, 24.6450, 1700, 'chepelare'], ['Добринище (Безбог)', 41.8120, 23.5050, 1800, 'dobrinishte'],
+  ['Чепеларе (Мечи чал)', 41.7050, 24.6450, 1700, 'chepelare'], ['Добринище (Безбог)', 41.8120, 23.5050, 1800, 'dobrinishte'], ['Картала (Бодрост)', 42.0400, 23.3600, 2250, 'kartala'],
   ['Мальовица', 42.1960, 23.3800, 1750, null], ['Узана', 42.7560, 25.2330, 1300, null]
 ];
 const placeLink = (name, slug, lat, lon) => (slug
