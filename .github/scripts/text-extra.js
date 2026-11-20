@@ -9,6 +9,8 @@ const BG = {
   tenDaysLink: 'Прогноза за 10 дни →',
   fourteenDaysLink: 'Прогноза за 14 дни →',
   weekendLink: 'Времето през уикенда →',
+  // the weekend block of the 10-day page of a tourist place without a weekend page of its own (build-extra.js)
+  weekendBlock: name => `Петък, събота и неделя са в прогнозата за 10 дни по-горе. От понеделник до четвъртък гледайте предстоящия уикенд ${bgIn(name)}, а от петък – оставащите му дни. Първите 3–4 дни са най-сигурни, затова за уикенда след седмица следете как се променя прогнозата.`,
   widgetLink: name => `Уиджет с времето ${bgIn(name)} за вашия сайт →`,
 
   tenDays: {
@@ -364,38 +366,38 @@ const CITIES_PAGE = {
     bulgaria: 'България', seasons: 'По региони и сезони'
   },
   en: {
-    title: 'All cities – weather in Bulgaria and Europe',
-    description: n => `Weather forecast for ${n} cities in Bulgaria and Europe: choose a city for today's weather, the 7-day forecast, climate, sunrise and sunset.`,
+    title: 'All cities – weather in Bulgaria and Greece',
+    description: n => `Weather forecast for ${n} cities in Bulgaria and Greece: choose a city for today's weather, the 7-day forecast, climate, sunrise and sunset.`,
     intro: n => `All ${n} cities that have a page of their own on Weather Pulse, with a 7-day forecast, the climate by month and sunrise and sunset. For any other place use the search on the weather forecast page.`,
     bulgaria: 'Bulgaria', seasons: ''
   },
   de: {
-    title: 'Alle Städte – Wetter in Bulgarien und Europa',
-    description: n => `Wettervorhersage für ${n} Städte in Bulgarien und Europa: Wählen Sie eine Stadt für das Wetter heute, die 7-Tage-Vorhersage, das Klima sowie Sonnenauf- und -untergang.`,
+    title: 'Alle Städte – Wetter in Bulgarien und Griechenland',
+    description: n => `Wettervorhersage für ${n} Städte in Bulgarien und Griechenland: Wählen Sie eine Stadt für das Wetter heute, die 7-Tage-Vorhersage, das Klima sowie Sonnenauf- und -untergang.`,
     intro: n => `Alle ${n} Städte mit einer eigenen Seite bei Weather Pulse: 7-Tage-Vorhersage, Klima nach Monaten, Sonnenaufgang und Sonnenuntergang. Für jeden anderen Ort nutzen Sie die Suche auf der Seite Wettervorhersage.`,
     bulgaria: 'Bulgarien', seasons: ''
   },
   it: {
-    title: 'Tutte le città – meteo in Bulgaria e in Europa',
-    description: n => `Previsioni del tempo per ${n} città in Bulgaria e in Europa: scegli una città per il meteo di oggi, le previsioni a 7 giorni, il clima, l'alba e il tramonto.`,
+    title: 'Tutte le città – meteo in Bulgaria e in Grecia',
+    description: n => `Previsioni del tempo per ${n} città in Bulgaria e in Grecia: scegli una città per il meteo di oggi, le previsioni a 7 giorni, il clima, l'alba e il tramonto.`,
     intro: n => `Tutte le ${n} città che hanno una pagina propria su Weather Pulse, con previsioni a 7 giorni, clima mese per mese, alba e tramonto. Per qualsiasi altro luogo usa la ricerca nella pagina Previsioni del tempo.`,
     bulgaria: 'Bulgaria', seasons: ''
   },
   es: {
-    title: 'Todas las ciudades – el tiempo en Bulgaria y Europa',
-    description: n => `Previsión del tiempo para ${n} ciudades de Bulgaria y Europa: elige una ciudad para el tiempo de hoy, la previsión a 7 días, el clima, el amanecer y el atardecer.`,
+    title: 'Todas las ciudades – el tiempo en Bulgaria y Grecia',
+    description: n => `Previsión del tiempo para ${n} ciudades de Bulgaria y Grecia: elige una ciudad para el tiempo de hoy, la previsión a 7 días, el clima, el amanecer y el atardecer.`,
     intro: n => `Las ${n} ciudades que tienen página propia en Weather Pulse, con previsión a 7 días, clima por meses, amanecer y atardecer. Para cualquier otro lugar, usa el buscador de la página Pronóstico del tiempo.`,
     bulgaria: 'Bulgaria', seasons: ''
   },
   fr: {
-    title: 'Toutes les villes – météo en Bulgarie et en Europe',
-    description: n => `Prévisions météo pour ${n} villes de Bulgarie et d’Europe : choisissez une ville pour la météo du jour, les prévisions à 7 jours, le climat, le lever et le coucher du soleil.`,
+    title: 'Toutes les villes – météo en Bulgarie et en Grèce',
+    description: n => `Prévisions météo pour ${n} villes de Bulgarie et de Grèce : choisissez une ville pour la météo du jour, les prévisions à 7 jours, le climat, le lever et le coucher du soleil.`,
     intro: n => `Les ${n} villes qui ont leur propre page sur Weather Pulse, avec prévisions à 7 jours, climat mois par mois, lever et coucher du soleil. Pour tout autre lieu, utilisez la recherche de la page Prévisions météo.`,
     bulgaria: 'Bulgarie', seasons: ''
   },
   nl: {
-    title: 'Alle steden – weer in Bulgarije en Europa',
-    description: n => `Weerbericht voor ${n} steden in Bulgarije en Europa: kies een stad voor het weer van vandaag, de 7-daagse verwachting, het klimaat, zonsopkomst en zonsondergang.`,
+    title: 'Alle steden – weer in Bulgarije en Griekenland',
+    description: n => `Weerbericht voor ${n} steden in Bulgarije en Griekenland: kies een stad voor het weer van vandaag, de 7-daagse verwachting, het klimaat, zonsopkomst en zonsondergang.`,
     intro: n => `Alle ${n} steden met een eigen pagina op Weather Pulse, met 7-daagse verwachting, klimaat per maand en zonsopkomst en zonsondergang. Voor elke andere plaats gebruikt u de zoekfunctie op de pagina Weerbericht.`,
     bulgaria: 'Bulgarije', seasons: ''
   }

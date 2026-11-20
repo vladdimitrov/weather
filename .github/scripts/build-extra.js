@@ -15,7 +15,7 @@
 const fs = require('fs');
 const path = require('path');
 const I18N = require('./i18n.js');
-const { page, write, VERSION, placeJson, daysOff } = require('./build-pages.js');
+const { page, write, VERSION, placeJson, daysOff, redirect } = require('./build-pages.js');
 const CITIES = require('./bg-cities.js');
 const COUNTRIES = require('./europe-data.js');
 const PLACES = require('./places.js');
@@ -95,19 +95,21 @@ ${lang === 'ro' ? '' : group(T.greece, RESORTS.greece, [['/europe/greece/belomor
 // ---- /gradove/ ----
 function citiesPage(lang) {
   const T = CITIES_PAGE[lang];
+  // only the pages indexed in this language (places.js): in the translations, Bulgaria and Greece
+  const shown = place => PLACES.isIndexed(place.url, lang);
   const link = place => `<a href="${L(lang, place.url)}" class="recent-place">${esc(place.name[lang])}</a>`;
-  const group = (title, url, places) => `
+  const group = (title, url, places) => (places.length ? `
     <section class="info-card">
-      <h2><a href="${L(lang, url)}">${esc(title)}</a></h2>
+      <h2>${PLACES.isIndexed(url, lang) ? `<a href="${L(lang, url)}">${esc(title)}</a>` : esc(title)}</h2>
       <div class="city-links">
         ${places.map(link).join('\n        ')}
       </div>
-    </section>`;
+    </section>` : '');
   const displayNames = new Intl.DisplayNames([I18N.LOCALE[lang]], { type: 'region' });
   const countries = COUNTRIES.map(country => ({ country, name: lang === 'en' ? country.en : displayNames.of(country.code) }))
     .sort((a, b) => a.name.localeCompare(b.name, I18N.LOCALE[lang]));
-  const bulgaria = PLACES.PLACES.filter(place => place.country === 'BG').sort((a, b) => a.name[lang].localeCompare(b.name[lang], I18N.LOCALE[lang]));
-  const n = PLACES.PLACES.length;
+  const bulgaria = PLACES.PLACES.filter(place => place.country === 'BG' && shown(place)).sort((a, b) => a.name[lang].localeCompare(b.name[lang], I18N.LOCALE[lang]));
+  const n = PLACES.PLACES.filter(shown).length;
   return page({
     url: '/gradove/',
     lang,
@@ -125,7 +127,7 @@ ${group(T.bulgaria, '/vremeto/', bulgaria)}${lang === 'bg' ? `
         ${Object.entries(BG.abroadLinks).map(([key, text]) => `<a href="/europe/${key}/" class="recent-place">${text}</a>`).join('\n        ')}
       </div>
     </section>` : ''}
-${countries.map(({ country, name }) => group(name, `/europe/${country.slug}/`, PLACES.PLACES.filter(place => place.countrySlug === country.slug))).join('\n')}`
+${countries.map(({ country, name }) => group(name, `/europe/${country.slug}/`, PLACES.PLACES.filter(place => place.countrySlug === country.slug && shown(place)))).join('\n')}`
   });
 }
 
@@ -142,7 +144,15 @@ function forecastPage(city, kind) {
     <section class="info-card">
       <p>${T.tips[city.slug]}</p>
     </section>` : '';
-  const weekendButton = PLACES.TOURIST_BG.includes(city.slug) ? `<a class="btn" href="/vremeto/${city.slug}/uikend/">${BG.weekendLink}</a>` : '';
+  // the weekend of a tourist place without a weekend page is a block of its 10-day page (places.js, WEEKEND_PAGES)
+  const weekendBlock = kind === 'tenDays' && PLACES.TOURIST_BG.includes(city.slug) && !PLACES.WEEKEND_PAGES.includes(city.slug);
+  const weekendButton = PLACES.weekendUrl(city.slug) && !weekendBlock ? `<a class="btn" href="${PLACES.weekendUrl(city.slug)}">${BG.weekendLink}</a>` : '';
+  const weekend = weekendBlock ? `
+    <section class="info-card" id="uikend">
+      <h2>${BG.weekend.h1(city.name)}</h2>
+      <p>${BG.weekendBlock(city.name)}</p>${BG.weekend.tips[city.slug] ? `
+      <p>${BG.weekend.tips[city.slug]}</p>` : ''}
+    </section>` : '';
   const tenButton = `<a class="btn" href="/vremeto/${city.slug}/10-dni/">${BG.tenDaysLink}</a>`;
   const fourteenButton = `<a class="btn" href="/vremeto/${city.slug}/14-dni/">${BG.fourteenDaysLink}</a>`;
   const other = kind === 'tenDays' ? [fourteenButton, weekendButton].join('\n      ')
@@ -151,7 +161,7 @@ function forecastPage(city, kind) {
   const nearby = CITIES.filter(other => other !== city)
     .map(other => ({ other, km: PLACES.distanceKm(city.lat, city.lon, other.lat, other.lon) }))
     .sort((a, b) => a.km - b.km).slice(0, 6)
-    .map(({ other }) => `<a href="/vremeto/${other.slug}/${kind !== 'weekend' ? FORECAST_SLUG[kind] : PLACES.TOURIST_BG.includes(other.slug) ? 'uikend' : '10-dni'}/" class="recent-place">${esc(other.name)}</a>`).join('\n        ');
+    .map(({ other }) => `<a href="${kind !== 'weekend' ? `/vremeto/${other.slug}/${FORECAST_SLUG[kind]}/` : PLACES.weekendUrl(other.slug) || `/vremeto/${other.slug}/10-dni/`}" class="recent-place">${esc(other.name)}</a>`).join('\n        ');
   return page({
     ...ONLY_BG,
     url,
@@ -167,7 +177,7 @@ function forecastPage(city, kind) {
       <div class="kp-forecast city-now" id="cityNow"><p class="storm-loading">${TXT.bg.loading}</p></div>
       <div class="kp-forecast" id="cityDays" hidden></div>
     </div>
-${tip}
+${tip}${weekend}
     <p class="city-actions">
       <a class="btn" href="/vremeto/${city.slug}/">${T.back(city.name)}</a>
       ${other}
@@ -652,7 +662,8 @@ I18N.langsFor('/kurorti/').forEach(lang => write(L(lang, '/kurorti/').slice(1), 
 CITIES.forEach(city => {
   write(`vremeto/${city.slug}/10-dni`, forecastPage(city, 'tenDays'));
   write(`vremeto/${city.slug}/14-dni`, forecastPage(city, 'fourteenDays'));
-  if (PLACES.TOURIST_BG.includes(city.slug)) write(`vremeto/${city.slug}/uikend`, forecastPage(city, 'weekend'));
+  if (PLACES.WEEKEND_PAGES.includes(city.slug)) write(`vremeto/${city.slug}/uikend`, forecastPage(city, 'weekend'));
+  else if (PLACES.TOURIST_BG.includes(city.slug)) redirect(`vremeto/${city.slug}/uikend`, `/vremeto/${city.slug}/10-dni/`);
 });
 Object.keys(BG.regions).forEach(slug => write(`vremeto/${slug}`, regionPage(slug)));
 Object.keys(BG.abroad).forEach(key => write(`europe/${key}`, abroadPage(key)));
@@ -667,4 +678,4 @@ if (PASSES.length) {
 fs.mkdirSync(path.join(process.cwd(), 'data'), { recursive: true });
 fs.writeFileSync(path.join(process.cwd(), 'data', 'passes.json'),
   JSON.stringify(PASSES.map(pass => ({ slug: pass.slug, name: pass.name, lat: pass.lat, lon: pass.lon, elevation: pass.elevation }))) + '\n');
-console.log(`Wrote /gradove/ (${I18N.LANGS.length} languages), ${CITIES.length} 10-day and ${PLACES.TOURIST_BG.length} weekend pages, ${Object.keys(BG.regions).length} regional pages, days off ${years.join(' and ')}, /uidzhet/, /prohodi/ and ${PASSES.length} passes.`);
+console.log(`Wrote /gradove/ (${I18N.LANGS.length} languages), ${CITIES.length} 10-day and ${PLACES.WEEKEND_PAGES.length} weekend pages, ${Object.keys(BG.regions).length} regional pages, days off ${years.join(' and ')}, /uidzhet/, /prohodi/ and ${PASSES.length} passes.`);

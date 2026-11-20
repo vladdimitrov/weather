@@ -19,7 +19,7 @@ const { LUNA } = require('./text-luna.js');
 const { PROMO } = require('./text-luna-promo.js');
 const { FULLMOON } = require('./text-fullmoon.js');
 const { sunTimes } = require('./sun.js');
-const { page, write, VERSION } = require('./build-pages.js');
+const { page, write, redirect, VERSION } = require('./build-pages.js');
 
 const ROOT = process.cwd();
 const ZONE = 'Europe/Sofia';
@@ -97,6 +97,15 @@ function breadcrumbsJson(lang, items) {
 }
 
 const monthUrl = (year, month) => `/luna/${year}/${SLUGS[month]}/`;
+// The Moon calendar is indexed in Bulgarian only (Nov 2026: the six translations had 2 clicks in 28 days and were
+// mostly not indexed): the translations are noindex, out of the sitemap and without hreflang.
+const INDEXED = ['bg'];
+// In Bulgarian all full moons are on one page with an address without the year (/luna/pylnolunie/, a row per
+// full moon with an anchor); the yearly lists and the pages of single full moons redirect to it. The
+// translations keep their lists and single pages.
+const FULL_URL = '/luna/pylnolunie/';
+const fullAnchor = event => { const s = sofia(event.time); return `p-${s.year}-${String(s.month + 1).padStart(2, '0')}-${String(s.day).padStart(2, '0')}`; };
+const fullListLink = (lang, year) => (lang === 'bg' ? `${FULL_URL}#g-${year}` : L(lang, `/luna/${year}/pylnolunie/`));
 const monthLinks = (lang, year, current) => Array.from({ length: 12 }, (_, month) =>
   `<a href="${L(lang, monthUrl(year, month))}" class="recent-place"${month === current ? ' aria-current="page"' : ''}>${monthName(lang, month)}</a>`).join('\n        ');
 
@@ -227,7 +236,7 @@ function listPage(lang, year, kind, years) {
     const s = sofia(event.time);
     const notes = [supers.includes(event) ? P.superMoon : '', blue.includes(event) ? P.blueMoon : ''].filter(Boolean).join(', ');
     const km = Math.round(MoonView.distance(event.time) / 100) * 100;
-    return `          <tr><td>${i + 1}</td><td><a href="${L(lang, kind === 'full' ? fullMoonUrl(event) : monthUrl(year, s.month))}">${dayMonth(lang, s.year, s.month, s.day)}</a></td><td>${weekdayOf(lang, s.year, s.month, s.day)}</td><td>${hhmm(event.time)}</td><td>${km.toLocaleString(I18N.LOCALE[lang])} ${P.km}</td><td>${notes || '–'}</td></tr>`;
+    return `          <tr><td>${i + 1}</td><td><a href="${kind === 'full' ? fullMoonLink(lang, event) : L(lang, monthUrl(year, s.month))}">${dayMonth(lang, s.year, s.month, s.day)}</a></td><td>${weekdayOf(lang, s.year, s.month, s.day)}</td><td>${hhmm(event.time)}</td><td>${km.toLocaleString(I18N.LOCALE[lang])} ${P.km}</td><td>${notes || '–'}</td></tr>`;
   }).join('\n');
   const first = fullDate(lang, events[0].time, true);
   const last = fullDate(lang, events[events.length - 1].time, true);
@@ -240,6 +249,7 @@ function listPage(lang, year, kind, years) {
     url,
     lang,
     multi: true,
+    indexed: INDEXED,
     scripts: SCRIPTS,
     image: ogImage(lang),
     title: esc(L2.title(year)),
@@ -265,7 +275,7 @@ ${rows}
     <p class="city-actions">
       ${prev ? `<a class="btn" href="${L(lang, listUrl(prev))}">← ${listName} ${prev}</a>` : ''}
       ${next ? `<a class="btn" href="${L(lang, listUrl(next))}">${listName} ${next} →</a>` : ''}
-      <a class="btn" href="${L(lang, otherUrl)}">${P.otherKind[kind]} ${year}</a>
+      <a class="btn" href="${otherKind === 'full' ? fullListLink(lang, year) : L(lang, otherUrl)}">${P.otherKind[kind]} ${year}</a>
       <a class="btn" href="${L(lang, `/luna/${year}/`)}">${T.cal} ${year}</a>
     </p>`
   });
@@ -316,6 +326,7 @@ function monthPage(lang, year, month, years) {
     url,
     lang,
     multi: true,
+    indexed: INDEXED,
     ...(past ? { indexed: [] } : {}),
     scripts: SCRIPTS + `<script src="/js/moon-grid.js?v=4" defer></script>
 `,
@@ -393,6 +404,7 @@ function yearPage(lang, year, years) {
     url,
     lang,
     multi: true,
+    indexed: INDEXED,
     scripts: SCRIPTS,
     title: esc(T.yearTitle(year)),
     description: esc(T.yearDescription(year, fullMoons.length)),
@@ -417,7 +429,7 @@ ${rows}
     </section>
 
     <p class="city-actions">
-      <a class="btn" href="${L(lang, `/luna/${year}/pylnolunie/`)}">${PROMO[lang].otherKind.new} ${year}</a>
+      <a class="btn" href="${fullListLink(lang, year)}">${PROMO[lang].otherKind.new} ${year}</a>
       <a class="btn" href="${L(lang, `/luna/${year}/novolunie/`)}">${PROMO[lang].otherKind.full} ${year}</a>
       ${years.filter(y => y !== year).map(y => `<a class="btn" href="${L(lang, `/luna/${y}/`)}">${T.cal} ${y}</a>`).join('\n      ')}
       <a class="btn" href="${L(lang, '/luna/')}">${T.today} →</a>
@@ -438,6 +450,7 @@ function hubPage(lang, years, now) {
     url: '/luna/',
     lang,
     multi: true,
+    indexed: INDEXED,
     title: T.hubTitle,
     description: esc(T.hubDescription(years.join(T.joiner))),
     image: ogImage(lang),
@@ -448,7 +461,7 @@ function hubPage(lang, years, now) {
 
     ${todayBlock(lang, now)}
 
-    <p class="city-actions"><a class="btn" href="${L(lang, current)}">${T.thisMonth}</a>${years.map(year => ` <a class="btn" href="${L(lang, `/luna/${year}/`)}">${T.cal} ${year}</a>`).join('')} <a class="btn" href="${L(lang, `/luna/${listYear}/pylnolunie/`)}">${P.otherKind.new} ${listYear}</a> <a class="btn" href="${L(lang, `/luna/${listYear}/novolunie/`)}">${P.otherKind.full} ${listYear}</a> <button type="button" class="btn" id="moonShare" data-copied="${P.share.copied}">${P.share.btn}</button></p>
+    <p class="city-actions"><a class="btn" href="${L(lang, current)}">${T.thisMonth}</a>${years.map(year => ` <a class="btn" href="${L(lang, `/luna/${year}/`)}">${T.cal} ${year}</a>`).join('')} <a class="btn" href="${lang === 'bg' ? FULL_URL : L(lang, `/luna/${listYear}/pylnolunie/`)}">${P.otherKind.new} ${listYear}</a> <a class="btn" href="${L(lang, `/luna/${listYear}/novolunie/`)}">${P.otherKind.full} ${listYear}</a> <button type="button" class="btn" id="moonShare" data-copied="${P.share.copied}">${P.share.btn}</button></p>
 ${years.map(year => `
     <section class="info-card">
       <h2>${T.hubYearH(year)}</h2>
@@ -481,6 +494,7 @@ ${moreLinks(lang, [
 
 // --- One page per full moon: /luna/pylnolunie/<yyyy-mm-dd>/ ---------------------------
 const fullMoonUrl = event => { const s = sofia(event.time); return `/luna/pylnolunie/${s.year}-${String(s.month + 1).padStart(2, '0')}-${String(s.day).padStart(2, '0')}/`; };
+const fullMoonLink = (lang, event) => (lang === 'bg' ? `${FULL_URL}#${fullAnchor(event)}` : L(lang, fullMoonUrl(event)));
 
 function fullMoonPage(lang, event, previous, next, afterLast) {
   const F = FULLMOON[lang];
@@ -523,6 +537,7 @@ function fullMoonPage(lang, event, previous, next, afterLast) {
     url,
     lang,
     multi: true,
+    indexed: INDEXED,
     scripts: SCRIPTS,
     image: ogImage(lang),
     title: esc(F.title(c)),
@@ -558,6 +573,85 @@ ${faq.map(([q, a]) => `      <details class="moon-q"><summary>${esc(q)}</summary
   });
 }
 
+// --- Bulgarian: all full moons of the two years on one page, /luna/pylnolunie/ -------------
+// The address has no year: the title and the tables follow the years of the run (the yearly workflow on
+// 1 December moves them on), so the page keeps what it has gathered in search from year to year.
+function fullMoonsPage(years, now, afterLast) {
+  const lang = 'bg';
+  const T = LUNA[lang];
+  const P = PROMO[lang];
+  const F = FULLMOON[lang];
+  const [y1, y2] = years;
+  const all = years.flatMap(year => yearEvents(year).filter(event => event.type === 2));
+  const facts = event => {
+    const s = sofia(event.time);
+    const sun = sunTimes(s.year, s.month, s.day, 42.6977, 23.3219);
+    const sky = Moon.riseSet(noon(s.year, s.month, s.day), 42.6977, 23.3219);
+    return { s, rise: sky.rise ? hhmm(sky.rise) : '–', set: sky.set ? hhmm(sky.set) : '–', sunset: sun.sunset ? hhmm(sun.sunset) : '–' };
+  };
+  // the next full moon from today (Sofia); changes with the day, so it sits between the volatile marks
+  const next = all.find(event => event.time.getTime() > now.getTime() - 12 * 3600000) || afterLast;
+  const nf = facts(next);
+  const nextBlock = `<!-- volatile -->
+    <section class="info-card moon-full-hero">
+      <div class="moon-hero"><div class="moon-hero-disc">${MoonView.svg(180, 200, Moon.NAMES[lang][4])}</div>
+      <div class="moon-hero-text">
+      <h2>Следващото пълнолуние</h2>
+      <p><strong>${weekdayOf(lang, nf.s.year, nf.s.month, nf.s.day)}, ${fullDate(lang, next.time, true)}, ${hhmm(next.time)} ч.</strong>${isSuperMoon(next) ? ' Суперлуна.' : ''}</p>
+      <p>${F.watch({ rise: nf.rise, sunset: nf.sunset, set: nf.set })}</p>
+      </div></div>
+    </section>
+<!-- /volatile -->`;
+  const yearSection = year => {
+    const events = yearEvents(year).filter(event => event.type === 2);
+    const blue = blueMoons(yearEvents(year));
+    const supers = events.filter(isSuperMoon);
+    const rows = events.map((event, i) => {
+      const f = facts(event);
+      const notes = [supers.includes(event) ? P.superMoon : '', blue.includes(event) ? P.blueMoon : ''].filter(Boolean).join(', ');
+      const km = Math.round(MoonView.distance(event.time) / 100) * 100;
+      return `          <tr id="${fullAnchor(event)}"><td>${i + 1}</td><td><a href="${monthUrl(year, f.s.month)}">${dayMonth(lang, f.s.year, f.s.month, f.s.day)}</a></td><td>${weekdayOf(lang, f.s.year, f.s.month, f.s.day)}</td><td>${hhmm(event.time)}</td><td>${f.rise}</td><td>${km.toLocaleString(I18N.LOCALE[lang])} ${P.km}</td><td>${notes || '–'}</td></tr>`;
+    }).join('\n');
+    return `
+    <section class="info-card" id="g-${year}">
+      <h2>${P.listFull.h1(year)}</h2>
+      <p>${P.listFull.intro({ year, n: events.length, first: fullDate(lang, events[0].time, true), last: fullDate(lang, events[events.length - 1].time, true), blue: blue.length ? fullDate(lang, blue[0].time, true) : '', super: supers.map(event => fullDate(lang, event.time, true)).join(', ') }).replace(/г\.\./g, 'г.')}</p>
+      <div class="table-scroll">
+      <table class="kp-table holiday-table">
+        <thead><tr>${[P.cols.n, P.cols.date, P.cols.day, P.cols.time, 'Изгрев на Луната', P.cols.distance, P.cols.note].map(h => `<th>${h}</th>`).join('')}</tr></thead>
+        <tbody>
+${rows}
+        </tbody>
+      </table>
+      </div>
+    </section>`;
+  };
+  return page({
+    head: HEAD,
+    url: FULL_URL,
+    lang,
+    multi: true,
+    langs: ['bg'],
+    indexed: INDEXED,
+    scripts: SCRIPTS,
+    image: ogImage(lang),
+    title: esc(`Пълнолуние ${y1} и ${y2} – всички дати и часове`),
+    description: esc(`Кога е пълнолунието: всички ${all.length} пълнолуния през ${y1} и ${y2} г. с точен час по българско време, изгрев на Луната, суперлуни и синя луна.`),
+    jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.cal, '/luna/'], ['Пълнолуние', FULL_URL]]),
+    body: `    <p class="breadcrumbs"><a href="/luna/">${T.cal}</a> › Пълнолуние</p>
+    <h1>Пълнолуние – дати и часове през ${y1} и ${y2} г.</h1>
+    <p class="storm-intro">Всички пълнолуния през ${y1} и ${y2} г. с точния момент на фазата по българско време, часа на изгрев на Луната в София и разстоянието до Земята. Отбелязани са суперлуните и синята луна.</p>
+    ${nextBlock}
+${years.map(yearSection).join('\n')}
+    <p class="storm-updated">${P.listNote} Изгревът на Луната е за София в деня на пълнолунието; в другите градове се различава с минути.</p>
+
+    <p class="city-actions">
+${years.map(year => `      <a class="btn" href="/luna/${year}/novolunie/">${P.otherKind.full} ${year}</a>`).join('\n')}
+${years.map(year => `      <a class="btn" href="/luna/${year}/">${T.cal} ${year}</a>`).join('\n')}
+    </p>`
+  });
+}
+
 // --- Run ----------------------------------------------------------------------
 const firstYear = Number(process.argv.find(arg => /^\d{4}$/.test(arg))) || sofia(new Date()).year;
 const years = [firstYear, firstYear + 1];
@@ -569,15 +663,18 @@ const chain = allFull;
 
 I18N.LANGS.forEach(lang => {
   write(dir(lang, '/luna/'), hubPage(lang, years, now));
+  if (lang === 'bg') write(FULL_URL.slice(1), fullMoonsPage(years, now, after));
   years.forEach(year => {
     write(dir(lang, `/luna/${year}/`), yearPage(lang, year, years));
     for (let month = 0; month < 12; month++) write(dir(lang, monthUrl(year, month)), monthPage(lang, year, month, years));
-    write(dir(lang, `/luna/${year}/pylnolunie/`), listPage(lang, year, 'full', years));
+    if (lang === 'bg') redirect(`luna/${year}/pylnolunie`, FULL_URL);
+    else write(dir(lang, `/luna/${year}/pylnolunie/`), listPage(lang, year, 'full', years));
     write(dir(lang, `/luna/${year}/novolunie/`), listPage(lang, year, 'new', years));
   });
   allFull.forEach(event => {
     const i = chain.indexOf(event);
-    write(dir(lang, fullMoonUrl(event)), fullMoonPage(lang, event, chain[i - 1], chain[i + 1], after));
+    if (lang === 'bg') redirect(fullMoonUrl(event).slice(1, -1), FULL_URL);
+    else write(dir(lang, fullMoonUrl(event)), fullMoonPage(lang, event, chain[i - 1], chain[i + 1], after));
   });
   fs.writeFileSync(path.join(ROOT, dir(lang, '/luna/moon-phases.ics')), icsFile(lang, years));
   // calendars subscribed before the French and Dutch addresses got their own words keep working
@@ -591,7 +688,7 @@ console.log(`Wrote /luna/, ${years.length} year pages and ${years.length * 12} m
 
 if (process.argv.includes('--sitemap')) {
   const today = now.toISOString().slice(0, 10);
-  const urls = I18N.LANGS.flatMap(lang => ['/luna/', ...years.flatMap(year => [`/luna/${year}/`, ...Array.from({ length: 12 }, (_, month) => monthUrl(year, month))])].map(url => L(lang, url)));
+  const urls = INDEXED.flatMap(lang => ['/luna/', ...years.flatMap(year => [`/luna/${year}/`, ...Array.from({ length: 12 }, (_, month) => monthUrl(year, month))])].map(url => L(lang, url)));
   const file = path.join(ROOT, 'sitemap.xml');
   let sitemap = fs.readFileSync(file, 'utf8');
   const nl = sitemap.includes('\r\n') ? '\r\n' : '\n';

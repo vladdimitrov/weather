@@ -5,8 +5,8 @@
 //   /europe/<country>/<city>/      current weather and 7-day forecast of one city
 // Cities are listed in europe-data.js, their names in the other languages in europe-names.js,
 // country names come from Intl.DisplayNames, texts from text-europe.js. The live forecast comes
-// from /js/city-forecast.js. German, Italian and Spanish city pages are indexed only for the
-// countries of the language and the big tourist places (places.js); the others are noindex.
+// from /js/city-forecast.js. The translations are indexed for Greece only, Bulgarian everywhere
+// (places.js); the other translations are noindex, out of the sitemap and without hreflang.
 // The old addresses (/bg/europe/...) are redirects written by build-redirects.js.
 // Run from the repository root: node .github/scripts/build-europe.js, then build-sitemap.js
 const fs = require('fs');
@@ -50,8 +50,9 @@ const countryName = (lang, country) => {
   return displayNames[lang].of(country.code) || country.en;
 };
 
-const countryLinks = (current, lang) => COUNTRIES
-  .filter(country => country !== current)
+// from an indexed page, only the countries whose page is indexed in that language (places.js)
+const countryLinks = (current, lang, indexed = true) => COUNTRIES
+  .filter(country => country !== current && (!indexed || PLACES.europeCountryIndexed(country.code).includes(lang)))
   .map(country => `<a href="${E(lang, `/europe/${country.slug}/`)}" class="recent-place">${esc(countryName(lang, country))}</a>`)
   .join('\n        ');
 
@@ -128,7 +129,8 @@ function cityPage(lang, country, city) {
   const search = localSearch(country, slug);
   const term = search.word && search.lang === lang ? `${search.word} ${local}` : '';
   const localTerm = search.word && local !== name ? `${search.word} ${local}` : '';
-  const others = country.cities.filter(other => other !== city)
+  const selfIndexed = PLACES.europeIndexed(country.code, slug).includes(lang);
+  const others = country.cities.filter(other => other !== city && (!selfIndexed || PLACES.europeIndexed(country.code, other[0]).includes(lang)))
     .map(other => `<a href="${E(lang, `/europe/${country.slug}/${other[0]}/`)}" class="recent-place">${esc(PLACES.europeName(other, lang))}</a>`).join('\n        ');
   const climate = CLIMATE && CLIMATE.cities[`${country.slug}/${slug}`];
   const sea = SEA_POINT[`${country.slug}/${slug}`];
@@ -175,7 +177,7 @@ ${nearbySection({ lat, lon, url, country: country.code }, lang)}
     <section class="info-card">
       <h2>${T.otherCountries}</h2>
       <div class="city-links">
-        ${countryLinks(country, lang)}
+        ${countryLinks(country, lang, selfIndexed)}
       </div>
     </section>`,
     scripts: SCRIPTS + (sea ? `<script src="/js/region-weather.js?v=${VERSION.regionWeather}" defer></script>\n` : '')
@@ -195,6 +197,7 @@ function countryPage(lang, country) {
     multi: true,
     base: BASE,
     url,
+    indexed: PLACES.europeCountryIndexed(country.code),
     title: esc(T.countryTitle(k)),
     description: esc(T.countryDescription(list, k)),
     jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.europeH1, '/europe/'], [k, url]]),
@@ -210,7 +213,7 @@ function countryPage(lang, country) {
     <section class="info-card">
       <h2>${T.otherCountries}</h2>
       <div class="city-links">
-        ${countryLinks(country, lang)}
+        ${countryLinks(country, lang, PLACES.europeCountryIndexed(country.code).includes(lang))}
       </div>
     </section>`,
     scripts: SCRIPTS
@@ -224,6 +227,7 @@ function europePage(lang) {
     multi: true,
     base: BASE,
     url: '/europe/',
+    indexed: PLACES.EUROPE_HUB_INDEXED,
     title: T.europeTitle,
     description: T.europeDescription(COUNTRIES.length + 1),
     jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.europeH1, '/europe/']]),
