@@ -207,7 +207,8 @@ const nearPasses = city => PASSES.map(pass => ({ pass, km: PLACES.distanceKm(cit
   .filter(item => item.km <= 45).sort((a, b) => a.km - b.km).map(item => item.pass);
 function nearbySection({ lat, lon, url, country }, lang) {
   const T = TXT[lang];
-  let { home, abroad } = PLACES.nearby(lat, lon, url, country);
+  // an indexed page links only to pages indexed in its language; a noindex page keeps the nearest ones for its visitors
+  let { home, abroad } = PLACES.nearby(lat, lon, url, country, lang !== 'ro' && PLACES.isIndexed(url, lang) ? lang : null);
   if (lang === 'ro') {
     home = home.filter(({ place }) => I18N.RO_URLS.includes(place.url));
     if (!home.length) return '';
@@ -221,16 +222,17 @@ function nearbySection({ lat, lon, url, country }, lang) {
   }
   const links = list => list.map(({ place, km }) =>
     `<a href="${I18N.localUrl(lang, place.url)}" class="recent-place">${I18N.esc(place.name[lang])} · ${km} ${T.km}</a>`).join('\n        ');
+  if (!home.length && !abroad.length) return '';
   return `
     <section class="info-card city-near">
-      <h2>${T.nearH}</h2>
+      <h2>${T.nearH}</h2>${home.length ? `
       <div class="city-links">
         ${links(home)}
-      </div>
+      </div>` : ''}${abroad.length ? `
       <p class="storm-updated">${T.abroad}</p>
       <div class="city-links">
         ${links(abroad)}
-      </div>
+      </div>` : ''}
     </section>`;
 }
 
@@ -533,8 +535,8 @@ ${snowSection(city, lang)}${BG_SEA[city.slug] ? seaSection([[cityName(city, lang
     <p class="city-actions">
       <a class="btn" href="/weather/?${params}">${T.hourly}</a>${lang === 'bg' ? `
       <a class="btn" href="/vremeto/${city.slug}/10-dni/">${BG_ONLY.tenDaysLink}</a>
-      <a class="btn" href="/vremeto/${city.slug}/14-dni/">${BG_ONLY.fourteenDaysLink}</a>${PLACES.TOURIST_BG.includes(city.slug) ? `
-      <a class="btn" href="/vremeto/${city.slug}/uikend/">${BG_ONLY.weekendLink}</a>` : ''}${(REGION_OF[city.slug] || []).map(region => `
+      <a class="btn" href="/vremeto/${city.slug}/14-dni/">${BG_ONLY.fourteenDaysLink}</a>${PLACES.weekendUrl(city.slug) ? `
+      <a class="btn" href="${PLACES.weekendUrl(city.slug)}">${BG_ONLY.weekendLink}</a>` : ''}${(REGION_OF[city.slug] || []).map(region => `
       <a class="btn" href="/vremeto/${region}/">${BG_ONLY.regionLinks[region]} →</a>`).join('')}${nearPasses(city).map(pass => `
       <a class="btn" href="/prohodi/${pass.slug}/">${I18N.esc(pass.title[0].toUpperCase() + pass.title.slice(1))} →</a>`).join('')}` : ''}
       <a class="btn" href="/magnitni-buri/">${T.storms}</a>

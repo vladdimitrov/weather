@@ -20,6 +20,11 @@ const TOURIST_EUROPE = [
   'madrid', 'barcelona', 'seville', 'malaga', 'valencia', 'palma', 'stockholm', 'zurich', 'geneva', 'lucerne', 'london', 'edinburgh',
   'santorini', 'mykonos', 'istanbul'
 ];
+// Places with a weekend page of their own (/vremeto/<city>/uikend/), where people search for the weekend. The
+// other tourist places (TOURIST_BG) have the weekend as a block of their 10-day page (#uikend); their old weekend
+// addresses redirect there (Nov 2026: the separate pages were thin and mostly not indexed)
+const WEEKEND_PAGES = ['bansko', 'borovets', 'pamporovo', 'varna', 'slanchev-bryag'];
+const weekendUrl = slug => (WEEKEND_PAGES.includes(slug) ? `/vremeto/${slug}/uikend/` : TOURIST_BG.includes(slug) ? `/vremeto/${slug}/10-dni/#uikend` : null);
 // Resorts that Bulgarians and Germans look for, Italians and Spaniards hardly: Bulgarian, English, German
 const GERMAN_TOURIST = [
   'kavala', 'thassos', 'keramoti', 'alexandroupoli', 'asprovalta', 'stavros', 'olympiada', 'ouranoupoli', 'nikiti', 'neos-marmaras',
@@ -29,8 +34,19 @@ const GERMAN_TOURIST = [
 const ALL = I18N.LANGS;
 const BASIC = ['bg', 'en'];
 const bgIndexed = slug => { const base = TOURIST_BG.includes(slug) ? ALL : BASIC; return I18N.RO_URLS.includes(`/vremeto/${slug}/`) ? [...base, 'ro'] : base; };
-const europeIndexed = (code, slug) => (TOURIST_EUROPE.includes(slug) ? ALL
+// Abroad, the translations are indexed for Greece only (Nov 2026): the English, German, Italian, Spanish, French and
+// Dutch pages of the other countries had 7 clicks in 28 days at positions 27–58 and most of them were never indexed
+// ("crawled/discovered – not indexed"), so they are noindex, out of the sitemap and without hreflang; they still exist
+// for visitors and the language switcher. Bulgarian stays everywhere (Bulgarians abroad). Exception: the Spanish
+// page of Dublin, which has the impressions of "clima" (Search Console, Nov 2026).
+const FOREIGN_COUNTRIES = ['GR'];
+const KEEP_FOREIGN = { 'IE/dublin': ['es'] };
+const europeIndexed = (code, slug) => (!FOREIGN_COUNTRIES.includes(code) ? ['bg', ...(KEEP_FOREIGN[`${code}/${slug}`] || [])]
+  : TOURIST_EUROPE.includes(slug) ? ALL
   : [...new Set([...BASIC, ...(SPEAKERS[code] || []), ...(GERMAN_TOURIST.includes(slug) ? ['de'] : [])])].sort((a, b) => ALL.indexOf(a) - ALL.indexOf(b)));
+// /europe/<country>/ and /europe/: indexed in all languages for Greece, in Bulgarian only for the rest
+const europeCountryIndexed = code => (FOREIGN_COUNTRIES.includes(code) ? ALL : ['bg']);
+const EUROPE_HUB_INDEXED = ['bg'];
 
 const bgName = (city, lang) => (lang === 'bg' ? city.name : I18N.latinName(lang, city.slug));
 function europeName(city, lang) {
@@ -58,8 +74,9 @@ const distanceKm = (lat1, lon1, lat2, lon2) => {
 
 // The closest city pages to a place: the nearest in the same country and the nearest across
 // the border, each list nearest first
-function nearby(lat, lon, url, country) {
-  const sorted = PLACES.filter(place => place.url !== url)
+// (onlyIndexed: a language, to keep only the pages indexed in it)
+function nearby(lat, lon, url, country, onlyIndexed) {
+  const sorted = PLACES.filter(place => place.url !== url && (!onlyIndexed || place.indexed.includes(onlyIndexed)))
     .map(place => ({ place, km: Math.round(distanceKm(lat, lon, place.lat, place.lon)) }))
     .sort((a, b) => a.km - b.km);
   return {
@@ -68,4 +85,16 @@ function nearby(lat, lon, url, country) {
   };
 }
 
-module.exports = { PLACES, nearby, distanceKm, bgIndexed, europeIndexed, europeName, bgName, TOURIST_BG };
+// Is the page of this address indexed in this language? For the links of indexed pages, which should
+// point to indexed pages only (a link to a noindex page sends the crawler to a page it will not keep)
+const byUrl = new Map(PLACES.map(place => [place.url, place]));
+function isIndexed(url, lang) {
+  const place = byUrl.get(url);
+  if (place) return place.indexed.includes(lang);
+  if (url === '/europe/') return EUROPE_HUB_INDEXED.includes(lang);
+  const country = url.match(/^\/europe\/([^/]+)\/$/);
+  if (country) { const found = COUNTRIES.find(item => item.slug === country[1]); if (found) return europeCountryIndexed(found.code).includes(lang); }
+  return true;
+}
+
+module.exports = { PLACES, nearby, distanceKm, bgIndexed, europeIndexed, europeCountryIndexed, EUROPE_HUB_INDEXED, isIndexed, europeName, bgName, TOURIST_BG, WEEKEND_PAGES, weekendUrl };
