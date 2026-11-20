@@ -4,6 +4,9 @@
 // The text is the heading of the page plus, on a pass page, the verdict that is on the screen
 // ("Петрохан: Внимание – сняг след 18:00"), so the message says something before it is opened.
 (function () {
+  // loaded twice (by the page and by mobile-nav.js, which may run first): only the first copy works
+  if (window.__wpShareLoaded) return;
+  window.__wpShareLoaded = true;
   const L = {
     bg: ['Сподели', 'Връзката е копирана'], en: ['Share', 'Link copied'], de: ['Teilen', 'Link kopiert'],
     it: ['Condividi', 'Link copiato'], es: ['Compartir', 'Enlace copiado'], fr: ['Partager', 'Lien copié'], ro: ['Distribuie', 'Link copiat'], nl: ['Delen', 'Link gekopieerd']
@@ -176,6 +179,7 @@
     prepare();
   }
   boxes.forEach(box => {
+    if (box.querySelector('.share-btn')) return;
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'share-btn';
