@@ -66,6 +66,16 @@ alerts:
   storm_min_kp: 5
   full_moon: true
 
+# Постоянна публика: същите съобщения (прогноза сутрин, магнитна буря, пълнолуние) във Viber канал и/или Telegram канал.
+# Каналът, който няма токен, се пропуска; грешка в канал никога не спира публикацията във Facebook.
+channels:
+  viber:
+    token: "${WP_VIBER_TOKEN}"      # канал -> информация -> Developer Tools
+    from: "${WP_VIBER_FROM}"        # Viber id на супер администратора (python main.py channel --viber-info)
+  telegram:
+    token: "${WP_TG_TOKEN}"         # токен на бота от @BotFather
+    chat_id: "${WP_TG_CHAT}"        # @името_на_канала; ботът е администратор на канала
+
 # Чернови за оранжев и червен код на НИМХ (python main.py warnings): картинка и текст в queue/drafts/, нищо не се
 # публикува, докато не го одобрите (workflow „Social draft“). Най-много max_per_day нови чернови на ден.
 warnings:

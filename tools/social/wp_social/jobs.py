@@ -9,6 +9,7 @@ from zoneinfo import ZoneInfo
 
 from PIL import Image
 
+from .channel import broadcast
 from .hosting import Hosting
 from .meta_api import MetaClient
 from .render import build_caption, render_forecast
@@ -67,6 +68,7 @@ def run_forecast(cfg, dry_run=False, sample=False, tomorrow=False, force=False):
         log.info("Facebook post id: %s", client.fb_photo(img_path, caption))
     if to_ig:
         log.info("Instagram media id: %s", client.ig_image(url, caption))
+    broadcast(cfg, caption, img_path)
     return img_path
 
 
@@ -155,6 +157,10 @@ def run_queue(cfg, dry_run=False, force=False):
         done["instagram"] = client.ig_reel(url, caption) if is_video else client.ig_image(url, caption)
         save()
         log.info("Instagram: %s", done["instagram"])
+
+    # Only the approved warnings of NIMH (…-warning-<kind>-<level>.jpg) go on to the channels: the owner's own photos stay on Facebook
+    if "-warning-" in item.name and not is_video:
+        broadcast(cfg, caption, item)
 
     posted_dir.mkdir(exist_ok=True)
     prefix = datetime.now().strftime("%Y-%m-%d_")
