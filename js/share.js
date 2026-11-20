@@ -8,8 +8,16 @@
     it: ['Condividi', 'Link copiato'], es: ['Compartir', 'Enlace copiado'], fr: ['Partager', 'Lien copié'], ro: ['Distribuie', 'Link copiat'], nl: ['Delen', 'Link gekopieerd']
   };
   const [label, copied] = L[document.documentElement.lang] || L.en;
-  const boxes = document.querySelectorAll('[data-share]');
-  if (!boxes.length) return;
+  let boxes = document.querySelectorAll('[data-share]');
+  if (!boxes.length) {
+    // a page without a [data-share] box (and without its own share button): the button goes right after the main heading
+    const heading = document.querySelector('main h1, h1');
+    if (!heading || document.getElementById('moonShare') || document.querySelector('.share-btn')) return;
+    const box = document.createElement('div');
+    box.setAttribute('data-share', '');
+    heading.insertAdjacentElement('afterend', box);
+    boxes = [box];
+  }
   const style = document.createElement('style');
   style.textContent = '.share-btn{display:inline-flex;align-items:center;gap:8px;margin:0 0 14px;padding:9px 16px;border-radius:999px;border:1px solid var(--panel-border,rgba(255,255,255,.25));background:var(--panel,rgba(255,255,255,.08));color:inherit;font:inherit;font-weight:600;cursor:pointer}.share-btn:hover,.share-btn:focus-visible{background:rgba(255,255,255,.16)}.share-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}';
   document.head.appendChild(style);
