@@ -26,7 +26,8 @@
   if (!boxes.length) {
     // a page without a [data-share] box (and without its own share button): the button goes right after the main heading
     const heading = document.querySelector('main h1, h1');
-    if (!heading || document.getElementById('moonShare') || document.querySelector('.share-btn')) return;
+    // /weather/ has its own share button in the row of the periods
+    if (!heading || /^\/weather\//.test(location.pathname) || document.getElementById('moonShare') || document.querySelector('.share-btn')) return;
     const box = document.createElement('div');
     box.setAttribute('data-share', '');
     heading.insertAdjacentElement('afterend', box);

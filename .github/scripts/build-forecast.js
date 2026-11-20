@@ -251,7 +251,7 @@ function snapshot(page, data, today) {
     .map(h => `        <p class="city-alert city-alert-${h.level}">${esc(h.text)}</p>\n`).join('');
   // Deeper than the closing </div> of #cityForecast (4 spaces), which marks the end of the block
   return `${alerts ? `      <div class="city-alerts" id="cityAlerts" role="status">\n${alerts}      </div>\n` : ''}      <div class="kp-forecast city-now" id="cityNow">
-        <h2>${esc(page.name)}: ${esc(date(daily.time[0], { weekday: 'long', day: 'numeric', month: 'long' }))}</h2>
+        <h2>${esc(date(daily.time[0], { weekday: 'long', day: 'numeric', month: 'long' }))}</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">${range(0)}</span>
         <p class="storm-now-status">${esc(describe(0))}${typeof rainToday === 'number' ? ` · ${esc(text.rain)} ${Math.round(rainToday)}%` : ''}</p>
         <p class="storm-updated">${ISSUED[lang]} ${esc(date(today, lang === 'ro' ? { day: '2-digit', month: '2-digit', year: 'numeric' } : { day: 'numeric', month: 'long', year: 'numeric' }))}</p>
