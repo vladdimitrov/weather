@@ -8,7 +8,7 @@
 //   sea        sea surface temperature now and the highest waves today (marine API)
 //   snow       snow depth now, new snow in 7 days, lowest / highest temperature (at data-elevation)
 //   ski        the ski resorts hub (Bulgarian only): snow depth now, new snow in the last 24 h / next 3 and 7 days,
-//              freezing level, gusts in 24 h and a one-word verdict; the resorts with the most new snow first
+//              temperature up there, gusts in 24 h and a short verdict; the resorts with the most new snow first
 //   firstsnow  the first day with 1 cm of new snow or more in 16 days, and the total
 //   air        the European Air Quality Index now (window.WeatherAir of js/city-forecast.js: levels,
 //              colours, words), PM2.5, PM10 and the worst index of the next 48 hours; the places
@@ -63,7 +63,7 @@
     }
     if (mode === 'ski') {
       const elevation = rows.map(row => row.dataset.elevation || 'nan').join(',');
-      return `${FORECAST}?${where}&elevation=${elevation}&hourly=snow_depth,snowfall,freezing_level_height,wind_gusts_10m&past_days=1&forecast_days=7&timeformat=unixtime`;
+      return `${FORECAST}?${where}&elevation=${elevation}&hourly=snow_depth,snowfall,temperature_2m,wind_gusts_10m&past_days=1&forecast_days=7&timeformat=unixtime`;
     }
     if (mode === 'firstsnow') return `${FORECAST}?${where}&daily=snowfall_sum&forecast_days=16`;
     if (mode === 'air') return `${AIR_API}?${where}&current=european_aqi,pm2_5,pm10&hourly=european_aqi&forecast_days=3`;
@@ -144,7 +144,7 @@
     const last24 = at >= 0 ? sum(at - 23, at + 1) : null;
     const next72 = at >= 0 ? sum(at + 1, at + 73) : null;
     const next7 = at >= 0 ? sum(at + 1, at + 169) : null;
-    const level = at >= 0 ? h.freezing_level_height[at] : null;
+    const temp = at >= 0 ? h.temperature_2m[at] : null;
     const gusts = at >= 0 ? (h.wind_gusts_10m || []).slice(at, at + 24).filter(v => typeof v === 'number') : [];
     const gust = gusts.length ? Math.round(Math.max(...gusts)) : null;
     const cm = v => (typeof v === 'number' ? `${Math.round(v)} см` : '—');
@@ -152,12 +152,18 @@
     cell(row, cm(last24));
     cell(row, cm(next72), next72 >= 10 ? 'region-snow' : '');
     cell(row, cm(next7), next7 >= 10 ? 'region-snow' : '');
-    cell(row, typeof level === 'number' ? `${Math.round(level / 10) * 10} м` : '—');
+    cell(row, typeof temp === 'number' ? `${Math.round(temp)}°` : '—');
     cell(row, gust === null ? '—' : `${gust} км/ч`, gust >= 70 ? 'region-hot' : '');
     let verdict = '—';
     if (depthNow !== null) {
-      const base = depthNow >= 30 ? 'добра покривка' : depthNow >= 10 ? 'тънка покривка' : next72 >= 5 ? 'започва да натрупва' : 'още няма сняг';
-      verdict = (gust >= 70 ? `${base}, силен вятър` : next72 >= 10 ? `${base}, идва нов сняг` : base);
+      let base;
+      if (depthNow >= 30) base = 'добра покривка';
+      else if (depthNow >= 10) base = 'тънка покривка';
+      else if (depthNow >= 1) base = 'малко сняг';
+      else if (next7 >= 10) base = 'очаква се сняг';
+      else if (next7 >= 1) base = `няма сняг, до ${Math.round(next7)} см до 7 дни`;
+      else base = 'няма сняг';
+      verdict = gust >= 70 ? `${base}, силен вятър` : base;
     }
     cell(row, verdict);
     row.dataset.depth = depthNow === null ? -1 : depthNow;
