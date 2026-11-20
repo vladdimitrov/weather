@@ -41,7 +41,8 @@ const SKI_POINTS = {
   borovets: [['Боровец', 'Borovets', 42.2667, 23.6056, 1350], ['Ситняково', 'Sitnyakovo', 42.2420, 23.5750, 1750], ['Ястребец', 'Yastrebets', 42.2300, 23.5600, 2300]],
   pamporovo: [['Пампорово', 'Pamporovo', 41.6500, 24.6950, 1650], ['Снежанка', 'Snezhanka', 41.6450, 24.6800, 1900]],
   chepelare: [['Чепеларе', 'Chepelare', 41.7247, 24.6853, 1150], ['Мечи чал', 'Mechi Chal', 41.7050, 24.6450, 1700]],
-  dobrinishte: [['Добринище', 'Dobrinishte', 41.8222, 23.5631, 850], ['Безбог', 'Bezbog', 41.7350, 23.5250, 2200]]
+  dobrinishte: [['Добринище', 'Dobrinishte', 41.8222, 23.5631, 850], ['Безбог', 'Bezbog', 41.7350, 23.5250, 2200]],
+  aleko: [['Алеко', 'Aleko', 42.5860, 23.2910, 1800], ['Черни връх', 'Cherni Vrah', 42.5625, 23.2788, 2290]]
 };
 // Seaside towns: a ski-like title about the sea and a live sea table (data-mode="sea") for a point in the
 // sea off the beach (the same points as /vremeto/morska-voda/, build-extra.js)
@@ -105,7 +106,7 @@ const skiLinks = except => Object.keys(SKI_POINTS).filter(slug => slug !== excep
 const REGION_OF = { varna: ['chernomorie', 'morska-voda'], burgas: ['chernomorie', 'morska-voda'], sozopol: ['chernomorie', 'morska-voda'], nesebar: ['chernomorie', 'morska-voda'], bansko: ['snyag-kurorti'], borovets: ['snyag-kurorti'], pamporovo: ['snyag-kurorti'],
   'slanchev-bryag': ['chernomorie', 'morska-voda'], 'zlatni-pyasatsi': ['chernomorie', 'morska-voda'], albena: ['chernomorie', 'morska-voda'], primorsko: ['chernomorie', 'morska-voda'],
   kiten: ['chernomorie', 'morska-voda'], obzor: ['chernomorie', 'morska-voda'], pomorie: ['chernomorie', 'morska-voda'], balchik: ['chernomorie', 'morska-voda'],
-  chepelare: ['snyag-kurorti'], dobrinishte: ['snyag-kurorti'] };
+  chepelare: ['snyag-kurorti'], dobrinishte: ['snyag-kurorti'], aleko: ['snyag-kurorti'] };
 const L = (lang, url) => I18N.localUrl(lang, url);
 const linkTo = (url, text) => `<a href="${url}">${text}</a>`;
 
