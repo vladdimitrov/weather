@@ -392,7 +392,7 @@
   const load = () => {
     if (window.__wpShareLoaded || document.querySelector('script[src*="/js/share.js"]')) return;
     const script = document.createElement('script');
-    script.src = '/js/share.js?v=7';
+    script.src = '/js/share.js?v=8';
     document.head.appendChild(script);
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', load); else load();
