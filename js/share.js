@@ -34,7 +34,7 @@
     boxes = [box];
   }
   const style = document.createElement('style');
-  style.textContent = '[data-share]{text-align:center}.share-btn{display:inline-flex;align-items:center;gap:8px;margin:0 0 14px;padding:9px 16px;border-radius:999px;border:1px solid var(--panel-border,rgba(255,255,255,.25));background:var(--panel,rgba(255,255,255,.08));color:inherit;font:inherit;font-weight:600;cursor:pointer}.share-btn:hover,.share-btn:focus-visible{background:rgba(255,255,255,.16)}.share-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}';
+  style.textContent = '[data-share]{text-align:center}.heading-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 14px}.heading-row [data-share]{margin:0}.heading-row .share-btn{margin:0}.share-btn{display:inline-flex;align-items:center;gap:8px;margin:0 0 14px;padding:9px 16px;border-radius:999px;border:1px solid var(--panel-border,rgba(255,255,255,.25));background:var(--panel,rgba(255,255,255,.08));color:inherit;font:inherit;font-weight:600;cursor:pointer}.share-btn:hover,.share-btn:focus-visible{background:rgba(255,255,255,.16)}.share-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}';
   document.head.appendChild(style);
   const canonical = document.querySelector('link[rel="canonical"]');
   const url = canonical ? canonical.href : location.href.split('#')[0];
@@ -188,6 +188,14 @@
     const table = document.querySelector('table[data-mode="snow"]');
     if (table) new MutationObserver(prepare).observe(table, { childList: true, subtree: true, characterData: true });
     prepare();
+  }
+  // the button sits beside the main heading of the page (wraps under it on a narrow screen)
+  const mainHeading = document.querySelector('main h1, h1');
+  if (mainHeading && boxes[0] && !mainHeading.contains(boxes[0]) && !mainHeading.parentElement.classList.contains('heading-row')) {
+    const row = document.createElement('div');
+    row.className = 'heading-row';
+    mainHeading.parentNode.insertBefore(row, mainHeading);
+    row.append(mainHeading, boxes[0]);
   }
   boxes.forEach(box => {
     if (box.querySelector('.share-btn')) return;
