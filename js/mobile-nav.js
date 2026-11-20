@@ -390,7 +390,7 @@
   if (document.querySelector('script[src*="/js/share.js"]')) return;
   if (/^\/(widget|poveritelnost|contacts|za-saita)\//.test(location.pathname) || /\/(poveritelnost|contacts|za-saita)\//.test(location.pathname)) return;
   const script = document.createElement('script');
-  script.src = '/js/share.js?v=3';
+  script.src = '/js/share.js?v=4';
   script.defer = true;
   document.head.appendChild(script);
 })();
