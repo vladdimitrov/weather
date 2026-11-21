@@ -202,6 +202,8 @@ function updateHourlyForecast(selectedDate) {
         i++;
       }
 
+      // minutes per row of the table (parsedInterval above lives only inside the loop over the days)
+      const stepMinutes = parseInt(document.getElementById("interval").value, 10);
       const rows = allTimes.map((date, i) => {
         const datePart = date.substring(0, 10);
         
@@ -222,7 +224,7 @@ function updateHourlyForecast(selectedDate) {
         const temperature = allTemperatures[i]; // Get temperature for hourly forecast
         const weatherCode = allWeatherCodes[i]; // Use allWeatherCodes here
         // sunshine_duration is per data point: 15 minutes in the 15/30 minute tables, an hour otherwise
-        const sky = allIsDays[i] === 0 || !WeatherIcons.skyFromSun ? null : WeatherIcons.skyFromSun(allSunshines[i], parsedInterval <= 30 ? 900 : 3600);
+        const sky = allIsDays[i] === 0 || !WeatherIcons.skyFromSun ? null : WeatherIcons.skyFromSun(allSunshines[i], stepMinutes <= 30 ? 900 : 3600);
         const weatherIcon = getWeatherIcon(cloudcover, precipitation, temperature, sky);
         // Create precipitation probability bar for print view
         const precipProbBar = createPrecipProbabilityBar(precipitationProbability);
