@@ -107,6 +107,9 @@
     <p class="storm-intro">Previsión del tiempo en Varna para hoy, mañana y los próximos 7 días: temperatura, precipitaciones, viento y probabilidad de lluvia. Los datos proceden de Open-Meteo y se actualizan cada hora.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Varna" data-lat="43.2141" data-lon="27.9147" data-query="city=Varna&lat=43.2141&lon=27.9147&cc=BG" data-warn="varna">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Rachas de viento fuertes mañana: hasta 61 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
         <h2>sábado, 21 de noviembre</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">8° / 16°</span>
@@ -115,7 +118,7 @@
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsión a 7 días</h3>
-        <p class="city-summary">En los próximos 7 días el día más cálido será el lunes, 23 de noviembre (hasta 18°) y el más frío el miércoles, 25 de noviembre (hasta 0°). Se esperan precipitaciones en 1 de los días. Las máximas están cerca de lo normal para noviembre (media de 13°). Los modelos coinciden hasta mañana; después la previsión es menos segura (un modelo da lluvia y otro un día seco).</p>
+        <p class="city-summary">En los próximos 7 días el día más cálido será el lunes, 23 de noviembre (hasta 18°) y el más frío el miércoles, 25 de noviembre (hasta 0°). Se esperan precipitaciones en 1 de los días. Las máximas están cerca de lo normal para noviembre (media de 13°). Los modelos coinciden hasta el miércoles, 25 de noviembre; después la previsión es menos segura (un modelo da lluvia y otro un día seco).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG&date=2026-11-21" title="Por horas →">
             <span class="kp-day-name">sáb 21</span>
@@ -124,7 +127,7 @@
             <span class="city-day-temp">8° / 16°</span>
             <span class="kp-day-status">Nublado</span>
             <span class="city-day-rain" title="probabilidad de lluvia">25%</span>
-            <span class="city-day-wind">Viento 21 km/h · rachas 45</span>
+            <span class="city-day-wind">Viento 18 km/h · rachas 46</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG&date=2026-11-22" title="Por horas →">
             <span class="kp-day-name">dom 22</span>
@@ -133,7 +136,7 @@
             <span class="city-day-temp">8° / 14°</span>
             <span class="kp-day-status">Nublado</span>
             <span class="city-day-rain" title="probabilidad de lluvia">3%</span>
-            <span class="city-day-wind">Viento 21 km/h · rachas 58</span>
+            <span class="city-day-wind city-day-gusts">Viento 21 km/h · rachas 61</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG&date=2026-11-23" title="Por horas →">
             <span class="kp-day-name">lun 23</span>
@@ -141,9 +144,8 @@
             <span class="city-day-date">23.11</span>
             <span class="city-day-temp">6° / 18°</span>
             <span class="kp-day-status">Llovizna</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">77% · 0.6 mm</span>
-            <span class="city-day-wind city-day-gusts">Viento 31 km/h · rachas 71</span>
-            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ffd54f">● menos segura</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">77% · 1.2 mm</span>
+            <span class="city-day-wind city-day-gusts">Viento 31 km/h · rachas 75</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG&date=2026-11-24" title="Por horas →">
             <span class="kp-day-name">mar 24</span>
@@ -151,7 +153,7 @@
             <span class="city-day-date">24.11</span>
             <span class="city-day-temp">2° / 7°</span>
             <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">10%</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">11%</span>
             <span class="city-day-wind city-day-gusts">Viento 28 km/h · rachas 62</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG&date=2026-11-25" title="Por horas →">
@@ -161,7 +163,7 @@
             <span class="city-day-temp">0° / 8°</span>
             <span class="kp-day-status">Nublado</span>
             <span class="city-day-rain" title="probabilidad de lluvia">1%</span>
-            <span class="city-day-wind">Viento 20 km/h · rachas 45</span>
+            <span class="city-day-wind">Viento 21 km/h · rachas 45</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG&date=2026-11-26" title="Por horas →">
             <span class="kp-day-name">jue 26</span>
@@ -171,16 +173,17 @@
             <span class="kp-day-status">Nublado</span>
             <span class="city-day-rain" title="probabilidad de lluvia">23%</span>
             <span class="city-day-wind">Viento 19 km/h · rachas 39</span>
+            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ffd54f">● menos segura</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Varna&lat=43.2141&lon=27.9147&cc=BG&date=2026-11-27" title="Por horas →">
             <span class="kp-day-name">vie 27</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">27.11</span>
-            <span class="city-day-temp">7° / 10°</span>
+            <span class="city-day-temp">8° / 11°</span>
             <span class="kp-day-status">Nublado</span>
             <span class="city-day-rain" title="probabilidad de lluvia">42% · 0.6 mm</span>
-            <span class="city-day-wind">Viento 15 km/h · rachas 50</span>
-            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ff8a65">● incierta</span>
+            <span class="city-day-wind">Viento 14 km/h · rachas 40</span>
+            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ffd54f">● menos segura</span>
           </a>
         </div>
         <p class="forecast-note">Mediana de los modelos ECMWF, ICON y GFS · altitud 50 m</p>
