@@ -2,6 +2,8 @@
 // the site with little competition in Bulgarian, see places.js for why not in every language):
 //   /magnitni-buri/dnes/            magnetic storms today: highest Kp, Kp every 3 hours (NOAA)
 //   /magnitni-buri/utre/            the same for tomorrow
+// Today and tomorrow also in English (/en/magnitni-buri/dnes/, /utre/; Nov 2026: the English storm page
+// had a 26 % CTR, and the storms are the same over all of Europe); the other pages are Bulgarian only.
 //   /magnitni-buri/<month>-<year>/  the days of a month: Kp observed so far and NOAA's 27-day outlook
 //   /magnitni-buri/kp-indeks/       what the Kp index means (no data)
 //   /magnitni-buri/zdrave/          magnetic storms and health: what is known (no data)
@@ -23,12 +25,23 @@ const LEVELS = [
 ];
 // Kp is given in thirds (4.67 = 5−): a storm starts at 5− as NOAA rounds it
 const level = kp => LEVELS.find(([min]) => Math.round(kp) >= min) || LEVELS[LEVELS.length - 1];
+// The languages of the pages of today and tomorrow (both indexed, with hreflang)
+const DAY_LANGS = ['bg', 'en'];
+const LEVEL_EN = { 9: 'Extreme geomagnetic storm', 8: 'Severe geomagnetic storm', 7: 'Strong geomagnetic storm', 6: 'Moderate geomagnetic storm', 5: 'Minor geomagnetic storm', 4: 'Active', 0: 'Quiet' };
+// the name of the level in a language (the Bulgarian one is the second item of LEVELS)
+const levelName = (kp, lang) => (lang === 'en' ? LEVEL_EN[level(kp)[0]] : level(kp)[1]);
 const kpText = kp => (Math.round(kp * 10) / 10).toFixed(1);
 const date = (iso, options) => new Date(iso + 'T12:00:00Z').toLocaleDateString('bg-BG', { timeZone: 'UTC', ...options });
 const longDate = iso => date(iso, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 const monthUrl = iso => `/magnitni-buri/${MONTH_SLUG[Number(iso.slice(5, 7)) - 1]}-${iso.slice(0, 4)}/`;
 const monthTitle = iso => `${I18N.monthName('bg', Number(iso.slice(5, 7)) - 1)} ${iso.slice(0, 4)}`;
 
+const KP_WIDGET_EN = `
+    <section class="info-card">
+      <h2>Kp index now</h2>
+      <iframe src="/widget/kp.html?lang=en" width="320" height="190" style="border:0;max-width:100%" title="Kp index now" loading="lazy"></iframe>
+      <p class="storm-updated">The value is updated every few minutes from NOAA data. Detailed chart, solar wind and storm alerts: <a href="/en/magnitni-buri/">Magnetic storms</a>.</p>
+    </section>`;
 const KP_WIDGET = `
     <section class="info-card">
       <h2>Kp индекс сега</h2>
@@ -58,7 +71,18 @@ const faqJson = items => `  <script type="application/ld+json">
 
 const monthsOf = data => [...new Set([data.issued, ...(data.outlook || []).map(d => d.day), ...data.days.map(d => d.day)].map(d => d.slice(0, 7)))].sort();
 
-function links(current, data) {
+function links(current, data, lang = 'bg') {
+  if (lang === 'en') {
+    const list = [['/magnitni-buri/', 'Kp index now'], ['/magnitni-buri/dnes/', 'Magnetic storms today'], ['/magnitni-buri/utre/', 'Magnetic storms tomorrow'], ['/nebeto/', 'Northern lights and the sky']]
+      .filter(([url]) => L('en', url) !== current);
+    return `
+    <section class="info-card">
+      <h2>More about magnetic storms</h2>
+      <div class="city-links">
+        ${list.map(([url, text]) => `<a href="${L('en', url)}" class="recent-place">${text}</a>`).join('\n        ')}
+      </div>
+    </section>`;
+  }
   const list = [
     ['/magnitni-buri/', 'Kp индекс сега'], ['/magnitni-buri/dnes/', 'Магнитни бури днес'], ['/magnitni-buri/utre/', 'Магнитни бури утре'],
     ['/magnitni-buri/vchera/', 'Магнитни бури вчера'], ['/magnitni-buri/tazi-sedmitsa/', 'Магнитни бури тази седмица'],
@@ -88,7 +112,66 @@ const MEANING = [
   [4, 'Повишена активност: полето е неспокойно, но това още не е буря и няма последици за хората.'],
   [0, 'Спокойно: няма смущения в геомагнитното поле, не се очакват проблеми с радиовръзките и навигацията.']
 ];
-const meaning = kp => (MEANING.find(([min]) => Math.round(kp) >= min) || MEANING[MEANING.length - 1])[1];
+const MEANING_EN = {
+  9: 'Extreme storm: power grid failures, GPS and radio blackouts are possible, and the aurora may be seen even in Bulgaria.',
+  8: 'Severe storm: problems with power grids and satellites are possible, and the aurora is sometimes seen in Southern Europe.',
+  7: 'Strong storm: GPS errors and short-wave radio blackouts are possible, and the aurora reaches Germany and Poland.',
+  6: 'Moderate storm: radio disturbances at high latitudes are possible, and the aurora reaches Scotland and southern Scandinavia.',
+  5: 'Minor storm: weak power grid fluctuations and aurora over Northern Europe are possible; in Bulgaria there are usually no visible effects.',
+  4: 'Active: the field is unsettled, but this is not a storm yet and it has no effect on people.',
+  0: 'Quiet: no disturbance of the geomagnetic field, no problems with radio or navigation are expected.'
+};
+const meaning = (kp, lang = 'bg') => { const found = MEANING.find(([min]) => Math.round(kp) >= min) || MEANING[MEANING.length - 1]; return lang === 'en' ? MEANING_EN[found[0]] : found[1]; };
+// The words of the pages of today and tomorrow
+const DAY = {
+  bg: {
+    locale: 'bg-BG', which: ['днес', 'утре'], label: ['Днес', 'Утре'], ahead: ['Следващите дни', 'След това'],
+    noForecast: which => `Прогнозата на NOAA за ${which} още не е публикувана.`,
+    noForecastCard: 'Прогнозата на NOAA още не е публикувана.',
+    peak: (from, to) => `Пикът е между <strong>${from}</strong> и <strong>${to} ч.</strong> (българско време).`,
+    byHours: label => `${label} по часове →`,
+    hoursH: which => `Kp индекс по часове ${which}`,
+    thHours: 'Часове (българско време)', thLevel: 'Ниво', thDay: 'Ден', thHighest: 'Най-висок Kp',
+    slotsNote: issued => `Kp е за 3-часови интервали. Прогноза на NOAA SWPC от ${issued} г.`,
+    stormsTitle: 'Магнитни бури', h1: which => `Магнитни бури ${which}`,
+    genericTitle: which => `Магнитни бури ${which} – Kp индекс и прогноза по часове`,
+    genericDescription: which => `Има ли магнитна буря ${which}: най-високият Kp индекс, прогноза по 3-часови интервали по българско време и нивото на бурята по скалата на NOAA. Обновява се всяка сутрин.`,
+    title: (which, when, kp, short) => `Магнитни бури ${which} (${when}) – Kp ${kp}, ${short}`,
+    shortLevel: name => name.toLowerCase().replace(' магнитна буря', ' буря'),
+    yes: (name, g) => `Да – ${name.toLowerCase()}${g ? ` (${g})` : ''}`, no: 'Не',
+    question: (which, when, answer, kp) => `Има ли магнитна буря ${which} (${when})? ${answer}: най-висок Kp ${kp}`,
+    peakShort: (from, to) => `, пик ${from}–${to} ч.`,
+    otherShort: (other, kp, short) => ` ${other}: Kp ${kp}, ${short}.`,
+    tail: ' Kp по часове по данни на NOAA, обновява се всяка сутрин.',
+    summary: ({ label, longDate, storm, name, g, quiet, kp, top }) => `${label}, ${longDate}, NOAA очаква ${storm ? `<strong>магнитна буря</strong> – ${name.toLowerCase()}${g ? ` (${g})` : ''}` : quiet ? '<strong>спокойно</strong> геомагнитно поле' : `<strong>${name.toLowerCase()}</strong>, но не магнитна буря`}. Най-високият Kp индекс за деня е ${kp}${top ? `, а пикът е между ${top[0]} и ${top[1]} ч. българско време` : ''}.`,
+    health: ' Повечето хора не усещат нищо; какво е известно за здравето е в <a href="/magnitni-buri/zdrave/">магнитни бури и здраве</a>.',
+    about: 'Магнитна буря има при Kp индекс 5 и повече (G1 по скалата на NOAA). При Kp 4 полето е неспокойно, но това още не е буря. Прогнозата идва от Центъра за космическо време на NOAA и се обновява тук всяка сутрин; моментната стойност е в полето по-долу.'
+  },
+  en: {
+    locale: 'en-GB', which: ['today', 'tomorrow'], label: ['Today', 'Tomorrow'], ahead: ['The next days', 'After that'],
+    noForecast: which => `NOAA has not published the forecast for ${which} yet.`,
+    noForecastCard: 'NOAA has not published the forecast yet.',
+    peak: (from, to) => `The peak is between <strong>${from}</strong> and <strong>${to}</strong> (Bulgarian time, EET).`,
+    byHours: label => `${label} by the hour →`,
+    hoursH: which => `Kp index by the hour ${which}`,
+    thHours: 'Hours (Bulgarian time)', thLevel: 'Level', thDay: 'Day', thHighest: 'Highest Kp',
+    slotsNote: issued => `Kp is given for 3-hour intervals. NOAA SWPC forecast of ${issued}.`,
+    stormsTitle: 'Magnetic storms', h1: which => `Magnetic storms ${which}`,
+    genericTitle: which => `Magnetic storms ${which} – Kp index and hourly forecast`,
+    genericDescription: which => `Is there a magnetic storm ${which}? The highest Kp index, the forecast in 3-hour intervals and the storm level on the NOAA scale. Updated every morning.`,
+    title: (which, when, kp, short) => `Magnetic storms ${which} (${when}) – Kp ${kp}, ${short}`,
+    shortLevel: name => name.toLowerCase().replace(' geomagnetic storm', ' storm'),
+    yes: (name, g) => `Yes – ${name.toLowerCase()}${g ? ` (${g})` : ''}`, no: 'No',
+    question: (which, when, answer, kp) => `Is there a magnetic storm ${which} (${when})? ${answer}: highest Kp ${kp}`,
+    peakShort: (from, to) => `, peak ${from}–${to}.`,
+    otherShort: (other, kp, short) => ` ${other}: Kp ${kp}, ${short}.`,
+    tail: ' Hourly Kp from NOAA, updated every morning.',
+    summary: ({ label, longDate, storm, name, g, quiet, kp, top }) => `${label}, ${longDate}, NOAA expects ${storm ? `<strong>a magnetic storm</strong> – ${name.toLowerCase()}${g ? ` (${g})` : ''}` : quiet ? 'a <strong>quiet</strong> geomagnetic field' : `<strong>${name.toLowerCase()}</strong> conditions, but not a magnetic storm`}. The highest Kp index of the day is ${kp}${top ? `, with the peak between ${top[0]} and ${top[1]} Bulgarian time (EET)` : ''}.`,
+    health: ' Most people feel nothing.',
+    about: 'A magnetic storm means a Kp index of 5 or more (G1 on the NOAA scale). At Kp 4 the field is unsettled, but this is not a storm yet. The forecast comes from the NOAA Space Weather Prediction Center and is updated here every morning; the current value is in the box below. Magnetic storms are global: the Kp index is the same for all of Europe.'
+  }
+};
+const L = (lang, url) => I18N.localUrl(lang, url);
 // The 3-hour interval of the highest Kp of a day (the first one when several are equal), Sofia time
 function peak(day) {
   const slots = (day && day.slots) || [];
@@ -108,17 +191,22 @@ const STORM_STYLE = `  <style>
   </style>
 `;
 
-function dayCard(data, index, current) {
+const dateIn = (lang, iso, options) => new Date(iso + 'T12:00:00Z').toLocaleDateString(DAY[lang].locale, { timeZone: 'UTC', ...options });
+const dayUrl = (lang, index) => L(lang, index === 0 ? '/magnitni-buri/dnes/' : '/magnitni-buri/utre/');
+
+function dayCard(data, index, current, lang = 'bg') {
+  const W = DAY[lang];
   const day = data.days[index];
-  const label = index === 0 ? 'Днес' : 'Утре';
-  const url = index === 0 ? '/magnitni-buri/dnes/' : '/magnitni-buri/utre/';
-  if (!day) return `      <div class="storm-card"><h2>${label}</h2><p>Прогнозата на NOAA още не е публикувана.</p></div>`;
-  const [, name, g] = level(day.kp);
+  const label = W.label[index];
+  const url = dayUrl(lang, index);
+  if (!day) return `      <div class="storm-card"><h2>${label}</h2><p>${W.noForecastCard}</p></div>`;
+  const [, , g] = level(day.kp);
+  const name = levelName(day.kp, lang);
   const top = peak(day);
   const color = levelColor(day.kp);
-  const inner = `<h2>${label}, ${date(day.day, { weekday: 'long', day: 'numeric', month: 'long' })}</h2>
+  const inner = `<h2>${label}, ${dateIn(lang, day.day, { weekday: 'long', day: 'numeric', month: 'long' })}</h2>
         <span class="storm-kp" style="color:${color}">Kp ${kpText(day.kp)}</span><span class="storm-badge" style="background:${color}">${name}${g ? ` (${g})` : ''}</span>
-        ${top ? `<p>Пикът е между <strong>${top[0]}</strong> и <strong>${top[1]} ч.</strong> (българско време).</p>` : ''}${current ? '' : `<p>${label} по часове →</p>`}`;
+        ${top ? `<p>${W.peak(top[0], top[1])}</p>` : ''}${current ? '' : `<p>${W.byHours(label)}</p>`}`;
   return current
     ? `      <div class="storm-card is-current" aria-current="page">${inner}</div>`
     : `      <a class="storm-card" href="${url}">${inner}</a>`;
@@ -128,57 +216,61 @@ function dayCard(data, index, current) {
 // <!-- volatile --> marks, which build-sitemap.js leaves out of the hash (the lastmod does not move every day)
 const volatile = (html, pattern) => html.replace(pattern, m => `<!-- volatile -->${m}<!-- /volatile -->`);
 
-function dayPage(data, index) {
-  const which = index === 0 ? 'днес' : 'утре';
-  const other = index === 0 ? 'Утре' : 'Днес';
+function dayPage(data, index, lang = 'bg') {
+  const W = DAY[lang];
+  const which = W.which[index];
+  const other = W.label[1 - index];
   const url = index === 0 ? '/magnitni-buri/dnes/' : '/magnitni-buri/utre/';
+  const here = L(lang, url);
   const day = data.days[index];
   const otherDay = data.days[1 - index];
-  const [, name, g] = day ? level(day.kp) : [];
+  const [, , g] = day ? level(day.kp) : [];
+  const name = day ? levelName(day.kp, lang) : '';
   const top = peak(day);
-  const when = day ? date(day.day, { day: 'numeric', month: 'long' }) : '';
+  const when = day ? dateIn(lang, day.day, { day: 'numeric', month: 'long' }) : '';
   const storm = day && Math.round(day.kp) >= 5;
   const summary = day
-    ? `${index === 0 ? 'Днес' : 'Утре'}, ${longDate(day.day)}, NOAA очаква ${storm ? `<strong>магнитна буря</strong> – ${name.toLowerCase()}${g ? ` (${g})` : ''}` : name === 'Спокойно' ? '<strong>спокойно</strong> геомагнитно поле' : `<strong>${name.toLowerCase()}</strong>, но не магнитна буря`}. Най-високият Kp индекс за деня е ${kpText(day.kp)}${top ? `, а пикът е между ${top[0]} и ${top[1]} ч. българско време` : ''}.`
-    : `Прогнозата на NOAA за ${which} още не е публикувана.`;
+    ? W.summary({ label: W.label[index], longDate: dateIn(lang, day.day, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }), storm, name, g, quiet: level(day.kp)[0] === 0, kp: kpText(day.kp), top })
+    : W.noForecast(which);
+  const issued = dateIn(lang, data.issued, { day: 'numeric', month: 'long', year: 'numeric' }).replace(/\s*г\.$/, '');
   const slots = day && day.slots && day.slots.length ? `
     <section class="info-card">
-      <h2>Kp индекс по часове ${which}</h2>
+      <h2>${W.hoursH(which)}</h2>
       <div class="table-scroll">
       <table class="kp-table">
-        <thead><tr><th>Часове (българско време)</th><th>Kp</th><th>Ниво</th></tr></thead>
+        <thead><tr><th>${W.thHours}</th><th>Kp</th><th>${W.thLevel}</th></tr></thead>
         <tbody>
-${day.slots.map(([from, to, kp]) => `          <tr><td>${from}–${to}</td><td>${kpText(kp)}</td><td><span style="color:${levelColor(kp)}">●</span> ${level(kp)[1]}</td></tr>`).join('\n')}
+${day.slots.map(([from, to, kp]) => `          <tr><td>${from}–${to}</td><td>${kpText(kp)}</td><td><span style="color:${levelColor(kp)}">●</span> ${levelName(kp, lang)}</td></tr>`).join('\n')}
         </tbody>
       </table>
       </div>
-      <p class="storm-updated">Kp е за 3-часови интервали. Прогноза на NOAA SWPC от ${date(data.issued, { day: 'numeric', month: 'long', year: 'numeric' }).replace(/\s*г\.$/, '')} г.</p>
+      <p class="storm-updated">${W.slotsNote(issued)}</p>
     </section>` : '';
   const next = data.days.slice(index + 1, index + 3);
   const ahead = next.length ? `
     <section class="info-card">
-      <h2>${index === 0 ? 'Следващите дни' : 'След това'}</h2>
+      <h2>${W.ahead[index]}</h2>
       <div class="table-scroll">
       <table class="kp-table">
-        <thead><tr><th>Ден</th><th>Най-висок Kp</th><th>Ниво</th></tr></thead>
+        <thead><tr><th>${W.thDay}</th><th>${W.thHighest}</th><th>${W.thLevel}</th></tr></thead>
         <tbody>
-${next.map(d => `          <tr><td>${date(d.day, { weekday: 'long', day: 'numeric', month: 'long' })}</td><td>${kpText(d.kp)}</td><td><span style="color:${levelColor(d.kp)}">●</span> ${level(d.kp)[1]}</td></tr>`).join('\n')}
+${next.map(d => `          <tr><td>${dateIn(lang, d.day, { weekday: 'long', day: 'numeric', month: 'long' })}</td><td>${kpText(d.kp)}</td><td><span style="color:${levelColor(d.kp)}">●</span> ${levelName(d.kp, lang)}</td></tr>`).join('\n')}
         </tbody>
       </table>
       </div>
     </section>` : '';
 
   // Title and description of the day (the generic ones when NOAA has no forecast)
-  let title = `Магнитни бури ${which} – Kp индекс и прогноза по часове`;
-  let description = `Има ли магнитна буря ${which}: най-високият Kp индекс, прогноза по 3-часови интервали по българско време и нивото на бурята по скалата на NOAA. Обновява се всяка сутрин.`;
+  let title = W.genericTitle(which);
+  let description = W.genericDescription(which);
   if (day) {
-    title = `Магнитни бури ${which} (${when}) – Kp ${kpText(day.kp)}, ${shortLevel(name)}`;
-    const answer = storm ? `Да – ${name.toLowerCase()}${g ? ` (${g})` : ''}` : 'Не';
+    title = W.title(which, when, kpText(day.kp), W.shortLevel(name));
+    const answer = storm ? W.yes(name, g) : W.no;
     const parts = [
-      `Има ли магнитна буря ${which} (${when})? ${answer}: най-висок Kp ${kpText(day.kp)}`,
-      top ? `, пик ${top[0]}–${top[1]} ч.` : '.',
-      otherDay ? ` ${other}: Kp ${kpText(otherDay.kp)}, ${shortLevel(level(otherDay.kp)[1])}.` : '',
-      ' Kp по часове по данни на NOAA, обновява се всяка сутрин.'
+      W.question(which, when, answer, kpText(day.kp)),
+      top ? W.peakShort(top[0], top[1]) : '.',
+      otherDay ? W.otherShort(other, kpText(otherDay.kp), W.shortLevel(levelName(otherDay.kp, lang))) : '',
+      W.tail
     ];
     // as much as fits in 155 characters, from the end
     description = parts.join('');
@@ -189,32 +281,35 @@ ${next.map(d => `          <tr><td>${date(d.day, { weekday: 'long', day: 'numeri
   const cards = day ? `
     <!-- volatile -->
     <div class="storm-cards">
-${dayCard(data, index, true)}
-${dayCard(data, 1 - index, false)}
+${dayCard(data, index, true, lang)}
+${dayCard(data, 1 - index, false, lang)}
     </div>
     <!-- /volatile -->` : '';
+  const hub = L(lang, '/magnitni-buri/');
   let html = page({
-    ...ONLY_BG,
+    lang,
+    multi: true,
+    langs: DAY_LANGS,
     url,
     title,
     image: '/images/cards/storm.png',
     description,
     head: STORM_STYLE,
-    jsonLd: breadcrumbs([['Weather Pulse', '/'], ['Магнитни бури', '/magnitni-buri/'], [`Магнитни бури ${which}`, url]]),
-    body: `    <p class="breadcrumbs"><a href="/magnitni-buri/">Магнитни бури</a> › ${which}</p>
-    <h1>Магнитни бури ${which}</h1>
+    jsonLd: breadcrumbs([['Weather Pulse', L(lang, '/')], [W.stormsTitle, hub], [W.h1(which), here]]),
+    body: `    <p class="breadcrumbs"><a href="${hub}">${W.stormsTitle}</a> › ${which}</p>
+    <h1>${W.h1(which)}</h1>
     <div data-share></div>${cards}
     <section class="info-card">
       <!-- volatile -->
       <p class="storm-intro">${summary}</p>${day ? `
-      <p>${meaning(day.kp)}${storm ? ' Повечето хора не усещат нищо; какво е известно за здравето е в <a href="/magnitni-buri/zdrave/">магнитни бури и здраве</a>.' : ''}</p>` : ''}
+      <p>${meaning(day.kp, lang)}${storm ? W.health : ''}</p>` : ''}
       <!-- /volatile -->
-      <p>Магнитна буря има при Kp индекс 5 и повече (G1 по скалата на NOAA). При Kp 4 полето е неспокойно, но това още не е буря. Прогнозата идва от Центъра за космическо време на NOAA и се обновява тук всяка сутрин; моментната стойност е в полето по-долу.</p>
+      <p>${W.about}</p>
     </section>
 <!-- volatile -->${slots}${ahead}
 <!-- /volatile -->
-${KP_WIDGET}
-${links(url, data)}`,
+${lang === 'en' ? KP_WIDGET_EN : KP_WIDGET}
+${links(here, data, lang)}`,
     scripts: `<script src="/js/share.js?v=${VERSION.share}" defer></script>\n`
   });
   // the numbers in the head change every morning too
@@ -438,8 +533,7 @@ ${links(url, data)}`
 function build() {
   const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
   data.history = data.history || {};
-  write('magnitni-buri/dnes', dayPage(data, 0));
-  write('magnitni-buri/utre', dayPage(data, 1));
+  DAY_LANGS.forEach(lang => [0, 1].forEach(index => write(dayUrl(lang, index).slice(1, -1), dayPage(data, index, lang))));
   write('magnitni-buri/vchera', yesterdayPage(data));
   write('magnitni-buri/tazi-sedmitsa', weekPage(data));
   // the month of today, and the next one when the forecast reaches it
