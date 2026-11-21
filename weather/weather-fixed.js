@@ -83,7 +83,7 @@ function updateForecast() {
       const endDate = end.toISOString().split("T")[0];
 
       await delay(500); // Delay for 500 milliseconds
-      const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_min,temperature_2m_max,cloudcover_mean,precipitation_sum,windspeed_10m_max,wind_gusts_10m_max,temperature_2m_mean,weather_code,sunrise,sunset,precipitation_probability_max&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${today}&end_date=${endDate}`;
+      const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_min,temperature_2m_max,cloudcover_mean,precipitation_sum,windspeed_10m_max,wind_gusts_10m_max,temperature_2m_mean,weather_code,sunrise,sunset,precipitation_probability_max,sunshine_duration,daylight_duration&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${today}&end_date=${endDate}`;
       // the median of three models (js/forecast-core.js), the default forecast if that fails
       const weatherData = window.ForecastCore ? await ForecastCore.load(weatherURL) : await (await fetch(weatherURL)).json();
 
@@ -162,7 +162,8 @@ function renderDayCards() {
     const day = new Date(date + "T12:00:00");
     const name = day.toLocaleDateString(language, { weekday: "short" });
     const shortDate = date.slice(5).split("-").reverse().join(".");
-    const icons = getDailyWeatherIcons(daily.cloudcover_mean[i], daily.precipitation_sum[i], daily.temperature_2m_mean[i], daily.weather_code[i]);
+    const sky = daily.sunshine_duration && daily.daylight_duration && WeatherIcons.skyFromSun ? WeatherIcons.skyFromSun(daily.sunshine_duration[i], daily.daylight_duration[i]) : null;
+    const icons = getDailyWeatherIcons(daily.cloudcover_mean[i], daily.precipitation_sum[i], daily.temperature_2m_mean[i], daily.weather_code[i], sky);
     const chance = daily.precipitation_probability_max && daily.precipitation_probability_max[i];
     const amount = daily.precipitation_sum[i];
     const rain = typeof chance === "number"
@@ -208,7 +209,8 @@ function isThunderstorm(weatherCode) {
   return weatherCode === 95 || weatherCode === 96 || weatherCode === 99;
 }
 
-function getDailyWeatherIcons(cloudcover, precipitation, temperature, weatherCode) {
+// sky: from the day's sunshine against its daylight (WeatherIcons.skyFromSun), or null
+function getDailyWeatherIcons(cloudcover, precipitation, temperature, weatherCode, sky) {
   let icons = [];
   
   // Snow icon if there's precipitation and temperature is at or below 0°C
@@ -218,6 +220,13 @@ function getDailyWeatherIcons(cloudcover, precipitation, temperature, weatherCod
   // Rain icon if there's precipitation and temperature is above 0°C
   else if (precipitation > 0 && temperature > 0) {
     icons.push(WeatherIcons.medal('rain', _t('iconRain')));
+  }
+
+  // Enough sunshine: the sun (with a cloud if it rains or was only part of the time), whatever the cloud cover
+  if (sky) {
+    if (sky === 'sun' && precipitation === 0) icons.push(WeatherIcons.medal('sun', _t('iconSun')));
+    else icons.push(WeatherIcons.medal('cloudSun', _t('iconSunCloud')));
+    return icons.join(' ');
   }
 
   // Cloud icon if cloudiness is high

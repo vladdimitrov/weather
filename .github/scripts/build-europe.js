@@ -34,7 +34,7 @@ const SPOKEN = { AT: 'de', DE: 'de', CH: 'de', LU: 'de', IT: 'it', ES: 'es', GB:
 // Flemish cities of Belgium: searched in Dutch ("Weer Antwerpen"), not with the French "Météo"
 const FLEMISH = ['antwerp', 'ghent', 'bruges'];
 const localSearch = (country, slug) => (FLEMISH.includes(slug) ? { lang: 'nl', word: 'Weer' } : { lang: SPOKEN[country.code], word: country.word });
-const SCRIPTS = `<script src="/js/weather-icons.js?v=5" defer></script>
+const SCRIPTS = `<script src="/js/weather-icons.js?v=12" defer></script>
 <script src="/js/moon.js?v=${VERSION.moon}" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`;
 

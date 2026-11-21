@@ -117,6 +117,7 @@ function updateHourlyForecast(selectedDate) {
 
       let i = 0;
       let allWeatherCodes = []; // Declare weatherCodes here
+      let allSunshines = [], allIsDays = [];
       while (allTimes.length < hours) {
         let currentDate;
         
@@ -137,9 +138,9 @@ function updateHourlyForecast(selectedDate) {
         parsedInterval = parseInt(document.getElementById("interval").value);
         let hourlyURL;
         if (parsedInterval <= 30) {
-          hourlyURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&minutely_15=temperature_2m,cloudcover,precipitation,precipitation_probability,windspeed_10m,wind_gusts_10m,weather_code&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${startDate}&end_date=${endDateString}&interval=${parsedInterval}`;
+          hourlyURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&minutely_15=temperature_2m,cloudcover,precipitation,precipitation_probability,windspeed_10m,wind_gusts_10m,weather_code,sunshine_duration,is_day&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${startDate}&end_date=${endDateString}&interval=${parsedInterval}`;
         } else {
-          hourlyURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,cloudcover,precipitation,precipitation_probability,windspeed_10m,wind_gusts_10m,weather_code&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${startDate}&end_date=${endDateString}&interval=${parsedInterval}`;
+          hourlyURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,cloudcover,precipitation,precipitation_probability,windspeed_10m,wind_gusts_10m,weather_code,sunshine_duration,is_day&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto&start_date=${startDate}&end_date=${endDateString}&interval=${parsedInterval}`;
         }
         
         const hourlyRes = null;
@@ -151,6 +152,7 @@ function updateHourlyForecast(selectedDate) {
         const totalDataPoints = days * dataPointsPerDay;
         let times, temperatures, cloudcovers, precipitations, precipitationProbabilities, windspeeds, gusts;
         let weatherCodes; // Declare weatherCodes here
+        let sunshines, isDays;
         if (parsedInterval <= 30) {
           times = hourlyData.minutely_15.time.slice(0, Math.min(totalDataPoints, hourlyData.minutely_15.time.length));
           temperatures = hourlyData.minutely_15.temperature_2m.slice(0, Math.min(totalDataPoints, hourlyData.minutely_15.temperature_2m.length));
@@ -160,6 +162,8 @@ function updateHourlyForecast(selectedDate) {
           windspeeds = hourlyData.minutely_15.windspeed_10m.slice(0, Math.min(totalDataPoints, hourlyData.minutely_15.windspeed_10m.length));
           gusts = hourlyData.minutely_15.wind_gusts_10m ? hourlyData.minutely_15.wind_gusts_10m.slice(0, totalDataPoints) : Array(times.length).fill(null);
           weatherCodes = hourlyData.minutely_15.weather_code ? hourlyData.minutely_15.weather_code.slice(0, Math.min(totalDataPoints, hourlyData.minutely_15.weather_code.length)) : Array(times.length).fill(0);
+          sunshines = hourlyData.minutely_15.sunshine_duration ? hourlyData.minutely_15.sunshine_duration.slice(0, totalDataPoints) : Array(times.length).fill(null);
+          isDays = hourlyData.minutely_15.is_day ? hourlyData.minutely_15.is_day.slice(0, totalDataPoints) : Array(times.length).fill(null);
         } else {
           times = hourlyData.hourly.time.slice(0, Math.min(totalDataPoints, hourlyData.hourly.time.length));
           temperatures = hourlyData.hourly.temperature_2m.slice(0, Math.min(totalDataPoints, hourlyData.hourly.temperature_2m.length));
@@ -169,6 +173,8 @@ function updateHourlyForecast(selectedDate) {
           windspeeds = hourlyData.hourly.windspeed_10m.slice(0, Math.min(totalDataPoints, hourlyData.hourly.windspeed_10m.length));
           gusts = hourlyData.hourly.wind_gusts_10m ? hourlyData.hourly.wind_gusts_10m.slice(0, totalDataPoints) : Array(times.length).fill(null);
           weatherCodes = hourlyData.hourly.weather_code ? hourlyData.hourly.weather_code.slice(0, Math.min(totalDataPoints, hourlyData.hourly.weather_code.length)) : Array(times.length).fill(0);
+          sunshines = hourlyData.hourly.sunshine_duration ? hourlyData.hourly.sunshine_duration.slice(0, totalDataPoints) : Array(times.length).fill(null);
+          isDays = hourlyData.hourly.is_day ? hourlyData.hourly.is_day.slice(0, totalDataPoints) : Array(times.length).fill(null);
         }
         
         for (let j = 0; j < times.length; j++) {
@@ -185,6 +191,8 @@ function updateHourlyForecast(selectedDate) {
             allWindspeeds.push(windspeeds[j]);
             allGusts.push(gusts[j]);
             allWeatherCodes.push(weatherCodes[j]); // Corrected: push to allWeatherCodes
+            allSunshines.push(sunshines[j]);
+            allIsDays.push(isDays[j]);
             totalHours++;
           }
         }
@@ -213,7 +221,9 @@ function updateHourlyForecast(selectedDate) {
         const gust = allGusts[i];
         const temperature = allTemperatures[i]; // Get temperature for hourly forecast
         const weatherCode = allWeatherCodes[i]; // Use allWeatherCodes here
-        const weatherIcon = getWeatherIcon(cloudcover, precipitation, temperature);
+        // sunshine_duration is per data point: 15 minutes in the 15/30 minute tables, an hour otherwise
+        const sky = allIsDays[i] === 0 || !WeatherIcons.skyFromSun ? null : WeatherIcons.skyFromSun(allSunshines[i], parsedInterval <= 30 ? 900 : 3600);
+        const weatherIcon = getWeatherIcon(cloudcover, precipitation, temperature, sky);
         // Create precipitation probability bar for print view
         const precipProbBar = createPrecipProbabilityBar(precipitationProbability);
         
@@ -274,7 +284,8 @@ function isThunderstorm(weatherCode) {
   return weatherCode === 95 || weatherCode === 96 || weatherCode === 99;
 }
 
-function getWeatherIcon(cloudcover, precipitation, temperature) {
+// sky: 'sun' or 'cloudSun' when the sunshine of the period says so (WeatherIcons.skyFromSun), else null
+function getWeatherIcon(cloudcover, precipitation, temperature, sky) {
   let icons = [];
   
   // Snow icon if there's precipitation and temperature is at or below 0°C
@@ -284,6 +295,13 @@ function getWeatherIcon(cloudcover, precipitation, temperature) {
   // Rain icon if there's precipitation and temperature is above 0°C
   else if (precipitation > 0 && temperature > 0) {
     icons.push(WeatherIcons.medal('rain', _t('iconRain')));
+  }
+
+  // Enough sunshine: the sun (with a cloud if it rains or was only part of the time), whatever the cloud cover
+  if (sky) {
+    if (sky === 'sun' && precipitation === 0) icons.push(WeatherIcons.medal('sun', _t('iconSun')));
+    else icons.push(WeatherIcons.medal('cloudSun', _t('iconSunCloud')));
+    return icons.join(' ');
   }
 
   // Cloud icon if cloudiness is high
