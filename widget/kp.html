@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex">
   <title>Магнитни бури — Weather Pulse</title>
   <!-- Embeddable card for other sites: <iframe src="https://weatherpulse.eu/widget/kp.html" width="320" height="190">.
-       Self-contained (no site scripts, no cookies or analytics). ?lang=en, de, it, es, fr or nl for other languages. -->
+       Self-contained (no site scripts, no cookies or analytics). ?lang=en, de, it, es, fr, nl or ro for other languages. -->
   <style>
     * { box-sizing: border-box; }
     html, body {
@@ -61,7 +61,8 @@
         it: { title: '🧭 Tempeste magnetiche', now: 'Kp ora', today: 'Oggi', tomorrow: 'Domani', calm: 'calmo', active: 'elevato', storm: 'tempesta', error: 'Dati non disponibili', locale: 'it-IT' },
         es: { title: '🧭 Tormentas magnéticas', now: 'Kp ahora', today: 'Hoy', tomorrow: 'Mañana', calm: 'tranquilo', active: 'elevado', storm: 'tormenta', error: 'Sin datos por ahora', locale: 'es-ES' },
         fr: { title: '🧭 Tempêtes magnétiques', now: 'Kp actuel', today: 'Aujourd’hui', tomorrow: 'Demain', calm: 'calme', active: 'élevé', storm: 'tempête', error: 'Données indisponibles', locale: 'fr-FR' },
-        nl: { title: '🧭 Magnetische stormen', now: 'Kp nu', today: 'Vandaag', tomorrow: 'Morgen', calm: 'rustig', active: 'verhoogd', storm: 'storm', error: 'Geen gegevens beschikbaar', locale: 'nl-NL' }
+        nl: { title: '🧭 Magnetische stormen', now: 'Kp nu', today: 'Vandaag', tomorrow: 'Morgen', calm: 'rustig', active: 'verhoogd', storm: 'storm', error: 'Geen gegevens beschikbaar', locale: 'nl-NL' },
+        ro: { title: '🧭 Furtuni magnetice', now: 'Kp acum', today: 'Azi', tomorrow: 'Mâine', calm: 'calm', active: 'activ', storm: 'furtună', error: 'Date indisponibile', locale: 'ro-RO' }
       };
       const requested = new URLSearchParams(location.search).get('lang');
       const language = texts[requested] ? requested : 'bg';

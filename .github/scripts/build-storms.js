@@ -28,12 +28,12 @@ const ZONE = 'Europe/Sofia';
 
 // Words that are not on the page yet
 const TEXT = {
-  day: { bg: 'Ден', en: 'Day', de: 'Tag', it: 'Giorno', es: 'Día', fr: 'Jour', nl: 'Dag' },
-  highest: { bg: 'Най-висок Kp', en: 'Highest Kp', de: 'Höchster Kp', it: 'Kp massimo', es: 'Kp máximo', fr: 'Kp maximal', nl: 'Hoogste Kp' },
-  peak: { bg: 'Пик (българско време)', en: 'Peak (Sofia time)', de: 'Spitze (Sofia-Zeit)', it: 'Picco (ora di Sofia)', es: 'Pico (hora de Sofía)', fr: 'Pic (heure de Sofia)', nl: 'Piek (tijd Sofia)' },
+  day: { bg: 'Ден', en: 'Day', de: 'Tag', it: 'Giorno', es: 'Día', fr: 'Jour', nl: 'Dag', ro: 'Ziua' },
+  highest: { bg: 'Най-висок Kp', en: 'Highest Kp', de: 'Höchster Kp', it: 'Kp massimo', es: 'Kp máximo', fr: 'Kp maximal', nl: 'Hoogste Kp', ro: 'Kp maxim' },
+  peak: { bg: 'Пик (българско време)', en: 'Peak (Sofia time)', de: 'Spitze (Sofia-Zeit)', it: 'Picco (ora di Sofia)', es: 'Pico (hora de Sofía)', fr: 'Pic (heure de Sofia)', nl: 'Piek (tijd Sofia)', ro: 'Vârf (ora Sofiei, ca în România)' },
   issued: {
     bg: 'Прогноза на NOAA от', en: 'NOAA forecast of', de: 'NOAA-Vorhersage vom', it: 'Previsione NOAA del', es: 'Pronóstico de la NOAA del',
-    fr: 'Prévision de la NOAA du', nl: 'NOAA-verwachting van'
+    fr: 'Prévision de la NOAA du', nl: 'NOAA-verwachting van', ro: 'Prognoza NOAA din'
   }
 };
 
@@ -123,7 +123,8 @@ ${rows}
       </table>
       <p class="storm-updated">${TEXT.issued[lang]} ${esc(date(today, { day: 'numeric', month: 'long', year: 'numeric' }))}</p>${lang === 'bg' ? `
       <p class="city-actions"><a class="btn" href="/magnitni-buri/dnes/">Днес по часове →</a> <a class="btn" href="/magnitni-buri/utre/">Утре →</a> <a class="btn" href="${StormPages.monthUrl(today)}">През ${StormPages.monthTitle(today)} →</a> <a class="btn" href="/magnitni-buri/kp-indeks/">Какво е Kp индекс →</a></p>` : lang === 'en' ? `
-      <p class="city-actions"><a class="btn" href="/en/magnitni-buri/dnes/">Today by the hour →</a> <a class="btn" href="/en/magnitni-buri/utre/">Tomorrow →</a></p>` : ''}
+      <p class="city-actions"><a class="btn" href="/en/magnitni-buri/dnes/">Today by the hour →</a> <a class="btn" href="/en/magnitni-buri/utre/">Tomorrow →</a></p>` : lang === 'ro' ? `
+      <p class="city-actions"><a class="btn" href="/ro/furtuni-magnetice/azi/">Azi pe ore →</a> <a class="btn" href="/ro/furtuni-magnetice/maine/">Mâine →</a></p>` : ''}
     ${END}`;
 }
 
@@ -131,7 +132,7 @@ ${rows}
   const { days, past } = await forecast();
   const today = days[0].day;
   const urls = [];
-  I18N.LANGS.forEach(lang => {
+  I18N.langsFor('/magnitni-buri/').forEach(lang => {
     const url = I18N.localUrl(lang, '/magnitni-buri/');
     const file = path.join(ROOT, url, 'index.html');
     let html = read(file);

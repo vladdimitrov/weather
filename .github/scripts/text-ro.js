@@ -5,7 +5,8 @@
 
 // the pages of the site that exist in Romanian (everything else a Romanian page links to is the English page)
 const RESORTS = ['bansko', 'borovets', 'pamporovo', 'chepelare', 'dobrinishte'];
-const URLS = ['/', '/kurorti/', ...RESORTS.map(slug => `/vremeto/${slug}/`)];
+// Since Nov 2026 also the magnetic storms (the storm page, today and tomorrow): strong interest in Romania
+const URLS = ['/', '/kurorti/', ...RESORTS.map(slug => `/vremeto/${slug}/`), '/magnitni-buri/', '/magnitni-buri/dnes/', '/magnitni-buri/utre/'];
 
 const TXT = {
   where: name => name,

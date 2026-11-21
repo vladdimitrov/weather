@@ -103,7 +103,7 @@ function common(html, lang, url, { title, ogTitle, description, source, pending 
   html = html.replace(/alt="Лого"/g, `alt="${I18N.LOGO_ALT[lang]}"`);
   // Plain links to the other language versions (the Bulgarian page lists the six translations)
   const block = new RegExp(`  ${I18N.LANG_LINKS_START}[\\s\\S]*?${I18N.LANG_LINKS_END}\\n`);
-  html = once(html, block, I18N.langLinks(lang, Object.fromEntries((url === '/' ? I18N.ALL : I18N.LANGS).map(code => [code, I18N.localUrl(code, url)]))), 'language links');
+  html = once(html, block, I18N.langLinks(lang, Object.fromEntries(I18N.langsFor(url).map(code => [code, I18N.localUrl(code, url)]))), 'language links');
   return html;
 }
 
@@ -200,7 +200,7 @@ function storms() {
     return group[key][lang];
   };
 
-  TARGETS.forEach(lang => {
+  [...TARGETS, 'ro'].forEach(lang => {
     const ogTitle = text(PAGE, 'title', lang).replace(/ \| Weather Pulse$/, '');
     const title = I18N.withBrand(ogTitle);
     let html = common(template, lang, '/magnitni-buri/', {
