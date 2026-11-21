@@ -30,10 +30,10 @@ const CLIMATE = JSON.parse(fs.readFileSync(path.join(__dirname, 'climate.json'),
 const HOLIDAYS = JSON.parse(fs.readFileSync(path.join(__dirname, 'holidays-BG.json'), 'utf8'));
 const degrees = t => { const r = Math.round(t); return (r < 0 ? '−' : '') + Math.abs(r) + '°'; };
 const ONLY_BG = { lang: 'bg', multi: true, langs: ['bg'] };
-const CITY_SCRIPTS = `<script src="/js/weather-icons.js?v=5" defer></script>
+const CITY_SCRIPTS = `<script src="/js/weather-icons.js?v=12" defer></script>
 <script src="/js/moon.js?v=${VERSION.moon}" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`;
-const REGION_SCRIPTS = `<script src="/js/weather-icons.js?v=5" defer></script>
+const REGION_SCRIPTS = `<script src="/js/weather-icons.js?v=12" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>
 <script src="/js/region-weather.js?v=${VERSION.regionWeather}" defer></script>
 <script src="/js/share.js?v=${VERSION.share}" defer></script>\n`;

@@ -16,6 +16,21 @@
     { codes: [95, 96, 99], key: 'thunder', icon: '⛈️', text: { en: 'Thunderstorm', bg: 'Гръмотевична буря', de: 'Gewitter', it: 'Temporale', es: 'Tormenta', fr: 'Orage', ro: 'Furtună', nl: 'Onweer' } }
   ];
   const condition = code => conditions.find(c => c.codes.includes(code)) || conditions[2];
+  // Codes 1-3 come from the total cloud cover, which thin high cloud fills while the sun is out:
+  // with enough sunshine (WeatherIcons.skyFromSun) the sky is 'sun' or 'cloudSun' instead
+  const sunnyCondition = (code, sunSeconds, periodSeconds) => {
+    const sky = [1, 2, 3].includes(code) && WeatherIcons.skyFromSun ? WeatherIcons.skyFromSun(sunSeconds, periodSeconds) : null;
+    if (sky === 'sun') return conditions[0];
+    if (sky === 'cloudSun' && code === 3) return conditions[1];
+    return condition(code);
+  };
+  // the sunshine of the hour the "now" falls in (hourly values are the sum of the hour before them)
+  const sunNow = () => {
+    const hourly = forecast.hourly, now = forecast.current;
+    if (!hourly || !hourly.sunshine_duration || !now || !now.time || now.is_day === 0) return null;
+    const index = hourly.time.findIndex(time => time >= now.time);
+    return index >= 0 ? hourly.sunshine_duration[index] : null;
+  };
 
   const T = {
     en: { now: 'Now', feels: 'feels like', wind: 'Wind', humidity: 'Humidity', days: '7-day forecast', hourly: 'Hourly forecast →', today: 'Today', tomorrow: 'Tomorrow', rain: 'chance of rain', error: 'The forecast could not be loaded. Please try again later.', locale: 'en-GB' },
@@ -300,7 +315,7 @@
     if (!forecast) return;
     const text = t();
     const now = forecast.current;
-    const current = condition(now.weather_code);
+    const current = sunnyCondition(now.weather_code, sunNow(), 3600);
 
     nowBox.replaceChildren(
       el('h2', '', text.now),
@@ -336,7 +351,8 @@
       day.title = text.hourly;
       const name = i === 0 ? text.today : i === 1 ? text.tomorrow
         : new Date(date + 'T12:00:00').toLocaleDateString(text.locale, { weekday: 'short', day: 'numeric' });
-      const dayCondition = condition(forecast.daily.weather_code[i]);
+      const dayCondition = sunnyCondition(forecast.daily.weather_code[i],
+        forecast.daily.sunshine_duration && forecast.daily.sunshine_duration[i], forecast.daily.daylight_duration && forecast.daily.daylight_duration[i]);
       const rain = forecast.daily.precipitation_probability_max[i];
       const amount = forecast.daily.precipitation_sum[i];
       day.append(
@@ -428,9 +444,9 @@
   async function loadCity() {
     loadWarnings();
     const url = `${API}?latitude=${box.dataset.lat}&longitude=${box.dataset.lon}` +
-      '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,wind_gusts_10m' +
-      '&hourly=wind_speed_10m,wind_gusts_10m' +
-      '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,snowfall_sum,wind_speed_10m_max,wind_gusts_10m_max,sunrise,sunset,daylight_duration' +
+      '&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,wind_gusts_10m,is_day' +
+      '&hourly=wind_speed_10m,wind_gusts_10m,sunshine_duration' +
+      '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,snowfall_sum,wind_speed_10m_max,wind_gusts_10m_max,sunrise,sunset,daylight_duration,sunshine_duration' +
       `&forecast_days=${Math.min(Math.max(+box.dataset.days || 7, 7), 16)}&timezone=auto`;
     try {
       forecast = await getJson(url, true);

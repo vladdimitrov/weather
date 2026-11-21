@@ -9,7 +9,7 @@ const path = require('path');
 const I18N = require('./i18n.js');
 
 const ROOT = process.cwd();
-const VERSION = { theme: 65, mobileNav: 26, languageSelector: 10, cityForecast: 23, moon: 5, lunaToday: 6, lunaLocal: 2, auroraKp: 3, placeContext: 3, skyLocal: 3, homeCities: 7, regionWeather: 8, passes: 4, share: 8 };
+const VERSION = { theme: 65, mobileNav: 26, languageSelector: 10, cityForecast: 24, moon: 5, lunaToday: 6, lunaLocal: 2, auroraKp: 3, placeContext: 3, skyLocal: 3, homeCities: 7, regionWeather: 8, passes: 4, share: 8 };
 
 const CITIES = require('./bg-cities.js');
 
@@ -557,7 +557,7 @@ ${nearbySection({ lat: city.lat, lon: city.lon, url: `/vremeto/${city.slug}/`, c
         ${cityLinks(city, lang)}
       </div>
     </section>`,
-    scripts: `<script src="/js/weather-icons.js?v=5" defer></script>
+    scripts: `<script src="/js/weather-icons.js?v=12" defer></script>
 <script src="/js/moon.js?v=${VERSION.moon}" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n<script src="/js/share.js?v=${VERSION.share}" defer></script>\n${SKI_POINTS[city.slug] || BG_SEA[city.slug] ? `<script src="/js/region-weather.js?v=${VERSION.regionWeather}" defer></script>\n` : ''}`
   });
@@ -612,7 +612,7 @@ ${lang === 'bg' ? `
         ${Object.entries(BG_ONLY.regionLinks).map(([slug, text]) => `<a href="/vremeto/${slug}/" class="recent-place">${text}</a>`).join('\n        ')}
       </div>
     </section>` : ''}`,
-    scripts: `<script src="/js/weather-icons.js?v=5" defer></script>
+    scripts: `<script src="/js/weather-icons.js?v=12" defer></script>
 <script src="/js/city-forecast.js?v=${VERSION.cityForecast}" defer></script>\n`
   });
 }

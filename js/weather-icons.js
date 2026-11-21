@@ -81,5 +81,17 @@ window.WeatherIcons = (function () {
     return String(text).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
   }
 
-  return { medal, glyph, node };
+  // The sky from the sunshine, not from the cloud cover. Open-Meteo's cloud cover counts every layer, so
+  // thin high cloud or scattered cumulus give 90-100 % while the sun is out (Sofia, 21 Nov 2026: 92 % and
+  // a cloud icon in full sun). sunSeconds of sunshine in periodSeconds (an hour, 15 minutes, the daylight):
+  // 'sun', 'cloudSun', or null when there is too little sun to say (then the cloud cover decides).
+  function skyFromSun(sunSeconds, periodSeconds) {
+    if (typeof sunSeconds !== 'number' || !(periodSeconds > 0)) return null;
+    const share = sunSeconds / periodSeconds;
+    if (share >= 0.6) return 'sun';
+    if (share >= 0.25) return 'cloudSun';
+    return null;
+  }
+
+  return { medal, glyph, node, skyFromSun };
 })();
