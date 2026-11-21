@@ -132,3 +132,7 @@
    (theme.css, ".container > *") then started again with opacity 0 and, on phones, sometimes stayed
    half-way during the smooth scroll: the whole block looked dimmed. It appears at once instead. */
 #main-content > #hourlyTableBlock { animation: none !important; opacity: 1; }
+
+/* link to the rain radar under the "now" values (ui-extras.js) */
+.now-block .now-radar { flex: 1 0 100%; text-align: center; font-size: 0.85rem; color: var(--gold, #ffd700); text-decoration: none; }
+.now-block .now-radar:hover { text-decoration: underline; }

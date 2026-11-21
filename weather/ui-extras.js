@@ -28,6 +28,7 @@
     more: { en: 'More details', bg: 'Повече подробности', de: 'Mehr Details', it: 'Più dettagli', es: 'Más detalles', fr: 'Plus de détails', nl: 'Meer details' },
     share: { en: 'Share', bg: 'Сподели', de: 'Teilen', it: 'Condividi', es: 'Compartir', fr: 'Partager', nl: 'Delen' },
     copied: { en: 'Link copied', bg: 'Линкът е копиран', de: 'Link kopiert', it: 'Link copiato', es: 'Enlace copiado', fr: 'Lien copié', nl: 'Link gekopieerd' },
+    radar: { en: '📡 Rain now on the radar →', bg: '📡 Валежи сега на радара →', de: '📡 Niederschlag jetzt auf dem Radar →', it: '📡 Pioggia ora sul radar →', es: '📡 Lluvia ahora en el radar →', fr: '📡 Pluie en direct sur le radar →', nl: '📡 Neerslag nu op de radar →' },
     less: { en: 'Fewer details', bg: 'По-малко подробности', de: 'Weniger Details', it: 'Meno dettagli', es: 'Menos detalles', fr: 'Moins de détails', nl: 'Minder details' }
   };
   const dayWord = n => (n === 1
@@ -88,6 +89,14 @@
       span('now-desc', `${pick(condition.text)} · ${pick(T.feels)} ${Math.round(current.apparent_temperature)}°`),
       span('now-meta', meta)
     );
+    // The "now" values come from the forecast model, not from a measurement: a shower the models
+    // missed is only on the radar (Windy, /maps/?layer=radar), so a link to it for the place
+    const MAPS = { bg: '/maps/', en: '/en/maps/', de: '/de/maps/', it: '/it/maps/', es: '/es/maps/', fr: '/fr/cartes/', nl: '/nl/weerkaarten/' };
+    const radar = document.createElement('a');
+    radar.className = 'now-radar';
+    radar.href = `${MAPS[document.documentElement.lang] || '/maps/'}?layer=radar`;
+    radar.textContent = pick(T.radar);
+    nodes.push(radar);
     block.replaceChildren(...nodes);
     block.hidden = false;
   }

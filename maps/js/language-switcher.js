@@ -74,7 +74,8 @@ const translations = {
     cloudsLayer: "☁️ Clouds",
     wavesLayer: "🌊 Waves",
     lightningLayer: "⚡ Lightning",
-    airQualityLayer: "🏭 Air Quality"
+    airQualityLayer: "🏭 Air Quality",
+    radarLayer: "📡 Radar – rain now"
   },
   bg: {
     latitudeLabel: "Географска ширина:",
@@ -150,7 +151,8 @@ const translations = {
     cloudsLayer: "☁️ Облаци",
     wavesLayer: "🌊 Вълни",
     lightningLayer: "⚡ Мълнии",
-    airQualityLayer: "🏭 Качество на въздуха"
+    airQualityLayer: "🏭 Качество на въздуха",
+    radarLayer: "📡 Радар – валежи сега"
   },
   de: {
     latitudeLabel: "Breitengrad:",
@@ -226,7 +228,8 @@ const translations = {
     cloudsLayer: "☁️ Wolken",
     wavesLayer: "🌊 Wellen",
     lightningLayer: "⚡ Blitze",
-    airQualityLayer: "🏭 Luftqualität"
+    airQualityLayer: "🏭 Luftqualität",
+    radarLayer: "📡 Radar – Niederschlag jetzt"
   },
   es: {
     latitudeLabel: "Latitud:",
@@ -303,7 +306,8 @@ const translations = {
     cloudsLayer: "☁️ Nubes",
     wavesLayer: "🌊 Olas",
     lightningLayer: "⚡ Rayos",
-    airQualityLayer: "🏭 Calidad del Aire"
+    airQualityLayer: "🏭 Calidad del Aire",
+    radarLayer: "📡 Radar – lluvia ahora"
   },
   it: {
     latitudeLabel: "Latitudine:",
@@ -380,7 +384,8 @@ const translations = {
     cloudsLayer: "☁️ Nuvole",
     wavesLayer: "🌊 Onde",
     lightningLayer: "⚡ Fulmini",
-    airQualityLayer: "🏭 Qualità dell'Aria"
+    airQualityLayer: "🏭 Qualità dell'Aria",
+    radarLayer: "📡 Radar – pioggia ora"
   },
   fr: {
     latitudeLabel: "Latitude :",
@@ -454,7 +459,8 @@ const translations = {
     cloudsLayer: "☁️ Nuages",
     wavesLayer: "🌊 Vagues",
     lightningLayer: "⚡ Foudre",
-    airQualityLayer: "🏭 Qualité de l’air"
+    airQualityLayer: "🏭 Qualité de l’air",
+    radarLayer: "📡 Radar – pluie en direct"
   },
   nl: {
     latitudeLabel: "Breedtegraad:",
@@ -528,7 +534,8 @@ const translations = {
     cloudsLayer: "☁️ Bewolking",
     wavesLayer: "🌊 Golven",
     lightningLayer: "⚡ Bliksem",
-    airQualityLayer: "🏭 Luchtkwaliteit"
+    airQualityLayer: "🏭 Luchtkwaliteit",
+    radarLayer: "📡 Radar – neerslag nu"
   }
 };
 
@@ -598,7 +605,7 @@ function updateContent(language) {
   const layerSelect = document.getElementById("weatherLayer");
   if (currentLayer && currentLayer.textContent && layerSelect) {
     // Runs before the layer options are re-translated below, so read the key, not the text
-    const layerKeys = { rain: 'rainLayer', wind: 'windLayer', temp: 'tempLayer', pressure: 'pressureLayer', clouds: 'cloudsLayer', waves: 'wavesLayer', thunder: 'lightningLayer', pm2p5: 'airQualityLayer' };
+    const layerKeys = { rain: 'rainLayer', wind: 'windLayer', temp: 'tempLayer', pressure: 'pressureLayer', clouds: 'cloudsLayer', waves: 'wavesLayer', thunder: 'lightningLayer', pm2p5: 'airQualityLayer', radar: 'radarLayer' };
     const layerName = translations[language][layerKeys[layerSelect.value]] || layerSelect.options[layerSelect.selectedIndex].text;
     currentLayer.textContent = `${translations[language].currentLayer}: ${layerName}`;
   }
@@ -654,6 +661,7 @@ function updateContent(language) {
     if (options[5]) options[5].textContent = translations[language].wavesLayer;
     if (options[6]) options[6].textContent = translations[language].lightningLayer;
     if (options[7]) options[7].textContent = translations[language].airQualityLayer;
+    if (options[8]) options[8].textContent = translations[language].radarLayer;
   }
   
   // Check if clearLocation element exists before updating
