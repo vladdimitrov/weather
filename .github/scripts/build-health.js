@@ -5,6 +5,7 @@
 // If Open-Meteo does not answer, a page that already has data is left as it is; otherwise the table is
 // written empty and the browser fills it.
 const fs = require('fs');
+const OmCache = require('./om-cache.js');
 const path = require('path');
 const CITIES_ALL = require('./bg-cities.js');
 const Health = require('../../js/health-core.js');
@@ -16,7 +17,9 @@ const UV_CITIES = CITIES_ALL;                 // sea, mountain and big cities
 const POLLEN_CITIES = CITIES_ALL.slice(0, 20); // the big cities
 const slim = list => JSON.stringify(list.map(({ slug, name, lat, lon }) => ({ slug, name, lat, lon })));
 
-async function fetchJson(url) {
+// the answers are kept for the day (om-cache.js): only the first run of the day asks Open-Meteo
+const fetchJson = url => OmCache.json(url, () => fetchOpenMeteo(url));
+async function fetchOpenMeteo(url) {
   const WAITS = [20000, 65000, 65000];
   for (let attempt = 0; ; attempt++) {
     const response = await fetch(url); // a network error stops the run at once
@@ -141,6 +144,7 @@ async function build(file, urls, rowsOf, render) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, render(rows));
   console.log(`Wrote ${path.relative(ROOT, file)} (${rows.length} places).`);
+  OmCache.report('build-health.js');
 }
 
 (async () => {

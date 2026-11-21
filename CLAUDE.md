@@ -49,6 +49,7 @@ weatherpulse.eu: a static weather site on GitHub Pages, part of the VYZYA brand 
 - Generated pages are never edited by hand: change the generator or its `text-*.js` file, then run the generator (README, "Scripts").
 - After any change: `node .github/scripts/build-sitemap.js` and `node .github/scripts/check-site.js` (must pass). For forecast or moon changes also `test-moon.js` / `test-sun.js`.
 - Running the generators twice must change nothing.
+- **Open-Meteo free limit** (< 10 000 calls a day, a call with many places/variables/models counts as several): the forecast workflow asks Open-Meteo only on its first run of the day (UTC) and in the scheduled morning run; the runs after pushes reuse the day's answers (`om-cache.js`, actions/cache). New scripts that call Open-Meteo in a workflow go through `OmCache.json()`.
 - The sandbox may have no network: `build-forecast.js` and friends can be tested with a fake `fetch`; the real run is the "Daily forecast in the city pages" workflow (can be started by hand).
 - `main` gets automatic commits every day (forecast, warnings, share cards): pull before working.
 - Work on a branch and open a pull request; the owner merges. Commit messages in English, the owner talks in Bulgarian.
