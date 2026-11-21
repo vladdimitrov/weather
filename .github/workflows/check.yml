@@ -21,7 +21,7 @@ jobs:
       - name: Translated hand-written pages are up to date
         run: |
           node .github/scripts/build-main.js
-          git diff --exit-code -- en/index.html de/index.html it/index.html es/index.html fr/index.html nl/index.html '*/magnitni-buri/index.html' '*/weather/index.html' '*/maps/index.html' '*/holliday_calendar/index.html' ro/index.html fr/previsions/index.html nl/weersverwachting/index.html fr/cartes/index.html nl/weerkaarten/index.html fr/tempetes-magnetiques/index.html nl/magnetische-stormen/index.html fr/calendrier-jours-feries/index.html nl/feestdagenkalender/index.html
+          git diff --exit-code -- en/index.html de/index.html it/index.html es/index.html fr/index.html nl/index.html '*/magnitni-buri/index.html' ro/furtuni-magnetice/index.html '*/weather/index.html' '*/maps/index.html' '*/holliday_calendar/index.html' ro/index.html fr/previsions/index.html nl/weersverwachting/index.html fr/cartes/index.html nl/weerkaarten/index.html fr/tempetes-magnetiques/index.html nl/magnetische-stormen/index.html fr/calendrier-jours-feries/index.html nl/feestdagenkalender/index.html
       - run: node .github/scripts/check-site.js
       - run: node .github/scripts/test-moon.js
       - run: node .github/scripts/test-sun.js

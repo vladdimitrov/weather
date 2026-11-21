@@ -63,7 +63,7 @@ jobs:
       - name: Commit
         id: commit
         run: |
-          git add vremeto en/vremeto de/vremeto it/vremeto es/vremeto fr/meteo nl/weer ro/vremea europe en/europe de/europe it/europe es/europe fr/europe nl/europa magnitni-buri en/magnitni-buri de/magnitni-buri it/magnitni-buri es/magnitni-buri fr/tempetes-magnetiques nl/magnetische-stormen luna en/luna de/luna it/luna es/luna fr/luna fr/lune nl/luna nl/maan sitemap.xml .github/scripts/sitemap-hashes.json .github/scripts/storms-data.json
+          git add vremeto en/vremeto de/vremeto it/vremeto es/vremeto fr/meteo nl/weer ro/vremea europe en/europe de/europe it/europe es/europe fr/europe nl/europa magnitni-buri en/magnitni-buri de/magnitni-buri it/magnitni-buri es/magnitni-buri fr/tempetes-magnetiques nl/magnetische-stormen ro/furtuni-magnetice luna en/luna de/luna it/luna es/luna fr/luna fr/lune nl/luna nl/maan sitemap.xml .github/scripts/sitemap-hashes.json .github/scripts/storms-data.json
           if git diff --cached --quiet; then
             echo "Nothing changed."; exit 0
           fi

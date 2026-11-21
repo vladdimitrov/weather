@@ -38,7 +38,7 @@ const SLUGS = {
   ro: {
     vremeto: 'vremea', pylnolunie: 'luna-plina', novolunie: 'luna-noua', praznici: 'sarbatori', darzhavi: 'tari',
     gradove: 'orase', kurorti: 'statiuni', nebeto: 'cerul', 'magnitni-buri': 'furtuni-magnetice', 'za-saita': 'despre',
-    poveritelnost: 'confidentialitate', iztochnici: 'surse', uidzhet: 'widget', '10-dni': '10-zile', uikend: 'weekend',
+    poveritelnost: 'confidentialitate', iztochnici: 'surse', uidzhet: 'widget', '10-dni': '10-zile', uikend: 'weekend', dnes: 'azi', utre: 'maine',
     weather: 'prognoza', maps: 'harti', holliday_calendar: 'calendar-sarbatori', europe: 'europa',
     ...monthWords('ianuarie februarie martie aprilie mai iunie iulie august septembrie octombrie noiembrie decembrie')
   }
