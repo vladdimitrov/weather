@@ -6,6 +6,7 @@
 // If Open-Meteo does not answer, a page that already has a forecast is left as it is; a page without
 // one is written with an empty table that the browser fills.
 const fs = require('fs');
+const OmCache = require('./om-cache.js');
 const path = require('path');
 const CITIES = require('./bg-cities.js');
 const Tomorrow = require('../../js/tomorrow-core.js');
@@ -16,7 +17,9 @@ const URL_PATH = '/vremeto/utre/';
 const FILE = path.join(ROOT, 'vremeto/utre/index.html');
 const MARK = 'data-built="1"';
 
-async function fetchJson(url) {
+// the answers are kept for the day (om-cache.js): only the first run of the day asks Open-Meteo
+const fetchJson = url => OmCache.json(url, () => fetchOpenMeteo(url));
+async function fetchOpenMeteo(url) {
   const WAITS = [20000, 65000, 65000];
   for (let attempt = 0; ; attempt++) {
     const response = await fetch(url); // a network error stops the run at once
@@ -104,5 +107,6 @@ async function main() {
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, html);
   console.log(`Wrote ${path.relative(ROOT, out)} (${data.length} places).`);
+  OmCache.report('build-tomorrow.js');
 }
 main();

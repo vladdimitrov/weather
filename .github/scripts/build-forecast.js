@@ -13,6 +13,7 @@
 // build-pages.js and build-europe.js write the pages with a "Loading…" line; run this script
 // after them (the workflow also runs when those pages change on main).
 const fs = require('fs');
+const OmCache = require('./om-cache.js');
 const path = require('path');
 const vm = require('vm');
 const I18N = require('./i18n.js');
@@ -168,8 +169,7 @@ async function forecasts(places) {
   for (const chunk of chunks) {
     const url = `${API}?latitude=${chunk.map(p => p.lat).join(',')}&longitude=${chunk.map(p => p.lon).join(',')}` +
       `&daily=${DAILY}&forecast_days=${chunk[0].days}&timezone=auto&models=${Core.GUST_MODELS.join(',')}`;
-    const response = await fetchWithRetry(url);
-    const json = await response.json();
+    const json = await OmCache.json(url, async () => (await fetchWithRetry(url)).json());
     const answers = Array.isArray(json) ? json : [json];
     if (answers.length !== chunk.length) throw new Error(`Open-Meteo: ${answers.length} answers for ${chunk.length} places`);
     answers.forEach((answer, index) => {
@@ -321,7 +321,7 @@ function snowRows(html) {
 async function snowData(rows) {
   const url = `${API}?latitude=${rows.map(r => r.lat).join(',')}&longitude=${rows.map(r => r.lon).join(',')}` +
     `&elevation=${rows.map(r => r.elevation).join(',')}&hourly=snow_depth&daily=snowfall_sum,temperature_2m_max,temperature_2m_min&forecast_days=7&timezone=auto`;
-  const json = await (await fetchWithRetry(url)).json();
+  const json = await OmCache.json(url, async () => (await fetchWithRetry(url)).json());
   const answers = Array.isArray(json) ? json : [json];
   if (answers.length !== rows.length) throw new Error(`Open-Meteo: ${answers.length} snow answers for ${rows.length} places`);
   return answers.map(answer => {
@@ -408,6 +408,7 @@ function fillAbroad(html, name, here, home) {
   });
   // The sitemap is not touched: a new forecast is not new content (build-sitemap.js leaves it out)
   console.log(`Forecast of ${today} written to ${pages.length} pages (${places.length} places).`);
+  OmCache.report('build-forecast.js');
 })().catch(error => {
   console.error('build-forecast.js: ' + error.message);
   process.exit(1);

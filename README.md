@@ -88,6 +88,7 @@ All scripts are in `.github/scripts/` and are run from the repository root with 
 | `node .github/scripts/build-sitemap.js [--seed]` | Writes `sitemap.xml` from the pages that exist (no redirects, no noindex). `<lastmod>` changes only when a page's content changes (hashes in `sitemap-hashes.json`; the daily forecast is left out). Run it after any generator |
 | `node .github/scripts/build-extra.js` | Writes `/gradove/`, the 10-day and weekend pages, the regional pages, the days off and `/uidzhet/` |
 | `node .github/scripts/build-redirects.js` | Writes the redirect pages of moved addresses |
+| `om-cache.js` (module) | A day's cache of the Open-Meteo answers for `build-forecast.js`, `build-tomorrow.js` and `build-health.js` in the workflow (`OM_CACHE_DIR`, kept by actions/cache with the date in the key; `OM_CACHE_FRESH=1` in the scheduled run asks again). Without `OM_CACHE_DIR` nothing is cached |
 | `node .github/scripts/build-storm-pages.js` | Writes the storm pages (Bulgarian; today and tomorrow also in English) from `storms-data.json` (`build-storms.js` runs it) |
 | `node .github/scripts/check-site.js` | Checks for missing local files, JavaScript/JSON syntax errors (the generators too), that every page's canonical and og:url are its own address, that the translations of a page list each other in `hreflang`, and that `sitemap.xml` lists exactly the pages that exist |
 | `node .github/scripts/indexnow.js` | Sends the pages in `sitemap.xml` to IndexNow search engines |
