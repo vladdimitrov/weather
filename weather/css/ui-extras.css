@@ -127,3 +127,8 @@
 }
 .quick-days .qd-share { margin-inline-start: 6px; }
 @media print { .quick-days { display: none; } }
+
+/* The hourly block is shown only after a click (display: none → block). The rise-in of the page
+   (theme.css, ".container > *") then started again with opacity 0 and, on phones, sometimes stayed
+   half-way during the smooth scroll: the whole block looked dimmed. It appears at once instead. */
+#main-content > #hourlyTableBlock { animation: none !important; opacity: 1; }
