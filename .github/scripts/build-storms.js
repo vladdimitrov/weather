@@ -122,7 +122,8 @@ ${rows}
         </tbody>
       </table>
       <p class="storm-updated">${TEXT.issued[lang]} ${esc(date(today, { day: 'numeric', month: 'long', year: 'numeric' }))}</p>${lang === 'bg' ? `
-      <p class="city-actions"><a class="btn" href="/magnitni-buri/dnes/">Днес по часове →</a> <a class="btn" href="/magnitni-buri/utre/">Утре →</a> <a class="btn" href="${StormPages.monthUrl(today)}">През ${StormPages.monthTitle(today)} →</a> <a class="btn" href="/magnitni-buri/kp-indeks/">Какво е Kp индекс →</a></p>` : ''}
+      <p class="city-actions"><a class="btn" href="/magnitni-buri/dnes/">Днес по часове →</a> <a class="btn" href="/magnitni-buri/utre/">Утре →</a> <a class="btn" href="${StormPages.monthUrl(today)}">През ${StormPages.monthTitle(today)} →</a> <a class="btn" href="/magnitni-buri/kp-indeks/">Какво е Kp индекс →</a></p>` : lang === 'en' ? `
+      <p class="city-actions"><a class="btn" href="/en/magnitni-buri/dnes/">Today by the hour →</a> <a class="btn" href="/en/magnitni-buri/utre/">Tomorrow →</a></p>` : ''}
     ${END}`;
 }
 
