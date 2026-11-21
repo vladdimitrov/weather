@@ -3,7 +3,8 @@
 //   /magnitni-buri/dnes/            magnetic storms today: highest Kp, Kp every 3 hours (NOAA)
 //   /magnitni-buri/utre/            the same for tomorrow
 // Today and tomorrow also in English (/en/magnitni-buri/dnes/, /utre/; Nov 2026: the English storm page
-// had a 26 % CTR, and the storms are the same over all of Europe); the other pages are Bulgarian only.
+// had a 26 % CTR, and the storms are the same over all of Europe) and Romanian (/ro/furtuni-magnetice/azi/,
+// /maine/: strong interest in storms in Romania); the other pages are Bulgarian only.
 //   /magnitni-buri/<month>-<year>/  the days of a month: Kp observed so far and NOAA's 27-day outlook
 //   /magnitni-buri/kp-indeks/       what the Kp index means (no data)
 //   /magnitni-buri/zdrave/          magnetic storms and health: what is known (no data)
@@ -26,10 +27,11 @@ const LEVELS = [
 // Kp is given in thirds (4.67 = 5−): a storm starts at 5− as NOAA rounds it
 const level = kp => LEVELS.find(([min]) => Math.round(kp) >= min) || LEVELS[LEVELS.length - 1];
 // The languages of the pages of today and tomorrow (both indexed, with hreflang)
-const DAY_LANGS = ['bg', 'en'];
+const DAY_LANGS = ['bg', 'en', 'ro'];
 const LEVEL_EN = { 9: 'Extreme geomagnetic storm', 8: 'Severe geomagnetic storm', 7: 'Strong geomagnetic storm', 6: 'Moderate geomagnetic storm', 5: 'Minor geomagnetic storm', 4: 'Active', 0: 'Quiet' };
 // the name of the level in a language (the Bulgarian one is the second item of LEVELS)
-const levelName = (kp, lang) => (lang === 'en' ? LEVEL_EN[level(kp)[0]] : level(kp)[1]);
+const LEVEL_RO = { 9: 'Furtună geomagnetică extremă', 8: 'Furtună geomagnetică foarte puternică', 7: 'Furtună geomagnetică puternică', 6: 'Furtună geomagnetică moderată', 5: 'Furtună geomagnetică slabă', 4: 'Activitate crescută', 0: 'Calm' };
+const levelName = (kp, lang) => (lang === 'en' ? LEVEL_EN[level(kp)[0]] : lang === 'ro' ? LEVEL_RO[level(kp)[0]] : level(kp)[1]);
 const kpText = kp => (Math.round(kp * 10) / 10).toFixed(1);
 const date = (iso, options) => new Date(iso + 'T12:00:00Z').toLocaleDateString('bg-BG', { timeZone: 'UTC', ...options });
 const longDate = iso => date(iso, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
@@ -41,6 +43,12 @@ const KP_WIDGET_EN = `
       <h2>Kp index now</h2>
       <iframe src="/widget/kp.html?lang=en" width="320" height="190" style="border:0;max-width:100%" title="Kp index now" loading="lazy"></iframe>
       <p class="storm-updated">The value is updated every few minutes from NOAA data. Detailed chart, solar wind and storm alerts: <a href="/en/magnitni-buri/">Magnetic storms</a>.</p>
+    </section>`;
+const KP_WIDGET_RO = `
+    <section class="info-card">
+      <h2>Indicele Kp acum</h2>
+      <iframe src="/widget/kp.html?lang=ro" width="320" height="190" style="border:0;max-width:100%" title="Indicele Kp acum" loading="lazy"></iframe>
+      <p class="storm-updated">Valoarea se actualizează la câteva minute după datele NOAA. Grafic detaliat, vântul solar și alerte la furtună: <a href="/ro/furtuni-magnetice/">Furtuni magnetice</a>.</p>
     </section>`;
 const KP_WIDGET = `
     <section class="info-card">
@@ -72,14 +80,16 @@ const faqJson = items => `  <script type="application/ld+json">
 const monthsOf = data => [...new Set([data.issued, ...(data.outlook || []).map(d => d.day), ...data.days.map(d => d.day)].map(d => d.slice(0, 7)))].sort();
 
 function links(current, data, lang = 'bg') {
-  if (lang === 'en') {
-    const list = [['/magnitni-buri/', 'Kp index now'], ['/magnitni-buri/dnes/', 'Magnetic storms today'], ['/magnitni-buri/utre/', 'Magnetic storms tomorrow'], ['/nebeto/', 'Northern lights and the sky']]
-      .filter(([url]) => L('en', url) !== current);
+  if (lang !== 'bg') {
+    const list = (lang === 'en'
+      ? [['/magnitni-buri/', 'Kp index now'], ['/magnitni-buri/dnes/', 'Magnetic storms today'], ['/magnitni-buri/utre/', 'Magnetic storms tomorrow'], ['/nebeto/', 'Northern lights and the sky']]
+      : [['/magnitni-buri/', 'Indicele Kp acum'], ['/magnitni-buri/dnes/', 'Furtuni magnetice azi'], ['/magnitni-buri/utre/', 'Furtuni magnetice mâine']])
+      .filter(([url]) => L(lang, url) !== current);
     return `
     <section class="info-card">
-      <h2>More about magnetic storms</h2>
+      <h2>${lang === 'en' ? 'More about magnetic storms' : 'Mai multe despre furtunile magnetice'}</h2>
       <div class="city-links">
-        ${list.map(([url, text]) => `<a href="${L('en', url)}" class="recent-place">${text}</a>`).join('\n        ')}
+        ${list.map(([url, text]) => `<a href="${L(lang, url)}" class="recent-place">${text}</a>`).join('\n        ')}
       </div>
     </section>`;
   }
@@ -121,7 +131,16 @@ const MEANING_EN = {
   4: 'Active: the field is unsettled, but this is not a storm yet and it has no effect on people.',
   0: 'Quiet: no disturbance of the geomagnetic field, no problems with radio or navigation are expected.'
 };
-const meaning = (kp, lang = 'bg') => { const found = MEANING.find(([min]) => Math.round(kp) >= min) || MEANING[MEANING.length - 1]; return lang === 'en' ? MEANING_EN[found[0]] : found[1]; };
+const MEANING_RO = {
+  9: 'Furtună extremă: sunt posibile avarii ale rețelelor electrice, întreruperi GPS și radio, iar aurora poate fi văzută chiar și în România.',
+  8: 'Furtună foarte puternică: sunt posibile probleme ale rețelelor electrice și ale sateliților, iar aurora se vede uneori și în sudul Europei.',
+  7: 'Furtună puternică: sunt posibile erori GPS și întreruperi ale radioului pe unde scurte, iar aurora ajunge până în Germania și Polonia.',
+  6: 'Furtună moderată: sunt posibile perturbări radio la latitudini mari, iar aurora ajunge până în Scoția și sudul Scandinaviei.',
+  5: 'Furtună slabă: sunt posibile fluctuații slabe ale rețelelor electrice și auroră în nordul Europei; în România de obicei nu există efecte vizibile.',
+  4: 'Activitate crescută: câmpul este agitat, dar încă nu este furtună și nu are efecte asupra oamenilor.',
+  0: 'Calm: nicio perturbare a câmpului geomagnetic, nu sunt așteptate probleme cu radioul sau navigația.'
+};
+const meaning = (kp, lang = 'bg') => { const found = MEANING.find(([min]) => Math.round(kp) >= min) || MEANING[MEANING.length - 1]; return lang === 'en' ? MEANING_EN[found[0]] : lang === 'ro' ? MEANING_RO[found[0]] : found[1]; };
 // The words of the pages of today and tomorrow
 const DAY = {
   bg: {
@@ -169,6 +188,30 @@ const DAY = {
     summary: ({ label, longDate, storm, name, g, quiet, kp, top }) => `${label}, ${longDate}, NOAA expects ${storm ? `<strong>a magnetic storm</strong> – ${name.toLowerCase()}${g ? ` (${g})` : ''}` : quiet ? 'a <strong>quiet</strong> geomagnetic field' : `<strong>${name.toLowerCase()}</strong> conditions, but not a magnetic storm`}. The highest Kp index of the day is ${kp}${top ? `, with the peak between ${top[0]} and ${top[1]} Bulgarian time (EET)` : ''}.`,
     health: ' Most people feel nothing.',
     about: 'A magnetic storm means a Kp index of 5 or more (G1 on the NOAA scale). At Kp 4 the field is unsettled, but this is not a storm yet. The forecast comes from the NOAA Space Weather Prediction Center and is updated here every morning; the current value is in the box below. Magnetic storms are global: the Kp index is the same for all of Europe.'
+  },
+  // Romania has the same time as Bulgaria (EET), so the hours are simply "ora României"
+  ro: {
+    locale: 'ro-RO', which: ['azi', 'mâine'], label: ['Azi', 'Mâine'], ahead: ['Zilele următoare', 'După aceea'],
+    noForecast: which => `NOAA nu a publicat încă prognoza pentru ${which}.`,
+    noForecastCard: 'NOAA nu a publicat încă prognoza.',
+    peak: (from, to) => `Vârful este între <strong>${from}</strong> și <strong>${to}</strong> (ora României).`,
+    byHours: label => `${label} pe ore →`,
+    hoursH: which => `Indicele Kp pe ore ${which}`,
+    thHours: 'Ore (ora României)', thLevel: 'Nivel', thDay: 'Ziua', thHighest: 'Kp maxim',
+    slotsNote: issued => `Kp este dat pe intervale de 3 ore. Prognoza NOAA SWPC din ${issued}.`,
+    stormsTitle: 'Furtuni magnetice', h1: which => `Furtuni magnetice ${which}`,
+    genericTitle: which => `Furtuni magnetice ${which} – indicele Kp și prognoza pe ore`,
+    genericDescription: which => `Este furtună magnetică ${which}? Indicele Kp maxim, prognoza pe intervale de 3 ore, ora României, și nivelul furtunii pe scara NOAA. Actualizat în fiecare dimineață.`,
+    title: (which, when, kp, short) => `Furtuni magnetice ${which} (${when}) – Kp ${kp}, ${short}`,
+    shortLevel: name => name.toLowerCase().replace(' geomagnetică', ''),
+    yes: (name, g) => `Da – ${name.toLowerCase()}${g ? ` (${g})` : ''}`, no: 'Nu',
+    question: (which, when, answer, kp) => `Este furtună magnetică ${which} (${when})? ${answer}: Kp maxim ${kp}`,
+    peakShort: (from, to) => `, vârf ${from}–${to}.`,
+    otherShort: (other, kp, short) => ` ${other}: Kp ${kp}, ${short}.`,
+    tail: ' Kp pe ore după NOAA, actualizat în fiecare dimineață.',
+    summary: ({ label, longDate, storm, name, g, quiet, kp, top }) => `${label}, ${longDate}, NOAA prognozează ${storm ? `<strong>o furtună magnetică</strong> – ${name.toLowerCase()}${g ? ` (${g})` : ''}` : quiet ? 'un câmp geomagnetic <strong>calm</strong>' : `<strong>${name.toLowerCase()}</strong>, dar nu o furtună magnetică`}. Indicele Kp maxim al zilei este ${kp}${top ? `, cu vârful între ${top[0]} și ${top[1]}, ora României` : ''}.`,
+    health: ' Cei mai mulți oameni nu simt nimic.',
+    about: 'Furtună magnetică înseamnă un indice Kp de 5 sau mai mult (G1 pe scara NOAA). La Kp 4 câmpul este agitat, dar încă nu este furtună. Prognoza vine de la Centrul de Predicție a Vremii Spațiale NOAA și este actualizată aici în fiecare dimineață; valoarea actuală este în caseta de mai jos. Furtunile magnetice sunt globale: indicele Kp este același pentru toată Europa.'
   }
 };
 const L = (lang, url) => I18N.localUrl(lang, url);
@@ -308,7 +351,7 @@ ${dayCard(data, 1 - index, false, lang)}
     </section>
 <!-- volatile -->${slots}${ahead}
 <!-- /volatile -->
-${lang === 'en' ? KP_WIDGET_EN : KP_WIDGET}
+${lang === 'en' ? KP_WIDGET_EN : lang === 'ro' ? KP_WIDGET_RO : KP_WIDGET}
 ${links(here, data, lang)}`,
     scripts: `<script src="/js/share.js?v=${VERSION.share}" defer></script>\n`
   });
