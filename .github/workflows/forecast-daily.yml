@@ -1,6 +1,6 @@
 name: Daily forecast in the city pages
 
-# Every morning: writes today's forecast into the HTML of the city pages (Bulgaria and Europe)
+# Every morning and evening: writes today's forecast into the HTML of the city pages (Bulgaria and Europe)
 # (.github/scripts/build-forecast.js) and the storm forecast into /magnitni-buri/ and its Bulgarian
 # pages (build-storms.js), refreshes sitemap.xml (build-sitemap.js: <lastmod> changes only for pages
 # whose content changed, not for a new forecast) and commits to main.
@@ -14,6 +14,9 @@ on:
     # many are due at once: the run of 12 November planned for 03:20 started at 11:29. An odd
     # minute is less busy than the usual ones.
     - cron: '47 2 * * *'
+    # 16:31 UTC = 18:31 in Sofia in winter: a second fresh forecast for the evening, and a second
+    # chance when the morning run starts very late (19-21 Nov 2026 it started only after 12:00)
+    - cron: '31 16 * * *'
   push:
     branches: [main]
     paths:
