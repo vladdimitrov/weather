@@ -192,7 +192,9 @@ const KP_BLOCK = /<div class="kp-forecast" id="stormForecast">(<!-- kp-forecast:
 const KP_EMPTY = '<div class="kp-forecast" id="stormForecast" hidden></div>';
 
 function storms() {
-  const template = holidaysLinkBack(read('magnitni-buri/index.html')).replace(KP_BLOCK, KP_EMPTY);
+  // (the Bulgarian title and description with the Kp of the day sit between volatile marks: build-storms.js)
+  const template = holidaysLinkBack(read('magnitni-buri/index.html')).replace(KP_BLOCK, KP_EMPTY)
+    .replace(/<!-- volatile -->(<title>[^<]*<\/title>|<meta (?:name="description"|property="og:(?:title|description)") content="[^"]*">)<!-- \/volatile -->/g, '$1');
   const script = read('js/storm-page.js');
   const { PAGE, T } = evaluate(`${declaration(script, 'PAGE', 'js/storm-page.js')}\n${declaration(script, 'T', 'js/storm-page.js')}`, ['PAGE', 'T']);
   const text = (group, key, lang) => {

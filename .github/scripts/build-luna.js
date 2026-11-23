@@ -626,7 +626,10 @@ ${rows}
       </div>
     </section>`;
   };
-  return page({
+  // The title and the description start with the next full moon (Nov 2026: "пълнолуние" at position 8 with a
+  // title that only listed the years); they change with it, so they sit between volatile marks too
+  const nextDate = `${dayMonth(lang, nf.s.year, nf.s.month, nf.s.day)}${nf.s.year !== sofia(now).year ? ` ${nf.s.year} г.` : ''}`;
+  const html = page({
     head: HEAD,
     url: FULL_URL,
     lang,
@@ -635,8 +638,8 @@ ${rows}
     indexed: INDEXED,
     scripts: SCRIPTS,
     image: ogImage(lang),
-    title: esc(`Пълнолуние ${y1} и ${y2} – всички дати и часове`),
-    description: esc(`Кога е пълнолунието: всички ${all.length} пълнолуния през ${y1} и ${y2} г. с точен час по българско време, изгрев на Луната, суперлуни и синя луна.`),
+    title: esc(`Пълнолуние: следващото е на ${nextDate}, ${hhmm(next.time)} ч. – всички дати ${y1}–${y2}`),
+    description: esc(`Следващото пълнолуние е ${weekdayOf(lang, nf.s.year, nf.s.month, nf.s.day)}, ${fullDate(lang, next.time, true)}, в ${hhmm(next.time)} ч. българско време${isSuperMoon(next) ? ' (суперлуна)' : ''}. Всички ${all.length} пълнолуния през ${y1} и ${y2} г. с точен час, изгрев на Луната, суперлуни и синя луна.`),
     jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.cal, '/luna/'], ['Пълнолуние', FULL_URL]]),
     body: `    <p class="breadcrumbs"><a href="/luna/">${T.cal}</a> › Пълнолуние</p>
     <h1>Пълнолуние – дати и часове през ${y1} и ${y2} г.</h1>
@@ -650,6 +653,9 @@ ${years.map(year => `      <a class="btn" href="/luna/${year}/novolunie/">${P.ot
 ${years.map(year => `      <a class="btn" href="/luna/${year}/">${T.cal} ${year}</a>`).join('\n')}
     </p>`
   });
+  // (only the head: the picture of the Moon has a <title> of its own)
+  const head = html.indexOf('</head>');
+  return html.slice(0, head).replace(/<title>[^<]*<\/title>|<meta (?:name="description"|property="og:(?:title|description)") content="[^"]*">/g, m => `<!-- volatile -->${m}<!-- /volatile -->`) + html.slice(head);
 }
 
 // --- Run ----------------------------------------------------------------------

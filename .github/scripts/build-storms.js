@@ -128,6 +128,30 @@ ${rows}
     ${END}`;
 }
 
+// The title and description of the Bulgarian /magnitni-buri/ carry the Kp of today (Nov 2026: 1 278 impressions
+// a week at position 9, the queries "магнитни бури сега" and "... в реално време"), like /dnes/ and /utre/.
+// Between <!-- volatile --> marks (the lastmod does not move every day); build-main.js takes the marks
+// out when it makes the translations from this page.
+const STATIC_DESCRIPTION = 'Магнитни бури в реално време: Kp индекс сега, слънчев вятър и прогноза на NOAA за 3 дни. Обновява се автоматично. Известие при буря.';
+function hubHead(html, days) {
+  const kp = kp => (Math.round(kp * 10) / 10).toFixed(1);
+  const lower = text => text.charAt(0).toLocaleLowerCase('bg-BG') + text.slice(1);
+  const date = new Date(days[0].day + 'T12:00:00Z').toLocaleDateString('bg-BG', { timeZone: 'UTC', day: 'numeric', month: 'long' });
+  const title = `Магнитни бури сега и в реално време – днес Kp до ${kp(days[0].kp)}`;
+  const description = `Днес (${date}): Kp до ${kp(days[0].kp)}, ${lower(word(T, levelKey(days[0].kp), 'bg'))}. ` +
+    (days[1] ? `Утре: Kp до ${kp(days[1].kp)}, ${lower(word(T, levelKey(days[1].kp), 'bg'))}. ` : '') + STATIC_DESCRIPTION;
+  const set = (pattern, tag, what) => {
+    const marked = new RegExp(`(?:<!-- volatile -->)?${pattern.source}(?:<!-- /volatile -->)?`);
+    if (!marked.test(html)) throw new Error(`magnitni-buri/index.html: ${what} not found`);
+    html = html.replace(marked, () => `<!-- volatile -->${tag}<!-- /volatile -->`);
+  };
+  set(/<title>[^<]*<\/title>/, `<title>${esc(title)}</title>`, 'title');
+  set(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${esc(description)}">`, 'description');
+  set(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${esc(title)}">`, 'og:title');
+  set(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${esc(description)}">`, 'og:description');
+  return html;
+}
+
 (async function main() {
   const { days, past } = await forecast();
   const today = days[0].day;
@@ -141,6 +165,7 @@ ${rows}
     if (marked.test(html)) html = html.replace(marked, () => block);
     else if (html.includes(EMPTY)) html = html.replace(EMPTY, () => block);
     else throw new Error(`${url}index.html: the #stormForecast block was not found`);
+    if (lang === 'bg') html = hubHead(html, days);
     fs.writeFileSync(file, html);
     urls.push(url);
   });

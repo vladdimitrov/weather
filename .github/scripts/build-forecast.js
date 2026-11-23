@@ -309,6 +309,39 @@ function describePage(html, words) {
     () => `<meta name="description" content="${esc(words)}${base}" data-description="${base}">`);
 }
 
+// The title of some Bulgarian pages also carries the numbers of the day (Nov 2026: search results show the title first):
+//   ski resorts:  "Времето в Банско – до 13 см нов сняг за 7 дни, днес 2°/12°" (no snow: the title of the generator)
+//   seaside places in Bulgaria and Greece, November to April: "Времето в Аспровалта, Гърция – днес, утре и 7 дни"
+//                 (nobody looks for the sea temperature in winter; from May the title of the generator again)
+// The title of the generator stays in data-title: build-pages.js keeps the title while it is the same,
+// build-sitemap.js leaves the new one out of the content (a new day is not a new lastmod).
+const TITLE = /<title(?: data-title="([^"]*)")?>([^<]*)<\/title>/;
+const titleOf = html => { const m = html.match(TITLE); return m ? (m[1] !== undefined ? m[1] : m[2]) : null; };
+function titlePage(html, words) {
+  const base = titleOf(html);
+  if (base === null) return html;
+  return html.replace(TITLE, () => (words ? `<title data-title="${base}">${esc(words)}</title>` : `<title>${base}</title>`));
+}
+const SEA_TITLE = /^(Времето в .+?),? днес и температура на морето(?: \| Weather Pulse)?$/;
+const SKI_TITLE = /^Времето в (.+?) днес – сняг на пистите и прогноза(?: \| Weather Pulse)?$/;
+function dayTitle(page, data, snow, today) {
+  // only the main page of a place, in Bulgarian
+  if (page.lang !== 'bg' || !/^\/(vremeto|europe\/[a-z-]+)\/[a-z-]+\/$/.test(page.url)) return '';
+  const base = (titleOf(page.html) || '').replace(/&amp;/g, '&');
+  const d = data.daily;
+  const todayRange = `${whole(d.temperature_2m_min[0])}/${whole(d.temperature_2m_max[0])}`;
+  const ski = base.match(SKI_TITLE);
+  if (ski) {
+    if (snow && snow.fresh >= 1) return `Времето в ${ski[1]} – до ${snow.fresh} см нов сняг за 7 дни, днес ${todayRange}`;
+    if (snow && snow.depth >= 1) return `Времето в ${ski[1]} днес ${todayRange} – ${snow.depth} см сняг на пистите`;
+    return '';
+  }
+  const sea = base.match(SEA_TITLE);
+  const month = Number(today.slice(5, 7));
+  if (sea && (month >= 11 || month <= 4)) return `${sea[1]} – днес, утре и 7 дни`;
+  return '';
+}
+
 // The snow table of the ski resorts (data-mode="snow", js/region-weather.js fills it when the page opens):
 // the same cells written into the page, so that the page says how much snow there is without a script
 const SNOW_TABLE = /(<table class="kp-table region-table" data-mode="snow">[\s\S]*?)(<tbody>[\s\S]*?<\/tbody>)/;
@@ -403,7 +436,9 @@ function fillAbroad(html, name, here, home) {
     // the most snow of the places of the resort (the highest one) and the new snow there
     const top = page.snow && page.snow.filter(v => v.depth !== null).sort((a, b) => b.depth - a.depth)[0];
     if (page.snow) html = fillSnow(html, page.snow, page.lang);
-    html = describePage(html, forecastWords(page, data.get(page.key), top && { depth: top.depth, fresh: Math.max(...page.snow.map(v => v.fresh)) }));
+    const snowNow = top && { depth: top.depth, fresh: Math.max(...page.snow.map(v => v.fresh)) };
+    html = describePage(html, forecastWords(page, data.get(page.key), snowNow));
+    html = titlePage(html, dayTitle(page, data.get(page.key), snowNow, today));
     fs.writeFileSync(page.file, html);
   });
   // The sitemap is not touched: a new forecast is not new content (build-sitemap.js leaves it out)
