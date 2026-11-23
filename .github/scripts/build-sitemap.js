@@ -12,6 +12,7 @@
 //   - the forecast written by build-forecast.js inside #cityForecast
 //   - anything between <!-- volatile --> and <!-- /volatile -->
 //   - the numbers of today and tomorrow in the description of a city page (data-description)
+//   - the numbers of the day in the title of a ski resort or a seaside place (data-title)
 //   - the year in the footer
 // Run it after the generators (the daily workflow runs it after build-forecast.js and build-storms.js).
 const fs = require('fs');
@@ -45,6 +46,8 @@ function content(html) {
     .replace(/<!-- kp-forecast:start -->[\s\S]*?<!-- kp-forecast:end -->/g, '')
     // the numbers of today and tomorrow at the start of the description of a city page (build-forecast.js)
     .replace(/<meta name="description" content="[^"]*" data-description="([^"]*)">/, '<meta name="description" content="$1">')
+    // and in the title of the ski resorts and the seaside places (build-forecast.js)
+    .replace(/<title data-title="([^"]*)">[^<]*<\/title>/, '<title>$1</title>')
     .replace(/<span class="current-year">\d+<\/span>/g, '')
     // a new version of a script or a stylesheet (?v=N) is not new content
     .replace(/(\.(?:js|css|json))\?v=\d+/g, '$1');
