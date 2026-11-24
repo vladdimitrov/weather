@@ -1,3 +1,220 @@
 {
- "provinces": {}
+ "provinces": {
+  "blagoevgrad": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "dobrich": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "gabrovo": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "lovech": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "montana": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "pazardzhik": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "pleven": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "plovdiv": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "razgrad": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "ruse": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "shumen": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "silistra": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "sliven": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "targovishte": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "varna": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "veliko-tarnovo": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "vidin": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ],
+  "vratsa": [
+   {
+    "level": "yellow",
+    "type": "wind",
+    "event": {
+     "bg": "Силен вятър!",
+     "en": "Strong wind!"
+    },
+    "onset": "2026-11-24T00:00:01+02:00",
+    "expires": "2026-11-25T00:00:00+02:00"
+   }
+  ]
+ }
 }
