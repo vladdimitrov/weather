@@ -8,6 +8,7 @@ from zoneinfo import ZoneInfo
 
 import requests
 
+from . import channels
 from .alerts_render import render_full_moon, render_storm
 from .config import ROOT
 from .hosting import Hosting
@@ -80,6 +81,8 @@ def _post(cfg, client, host, img_path: Path, caption: str, stamp: str):
         log.info("Facebook post id: %s", client.fb_photo(img_path, caption))
     if to_ig:
         log.info("Instagram media id: %s", client.ig_image(url, caption))
+    # Telegram/Viber channels, when their tokens exist (channels.py)
+    channels.send(img_path, caption, url)
 
 
 def run_alerts(cfg, make_client, dry_run=False, sample=False, force=False, today=False):

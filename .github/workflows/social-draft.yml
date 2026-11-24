@@ -90,4 +90,7 @@ jobs:
           WP_PAGE_ID: ${{ secrets.WP_PAGE_ID }}
           WP_PAGE_TOKEN: ${{ secrets.WP_PAGE_TOKEN }}
           WP_IG_USER_ID: ${{ secrets.WP_IG_USER_ID }}
+          WP_TELEGRAM_TOKEN: ${{ secrets.WP_TELEGRAM_TOKEN }}
+          WP_TELEGRAM_CHAT: ${{ secrets.WP_TELEGRAM_CHAT }}
+          WP_VIBER_TOKEN: ${{ secrets.WP_VIBER_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
