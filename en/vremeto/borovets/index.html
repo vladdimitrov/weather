@@ -19,7 +19,7 @@
   <link rel="alternate" hreflang="nl" href="https://weatherpulse.eu/nl/weer/borovets/" />
   <link rel="alternate" hreflang="ro" href="https://weatherpulse.eu/ro/vremea/borovets/" />
   <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu/en/vremeto/borovets/" />
-  <meta name="description" content="Snow on the slopes: up to 4 cm, new snow in 7 days: 1 cm. Today: −5° / 1°, cloudy. Tomorrow: −4° / 5°, cloudy. Weather in Borovets today and for 7 days: snow on the slopes (snow depth and new snow), temperature down in the resort and up on the slopes, wind and precipitation. Climate by month." data-description="Weather in Borovets today and for 7 days: snow on the slopes (snow depth and new snow), temperature down in the resort and up on the slopes, wind and precipitation. Climate by month.">
+  <meta name="description" content="Snow on the slopes: up to 4 cm, new snow in 7 days: 6 cm. Today: −5° / 1°, cloudy. Tomorrow: −3° / 5°, cloudy. Weather in Borovets today and for 7 days: snow on the slopes (snow depth and new snow), temperature down in the resort and up on the slopes, wind and precipitation. Climate by month." data-description="Weather in Borovets today and for 7 days: snow on the slopes (snow depth and new snow), temperature down in the resort and up on the slopes, wind and precipitation. Climate by month.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Weather Pulse">
   <meta property="og:locale" content="en_GB">
@@ -108,6 +108,9 @@
     <p class="storm-intro">Weather forecast for Borovets for today, tomorrow and the next 7 days: temperature, precipitation, wind and chance of rain. The data come from Open-Meteo and are updated every hour.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Borovets" data-lat="42.2667" data-lon="23.6056" data-query="city=Borovets&lat=42.2667&lon=23.6056&cc=BG" data-warn="sofia-province">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Strong wind gusts today: up to 62 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
         <h2>Tuesday 24 November</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">−5° / 1°</span>
@@ -116,7 +119,7 @@
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Thursday 26 November (up to 10°) and the coldest Monday 30 November (down to −9°). Rain or snow is expected on 4 of the days. Daytime temperatures are below normal for November (average high 8°). The models agree up to Friday 27 November; after that the forecast is less certain (up to 7° apart in temperature and one model gives rain, another a dry day).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Thursday 26 November (up to 10°) and the coldest Monday 30 November (down to −9°). Rain or snow is expected on 4 of the days. Daytime temperatures are below normal for November (average high 8°). The models agree up to tomorrow; after that the forecast is less certain (up to 7° apart in temperature).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Borovets&lat=42.2667&lon=23.6056&cc=BG&date=2026-11-24" title="Hourly forecast →">
             <span class="kp-day-name">Tue 24</span>
@@ -125,16 +128,16 @@
             <span class="city-day-temp">−5° / 1°</span>
             <span class="kp-day-status">Cloudy</span>
             <span class="city-day-rain" title="chance of rain">0%</span>
-            <span class="city-day-wind">Wind 15 km/h · gusts 59</span>
+            <span class="city-day-wind city-day-gusts">Wind 16 km/h · gusts 62</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Borovets&lat=42.2667&lon=23.6056&cc=BG&date=2026-11-25" title="Hourly forecast →">
             <span class="kp-day-name">Wed 25</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">25.11</span>
-            <span class="city-day-temp">−4° / 5°</span>
+            <span class="city-day-temp">−3° / 5°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">5%</span>
-            <span class="city-day-wind">Wind 13 km/h · gusts 46</span>
+            <span class="city-day-rain" title="chance of rain">3%</span>
+            <span class="city-day-wind">Wind 11 km/h · gusts 48</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Borovets&lat=42.2667&lon=23.6056&cc=BG&date=2026-11-26" title="Hourly forecast →">
             <span class="kp-day-name">Thu 26</span>
@@ -142,47 +145,46 @@
             <span class="city-day-date">26.11</span>
             <span class="city-day-temp">3° / 10°</span>
             <span class="kp-day-status">Drizzle</span>
-            <span class="city-day-rain" title="chance of rain">68% · 2.8 mm</span>
-            <span class="city-day-wind">Wind 6 km/h · gusts 32</span>
+            <span class="city-day-rain" title="chance of rain">50% · 0.5 mm</span>
+            <span class="city-day-wind">Wind 7 km/h · gusts 23</span>
+            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ffd54f">● less certain</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Borovets&lat=42.2667&lon=23.6056&cc=BG&date=2026-11-27" title="Hourly forecast →">
             <span class="kp-day-name">Fri 27</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">27.11</span>
-            <span class="city-day-temp">4° / 9°</span>
+            <span class="city-day-temp">5° / 8°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">81% · 12.8 mm</span>
-            <span class="city-day-wind">Wind 7 km/h · gusts 22</span>
+            <span class="city-day-rain" title="chance of rain">76% · 13.4 mm</span>
+            <span class="city-day-wind">Wind 5 km/h · gusts 18</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Borovets&lat=42.2667&lon=23.6056&cc=BG&date=2026-11-28" title="Hourly forecast →">
             <span class="kp-day-name">Sat 28</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">28.11</span>
-            <span class="city-day-temp">−2° / 4°</span>
+            <span class="city-day-temp">1° / 6°</span>
             <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">90% · 32.7 mm</span>
-            <span class="city-day-wind">Wind 12 km/h · gusts 41</span>
-            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ff8a65">● uncertain</span>
+            <span class="city-day-rain" title="chance of rain">98% · 18.5 mm</span>
+            <span class="city-day-wind">Wind 14 km/h · gusts 53</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Borovets&lat=42.2667&lon=23.6056&cc=BG&date=2026-11-29" title="Hourly forecast →">
             <span class="kp-day-name">Sun 29</span>
             <span class="city-day-icon" aria-hidden="true">❄️</span>
             <span class="city-day-date">29.11</span>
-            <span class="city-day-temp">−7° / −1°</span>
+            <span class="city-day-temp">−6° / 1°</span>
             <span class="kp-day-status">Snow</span>
-            <span class="city-day-rain" title="chance of rain">75% · 4.5 mm</span>
-            <span class="city-day-wind">Wind 12 km/h · gusts 40</span>
-            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ff8a65">● uncertain</span>
+            <span class="city-day-rain" title="chance of rain">87% · 3.3 mm</span>
+            <span class="city-day-wind">Wind 14 km/h · gusts 53</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Borovets&lat=42.2667&lon=23.6056&cc=BG&date=2026-11-30" title="Hourly forecast →">
             <span class="kp-day-name">Mon 30</span>
-            <span class="city-day-icon" aria-hidden="true">❄️</span>
+            <span class="city-day-icon" aria-hidden="true">🌫️</span>
             <span class="city-day-date">30.11</span>
-            <span class="city-day-temp">−9° / −4°</span>
-            <span class="kp-day-status">Snow</span>
-            <span class="city-day-rain" title="chance of rain">26%</span>
-            <span class="city-day-wind">Wind 10 km/h · gusts 28</span>
-            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ffd54f">● less certain</span>
+            <span class="city-day-temp">−9° / −5°</span>
+            <span class="kp-day-status">Fog</span>
+            <span class="city-day-rain" title="chance of rain">38%</span>
+            <span class="city-day-wind">Wind 8 km/h · gusts 27</span>
+            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ff8a65">● uncertain</span>
           </a>
         </div>
         <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 1315 m</p>
@@ -196,9 +198,9 @@
       <table class="kp-table region-table" data-mode="snow">
         <thead><tr><th>Place</th><th>Snow depth</th><th>New snow, 7 days</th><th>Min / max</th></tr></thead>
         <!-- volatile --><tbody>
-          <tr data-lat="42.2667" data-lon="23.6056" data-elevation="1350"><td>Borovets <span class="storm-updated">1350 m</span></td><td>0 cm</td><td>0 cm</td><td>−9° / 7°</td></tr>
-          <tr data-lat="42.242" data-lon="23.575" data-elevation="1750"><td>Sitnyakovo <span class="storm-updated">1750 m</span></td><td>0 cm</td><td>0 cm</td><td>−10° / 8°</td></tr>
-          <tr data-lat="42.23" data-lon="23.56" data-elevation="2300"><td>Yastrebets <span class="storm-updated">2300 m</span></td><td>4 cm</td><td>1 cm</td><td>−13° / 3°</td></tr>
+          <tr data-lat="42.2667" data-lon="23.6056" data-elevation="1350"><td>Borovets <span class="storm-updated">1350 m</span></td><td>0 cm</td><td>1 cm</td><td>−9° / 6°</td></tr>
+          <tr data-lat="42.242" data-lon="23.575" data-elevation="1750"><td>Sitnyakovo <span class="storm-updated">1750 m</span></td><td>0 cm</td><td>1 cm</td><td>−8° / 9°</td></tr>
+          <tr data-lat="42.23" data-lon="23.56" data-elevation="2300"><td>Yastrebets <span class="storm-updated">2300 m</span></td><td>4 cm</td><td>6 cm</td><td>−12° / 3°</td></tr>
         </tbody><!-- /volatile -->
       </table>
       <p class="storm-updated region-nojs">The table is filled in when the page loads.</p>
