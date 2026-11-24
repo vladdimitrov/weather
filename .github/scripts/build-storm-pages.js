@@ -374,6 +374,17 @@ function monthPage(data, month) {
   (data.outlook || []).filter(d => d.day.startsWith(month) && !known.has(d.day)).forEach(d => days.push({ day: d.day, kp: d.kp, ap: d.ap }));
   days.sort((a, b) => a.day.localeCompare(b.day));
   const storms = days.filter(d => Math.round(d.kp) >= 5);
+  // The title names only measured storms and the 3-day forecast; the 27-day outlook (days with `ap`) is only
+  // indicative, so it gets its own sentence in the description
+  const sure = storms.filter(d => !('ap' in d)), maybe = storms.filter(d => 'ap' in d);
+  const maxKp = sure.reduce((max, d) => Math.max(max, d.kp), 0);
+  // "12, 13 и 20 ноември"
+  const dayList = list => {
+    const numbers = list.map(d => Number(d.day.slice(8)));
+    return list.length ? (numbers.length > 1 ? `${numbers.slice(0, -1).join(', ')} и ${numbers[numbers.length - 1]}` : `${numbers[0]}`) + ' ' + date(list[0].day, { month: 'long' }) : '';
+  };
+  const stormDays = dayList(sure);
+  const maybeText = maybe.length ? ` Възможна буря по 27-дневната прогноза: ${dayList(maybe)}.` : '';
   const past = days.filter(d => d.observed);
   const future = days.filter(d => !d.observed);
   const parts = [past.length && 'за изминалите дни – измереният най-висок Kp индекс по данни на NOAA', future.length && 'за предстоящите – прогнозата на NOAA'].filter(Boolean);
@@ -381,8 +392,12 @@ function monthPage(data, month) {
   return page({
     ...ONLY_BG,
     url,
-    title: `Магнитни бури ${name} – прогноза по дни`,
-    description: `Магнитни бури през ${name}: кои дни се очаква магнитна буря, Kp индекс по дни по данни и прогноза на NOAA. ${storms.length ? `Дни с буря: ${storms.length}.` : ''}`.trim(),
+    // the storm days in the title and first in the description (Nov 2026: "магнитни бури ноември 2026" had 614
+    // impressions at position 8 and a CTR of 2 %); they change only when the data does, not every day
+    title: sure.length && sure.length <= 4 ? `Магнитни бури ${name} – буря на ${stormDays}`
+      : sure.length ? `Магнитни бури ${name} – ${sure.length} дни с буря (Kp до ${kpText(maxKp)})`
+      : `Магнитни бури ${name} – прогноза по дни`,
+    description: `${sure.length ? `Дни с магнитна буря през ${name}: ${stormDays} (Kp до ${kpText(maxKp)}).` : `Засега няма дни с магнитна буря през ${name}.`}${maybeText} Kp индекс за всеки ден по данни и прогноза на NOAA.`,
     jsonLd: breadcrumbs([['Weather Pulse', '/'], ['Магнитни бури', '/magnitni-buri/'], [`Магнитни бури ${name}`, url]]),
     body: `    <p class="breadcrumbs"><a href="/magnitni-buri/">Магнитни бури</a> › ${name}</p>
     <h1>Магнитни бури през ${name}</h1>

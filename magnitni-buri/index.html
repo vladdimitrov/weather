@@ -141,6 +141,12 @@
     <div class="space-weather" id="stormWind" hidden></div>
     <div class="space-weather" id="stormOutlook" hidden></div>
 
+    <section class="kp-forecast storm-flares">
+      <h2 data-i18n="flaresTitle">☀️ Слънчеви изригвания днес</h2>
+      <p data-i18n="flaresIntro">Слънчевото изригване е внезапно избухване на рентгеново лъчение от Слънцето, което се измерва от спътниците GOES на NOAA. Изригванията се делят на класове A, B, C, M и X, като всеки клас е десет пъти по-силен от предишния. Изригванията от клас M и X смущават късовълновите радиовръзки на осветената страна на Земята за минути до часове (скала R на NOAA). Самото изригване не предизвиква магнитна буря: ако изхвърли облак плазма (CME) към Земята, бурята идва след 1–3 дни и е в прогнозата на NOAA по-горе.</p>
+      <div id="stormFlares"><p class="storm-loading" data-i18n="loading">Зареждане…</p></div>
+    </section>
+
     <div class="kp-forecast storm-alerts">
       <h3 data-i18n="alertsTitle">🔔 Известие при магнитна буря</h3>
       <p data-i18n="alertsText">Получете известие на телефона, когато се очаква буря (Kp 5 или повече) в следващите 24 часа.</p>
@@ -210,6 +216,6 @@
 <script src="/js/language-selector.js?v=10"></script>
 <script src="/js/background-selector.js?v=6"></script>
 <script src="/js/share.js?v=8" defer></script>
-<script src="/js/storm-page.js?v=6"></script>
+<script src="/js/storm-page.js?v=7"></script>
 </body>
 </html>

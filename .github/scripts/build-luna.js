@@ -253,11 +253,11 @@ function listPage(lang, year, kind, years) {
     scripts: SCRIPTS,
     image: ogImage(lang),
     title: esc(L2.title(year)),
-    description: esc(L2.description(year, events.length, first)),
+    description: esc(L2.description(year, events.length, first).replace(/г\.\./g, 'г.')),
     jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.cal, '/luna/'], [`${T.cal} ${year}`, `/luna/${year}/`], [listName + ' ' + year, url]]),
     body: `    <p class="breadcrumbs"><a href="${L(lang, '/luna/')}">${T.cal}</a> › <a href="${L(lang, `/luna/${year}/`)}">${year}</a> › ${listName}</p>
     <h1>${L2.h1(year)}</h1>
-    <p class="storm-intro">${L2.intro({ year, n: events.length, first, last, blue: blue.length ? fullDate(lang, blue[0].time, true) : '', super: supers.map(event => fullDate(lang, event.time, true)).join(', ') })}</p>
+    <p class="storm-intro">${L2.intro({ year, n: events.length, first, last, blue: blue.length ? fullDate(lang, blue[0].time, true) : '', super: supers.map(event => fullDate(lang, event.time, true)).join(', ') }).replace(/г\.\./g, 'г.')}</p>
 
     <section class="info-card">
       <h2>${L2.sub} ${year}</h2>
@@ -292,6 +292,9 @@ function monthPage(lang, year, month, years) {
   const phrase = type => T.on(byType(type).map(event => T.when(fullDate(lang, event.time), hhmm(event.time))).join(T.joiner));
   const dates = type => T.on(byType(type).map(event => fullDate(lang, event.time)).join(T.joiner));
   const full = byType(2).length ? phrase(2) : '';
+  // the first full moon of the month as "24 декември, 03:28 ч." (title)
+  const firstFullEvent = byType(2)[0];
+  const firstFull = firstFullEvent ? (s => `${dayMonth(lang, s.year, s.month, s.day)}, ${T.clock(hhmm(firstFullEvent.time))}`)(sofia(firstFullEvent.time)) : '';
   const fresh = byType(0).length ? phrase(0) : '';
   const url = monthUrl(year, month);
   const prev = month === 0 ? (years.includes(year - 1) ? [year - 1, 11] : null) : [year, month - 1];
@@ -330,8 +333,8 @@ function monthPage(lang, year, month, years) {
     ...(past ? { indexed: [] } : {}),
     scripts: SCRIPTS + `<script src="/js/moon-grid.js?v=4" defer></script>
 `,
-    title: esc(T.monthTitle(name, year, Boolean(full))),
-    description: esc(T.monthDescription({ name, year, full, fresh, fullDates: dates(2), freshDates: dates(0) })),
+    title: esc(T.monthTitle(name, year, Boolean(full), firstFull)),
+    description: esc(T.monthDescription({ name, year, full, fresh, fullDates: full || dates(2), freshDates: fresh || dates(0) }).replace(/(г|ч|h)\.\./g, '$1.')),
     jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.cal, '/luna/'], [`${T.cal} ${year}`, `/luna/${year}/`], [`${name} ${year}`, url]]),
     body: `    <p class="breadcrumbs"><a href="${calUrl}">${T.cal}</a> › <a href="${L(lang, `/luna/${year}/`)}">${year}</a> › ${name}</p>
     <h1>${T.monthH1(name, year)}</h1>
