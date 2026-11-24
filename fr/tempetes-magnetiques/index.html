@@ -151,6 +151,12 @@
     <div class="space-weather" id="stormWind" hidden></div>
     <div class="space-weather" id="stormOutlook" hidden></div>
 
+    <section class="kp-forecast storm-flares">
+      <h2 data-i18n="flaresTitle">☀️ Éruptions solaires aujourd’hui</h2>
+      <p data-i18n="flaresIntro">Une éruption solaire est un brusque éclair de rayons X du Soleil, mesuré par les satellites GOES de la NOAA. Les éruptions sont classées A, B, C, M et X, chaque classe dix fois plus forte que la précédente. Les éruptions M et X perturbent la radio en ondes courtes sur la face éclairée de la Terre pendant des minutes ou des heures (échelle R de la NOAA). Une éruption seule ne provoque pas de tempête magnétique : si elle projette un nuage de plasma (CME) vers la Terre, la tempête arrive 1 à 3 jours plus tard et figure dans la prévision de la NOAA ci-dessus.</p>
+      <div id="stormFlares"><p class="storm-loading" data-i18n="loading">Chargement…</p></div>
+    </section>
+
     <div class="kp-forecast storm-alerts">
       <h3 data-i18n="alertsTitle">🔔 Alerte tempête magnétique</h3>
       <p data-i18n="alertsText">Recevez une notification sur votre téléphone quand une tempête (Kp 5 ou plus) est attendue dans les 24 heures.</p>
@@ -220,6 +226,6 @@
 <script src="/js/language-selector.js?v=10"></script>
 <script src="/js/background-selector.js?v=6"></script>
 <script src="/js/share.js?v=8" defer></script>
-<script src="/js/storm-page.js?v=6"></script>
+<script src="/js/storm-page.js?v=7"></script>
 </body>
 </html>

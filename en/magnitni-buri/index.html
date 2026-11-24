@@ -152,6 +152,12 @@
     <div class="space-weather" id="stormWind" hidden></div>
     <div class="space-weather" id="stormOutlook" hidden></div>
 
+    <section class="kp-forecast storm-flares">
+      <h2 data-i18n="flaresTitle">☀️ Solar flares today</h2>
+      <p data-i18n="flaresIntro">A solar flare is a sudden flash of X-rays from the Sun, measured by NOAA’s GOES satellites. Flares are graded A, B, C, M and X, each class ten times stronger than the one before. M and X flares disturb shortwave radio on the sunlit side of the Earth for minutes to hours (NOAA R scale). A flare alone does not cause a magnetic storm: if it throws a cloud of plasma (CME) towards the Earth, the storm comes 1–3 days later and is in the NOAA forecast above.</p>
+      <div id="stormFlares"><p class="storm-loading" data-i18n="loading">Loading…</p></div>
+    </section>
+
     <div class="kp-forecast storm-alerts">
       <h3 data-i18n="alertsTitle">🔔 Magnetic storm alert</h3>
       <p data-i18n="alertsText">Get a notification on your phone when a storm (Kp 5 or more) is expected in the next 24 hours.</p>
@@ -221,6 +227,6 @@
 <script src="/js/language-selector.js?v=10"></script>
 <script src="/js/background-selector.js?v=6"></script>
 <script src="/js/share.js?v=8" defer></script>
-<script src="/js/storm-page.js?v=6"></script>
+<script src="/js/storm-page.js?v=7"></script>
 </body>
 </html>
