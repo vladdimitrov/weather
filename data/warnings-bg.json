@@ -1,3 +1,100 @@
 {
- "provinces": {}
+ "provinces": {
+  "blagoevgrad": [
+   {
+    "level": "yellow",
+    "type": "snow-ice",
+    "event": {
+     "bg": "Поледица!",
+     "en": "Freezing rain!"
+    },
+    "onset": "2026-11-26T00:00:01+02:00",
+    "expires": "2026-11-26T09:00:00+02:00"
+   }
+  ],
+  "kyustendil": [
+   {
+    "level": "yellow",
+    "type": "snow-ice",
+    "event": {
+     "bg": "Поледица!",
+     "en": "Freezing rain!"
+    },
+    "onset": "2026-11-26T00:00:01+02:00",
+    "expires": "2026-11-26T09:00:00+02:00"
+   }
+  ],
+  "montana": [
+   {
+    "level": "yellow",
+    "type": "snow-ice",
+    "event": {
+     "bg": "Поледица!",
+     "en": "Freezing rain!"
+    },
+    "onset": "2026-11-26T00:00:01+02:00",
+    "expires": "2026-11-26T09:00:00+02:00"
+   }
+  ],
+  "pernik": [
+   {
+    "level": "yellow",
+    "type": "snow-ice",
+    "event": {
+     "bg": "Поледица!",
+     "en": "Freezing rain!"
+    },
+    "onset": "2026-11-26T00:00:01+02:00",
+    "expires": "2026-11-26T09:00:00+02:00"
+   }
+  ],
+  "sofia-city": [
+   {
+    "level": "yellow",
+    "type": "snow-ice",
+    "event": {
+     "bg": "Поледица!",
+     "en": "Freezing rain!"
+    },
+    "onset": "2026-11-26T00:00:01+02:00",
+    "expires": "2026-11-26T09:00:00+02:00"
+   }
+  ],
+  "sofia-province": [
+   {
+    "level": "yellow",
+    "type": "snow-ice",
+    "event": {
+     "bg": "Поледица!",
+     "en": "Freezing rain!"
+    },
+    "onset": "2026-11-26T00:00:01+02:00",
+    "expires": "2026-11-26T09:00:00+02:00"
+   }
+  ],
+  "vidin": [
+   {
+    "level": "yellow",
+    "type": "snow-ice",
+    "event": {
+     "bg": "Поледица!",
+     "en": "Freezing rain!"
+    },
+    "onset": "2026-11-26T00:00:01+02:00",
+    "expires": "2026-11-26T09:00:00+02:00"
+   }
+  ],
+  "vratsa": [
+   {
+    "level": "yellow",
+    "type": "snow-ice",
+    "event": {
+     "bg": "Поледица!",
+     "en": "Freezing rain!"
+    },
+    "onset": "2026-11-26T00:00:01+02:00",
+    "expires": "2026-11-26T09:00:00+02:00"
+   }
+  ]
+ }
 }
