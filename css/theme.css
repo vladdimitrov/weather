@@ -2292,3 +2292,31 @@ html body .day-details-toggle { min-height: 40px; }
 .city-day-gusts { color: #ffb74d; opacity: 1; font-weight: 600; }
 .wind-gust { opacity: 0.75; font-size: 0.9em; }
 .wind-gust-strong { color: #ffb74d; opacity: 1; font-weight: 600; }
+
+/* Readable small text (25 Nov 2026, owner's request): on the dark background nothing a visitor reads is
+   below 14px; buttons, city links and the intro of the home page 15px. The body text stays 16px. */
+html body .storm-updated,
+html body .forecast-note,
+html body .city-day-date,
+html body .city-day-wind,
+html body .city-day-conf,
+html body .kp-day-status,
+html body footer p,
+html body .footer-link,
+html body .lang-links,
+html body .breadcrumbs,
+html body .breadcrumbs a,
+html body .tc-value,
+html body td,
+html body th {
+  font-size: 0.875rem !important;
+}
+html body .city-day-date { opacity: 0.9; }
+/* the rain line ("100% · 18.0 mm") has to fit one line of a day card on a phone */
+html body .city-day-rain { font-size: 0.84rem !important; white-space: nowrap; }
+html body .recent-place,
+html body .btn,
+html body .features-description,
+html body .install-app-button {
+  font-size: 0.9375rem !important;
+}
