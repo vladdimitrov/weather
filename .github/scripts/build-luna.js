@@ -589,8 +589,11 @@ function fullMoonsPage(years, now, afterLast) {
     const sky = Moon.riseSet(noon(s.year, s.month, s.day), 42.6977, 23.3219);
     return { s, rise: sky.rise ? hhmm(sky.rise) : '–', set: sky.set ? hhmm(sky.set) : '–', sunset: sun.sunset ? hhmm(sun.sunset) : '–' };
   };
-  // the next full moon from today (Sofia); changes with the day, so it sits between the volatile marks
-  const next = all.find(event => event.time.getTime() > now.getTime() - 12 * 3600000) || afterLast;
+  // the next full moon from today (Sofia): the one of today until the day is over, then the next one (the
+  // daily run is in the morning, so "12 hours after" kept yesterday's full moon all day); changes with the
+  // day, so it sits between the volatile marks
+  const sofiaDay = date => { const s = sofia(date); return s.year * 10000 + (s.month + 1) * 100 + s.day; };
+  const next = all.find(event => sofiaDay(event.time) >= sofiaDay(now)) || afterLast;
   const nf = facts(next);
   const nextBlock = `<!-- volatile -->
     <section class="info-card moon-full-hero">
@@ -638,7 +641,7 @@ ${rows}
     indexed: INDEXED,
     scripts: SCRIPTS,
     image: ogImage(lang),
-    title: esc(`Пълнолуние: следващото е на ${nextDate}, ${hhmm(next.time)} ч. – всички дати ${y1}–${y2}`),
+    title: esc(`Пълнолуние: следващото е на ${nextDate}, ${hhmm(next.time)} ч. – всички дати`),
     description: esc(`Следващото пълнолуние е ${weekdayOf(lang, nf.s.year, nf.s.month, nf.s.day)}, ${fullDate(lang, next.time, true)}, в ${hhmm(next.time)} ч. българско време${isSuperMoon(next) ? ' (суперлуна)' : ''}. Всички ${all.length} пълнолуния през ${y1} и ${y2} г. с точен час, изгрев на Луната, суперлуни и синя луна.`),
     jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.cal, '/luna/'], ['Пълнолуние', FULL_URL]]),
     body: `    <p class="breadcrumbs"><a href="/luna/">${T.cal}</a> › Пълнолуние</p>
