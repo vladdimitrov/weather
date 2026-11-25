@@ -120,15 +120,18 @@
     <p class="storm-intro">Weather forecast for Graz, Austria, for today, tomorrow and the next 7 days: temperature, rain, wind and chance of precipitation. Data from Open-Meteo, updated every hour.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Graz" data-lat="47.0707" data-lon="15.4395" data-query="city=Graz&lat=47.0707&lon=15.4395&cc=AT">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Heavy snowfall tomorrow: about 11 cm of new snow</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
         <h2>Wednesday 25 November</h2>
         <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">−3° / 2°</span>
-        <p class="storm-now-status">Cloudy · chance of rain 10%</p>
+        <p class="storm-now-status">Cloudy · chance of rain 26%</p>
         <p class="storm-updated">Forecast issued on 25 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Saturday 28 November (up to 2°) and the coldest Tuesday 1 December (down to −6°). Rain or snow is expected on 2 of the days. Daytime temperatures are below normal for November (average high 9°). The models agree up to tomorrow; after that the forecast is less certain (up to 5° apart in temperature).</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Sunday 29 November (up to 2°) and the coldest Tuesday 1 December (down to −8°). Rain or snow is expected on 1 of the days. Daytime temperatures are below normal for November (average high 9°). The models agree up to Friday 27 November; after that the forecast is less certain (up to 7° apart in temperature).</p>
         <div class="city-days">
           <a class="kp-day city-day" href="/weather/?city=Graz&lat=47.0707&lon=15.4395&cc=AT&date=2026-11-25" title="Hourly forecast →">
             <span class="kp-day-name">Wed 25</span>
@@ -136,8 +139,8 @@
             <span class="city-day-date">25.11</span>
             <span class="city-day-temp">−3° / 2°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">10%</span>
-            <span class="city-day-wind">Wind 6 km/h · gusts 15</span>
+            <span class="city-day-rain" title="chance of rain">26%</span>
+            <span class="city-day-wind">Wind 5 km/h · gusts 16</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Graz&lat=47.0707&lon=15.4395&cc=AT&date=2026-11-26" title="Hourly forecast →">
             <span class="kp-day-name">Thu 26</span>
@@ -145,55 +148,57 @@
             <span class="city-day-date">26.11</span>
             <span class="city-day-temp">−1° / 1°</span>
             <span class="kp-day-status">Snow</span>
-            <span class="city-day-rain" title="chance of rain">100% · 15.3 mm</span>
-            <span class="city-day-wind">Wind 7 km/h · gusts 18</span>
+            <span class="city-day-rain" title="chance of rain">100% · 17.5 mm</span>
+            <span class="city-day-wind">Wind 7 km/h · gusts 23</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Graz&lat=47.0707&lon=15.4395&cc=AT&date=2026-11-27" title="Hourly forecast →">
             <span class="kp-day-name">Fri 27</span>
             <span class="city-day-icon" aria-hidden="true">❄️</span>
             <span class="city-day-date">27.11</span>
-            <span class="city-day-temp">−2° / 1°</span>
+            <span class="city-day-temp">−1° / 1°</span>
             <span class="kp-day-status">Snow</span>
-            <span class="city-day-rain" title="chance of rain">24% · 0.4 mm</span>
-            <span class="city-day-wind">Wind 5 km/h · gusts 13</span>
-            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ffd54f">● less certain</span>
+            <span class="city-day-rain" title="chance of rain">33%</span>
+            <span class="city-day-wind">Wind 4 km/h · gusts 13</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Graz&lat=47.0707&lon=15.4395&cc=AT&date=2026-11-28" title="Hourly forecast →">
             <span class="kp-day-name">Sat 28</span>
-            <span class="city-day-icon" aria-hidden="true">❄️</span>
+            <span class="city-day-icon" aria-hidden="true">🌫️</span>
             <span class="city-day-date">28.11</span>
-            <span class="city-day-temp">−3° / 2°</span>
-            <span class="kp-day-status">Snow</span>
-            <span class="city-day-rain" title="chance of rain">38% · 0.1 mm</span>
-            <span class="city-day-wind">Wind 4 km/h · gusts 13</span>
+            <span class="city-day-temp">−2° / 1°</span>
+            <span class="kp-day-status">Fog</span>
+            <span class="city-day-rain" title="chance of rain">29%</span>
+            <span class="city-day-wind">Wind 6 km/h · gusts 13</span>
+            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ffd54f">● less certain</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Graz&lat=47.0707&lon=15.4395&cc=AT&date=2026-11-29" title="Hourly forecast →">
             <span class="kp-day-name">Sun 29</span>
-            <span class="city-day-icon" aria-hidden="true">❄️</span>
+            <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">29.11</span>
             <span class="city-day-temp">−1° / 2°</span>
-            <span class="kp-day-status">Snow</span>
-            <span class="city-day-rain" title="chance of rain">38% · 1.5 mm</span>
-            <span class="city-day-wind">Wind 6 km/h · gusts 13</span>
+            <span class="kp-day-status">Rain</span>
+            <span class="city-day-rain" title="chance of rain">30% · 0.5 mm</span>
+            <span class="city-day-wind">Wind 4 km/h · gusts 12</span>
+            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ffd54f">● less certain</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Graz&lat=47.0707&lon=15.4395&cc=AT&date=2026-11-30" title="Hourly forecast →">
             <span class="kp-day-name">Mon 30</span>
             <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">30.11</span>
-            <span class="city-day-temp">−3° / 1°</span>
+            <span class="city-day-temp">−6° / 1°</span>
             <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">11%</span>
-            <span class="city-day-wind">Wind 3 km/h · gusts 16</span>
+            <span class="city-day-rain" title="chance of rain">6%</span>
+            <span class="city-day-wind">Wind 4 km/h · gusts 13</span>
+            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ffd54f">● less certain</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Graz&lat=47.0707&lon=15.4395&cc=AT&date=2026-12-01" title="Hourly forecast →">
             <span class="kp-day-name">Tue 1</span>
-            <span class="city-day-icon" aria-hidden="true">☀️</span>
+            <span class="city-day-icon" aria-hidden="true">⛅</span>
             <span class="city-day-date">01.12</span>
-            <span class="city-day-temp">−6° / 0°</span>
-            <span class="kp-day-status">Clear</span>
-            <span class="city-day-rain" title="chance of rain">6%</span>
-            <span class="city-day-wind">Wind 5 km/h · gusts 20</span>
-            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ffd54f">● less certain</span>
+            <span class="city-day-temp">−8° / 1°</span>
+            <span class="kp-day-status">Partly cloudy</span>
+            <span class="city-day-rain" title="chance of rain">3%</span>
+            <span class="city-day-wind">Wind 3 km/h · gusts 11</span>
+            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ff8a65">● uncertain</span>
           </a>
         </div>
         <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 363 m</p>
