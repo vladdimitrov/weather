@@ -113,6 +113,37 @@ Object.values(GO).forEach(g => {
   g.weather.forEach(place);
 });
 BIG.forEach(place);
+// The climate of the month of a long weekend (climate.json, climate-europe.json: ERA5 2015–2024), written into the
+// page: what weather to expect months ahead, when the forecast does not reach the date yet
+const CLIMATE = {};
+let CLIMATE_SOURCE = '';
+for (const name of ['climate.json', 'climate-europe.json']) {
+  const file = path.join(__dirname, name);
+  if (!fs.existsSync(file)) continue;
+  const json = JSON.parse(fs.readFileSync(file, 'utf8'));
+  Object.assign(CLIMATE, json.cities);
+  CLIMATE_SOURCE = CLIMATE_SOURCE || `${json.source}`;
+}
+const climateOf = url => {
+  const m = url.match(/^\/vremeto\/([a-z-]+)\/$/) || url.match(/^\/europe\/([a-z-]+\/[a-z-]+)\/$/);
+  return m ? CLIMATE[m[1]] || null : null;
+};
+const tempC = t => `${Math.round(t) < 0 ? '−' : ''}${Math.abs(Math.round(t))}°`;
+function climateTable(urls, month) {
+  const rows = urls.map(url => ({ url, c: climateOf(url) })).filter(r => r.c);
+  if (!rows.length) return '';
+  const monthName = I18N.monthName('bg', month);
+  return `
+      <p><strong>Какво време да очаквате.</strong> Средно през ${monthName} (2015–2024):</p>
+      <div class="table-scroll">
+      <table class="kp-table holiday-climate">
+        <thead><tr><th>Място</th><th>Ден</th><th>Нощ</th><th>Дни с валеж</th></tr></thead>
+        <tbody>
+${rows.map(({ url, c }) => `          <tr><td><a href="${url}">${esc(byUrl[url].name.bg)}</a></td><td>${tempC(c.months[month].high)}</td><td>${tempC(c.months[month].low)}</td><td>${c.months[month].rainDays}</td></tr>`).join('\n')}
+        </tbody>
+      </table>
+      </div>`;
+}
 const placeJson = urls => JSON.stringify(urls.map(url => ({ name: byUrl[url].name.bg, lat: byUrl[url].lat, lon: byUrl[url].lon, url })));
 
 function breadcrumbs(items) {
@@ -196,6 +227,7 @@ function yearBody(data, years, main) {
       <div class="city-links">
         ${go.links.map(([name, url]) => `<a href="${url}" class="recent-place">${esc(name)}</a>`).join('\n        ')}
       </div>
+${climateTable([BIG[0], ...go.weather], parse(from).getUTCMonth())}
       <div class="holiday-forecast" hidden></div>
     </article>`;
   }).join('\n');
@@ -228,7 +260,8 @@ ${rows}
 
     <section class="info-card" id="dalgi-uikendi">
       <h2>Дълги уикенди ${year}</h2>
-${long.length ? `      <p>${long.length === 1 ? 'Един период' : `${long.length} периода`} от 3 или повече почивни дни подред. При всеки – къде да отидете${year === NOW.getFullYear() || year === NOW.getFullYear() + 1 ? ' и прогноза за времето, когато уикендът е в рамките на прогнозата за следващите дни' : ''}.</p>` : `      <p>През ${year} г. няма периоди от 3 или повече почивни дни подред.</p>`}
+${long.length ? `      <p>${long.length === 1 ? 'Един период' : `${long.length} периода`} от 3 или повече почивни дни подред. При всеки – къде да отидете и какво време да очаквате там: средните дневни и нощни температури и дните с валеж за месеца${year === NOW.getFullYear() || year === NOW.getFullYear() + 1 ? ', а когато уикендът наближи – прогнозата за тези дни' : ''}.</p>
+      <p class="storm-updated">Средните стойности са за 2015–2024 г. по данни на Open-Meteo (ERA5), модел с мрежа около 10 км. „Дни с валеж“ са дните от месеца с поне 1 мм дъжд или сняг.</p>` : `      <p>През ${year} г. няма периоди от 3 или повече почивни дни подред.</p>`}
     </section>
 ${longBlocks}
 
@@ -264,10 +297,10 @@ function yearPage(data, years) {
   const body = yearBody(data, years, main);
   const nextYear = years.find(y => y > year);
   const next = nextYear && yearData(nextYear);
-  const title = `Официални празници и почивни дни ${year} в България | WeatherPulse`;
-  const description = main
-    ? `Официални празници и почивни дни ${year} в България: дата и ден от седмицата, дълги уикенди, работни дни по месеци и къде да отидете.`
-    : `Почивни дни ${year} в България: официални празници, дълги уикенди (${long.length} периода), работни дни по месеци и къде да отидете с прогнозата за времето.`;
+  // Nov 2026: the pages had almost no impressions; the title starts with the most searched words ("почивни дни 2027")
+  // and adds what the big sites do not have: the weather in the resorts on the long weekends
+  const title = `Почивни дни ${year} – празници, дълги уикенди и времето в курортите`;
+  const description = `Почивни дни ${year} в България: всички официални празници, ${long.length} ${long.length === 1 ? 'дълъг уикенд' : 'дълги уикенда'} и какво време да очаквате тогава в планината, на морето и в Гърция.`;
   if (description.length > 155) throw new Error(`description of ${url} has ${description.length} characters`);
   const links = `    <p class="city-actions">${years.map(y => `<a class="btn" href="${y === CURRENT ? '/praznici/' : `/praznici/${y}/`}"${y === year ? ' aria-current="page"' : ''}>Почивни дни ${y}</a>`).join(' ')} <a class="btn" href="/praznici/prazdnici-${year}.ics" download>Добави в календара (.ics)</a> <a class="btn" href="/praznici/darzhavi/">Празници в други държави →</a></p>`;
   const teaser = next ? `
