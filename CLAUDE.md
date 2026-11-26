@@ -45,6 +45,7 @@ weatherpulse.eu: a static weather site on GitHub Pages, part of the VYZYA brand 
 ## Suggested next (not decided yet, ask first)
 
 - "Прогноза по 3 модела" at the end of the numbers of the day in the descriptions of the Bulgarian city pages (true, and Google's own weather box does not say it); the Bulgarian Europe pages only after the check of 7 December. Not "кога спира дъждът" (would need hourly data and is not true every day). Context (25 Nov 2026): for "времето" / "времето утре" Google shows a different city page by the searcher's location, 98 % on phones, under Google's own weather box, so 0.1–0.2 % CTR at position 8–9 is normal; the clicks come from precise queries ("10 дни", "14 дни").
+- Sofia: no pages for neighbourhoods (owner asked 26 Nov 2026; rejected for now): the models give the same numbers for Lyulin, Mladost, Nadezhda (thin duplicate pages while indexing is still being fixed) and Search Console showed no query for a neighbourhood (all queries with "софия" in 28 days: 43 impressions; "времето в софия" at position 57). Instead, if wanted: one block "София по височина" on `/vremeto/sofia/` (centre ~550 m, Boyana/Dragalevtsi/Simeonovo 700–900 m, Bankya, Pancharevo: today's temperature and precipitation by elevation, rain below / snow above), no new URLs; and check whether Sofia needs its own weekend page (queries "времето в софия събота и неделя"; `WEEKEND_PAGES` has Varna, not Sofia).
 - Languages by tourist numbers: Greek and more Romanian pages first, then Polish, Serbian, Turkish; Spanish has the least potential.
 
 ## How to work here
