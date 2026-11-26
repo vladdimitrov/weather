@@ -172,6 +172,106 @@ const ICS_URL = lang => L(lang, '/luna/moon-phases.ics');
 const SUPERMOON_KM = 363400;
 const isSuperMoon = event => event.type === 2 && MoonView.distance(event.time) <= SUPERMOON_KM;
 
+// --- The next full moon in the Bulgarian cities (/luna/pylnolunie/) ------------------------------------
+// The moon is watched on the two nights around the full moon: the night before its Sofia date (D-1 → D)
+// and the night of that date (D → D+1), whatever the hour of the full moon.
+const PLACES = require('./places.js').PLACES;
+const OmCache = require('./om-cache.js');
+const cityOf = url => {
+  const place = PLACES.find(p => p.url === url);
+  if (!place) throw new Error(`build-luna.js: no place ${url}`);
+  return { url, name: place.name.bg, lat: place.lat, lon: place.lon };
+};
+// moonrise in 10 cities (computed, as for Sofia); cloud cover in 5 of them
+const RISE_CITIES = ['sofia', 'plovdiv', 'varna', 'burgas', 'ruse', 'stara-zagora', 'pleven', 'veliko-tarnovo', 'pernik', 'blagoevgrad'].map(slug => cityOf(`/vremeto/${slug}/`));
+const SKY_CITIES = RISE_CITIES.slice(0, 5);
+const VISIBILITY_DAYS = 10;  // the cloud block appears when the full moon is at most this many days ahead
+const addDays = (s, n) => { const d = new Date(Date.UTC(s.year, s.month, s.day + n, 12)); return { year: d.getUTCFullYear(), month: d.getUTCMonth(), day: d.getUTCDate() }; };
+const ymd = s => `${s.year}-${String(s.month + 1).padStart(2, '0')}-${String(s.day).padStart(2, '0')}`;
+const dmBg = s => dayMonth('bg', s.year, s.month, s.day);
+
+function moonriseTable(next) {
+  const s = sofia(next.time);
+  const days = [addDays(s, -1), addDays(s, 0)];
+  const rows = RISE_CITIES.map(city => `          <tr><td><a href="${city.url}">${city.name}</a></td>${days.map(d => {
+    const sky = Moon.riseSet(noon(d.year, d.month, d.day), city.lat, city.lon);
+    return `<td>${sky.rise ? hhmm(sky.rise) : '–'}</td>`;
+  }).join('')}</tr>`).join('\n');
+  return `
+    <section class="info-card" id="izgrev">
+      <h2>Изгрев на Луната по градове</h2>
+      <p>Пълната Луна изгрява около залеза и е на небето цялата нощ. Часовете са по българско време.</p>
+      <div class="table-scroll">
+      <table class="kp-table">
+        <thead><tr><th>Град</th>${days.map(d => `<th>${dmBg(d)}</th>`).join('')}</tr></thead>
+        <tbody>
+${rows}
+        </tbody>
+      </table>
+      </div>
+    </section>`;
+}
+
+// Cloud cover from 19:00 to 05:00 of the two nights (Open-Meteo, through the day's cache of the forecast
+// workflow). Returns '' when the full moon is too far ahead, null when Open-Meteo did not answer (the page
+// keeps the block of the day before).
+const VIS_START = '<!-- moon-visibility -->';
+const VIS_END = '<!-- /moon-visibility -->';
+async function visibilityBlock(next, now) {
+  const s = sofia(next.time);
+  const today = sofia(now);
+  const ahead = Math.round((Date.UTC(s.year, s.month, s.day) - Date.UTC(today.year, today.month, today.day)) / 86400000);
+  if (ahead < 0 || ahead > VISIBILITY_DAYS) return '';
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + SKY_CITIES.map(c => c.lat).join(',') + '&longitude=' + SKY_CITIES.map(c => c.lon).join(',') +
+    `&hourly=cloud_cover&timezone=Europe%2FSofia&past_days=1&forecast_days=${Math.min(16, ahead + 3)}`;
+  let json;
+  try {
+    json = await OmCache.json(url, async () => {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Open-Meteo answered ${response.status}`);
+      return response.json();
+    });
+  } catch (error) {
+    console.log(`Full moon visibility: ${error.message}; the page keeps the block it has.`);
+    return null;
+  }
+  const answers = Array.isArray(json) ? json : [json];
+  if (answers.length !== SKY_CITIES.length) return null;
+  const nights = [addDays(s, -1), addDays(s, 0)];
+  const hoursOf = night => {
+    const after = addDays(night, 1);
+    return [19, 20, 21, 22, 23].map(h => `${ymd(night)}T${String(h).padStart(2, '0')}:00`)
+      .concat([0, 1, 2, 3, 4, 5].map(h => `${ymd(after)}T0${h}:00`));
+  };
+  const verdict = mean => (mean < 30 ? ['ясно', 'вижда се отлично'] : mean < 70 ? ['разкъсана облачност', 'вижда се на моменти'] : ['облачно', 'трудно ще се види']);
+  const cell = (answer, night) => {
+    const index = new Map(answer.hourly.time.map((t, i) => [t, i]));
+    const hours = hoursOf(night).filter(t => index.has(t) && typeof answer.hourly.cloud_cover[index.get(t)] === 'number');
+    if (hours.length < 8) return '<td>–</td>';
+    const values = hours.map(t => answer.hourly.cloud_cover[index.get(t)]);
+    const mean = Math.round(values.reduce((a, b) => a + b, 0) / values.length);
+    const best = hours[values.indexOf(Math.min(...values))].slice(11, 16);
+    const [word, sentence] = verdict(mean);
+    return `<td><strong>${word}</strong> · ${mean}%<br><span class="storm-updated">${sentence}${mean >= 30 ? `; най-ясно около ${best} ч.` : ''}</span></td>`;
+  };
+  const rows = SKY_CITIES.map((city, i) => `          <tr><td><a href="${city.url}">${city.name}</a></td>${nights.map(n => cell(answers[i], n)).join('')}</tr>`).join('\n');
+  return `${VIS_START}
+    <section class="info-card" id="shte-se-vizhda-li">
+      <h2>Ще се вижда ли пълнолунието?</h2>
+      <p>Средна облачност от 19:00 до 05:00 ч. в двете нощи около пълнолунието.</p>
+      <div class="table-scroll">
+      <table class="kp-table">
+        <thead><tr><th>Град</th>${nights.map(n => `<th>Нощта ${dmBg(n)} → ${dmBg(addDays(n, 1))}</th>`).join('')}</tr></thead>
+        <tbody>
+${rows}
+        </tbody>
+      </table>
+      </div>
+      <p class="storm-updated">По прогнозата на Open-Meteo, обновява се всяка сутрин.${ahead > 5 ? ' Пълнолунието е след повече от 5 дни, затова прогнозата е ориентировъчна и ще се уточнява.' : ''} Почасовата облачност е в прогнозата на всеки град.</p>
+    </section>
+${VIS_END}`;
+}
+
 // The calendar file to subscribe to: every phase of the years as an event at its exact UTC time,
 // so each calendar shows it in the time zone of its owner
 function icsFile(lang, years) {
@@ -576,7 +676,7 @@ ${faq.map(([q, a]) => `      <details class="moon-q"><summary>${esc(q)}</summary
 // --- Bulgarian: all full moons of the two years on one page, /luna/pylnolunie/ -------------
 // The address has no year: the title and the tables follow the years of the run (the yearly workflow on
 // 1 December moves them on), so the page keeps what it has gathered in search from year to year.
-function fullMoonsPage(years, now, afterLast) {
+function fullMoonsPage(years, now, afterLast, visibility) {
   const lang = 'bg';
   const T = LUNA[lang];
   const P = PROMO[lang];
@@ -602,8 +702,11 @@ function fullMoonsPage(years, now, afterLast) {
       <h2>Следващото пълнолуние</h2>
       <p><strong>${weekdayOf(lang, nf.s.year, nf.s.month, nf.s.day)}, ${fullDate(lang, next.time, true)}, ${hhmm(next.time)} ч.</strong>${isSuperMoon(next) ? ' Суперлуна.' : ''}</p>
       <p>${F.watch({ rise: nf.rise, sunset: nf.sunset, set: nf.set })}</p>
+      <p><a href="${monthUrl(nf.s.year, nf.s.month)}">Лунен календар за ${I18N.monthName(lang, nf.s.month)} ${nf.s.year} →</a></p>
       </div></div>
     </section>
+${visibility}
+${moonriseTable(next)}
 <!-- /volatile -->`;
   const yearSection = year => {
     const events = yearEvents(year).filter(event => event.type === 2);
@@ -641,8 +744,9 @@ ${rows}
     indexed: INDEXED,
     scripts: SCRIPTS,
     image: ogImage(lang),
-    title: esc(`Пълнолуние: следващото е на ${nextDate}, ${hhmm(next.time)} ч. – всички дати`),
-    description: esc(`Следващото пълнолуние е ${weekdayOf(lang, nf.s.year, nf.s.month, nf.s.day)}, ${fullDate(lang, next.time, true)}, в ${hhmm(next.time)} ч. българско време${isSuperMoon(next) ? ' (суперлуна)' : ''}. Всички ${all.length} пълнолуния през ${y1} и ${y2} г. с точен час, изгрев на Луната, суперлуни и синя луна.`),
+    // Nov 2026: the searches are "пълнолуние <month> <year>" ("пълнолуние ноември 2026": position 4, 1 077 impressions a day)
+    title: esc(`Пълнолуние ${I18N.monthName(lang, nf.s.month)} ${nf.s.year} – ${nextDate}, ${hhmm(next.time)} ч. | кога е следващото`),
+    description: esc(`Следващото пълнолуние е ${weekdayOf(lang, nf.s.year, nf.s.month, nf.s.day)}, ${fullDate(lang, next.time, true)}, в ${hhmm(next.time)} ч. българско време${isSuperMoon(next) ? ' (суперлуна)' : ''}. Ще се вижда ли, изгрев на Луната по градове и всички ${all.length} пълнолуния през ${y1} и ${y2} г.`),
     jsonLd: breadcrumbsJson(lang, [['Weather Pulse', '/'], [T.cal, '/luna/'], ['Пълнолуние', FULL_URL]]),
     body: `    <p class="breadcrumbs"><a href="/luna/">${T.cal}</a> › Пълнолуние</p>
     <h1>Пълнолуние – дати и часове през ${y1} и ${y2} г.</h1>
@@ -670,9 +774,18 @@ const allFull = years.flatMap(year => yearEvents(year).filter(event => event.typ
 const after = Moon.phaseEvents(new Date(allFull[allFull.length - 1].time.getTime() + 86400000), new Date(allFull[allFull.length - 1].time.getTime() + 40 * 86400000)).find(event => event.type === 2);
 const chain = allFull;
 
+(async function run() {
+// the cloud block of the next full moon (kept from the page when Open-Meteo does not answer)
+const nextFull = allFull.find(event => { const a = sofia(event.time), b = sofia(now); return Date.UTC(a.year, a.month, a.day) >= Date.UTC(b.year, b.month, b.day); }) || after;
+let visibility = await visibilityBlock(nextFull, now);
+if (visibility === null) {
+  const old = fs.existsSync(path.join(ROOT, 'luna/pylnolunie/index.html')) ? fs.readFileSync(path.join(ROOT, 'luna/pylnolunie/index.html'), 'utf8') : '';
+  const i = old.indexOf(VIS_START), j = old.indexOf(VIS_END);
+  visibility = i >= 0 && j > i ? old.slice(i, j + VIS_END.length) : '';
+}
 I18N.LANGS.forEach(lang => {
   write(dir(lang, '/luna/'), hubPage(lang, years, now));
-  if (lang === 'bg') write(FULL_URL.slice(1), fullMoonsPage(years, now, after));
+  if (lang === 'bg') write(FULL_URL.slice(1), fullMoonsPage(years, now, after, visibility));
   years.forEach(year => {
     write(dir(lang, `/luna/${year}/`), yearPage(lang, year, years));
     for (let month = 0; month < 12; month++) write(dir(lang, monthUrl(year, month)), monthPage(lang, year, month, years));
@@ -707,3 +820,7 @@ if (process.argv.includes('--sitemap')) {
   fs.writeFileSync(file, sitemap);
   console.log(`Added ${missing.length} URLs to sitemap.xml.`);
 }
+})().catch(error => {
+  console.error('build-luna.js: ' + error.message);
+  process.exit(1);
+});
