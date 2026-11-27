@@ -1,3 +1,620 @@
 {
- "provinces": {}
+ "provinces": {
+  "blagoevgrad": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "burgas": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "dobrich": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "gabrovo": [
+   {
+    "level": "red",
+    "type": "snow-ice",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "red",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "haskovo": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "kardzhali": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "kyustendil": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "lovech": [
+   {
+    "level": "red",
+    "type": "snow-ice",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "red",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "montana": [
+   {
+    "level": "red",
+    "type": "snow-ice",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "red",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "pazardzhik": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "pernik": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "pleven": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "plovdiv": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "razgrad": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "ruse": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "shumen": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "silistra": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "sliven": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "smolyan": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "sofia-city": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "sofia-province": [
+   {
+    "level": "red",
+    "type": "snow-ice",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "red",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "stara-zagora": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "targovishte": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "varna": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "veliko-tarnovo": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "vidin": [
+   {
+    "level": "red",
+    "type": "snow-ice",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "red",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "vratsa": [
+   {
+    "level": "red",
+    "type": "snow-ice",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "red",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ],
+  "yambol": [
+   {
+    "level": "orange",
+    "type": "wind",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   },
+   {
+    "level": "orange",
+    "type": "rain",
+    "event": {
+     "bg": "Значителни валежи и силен вятър!",
+     "en": "Heavy precipitation and strong wind!"
+    },
+    "onset": "2026-11-28T00:00:01+02:00",
+    "expires": "2026-11-29T00:00:00+02:00"
+   }
+  ]
+ }
 }
