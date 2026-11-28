@@ -9,6 +9,7 @@ from zoneinfo import ZoneInfo
 
 from PIL import Image
 
+from . import channels
 from .hosting import Hosting
 from .meta_api import MetaClient
 from .utm import for_network, tagged
@@ -158,6 +159,16 @@ def run_queue(cfg, dry_run=False, force=False):
         done["instagram"] = client.ig_reel(url, ig_caption) if is_video else client.ig_image(url, ig_caption)
         save()
         log.info("Instagram: %s", done["instagram"])
+    # Approved warning drafts (name "...-warning-...") also go to the Telegram/Viber channels; other queue
+    # items stay on Facebook/Instagram. Recorded like the platforms, so a retry never posts twice.
+    if "-warning-" in item.name and not is_video and channels.enabled():
+        sent = done.setdefault("channels", {})
+        url = None
+        if "viber" in channels.enabled() and "viber" not in sent and host.enabled:
+            src = _as_jpeg(item, Path(cfg["output_dir"]))
+            url = host.publish(src, f"{datetime.now().strftime('%Y%m%d-%H%M%S')}-ch-{src.name}")
+        sent.update(channels.send(item, caption, url, skip=sent))
+        save()
 
     posted_dir.mkdir(exist_ok=True)
     prefix = datetime.now().strftime("%Y-%m-%d_")
