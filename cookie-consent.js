@@ -175,6 +175,13 @@
       .cc-btn:hover {
         filter: brightness(1.15);
       }
+      @media (max-width: 600px) {
+        /* a smaller banner: it covered a third of the first screen on phones */
+        .cc-banner { padding: 12px 14px; gap: 8px; font-size: 12.5px; line-height: 1.4; }
+        .cc-banner p { flex: 1 1 100%; }
+        .cc-buttons { flex: 1 1 100%; }
+        .cc-btn { flex: 1 1 0; min-height: 44px; padding: 8px 12px; }
+      }
       .cc-settings {
         position: fixed;
         right: 12px;
