@@ -138,14 +138,14 @@
 
     <div class="kp-forecast" id="stormForecast"><!-- kp-forecast:start -->
       <h3>3-daagse verwachting</h3>
-      <table class="kp-table">
+      <div style="overflow-x:auto"><table class="kp-table">
         <thead><tr><th>Dag</th><th>Hoogste Kp</th><th>Niveau</th><th>Piek (tijd Sofia)</th></tr></thead>
         <tbody>
             <tr><td>zaterdag 28 november</td><td>4.0</td><td><span style="color:#f1c40f">●</span> Verhoogde activiteit</td><td>02:00–05:00</td></tr>
             <tr><td>zondag 29 november</td><td>3.0</td><td><span style="color:#2ecc71">●</span> Rustig</td><td>08:00–11:00</td></tr>
             <tr><td>maandag 30 november</td><td>2.0</td><td><span style="color:#2ecc71">●</span> Rustig</td><td>05:00–08:00</td></tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="storm-updated">NOAA-verwachting van 28 november 2026</p>
     <!-- kp-forecast:end --></div>
     <div class="space-weather" id="stormWind" hidden></div>
@@ -192,7 +192,7 @@
       <p data-i18n="widgetText">Een gratis kaart met de Kp-index en de 3-daagse verwachting. Kopieer de code naar uw website of blog:</p>
       <textarea id="widgetCode" aria-labelledby="widgetTitle" readonly rows="3">&lt;iframe src="https://weatherpulse.eu/widget/kp.html?lang=nl" width="320" height="190" style="border:0" title="Magnetische stormen — Weather Pulse" loading="lazy"&gt;&lt;/iframe&gt;</textarea>
       <button type="button" class="btn" id="copyWidgetCode">Code kopiëren</button>
-      <iframe id="widgetPreview" src="/widget/kp.html?lang=nl" width="320" height="190" style="border:0; display:block; margin:14px auto 0;" title="Magnetische stormen — Weather Pulse" loading="lazy"></iframe>
+      <iframe id="widgetPreview" src="/widget/kp.html?lang=nl" width="320" height="190" style="border:0; display:block; margin:14px auto 0; max-width:100%;" title="Magnetische stormen — Weather Pulse" loading="lazy"></iframe>
     </div>
   </div>
 

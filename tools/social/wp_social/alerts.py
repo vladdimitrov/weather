@@ -12,6 +12,7 @@ from .alerts_render import render_full_moon, render_storm
 from .config import ROOT
 from .hosting import Hosting
 from .render import MONTHS, bg_date
+from .utm import for_network, tagged
 
 log = logging.getLogger(__name__)
 
@@ -77,9 +78,9 @@ def _post(cfg, client, host, img_path: Path, caption: str, stamp: str):
     to_fb, to_ig = cfg["meta"].get("post_to_facebook", True), cfg["meta"].get("post_to_instagram", True)
     url = host.publish(img_path, f"{stamp}-{img_path.name}") if (to_ig or host.enabled) else None
     if to_fb:
-        log.info("Facebook post id: %s", client.fb_photo(img_path, caption))
+        log.info("Facebook post id: %s", client.fb_photo(img_path, for_network(caption, "facebook")))
     if to_ig:
-        log.info("Instagram media id: %s", client.ig_image(url, caption))
+        log.info("Instagram media id: %s", client.ig_image(url, for_network(caption, "instagram")))
 
 
 def run_alerts(cfg, make_client, dry_run=False, sample=False, force=False, today=False):
@@ -122,7 +123,7 @@ def run_alerts(cfg, make_client, dry_run=False, sample=False, force=False, today
             caption = (f"🧲 Магнитна буря {when_word} – {bg_date(day)}\n\n"
                        f"Очакван Kp до {round(max_kp)} – {level.lower()}{f' ({scale})' if scale else ''}.\n"
                        f"Най-силна активност: {peak[0]}–{peak[1]} ч.\n\n"
-                       f"Прогноза по часове: {site}/magnitni-buri/{page}/\n\n"
+                       f"Прогноза по часове: {tagged(f'{site}/magnitni-buri/{page}/', 'storm')}\n\n"
                        f"{acfg.get('storm_hashtags', '#магнитнибури #магнитнабуря #weatherpulse')}")
             made.append((img, caption))
             if not dry_run:
@@ -142,7 +143,7 @@ def run_alerts(cfg, make_client, dry_run=False, sample=False, force=False, today
                 month_url = f"{site}/luna/{when.year}/{MONTH_SLUG[when.month - 1]}/"
                 caption = (f"🌕 Пълнолуние утре – {when.day} {MONTHS[when.month - 1]}, в {when:%H:%M} ч."
                            f"{' Суперлуна!' if supermoon else ''}\n\n"
-                           f"Лунен календар за {MONTHS[when.month - 1]} {when.year}: {month_url}\n\n"
+                           f"Лунен календар за {MONTHS[when.month - 1]} {when.year}: {tagged(month_url, 'fullmoon')}\n\n"
                            f"{acfg.get('moon_hashtags', '#пълнолуние #луна #луненкалендар #weatherpulse')}")
                 made.append((img, caption))
                 if not dry_run:

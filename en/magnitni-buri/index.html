@@ -138,14 +138,14 @@
 
     <div class="kp-forecast" id="stormForecast"><!-- kp-forecast:start -->
       <h3>3-day forecast</h3>
-      <table class="kp-table">
+      <div style="overflow-x:auto"><table class="kp-table">
         <thead><tr><th>Day</th><th>Highest Kp</th><th>Level</th><th>Peak (Sofia time)</th></tr></thead>
         <tbody>
             <tr><td>Saturday 28 November</td><td>4.0</td><td><span style="color:#f1c40f">●</span> Increased activity</td><td>02:00–05:00</td></tr>
             <tr><td>Sunday 29 November</td><td>3.0</td><td><span style="color:#2ecc71">●</span> Calm</td><td>08:00–11:00</td></tr>
             <tr><td>Monday 30 November</td><td>2.0</td><td><span style="color:#2ecc71">●</span> Calm</td><td>05:00–08:00</td></tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="storm-updated">NOAA forecast of 28 November 2026</p>
       <p class="city-actions"><a class="btn" href="/en/magnitni-buri/dnes/">Today by the hour →</a> <a class="btn" href="/en/magnitni-buri/utre/">Tomorrow →</a></p>
     <!-- kp-forecast:end --></div>
@@ -193,7 +193,7 @@
       <p data-i18n="widgetText">A free card with the Kp index and the 3-day forecast. Copy the code into your website or blog:</p>
       <textarea id="widgetCode" aria-labelledby="widgetTitle" readonly rows="3">&lt;iframe src="https://weatherpulse.eu/widget/kp.html?lang=en" width="320" height="190" style="border:0" title="Magnetic storms — Weather Pulse" loading="lazy"&gt;&lt;/iframe&gt;</textarea>
       <button type="button" class="btn" id="copyWidgetCode">Copy code</button>
-      <iframe id="widgetPreview" src="/widget/kp.html?lang=en" width="320" height="190" style="border:0; display:block; margin:14px auto 0;" title="Magnetic storms — Weather Pulse" loading="lazy"></iframe>
+      <iframe id="widgetPreview" src="/widget/kp.html?lang=en" width="320" height="190" style="border:0; display:block; margin:14px auto 0; max-width:100%;" title="Magnetic storms — Weather Pulse" loading="lazy"></iframe>
     </div>
   </div>
 

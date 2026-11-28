@@ -127,16 +127,17 @@
 
     <div class="kp-forecast" id="stormForecast"><!-- kp-forecast:start -->
       <h3>Прогноза за 3 дни</h3>
-      <table class="kp-table">
+      <div style="overflow-x:auto"><table class="kp-table">
         <thead><tr><th>Ден</th><th>Най-висок Kp</th><th>Ниво</th><th>Пик (българско време)</th></tr></thead>
         <tbody>
             <tr><td>събота, 28 ноември</td><td>4.0</td><td><span style="color:#f1c40f">●</span> Повишена активност</td><td>02:00–05:00</td></tr>
             <tr><td>неделя, 29 ноември</td><td>3.0</td><td><span style="color:#2ecc71">●</span> Спокойно</td><td>08:00–11:00</td></tr>
             <tr><td>понеделник, 30 ноември</td><td>2.0</td><td><span style="color:#2ecc71">●</span> Спокойно</td><td>05:00–08:00</td></tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="storm-updated">Прогноза на NOAA от 28 ноември 2026 г.</p>
       <p class="city-actions"><a class="btn" href="/magnitni-buri/dnes/">Днес по часове →</a> <a class="btn" href="/magnitni-buri/utre/">Утре →</a> <a class="btn" href="/magnitni-buri/noemvri-2026/">През ноември 2026 →</a> <a class="btn" href="/magnitni-buri/kp-indeks/">Какво е Kp индекс →</a></p>
+      <p class="storm-updated">Облачно ли ще е тази нощ? <a href="/weather/">Почасова прогноза за вашия град →</a></p>
     <!-- kp-forecast:end --></div>
     <div class="space-weather" id="stormWind" hidden></div>
     <div class="space-weather" id="stormOutlook" hidden></div>
@@ -182,7 +183,7 @@
       <p data-i18n="widgetText">Безплатна карта с Kp индекса и прогнозата за 3 дни. Копирайте кода в своя сайт или блог:</p>
       <textarea id="widgetCode" aria-labelledby="widgetTitle" readonly rows="3">&lt;iframe src="https://weatherpulse.eu/widget/kp.html" width="320" height="190" style="border:0" title="Магнитни бури — Weather Pulse" loading="lazy"&gt;&lt;/iframe&gt;</textarea>
       <button type="button" class="btn" id="copyWidgetCode">Копирай кода</button>
-      <iframe id="widgetPreview" src="/widget/kp.html" width="320" height="190" style="border:0; display:block; margin:14px auto 0;" title="Магнитни бури — Weather Pulse" loading="lazy"></iframe>
+      <iframe id="widgetPreview" src="/widget/kp.html" width="320" height="190" style="border:0; display:block; margin:14px auto 0; max-width:100%;" title="Магнитни бури — Weather Pulse" loading="lazy"></iframe>
     </div>
   </div>
 

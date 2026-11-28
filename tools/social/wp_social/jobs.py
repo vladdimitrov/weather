@@ -11,6 +11,7 @@ from PIL import Image
 
 from .hosting import Hosting
 from .meta_api import MetaClient
+from .utm import for_network, tagged
 from .render import build_caption, render_forecast
 from .weather import fetch_forecast, sample_forecast
 
@@ -49,7 +50,7 @@ def run_forecast(cfg, dry_run=False, sample=False, tomorrow=False, force=False):
     img_path = Path(cfg["output_dir"]) / f"forecast-{day.isoformat()}.jpg"
     render_forecast(forecasts, day, fc_cfg.get("site_label", site_url.split("//")[-1]), img_path,
                     title=fc_cfg.get("title", "ВРЕМЕТО В БЪЛГАРИЯ"))
-    link = site_url + fc_cfg.get("link_path", "/")
+    link = tagged(site_url + fc_cfg.get("link_path", "/"), "forecast")
     caption = build_caption(forecasts, day, link, fc_cfg.get("hashtags", ""), fc_cfg.get("caption_template", ""))
     log.info("Forecast image: %s", img_path)
 
@@ -64,9 +65,9 @@ def run_forecast(cfg, dry_run=False, sample=False, tomorrow=False, force=False):
         # published first: it also marks the day as done, so a retry never posts twice
         url = host.publish(img_path, f"{datetime.now(tz).strftime('%Y%m%d-%H%M%S')}-{img_path.name}")
     if to_fb:
-        log.info("Facebook post id: %s", client.fb_photo(img_path, caption))
+        log.info("Facebook post id: %s", client.fb_photo(img_path, for_network(caption, "facebook")))
     if to_ig:
-        log.info("Instagram media id: %s", client.ig_image(url, caption))
+        log.info("Instagram media id: %s", client.ig_image(url, for_network(caption, "instagram")))
     return img_path
 
 
@@ -145,14 +146,16 @@ def run_queue(cfg, dry_run=False, force=False):
 
     # Each platform is recorded separately, so a retry never double-posts the one that already succeeded.
     if to_fb and "facebook" not in done:
-        done["facebook"] = client.fb_video(item, caption) if is_video else client.fb_photo(item, caption)
+        fb_caption = for_network(caption, "facebook")
+        done["facebook"] = client.fb_video(item, fb_caption) if is_video else client.fb_photo(item, fb_caption)
         save()
         log.info("Facebook: %s", done["facebook"])
     if to_ig and "instagram" not in done:
         src = item if is_video else _as_jpeg(item, Path(cfg["output_dir"]))
         stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
         url = host.publish(src, f"{stamp}-{src.name}")
-        done["instagram"] = client.ig_reel(url, caption) if is_video else client.ig_image(url, caption)
+        ig_caption = for_network(caption, "instagram")
+        done["instagram"] = client.ig_reel(url, ig_caption) if is_video else client.ig_image(url, ig_caption)
         save()
         log.info("Instagram: %s", done["instagram"])
 

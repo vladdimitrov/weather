@@ -20,6 +20,7 @@ from PIL import Image, ImageDraw
 
 from .config import ROOT
 from .render import H, MONTHS, W, _font, _gradient
+from .utm import tagged
 
 log = logging.getLogger(__name__)
 
@@ -101,7 +102,7 @@ def caption(group, site, today, extra_tags, qcfg):
     return (f"⚠️ {label} – {group['event'] or 'предупреждение'}\n\n"
             f"{when_text(group, today)}\n"
             f"{'Област' if len(provinces) == 1 else 'Области'}: {shown}.\n\n"
-            f"Прогноза и предупреждения: {link_for(group, site)}\n\n"
+            f"Прогноза и предупреждения: {tagged(link_for(group, site), 'warning', group['kind'])}\n\n"
             f"Източник: НИМХ\n\n{qcfg.get('default_caption', '')}\n\n{qcfg.get('hashtags', '')} {extra_tags}".strip())
 
 
@@ -241,7 +242,7 @@ def notify(cfg, dry_run=False):
                 f"**Текст:**\n\n```\n{text}\n```\n\n"
                 f"**Какво да направите:** GitHub → Actions → **Social draft** → Run workflow → в „draft“ напишете `{name}`, "
                 f"а в „action“ изберете `publish` (излиза в следващия слот в 12:29 или 18:29), `publish-now` (веднага) или `delete`.\n\n"
-                f"Файловете: `tools/social/queue/drafts/{name}.jpg` и `.txt`. Текстът може да се редактира преди одобряване.")
+                f"Файловете: `tools/social/queue/drafts/{name}.jpg` и `.txt`. Текстът може да се редактира преди одобряване. `@network@` в линка (UTM) се заменя при публикуване с `facebook` или `instagram`.")
         title = f"[чернова] {draft['title']} ({name})"
         if dry_run:
             print(title + "\n" + body)
