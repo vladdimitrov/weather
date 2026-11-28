@@ -115,14 +115,15 @@ function table(lang, days, today) {
   // Deeper than the page's own lines, between the marks build-main.js looks for
   return `${START}
       <h3>${esc(word(T, 'forecastTitle', lang))}</h3>
-      <table class="kp-table">
+      <div style="overflow-x:auto"><table class="kp-table">
         <thead><tr><th>${TEXT.day[lang]}</th><th>${TEXT.highest[lang]}</th><th>${esc(level)}</th><th>${esc(TEXT.peak[lang])}</th></tr></thead>
         <tbody>
 ${rows}
         </tbody>
-      </table>
+      </table></div>
       <p class="storm-updated">${TEXT.issued[lang]} ${esc(date(today, { day: 'numeric', month: 'long', year: 'numeric' }))}</p>${lang === 'bg' ? `
-      <p class="city-actions"><a class="btn" href="/magnitni-buri/dnes/">Днес по часове →</a> <a class="btn" href="/magnitni-buri/utre/">Утре →</a> <a class="btn" href="${StormPages.monthUrl(today)}">През ${StormPages.monthTitle(today)} →</a> <a class="btn" href="/magnitni-buri/kp-indeks/">Какво е Kp индекс →</a></p>` : lang === 'en' ? `
+      <p class="city-actions"><a class="btn" href="/magnitni-buri/dnes/">Днес по часове →</a> <a class="btn" href="/magnitni-buri/utre/">Утре →</a> <a class="btn" href="${StormPages.monthUrl(today)}">През ${StormPages.monthTitle(today)} →</a> <a class="btn" href="/magnitni-buri/kp-indeks/">Какво е Kp индекс →</a></p>
+      <p class="storm-updated">${days.some(d => Math.round(d.kp) >= 5) ? 'Буря и възможни сияния: ' : ''}Облачно ли ще е тази нощ? <a href="/weather/">Почасова прогноза за вашия град →</a></p>` : lang === 'en' ? `
       <p class="city-actions"><a class="btn" href="/en/magnitni-buri/dnes/">Today by the hour →</a> <a class="btn" href="/en/magnitni-buri/utre/">Tomorrow →</a></p>` : lang === 'ro' ? `
       <p class="city-actions"><a class="btn" href="/ro/furtuni-magnetice/azi/">Azi pe ore →</a> <a class="btn" href="/ro/furtuni-magnetice/maine/">Mâine →</a></p>` : ''}
     ${END}`;

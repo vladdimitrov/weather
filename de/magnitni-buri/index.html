@@ -138,14 +138,14 @@
 
     <div class="kp-forecast" id="stormForecast"><!-- kp-forecast:start -->
       <h3>3-Tage-Vorhersage</h3>
-      <table class="kp-table">
+      <div style="overflow-x:auto"><table class="kp-table">
         <thead><tr><th>Tag</th><th>Höchster Kp</th><th>Stufe</th><th>Spitze (Sofia-Zeit)</th></tr></thead>
         <tbody>
             <tr><td>Samstag, 28. November</td><td>4.0</td><td><span style="color:#f1c40f">●</span> Erhöhte Aktivität</td><td>02:00–05:00</td></tr>
             <tr><td>Sonntag, 29. November</td><td>3.0</td><td><span style="color:#2ecc71">●</span> Ruhig</td><td>08:00–11:00</td></tr>
             <tr><td>Montag, 30. November</td><td>2.0</td><td><span style="color:#2ecc71">●</span> Ruhig</td><td>05:00–08:00</td></tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="storm-updated">NOAA-Vorhersage vom 28. November 2026</p>
     <!-- kp-forecast:end --></div>
     <div class="space-weather" id="stormWind" hidden></div>
@@ -192,7 +192,7 @@
       <p data-i18n="widgetText">Eine kostenlose Karte mit dem Kp-Index und der 3-Tage-Vorhersage. Kopieren Sie den Code in Ihre Website oder Ihren Blog:</p>
       <textarea id="widgetCode" aria-labelledby="widgetTitle" readonly rows="3">&lt;iframe src="https://weatherpulse.eu/widget/kp.html?lang=de" width="320" height="190" style="border:0" title="Magnetstürme — Weather Pulse" loading="lazy"&gt;&lt;/iframe&gt;</textarea>
       <button type="button" class="btn" id="copyWidgetCode">Code kopieren</button>
-      <iframe id="widgetPreview" src="/widget/kp.html?lang=de" width="320" height="190" style="border:0; display:block; margin:14px auto 0;" title="Magnetstürme — Weather Pulse" loading="lazy"></iframe>
+      <iframe id="widgetPreview" src="/widget/kp.html?lang=de" width="320" height="190" style="border:0; display:block; margin:14px auto 0; max-width:100%;" title="Magnetstürme — Weather Pulse" loading="lazy"></iframe>
     </div>
   </div>
 

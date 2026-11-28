@@ -138,14 +138,14 @@
 
     <div class="kp-forecast" id="stormForecast"><!-- kp-forecast:start -->
       <h3>Pronóstico de 3 días</h3>
-      <table class="kp-table">
+      <div style="overflow-x:auto"><table class="kp-table">
         <thead><tr><th>Día</th><th>Kp máximo</th><th>Nivel</th><th>Pico (hora de Sofía)</th></tr></thead>
         <tbody>
             <tr><td>sábado, 28 de noviembre</td><td>4.0</td><td><span style="color:#f1c40f">●</span> Actividad elevada</td><td>02:00–05:00</td></tr>
             <tr><td>domingo, 29 de noviembre</td><td>3.0</td><td><span style="color:#2ecc71">●</span> Tranquilo</td><td>08:00–11:00</td></tr>
             <tr><td>lunes, 30 de noviembre</td><td>2.0</td><td><span style="color:#2ecc71">●</span> Tranquilo</td><td>05:00–08:00</td></tr>
         </tbody>
-      </table>
+      </table></div>
       <p class="storm-updated">Pronóstico de la NOAA del 28 de noviembre de 2026</p>
     <!-- kp-forecast:end --></div>
     <div class="space-weather" id="stormWind" hidden></div>
@@ -192,7 +192,7 @@
       <p data-i18n="widgetText">Una tarjeta gratuita con el índice Kp y el pronóstico de 3 días. Copia el código en tu web o blog:</p>
       <textarea id="widgetCode" aria-labelledby="widgetTitle" readonly rows="3">&lt;iframe src="https://weatherpulse.eu/widget/kp.html?lang=es" width="320" height="190" style="border:0" title="Tormentas magnéticas — Weather Pulse" loading="lazy"&gt;&lt;/iframe&gt;</textarea>
       <button type="button" class="btn" id="copyWidgetCode">Copiar código</button>
-      <iframe id="widgetPreview" src="/widget/kp.html?lang=es" width="320" height="190" style="border:0; display:block; margin:14px auto 0;" title="Tormentas magnéticas — Weather Pulse" loading="lazy"></iframe>
+      <iframe id="widgetPreview" src="/widget/kp.html?lang=es" width="320" height="190" style="border:0; display:block; margin:14px auto 0; max-width:100%;" title="Tormentas magnéticas — Weather Pulse" loading="lazy"></iframe>
     </div>
   </div>
 

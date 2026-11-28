@@ -1,6 +1,14 @@
 // Cookie consent banner. Google Analytics is loaded only after the visitor accepts.
 // The choice is stored in localStorage; the 🍪 button lets the visitor change it later.
 (function () {
+  // /weather/index.html -> /weather/ (query and hash kept), before Analytics reads the address,
+  // so one page is one address in the reports and in shared links
+  try {
+    if (/\/index\.html$/.test(location.pathname)) {
+      history.replaceState(history.state, '', location.pathname.replace(/index\.html$/, '') + location.search + location.hash);
+    }
+  } catch (e) { /* the address stays as it is */ }
+
   const GA_ID = 'G-YT10DVQBCC';
   const STORAGE_KEY = 'cookieConsent'; // 'accepted' | 'rejected'
 
