@@ -8,6 +8,7 @@
   const SPEED_URL = 'https://services.swpc.noaa.gov/products/summary/solar-wind-speed.json';
   const FIELD_URL = 'https://services.swpc.noaa.gov/products/summary/solar-wind-mag-field.json';
   const OUTLOOK_URL = 'https://services.swpc.noaa.gov/text/27-day-outlook.txt';
+  const FLARES_URL = 'https://services.swpc.noaa.gov/json/goes/primary/xray-flares-7-day.json';
   const ALERTS_KEY = 'stormAlerts';
 
   const months = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
@@ -123,6 +124,16 @@
       nl: 'Zelden, alleen bij extreme stormen met Kp 8–9. Dat gebeurde in mei 2024, toen het noorderlicht in heel Bulgarije laag boven de noordelijke horizon te zien was.',
       ro: 'Rar, doar la furtuni extreme cu Kp 8–9. Așa s-a întâmplat în mai 2024, când aurora a fost văzută în toată România și Bulgaria, jos deasupra orizontului de nord.'
     },
+    flaresTitle: { en: '☀️ Solar flares today', de: '☀️ Sonneneruptionen heute', it: '☀️ Brillamenti solari oggi', es: '☀️ Fulguraciones solares hoy', fr: '☀️ Éruptions solaires aujourd’hui', nl: '☀️ Zonnevlammen vandaag', ro: '☀️ Erupții solare azi' },
+    flaresIntro: {
+      en: 'A solar flare is a sudden flash of X-rays from the Sun, measured by NOAA’s GOES satellites. Flares are graded A, B, C, M and X, each class ten times stronger than the one before. M and X flares disturb shortwave radio on the sunlit side of the Earth for minutes to hours (NOAA R scale). A flare alone does not cause a magnetic storm: if it throws a cloud of plasma (CME) towards the Earth, the storm comes 1–3 days later and is in the NOAA forecast above.',
+      de: 'Eine Sonneneruption ist ein plötzlicher Röntgenblitz der Sonne, gemessen von den GOES-Satelliten der NOAA. Eruptionen werden in die Klassen A, B, C, M und X eingeteilt, jede zehnmal stärker als die vorige. M- und X-Eruptionen stören den Kurzwellenfunk auf der Tagseite der Erde für Minuten bis Stunden (NOAA-R-Skala). Eine Eruption allein verursacht keinen Magnetsturm: Schleudert sie eine Plasmawolke (CME) zur Erde, kommt der Sturm 1–3 Tage später und steht in der NOAA-Vorhersage oben.',
+      it: 'Un brillamento è un improvviso lampo di raggi X dal Sole, misurato dai satelliti GOES della NOAA. I brillamenti sono classificati A, B, C, M e X, ogni classe dieci volte più forte della precedente. I brillamenti M e X disturbano le radio a onde corte sul lato illuminato della Terra per minuti od ore (scala R della NOAA). Un brillamento da solo non provoca una tempesta magnetica: se lancia una nube di plasma (CME) verso la Terra, la tempesta arriva 1–3 giorni dopo ed è nella previsione NOAA qui sopra.',
+      es: 'Una fulguración es un destello repentino de rayos X del Sol, medido por los satélites GOES de la NOAA. Se clasifican en A, B, C, M y X, cada clase diez veces más fuerte que la anterior. Las de clase M y X perturban la radio de onda corta en el lado diurno de la Tierra durante minutos u horas (escala R de la NOAA). Una fulguración sola no provoca una tormenta magnética: si lanza una nube de plasma (CME) hacia la Tierra, la tormenta llega 1–3 días después y está en el pronóstico de la NOAA de arriba.',
+      fr: 'Une éruption solaire est un brusque éclair de rayons X du Soleil, mesuré par les satellites GOES de la NOAA. Les éruptions sont classées A, B, C, M et X, chaque classe dix fois plus forte que la précédente. Les éruptions M et X perturbent la radio en ondes courtes sur la face éclairée de la Terre pendant des minutes ou des heures (échelle R de la NOAA). Une éruption seule ne provoque pas de tempête magnétique : si elle projette un nuage de plasma (CME) vers la Terre, la tempête arrive 1 à 3 jours plus tard et figure dans la prévision de la NOAA ci-dessus.',
+      nl: 'Een zonnevlam is een plotselinge flits van röntgenstraling van de zon, gemeten door de GOES-satellieten van de NOAA. Zonnevlammen worden ingedeeld in A, B, C, M en X, elke klasse tien keer sterker dan de vorige. M- en X-vlammen storen de kortegolfradio aan de dagzijde van de aarde gedurende minuten tot uren (R-schaal van de NOAA). Een zonnevlam alleen veroorzaakt geen magnetische storm: als er een plasmawolk (CME) naar de aarde komt, volgt de storm 1–3 dagen later en staat hij in de NOAA-verwachting hierboven.',
+      ro: 'O erupție solară este un fulger brusc de raze X de la Soare, măsurat de sateliții GOES ai NOAA. Erupțiile sunt clasificate A, B, C, M și X, fiecare clasă de zece ori mai puternică decât precedenta. Erupțiile M și X perturbă radioul pe unde scurte pe partea luminată a Pământului timp de minute sau ore (scala R a NOAA). O erupție singură nu provoacă o furtună magnetică: dacă aruncă un nor de plasmă (CME) spre Pământ, furtuna vine după 1–3 zile și apare în prognoza NOAA de mai sus.'
+    },
     widgetTitle: { en: 'Add the forecast to your website', de: 'Die Vorhersage auf Ihrer Website', it: 'Aggiungi la previsione al tuo sito', es: 'Añade el pronóstico a tu web', fr: 'Ajoutez la prévision à votre site', nl: 'Zet de verwachting op uw website', ro: 'Adaugă prognoza pe site-ul tău' },
     widgetText: {
       en: 'A free card with the Kp index and the 3-day forecast. Copy the code into your website or blog:',
@@ -176,6 +187,21 @@
       nl: 'Gemeten door de satelliet DSCOVR op 1,5 miljoen km van de aarde; de wind bereikt ons in 30–60 minuten. Snelle wind met negatieve (zuidelijke) Bz veroorzaakt stormen. Elke 5 minuten bijgewerkt.',
       ro: 'Măsurat de satelitul DSCOVR, la 1,5 milioane de km de Pământ; ajunge la noi în 30–60 de minute. Vântul rapid cu Bz negativ (spre sud) provoacă furtuni. Actualizat la fiecare 5 minute.'
     },
+    flaresTitle: { bg: '☀️ Слънчеви изригвания днес', ...PAGE.flaresTitle },
+    // {n} flares of class {c}; {max} the strongest class, {time} its peak, {r} the radio effect
+    flaresDay: { bg: 'Последните 24 часа: {list}. Най-силното е {max} в {time}.', en: 'Last 24 hours: {list}. The strongest was {max} at {time}.', de: 'Letzte 24 Stunden: {list}. Die stärkste war {max} um {time}.', it: 'Ultime 24 ore: {list}. Il più forte è stato {max} alle {time}.', es: 'Últimas 24 horas: {list}. La más fuerte fue {max} a las {time}.', fr: 'Dernières 24 heures : {list}. La plus forte était {max} à {time}.', nl: 'Laatste 24 uur: {list}. De sterkste was {max} om {time}.', ro: 'Ultimele 24 de ore: {list}. Cea mai puternică a fost {max} la {time}.' },
+    flaresCount: { bg: '{n} от клас {c}', en: '{n} of class {c}', de: '{n} der Klasse {c}', it: '{n} di classe {c}', es: '{n} de clase {c}', fr: '{n} de classe {c}', nl: '{n} van klasse {c}', ro: '{n} de clasă {c}' },
+    flaresQuiet: { bg: 'Последните 24 часа няма изригвания от клас C и по-силни – Слънцето е спокойно.', en: 'No flares of class C or stronger in the last 24 hours – the Sun is quiet.', de: 'Keine Eruptionen der Klasse C oder stärker in den letzten 24 Stunden – die Sonne ist ruhig.', it: 'Nessun brillamento di classe C o superiore nelle ultime 24 ore: il Sole è calmo.', es: 'Ninguna fulguración de clase C o superior en las últimas 24 horas: el Sol está tranquilo.', fr: 'Aucune éruption de classe C ou plus forte ces dernières 24 heures : le Soleil est calme.', nl: 'Geen zonnevlammen van klasse C of sterker in de laatste 24 uur – de zon is rustig.', ro: 'Nicio erupție de clasă C sau mai puternică în ultimele 24 de ore – Soarele este liniștit.' },
+    flaresWeek: { bg: 'Изригвания от клас M и X през последните 7 дни', en: 'M and X flares in the last 7 days', de: 'M- und X-Eruptionen der letzten 7 Tage', it: 'Brillamenti M e X negli ultimi 7 giorni', es: 'Fulguraciones M y X en los últimos 7 días', fr: 'Éruptions M et X des 7 derniers jours', nl: 'M- en X-vlammen in de laatste 7 dagen', ro: 'Erupții M și X în ultimele 7 zile' },
+    flaresWeekNone: { bg: 'Няма изригвания от клас M и X през последните 7 дни.', en: 'No M or X flares in the last 7 days.', de: 'Keine M- oder X-Eruptionen in den letzten 7 Tagen.', it: 'Nessun brillamento M o X negli ultimi 7 giorni.', es: 'Ninguna fulguración M o X en los últimos 7 días.', fr: 'Aucune éruption M ou X ces 7 derniers jours.', nl: 'Geen M- of X-vlammen in de laatste 7 dagen.', ro: 'Nicio erupție M sau X în ultimele 7 zile.' },
+    thTime: { bg: 'Връх', en: 'Peak', de: 'Maximum', it: 'Picco', es: 'Pico', fr: 'Pic', nl: 'Piek', ro: 'Vârf' },
+    thClass: { bg: 'Клас', en: 'Class', de: 'Klasse', it: 'Classe', es: 'Clase', fr: 'Classe', nl: 'Klasse', ro: 'Clasă' },
+    thEffect: { bg: 'Последици (NOAA)', en: 'Effect (NOAA)', de: 'Auswirkung (NOAA)', it: 'Effetti (NOAA)', es: 'Efecto (NOAA)', fr: 'Effet (NOAA)', nl: 'Gevolg (NOAA)', ro: 'Efect (NOAA)' },
+    r1: { bg: 'R1: слаби смущения в късовълновите радиовръзки на дневната страна', en: 'R1: minor shortwave radio disturbance on the dayside', de: 'R1: leichte Störung des Kurzwellenfunks auf der Tagseite', it: 'R1: lievi disturbi alle radio a onde corte sul lato diurno', es: 'R1: leves perturbaciones de la radio de onda corta en el lado diurno', fr: 'R1 : légères perturbations de la radio en ondes courtes côté jour', nl: 'R1: lichte storing van de kortegolfradio aan de dagzijde', ro: 'R1: perturbări ușoare ale radioului pe unde scurte pe partea de zi' },
+    r2: { bg: 'R2: прекъсвания на късовълновите радиовръзки за десетки минути', en: 'R2: shortwave radio outages for tens of minutes', de: 'R2: Ausfälle des Kurzwellenfunks für einige zehn Minuten', it: 'R2: interruzioni delle radio a onde corte per decine di minuti', es: 'R2: cortes de la radio de onda corta durante decenas de minutos', fr: 'R2 : coupures de la radio en ondes courtes pendant des dizaines de minutes', nl: 'R2: uitval van de kortegolfradio gedurende tientallen minuten', ro: 'R2: întreruperi ale radioului pe unde scurte timp de zeci de minute' },
+    r3: { bg: 'R3: прекъсване на късовълновите радиовръзки за около час', en: 'R3: shortwave radio blackout for about an hour', de: 'R3: Ausfall des Kurzwellenfunks für etwa eine Stunde', it: "R3: blackout delle radio a onde corte per circa un'ora", es: 'R3: apagón de la radio de onda corta durante una hora', fr: 'R3 : coupure de la radio en ondes courtes pendant environ une heure', nl: 'R3: uitval van de kortegolfradio gedurende ongeveer een uur', ro: 'R3: întreruperea radioului pe unde scurte timp de aproximativ o oră' },
+    r4: { bg: 'R4–R5: прекъсване на късовълновите радиовръзки за часове', en: 'R4–R5: shortwave radio blackout for hours', de: 'R4–R5: Ausfall des Kurzwellenfunks für Stunden', it: 'R4–R5: blackout delle radio a onde corte per ore', es: 'R4–R5: apagón de la radio de onda corta durante horas', fr: 'R4–R5 : coupure de la radio en ondes courtes pendant des heures', nl: 'R4–R5: uitval van de kortegolfradio gedurende uren', ro: 'R4–R5: întreruperea radioului pe unde scurte timp de ore' },
+    flaresNote: { bg: 'Данни: спътниците GOES на NOAA; обновява се на всеки 10 минути. Часовете са по часовата зона на устройството ви.', en: 'Data: NOAA GOES satellites; updated every 10 minutes. Times are in the time zone of your device.', de: 'Daten: GOES-Satelliten der NOAA; alle 10 Minuten aktualisiert. Uhrzeiten in der Zeitzone Ihres Geräts.', it: 'Dati: satelliti GOES della NOAA; aggiornati ogni 10 minuti. Gli orari sono nel fuso orario del tuo dispositivo.', es: 'Datos: satélites GOES de la NOAA; se actualizan cada 10 minutos. Las horas están en la zona horaria de tu dispositivo.', fr: 'Données : satellites GOES de la NOAA ; mises à jour toutes les 10 minutes. Heures dans le fuseau horaire de votre appareil.', nl: 'Gegevens: GOES-satellieten van de NOAA; elke 10 minuten bijgewerkt. Tijden in de tijdzone van uw apparaat.', ro: 'Date: sateliții GOES ai NOAA; actualizate la fiecare 10 minute. Orele sunt în fusul orar al dispozitivului tău.' },
     outlookTitle: { bg: '📅 Прогноза за 27 дни (NOAA)', en: '📅 27-day outlook (NOAA)', de: '📅 27-Tage-Prognose (NOAA)', it: '📅 Previsione a 27 giorni (NOAA)', es: '📅 Pronóstico de 27 días (NOAA)', fr: '📅 Prévision à 27 jours (NOAA)', nl: '📅 27-daagse vooruitblik (NOAA)', ro: '📅 Prognoza pe 27 de zile (NOAA)' },
     outlookNote: {
       bg: 'Очакван най-висок Kp за всеки ден, по 27-дневното въртене на Слънцето. Ориентировъчно.',
@@ -293,7 +319,7 @@
   }
 
   // The last data, so a language change can redraw without loading again
-  const data = { now: null, nowFailed: false, forecast: null, wind: null, outlook: null };
+  const data = { now: null, nowFailed: false, forecast: null, wind: null, outlook: null, flares: null };
 
   // ---- Kp now ----
   function renderNow() {
@@ -424,6 +450,48 @@
       renderWind();
     } catch (err) {
       console.error('Error loading solar wind:', err);
+    }
+  }
+
+  // ---- Solar flares (GOES X-rays) ----
+  const fill = (text, values) => text.replace(/\{(\w+)\}/g, (m, key) => (key in values ? values[key] : m));
+  // A flare class as a number on one scale: C1 = 1, M1 = 10, X1 = 100
+  const flareSize = cls => ({ C: 1, M: 10, X: 100 }[cls[0]] || 0) * (parseFloat(cls.slice(1)) || 1);
+  function flareEffect(cls) {
+    const size = flareSize(cls);
+    return size >= 1000 ? t('r4') : size >= 100 ? t('r3') : size >= 50 ? t('r2') : size >= 10 ? t('r1') : '';
+  }
+  function renderFlares() {
+    const box = $('stormFlares');
+    if (!box || !data.flares) return;
+    const time = iso => new Date(iso).toLocaleString(locale(), { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+    const dayAgo = Date.now() - 24 * 3600 * 1000;
+    const day = data.flares.filter(f => new Date(f.time).getTime() >= dayAgo);
+    let summary = t('flaresQuiet');
+    if (day.length) {
+      const list = ['X', 'M', 'C'].map(c => [c, day.filter(f => f.cls[0] === c).length]).filter(([, n]) => n)
+        .map(([c, n]) => fill(t('flaresCount'), { n, c })).join(', ');
+      const max = day.reduce((a, b) => (flareSize(b.cls) > flareSize(a.cls) ? b : a));
+      summary = fill(t('flaresDay'), { list, max: `<b>${max.cls}</b>`, time: time(max.time) });
+    }
+    const big = data.flares.filter(f => flareSize(f.cls) >= 10).sort((a, b) => b.time.localeCompare(a.time));
+    const table = big.length
+      ? `<div class="table-scroll"><table class="kp-table"><thead><tr><th>${t('thTime')}</th><th>${t('thClass')}</th><th>${t('thEffect')}</th></tr></thead><tbody>` +
+        big.map(f => `<tr><td>${time(f.time)}</td><td><b>${f.cls}</b></td><td>${flareEffect(f.cls)}</td></tr>`).join('') + '</tbody></table></div>'
+      : `<p>${t('flaresWeekNone')}</p>`;
+    box.innerHTML = `<p class="flares-summary">${summary}</p>` +
+      (big.length ? `<h3>${t('flaresWeek')}</h3>` : '') + table +
+      `<p class="outlook-note">${t('flaresNote')}</p>`;
+  }
+
+  async function loadFlares() {
+    try {
+      const list = await getJson(FLARES_URL);
+      data.flares = list.filter(f => f.max_class && /^[CMX]/.test(f.max_class))
+        .map(f => ({ cls: f.max_class, time: f.max_time.endsWith('Z') ? f.max_time : f.max_time + 'Z' }));
+      renderFlares();
+    } catch (err) {
+      console.error('Error loading solar flares:', err);
     }
   }
 
@@ -560,6 +628,7 @@
     renderForecast();
     renderWind();
     renderOutlook();
+    renderFlares();
     renderAlerts();
     renderWidget();
   }
@@ -574,7 +643,9 @@
   loadForecast();
   loadWind();
   loadOutlook();
+  loadFlares();
   setInterval(loadNow, 5 * 60 * 1000);
+  setInterval(loadFlares, 10 * 60 * 1000);
   setInterval(loadWind, 5 * 60 * 1000);
   initAlerts();
   initWidgetCopy();

@@ -151,6 +151,12 @@
     <div class="space-weather" id="stormWind" hidden></div>
     <div class="space-weather" id="stormOutlook" hidden></div>
 
+    <section class="kp-forecast storm-flares">
+      <h2 data-i18n="flaresTitle">☀️ Sonneneruptionen heute</h2>
+      <p data-i18n="flaresIntro">Eine Sonneneruption ist ein plötzlicher Röntgenblitz der Sonne, gemessen von den GOES-Satelliten der NOAA. Eruptionen werden in die Klassen A, B, C, M und X eingeteilt, jede zehnmal stärker als die vorige. M- und X-Eruptionen stören den Kurzwellenfunk auf der Tagseite der Erde für Minuten bis Stunden (NOAA-R-Skala). Eine Eruption allein verursacht keinen Magnetsturm: Schleudert sie eine Plasmawolke (CME) zur Erde, kommt der Sturm 1–3 Tage später und steht in der NOAA-Vorhersage oben.</p>
+      <div id="stormFlares"><p class="storm-loading" data-i18n="loading">Wird geladen…</p></div>
+    </section>
+
     <div class="kp-forecast storm-alerts">
       <h3 data-i18n="alertsTitle">🔔 Benachrichtigung bei Magnetsturm</h3>
       <p data-i18n="alertsText">Erhalten Sie eine Benachrichtigung auf dem Handy, wenn in den nächsten 24 Stunden ein Sturm (Kp 5 oder mehr) erwartet wird.</p>
@@ -220,6 +226,6 @@
 <script src="/js/language-selector.js?v=10"></script>
 <script src="/js/background-selector.js?v=6"></script>
 <script src="/js/share.js?v=8" defer></script>
-<script src="/js/storm-page.js?v=6"></script>
+<script src="/js/storm-page.js?v=7"></script>
 </body>
 </html>
