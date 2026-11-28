@@ -13,6 +13,8 @@ from pathlib import Path
 
 import requests
 
+from .utm import for_network
+
 log = logging.getLogger(__name__)
 
 TELEGRAM_API = "https://api.telegram.org/bot{token}/{method}"
@@ -75,7 +77,7 @@ def send(img_path: Path, caption: str, image_url=None, skip=()):
         if name in skip:
             continue
         try:
-            done[name] = telegram(img_path, caption) if name == "telegram" else viber(image_url, caption)
+            done[name] = telegram(img_path,for_network(caption, name)) if name == "telegram" else viber(image_url, for_network(caption, name))
             log.info("%s: %s", name.capitalize(), done[name])
         except Exception as error:  # a channel must never stop the other posts
             log.warning("%s post failed: %s", name.capitalize(), error)
