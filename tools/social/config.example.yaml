@@ -66,6 +66,11 @@ alerts:
   storm_min_kp: 5
   full_moon: true
 
+# Канали във Viber и Telegram (токени: WP_VIBER_TOKEN, WP_TELEGRAM_TOKEN + WP_TELEGRAM_CHAT; без тях са изключени).
+# forecast: false – сутрешната прогноза не отива в каналите; бурите, пълнолунието и предупрежденията продължават.
+channels:
+  forecast: true
+
 # Чернови за оранжев и червен код на НИМХ (python main.py warnings): картинка и текст в queue/drafts/, нищо не се
 # публикува, докато не го одобрите (workflow „Social draft“). Най-много max_per_day нови чернови на ден.
 warnings:

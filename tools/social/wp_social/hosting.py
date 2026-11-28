@@ -34,8 +34,12 @@ class Hosting:
 
     def already_published(self, suffix: str) -> bool:
         """True if a file ending with `suffix` is already in the GitHub folder (only for mode github)."""
+        return self.find_published(suffix) is not None
+
+    def find_published(self, suffix: str):
+        """The public URL of the file ending with `suffix` in the GitHub folder, or None (only for mode github)."""
         if self.mode != "github":
-            return False
+            return None
         gh = self.github
         token = gh.get("token") or os.environ.get("WP_GITHUB_TOKEN") or os.environ.get("GITHUB_TOKEN")
         headers = {"Accept": "application/vnd.github+json"}
@@ -45,12 +49,15 @@ class Hosting:
             r = requests.get(f"https://api.github.com/repos/{gh['repo']}/contents/{gh.get('path', 'social').strip('/')}",
                              params={"ref": gh.get("branch", "main")}, headers=headers, timeout=30)
             if r.status_code == 404:
-                return False
+                return None
             r.raise_for_status()
-            return any(item.get("name", "").endswith(suffix) for item in r.json())
+            for item in r.json():
+                if item.get("name", "").endswith(suffix):
+                    return self.base_url + item["name"]
+            return None
         except (requests.RequestException, ValueError) as e:
             log.warning("Could not check %s on GitHub (%s); continuing.", suffix, e)
-            return False
+            return None
 
     def publish(self, path: Path, name: str) -> str:
         path = Path(path)

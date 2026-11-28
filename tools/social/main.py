@@ -6,6 +6,7 @@
   python main.py alerts   [--dry-run] [--sample] [--today]               # magnetic storm / full Moon tomorrow
   python main.py cards    [--sample] [--static] [--force]         # share cards (og:image) of passes, storms, air
   python main.py warnings [--dry-run] [--sample] [--notify]       # DRAFTS for orange/red warnings of NIMH (nothing is posted)
+  python main.py channels --test                                 # a test message to every Telegram/Viber channel with a token
   python main.py check                                           # verify token, page and IG account
   python main.py serve                                           # run forever on the schedule in config.yaml
 """
@@ -16,6 +17,7 @@ from datetime import datetime, timedelta
 from logging.handlers import RotatingFileHandler
 from zoneinfo import ZoneInfo
 
+from wp_social import channels
 from wp_social.config import ROOT, load_config
 from wp_social.alerts import run_alerts
 from wp_social.cards import run_cards
@@ -88,6 +90,8 @@ def main():
     wd.add_argument("--dry-run", action="store_true", help="only the cards in output/ and the texts on the screen; no state, no drafts")
     wd.add_argument("--sample", action="store_true", help="invented warnings (no data file)")
     wd.add_argument("--notify", action="store_true", help="a GitHub issue for every draft that has none (needs GITHUB_TOKEN)")
+    ch = sub.add_parser("channels", help="Telegram/Viber channels")
+    ch.add_argument("--test", action="store_true", help="send 'WeatherPulse: проверка на канала' to every channel with a token")
     sub.add_parser("check")
     sub.add_parser("serve")
     a = p.parse_args()
@@ -107,6 +111,14 @@ def main():
             notify(cfg, dry_run=a.dry_run)
         else:
             run_warnings(cfg, dry_run=a.dry_run, sample=a.sample)
+    elif a.cmd == "channels":
+        if not a.test:
+            raise SystemExit("Use: python main.py channels --test")
+        results = channels.test()
+        if not results:
+            log.warning("No channel has its token (WP_TELEGRAM_TOKEN + WP_TELEGRAM_CHAT, WP_VIBER_TOKEN).")
+        if not results or not all(ok for ok, _ in results.values()):
+            raise SystemExit(1)
     elif a.cmd == "check":
         print(make_client(cfg).check())
     elif a.cmd == "serve":
