@@ -133,7 +133,7 @@ ${rows}
 // a week at position 9, the queries "магнитни бури сега" and "... в реално време"), like /dnes/ and /utre/.
 // Between <!-- volatile --> marks (the lastmod does not move every day); build-main.js takes the marks
 // out when it makes the translations from this page.
-const STATIC_DESCRIPTION = 'Магнитни бури в реално време: Kp индекс сега, слънчев вятър и прогноза на NOAA за 3 дни. Обновява се автоматично. Известие при буря.';
+const STATIC_DESCRIPTION = 'Магнитни бури в реално време: Kp индекс сега, слънчев вятър, слънчеви изригвания днес и прогноза на NOAA за 3 дни. Обновява се автоматично. Известие при буря.';
 function hubHead(html, days) {
   const kp = kp => (Math.round(kp * 10) / 10).toFixed(1);
   const lower = text => text.charAt(0).toLocaleLowerCase('bg-BG') + text.slice(1);
