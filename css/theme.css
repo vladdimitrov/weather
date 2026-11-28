@@ -2378,3 +2378,16 @@ html body footer p a:hover {
   color: var(--gold) !important;
   text-decoration: underline;
 }
+
+/* ---- phones: bigger touch targets, no sideways overflow (mobile audit, Nov 2026) ---- */
+@media (max-width: 768px) {
+  /* city / resort pills: at least 38px tall, 6px apart = 44px pitch (were 29-34px) */
+  html body .recent-place {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding-block: 4px;
+  }
+  /* a form card with side margins plus width:100% stuck out by 20px (the map page) */
+  html body .form-container { width: auto; margin-inline: 0; }
+}
