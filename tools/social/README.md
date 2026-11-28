@@ -130,5 +130,6 @@ WantedBy=multi-user.target
 
 - `cities`: градовете и координатите (до 8 на картинка).
 - `forecast.link_path`: към коя страница на сайта води линкът.
+- UTM: линковете в постовете (`wp_social/utm.py`) носят `utm_source=facebook|instagram`, `utm_medium=social`, `utm_campaign=forecast|storm|fullmoon|warning` (за предупрежденията и `utm_content=<вид>`), за да се вижда в Google Analytics кой вид пост води посетители. Текстът се пише с `@network@`, който се заменя при изпращането към съответната мрежа.
 - `schedule.forecast_tomorrow: true` + `forecast_time: "19:00"`: вечерен пост „утре“ вместо сутрешен.
 - Цветове и оформление: `wp_social/render.py`.

@@ -11,7 +11,7 @@
   <title>El tiempo en Kartala hoy – nieve en las pistas y previsión</title>
   <link rel="canonical" href="https://weatherpulse.eu/es/vremeto/kartala/" />
   <meta name="robots" content="noindex, follow">
-  <meta name="description" content="Nieve en las pistas: hasta 3 cm, nieve nueva en 7 días: 10 cm. Hoy: −6° / −1°, nublado. Mañana: −5° / 4°, nublado. El tiempo en Kartala hoy y para 7 días: nieve en las pistas (espesor y nieve nueva), temperatura abajo en la estación y arriba en las pistas, viento y precipitación. Clima por meses." data-description="El tiempo en Kartala hoy y para 7 días: nieve en las pistas (espesor y nieve nueva), temperatura abajo en la estación y arriba en las pistas, viento y precipitación. Clima por meses.">
+  <meta name="description" content="Nieve en las pistas: hasta 7 cm, nieve nueva en 7 días: 27 cm. Hoy: 0° / 6°, nieve (100%). Mañana: −5° / 0°, nieve (100%). El tiempo en Kartala hoy y para 7 días: nieve en las pistas (espesor y nieve nueva), temperatura abajo en la estación y arriba en las pistas, viento y precipitación. Clima por meses." data-description="El tiempo en Kartala hoy y para 7 días: nieve en las pistas (espesor y nieve nueva), temperatura abajo en la estación y arriba en las pistas, viento y precipitación. Clima por meses.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Weather Pulse">
   <meta property="og:locale" content="es_ES">
@@ -73,7 +73,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=65">
+  <link rel="stylesheet" href="/css/theme.css?v=68">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Exo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -100,81 +100,87 @@
     <p class="storm-intro">Previsión del tiempo en Kartala para hoy, mañana y los próximos 7 días: temperatura, precipitaciones, viento y probabilidad de lluvia. Los datos proceden de Open-Meteo y se actualizan cada hora.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Kartala" data-lat="42.0453" data-lon="23.3378" data-query="city=Kartala&lat=42.0453&lon=23.3378&cc=BG" data-warn="blagoevgrad">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Rachas de viento fuertes mañana: hasta 84 km/h</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>martes, 24 de noviembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">−6° / −1°</span>
-        <p class="storm-now-status">Nublado · probabilidad de lluvia 0%</p>
-        <p class="storm-updated">Previsión del 24 de noviembre de 2026</p>
+        <h2>sábado, 28 de noviembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">0° / 6°</span>
+        <p class="storm-now-status">Nieve · probabilidad de lluvia 100%</p>
+        <p class="storm-updated">Previsión del 28 de noviembre de 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Previsión a 7 días</h3>
-        <p class="city-summary">En los próximos 7 días el día más cálido será el viernes, 27 de noviembre (hasta 7°) y el más frío el martes, 24 de noviembre (hasta −6°). Se esperan precipitaciones en 4 de los días. Los modelos ya difieren para hoy (hasta 4° de diferencia en la temperatura), conviene volver a consultar más tarde.</p>
+        <p class="city-summary">En los próximos 7 días el día más cálido será el sábado, 28 de noviembre (hasta 6°) y el más frío el martes, 1 de diciembre (hasta −10°). Se esperan precipitaciones en 2 de los días. Los modelos ya difieren para mañana (hasta 10° de diferencia en la temperatura), conviene volver a consultar más tarde.</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Kartala&lat=42.0453&lon=23.3378&cc=BG&date=2026-11-24" title="Por horas →">
-            <span class="kp-day-name">mar 24</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">24.11</span>
-            <span class="city-day-temp">−6° / −1°</span>
-            <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">0%</span>
-            <span class="city-day-wind">Viento 10 km/h · rachas 53</span>
-            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ffd54f">● menos segura</span>
-          </a>
-          <a class="kp-day city-day" href="/weather/?city=Kartala&lat=42.0453&lon=23.3378&cc=BG&date=2026-11-25" title="Por horas →">
-            <span class="kp-day-name">mié 25</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">25.11</span>
-            <span class="city-day-temp">−5° / 4°</span>
-            <span class="kp-day-status">Nublado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">3%</span>
-            <span class="city-day-wind">Viento 9 km/h · rachas 51</span>
-            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ffd54f">● menos segura</span>
-          </a>
-          <a class="kp-day city-day" href="/weather/?city=Kartala&lat=42.0453&lon=23.3378&cc=BG&date=2026-11-26" title="Por horas →">
-            <span class="kp-day-name">jue 26</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
-            <span class="city-day-date">26.11</span>
-            <span class="city-day-temp">0° / 7°</span>
-            <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">70% · 1.0 mm</span>
-            <span class="city-day-wind">Viento 9 km/h · rachas 54</span>
-          </a>
-          <a class="kp-day city-day" href="/weather/?city=Kartala&lat=42.0453&lon=23.3378&cc=BG&date=2026-11-27" title="Por horas →">
-            <span class="kp-day-name">vie 27</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
-            <span class="city-day-date">27.11</span>
-            <span class="city-day-temp">3° / 7°</span>
-            <span class="kp-day-status">Lluvia</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">94% · 24.7 mm</span>
-            <span class="city-day-wind">Viento 8 km/h · rachas 50</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Kartala&lat=42.0453&lon=23.3378&cc=BG&date=2026-11-28" title="Por horas →">
             <span class="kp-day-name">sáb 28</span>
             <span class="city-day-icon" aria-hidden="true">❄️</span>
             <span class="city-day-date">28.11</span>
-            <span class="city-day-temp">2° / 6°</span>
+            <span class="city-day-temp">0° / 6°</span>
             <span class="kp-day-status">Nieve</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">98% · 14.7 mm</span>
-            <span class="city-day-wind city-day-gusts">Viento 15 km/h · rachas 75</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">100% · 14.6 mm</span>
+            <span class="city-day-wind city-day-gusts">Viento 14 km/h · rachas 82</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Kartala&lat=42.0453&lon=23.3378&cc=BG&date=2026-11-29" title="Por horas →">
             <span class="kp-day-name">dom 29</span>
             <span class="city-day-icon" aria-hidden="true">❄️</span>
             <span class="city-day-date">29.11</span>
-            <span class="city-day-temp">−5° / 3°</span>
+            <span class="city-day-temp">−5° / 0°</span>
             <span class="kp-day-status">Nieve</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">81% · 0.9 mm</span>
-            <span class="city-day-wind city-day-gusts">Viento 18 km/h · rachas 75</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">100% · 11.5 mm</span>
+            <span class="city-day-wind city-day-gusts">Viento 14 km/h · rachas 84</span>
+            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ffd54f">● menos segura</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Kartala&lat=42.0453&lon=23.3378&cc=BG&date=2026-11-30" title="Por horas →">
             <span class="kp-day-name">lun 30</span>
-            <span class="city-day-icon" aria-hidden="true">☀️</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
             <span class="city-day-date">30.11</span>
-            <span class="city-day-temp">−6° / −1°</span>
-            <span class="kp-day-status">Despejado</span>
-            <span class="city-day-rain" title="probabilidad de lluvia">28%</span>
-            <span class="city-day-wind">Viento 8 km/h · rachas 50</span>
-            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ffd54f">● menos segura</span>
+            <span class="city-day-temp">−9° / −4°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">14%</span>
+            <span class="city-day-wind">Viento 9 km/h · rachas 41</span>
+            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ff8a65">● incierta</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Kartala&lat=42.0453&lon=23.3378&cc=BG&date=2026-12-01" title="Por horas →">
+            <span class="kp-day-name">mar 1</span>
+            <span class="city-day-icon" aria-hidden="true">⛅</span>
+            <span class="city-day-date">01.12</span>
+            <span class="city-day-temp">−10° / −3°</span>
+            <span class="kp-day-status">Parcialmente nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">0%</span>
+            <span class="city-day-wind">Viento 8 km/h · rachas 35</span>
+            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ff8a65">● incierta</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Kartala&lat=42.0453&lon=23.3378&cc=BG&date=2026-12-02" title="Por horas →">
+            <span class="kp-day-name">mié 2</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">02.12</span>
+            <span class="city-day-temp">−8° / −1°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">3%</span>
+            <span class="city-day-wind">Viento 8 km/h · rachas 30</span>
+            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ff8a65">● incierta</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Kartala&lat=42.0453&lon=23.3378&cc=BG&date=2026-12-03" title="Por horas →">
+            <span class="kp-day-name">jue 3</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">03.12</span>
+            <span class="city-day-temp">−8° / 1°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">3%</span>
+            <span class="city-day-wind">Viento 8 km/h · rachas 46</span>
+            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ff8a65">● incierta</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Kartala&lat=42.0453&lon=23.3378&cc=BG&date=2026-12-04" title="Por horas →">
+            <span class="kp-day-name">vie 4</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">04.12</span>
+            <span class="city-day-temp">−8° / −1°</span>
+            <span class="kp-day-status">Nublado</span>
+            <span class="city-day-rain" title="probabilidad de lluvia">3%</span>
+            <span class="city-day-wind">Viento 6 km/h · rachas 36</span>
+            <span class="city-day-conf" title="Cuánto difieren los modelos ECMWF, ICON y GFS para este día" style="font-size:0.8rem;color:#ff8a65">● incierta</span>
           </a>
         </div>
         <p class="forecast-note">Mediana de los modelos ECMWF, ICON y GFS · altitud 1354 m</p>
@@ -188,8 +194,8 @@
       <table class="kp-table region-table" data-mode="snow">
         <thead><tr><th>Lugar</th><th>Espesor de nieve</th><th>Nieve nueva 7 días</th><th>Mín. / máx.</th></tr></thead>
         <!-- volatile --><tbody>
-          <tr data-lat="42.0453" data-lon="23.3378" data-elevation="1450"><td>Bodrost <span class="storm-updated">1450 m</span></td><td>0 cm</td><td>0 cm</td><td>−7° / 7°</td></tr>
-          <tr data-lat="42.04" data-lon="23.36" data-elevation="2250"><td>Kartala (top) <span class="storm-updated">2250 m</span></td><td>3 cm</td><td>10 cm</td><td>−11° / 2°</td></tr>
+          <tr data-lat="42.0453" data-lon="23.3378" data-elevation="1450"><td>Bodrost <span class="storm-updated">1450 m</span></td><td>0 cm</td><td>4 cm</td><td>−8° / 5°</td></tr>
+          <tr data-lat="42.04" data-lon="23.36" data-elevation="2250"><td>Kartala (top) <span class="storm-updated">2250 m</span></td><td>7 cm</td><td>27 cm</td><td>−13° / 0°</td></tr>
         </tbody><!-- /volatile -->
       </table>
       <p class="storm-updated region-nojs">La tabla se completa al cargar la página.</p>
@@ -297,6 +303,7 @@
         <a href="/es/vremeto/chepelare/" class="recent-place">Chepelare</a>
         <a href="/es/vremeto/dobrinishte/" class="recent-place">Dobrinishte</a>
         <a href="/es/vremeto/aleko/" class="recent-place">Aleko</a>
+        <a href="/es/vremeto/samokov/" class="recent-place">Samokov</a>
       </div>
     </section>
   <!-- lang-links:start -->

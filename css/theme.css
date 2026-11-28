@@ -2292,3 +2292,102 @@ html body .day-details-toggle { min-height: 40px; }
 .city-day-gusts { color: #ffb74d; opacity: 1; font-weight: 600; }
 .wind-gust { opacity: 0.75; font-size: 0.9em; }
 .wind-gust-strong { color: #ffb74d; opacity: 1; font-weight: 600; }
+
+/* Readable small text (25 Nov 2026, owner's request): on the dark background nothing a visitor reads is
+   below 14px; buttons, city links and the intro of the home page 15px. The body text stays 16px. */
+html body .storm-updated,
+html body .forecast-note,
+html body .city-day-date,
+html body .city-day-wind,
+html body .city-day-conf,
+html body .kp-day-status,
+html body footer p,
+html body .footer-link,
+html body .lang-links,
+html body .breadcrumbs,
+html body .breadcrumbs a,
+html body .tc-value,
+html body td,
+html body th {
+  font-size: 0.875rem !important;
+}
+html body .city-day-date { opacity: 0.9; }
+/* the rain line ("100% · 18.0 mm") has to fit one line of a day card on a phone */
+html body .city-day-rain { font-size: 0.84rem !important; white-space: nowrap; }
+html body .recent-place,
+html body .btn,
+html body .features-description,
+html body .install-app-button {
+  font-size: 0.9375rem !important;
+}
+
+/* One colour system (25 Nov 2026, owner's decision):
+   - gold only for accents: the main heading, the logo, table headings, key numbers, a button under the pointer;
+   - text white (--ink), the intro under the heading included; secondary text and the footer light grey (--ink-soft);
+   - links inside text gold and underlined;
+   - every button and chip the same: dark blue glass, white text, gold border on hover/focus. */
+html body p.storm-intro { color: var(--ink) !important; }
+html body p.storm-updated,
+html body p.storm-updated label,
+html body .holiday-note { color: var(--ink-soft) !important; }
+
+html body .container p a:not([class]),
+html body .container li a:not([class]),
+html body .info-card a:not([class]),
+html body td a:not([class]),
+html body .breadcrumbs a {
+  color: var(--gold) !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+html body .recent-place,
+html body .btn:not(.btn-primary):not(.btn-location),
+html body .nearby-card,
+html body .share-btn,
+html body .city-tile,
+html body .home-tile,
+html body .today-chip {
+  background: var(--glass-strong) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+  text-decoration: none !important;
+}
+html body .share-btn span,
+html body .city-tile-name { color: var(--ink) !important; }
+html body .recent-place:hover, html body .recent-place:focus-visible,
+html body .btn:not(.btn-primary):not(.btn-location):hover, html body .btn:not(.btn-primary):not(.btn-location):focus-visible,
+html body .nearby-card:hover, html body .nearby-card:focus-visible,
+html body .share-btn:hover, html body .share-btn:focus-visible,
+html body .city-tile:hover, html body .city-tile:focus-visible,
+html body .home-tile:hover, html body .home-tile:focus-visible,
+html body .today-chip:hover, html body .today-chip:focus-visible {
+  border-color: var(--gold) !important;
+  color: #ffffff !important;
+}
+
+html body .footer-link,
+html body .lang-links a,
+html body footer p a {
+  color: var(--ink-soft) !important;
+  text-decoration: none;
+}
+html body .footer-link:hover,
+html body .lang-links a:hover,
+html body footer p a:hover {
+  color: var(--gold) !important;
+  text-decoration: underline;
+}
+
+/* ---- phones: bigger touch targets, no sideways overflow (mobile audit, Nov 2026) ---- */
+@media (max-width: 768px) {
+  /* city / resort pills: at least 38px tall, 6px apart = 44px pitch (were 29-34px) */
+  html body .recent-place {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding-block: 4px;
+  }
+  /* a form card with side margins plus width:100% stuck out by 20px (the map page) */
+  html body .form-container { width: auto; margin-inline: 0; }
+}

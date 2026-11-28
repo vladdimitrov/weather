@@ -19,7 +19,7 @@
   <link rel="alternate" hreflang="nl" href="https://weatherpulse.eu/nl/weer/bansko/" />
   <link rel="alternate" hreflang="ro" href="https://weatherpulse.eu/ro/vremea/bansko/" />
   <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu/en/vremeto/bansko/" />
-  <meta name="description" content="Snow on the slopes: up to 4 cm, new snow in 7 days: 36 cm. Today: −3° / 3°, cloudy. Tomorrow: −3° / 8°, cloudy. Weather in Bansko today and for 7 days: snow on the slopes (snow depth and new snow), temperature down in the resort and up on the slopes, wind and precipitation. Climate by month." data-description="Weather in Bansko today and for 7 days: snow on the slopes (snow depth and new snow), temperature down in the resort and up on the slopes, wind and precipitation. Climate by month.">
+  <meta name="description" content="Snow on the slopes: up to 13 cm, new snow in 7 days: 54 cm. Today: 0° / 7°, snow (100%). Tomorrow: −4° / 0°, snow (100%). Weather in Bansko today and for 7 days: snow on the slopes (snow depth and new snow), temperature down in the resort and up on the slopes, wind and precipitation. Climate by month." data-description="Weather in Bansko today and for 7 days: snow on the slopes (snow depth and new snow), temperature down in the resort and up on the slopes, wind and precipitation. Climate by month.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Weather Pulse">
   <meta property="og:locale" content="en_GB">
@@ -81,7 +81,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=65">
+  <link rel="stylesheet" href="/css/theme.css?v=68">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Exo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -108,80 +108,86 @@
     <p class="storm-intro">Weather forecast for Bansko for today, tomorrow and the next 7 days: temperature, precipitation, wind and chance of rain. The data come from Open-Meteo and are updated every hour.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Bansko" data-lat="41.8383" data-lon="23.4885" data-query="city=Bansko&lat=41.8383&lon=23.4885&cc=BG" data-warn="blagoevgrad">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Heavy snowfall tomorrow: about 14 cm of new snow</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>Tuesday 24 November</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">−3° / 3°</span>
-        <p class="storm-now-status">Cloudy · chance of rain 0%</p>
-        <p class="storm-updated">Forecast issued on 24 November 2026</p>
+        <h2>Saturday 28 November</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">0° / 7°</span>
+        <p class="storm-now-status">Snow · chance of rain 100%</p>
+        <p class="storm-updated">Forecast issued on 28 November 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>7-day forecast</h3>
-        <p class="city-summary">Over the next 7 days the warmest day is Thursday 26 November (up to 10°) and the coldest Monday 30 November (down to −8°). Rain or snow is expected on 4 of the days. Daytime temperatures are below normal for November (average high 12°). The models already disagree for tomorrow (up to 5° apart in temperature), so check the forecast again later.</p>
+        <p class="city-summary">Over the next 7 days the warmest day is Saturday 28 November (up to 7°) and the coldest Tuesday 1 December (down to −12°). Rain or snow is expected on 3 of the days. Daytime temperatures are below normal for November (average high 12°). The models agree up to tomorrow; after that the forecast is less certain (up to 8° apart in temperature).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Bansko&lat=41.8383&lon=23.4885&cc=BG&date=2026-11-24" title="Hourly forecast →">
-            <span class="kp-day-name">Tue 24</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">24.11</span>
-            <span class="city-day-temp">−3° / 3°</span>
-            <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">0%</span>
-            <span class="city-day-wind">Wind 16 km/h · gusts 55</span>
-          </a>
-          <a class="kp-day city-day" href="/weather/?city=Bansko&lat=41.8383&lon=23.4885&cc=BG&date=2026-11-25" title="Hourly forecast →">
-            <span class="kp-day-name">Wed 25</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">25.11</span>
-            <span class="city-day-temp">−3° / 8°</span>
-            <span class="kp-day-status">Cloudy</span>
-            <span class="city-day-rain" title="chance of rain">0%</span>
-            <span class="city-day-wind">Wind 8 km/h · gusts 31</span>
-            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ffd54f">● less certain</span>
-          </a>
-          <a class="kp-day city-day" href="/weather/?city=Bansko&lat=41.8383&lon=23.4885&cc=BG&date=2026-11-26" title="Hourly forecast →">
-            <span class="kp-day-name">Thu 26</span>
-            <span class="city-day-icon" aria-hidden="true">🌦️</span>
-            <span class="city-day-date">26.11</span>
-            <span class="city-day-temp">1° / 10°</span>
-            <span class="kp-day-status">Drizzle</span>
-            <span class="city-day-rain" title="chance of rain">58% · 0.2 mm</span>
-            <span class="city-day-wind">Wind 7 km/h · gusts 27</span>
-            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ffd54f">● less certain</span>
-          </a>
-          <a class="kp-day city-day" href="/weather/?city=Bansko&lat=41.8383&lon=23.4885&cc=BG&date=2026-11-27" title="Hourly forecast →">
-            <span class="kp-day-name">Fri 27</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
-            <span class="city-day-date">27.11</span>
-            <span class="city-day-temp">5° / 9°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">97% · 21.2 mm</span>
-            <span class="city-day-wind">Wind 8 km/h · gusts 19</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Bansko&lat=41.8383&lon=23.4885&cc=BG&date=2026-11-28" title="Hourly forecast →">
             <span class="kp-day-name">Sat 28</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
+            <span class="city-day-icon" aria-hidden="true">❄️</span>
             <span class="city-day-date">28.11</span>
-            <span class="city-day-temp">3° / 8°</span>
-            <span class="kp-day-status">Rain</span>
-            <span class="city-day-rain" title="chance of rain">100% · 20.7 mm</span>
-            <span class="city-day-wind">Wind 7 km/h · gusts 23</span>
+            <span class="city-day-temp">0° / 7°</span>
+            <span class="kp-day-status">Snow</span>
+            <span class="city-day-rain" title="chance of rain">100% · 23.6 mm</span>
+            <span class="city-day-wind">Wind 8 km/h · gusts 28</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Bansko&lat=41.8383&lon=23.4885&cc=BG&date=2026-11-29" title="Hourly forecast →">
             <span class="kp-day-name">Sun 29</span>
             <span class="city-day-icon" aria-hidden="true">❄️</span>
             <span class="city-day-date">29.11</span>
-            <span class="city-day-temp">−4° / 3°</span>
+            <span class="city-day-temp">−4° / 0°</span>
             <span class="kp-day-status">Snow</span>
-            <span class="city-day-rain" title="chance of rain">82% · 3.5 mm</span>
-            <span class="city-day-wind">Wind 9 km/h · gusts 30</span>
+            <span class="city-day-rain" title="chance of rain">100% · 19.5 mm</span>
+            <span class="city-day-wind">Wind 9 km/h · gusts 28</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Bansko&lat=41.8383&lon=23.4885&cc=BG&date=2026-11-30" title="Hourly forecast →">
             <span class="kp-day-name">Mon 30</span>
-            <span class="city-day-icon" aria-hidden="true">☀️</span>
+            <span class="city-day-icon" aria-hidden="true">❄️</span>
             <span class="city-day-date">30.11</span>
-            <span class="city-day-temp">−8° / 1°</span>
+            <span class="city-day-temp">−9° / −2°</span>
+            <span class="kp-day-status">Snow</span>
+            <span class="city-day-rain" title="chance of rain">18% · 1.1 mm</span>
+            <span class="city-day-wind">Wind 7 km/h · gusts 17</span>
+            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ff8a65">● uncertain</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Bansko&lat=41.8383&lon=23.4885&cc=BG&date=2026-12-01" title="Hourly forecast →">
+            <span class="kp-day-name">Tue 1</span>
+            <span class="city-day-icon" aria-hidden="true">☀️</span>
+            <span class="city-day-date">01.12</span>
+            <span class="city-day-temp">−12° / −1°</span>
             <span class="kp-day-status">Clear</span>
-            <span class="city-day-rain" title="chance of rain">28%</span>
+            <span class="city-day-rain" title="chance of rain">0%</span>
             <span class="city-day-wind">Wind 5 km/h · gusts 16</span>
+            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ff8a65">● uncertain</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Bansko&lat=41.8383&lon=23.4885&cc=BG&date=2026-12-02" title="Hourly forecast →">
+            <span class="kp-day-name">Wed 2</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">02.12</span>
+            <span class="city-day-temp">−11° / 0°</span>
+            <span class="kp-day-status">Cloudy</span>
+            <span class="city-day-rain" title="chance of rain">0%</span>
+            <span class="city-day-wind">Wind 5 km/h · gusts 17</span>
+            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ff8a65">● uncertain</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Bansko&lat=41.8383&lon=23.4885&cc=BG&date=2026-12-03" title="Hourly forecast →">
+            <span class="kp-day-name">Thu 3</span>
+            <span class="city-day-icon" aria-hidden="true">⛅</span>
+            <span class="city-day-date">03.12</span>
+            <span class="city-day-temp">−8° / 5°</span>
+            <span class="kp-day-status">Partly cloudy</span>
+            <span class="city-day-rain" title="chance of rain">3%</span>
+            <span class="city-day-wind">Wind 6 km/h · gusts 16</span>
+            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ffd54f">● less certain</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Bansko&lat=41.8383&lon=23.4885&cc=BG&date=2026-12-04" title="Hourly forecast →">
+            <span class="kp-day-name">Fri 4</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">04.12</span>
+            <span class="city-day-temp">−8° / 4°</span>
+            <span class="kp-day-status">Cloudy</span>
+            <span class="city-day-rain" title="chance of rain">5%</span>
+            <span class="city-day-wind">Wind 5 km/h · gusts 19</span>
+            <span class="city-day-conf" title="How far apart the ECMWF, ICON and GFS models are for this day" style="font-size:0.8rem;color:#ffd54f">● less certain</span>
           </a>
         </div>
         <p class="forecast-note">Median of ECMWF, ICON and GFS models · elevation 926 m</p>
@@ -195,9 +201,9 @@
       <table class="kp-table region-table" data-mode="snow">
         <thead><tr><th>Place</th><th>Snow depth</th><th>New snow, 7 days</th><th>Min / max</th></tr></thead>
         <!-- volatile --><tbody>
-          <tr data-lat="41.8383" data-lon="23.4885" data-elevation="930"><td>Bansko <span class="storm-updated">930 m</span></td><td>0 cm</td><td>0 cm</td><td>−8° / 7°</td></tr>
-          <tr data-lat="41.805" data-lon="23.433" data-elevation="1700"><td>Shiligarnika <span class="storm-updated">1700 m</span></td><td>0 cm</td><td>14 cm</td><td>−10° / 6°</td></tr>
-          <tr data-lat="41.7835" data-lon="23.42" data-elevation="2500"><td>Todorka <span class="storm-updated">2500 m</span></td><td>4 cm</td><td>36 cm</td><td>−11° / 1°</td></tr>
+          <tr data-lat="41.8383" data-lon="23.4885" data-elevation="930"><td>Bansko <span class="storm-updated">930 m</span></td><td>0 cm</td><td>17 cm</td><td>−9° / 7°</td></tr>
+          <tr data-lat="41.805" data-lon="23.433" data-elevation="1700"><td>Shiligarnika <span class="storm-updated">1700 m</span></td><td>0 cm</td><td>37 cm</td><td>−12° / 5°</td></tr>
+          <tr data-lat="41.7835" data-lon="23.42" data-elevation="2500"><td>Todorka <span class="storm-updated">2500 m</span></td><td>13 cm</td><td>54 cm</td><td>−14° / −1°</td></tr>
         </tbody><!-- /volatile -->
       </table>
       <p class="storm-updated region-nojs">The table is filled in when the page loads.</p>
@@ -334,6 +340,7 @@
         <a href="/en/vremeto/dobrinishte/" class="recent-place">Dobrinishte</a>
         <a href="/en/vremeto/aleko/" class="recent-place">Aleko</a>
         <a href="/en/vremeto/kartala/" class="recent-place">Kartala</a>
+        <a href="/en/vremeto/samokov/" class="recent-place">Samokov</a>
       </div>
     </section>
   <!-- lang-links:start -->

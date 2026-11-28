@@ -18,7 +18,7 @@
   <link rel="alternate" hreflang="fr" href="https://weatherpulse.eu/fr/meteo/kiten/" />
   <link rel="alternate" hreflang="nl" href="https://weatherpulse.eu/nl/weer/kiten/" />
   <link rel="alternate" hreflang="x-default" href="https://weatherpulse.eu/en/vremeto/kiten/" />
-  <meta name="description" content="Aujourd’hui : 3° / 8°, nuageux. Demain : 2° / 10°, partiellement nuageux. Météo à Kiten aujourd’hui et sur 7 jours, et température de la mer en ce moment : température, pluie, vent et vagues. Mise à jour toutes les heures." data-description="Météo à Kiten aujourd’hui et sur 7 jours, et température de la mer en ce moment : température, pluie, vent et vagues. Mise à jour toutes les heures.">
+  <meta name="description" content="Aujourd’hui : 8° / 12°, pluie (100%). Demain : 3° / 8°, neige (100%). Météo à Kiten aujourd’hui et sur 7 jours, et température de la mer en ce moment : température, pluie, vent et vagues. Mise à jour toutes les heures." data-description="Météo à Kiten aujourd’hui et sur 7 jours, et température de la mer en ce moment : température, pluie, vent et vagues. Mise à jour toutes les heures.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Weather Pulse">
   <meta property="og:locale" content="fr_FR">
@@ -80,7 +80,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#162447">
   <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="/css/theme.css?v=65">
+  <link rel="stylesheet" href="/css/theme.css?v=68">
   <link rel="stylesheet" href="/css/mobile.css?v=5">
 </head>
 <body style="font-family: 'Exo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -107,81 +107,84 @@
     <p class="storm-intro">Prévisions météo à Kiten pour aujourd’hui, demain et les 7 prochains jours : température, précipitations, vent et probabilité de pluie. Les données proviennent d’Open-Meteo et sont mises à jour toutes les heures.</p>
 
     <div class="city-forecast" id="cityForecast" data-name="Kiten" data-lat="42.234" data-lon="27.775" data-query="city=Kiten&lat=42.2340&lon=27.7750&cc=BG" data-warn="burgas">
+      <div class="city-alerts" id="cityAlerts" role="status">
+        <p class="city-alert city-alert-yellow">Rafales de vent fortes demain : jusqu’à 76 km/h</p>
+        <p class="city-alert city-alert-yellow">Pluie forte aujourd’hui : environ 40 mm</p>
+      </div>
       <div class="kp-forecast city-now" id="cityNow">
-        <h2>mardi 24 novembre</h2>
-        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">3° / 8°</span>
-        <p class="storm-now-status">Nuageux · probabilité de pluie 6%</p>
-        <p class="storm-updated">Prévision du 24 novembre 2026</p>
+        <h2>samedi 28 novembre</h2>
+        <span class="storm-now-value" style="font-size: 1.5rem; white-space: nowrap;">8° / 12°</span>
+        <p class="storm-now-status">Pluie · probabilité de pluie 100%</p>
+        <p class="storm-updated">Prévision du 28 novembre 2026</p>
       </div>
       <div class="kp-forecast" id="cityDays">
         <h3>Prévisions à 7 jours</h3>
-        <p class="city-summary">Dans les 7 prochains jours, le jour le plus chaud sera vendredi 27 novembre (jusqu’à 15°) et le plus froid lundi 30 novembre (jusqu’à 0°). Des précipitations sont attendues sur 4 des jours. Les modèles concordent jusqu’à jeudi 26 novembre ; ensuite, la prévision est moins sûre (jusqu’à 7° d’écart de température et un modèle prévoit de la pluie, un autre une journée sèche).</p>
+        <p class="city-summary">Dans les 7 prochains jours, le jour le plus chaud sera samedi 28 novembre (jusqu’à 12°) et le plus froid jeudi 3 décembre (jusqu’à −3°). Des précipitations sont attendues sur 4 des jours. Les modèles concordent jusqu’à lundi 30 novembre ; ensuite, la prévision est moins sûre (un modèle prévoit de la pluie, un autre une journée sèche).</p>
         <div class="city-days">
-          <a class="kp-day city-day" href="/weather/?city=Kiten&lat=42.2340&lon=27.7750&cc=BG&date=2026-11-24" title="Heure par heure →">
-            <span class="kp-day-name">mar. 24</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">24.11</span>
-            <span class="city-day-temp">3° / 8°</span>
-            <span class="kp-day-status">Nuageux</span>
-            <span class="city-day-rain" title="probabilité de pluie">6%</span>
-            <span class="city-day-wind">Vent 21 km/h · rafales 44</span>
-          </a>
-          <a class="kp-day city-day" href="/weather/?city=Kiten&lat=42.2340&lon=27.7750&cc=BG&date=2026-11-25" title="Heure par heure →">
-            <span class="kp-day-name">mer. 25</span>
-            <span class="city-day-icon" aria-hidden="true">⛅</span>
-            <span class="city-day-date">25.11</span>
-            <span class="city-day-temp">2° / 10°</span>
-            <span class="kp-day-status">Partiellement nuageux</span>
-            <span class="city-day-rain" title="probabilité de pluie">0%</span>
-            <span class="city-day-wind">Vent 16 km/h · rafales 34</span>
-          </a>
-          <a class="kp-day city-day" href="/weather/?city=Kiten&lat=42.2340&lon=27.7750&cc=BG&date=2026-11-26" title="Heure par heure →">
-            <span class="kp-day-name">jeu. 26</span>
-            <span class="city-day-icon" aria-hidden="true">☁️</span>
-            <span class="city-day-date">26.11</span>
-            <span class="city-day-temp">2° / 14°</span>
-            <span class="kp-day-status">Nuageux</span>
-            <span class="city-day-rain" title="probabilité de pluie">0%</span>
-            <span class="city-day-wind">Vent 12 km/h · rafales 30</span>
-          </a>
-          <a class="kp-day city-day" href="/weather/?city=Kiten&lat=42.2340&lon=27.7750&cc=BG&date=2026-11-27" title="Heure par heure →">
-            <span class="kp-day-name">ven. 27</span>
-            <span class="city-day-icon" aria-hidden="true">🌧️</span>
-            <span class="city-day-date">27.11</span>
-            <span class="city-day-temp">9° / 15°</span>
-            <span class="kp-day-status">Pluie</span>
-            <span class="city-day-rain" title="probabilité de pluie">61% · 10.1 mm</span>
-            <span class="city-day-wind">Vent 14 km/h · rafales 30</span>
-            <span class="city-day-conf" title="L’écart entre les modèles ECMWF, ICON et GFS pour ce jour" style="font-size:0.8rem;color:#ffd54f">● moins sûre</span>
-          </a>
           <a class="kp-day city-day" href="/weather/?city=Kiten&lat=42.2340&lon=27.7750&cc=BG&date=2026-11-28" title="Heure par heure →">
             <span class="kp-day-name">sam. 28</span>
             <span class="city-day-icon" aria-hidden="true">🌧️</span>
             <span class="city-day-date">28.11</span>
-            <span class="city-day-temp">10° / 13°</span>
+            <span class="city-day-temp">8° / 12°</span>
             <span class="kp-day-status">Pluie</span>
-            <span class="city-day-rain" title="probabilité de pluie">80% · 35.1 mm</span>
-            <span class="city-day-wind city-day-gusts">Vent 34 km/h · rafales 68</span>
+            <span class="city-day-rain" title="probabilité de pluie">100% · 40.0 mm</span>
+            <span class="city-day-wind city-day-gusts">Vent 36 km/h · rafales 74</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Kiten&lat=42.2340&lon=27.7750&cc=BG&date=2026-11-29" title="Heure par heure →">
             <span class="kp-day-name">dim. 29</span>
             <span class="city-day-icon" aria-hidden="true">❄️</span>
             <span class="city-day-date">29.11</span>
-            <span class="city-day-temp">1° / 10°</span>
+            <span class="city-day-temp">3° / 8°</span>
             <span class="kp-day-status">Neige</span>
-            <span class="city-day-rain" title="probabilité de pluie">92% · 16.4 mm</span>
-            <span class="city-day-wind city-day-gusts">Vent 36 km/h · rafales 72</span>
-            <span class="city-day-conf" title="L’écart entre les modèles ECMWF, ICON et GFS pour ce jour" style="font-size:0.8rem;color:#ff8a65">● incertaine</span>
+            <span class="city-day-rain" title="probabilité de pluie">100% · 32.1 mm</span>
+            <span class="city-day-wind city-day-gusts">Vent 38 km/h · rafales 76</span>
           </a>
           <a class="kp-day city-day" href="/weather/?city=Kiten&lat=42.2340&lon=27.7750&cc=BG&date=2026-11-30" title="Heure par heure →">
             <span class="kp-day-name">lun. 30</span>
             <span class="city-day-icon" aria-hidden="true">❄️</span>
             <span class="city-day-date">30.11</span>
-            <span class="city-day-temp">0° / 2°</span>
+            <span class="city-day-temp">1° / 3°</span>
             <span class="kp-day-status">Neige</span>
-            <span class="city-day-rain" title="probabilité de pluie">79% · 2.1 mm</span>
-            <span class="city-day-wind city-day-gusts">Vent 35 km/h · rafales 70</span>
+            <span class="city-day-rain" title="probabilité de pluie">94% · 12.4 mm</span>
+            <span class="city-day-wind city-day-gusts">Vent 33 km/h · rafales 72</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Kiten&lat=42.2340&lon=27.7750&cc=BG&date=2026-12-01" title="Heure par heure →">
+            <span class="kp-day-name">mar. 1</span>
+            <span class="city-day-icon" aria-hidden="true">❄️</span>
+            <span class="city-day-date">01.12</span>
+            <span class="city-day-temp">−1° / 1°</span>
+            <span class="kp-day-status">Neige</span>
+            <span class="city-day-rain" title="probabilité de pluie">83% · 2.3 mm</span>
+            <span class="city-day-wind city-day-gusts">Vent 26 km/h · rafales 67</span>
             <span class="city-day-conf" title="L’écart entre les modèles ECMWF, ICON et GFS pour ce jour" style="font-size:0.8rem;color:#ff8a65">● incertaine</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Kiten&lat=42.2340&lon=27.7750&cc=BG&date=2026-12-02" title="Heure par heure →">
+            <span class="kp-day-name">mer. 2</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">02.12</span>
+            <span class="city-day-temp">−2° / 1°</span>
+            <span class="kp-day-status">Nuageux</span>
+            <span class="city-day-rain" title="probabilité de pluie">20%</span>
+            <span class="city-day-wind">Vent 24 km/h · rafales 54</span>
+            <span class="city-day-conf" title="L’écart entre les modèles ECMWF, ICON et GFS pour ce jour" style="font-size:0.8rem;color:#ffd54f">● moins sûre</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Kiten&lat=42.2340&lon=27.7750&cc=BG&date=2026-12-03" title="Heure par heure →">
+            <span class="kp-day-name">jeu. 3</span>
+            <span class="city-day-icon" aria-hidden="true">❄️</span>
+            <span class="city-day-date">03.12</span>
+            <span class="city-day-temp">−3° / 2°</span>
+            <span class="kp-day-status">Neige</span>
+            <span class="city-day-rain" title="probabilité de pluie">27% · 0.1 mm</span>
+            <span class="city-day-wind">Vent 22 km/h · rafales 48</span>
+          </a>
+          <a class="kp-day city-day" href="/weather/?city=Kiten&lat=42.2340&lon=27.7750&cc=BG&date=2026-12-04" title="Heure par heure →">
+            <span class="kp-day-name">ven. 4</span>
+            <span class="city-day-icon" aria-hidden="true">☁️</span>
+            <span class="city-day-date">04.12</span>
+            <span class="city-day-temp">−3° / 4°</span>
+            <span class="kp-day-status">Nuageux</span>
+            <span class="city-day-rain" title="probabilité de pluie">12%</span>
+            <span class="city-day-wind">Vent 14 km/h · rafales 31</span>
           </a>
         </div>
         <p class="forecast-note">Médiane des modèles ECMWF, ICON et GFS · altitude 26 m</p>
@@ -332,6 +335,7 @@
         <a href="/fr/meteo/dobrinishte/" class="recent-place">Dobrinichté</a>
         <a href="/fr/meteo/aleko/" class="recent-place">Aleko</a>
         <a href="/fr/meteo/kartala/" class="recent-place">Kartala</a>
+        <a href="/fr/meteo/samokov/" class="recent-place">Samokov</a>
       </div>
     </section>
   <!-- lang-links:start -->

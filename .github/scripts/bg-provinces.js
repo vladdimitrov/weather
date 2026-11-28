@@ -12,7 +12,7 @@ const PROVINCES = {
   sliven: ['Сливен', 'Sliven'], smolyan: ['Смолян', 'Smolyan'], 'stara-zagora': ['Стара Загора', 'Stara Zagora'],
   targovishte: ['Търговище', 'Targovishte', 'Turgovishte'], haskovo: ['Хасково', 'Haskovo'], shumen: ['Шумен', 'Shumen'], yambol: ['Ямбол', 'Yambol']
 };
-const OTHER = { sofia: 'sofia-city', asenovgrad: 'plovdiv', kazanlak: 'stara-zagora', dimitrovgrad: 'haskovo', bansko: 'blagoevgrad', aleko: 'sofia-city', kartala: 'blagoevgrad', borovets: 'sofia-province', pamporovo: 'smolyan', sozopol: 'burgas', nesebar: 'burgas',
+const OTHER = { sofia: 'sofia-city', asenovgrad: 'plovdiv', kazanlak: 'stara-zagora', dimitrovgrad: 'haskovo', bansko: 'blagoevgrad', aleko: 'sofia-city', kartala: 'blagoevgrad', samokov: 'sofia-province', borovets: 'sofia-province', pamporovo: 'smolyan', sozopol: 'burgas', nesebar: 'burgas',
   'slanchev-bryag': 'burgas', 'zlatni-pyasatsi': 'varna', albena: 'dobrich', primorsko: 'burgas', kiten: 'burgas', obzor: 'burgas', pomorie: 'burgas', balchik: 'dobrich', chepelare: 'smolyan', dobrinishte: 'blagoevgrad' };
 const provinceOf = slug => OTHER[slug] || (PROVINCES[slug] ? slug : null);
 
