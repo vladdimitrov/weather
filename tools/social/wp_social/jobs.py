@@ -10,6 +10,7 @@ from zoneinfo import ZoneInfo
 from PIL import Image
 
 from . import channels
+from .config import ROOT
 from .hosting import Hosting
 from .meta_api import MetaClient
 from .utm import for_network, tagged
@@ -33,6 +34,45 @@ def _targets(cfg):
 
 
 # ---------------- forecast ----------------
+FORECAST_STATE = ROOT / "state" / "forecast-channels.json"   # {day: {"channels": {name: id}}}, committed by the workflow
+
+
+def forecast_channels(cfg):
+    """The channels the forecast goes to: those with tokens, unless `channels: {forecast: false}`."""
+    if not (cfg.get("channels") or {}).get("forecast", True):
+        return []
+    return channels.enabled()
+
+
+def _channel_state():
+    try:
+        return json.loads(FORECAST_STATE.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def _send_to_channels(cfg, day, img_path, caption, url, force):
+    """Posts to the channels the day's forecast has not reached yet and records each one, like the queue does
+    with done["channels"], so a retry sends only to the missing ones. Never raises."""
+    try:
+        state = _channel_state()
+        sent = state.setdefault(day.isoformat(), {}).setdefault("channels", {})
+        todo = [c for c in forecast_channels(cfg) if force or c not in sent]
+        if not todo:
+            return
+        done = channels.send(img_path, caption, url, skip=[c for c in channels.enabled() if c not in todo])
+        sent.update(done)
+        keep = day - timedelta(days=14)
+        state = {d: v for d, v in state.items() if d >= keep.isoformat()}
+        FORECAST_STATE.parent.mkdir(parents=True, exist_ok=True)
+        FORECAST_STATE.write_text(json.dumps(state, ensure_ascii=False, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+        missing = [c for c in todo if c not in done]
+        if missing:
+            log.warning("The forecast did not reach: %s (the next run sends only there)", ", ".join(missing))
+    except Exception as error:  # the channels must never stop the Facebook/Instagram post
+        log.warning("Channels step failed: %s", error)
+
+
 def run_forecast(cfg, dry_run=False, sample=False, tomorrow=False, force=False):
     tz = ZoneInfo(cfg["timezone"])
     offset = 1 if tomorrow else 0
@@ -42,9 +82,16 @@ def run_forecast(cfg, dry_run=False, sample=False, tomorrow=False, force=False):
 
     host = Hosting(cfg.get("hosting", {}))
     # once a day: the run can start twice (GitHub schedule + an outside trigger, or a manual run)
-    if not dry_run and not force and host.already_published(f"-forecast-{day.isoformat()}.jpg"):
-        log.info("The forecast for %s is already published – nothing to do (use --force to post again).", day)
-        return None
+    published_url = None if dry_run or force else host.find_published(f"-forecast-{day.isoformat()}.jpg")
+    channels_only = False
+    if published_url:
+        # Facebook/Instagram are done; the channels may still be missing (one failed, or was added later)
+        sent = _channel_state().get(day.isoformat(), {}).get("channels", {})
+        if all(c in sent for c in forecast_channels(cfg)):
+            log.info("The forecast for %s is already published – nothing to do (use --force to post again).", day)
+            return None
+        log.info("The forecast for %s is published; sending it to the missing channels only.", day)
+        channels_only = True
 
     forecasts = sample_forecast(cities) if sample else fetch_forecast(cities, cfg["timezone"], offset)
     site_url = cfg["site_url"].rstrip("/")
@@ -59,6 +106,10 @@ def run_forecast(cfg, dry_run=False, sample=False, tomorrow=False, force=False):
         print(caption)
         return img_path
 
+    if channels_only:
+        _send_to_channels(cfg, day, img_path, caption, published_url, force)
+        return img_path
+
     client = make_client(cfg)
     to_fb, to_ig = _targets(cfg)
     url = None
@@ -69,6 +120,8 @@ def run_forecast(cfg, dry_run=False, sample=False, tomorrow=False, force=False):
         log.info("Facebook post id: %s", client.fb_photo(img_path, for_network(caption, "facebook")))
     if to_ig:
         log.info("Instagram media id: %s", client.ig_image(url, for_network(caption, "instagram")))
+    # Telegram/Viber last: a failing channel is logged and never touches the posts above
+    _send_to_channels(cfg, day, img_path, caption, url, force)
     return img_path
 
 

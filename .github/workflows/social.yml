@@ -15,11 +15,11 @@ on:
   workflow_dispatch:            # ръчно пускане от таб Actions
     inputs:
       job:
-        description: "forecast, queue или alerts"
+        description: "forecast, queue, alerts или channels-test (проба на каналите)"
         required: true
         default: queue
         type: choice
-        options: [forecast, queue, alerts]
+        options: [forecast, queue, alerts, channels-test]
 
 permissions:
   contents: write               # качва картинките в social/ и мести публикуваните файлове
@@ -59,7 +59,12 @@ jobs:
           fi
 
       - name: Run
-        run: python main.py ${{ steps.pick.outputs.job }}
+        run: |
+          if [ "${{ steps.pick.outputs.job }}" = "channels-test" ]; then
+            python main.py channels --test
+          else
+            python main.py ${{ steps.pick.outputs.job }}
+          fi
         env:
           WP_PAGE_ID: ${{ secrets.WP_PAGE_ID }}
           WP_PAGE_TOKEN: ${{ secrets.WP_PAGE_TOKEN }}
@@ -82,6 +87,19 @@ jobs:
           WP_TELEGRAM_CHAT: ${{ secrets.WP_TELEGRAM_CHAT }}
           WP_VIBER_TOKEN: ${{ secrets.WP_VIBER_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Save forecast progress
+        # which channels already got today's forecast, so a retry sends only to the missing ones
+        if: always() && steps.pick.outputs.job == 'forecast'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A state/forecast-channels.json
+          if ! git diff --cached --quiet; then
+            git commit -m "social: forecast sent to the channels"
+            git pull --rebase origin main
+            git push
+          fi
 
       - name: Save queue progress
         if: always() && steps.pick.outputs.job == 'queue'

@@ -49,6 +49,16 @@ def telegram(img_path: Path, caption: str, timeout=60):
     return body["result"]["message_id"]
 
 
+def telegram_text(text, timeout=60):
+    token, chat = os.environ["WP_TELEGRAM_TOKEN"], os.environ["WP_TELEGRAM_CHAT"]
+    r = requests.post(TELEGRAM_API.format(token=token, method="sendMessage"),
+                      data={"chat_id": chat, "text": text}, timeout=timeout)
+    body = r.json()
+    if not body.get("ok"):
+        raise RuntimeError(f"Telegram: {body.get('description', r.status_code)}")
+    return body["result"]["message_id"]
+
+
 def _viber(method, payload, timeout=60):
     r = requests.post(VIBER_API.format(method=method), json=payload,
                       headers={"X-Viber-Auth-Token": os.environ["WP_VIBER_TOKEN"]}, timeout=timeout)
@@ -82,3 +92,23 @@ def send(img_path: Path, caption: str, image_url=None, skip=()):
         except Exception as error:  # a channel must never stop the other posts
             log.warning("%s post failed: %s", name.capitalize(), error)
     return done
+
+
+TEST_TEXT = "WeatherPulse: проверка на канала"
+
+
+def test():
+    """A short test message to every channel that has its token. Returns {channel: (True, id) | (False, error)};
+    one channel failing does not stop the others."""
+    results = {}
+    for name in enabled():
+        try:
+            results[name] = (True, telegram_text(TEST_TEXT) if name == "telegram" else viber(None, TEST_TEXT))
+            log.info("%s: OK (%s)", name.capitalize(), results[name][1])
+        except Exception as error:
+            results[name] = (False, str(error))
+            log.warning("%s: FAILED (%s)", name.capitalize(), error)
+    for name in ("telegram", "viber"):
+        if name not in results:
+            log.info("%s: skipped (no token)", name.capitalize())
+    return results
